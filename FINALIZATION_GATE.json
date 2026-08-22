@@ -16,6 +16,7 @@
   "publication_permitted": true,
   "release_complete": true,
   "completion_basis": "The complete individual edition is publicly preserved on Zenodo with anonymous byte readback; the separately required GitHub push is closed by an exact external account-suspension blocker and a recoverable local commit/tag.",
+  "source_finding_policy": "Release-owned unresolved P1/P2 defects are zero. The 163 open_recorded P1/P2 ledger entries are confined to pinned upstream/source scopes; they remain visible as backend correction records rather than silently changing the source mathematics.",
   "required_prepublication_checks": [
     {
       "id": "final_reader_artifact",

@@ -82,7 +82,8 @@
   "quality": {
     "pdf_pages": 387,
     "pdf_build_reproducibility": "byte_identical",
-    "whole_corpus_qa": "pass_no_unresolved_p1_or_p2",
+    "whole_corpus_qa": "pass_no_unresolved_release_owned_p1_or_p2",
+    "upstream_source_findings": "163 open_recorded P1/P2 findings are confined to source_*/upstream_authority scopes and are preserved as part of the 325-record backend correction layer without mutating pinned mathematical content.",
     "backend_records": 28172,
     "backend_relations": 17614,
     "backend_tests": "20_of_20_pass",
