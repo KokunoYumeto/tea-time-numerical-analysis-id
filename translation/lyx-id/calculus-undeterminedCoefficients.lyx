@@ -1,0 +1,3364 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+\input $HOME/Documents/textbook/preamble
+\end_preamble
+\use_default_options true
+\master TeaTimeNumericalAnalysis.lyx
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 4cm
+\topmargin 2.5cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 1
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:UndeterminedCoefficients"
+
+\end_inset
+
+Koefisien Tak Tentu
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+koefisien tak tentu
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Gagasan dasar
+\end_layout
+
+\begin_layout Standard
+Menurut persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lagrangeInterpolatingPolynomialError"
+
+\end_inset
+
+, selisih antara 
+\begin_inset Formula $f$
+\end_inset
+
+ dan suatu polinom interpolasi merupakan kelipatan dari 
+\begin_inset Formula $f^{(n+1)}(\xi_{x})$
+\end_inset
+
+.
+ Dengan kata lain, galat dalam mengaproksimasi 
+\begin_inset Formula $f$
+\end_inset
+
+ dengan polinom interpolasi 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+ bergantung langsung pada 
+\begin_inset Formula $f^{(n+1)}$
+\end_inset
+
+.
+ Namun, 
+\begin_inset Formula $f^{(n+1)}(x)$
+\end_inset
+
+ identik nol setiap kali 
+\begin_inset Formula $f$
+\end_inset
+
+ merupakan polinom berderajat kurang dari 
+\begin_inset Formula $n+1$
+\end_inset
+
+.
+ Akibatnya, 
+\begin_inset Formula $(f-P_{n})(x)$
+\end_inset
+
+ identik nol dalam kasus ini.
+ Meskipun terdengar berulang, gagasan terakhir ini layak ditegaskan kembali.
+ Jika 
+\begin_inset Formula $f$
+\end_inset
+
+ adalah sembarang polinom berderajat kurang dari 
+\begin_inset Formula $n+1$
+\end_inset
+
+, maka 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+, yang dihitung untuk sembarang himpunan yang terdiri dari 
+\begin_inset Formula $n+1$
+\end_inset
+
+ simpul, sama persis dengan 
+\begin_inset Formula $f$
+\end_inset
+
+ untuk semua 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ Dengan demikian, turunan 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+ dan integral 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+ bukan sekadar aproksimasi terhadap turunan dan integral yang bersesuaian
+ dari 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ Keduanya eksak karena 
+\begin_inset Formula $P_{n}=f$
+\end_inset
+
+ untuk semua 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ Pengamatan ini dapat digunakan untuk menurunkan rumus turunan dan integral
+ tanpa pernah menghitung 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+ maupun turunan atau integralnya!
+\end_layout
+
+\begin_layout Standard
+Semua rumus yang telah kita turunkan untuk mengaproksimasi turunan dan
+ integral dari fungsi sembarang 
+\begin_inset Formula $f$
+\end_inset
+
+ berbentuk
+\begin_inset Formula 
+\[
+\sum_{i=0}^{n}a_{i}f(x_{i})
+\]
+
+\end_inset
+
+dengan 
+\begin_inset Formula $x_{0},x_{1},\ldots,x_{n}$
+\end_inset
+
+ adalah simpul-simpul polinom interpolasi, yaitu titik-titik tempat nilai
+ 
+\begin_inset Formula $f$
+\end_inset
+
+ diketahui, sedangkan 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+ adalah konstanta yang diperoleh dari penurunan tersebut.
+ Metode koefisien tak tentu menggunakan pendekatan langsung untuk menghitung
+ konstanta 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+.
+ Dengan mengetahui bahwa rumus 
+\begin_inset Quotes eld
+\end_inset
+
+aproksimasi
+\begin_inset Quotes erd
+\end_inset
+
+ harus eksak untuk semua polinom berderajat 
+\begin_inset Formula $0,1,\ldots,n$
+\end_inset
+
+, kita dapat membentuk 
+\begin_inset Formula $n+1$
+\end_inset
+
+ persamaan dengan 
+\begin_inset Formula $n+1$
+\end_inset
+
+ peubah tak diketahui, yaitu 
+\begin_inset Formula $a_{0},a_{1},\ldots,a_{n}$
+\end_inset
+
+.
+ Penyelesaian sistem persamaan yang dihasilkan memberikan nilai
+ koefisien tersebut.
+\end_layout
+
+\begin_layout Subsection
+Turunan
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+diferensiasi numerik
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Kita mencari aproksimasi untuk turunan orde 
+\begin_inset Formula $k$
+\end_inset
+
+ dari 
+\begin_inset Formula $f$
+\end_inset
+
+ berdasarkan nilai-nilai yang diketahui, yaitu 
+\begin_inset Formula $f(x_{0}+\theta_{0}h),f(x_{0}+\theta_{1}h),\ldots,f(x_{0}+\theta_{n}h)$
+\end_inset
+
+.
+ Secara tepat, kita menginginkan aproksimasi berbentuk
+\begin_inset Formula 
+\begin{equation}
+f^{(k)}(x_{0}+\theta h)\approx\sum_{i=0}^{n}a_{i}f(x_{0}+\theta_{i}h).\label{eq:derivApprox}
+\end{equation}
+
+\end_inset
+
+Berdasarkan persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lagrangeInterpolatingPolynomialError"
+
+\end_inset
+
+, aproksimasi tersebut harus eksak untuk semua polinom berderajat 
+\begin_inset Formula $n$
+\end_inset
+
+ atau kurang.
+ Secara khusus, aproksimasi itu harus eksak untuk polinom 
+\begin_inset Formula $p_{j}(x)=(x-x_{0})^{j}$
+\end_inset
+
+, 
+\begin_inset Formula $j=0,1,\ldots,n$
+\end_inset
+
+.
+ Secara simbolis, harus berlaku
+\begin_inset Formula 
+\[
+p_{j}^{(k)}(x_{0}+\theta h)=\sum_{i=0}^{n}a_{i}p_{j}(x_{0}+\theta_{i}h)
+\]
+
+\end_inset
+
+untuk 
+\begin_inset Formula $j=0,1,\ldots,n$
+\end_inset
+
+.
+ Perhatikan bahwa aproksimasi tersebut kini menjadi suatu kesamaan 
+\shape italic
+eksak
+\shape default
+.
+ Dengan memperhatikan bahwa 
+\begin_inset Formula $p_{j}(x_{0}+\theta_{i}h)=((x_{0}+\theta_{i}h)-x_{0})^{j}=(\theta_{i}h)^{j}$
+\end_inset
+
+, sistem persamaan tersebut menjadi
+\begin_inset Formula 
+\begin{equation}
+p_{j}^{(k)}(x_{0}+\theta h)=a_{0}+\sum_{i=1}^{n}(\theta_{i}h)^{j}a_{i}\label{eq:systemGenericDerivative}
+\end{equation}
+
+\end_inset
+
+untuk 
+\begin_inset Formula $j=0,1,\ldots,n$
+\end_inset
+
+.
+ Penyelesaian sistem inilah yang akan menghasilkan 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{digression}{Matriks Vandermonde}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Secara umum, suatu sistem persamaan linear mungkin memiliki nol, satu, atau banyak penyelesaian.
+ Namun, sistem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:systemGenericDerivative"
+
+\end_inset
+
+ memiliki bentuk khusus.
+ Dalam setiap persamaan, konstanta 
+\begin_inset Formula $(\theta_{i}h)^{j}$
+\end_inset
+
+ membentuk barisan geometri.
+ Matriks koefisien seperti ini disebut matriks Vandermonde, dan diketahui
+ bahwa selama 
+\begin_inset Formula $\theta_{i}$
+\end_inset
+
+ saling berbeda, sistem ini akan memiliki satu penyelesaian.
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{digression}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sebagai ilustrasi, misalkan kita memiliki stensil 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/calculus-rudiments03.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+dan kita ingin memperoleh rumus untuk turunan pertama dan kedua
+ dari 
+\begin_inset Formula $f$
+\end_inset
+
+ (pada 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+).
+ Untuk stensil ini, 
+\begin_inset Formula $\theta=0$
+\end_inset
+
+, 
+\begin_inset Formula $\theta_{0}=-1$
+\end_inset
+
+, 
+\begin_inset Formula $\theta_{1}=0$
+\end_inset
+
+, serta 
+\begin_inset Formula $\theta_{2}=1$
+\end_inset
+
+, sehingga kita mencari rumus dengan bentuk
+\begin_inset Formula 
+\begin{eqnarray*}
+f'(x_{0}) & \approx & a_{0}f(x_{0}-h)+a_{1}f(x_{0})+a_{2}f(x_{0}+h)\\
+ &  & \mbox{ dan}\\
+f''(x_{0}) & \approx & b_{0}f(x_{0}-h)+b_{1}f(x_{0})+b_{2}f(x_{0}+h).
+\end{eqnarray*}
+
+\end_inset
+
+Masing-masing rumus ini harus eksak ketika 
+\begin_inset Formula $f=p_{0}$
+\end_inset
+
+, ketika 
+\begin_inset Formula $f=p_{1}$
+\end_inset
+
+, dan ketika 
+\begin_inset Formula $f=p_{2}$
+\end_inset
+
+.
+ Ketiga syarat ini menghasilkan tiga persamaan dengan tiga peubah tak diketahui.
+\end_layout
+
+\begin_layout Standard
+Dimulai dari rumus turunan pertama, kita merinci sistem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:systemGenericDerivative"
+
+\end_inset
+
+ dengan 
+\begin_inset Formula $k=1$
+\end_inset
+
+ dan 
+\begin_inset Formula $n=2$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{eqnarray*}
+p_{0}'(x_{0}) & = & a_{0}p_{0}(x_{0}-h)+a_{1}p_{0}(x_{0})+a_{2}p_{0}(x_{0}+h)\\
+p_{1}'(x_{0}) & = & a_{0}p_{1}(x_{0}-h)+a_{1}p_{1}(x_{0})+a_{2}p_{1}(x_{0}+h)\\
+p_{2}'(x_{0}) & = & a_{0}p_{2}(x_{0}-h)+a_{1}p_{2}(x_{0})+a_{2}p_{2}(x_{0}+h)
+\end{eqnarray*}
+
+\end_inset
+
+Menurut definisi, 
+\begin_inset Formula $p_{0}(x)=(x-x_{0})^{0}=1$
+\end_inset
+
+ sehingga 
+\begin_inset Formula $p_{0}'(x_{0})=0$
+\end_inset
+
+; 
+\begin_inset Formula $p_{1}(x)=(x-x_{0})^{1}=x-x_{0}$
+\end_inset
+
+ sehingga 
+\begin_inset Formula $p_{1}'(x_{0})=1$
+\end_inset
+
+; dan 
+\begin_inset Formula $p_{2}(x)=(x-x_{0})^{2}$
+\end_inset
+
+ sehingga 
+\begin_inset Formula $p_{2}'(x)=2(x-x_{0})$
+\end_inset
+
+ yang menghasilkan 
+\begin_inset Formula $p_{2}'(x_{0})=0$
+\end_inset
+
+.
+ Dengan menyubstitusikan informasi ini ke dalam persamaan di atas,
+\begin_inset Formula 
+\begin{eqnarray*}
+0 & = & a_{0}+a_{1}+a_{2}\\
+1 & = & -ha_{0}+ha_{2}\\
+0 & = & h^{2}a_{0}+h^{2}a_{2}.
+\end{eqnarray*}
+
+\end_inset
+
+Sistem ini dapat diselesaikan dengan substitusi, eliminasi, atau bantuan sistem aljabar
+ komputer.
+ Penyelesaiannya adalah 
+\begin_inset Formula $a_{0}=\frac{-1}{2h}$
+\end_inset
+
+, 
+\begin_inset Formula $a_{1}=0$
+\end_inset
+
+, dan 
+\begin_inset Formula $a_{2}=\frac{1}{2h}$
+\end_inset
+
+, sehingga diperoleh rumus aproksimasi
+\begin_inset Formula 
+\[
+f'(x_{0})\approx\frac{f(x_{0}+h)-f(x_{0}-h)}{2h}
+\]
+
+\end_inset
+
+seperti yang telah kita peroleh 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "eq:centeredDifferenceNaive"
+
+\end_inset
+
+ dalam rumus 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:centeredDifferenceNaive"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Rumus turunan kedua diturunkan dengan cara yang sama.
+ Karena rumus turunan kedua harus eksak ketika 
+\begin_inset Formula $f=p_{0}$
+\end_inset
+
+, ketika 
+\begin_inset Formula $f=p_{1}$
+\end_inset
+
+, dan ketika 
+\begin_inset Formula $f=p_{2}$
+\end_inset
+
+, nilai-nilai 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+ harus memenuhi
+\begin_inset Formula 
+\begin{eqnarray*}
+p_{0}''(x_{0}) & = & b_{0}p_{0}(x_{0}-h)+b_{1}p_{0}(x_{0})+b_{2}p_{0}(x_{0}+h)\\
+p_{1}''(x_{0}) & = & b_{0}p_{1}(x_{0}-h)+b_{1}p_{1}(x_{0})+b_{2}p_{1}(x_{0}+h)\\
+p_{2}''(x_{0}) & = & b_{0}p_{2}(x_{0}-h)+b_{1}p_{2}(x_{0})+b_{2}p_{2}(x_{0}+h),
+\end{eqnarray*}
+
+\end_inset
+
+sistem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:systemGenericDerivative"
+
+\end_inset
+
+ dengan 
+\begin_inset Formula $k=2$
+\end_inset
+
+ dan 
+\begin_inset Formula $n=2$
+\end_inset
+
+.
+ Perhatikan bahwa ruas kanan persis sama dengan ruas kanan pada rumus turunan
+ pertama, kecuali perubahan nama dari 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+ menjadi 
+\begin_inset Formula $b_{i}$
+\end_inset
+
+.
+ Hanya ruas kiri yang berubah secara substantif.
+ 
+\begin_inset Formula $p_{0}''(x)=0$
+\end_inset
+
+ sehingga 
+\begin_inset Formula $p_{0}''(x_{0})=0$
+\end_inset
+
+; 
+\begin_inset Formula $p_{1}''(x)=0$
+\end_inset
+
+ sehingga 
+\begin_inset Formula $p_{1}(x_{0})=0$
+\end_inset
+
+; dan 
+\begin_inset Formula $p_{2}''(x)=2$
+\end_inset
+
+ sehingga 
+\begin_inset Formula $p_{2}''(x_{0})=2$
+\end_inset
+
+.
+ Dengan melakukan substitusi ini ke dalam persamaan di atas,
+\begin_inset Formula 
+\begin{eqnarray*}
+0 & = & b_{0}+b_{1}+b_{2}\\
+0 & = & -hb_{0}+hb_{2}\\
+2 & = & h^{2}b_{0}+h^{2}b_{2}.
+\end{eqnarray*}
+
+\end_inset
+
+Sekali lagi, sistem ini dapat diselesaikan dengan substitusi, eliminasi, atau bantuan sistem
+ aljabar komputer.
+ Penyelesaiannya adalah 
+\begin_inset Formula $b_{0}=b_{2}=\frac{1}{h^{2}}$
+\end_inset
+
+ dan 
+\begin_inset Formula $b_{1}=\frac{2}{h^{2}}$
+\end_inset
+
+, sehingga diperoleh rumus aproksimasi
+\begin_inset Formula 
+\[
+f''(x_{0})\approx\frac{f(x_{0}+h)-2f(x_{0})+f(x_{0}-h)}{h^{2}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Integral
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+integrasi numerik
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Gagasan untuk memperkirakan integral sama persis dengan gagasan untuk memperkirakan turunan.
+ Hanya mekanismenya yang berubah sedikit.
+ Jika sebelumnya terdapat turunan, kini kita akan menggunakan integral.
+ Kita mencari aproksimasi untuk 
+\begin_inset Formula $\int_{a}^{b}f(x)dx$
+\end_inset
+
+ berdasarkan nilai-nilai yang diketahui, yaitu 
+\begin_inset Formula $f(x_{0}+\theta_{0}h),f(x_{0}+\theta_{1}h),\ldots,f(x_{0}+\theta_{n}h)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{equation}
+\int_{a}^{b}f(x)dx\approx\sum_{i=0}^{n}a_{i}f(x_{0}+\theta_{i}h).\label{eq:integralApprox}
+\end{equation}
+
+\end_inset
+
+Aproksimasi tersebut akan eksak untuk semua polinom berderajat 
+\begin_inset Formula $n$
+\end_inset
+
+ atau kurang.
+ Secara khusus, aproksimasi itu akan eksak untuk 
+\begin_inset Formula $p_{j}(x)=(x-x_{0})^{j}$
+\end_inset
+
+, 
+\begin_inset Formula $j=0,1,\ldots,n$
+\end_inset
+
+.
+ Oleh karena itu, sistem persamaan
+\begin_inset Formula 
+\begin{equation}
+\int_{a}^{b}p_{j}(x)dx=a_{0}+\sum_{i=1}^{n}(\theta_{i}h)^{j}a_{i}\qquad j=0,1,\ldots,n\label{eq:systemGenericIntegral}
+\end{equation}
+
+\end_inset
+
+harus dipenuhi oleh 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Sebagai ilustrasi, misalkan kita memiliki stensil 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/calculus-rudiments05.pdf
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Untuk stensil ini, 
+\begin_inset Formula $a=x_{0}-h$
+\end_inset
+
+, 
+\begin_inset Formula $b=x_{0}+6h$
+\end_inset
+
+, dan 
+\begin_inset Formula $\theta_{i}=ih$
+\end_inset
+
+, 
+\begin_inset Formula $i=0,1,\ldots,6$
+\end_inset
+
+.
+ Dengan demikian, kita akan memperoleh sistem tujuh persamaan dengan tujuh peubah tak diketahui.
+ Pertama, ruas kirinya:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\int_{a}^{b}p_{0}(x)dx=\int_{x_{0}-h}^{x_{0}+6h}p_{0}(x)dx & = & \int_{x_{0}-h}^{x_{0}+6h}1dx=\left.(x-x_{0})\right|_{x_{0}-h}^{x_{0}+6h}=7h\\
+\int_{a}^{b}p_{1}(x)dx=\int_{x_{0}-h}^{x_{0}+6h}p_{1}(x)dx & = & \int_{x_{0}-h}^{x_{0}+6h}(x-x_{0})dx=\left.\frac{1}{2}(x-x_{0})^{2}\right|_{x_{0}-h}^{x_{0}+6h}=\frac{35}{2}h^{2}\\
+\int_{a}^{b}p_{2}(x)dx=\int_{x_{0}-h}^{x_{0}+6h}p_{2}(x)dx & = & \int_{x_{0}-h}^{x_{0}+6h}(x-x_{0})^{2}dx=\left.\frac{1}{3}(x-x_{0})^{3}\right|_{x_{0}-h}^{x_{0}+6h}=\frac{217}{3}h^{3}\\
+\int_{a}^{b}p_{3}(x)dx=\int_{x_{0}-h}^{x_{0}+6h}p_{3}(x)dx & = & \int_{x_{0}-h}^{x_{0}+6h}(x-x_{0})^{3}dx=\left.\frac{1}{4}(x-x_{0})^{4}\right|_{x_{0}-h}^{x_{0}+6h}=\frac{1295}{4}h^{4}\\
+\int_{a}^{b}p_{4}(x)dx=\int_{x_{0}-h}^{x_{0}+6h}p_{4}(x)dx & = & \int_{x_{0}-h}^{x_{0}+6h}(x-x_{0})^{4}dx=\left.\frac{1}{5}(x-x_{0})^{5}\right|_{x_{0}-h}^{x_{0}+6h}=\frac{7777}{5}h^{5}\\
+\int_{a}^{b}p_{5}(x)dx=\int_{x_{0}-h}^{x_{0}+6h}p_{5}(x)dx & = & \int_{x_{0}-h}^{x_{0}+6h}(x-x_{0})^{5}dx=\left.\frac{1}{6}(x-x_{0})^{6}\right|_{x_{0}-h}^{x_{0}+6h}=\frac{46655}{6}h^{6}\\
+\int_{a}^{b}p_{6}(x)dx=\int_{x_{0}-h}^{x_{0}+6h}p_{6}(x)dx & = & \int_{x_{0}-h}^{x_{0}+6h}(x-x_{0})^{6}dx=\left.\frac{1}{7}(x-x_{0})^{7}\right|_{x_{0}-h}^{x_{0}+6h}=39991h^{7}.
+\end{eqnarray*}
+
+\end_inset
+
+Sekarang kita gabungkan semuanya dengan ruas kanan (dan menukar ruas):
+\begin_inset Formula 
+\begin{eqnarray*}
+\sum_{i=0}^{6}(\theta_{i}h)^{0}a_{i} & = & a_{0}+a_{1}+a_{2}+a_{3}+a_{4}+a_{5}+a_{6}=7h\\
+\sum_{i=0}^{6}(\theta_{i}h)^{1}a_{i} & = & ha_{1}+2ha_{2}+3ha_{3}+4ha_{4}+5ha_{5}+6ha_{6}=\frac{35}{2}h^{2}\\
+\sum_{i=0}^{6}(\theta_{i}h)^{2}a_{i} & = & h^{2}a_{1}+4h^{2}a_{2}+9h^{2}a_{3}+16h^{2}a_{4}+25h^{2}a_{5}+36h^{2}a_{6}=\frac{217}{3}h^{3}\\
+\sum_{i=0}^{6}(\theta_{i}h)^{3}a_{i} & = & h^{3}a_{1}+8h^{3}a_{2}+27h^{3}a_{3}+64h^{3}a_{4}+125h^{3}a_{5}+216h^{3}a_{6}=\frac{1295}{4}h^{4}\\
+\sum_{i=0}^{6}(\theta_{i}h)^{4}a_{i} & = & h^{4}a_{1}+16h^{4}a_{2}+81h^{4}a_{3}+256h^{4}a_{4}+625h^{4}a_{5}+1296h^{4}a_{6}=\frac{7777}{5}h^{5}\\
+\sum_{i=0}^{6}(\theta_{i}h)^{5}a_{i} & = & h^{5}a_{1}+32h^{5}a_{2}+243h^{5}a_{3}+1024h^{5}a_{4}+3125h^{5}a_{5}+7776h^{5}a_{6}=\frac{46655}{6}h^{6}\\
+\sum_{i=0}^{6}(\theta_{i}h)^{6}a_{i} & = & h^{6}a_{1}+64h^{6}a_{2}+729h^{6}a_{3}+4096h^{6}a_{4}+15625h^{6}a_{5}+46656h^{6}a_{6}=39991h^{7}
+\end{eqnarray*}
+
+\end_inset
+
+Sekali lagi, sistem ini dapat diselesaikan dengan substitusi, eliminasi, atau aljabar
+ komputer, setidaknya secara prinsip.
+ Namun, tidak banyak orang yang memiliki cukup kesabaran dan ketelitian untuk menyelesaikan
+ sistem seperti itu dengan kertas dan pensil.
+ Dengan mengandalkan sistem aljabar komputer, penyelesaiannya adalah 
+\begin_inset Formula $a_{0}=\frac{30919}{8640}h$
+\end_inset
+
+, 
+\begin_inset Formula $a_{1}=-\frac{2107}{360}h$
+\end_inset
+
+, 
+\begin_inset Formula $a_{2}=\frac{34153}{2880}h$
+\end_inset
+
+, 
+\begin_inset Formula $a_{3}=-\frac{1274}{135}h$
+\end_inset
+
+, 
+\begin_inset Formula $a_{4}=\frac{19943}{2880}h$
+\end_inset
+
+, 
+\begin_inset Formula $a_{5}=-\frac{49}{72}h$
+\end_inset
+
+, dan 
+\begin_inset Formula $a_{6}=\frac{5257}{8640}h$
+\end_inset
+
+ sehingga diperoleh rumus aproksimasi
+\begin_inset Formula 
+\begin{eqnarray}
+\int_{x_{0}-h}^{x_{0}+6h}f(x)dx & \approx & \frac{h}{8640}\left[5257f(x_{0}+6h)-5880f(x_{0}+5h)+59829f(x_{0}+4h)-81536f(x_{0}+3h)\right.\nonumber \\
+ &  & \qquad\qquad\left.+102459f(x_{0}+2h)-50568f(x_{0}+h)+30919f(x_{0})\right]\label{eq:dumbIntegral7}
+\end{eqnarray}
+
+\end_inset
+
+seperti yang telah kita peroleh 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "eq:integral7dumb"
+
+\end_inset
+
+ dalam rumus 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:integral7dumb"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Pertimbangan praktis
+\end_layout
+
+\begin_layout Standard
+Kita telah menggunakan stensil seperti 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/calculus-rudiments01.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+dan 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/calculus-rudiments05.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+bukan karena hasilnya sangat berguna, melainkan untuk (a) mengilustrasikan
+ metode tersebut dan (b) menekankan bahwa metode ini berlaku secara umum untuk setiap
+ stensil yang dapat Anda bayangkan.
+ Sebagian besar rumus diferensiasi dan integrasi dalam literatur analisis numerik
+ hanya menggunakan sejumlah kecil stensil berjarak teratur. Untuk turunan,
+ titik evaluasinya merupakan salah satu simpul; untuk integral, semua
+ simpul berada di antara kedua batas atau terdapat simpul pada kedua batas.
+ Mungkin saja hanya stensil berjarak teratur yang akan Anda perlukan,
+ tetapi ada baiknya mengetahui bahwa Anda dapat menurunkan rumus yang sesuai untuk
+ stensil yang tidak lazim jika diperlukan.
+\end_layout
+
+\begin_layout Standard
+Dalam hal penurunannya, keunggulan utama metode koefisien tak
+ tentu dibandingkan bekerja langsung dengan polinom interpolasi adalah
+ kemudahan otomasi serta berkurangnya pekerjaan aljabar yang sering kali rumit
+ dan melelahkan.
+ Dalam metode koefisien tak tentu, satu-satunya polinom yang perlu
+ diturunkan atau diintegralkan adalah polinom 
+\begin_inset Formula $p_{j}=(x-x_{0})^{j}$
+\end_inset
+
+, tugas yang jauh lebih sederhana daripada mengintegralkan atau menurunkan polinom
+ interpolasi.
+ Rumus dengan tiga atau empat simpul dapat ditangani dengan cara ini menggunakan pensil
+ dan kertas.
+ Konsekuensinya adalah perlunya menyelesaikan suatu sistem persamaan, yang sekali lagi
+ lebih sederhana daripada menurunkan dan menyederhanakan polinom interpolasi
+ berderajat 3 atau 4.
+ Keunggulan terakhir metode koefisien tak tentu adalah bahwa metode ini merupakan
+ teknik penyelesaian umum yang tidak hanya digunakan dalam analisis numerik untuk menurunkan
+ aproksimasi kalkulus, tetapi juga dalam bidang lain, terutama dalam
+ persamaan diferensial.
+ Metode ini dapat diterapkan kapan pun 
+\shape italic
+bentuk
+\shape default
+ suatu penyelesaian atau rumus diketahui, tetapi konstantanya (koefisien) masih
+ belum diketahui.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{digression}{Koefisien Tak Tentu dalam Persamaan Diferensial}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Dalam persamaan diferensial, kita mengetahui bahwa suatu solusi khusus dari persamaan
+\begin_inset Formula 
+\begin{equation}
+y-2y'+3y''=5\sin x\label{eq:differentialEquation}
+\end{equation}
+
+\end_inset
+
+berbentuk 
+\begin_inset Formula $y=A\sin x+B\cos x$
+\end_inset
+
+, tetapi kita belum langsung mengetahui nilai 
+\begin_inset Formula $A$
+\end_inset
+
+ dan 
+\begin_inset Formula $B$
+\end_inset
+
+.
+ Keduanya merupakan koefisien tak tentu (pada tahap ini).
+ Koefisien tersebut ditentukan dengan menyubstitusikan bentuk yang diketahui ke dalam persamaan yang
+ sedang diselesaikan.
+\begin_inset Formula 
+\begin{eqnarray*}
+y' & = & A\cos x-B\sin x\\
+y'' & = & -A\sin x-B\cos x
+\end{eqnarray*}
+
+\end_inset
+
+Dengan demikian, persamaan yang sedang diselesaikan menjadi
+\begin_inset Formula 
+\[
+(A\sin x+B\cos x)-2(A\cos x-B\sin x)+3(-A\sin x-B\cos x)=5\sin x.
+\]
+
+\end_inset
+
+Dengan mengumpulkan koefisien 
+\begin_inset Formula $\sin x$
+\end_inset
+
+ dan 
+\begin_inset Formula $\cos x$
+\end_inset
+
+ pada ruas kiri,
+\begin_inset Formula 
+\[
+(-2A+2B)\sin x+(-2A-2B)\cos x=5\sin x.
+\]
+
+\end_inset
+
+Sekarang kita menyamakan koefisien pada ruas kiri dan kanan untuk memperoleh sistem persamaan
+\begin_inset Formula 
+\begin{eqnarray*}
+-2A+2B & = & 5\\
+-2A-2B & = & 0
+\end{eqnarray*}
+
+\end_inset
+
+yang penyelesaiannya adalah 
+\begin_inset Formula $A=-\frac{5}{4}$
+\end_inset
+
+ dan 
+\begin_inset Formula $B=\frac{5}{4}$
+\end_inset
+
+.
+ Oleh karena itu, 
+\begin_inset Formula $y=-\frac{5}{4}\sin x+\frac{5}{4}\cos x$
+\end_inset
+
+ merupakan solusi persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:differentialEquation"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Secara konseptual, proses ini tidak berbeda dari metode koefisien tak
+ tentu yang digunakan untuk menurunkan rumus kalkulus numerik.
+ Bentuk penyelesaian suatu masalah telah diketahui, kecuali beberapa koefisien
+ (yang belum ditentukan).
+ Parameter masalah mengharuskan koefisien tersebut memenuhi suatu
+ sistem persamaan linear.
+ Sistem tersebut diselesaikan, sehingga solusi masalah semula akhirnya
+ diketahui secara lengkap karena koefisiennya telah ditentukan.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{digression}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ketika kita menggunakan stensil dengan lebih dari 3 atau 4 simpul, menyelesaikan
+ sistem persamaan linear (yang relatif besar) yang dihasilkan secara manual
+ bukanlah tugas yang dinantikan oleh kebanyakan dari kita.
+ Namun, ini merupakan perhitungan standar yang dapat dilakukan oleh setiap sistem aljabar komputer
+ dengan mudah dan efisien.
+ Memang, sebaiknya kita menggunakan sistem aljabar komputer untuk menurunkan rumus
+ serumit 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:integral7dumb"
+
+\end_inset
+
+.
+ Kita telah menggunakan Maxima
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Lihat 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://maxima.sourceforge.net/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Maxima
+\end_layout
+
+\end_inset
+
+ untuk menangani atau memeriksa ulang sejumlah perhitungan yang lebih melelahkan yang disajikan
+ dalam buku ini.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{digression}{wxMaxima}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+wxMaxima
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Maxima
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Cara terbaik untuk menyelesaikan sistem persamaan linear yang besar adalah dengan bantuan
+ sistem aljabar komputer.
+ Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:wxMaxima"
+
+\end_inset
+
+ menunjukkan cara menggunakan wxMaxima untuk menurunkan rumus 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dumbIntegral7"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Perhatikan kemiripan antara kode Maxima dan kode Octave.
+ Maxima mendukung pernyataan, pernyataan cetak, penugasan variabel, larik,
+ dan penyembunyian keluaran.
+ Sintaks untuk hal-hal tersebut tidak sama, tetapi prinsip yang mendasarinya
+ sama.
+ Setelah Anda mempelajari cara melakukan hal-hal tersebut dalam satu bahasa, mempelajari
+ caranya dalam bahasa lain biasanya mudah.
+\end_layout
+
+\begin_layout Standard
+Perhatikan pula perbedaan utama antara Maxima dan Octave.
+ Maxima dirancang untuk manipulasi simbolik, sedangkan Octave dirancang
+ untuk komputasi numerik.
+ Octave dapat digunakan untuk melakukan perhitungan simbolik dan Maxima dapat digunakan untuk
+ melakukan komputasi numerik, tetapi pepatah lama tukang kayu 
+\begin_inset Quotes eld
+\end_inset
+
+gunakan alat yang tepat untuk pekerjaan yang dihadapi
+\begin_inset Quotes erd
+\end_inset
+
+ patut dipertimbangkan.
+ Maxima jauh lebih mahir dalam manipulasi simbolik daripada Octave, sedangkan
+ Octave jauh lebih mahir dalam mengolah angka daripada Maxima.
+\end_layout
+
+\begin_layout Subsection*
+Referensi
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://andrejv.github.io/wxmaxima/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{digression}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:wxMaxima"
+
+\end_inset
+
+Menurunkan rumus integrasi dengan wxMaxima
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/wxmaximaScreenshot.png
+	lyxscale 50
+	width 5.5in
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Pada praktiknya, penggunaan stensil dengan lebih dari lima simpul memang tidak lazim.
+ Namun, hal ini bukan karena rumus dengan lebih banyak simpul jauh lebih rumit
+ atau sulit digunakan.
+ Seperti ditunjukkan oleh rumus 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lagrangeInterpolatingPolynomialError"
+
+\end_inset
+
+, suku galat polinom interpolasi melibatkan turunan yang semakin
+ tinggi dari 
+\begin_inset Formula $f$
+\end_inset
+
+ seiring bertambahnya jumlah simpul.
+ Hal ini umumnya tidak menjadi masalah selama 
+\begin_inset Formula $f$
+\end_inset
+
+ memiliki turunan hingga orde yang cukup tinggi dan nilai turunan berorde tinggi tersebut
+ tidak terlampau besar.
+ Namun, metode numerik sering digunakan ketika kehalusan 
+\begin_inset Formula $f$
+\end_inset
+
+ diketahui terbatas, turunan orde tingginya diketahui bernilai besar, atau
+ sifat-sifat turunannya sama sekali tidak diketahui.
+ Untuk fungsi-fungsi ini, stensil dengan lebih sedikit simpul, yang menghasilkan rumus
+ dengan suku galat berorde lebih rendah, sering kali 
+\shape italic
+lebih akurat
+\shape default
+, bukan kurang akurat.
+ Jika tingkat kehalusannya tidak diketahui, metode berorde lebih rendah juga memiliki peluang lebih besar
+ untuk tetap akurat.
+\end_layout
+
+\begin_layout Standard
+Sebagai catatan terakhir, kita perlu berhati-hati agar tidak menuntut terlalu banyak dari suatu rumus
+ turunan.
+ Dengan 
+\begin_inset Formula $n+1$
+\end_inset
+
+ simpul, suku galat polinom interpolasi melibatkan 
+\begin_inset Formula $f^{(n+1)}$
+\end_inset
+
+, sehingga tidak mungkin menggunakan simpul-simpul ini untuk memperkirakan 
+\begin_inset Formula $f^{(n+1)}$
+\end_inset
+
+ atau turunan yang lebih tinggi pada titik mana pun.
+ Namun, jika Anda melupakan fakta ini, hal tersebut akan tampak secara langsung dalam metode
+ koefisien tak tentu.
+ Jika 
+\begin_inset Formula $k>n$
+\end_inset
+
+, sistem persamaan dengan koefisien tak tentu menjadi
+\begin_inset Formula 
+\[
+\sum_{i=0}^{n}(\theta_{i}h)^{j}a_{i}=0,\qquad j=0,1,\ldots,n
+\]
+
+\end_inset
+
+karena turunan orde 
+\begin_inset Formula $k$
+\end_inset
+
+ dari 
+\begin_inset Formula $p_{j}$
+\end_inset
+
+ identik nol untuk semua 
+\begin_inset Formula $j\leq n<k$
+\end_inset
+
+.
+ Satu-satunya penyelesaian sistem ini adalah 
+\begin_inset Formula $a_{0}=a_{1}=\cdots=a_{n}=0$
+\end_inset
+
+ sehingga diperoleh rumus 
+\begin_inset Quotes eld
+\end_inset
+
+aproksimasi
+\begin_inset Quotes erd
+\end_inset
+
+ berikut
+\begin_inset Formula 
+\[
+f^{(k)}(x_{0}+\theta h)=0.
+\]
+
+\end_inset
+
+Memang, rumus ini eksak untuk semua polinom berderajat 
+\begin_inset Formula $n$
+\end_inset
+
+ atau kurang.
+ Namun, galat akibat penggunaan rumus ini tepat sebesar 
+\begin_inset Formula $f^{(k)}(x_{0}+\theta h)$
+\end_inset
+
+, yaitu galat relatif tepat sebesar 
+\begin_inset Formula $1$
+\end_inset
+
+, sehingga rumus ini sama sekali tidak berguna.
+\end_layout
+
+\begin_layout Subsection
+Stabilitas
+\end_layout
+
+\begin_layout Standard
+Dalam Eksperimen 2 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "sub:derivativeExperiment"
+
+\end_inset
+
+, bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Accuracy"
+
+\end_inset
+
+, kita meninjau secara singkat aproksimasi turunan pertama 
+\begin_inset Formula $f(x)=\sin x$
+\end_inset
+
+ dengan menggunakan fakta bahwa
+\begin_inset Formula 
+\[
+f'(1)=\lim_{h\to0}\frac{\sin(1+h)-\sin(1-h)}{2h}.
+\]
+
+\end_inset
+
+Kesimpulan yang kita peroleh adalah bahwa perhitungan ini sangat rentan
+ terhadap galat titik mengambang.
+ Jika perhitungan dilakukan secara eksak, kita berharap 
+\begin_inset Formula $\frac{\sin(1+h)-\sin(1-h)}{2h}$
+\end_inset
+
+ mengaproksimasi 
+\begin_inset Formula $f'(1)$
+\end_inset
+
+ dengan semakin baik saat 
+\begin_inset Formula $h$
+\end_inset
+
+ semakin kecil.
+ Namun, hal ini tidak berlaku untuk perhitungan titik mengambang, seperti ditunjukkan oleh eksperimen tersebut.
+ Ada suatu titik ketika memperkecil 
+\begin_inset Formula $h$
+\end_inset
+
+ justru memperburuk aproksimasi! Contoh ini pun bukan satu-satunya.
+ Masalah ini selalu muncul ketika mengaproksimasi 
+\begin_inset Formula $f'$
+\end_inset
+
+ menggunakan rumus beda terpusat
+\begin_inset Formula 
+\begin{equation}
+f'(x)\approx\frac{f(x+h)-f(x-h)}{2h}.\label{eq:centeredDifference}
+\end{equation}
+
+\end_inset
+
+Namun, bagaimana kita dapat memperkirakan nilai 
+\begin_inset Formula $h$
+\end_inset
+
+ yang akan memicu hal itu tanpa membandingkan hasil kita dengan nilai eksak
+ turunannya? Bagaimanapun, diferensiasi numerik paling sering digunakan
+ ketika rumus eksak turunannya tidak diketahui atau terlampau sulit
+ untuk dihitung.
+\end_layout
+
+\begin_layout Standard
+Misalkan 
+\begin_inset Formula $f$
+\end_inset
+
+ dapat dihitung dengan ketelitian yang mendekati presisi mesin.
+ Dalam perhitungan titik mengambang biasa, termasuk Octave, hal itu berarti
+ galat titik mengambang relatif sekitar 
+\begin_inset Formula $10^{-15}$
+\end_inset
+
+ atau galat titik mengambang absolut 
+\begin_inset Formula $\varepsilon_{f}\approx10^{-15}|f(x)|$
+\end_inset
+
+.
+ Karena kita mengasumsikan 
+\begin_inset Formula $h$
+\end_inset
+
+ bernilai kecil, kita dapat mengaproksimasi baik 
+\begin_inset Formula $|\tilde{f}(x+h)-f(x+h)|$
+\end_inset
+
+ maupun 
+\begin_inset Formula $|\tilde{f}(x-h)-f(x-h)|$
+\end_inset
+
+ dengan 
+\begin_inset Formula $\varepsilon_{f}$
+\end_inset
+
+ sehingga diperoleh galat absolut sekitar 
+\begin_inset Formula $2\varepsilon_{f}$
+\end_inset
+
+ dalam menghitung pembilang 
+\begin_inset Formula $f(x+h)-f(x-h)$
+\end_inset
+
+.
+ Dengan mengasumsikan 
+\begin_inset Formula $h$
+\end_inset
+
+ dihitung secara eksak, kita memperoleh galat absolut 
+\begin_inset Formula 
+\begin{equation}
+\varepsilon_{r}=|\tilde{f}'(x)-f'(x)|\approx\frac{2\varepsilon_{f}}{2h}=\frac{\varepsilon_{f}}{h}=\frac{|f(x)|}{10^{15}}\cdot\frac{1}{h}.\label{eq:floatingPointError}
+\end{equation}
+
+\end_inset
+
+Seperti yang akan segera kita lihat, galat algoritmik, 
+\begin_inset Formula $\varepsilon_{a}$
+\end_inset
+
+, disebabkan oleh pemotongan dan bernilai 
+\begin_inset Formula $\left|\frac{f'''(\xi)}{6}h^{2}\right|$
+\end_inset
+
+ untuk suatu nilai 
+\begin_inset Formula $\xi$
+\end_inset
+
+ di dekat 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ Karena 
+\begin_inset Formula $\xi$
+\end_inset
+
+ berada di dekat 
+\begin_inset Formula $x$
+\end_inset
+
+, kita mengaproksimasi 
+\begin_inset Formula $f'''(\xi)$
+\end_inset
+
+ dengan 
+\begin_inset Formula $f'''(x)$
+\end_inset
+
+ dan menyimpulkan bahwa 
+\begin_inset Formula 
+\begin{equation}
+\varepsilon_{a}\approx\frac{|f'''(x)|}{6}h^{2}.\label{eq:algorithmicError}
+\end{equation}
+
+\end_inset
+
+Sekarang kita meminimumkan nilai 
+\begin_inset Formula $\varepsilon_{r}+\varepsilon_{a}$
+\end_inset
+
+ dengan menetapkan turunannya (terhadap 
+\begin_inset Formula $h$
+\end_inset
+
+) sama dengan nol dan menyelesaikan persamaan yang dihasilkan:
+\begin_inset Formula 
+\begin{eqnarray*}
+0=\frac{d}{dh}(\varepsilon_{r}+\varepsilon_{a}) & \approx & \frac{d}{dh}\left(\frac{|f(x)|}{10^{15}}\cdot\frac{1}{h}+\frac{|f'''(x)|}{6}\cdot h^{2}\right)\\
+ & = & -\frac{|f(x)|}{10^{15}}\cdot\frac{1}{h^{2}}+\frac{|f'''(x)|}{3}\cdot h\\
+ & \Rightarrow\\
+\frac{|f'''(x)|}{3}\cdot h & \approx & \frac{|f(x)|}{10^{15}}\cdot\frac{1}{h^{2}}\\
+h^{3} & \approx & \frac{|f(x)|}{|f'''(x)|}\cdot\frac{3}{10^{15}}\\
+h & \approx & \sqrt[3]{\frac{3|f(x)|}{|f'''(x)|}}\cdot10^{-5}.
+\end{eqnarray*}
+
+\end_inset
+
+Untuk Eksperimen 2 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "sub:derivativeExperiment"
+
+\end_inset
+
+, ini berarti kita memperkirakan bahwa nilai optimal 
+\begin_inset Formula $h$
+\end_inset
+
+ berada di sekitar
+\begin_inset Formula $\sqrt[3]{\frac{3\sin(1)}{\sin(1)}}\cdot10^{-5}\approx1.44(10)^{-5}$
+\end_inset
+
+.
+ Kita tampilkan kembali tabel dari Eksperimen 2 di sini dengan menambahkan kolom ketiga,
+ yaitu galat absolut sebenarnya:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $h$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tilde{p}^{*}(h)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $|\tilde{p}^{*}(h)-f'(1)|$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $10^{-2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5402933008747335$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9.00(10)^{-6}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $10^{-3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5403022158176896$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9.00(10)^{-8}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $10^{-4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5403023049677103$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9.00(10)^{-10}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $10^{-5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5403023058569989$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.11(10)^{-11}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $10^{-6}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5403023058958567$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.77(10)^{-11}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $10^{-7}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5403023056738121$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.94(10)^{-10}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Memang, ketika 
+\begin_inset Formula $h=10^{-5}$
+\end_inset
+
+, kita memperoleh hasil terbaik! Namun, prediksi nilai optimal
+ untuk 
+\begin_inset Formula $h$
+\end_inset
+
+ didasarkan pada pengetahuan tentang 
+\begin_inset Formula $f'''$
+\end_inset
+
+, sesuatu yang umumnya tidak dapat kita ketahui.
+ Kecuali jika kebetulan kita mengetahui bahwa 
+\begin_inset Formula $\frac{|f(x)|}{|f'''(x)|}$
+\end_inset
+
+ jauh dari 
+\begin_inset Formula $1$
+\end_inset
+
+, kita mengasumsikan nilainya cukup dekat dengan 
+\begin_inset Formula $1$
+\end_inset
+
+; dalam hal ini, nilai optimal 
+\begin_inset Formula $h$
+\end_inset
+
+ berada di sekitar 
+\begin_inset Formula $10^{-5}$
+\end_inset
+
+.
+ Perkiraan serupa dapat dibuat untuk rumus turunan lainnya.
+\end_layout
+
+\begin_layout Standard
+Karena diferensiasi numerik sangat peka terhadap galat titik mengambang,
+ kita menyebutnya tidak stabil.
+ Metode pencarian akar dan integrasi numerik yang telah kita bahas
+ semuanya merupakan metode yang stabil.
+ Kepekaannya terhadap galat titik mengambang sebanding dengan kepekaan dalam
+ menghitung 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Konsep Kunci
+\end_layout
+
+\begin_layout Description
+koefisien
+\begin_inset space ~
+\end_inset
+
+tak tentu: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+koefisien tak tentu
+\end_layout
+
+\end_inset
+
+Metode untuk menyelesaikan masalah yang bentuk penyelesaiannya telah diketahui, kecuali
+ sejumlah koefisien yang belum ditentukan.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+startexercises 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Latihan
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:undetermined"
+
+\end_inset
+
+Dengan menggunakan metode koefisien tak tentu, turunkan rumus aproksimasi
+ untuk turunan pertama pada stensil tersebut.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined01.pdf
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+medskip 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined06.pdf
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+} 
+\backslash
+hasananswer
+\backslash
+medskip 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined07.pdf
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+medskip 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined08.pdf
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+} 
+\backslash
+hasasolution
+\backslash
+medskip 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined02.pdf
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+medskip 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined03.pdf
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+} 
+\backslash
+hasananswer
+\backslash
+medskip 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined04.pdf
+	rotateOrigin leftTop
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+medskip 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined05.pdf
+	width 5cm
+	rotateOrigin leftBottom
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+} 
+\backslash
+hasananswer
+\backslash
+medskip 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined09.pdf
+	rotateOrigin leftTop
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+medskip 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined10.pdf
+	rotateOrigin leftTop
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+} 
+\backslash
+hasasolution
+\backslash
+medskip 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined11.pdf
+	rotateOrigin leftTop
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+medskip 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined12.pdf
+	rotateOrigin leftTop
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+} 
+\backslash
+hasananswer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:undetermined-1"
+
+\end_inset
+
+Dengan menggunakan metode koefisien tak tentu, turunkan rumus aproksimasi
+ untuk turunan kedua pada stensil tersebut.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined02.pdf
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+medskip 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined03.pdf
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+} 
+\backslash
+hasananswer
+\backslash
+medskip 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined04.pdf
+	rotateOrigin leftTop
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+medskip 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined05.pdf
+	width 5cm
+	rotateOrigin leftBottom
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+} 
+\backslash
+hasananswer
+\backslash
+medskip 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined09.pdf
+	rotateOrigin leftTop
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+medskip 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined10.pdf
+	rotateOrigin leftTop
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+} 
+\backslash
+hasasolution
+\backslash
+medskip 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined11.pdf
+	rotateOrigin leftTop
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+medskip 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined12.pdf
+	rotateOrigin leftTop
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+} 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Gunakan metode koefisien tak tentu untuk menurunkan rumus aproksimasi
+ pada stensil berikut
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/calculus-rudiments07.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+untuk nilai fungsi.
+\end_layout
+
+\begin_layout Enumerate
+untuk turunan pertama.
+\end_layout
+
+\begin_layout Enumerate
+untuk turunan kedua.
+\end_layout
+
+\begin_layout Enumerate
+untuk turunan ketiga.
+ Apa yang dapat Anda simpulkan tentang rumus ini?
+\end_layout
+
+\begin_layout Enumerate
+Bandingkan metode koefisien tak tentu dengan metode langsung yang digunakan
+ pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:rudiments-28"
+
+\end_inset
+
+ di bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:NumericalRudiments"
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:undetermined-2"
+
+\end_inset
+
+Gunakan metode koefisien tak tentu untuk menurunkan rumus aproksimasi
+ untuk integral pada stensil berikut.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined13.pdf
+	rotateOrigin leftBottom
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined14.pdf
+	rotateOrigin leftBottom
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+} 
+\backslash
+hasasolution
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined15.pdf
+	rotateOrigin leftBottom
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined16.pdf
+	rotateOrigin leftBottom
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+} 
+\backslash
+hasananswer
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-rudiments16.pdf
+	rotateOrigin leftBottom
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-rudiments17.pdf
+	rotateOrigin leftBottom
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+} 
+\backslash
+hasananswer
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-rudiments19.pdf
+	rotateOrigin leftBottom
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-rudiments20.pdf
+	rotateOrigin leftBottom
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+} 
+\backslash
+hasananswer
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined17.pdf
+	rotateOrigin leftBottom
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined18.pdf
+	rotateOrigin leftBottom
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+} 
+\backslash
+hasananswer
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined19.pdf
+	rotateOrigin leftBottom
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined20.pdf
+	rotateOrigin leftBottom
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+} 
+\backslash
+hasasolution
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisepic{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/calculus-undetermined21.pdf
+	rotateOrigin leftBottom
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Dengan menggunakan metode koefisien tak tentu, tentukan rumus aproksimasi umum
+ untuk 
+\begin_inset Formula ${\displaystyle \int_{x_{0}+\theta_{0}h}^{x_{0}+\theta_{1}h}f(x)dx}$
+\end_inset
+
+ dengan menggunakan dua simpul 
+\begin_inset Formula $x_{0}+\theta_{2}h$
+\end_inset
+
+ dan 
+\begin_inset Formula $x_{0}+\theta_{3}h$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+finishexercises 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

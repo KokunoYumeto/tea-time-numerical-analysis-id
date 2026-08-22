@@ -1,0 +1,3569 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+\input $HOME/Documents/textbook/preamble
+\end_preamble
+\use_default_options true
+\master TeaTimeNumericalAnalysis.lyx
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 4cm
+\topmargin 2.5cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 1
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Persamaan Diferensial Biasa
+\end_layout
+
+\begin_layout Standard
+\align right
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="5cm">
+<column alignment="left" valignment="top" width="5cm">
+<row>
+<cell multicolumn="1" alignment="right" valignment="top" usebox="none" width="10cm">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Gerbang dan kunci menuju ilmu pengetahuan adalah matematika.
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+--Roger Bacon (
+\shape italic
+Opus Majus)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align right
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align right
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="5cm">
+<column alignment="left" valignment="top" width="5cm">
+<row>
+<cell multicolumn="1" alignment="right" valignment="top" usebox="none" width="10cm">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Seandainya saya memulai kembali studi saya, saya akan mengikuti nasihat Plato
+ dan memulainya dengan matematika.
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+--Galileo Galilei
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align right
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:OdePendulum"
+
+\end_inset
+
+Gerak Bandul
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+bandul
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Sejarah singkat
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+bandul
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Christiaan Huygens
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Huygens, Christiaan
+\end_layout
+
+\end_inset
+
+ (1629-1695) dianggap sebagai penemu jam bandul pada tahun 1656, sedangkan
+ Galileo
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Galileo
+\end_layout
+
+\end_inset
+
+ Galilei (1564-1642) dianggap sebagai orang pertama yang melakukan kajian
+ ilmiah terhadap sifat-sifat bandul.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "naylor,scienceuk"
+
+\end_inset
+
+ Dalam sebuah surat terkenal kepada Guidobaldo del Monte pada tahun 1602,
+ Galileo menyatakan bahwa periode ayunan suatu bandul (waktu yang dibutuhkan
+ untuk berayun ke satu arah lalu kembali) tidak bergantung pada amplitudo
+ ayunan (seberapa jauh bandul berayun ke kiri dan kanan).
+ Del Monte menyanggahnya dengan menunjukkan bahwa bukti fisik tidak mendukung
+ pernyataan tersebut.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "matthews"
+
+\end_inset
+
+ Dan ia benar---bukti fisik memang tidak mendukungnya; pernyataan Galileo sebenarnya
+ keliru.
+ Periode sebuah bandul berubah menurut amplitudo ayunannya (jika semua faktor
+ lain tetap sama).
+ 
+\end_layout
+
+\begin_layout Standard
+Para sejarawan pada umumnya bersedia memaafkan Galileo atas kekeliruan ini,
+ mungkin antara lain karena periode bandul hampir konstan pada amplitudo kecil,
+ dan juga karena Galileo
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Galileo
+\end_layout
+
+\end_inset
+
+ merupakan tokoh utama dalam revolusi ilmiah (kelahiran ilmu pengetahuan modern)
+ pada abad ke-17.
+ Temuannya mengenai gerak bandul hanyalah sebagian kecil dari seluruh sumbangsihnya
+ terhadap ilmu pengetahuan.
+ Cara ia memanfaatkan model matematis ideal dari dunia fisik untuk mendasari
+ pernyataan dan eksperimennya, suatu metode kajian ilmiah yang secara langsung
+ bertentangan dengan pandangan umum pada zamannya, menjadi dasar revolusi ilmiah
+ dan karena itu sekurang-kurangnya sama pentingnya bagi ilmu pengetahuan dengan
+ setiap penemuan ilmiahnya.
+ Mengenai bandul, ia memulai penyelidikan yang kelak (beberapa tahun setelah
+ wafatnya) menghasilkan metode untuk menentukan garis bujur di laut, suatu
+ pencapaian yang akan mengubah dunia! Dengan kemampuan menghitung garis bujur,
+ para pelaut dapat mengarungi lautan, menemukan tempat-tempat baru, dan memetakan
+ dunia.
+ Dampak terbesarnya mungkin adalah kolonisasi Eropa atas wilayah-wilayah asing.
+\end_layout
+
+\begin_layout Standard
+Saat ini, ketika membayangkan bandul
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+bandul
+\end_layout
+
+\end_inset
+
+ yang kemungkinan besar terlintas dalam benak kita adalah jam lantai.
+ Walaupun dapat dikatakan kurang penting dibandingkan sumbangsihnya bagi ilmu
+ pengetahuan dan navigasi, ketepatan pencatatan waktu yang dihadirkan jam bandul
+ membawa dampak besar bagi masyarakat luas.
+ Berkat pencatatan waktu yang akurat, kerja berbasis waktu, jadwal angkutan dan
+ perdagangan, waktu mulai yang diumumkan untuk ibadah atau pertemuan lain,
+ serta setiap gejala lain berbasis jam yang kini kita anggap biasa menjadi
+ mungkin.
+ Pada abad ke-17, semua ini merupakan hal baru.
+ Untuk memberi gambaran tentang betapa pentingnya jam, dan dengan demikian
+ bandul, bagi masyarakat, pertimbangkan pernyataan Mumford: 
+\begin_inset Quotes eld
+\end_inset
+
+jam, bukan mesin uap, adalah mesin utama zaman industri modern.
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mumford"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{digression}{Jam Bandul}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Galileo
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Galileo
+\end_layout
+
+\end_inset
+
+ tidak pernah menerapkan bandul
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+bandul
+\end_layout
+
+\end_inset
+
+ sebagai mekanisme pencatatan waktu.
+ Baru sekitar 15 tahun setelah Galileo wafat, jam bandul menjadi kenyataan.
+ Walaupun jam bandul pertamanya (1656) lebih akurat daripada jam lain mana
+ pun pada saat itu, Huygens
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Huygens, Christiaan
+\end_layout
+
+\end_inset
+
+ berupaya menyempurnakan rancangannya.
+ Dalam upayanya, ia membangun sebuah jam dengan bandul yang dimodifikasi dan
+ menerbitkan karya klasik, 
+\shape italic
+Horologium Oscillatorium
+\shape default
+, yang untuk pertama kalinya memaparkan rincian matematis mengenai isokronisme
+ sikloid, pada tahun 1673.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "scienceuk,tsbts"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Saat ini kita menerima begitu saja bahwa sikloid adalah lintasan yang harus
+ diikuti benda jatuh agar perjalanannya menuju suatu titik berlangsung dalam
+ waktu yang sama, terlepas dari posisi awalnya.
+ Kita juga menerima begitu saja bahwa periode sebuah bandul sederhana berubah
+ menurut amplitudonya.
+ Kita memiliki lebih dari 400 tahun wawasan fisika dan matematika yang memberi
+ tahu kita demikian! 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{digression}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Persamaan gerak
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+bandul
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Setelah mudah-mudahan berhasil menjelaskan mengapa bandul menarik untuk dikaji,
+ mari kita beralih ke penurunan modern gerak bandul dengan menggunakan diagram
+ benda bebas
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+diagram benda bebas
+\end_layout
+
+\end_inset
+
+, salah satu perangkat utama dalam teknik mesin.
+ Dalam diagram benda bebas, sebuah benda, dalam hal ini beban bandul, diisolasi
+ dari segala sesuatu kecuali gaya-gaya yang bekerja padanya.
+ Gaya-gaya tersebut ditunjukkan dengan vektor, lalu hukum gerak kedua Newton
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Newton ! hukum gerak kedua
+\end_layout
+
+\end_inset
+
+ (percepatan suatu benda berbanding lurus dengan besar gaya resultan yang diberikan
+ pada benda itu, searah dengan gaya resultan, dan berbanding terbalik dengan
+ massa benda, atau 
+\begin_inset Formula $F=ma$
+\end_inset
+
+) diterapkan.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Free-body-diagram"
+
+\end_inset
+
+Diagram benda bebas untuk sebuah bandul.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/ode-pendulum01.pdf
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Free-body-diagram"
+
+\end_inset
+
+ menunjukkan tiga gaya yang bekerja pada sebuah bandul---gaya gravitasi
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+gaya ! gravitasi
+\end_layout
+
+\end_inset
+
+; tegangan
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+gaya ! tegangan
+\end_layout
+
+\end_inset
+
+ pada batang atau tali yang menahan beban pada titik tumpu; dan gaya ketiga
+ yang disebut gaya hambat
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+gaya ! hambat
+\end_layout
+
+\end_inset
+
+, yang timbul akibat hambatan udara---beserta arah normal (
+\begin_inset Formula $\vec{N}$
+\end_inset
+
+) dan tangensial (
+\begin_inset Formula $\vec{T}$
+\end_inset
+
+) terhadap lintasan bandul.
+ Secara teknis, hanya beban bandul dan ketiga gaya tersebut yang merupakan
+ bagian dari diagram benda bebas.
+ Unsur lain bukan bagian dari diagram benda bebas, tetapi ditambahkan dengan
+ garis putus-putus untuk membantu menjelaskan gerak.
+ Panjang bandul dianggap 
+\begin_inset Formula $\ell$
+\end_inset
+
+, dan kita akan menerapkan hukum kedua Newton dalam arah tangensial terhadap
+ gerak, yaitu arah 
+\begin_inset Formula $\vec{T}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Kelajuan beban bandul adalah hasil kali panjang bandul dan kecepatan sudut,
+ 
+\begin_inset Formula $\ell\dot{\theta}$
+\end_inset
+
+.
+ Percepatan beban bandul, yaitu turunan kelajuan, adalah 
+\begin_inset Formula $\frac{d}{dt}\left(\ell\dot{\theta}\right)=\ell\ddot{\theta}$
+\end_inset
+
+.
+ Oleh karena itu, suku 
+\begin_inset Formula $ma$
+\end_inset
+
+ (massa dikalikan percepatan) dalam hukum kedua Newton untuk gerak sebuah bandul
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+bandul
+\end_layout
+
+\end_inset
+
+ adalah 
+\begin_inset Formula $ml\ddot{\theta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Gravitasi
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+gaya ! gravitasi
+\end_layout
+
+\end_inset
+
+ menimbulkan gaya tetap yang arahnya ke bawah pada beban bandul, dengan besar
+ yang sama dengan berat beban, 
+\begin_inset Formula $mg$
+\end_inset
+
+.
+ Namun, besar gaya ini dalam arah 
+\begin_inset Formula $\vec{T}$
+\end_inset
+
+ adalah 
+\begin_inset Formula $mg\sin\theta$
+\end_inset
+
+.
+ Ada baiknya kita berhenti sejenak untuk memastikan tandanya benar.
+ Untuk nilai 
+\begin_inset Formula $\theta$
+\end_inset
+
+ antara 0 dan 
+\begin_inset Formula $\pi$
+\end_inset
+
+, beban berada di sebelah kanan titik tumpu, sehingga gaya gravitasi cenderung
+ mempercepat beban searah jarum jam (negatif terhadap 
+\begin_inset Formula $\theta$
+\end_inset
+
+).
+ Karena 
+\begin_inset Formula $mg\sin\theta$
+\end_inset
+
+ positif untuk nilai 
+\begin_inset Formula $\theta$
+\end_inset
+
+ antara 0 dan 
+\begin_inset Formula $\pi$
+\end_inset
+
+, gaya akibat gravitasi sebenarnya adalah 
+\begin_inset Formula $-mg\sin\theta$
+\end_inset
+
+.
+ Untuk nilai 
+\begin_inset Formula $\theta$
+\end_inset
+
+ antara 
+\begin_inset Formula $-\pi$
+\end_inset
+
+ dan 0, beban berada di sebelah kiri titik tumpu, sehingga gaya gravitasi
+ cenderung mempercepat beban berlawanan arah jarum jam (positif terhadap
+ 
+\begin_inset Formula $\theta$
+\end_inset
+
+).
+ Karena 
+\begin_inset Formula $mg\sin\theta$
+\end_inset
+
+ negatif untuk nilai 
+\begin_inset Formula $\theta$
+\end_inset
+
+ antara 
+\begin_inset Formula $-\pi$
+\end_inset
+
+ dan 0, gaya akibat gravitasi kembali bernilai 
+\begin_inset Formula $-mg\sin\theta$
+\end_inset
+
+.
+ Analisis serupa untuk sudut lain akan memberikan kesimpulan yang sama.
+\end_layout
+
+\begin_layout Standard
+Gaya redaman atau gaya hambat (hambatan udara)
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+gaya ! hambat
+\end_layout
+
+\end_inset
+
+ dianggap sebagai gaya yang sebanding dengan kelajuan beban bandul, 
+\begin_inset Formula $\ell\dot{\theta}$
+\end_inset
+
+, sehingga besarnya 
+\begin_inset Formula $c\ell\dot{\theta}$
+\end_inset
+
+.
+ Gaya redaman selalu dianggap melawan gerak secara langsung, sehingga seluruh
+ gaya redaman berada dalam arah 
+\begin_inset Formula $\vec{T}$
+\end_inset
+
+.
+ Tinggal memilih tanda yang benar.
+ Karena 
+\begin_inset Formula $\dot{\theta}$
+\end_inset
+
+ menunjukkan arah gerak, gaya redaman harus bertanda sebaliknya.
+ Konstanta redaman 
+\begin_inset Formula $c$
+\end_inset
+
+ dianggap positif, dan tentu saja 
+\begin_inset Formula $\ell$
+\end_inset
+
+ positif, sehingga gaya redaman harus 
+\begin_inset Formula $-c\ell\dot{\theta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Tegangan
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+gaya ! tegangan
+\end_layout
+
+\end_inset
+
+ yang bekerja pada beban bandul tidak relevan karena selalu tegak lurus terhadap
+ gerak.
+ Komponen tegangan dalam arah tangensial selalu nol.
+\end_layout
+
+\begin_layout Standard
+Dengan mengganti 
+\begin_inset Formula $F$
+\end_inset
+
+ dengan jumlah gaya tangensial tersebut, hukum kedua Newton yang diterapkan
+ pada bandul menjadi 
+\begin_inset Formula $-mg\sin\theta-c\ell\dot{\theta}-0=m\ell\ddot{\theta}$
+\end_inset
+
+ atau
+\begin_inset Formula 
+\begin{equation}
+\ddot{\theta}+\frac{c}{m}\dot{\theta}+\frac{g}{\ell}\sin\theta=0.\label{eq:pendulum}
+\end{equation}
+
+\end_inset
+
+Persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:pendulum"
+
+\end_inset
+
+ dikenal sebagai persamaan diferensial
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+persamaan diferensial
+\end_layout
+
+\end_inset
+
+ karena merupakan persamaan yang melibatkan turunan (atau diferensial).
+ Lebih tepatnya, persamaan tersebut merupakan persamaan diferensial biasa
+ berderajat dua
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+persamaan diferensial ! biasa
+\end_layout
+
+\end_inset
+
+ (PDB)
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+PDB|see{persamaan diferensial, biasa}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ Berderajat dua
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+persamaan diferensial ! derajat
+\end_layout
+
+\end_inset
+
+ karena derajat turunan tertingginya adalah dua, dan biasa karena hanya melibatkan
+ satu variabel bebas (waktu 
+\begin_inset Formula $t$
+\end_inset
+
+).
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+bandul
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Persamaan diferensial paling sederhana dipelajari dalam kalkulus, meskipun
+ istilah 
+\begin_inset Quotes eld
+\end_inset
+
+persamaan diferensial
+\begin_inset Quotes erd
+\end_inset
+
+ jarang digunakan.
+ Ketika pertama kali membahas gagasan antidiferensiasi, pertanyaan
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Fungsi apa yang turunannya sama dengan ...?
+\begin_inset Quotes erd
+\end_inset
+
+ pasti muncul.
+ Sebagai contoh, kita mungkin dihadapkan pada pertanyaan: fungsi apa yang turunannya
+ sama dengan 
+\begin_inset Formula $x$
+\end_inset
+
+? Pertanyaan ini juga dapat diajukan sebagai: fungsi 
+\begin_inset Formula $y$
+\end_inset
+
+ apa yang memenuhi persamaan (diferensial) 
+\begin_inset Formula $y'=x$
+\end_inset
+
+? Jawabannya dapat diperoleh dengan mengintegralkan persamaan tersebut:
+\begin_inset Formula 
+\begin{eqnarray*}
+\int y'\, dx & = & \int x\, dx\\
+y & = & \frac{1}{2}x^{2}+C
+\end{eqnarray*}
+
+\end_inset
+
+ (jangan lupakan konstanta integrasi!).
+\end_layout
+
+\begin_layout Subsection
+Gaya-gaya dalam diagram benda bebas
+\end_layout
+
+\begin_layout Standard
+Penurunan persamaan gerak bandul melibatkan tiga gaya yang lazim terdapat
+ dalam diagram benda bebas: gravitasi, gaya hambat, dan tegangan.
+ Beberapa gaya lain juga dapat muncul dalam diagram benda bebas.
+ Yang paling umum adalah gaya normal yang diberikan permukaan kepada benda
+ yang berada di atasnya.
+ Ringkasnya, berikut gaya-gaya yang perlu dipertimbangkan ketika menyusun diagram
+ benda bebas.
+ 
+\end_layout
+
+\begin_layout Description
+Gravitasi: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+gravitasi|see{gaya ! gravitasi}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+gaya gravitasi|see{gaya ! gravitasi}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+gaya ! gravitasi
+\end_layout
+
+\end_inset
+
+selalu bekerja vertikal ke bawah dengan besar yang sama dengan berat benda,
+ 
+\begin_inset Formula $mg$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Description
+Gaya hambat: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+gaya hambat|see{gaya ! hambat}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+gaya ! hambat
+\end_layout
+
+\end_inset
+
+selalu bekerja tepat berlawanan dengan arah gerak, dengan besar yang dihampiri
+ melalui berbagai cara bergantung pada penerapannya.
+ Gaya ini mungkin yang paling rumit untuk diperhitungkan.
+ Gaya ini bergantung pada geometri benda, kelajuan benda, dan viskositas fluida
+ yang dilalui benda.
+ Untuk benda yang bergerak lambat dalam fluida berviskositas rendah, seperti
+ bandul di udara, gaya hambat (hambatan udara) dianggap sebanding dengan kelajuan
+ benda.
+ Untuk benda yang bergerak lebih cepat dalam fluida berviskositas rendah, gaya
+ hambat sering dianggap sebanding dengan kuadrat kelajuan benda.
+ Pada kenyataannya, gaya hambat tidak tepat sebanding dengan pangkat kelajuan
+ mana pun, tetapi berubah dengan cara yang sangat rumit saat benda bergerak
+ melalui fluida.
+ Namun, demi kemudahan analisis, gaya ini hampir selalu dimodelkan sebanding
+ dengan suatu pangkat kelajuan yang sesuai.
+ Untuk keperluan kita, pangkat tersebut akan langsung diberikan.
+\end_layout
+
+\begin_layout Description
+Tegangan/kompresi: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+gaya tarik|see{gaya ! tegangan}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+gaya ! tegangan
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+gaya tekan|see{gaya ! kompresi}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+gaya ! kompresi
+\end_layout
+
+\end_inset
+
+tegangan disalurkan melalui tali, kawat, rantai, atau benda serupa lainnya
+ dengan menarik kedua ujungnya (ke arah yang berlawanan).
+ Besar tegangan konstan di dalam benda jika, seperti yang sering kita asumsikan,
+ tali, kawat, atau rantai tersebut tidak bermassa.
+ Tegangan selalu diarahkan sepanjang tali, kawat, atau rantai.
+ Kebalikan tegangan adalah kompresi.
+ Benda kaku seperti batang, pasak, atau tiang dapat menyalurkan gaya tekan
+ dengan mendorong kedua ujungnya.
+ Tali, kawat, rantai, dan benda lain yang hanya mengendur ketika didorong tidak
+ dapat menyalurkan kompresi.
+\end_layout
+
+\begin_layout Description
+Pegas: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+gaya pegas|see{gaya ! pegas}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+gaya ! pegas
+\end_layout
+
+\end_inset
+
+sebuah pegas memberikan gaya yang sebanding dengan simpangan pegas, dengan
+ arah berlawanan terhadap simpangan tersebut.
+\end_layout
+
+\begin_layout Description
+Normal: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+gaya normal|see{gaya ! normal}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+gaya ! normal
+\end_layout
+
+\end_inset
+
+ketika sebuah benda berada di atas permukaan padat dan tidak terangkat menjauhi
+ permukaan ataupun tenggelam ke dalamnya, gaya-gaya yang tegak lurus (normal)
+ terhadap permukaan harus seimbang.
+ Gaya yang diberikan permukaan pada benda agar benda tidak tenggelam ke dalam
+ permukaan disebut gaya normal dan selalu bekerja secara normal (tegak lurus)
+ serta menjauhi permukaan.
+ Besar gaya normal selalu sama dengan besar resultan semua gaya lain dalam
+ arah normal.
+ Sering kali komponen normal gravitasi merupakan satu-satunya gaya lain yang
+ bekerja normal terhadap permukaan.
+\end_layout
+
+\begin_layout Description
+Gesekan: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+gaya gesek|see{gaya ! gesek}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+gaya ! gesek
+\end_layout
+
+\end_inset
+
+ketika sebuah benda bersentuhan dengan suatu permukaan, gesekan melawan gerak
+ dengan besar yang sebanding dengan gaya normal.
+ Konstanta kesebandingan disebut koefisien gesek dan dilambangkan dengan
+ 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ Untuk setiap pasangan benda/permukaan, ada dua jenis gesekan yang perlu
+ dipertimbangkan---gesekan statis dan gesekan kinetik.
+ Sebuah benda yang diam di atas permukaan mampu menahan gaya yang lebih besar
+ daripada benda yang sama ketika meluncur di permukaan yang sama (dengan gaya
+ normal yang sama).
+ Anda mungkin mengenal gejala ini jika pernah mencoba menggeser oven ke atau
+ dari posisi biasanya di dapur.
+ Jauh lebih sulit untuk mulai menggerakkannya daripada mempertahankannya tetap
+ bergerak.
+ Baik statis maupun kinetik, gesekan selalu melawan gerak tangensial terhadap
+ permukaan.
+\end_layout
+
+\begin_layout Description
+Gaya terapan: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+gaya terapan|see{gaya ! terapan}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+gaya ! terapan
+\end_layout
+
+\end_inset
+
+gaya yang diberikan kepada suatu benda oleh benda lain, seperti orang yang
+ mendorong sofa atau mesin yang mempercepat kendaraan.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{digression}{Sistem pengereman antiterkunci}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Sistem pengereman antiterkunci (ABS) pada mobil dirancang untuk memanfaatkan
+ fakta bahwa gesekan statis antara ban dan jalan dapat menghentikan mobil lebih
+ cepat daripada gesekan kinetik antara ban yang sama dan jalan yang sama.
+ Ban yang tidak tergelincir mampu memberikan gaya pengereman (gesekan) yang
+ lebih besar daripada ban yang sama ketika tergelincir.
+ Ketika ABS mendeteksi bahwa roda terkunci (berhenti berputar) sementara mobil
+ masih bergerak, sistem tersebut memaksa pengemudi mengurangi tekanan pada
+ rem secukupnya agar roda mulai berputar kembali, meskipun hanya sesaat.
+ Jika pengemudi terus menekan rem cukup kuat hingga tergelincir, ABS akan kembali
+ memaksa pengemudi mengurangi tekanan.
+ ABS dengan cepat berselang-seling antara memaksa pengemudi mengurangi tekanan
+ dan membiarkan pengemudi bertindak sesuai kehendaknya.
+ Pergantian cepat antara membuat pengemudi mengurangi tekanan dan membiarkannya
+ mengerem keras inilah yang menimbulkan getaran atau denyutan yang Anda rasakan
+ ketika ABS mulai bekerja.
+ Jika ABS bekerja dengan baik, kendaraan akan berhenti lebih cepat daripada
+ jika dibiarkan tergelincir hingga berhenti.
+ Selain itu, mobil jauh lebih mudah dikemudikan ketika tidak tergelincir daripada
+ ketika tergelincir! 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{digression}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Solusi persamaan diferensial biasa
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+persamaan diferensial ! solusi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Solusi suatu persamaan diferensial, dalam satu hal, sangat mirip dengan solusi
+ suatu persamaan aljabar, tetapi dalam hal lain sama sekali berbeda.
+ Sebagai contoh, untuk persamaan aljabar dalam 
+\begin_inset Formula $x$
+\end_inset
+
+, kita mengatakan bahwa 
+\begin_inset Formula $x=s$
+\end_inset
+
+ merupakan solusi jika menyubstitusikan 
+\begin_inset Formula $s$
+\end_inset
+
+ untuk 
+\begin_inset Formula $x$
+\end_inset
+
+ dalam persamaan tersebut membuat persamaan itu benar.
+ Demikian pula, untuk persamaan diferensial dalam 
+\begin_inset Formula $\theta$
+\end_inset
+
+, kita mengatakan bahwa 
+\begin_inset Formula $\theta=s$
+\end_inset
+
+ merupakan solusi jika menyubstitusikan 
+\begin_inset Formula $s$
+\end_inset
+
+ untuk 
+\begin_inset Formula $\theta$
+\end_inset
+
+ dalam persamaan tersebut membuat persamaan itu benar.
+ Perbedaannya adalah bahwa 
+\begin_inset Formula $s$
+\end_inset
+
+ merupakan suatu 
+\shape italic
+bilangan
+\shape default
+ dalam kasus persamaan aljabar, sedangkan 
+\begin_inset Formula $s$
+\end_inset
+
+ merupakan suatu 
+\shape italic
+fungsi
+\shape default
+ dalam kasus persamaan diferensial.
+ Kita akan mengatakan bahwa 
+\begin_inset Formula $x=2$
+\end_inset
+
+ merupakan solusi persamaan aljabar 
+\begin_inset Formula $3x^{2}-8x+4=0$
+\end_inset
+
+ karena dengan menyubstitusikan 
+\begin_inset Formula $2$
+\end_inset
+
+ untuk 
+\begin_inset Formula $x$
+\end_inset
+
+ diperoleh
+\begin_inset Formula 
+\[
+3(2)^{2}-8(2)+4=0,
+\]
+
+\end_inset
+
+sebuah pernyataan yang benar.
+ Secara analog, kita akan mengatakan bahwa 
+\begin_inset Formula $\theta=e^{2t}$
+\end_inset
+
+ merupakan solusi persamaan diferensial 
+\begin_inset Formula $3\ddot{\theta}-8\dot{\theta}+4\theta=0$
+\end_inset
+
+ karena dengan menyubstitusikan 
+\begin_inset Formula $e^{2t}$
+\end_inset
+
+ untuk 
+\begin_inset Formula $\theta$
+\end_inset
+
+ diperoleh
+\begin_inset Formula 
+\[
+3(4e^{2t})-8(2e^{2t})+4(e^{2t})=0,
+\]
+
+\end_inset
+
+sekali lagi sebuah pernyataan yang benar.
+ Perhatikan bahwa turunan 
+\begin_inset Formula $\dot{\theta}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\ddot{\theta}$
+\end_inset
+
+ perlu dihitung untuk menyelesaikan substitusi tersebut.
+\end_layout
+
+\begin_layout Standard
+Dengan demikian, solusi aproksimasi
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+persamaan diferensial ! solusi aproksimasi
+\end_layout
+
+\end_inset
+
+ persamaan diferensial harus berupa aproksimasi terhadap fungsi.
+ Bahkan, untuk PDB apa pun yang diberikan, kita menerima aproksimasi paling
+ kasar, yaitu sekumpulan titik yang, jika aproksimasi kita baik, terletak di
+ dekat grafik suatu solusi eksak.
+ Oleh karena itu, himpunan 
+\begin_inset Formula $\{(0,1),(.25,1.5),(.5,2.25),(.75,3.375),(1,5.0625)\}$
+\end_inset
+
+ mungkin dapat dianggap sebagai solusi aproksimasi persamaan 
+\begin_inset Formula $3\ddot{\theta}-8\dot{\theta}+4\theta=0$
+\end_inset
+
+ untuk 
+\begin_inset Formula $t\in[0,1]$
+\end_inset
+
+.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:odeApproxSolution"
+
+\end_inset
+
+Solusi aproksimasi untuk 
+\begin_inset Formula $3\ddot{\theta}-8\dot{\theta}+4\theta=0$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/ode-pendulum02.pdf
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Lihat Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:odeApproxSolution"
+
+\end_inset
+
+.
+ Aproksimasi tersebut baik untuk nilai 
+\begin_inset Formula $t$
+\end_inset
+
+ yang mendekati nol, tetapi kurang baik untuk nilai 
+\begin_inset Formula $t$
+\end_inset
+
+ yang mendekati 1.
+ 
+\end_layout
+
+\begin_layout Subsection
+Masalah Nilai Awal
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+masalah nilai awal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Seperti persamaan aljabar, persamaan diferensial dapat memiliki lebih dari
+ satu solusi.
+ Kita telah melihat bahwa 
+\begin_inset Formula $\theta=e^{2t}$
+\end_inset
+
+ merupakan solusi dari 
+\begin_inset Formula $3\ddot{\theta}-8\dot{\theta}+4\theta=0$
+\end_inset
+
+.
+ Demikian pula 
+\begin_inset Formula $\theta=5e^{2t}$
+\end_inset
+
+, 
+\begin_inset Formula $\theta=-2.1e^{2t}$
+\end_inset
+
+, dan 
+\begin_inset Formula $\theta=\sqrt{7\pi}e^{2t}$
+\end_inset
+
+.
+ Bahkan, 
+\begin_inset Formula $\theta=ce^{2t}$
+\end_inset
+
+ merupakan solusi untuk sembarang konstanta 
+\begin_inset Formula $c$
+\end_inset
+
+.
+ PDB 
+\begin_inset Formula $3\ddot{\theta}-8\dot{\theta}+4\theta=0$
+\end_inset
+
+ memiliki tak terhingga banyak solusi! Verifikasinya merupakan latihan sederhana.
+ Untuk 
+\begin_inset Formula $\theta=ce^{2t}$
+\end_inset
+
+, 
+\begin_inset Formula $\dot{\theta}=2ce^{2t}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\ddot{\theta}=4ce^{2t}$
+\end_inset
+
+, sehingga
+\begin_inset Formula 
+\begin{eqnarray*}
+3\ddot{\theta}-8\dot{\theta}+4\theta & = & 3(4ce^{2t})-8(2ce^{2t})+4(ce^{2t})\\
+ & = & 12c(e^{2t})-16c(e^{2t})+4c(e^{2t})\\
+ & = & (12c-16c+4c)e^{2t}\\
+ & = & 0.
+\end{eqnarray*}
+
+\end_inset
+
+Selain itu, 
+\begin_inset Formula $\theta=ae^{2t/3}$
+\end_inset
+
+ merupakan solusi untuk sembarang konstanta 
+\begin_inset Formula $a$
+\end_inset
+
+.
+ Solusi ini dapat diverifikasi dengan cara yang sama seperti solusi 
+\begin_inset Formula $\theta=ce^{2t}$
+\end_inset
+
+ diverifikasi.
+ Dapatkah Anda melakukannya? Jawaban 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "odeMoreSolutions"
+
+\end_inset
+
+.
+ Terakhir, 
+\begin_inset Formula $\theta=ce^{2t}+ae^{2t/3}$
+\end_inset
+
+ juga merupakan solusi untuk sembarang pasangan konstanta 
+\begin_inset Formula $c$
+\end_inset
+
+ dan 
+\begin_inset Formula $a$
+\end_inset
+
+! Dapatkah Anda membuktikannya? Jawaban 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "odeEvenMoreSolutions"
+
+\end_inset
+
+.
+ Tidak jarang sebuah persamaan diferensial memiliki tak terhingga banyak solusi.
+ 
+\end_layout
+
+\begin_layout Standard
+Persamaan diferensial lain yang memiliki tak terhingga banyak solusi adalah
+ 
+\begin_inset Formula 
+\[
+\dot{y}=\frac{t}{y}.
+\]
+
+\end_inset
+
+Solusinya adalah 
+\begin_inset Formula $y=\sqrt{t^{2}+c}$
+\end_inset
+
+ dan 
+\begin_inset Formula $y=-\sqrt{t^{2}+a}$
+\end_inset
+
+, yang berlaku untuk sembarang konstanta 
+\begin_inset Formula $c$
+\end_inset
+
+ dan 
+\begin_inset Formula $a$
+\end_inset
+
+ selama 
+\begin_inset Formula $y\neq0$
+\end_inset
+
+.
+ Solusi kompleks diperbolehkan! Namun, jika kita juga mensyaratkan 
+\begin_inset Formula $y(0)=1$
+\end_inset
+
+, hanya ada satu solusi! 
+\begin_inset Formula $y=-\sqrt{t^{2}+c}$
+\end_inset
+
+ bukan lagi solusi karena memberikan nilai negatif bagi 
+\begin_inset Formula $y$
+\end_inset
+
+ untuk semua nilai 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Adapun 
+\begin_inset Formula $y=\sqrt{t^{2}+c}$
+\end_inset
+
+ hanya merupakan solusi jika 
+\begin_inset Formula $c=1$
+\end_inset
+
+.
+ Solusi 
+\shape italic
+satu-satunya
+\shape default
+ adalah 
+\begin_inset Formula $y=\sqrt{t^{2}+1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Syarat 
+\begin_inset Formula $y(0)=1$
+\end_inset
+
+ disebut nilai awal, atau kondisi awal, dan pasangan persamaan
+\begin_inset Formula 
+\begin{eqnarray*}
+\dot{y} & = & \frac{t}{y}\\
+y(0) & = & 1
+\end{eqnarray*}
+
+\end_inset
+
+ disebut masalah nilai awal.
+ Secara lebih umum, pasangan persamaan
+\begin_inset Formula 
+\begin{eqnarray*}
+\dot{y} & = & f(y,t)\\
+y(t_{0}) & = & y_{0}
+\end{eqnarray*}
+
+\end_inset
+
+membentuk apa yang dikenal sebagai masalah nilai awal orde pertama.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+masalah nilai awal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{digression}{Terdapat tepat satu solusi dari $
+\backslash
+dot y=
+\backslash
+frac{t}{y}$ yang memenuhi $y(0)=1$.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Dengan menetapkan 
+\begin_inset Formula $y=\sqrt{t^{2}+1}$
+\end_inset
+
+, diperoleh 
+\begin_inset Formula $\dot{y}=\frac{1}{2}\frac{1}{\sqrt{t^{2}+1}}(2t)=\frac{t}{\sqrt{t^{2}+1}}$
+\end_inset
+
+.
+ Dengan demikian, persamaan 
+\begin_inset Formula $\dot{y}=\frac{t}{y}$
+\end_inset
+
+ menjadi
+\begin_inset Formula 
+\[
+\frac{t}{\sqrt{t^{2}+1}}=\frac{t}{\sqrt{t^{2}+1}},
+\]
+
+\end_inset
+
+suatu pernyataan yang tak dapat disangkal kebenarannya.
+ Oleh karena itu, 
+\begin_inset Formula $y=\sqrt{t^{2}+1}$
+\end_inset
+
+ merupakan solusi dari 
+\begin_inset Formula $\dot{y}=\frac{t}{y}$
+\end_inset
+
+.
+ Selain itu, 
+\begin_inset Formula $y(0)=\sqrt{0^{2}+1}=1$
+\end_inset
+
+, sehingga solusi khusus 
+\begin_inset Formula $y=\sqrt{t^{2}+1}$
+\end_inset
+
+ juga memenuhi syarat 
+\begin_inset Formula $y(0)=1$
+\end_inset
+
+.
+ Dengan demikian, 
+\begin_inset Formula $y=\sqrt{t^{2}+1}$
+\end_inset
+
+ merupakan 
+\shape italic
+salah satu
+\shape default
+ solusi---dan satu-satunya solusi yang berbentuk 
+\begin_inset Formula $y=\sqrt{t^{2}+c}$
+\end_inset
+
+ atau 
+\begin_inset Formula $y=-\sqrt{t^{2}+a}$
+\end_inset
+
+.
+ Namun, apakah fungsi tersebut merupakan 
+\shape italic
+satu-satunya
+\shape default
+ solusi dalam bentuk apa pun? Mungkin ada fungsi lain yang memenuhi persamaan
+ diferensial tersebut.
+ Sedikit kalkulus seharusnya membantu menyelesaikan persoalan ini.
+ Inti pembuktian ini adalah menunjukkan bahwa 
+\begin_inset Formula $y=\sqrt{t^{2}+c}$
+\end_inset
+
+ dan 
+\begin_inset Formula $y=-\sqrt{t^{2}+a}$
+\end_inset
+
+ merupakan 
+\shape italic
+satu-satunya
+\shape default
+ solusi dari 
+\begin_inset Formula $\dot{y}=\frac{t}{y}$
+\end_inset
+
+.
+ Rangkaian persamaan berikut menunjukkannya.
+ Setiap baris menyiratkan baris berikutnya.
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{dy}{dt} & = & \frac{t}{y},\qquad y\neq0\\
+y\, dy & = & t\, dt,\qquad y\neq0\\
+\int y\, dy & = & C+\int t\: dt,\qquad y\neq0\\
+\frac{1}{2}y^{2} & = & C+\frac{1}{2}t^{2},\qquad y\neq0\\
+y^{2} & = & 2C+t^{2},\qquad y\neq0\\
+y & = & \pm\sqrt{t^{2}+2C},\qquad y\neq0.
+\end{eqnarray*}
+
+\end_inset
+
+Mengganti konstanta 
+\begin_inset Formula $2C$
+\end_inset
+
+ dengan 
+\begin_inset Formula $c$
+\end_inset
+
+ atau 
+\begin_inset Formula $a$
+\end_inset
+
+ tidak mengubah fakta bahwa suku tersebut merupakan konstanta sembarang, sehingga
+ 
+\begin_inset Formula $y=\sqrt{t^{2}+c}$
+\end_inset
+
+ dan 
+\begin_inset Formula $y=-\sqrt{t^{2}+a}$
+\end_inset
+
+ merupakan satu-satunya solusi dari 
+\begin_inset Formula $\dot{y}=\frac{t}{y}$
+\end_inset
+
+.
+ Metode penyelesaian persamaan diferensial ini disebut pemisahan variabel
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+pemisahan variabel
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{digression}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Konsep Utama
+\end_layout
+
+\begin_layout Description
+Solusi
+\begin_inset space \space{}
+\end_inset
+
+aproksimasi
+\begin_inset space \space{}
+\end_inset
+
+bagi
+\begin_inset space \space{}
+\end_inset
+
+suatu
+\begin_inset space \space{}
+\end_inset
+
+persamaan
+\begin_inset space \space{}
+\end_inset
+
+diferensial: sekumpulan titik yang, idealnya, terletak di dekat grafik suatu
+ solusi eksak.
+\end_layout
+
+\begin_layout Description
+Derajat
+\begin_inset space \space{}
+\end_inset
+
+dari
+\begin_inset space \space{}
+\end_inset
+
+suatu
+\begin_inset space \space{}
+\end_inset
+
+persamaan
+\begin_inset space \space{}
+\end_inset
+
+diferensial: sama dengan orde turunan tertinggi yang muncul dalam persamaan
+ tersebut.
+\end_layout
+
+\begin_layout Description
+Persamaan
+\begin_inset space \space{}
+\end_inset
+
+diferensial: persamaan yang memuat turunan (atau diferensial).
+\end_layout
+
+\begin_layout Description
+Diagram
+\begin_inset space \space{}
+\end_inset
+
+benda
+\begin_inset space \space{}
+\end_inset
+
+bebas: suatu diagram teknik yang hanya terdiri atas sebuah benda dan gaya-gaya
+ yang bekerja padanya.
+\end_layout
+
+\begin_layout Description
+Masalah
+\begin_inset space \space{}
+\end_inset
+
+nilai
+\begin_inset space \space{}
+\end_inset
+
+awal: persamaan diferensial yang dilengkapi dengan suatu nilai solusi yang disyaratkan.
+\end_layout
+
+\begin_layout Description
+Hukum
+\begin_inset space \space{}
+\end_inset
+
+gerak
+\begin_inset space \space{}
+\end_inset
+
+kedua
+\begin_inset space \space{}
+\end_inset
+
+Newton:
+\begin_inset space \space{}
+\end_inset
+
+percepatan suatu benda berbanding lurus dengan besar gaya resultan yang diberikan
+ pada benda tersebut, searah dengan gaya resultan, dan berbanding terbalik
+ dengan massa benda---sering diringkas dengan persamaan 
+\begin_inset Formula $F=ma$
+\end_inset
+
+.
+ Persamaan ini mengasumsikan bahwa massa benda konstan.
+\end_layout
+
+\begin_layout Description
+Persamaan
+\begin_inset space \space{}
+\end_inset
+
+diferensial
+\begin_inset space \space{}
+\end_inset
+
+biasa
+\begin_inset space \space{}
+\end_inset
+
+(PDB): persamaan diferensial yang hanya memiliki satu variabel bebas.
+\end_layout
+
+\begin_layout Description
+Solusi
+\begin_inset space \space{}
+\end_inset
+
+dari
+\begin_inset space \space{}
+\end_inset
+
+suatu
+\begin_inset space \space{}
+\end_inset
+
+persamaan
+\begin_inset space \space{}
+\end_inset
+
+diferensial: fungsi yang, ketika disubstitusikan untuk variabel terikat, membuat
+ persamaan tersebut menjadi pernyataan yang benar.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+startexercises 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Latihan
+\end_layout
+
+\begin_layout Enumerate
+Nyatakan derajat persamaan diferensial tersebut.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum"
+
+\end_inset
+
+
+\begin_inset Formula $\dot{y}=y$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $y''=6x+\sin x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-1"
+
+\end_inset
+
+
+\begin_inset Formula $\ddot{s}+\dot{s}+s=0$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-2"
+
+\end_inset
+
+
+\begin_inset Formula $f'+\frac{f}{x}=x^{2}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $(2h+x)h'+h=4x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-3"
+
+\end_inset
+
+
+\begin_inset Formula $\ddot{r}\dot{r}t^{2}=-\frac{1}{8}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Verifikasi bahwa fungsi tersebut merupakan solusi persamaan diferensial.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-4"
+
+\end_inset
+
+
+\begin_inset Formula $y(t)=e^{t}$
+\end_inset
+
+; 
+\begin_inset Formula $\dot{y}=y$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $y(x)=x^{3}-26.83x-\sin x$
+\end_inset
+
+; 
+\begin_inset Formula $y''=6x+\sin x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-5"
+
+\end_inset
+
+
+\begin_inset Formula $s(t)=e^{-t/2}\sin\left(\frac{\sqrt{3}}{2}t\right)$
+\end_inset
+
+; 
+\begin_inset Formula $\ddot{s}+\dot{s}+s=0$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-6"
+
+\end_inset
+
+
+\begin_inset Formula $f(x)=\frac{x^{3}}{4}+\frac{4}{x}$
+\end_inset
+
+, 
+\begin_inset Formula $x>0$
+\end_inset
+
+; 
+\begin_inset Formula $f'+\frac{f}{x}=x^{2}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $h(x)=-2x$
+\end_inset
+
+; 
+\begin_inset Formula $(2h+x)h'+h=4x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-7"
+
+\end_inset
+
+
+\begin_inset Formula $r(t)=\sqrt{t}$
+\end_inset
+
+, 
+\begin_inset Formula $t>0$
+\end_inset
+
+; 
+\begin_inset Formula $\ddot{r}\dot{r}t^{2}=-\frac{1}{8}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Verifikasi bahwa fungsi tersebut merupakan solusi masalah nilai awal.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-8"
+
+\end_inset
+
+
+\begin_inset Formula $y(t)=4e^{t}$
+\end_inset
+
+; 
+\begin_inset Formula $\dot{y}=y$
+\end_inset
+
+, 
+\begin_inset Formula $y(0)=4$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $y(x)=x^{3}-\sin x-\pi^{3}$
+\end_inset
+
+; 
+\begin_inset Formula $y'=3x^{2}-\cos x$
+\end_inset
+
+, 
+\begin_inset Formula $y(\pi)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-9"
+
+\end_inset
+
+
+\begin_inset Formula $s(t)=\frac{1}{2}\left(1+e^{-t^{2}}\right)$
+\end_inset
+
+; 
+\begin_inset Formula $\dot{s}=(1-2s)t$
+\end_inset
+
+, 
+\begin_inset Formula $s(0)=1$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-10"
+
+\end_inset
+
+
+\begin_inset Formula $f(x)=\frac{x^{3}}{4}+\frac{16}{x}$
+\end_inset
+
+, 
+\begin_inset Formula $x>0$
+\end_inset
+
+; 
+\begin_inset Formula $f'=-\frac{f}{x}+x^{2}$
+\end_inset
+
+, 
+\begin_inset Formula $f(4)=20$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $h(x)=-2x-1$
+\end_inset
+
+; 
+\begin_inset Formula $h'=\frac{1+4x-h}{2h+x+1}$
+\end_inset
+
+, 
+\begin_inset Formula $h(0)=-1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-11"
+
+\end_inset
+
+
+\begin_inset Formula $r(t)=\sqrt{t}-3$
+\end_inset
+
+, 
+\begin_inset Formula $t>0$
+\end_inset
+
+; 
+\begin_inset Formula $\ddot{r}\dot{r}t^{2}=-\frac{1}{8}$
+\end_inset
+
+, 
+\begin_inset Formula $r(9)=0$
+\end_inset
+
+, 
+\begin_inset Formula $\dot{r}(9)=\frac{1}{6}$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+ PETUNJUK: Solusi harus memenuhi PDB tersebut
+ dan kedua syarat, 
+\begin_inset Formula $r(9)=0$
+\end_inset
+
+ dan 
+\begin_inset Formula $\dot{r}(9)=\frac{1}{6}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Selesaikan persamaan diferensial tersebut.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-12"
+
+\end_inset
+
+
+\begin_inset Formula $y'=5x^{4}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $y'=3xe^{x^{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-13"
+
+\end_inset
+
+
+\begin_inset Formula $\dot{y}=t-\sin t$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-14"
+
+\end_inset
+
+
+\begin_inset Formula $\dot{y}=\frac{1}{t}$
+\end_inset
+
+, 
+\begin_inset Formula $t<0$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $s'=1-\ln x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-15"
+
+\end_inset
+
+
+\begin_inset Formula $\dot{s}=3te^{t}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Diberikan suatu masalah nilai awal, solusi eksaknya, dan suatu solusi aproksimasi.
+ Berikan komentar mengenai seberapa baik solusi aproksimasi tersebut menghampiri
+ solusi eksak.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-16"
+
+\end_inset
+
+
+\begin_inset Formula $\dot{y}=y$
+\end_inset
+
+, 
+\begin_inset Formula $y(0)=4$
+\end_inset
+
+; 
+\begin_inset Formula $y(t)=4e^{t}$
+\end_inset
+
+; 
+\begin_inset Formula $\{(0,4),(.25,5),(.5,6.3),(.75,7.8),(1,9.8)\}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $y'=3x^{2}-\cos x$
+\end_inset
+
+, 
+\begin_inset Formula $y(\pi)=0$
+\end_inset
+
+; 
+\begin_inset Formula $y(x)=x^{3}-\sin x-\pi^{3}$
+\end_inset
+
+; 
+\begin_inset Formula $\{(\pi,0),(\frac{5}{4}\pi,30),(\frac{3}{2}\pi,74),(\frac{7}{4}\pi,135),(2\pi,216)\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-17"
+
+\end_inset
+
+
+\begin_inset Formula $\dot{s}=(1-2s)t$
+\end_inset
+
+, 
+\begin_inset Formula $s(0)=1$
+\end_inset
+
+; 
+\begin_inset Formula $s(t)=\frac{1}{2}\left(1+e^{-t^{2}}\right)$
+\end_inset
+
+; 
+\begin_inset Formula $\{(0,1),(.5,1),(1,.75),(1.5,.5),(2,.5)\}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-18"
+
+\end_inset
+
+
+\begin_inset Formula $f'=-\frac{f}{x}+x^{2}$
+\end_inset
+
+, 
+\begin_inset Formula $f(4)=20$
+\end_inset
+
+; 
+\begin_inset Formula $f(x)=\frac{x^{3}}{4}+\frac{16}{x}$
+\end_inset
+
+; 
+\begin_inset Formula $\{(4,20),(4.25,23),(4.5,26),(4.75,30),(5,34)\}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $h'=\frac{1+4x-h}{2h+x+1}$
+\end_inset
+
+, 
+\begin_inset Formula $h(0)=-1$
+\end_inset
+
+; 
+\begin_inset Formula $h(x)=-2x-1$
+\end_inset
+
+; 
+\begin_inset Formula $\{(0,-1),(.25,-1.5),(.5,-2),(.75,-2.5),(1,-3)\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-19"
+
+\end_inset
+
+
+\begin_inset Formula $\ddot{r}\dot{r}t^{2}=-\frac{1}{8}$
+\end_inset
+
+, 
+\begin_inset Formula $r(9)=0$
+\end_inset
+
+, 
+\begin_inset Formula $\dot{r}(9)=-\frac{1}{6}$
+\end_inset
+
+; 
+\begin_inset Formula $r(t)=\sqrt{t}-3$
+\end_inset
+
+; 
+\begin_inset Formula $\{(9,0),(10,.16),(11,.31),(12,.46),(13,.61)\}$
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:fbd"
+
+\end_inset
+
+Gambarlah diagram benda bebas untuk situasi tersebut.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-20"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "dom-start"
+
+\end_inset
+
+Gerak bandul dengan mengabaikan hambatan udara (tanpa redaman).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-21"
+
+\end_inset
+
+Sebuah balok yang meluncur menuruni bidang miring.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-22"
+
+\end_inset
+
+Sebuah balok yang diam di atas bidang miring (tidak bergerak).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Sebuah balok yang didorong menaiki bidang miring.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-23"
+
+\end_inset
+
+Sebuah sofa yang didorong melintasi lantai datar dengan gaya terapan yang
+ sejajar dengan lantai.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-24"
+
+\end_inset
+
+Sebuah sofa yang didorong melintasi lantai datar dengan gaya terapan yang tidak
+ sejajar dengan lantai.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-25"
+
+\end_inset
+
+Sebuah sofa yang didorong ke atas pada lantai kayu keras tua yang miring.
+ Gaya terapan dapat sejajar ataupun tidak sejajar dengan lantai.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-26"
+
+\end_inset
+
+Seorang pengendara kereta luncur telah mencapai kaki bukit (dan sekarang bergerak
+ di atas salju yang datar) lalu meluncur tanpa dorongan hingga berhenti.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-27"
+
+\end_inset
+
+Seorang pengendara kereta luncur yang sedang meluncur menuruni bukit.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-28"
+
+\end_inset
+
+Sebuah keping hoki yang meluncur melintasi gelanggang es.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "dom-end"
+
+\end_inset
+
+Sebuah keping hoki yang meluncur di atas es dengan kelajuan konstan (dengan mengabaikan gesekan).
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-29"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "vert-start"
+
+\end_inset
+
+Seorang penerjun payung yang sedang jatuh.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-30"
+
+\end_inset
+
+Seorang penerjun payung yang parasutnya baru saja terbuka.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-31"
+
+\end_inset
+
+Seorang penerjun payung yang parasutnya baru saja terbuka sementara angin sepoi-sepoi
+ yang tetap bertiup ke samping.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-32"
+
+\end_inset
+
+Sebuah bola sepak yang semula ditendang pada sudut 40 derajat dan kini tepat
+ mencapai titik tertingginya, dengan hambatan udara diabaikan.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "vert-end"
+
+\end_inset
+
+Sebuah bola sepak yang bergerak naik dan ke kanan saat mendekati titik tertingginya, dengan hambatan udara diabaikan.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-34"
+
+\end_inset
+
+Gunakan diagram benda bebas dari soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:fbd"
+
+\end_inset
+
+ untuk menentukan persamaan gerak dalam arah tangensial untuk (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "dom-start"
+
+\end_inset
+
+)-(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "dom-end"
+
+\end_inset
+
+), dan dalam arah vertikal untuk (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "vert-start"
+
+\end_inset
+
+)-(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "vert-end"
+
+\end_inset
+
+).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:odePendulum-33"
+
+\end_inset
+
+Seberapa jauh lebih mudah menggeser sofa dengan mendorongnya sejajar dengan lantai
+ dibandingkan dengan mendorongnya sedikit ke arah lantai? Bandingkan gesekan kinetik
+ pada sofa yang didorong sejajar dengan lantai dengan sofa yang didorong membentuk
+ sudut 20 derajat dari arah sejajar dengan lantai.
+ Kemudian hitung gaya terapan yang diperlukan untuk mengatasi gesekan kinetik
+ dalam setiap kasus.
+ Anggap lantainya datar.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+finishexercises 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Jawaban
+\end_layout
+
+\begin_layout Description
+\begin_inset CommandInset label
+LatexCommand label
+name "odeMoreSolutions"
+
+\end_inset
+
+
+\begin_inset Formula $\theta=ae^{2t/3}$
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+merupakan
+\begin_inset space \space{}
+\end_inset
+
+suatu
+\begin_inset space \space{}
+\end_inset
+
+solusi
+\begin_inset space \space{}
+\end_inset
+
+dari 
+\begin_inset Formula $3\ddot{\theta}-8\dot{\theta}+4\theta=0$
+\end_inset
+
+: 
+\begin_inset Formula $\dot{\theta}=\frac{2}{3}ae^{2t/3}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\ddot{\theta}=\frac{4}{9}ae^{2t/3}$
+\end_inset
+
+ sehingga 
+\begin_inset Formula 
+\begin{eqnarray*}
+3\ddot{\theta}-8\dot{\theta}+4\theta & = & 3\left(\frac{4}{9}ae^{2t/3}\right)-8\left(\frac{2}{3}ae^{2t/3}\right)+4\left(ae^{2t/3}\right)\\
+ & = & \frac{4}{3}a(e^{2t/3})-\frac{16}{3}a(e^{2t/3})+\frac{12}{3}a(e^{2t/3})\\
+ & = & \left(\frac{4}{3}a-\frac{16}{3}a+\frac{12}{3}a\right)e^{2t/3}\\
+ & = & 0.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset CommandInset label
+LatexCommand label
+name "odeEvenMoreSolutions"
+
+\end_inset
+
+
+\begin_inset Formula $\theta=ce^{2t}+ae^{2t/3}$
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+merupakan
+\begin_inset space \space{}
+\end_inset
+
+suatu
+\begin_inset space \space{}
+\end_inset
+
+solusi
+\begin_inset space \space{}
+\end_inset
+
+dari
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Formula $3\ddot{\theta}-8\dot{\theta}+4\theta=0$
+\end_inset
+
+: 
+\begin_inset Formula $\dot{\theta}=2ce^{2t}+\frac{2}{3}ae^{2t/3}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\ddot{\theta}=4ce^{2t}+\frac{4}{9}ae^{2t/3}$
+\end_inset
+
+ sehingga 
+\begin_inset Formula 
+\begin{eqnarray*}
+3\ddot{\theta}-8\dot{\theta}+4\theta & = & 3\left(4ce^{2t}+\frac{4}{9}ae^{2t/3}\right)-8\left(2ce^{2t}+\frac{2}{3}ae^{2t/3}\right)+4\left(ce^{2t}+ae^{2t/3}\right)\\
+ & = & 12c(e^{2t})+\frac{4}{3}a(e^{2t/3})-16c(e^{2t})-\frac{16}{3}a(e^{2t/3})+4c(e^{2t})+\frac{12}{3}a(e^{2t/3})\\
+ & = & (12c-16c+4c)e^{2t}+\left(\frac{4}{3}a-\frac{16}{3}a+\frac{12}{3}a\right)e^{2t/3}\\
+ & = & 0.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,80 @@
+{
+  "schema_id": "ttna-third-party-asset-authority-v1",
+  "recorded": "2026-08-22T06:11:00+02:00",
+  "asset_local_id": "heun1900-page30-formula-vi",
+  "source_context": {
+    "lyx_source": "source/lqbrin-tea-time-numerical-1868821/ode-adaptive.lyx",
+    "lyx_line": 265,
+    "missing_upstream_path": "references/heun1900/00000036.png",
+    "upstream_bytes_known": false,
+    "replacement_rule": "Independently acquired public-domain replacement; never claim byte reconstruction of the ignored upstream file."
+  },
+  "work": {
+    "author": "Karl Heun",
+    "title": "Neue Methode zur approximativen Integration der Differentialgleichungen einer unabhängigen Veränderlichen",
+    "journal": "Zeitschrift für Mathematik und Physik",
+    "volume": "45",
+    "year": 1900,
+    "article_pages": "23-38",
+    "depicted_printed_page": 30,
+    "depicted_formula": "VI"
+  },
+  "institution": {
+    "name": "Niedersächsische Staats- und Universitätsbibliothek Göttingen / GDZ",
+    "persistent_id": "PPN599415665_0045",
+    "scan_id": "00000036",
+    "iiif_manifest": "https://gdz.sub.uni-goettingen.de/iiif/presentation/PPN599415665_0045/manifest",
+    "ddb_record": "https://www.deutsche-digitale-bibliothek.de/item/5G33CMRMVBIFAAP3I2UDRHI3D3WMAHD2"
+  },
+  "rights": {
+    "copyright_status": "public_domain",
+    "rights_statement": "Public Domain Mark 1.0 Universal",
+    "rights_uri": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "spdx_expression": "CC-PDM-1.0",
+    "not_cc0": true,
+    "institutional_evidence": "The DDB article record and GDZ metadata identify this digitization with Public Domain Mark 1.0.",
+    "attribution": "Karl Heun, Neue Methode zur approximativen Integration der Differentialgleichungen einer unabhängigen Veränderlichen, Zeitschrift für Mathematik und Physik 45 (1900), p. 30; digitized by SUB Göttingen/GDZ, PPN599415665_0045, scan 00000036; Public Domain Mark 1.0."
+  },
+  "provenance_master": {
+    "path": "authority/third_party/heun1900/PPN599415665_0045_00000036.tif",
+    "url": "https://gdz.sub.uni-goettingen.de/download/tiff/PPN599415665_0045/00000036.tif",
+    "bytes": 1532934,
+    "sha256": "62c98da75740382743dfa22b14ba408e81fb12575b0ce93da2874661e65df960",
+    "width_px": 1064,
+    "height_px": 1672,
+    "resolution_dpi": 200,
+    "retrieved": "2026-08-22"
+  },
+  "release_derivative": {
+    "path": "translation/lyx-id/references/heun1900/00000036.png",
+    "url": "https://images.sub.uni-goettingen.de/iiif/image/gdz:PPN599415665_0045:00000036/full/800,/0/default.png",
+    "iiif_region": "full",
+    "iiif_width": 800,
+    "bytes": 1739261,
+    "sha256": "d34c3f99ae1740e9ac7f97bec473b44a3d28353ae503bda1c2bf55e4ee8999d7",
+    "width_px": 800,
+    "height_px": 1257,
+    "resolution_dpi": 200,
+    "retrieved": "2026-08-22"
+  },
+  "visual_witness": {
+    "pdf": "source/lqbrin-tea-time-numerical-1868821/TeaTimeNumericalAnalysis-workingCopy.pdf",
+    "physical_pdf_page": 247,
+    "embedded_image_width_px": 800,
+    "embedded_image_height_px": 1257,
+    "content_match": "The independently acquired full-page scan depicts the same printed page and Formula VI as the embedded visual witness. Pixel bytes differ and are not claimed identical."
+  },
+  "admission": {
+    "rights_gate": "pass",
+    "identity_gate": "pass_as_independent_replacement",
+    "build_gate": "pass",
+    "build_evidence": {
+      "pdf": "output/pdf/Tea-Time-Numerical-Analysis-id-ID.pdf",
+      "pdf_sha256": "cbc31e9e27fdee96845d78fa6a625bf956196001b7941ddf0f1232f5def46b45",
+      "physical_pdf_page": 256,
+      "render": "tmp/qa/cbc31e9e/high/page-256.png",
+      "render_dpi": 150,
+      "visual_result": "pass_legible_complete_framed"
+    }
+  }
+}

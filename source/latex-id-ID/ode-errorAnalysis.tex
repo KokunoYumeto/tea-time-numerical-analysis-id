@@ -1,0 +1,626 @@
+
+\section{Analisis Galat\label{sec:Runge-Kutta-Error-Analysis}\index{metode Runge-Kutta}}
+
+Bagian \ref{sec:Runge-Kutta-Methods} berakhir dengan pengamatan yang
+misterius (dan meresahkan?) bahwa PDB-Simpson tidak memenuhi harapan.
+Berdasarkan pemecah PDB lainnya, kita memperkirakan laju kekonvergenan
+PDB-Simpson sebesar $O(h^{4})$ karena Aturan Simpson, yang mendasari
+PDB-Simpson, memiliki galat pemenggalan lokal sebesar $O(h^{5})$.
+
+Penjelasannya berakar pada fakta bahwa kita menyelesaikan PDB berbentuk
+$\dot{y}=f(t,y)$, yang turunannya merupakan fungsi dari dua variabel,
+$t$ dan $y$. Untuk memahami analisis galat, diperlukan penggunaan
+intensif turunan parsial dan aturan rantai. Seperti biasa, kita menggunakan
+teorema Taylor dan menuliskan
+\[
+y(t_{0}+h)=y(t_{0})+h\dot{y}(t_{0})+\frac{1}{2}h^{2}\ddot{y}(t_{0})+\frac{1}{6}h^{3}\dddot{y}(t_{0})+\cdots.
+\]
+Setiap turunan $y$ dapat diganti dengan suatu fungsi dari $f$ dan
+turunan-turunan parsialnya, dimulai dengan $\dot{y}$, yang diberikan
+oleh PDB yang hendak kita selesaikan.
+\begin{eqnarray*}
+\dot{y} & = & f(t,y)\\
+\ddot{y}=\frac{d}{dt}\dot{y} & = & \frac{d}{dt}f(t,y)=f_{t}(t,y)+f_{y}(t,y)\dot{y}=f_{t}(t,y)+f_{y}(t,y)\cdot f(t,y)\\
+ & \vdots
+\end{eqnarray*}
+Dengan menghilangkan penulisan eksplisit argumen $t$ dan $y$,
+\begin{eqnarray*}
+\dot{y} & = & f\\
+\ddot{y} & = & f_{t}+f_{y}f\\
+\dddot{y} & = & f_{tt}+f_{ty}f+(f_{yt}+f_{yy}f)f+f_{y}(f_{t}+f_{y}f)\\
+ & = & f_{tt}+2f_{ty}f+f_{yy}f^{2}+f_{t}f_{y}+f_{y}^{2}f\\
+ & \vdots
+\end{eqnarray*}
+sehingga $y(t_{0}+h)=y(t_{0})+h\dot{y}(t_{0})+\frac{1}{2}h^{2}\ddot{y}(t_{0})+\frac{1}{6}h^{3}\dddot{y}(t_{0})+\cdots$
+dalam bentuk $f$ adalah
+\[
+y(t_{0}+h)=y(t_{0})+hf+\frac{1}{2}h^{2}(f_{t}+f_{y}f)+\frac{1}{6}h^{3}(f_{tt}+2f_{ty}f+f_{yy}f^{2}+f_{t}f_{y}+f_{y}^{2}f)+\cdots,
+\]
+dan sebagai pemecah PDB (dengan mengganti $y(t_{0})$ dengan $y_{i}$
+dan $y(t_{0}+h)$ dengan $y_{i+1}$),
+\begin{equation}
+y_{i+1}=y_{i}+hf+\frac{1}{2}h^{2}(f_{t}+f_{y}f)+\frac{1}{6}h^{3}(f_{tt}+2f_{ty}f+f_{yy}f^{2}+f_{t}f_{y}+f_{y}^{2}f)+\cdots.\label{eq:twoVariableTaylorSeries}
+\end{equation}
+Menulis ulang polinomial Taylor berderajat tinggi dalam bentuk $f$
+dengan cepat menjadi rumit. Kita akan berfokus pada analisis yang
+hanya memerlukan $\dot{y}$, $\ddot{y}$, dan $\dddot{y}$.
+
+Pemecah PDB pada Bagian \ref{sec:Runge-Kutta-Methods} berbentuk
+\begin{eqnarray}
+k_{1} & = & f(t_{i},y_{i})\nonumber \\
+k_{2} & = & f\left(t_{i}+\beta_{2}h,y_{i}+\beta_{2}hk_{1}\right)\nonumber \\
+k_{3} & = & f(t_{i}+\beta_{3}h,y_{i}+\beta_{3}hk_{2})\nonumber \\
+ & \vdots\nonumber \\
+k_{s} & = & f(t_{i}+\beta_{s}h,y_{i}+\beta_{s}hk_{s-1})\nonumber \\
+y_{i+1} & = & y_{i}+h\left[\alpha_{1}k_{1}+\alpha_{2}k_{2}+\alpha_{3}k_{3}+\cdots+\alpha_{s}k_{s}\right].\label{eq:rungeKuttaGeneral}
+\end{eqnarray}
+Kita sebenarnya belum melihat pemecah PDB dengan $s>3$ di Bagian
+\ref{sec:Runge-Kutta-Methods}, tetapi proses yang kita ikuti jelas
+akan memerlukannya jika terdapat lebih dari tiga simpul dalam rumus
+integrasi yang mendasarinya. 
+
+Selisih antara $y(t_{0}+h)$ dari (\ref{eq:twoVariableTaylorSeries})
+dan $y_{i+1}$ dari (\ref{eq:rungeKuttaGeneral}) adalah galat pemenggalan
+lokal pemecah PDB (galat ketika mengambil satu langkah). Untuk menuliskan
+galat pemenggalan ini dalam bentuk $O(h^{\ell})$, kita perlu mengembangkan
+setiap $k_{j}$ ke dalam polinomial Taylor-nya. Diperlukan teorema
+Taylor dalam dua variabel.
+\begin{thm}
+\label{thm:twoVariableTaylors}\index{Teorema!Taylor dua variabel}Misalkan
+$f(t,y)$ beserta semua turunan parsialnya yang berorde $n+1$ atau
+lebih rendah kontinu pada persegi panjang $D=\{(t,y):a\leq t\leq b,c\leq y\leq d\}$,
+dan misalkan $(t_{0},y_{0})\in D$. Maka untuk setiap $(t,y)\in D$,
+terdapat $\xi\in(a,b)$ dan $\mu\in(c,d)$ sedemikian sehingga 
+\begin{eqnarray*}
+f(t,y) & = & f(t_{0},y_{0})+\left[(t-t_{0})\cdot f_{t}(t_{0},y_{0})+(y-y_{0})\cdot f_{y}(t_{0},y_{0})\right]\\
+ &  & +\frac{1}{2}\left[(t-t_{0})^{2}f_{tt}(t_{0},y_{0})+2(t-t_{0})(y-y_{0})\cdot f_{ty}(t_{0},y_{0})+(y-y_{0})^{2}f_{yy}(t_{0},y_{0})\right]\\
+ &  & +\cdots+\\
+ &  & \frac{1}{n!}\left[\sum_{j=0}^{n}\left(\begin{array}{c}
+n\\
+j
+\end{array}\right)(t-t_{0})^{n-j}(y-y_{0})^{j}\frac{\partial^{n}f}{\partial t^{n-j}\partial y^{j}}(t_{0},y_{0})\right]\\
+ &  & +\frac{1}{(n+1)!}\left[\sum_{j=0}^{n+1}\left(\begin{array}{c}
+n+1\\
+j
+\end{array}\right)(t-t_{0})^{n+1-j}(y-y_{0})^{j}\frac{\partial^{n+1}f}{\partial t^{n+1-j}\partial y^{j}}(\xi,\mu)\right].
+\end{eqnarray*}
+\end{thm}
+
+\noindent Seperti pada teorema Taylor (satu variabel), $n+1$ suku
+pertama membentuk polinomial Taylor dan suku terakhir adalah suku
+sisa. 
+
+Sebagai ilustrasi, kita ambil $f(t,y)=-\frac{y}{t}+t^{2}$ dan menghitung
+polinomial Taylor derajat dua beserta suku sisanya yang dikembangkan
+di sekitar $(t_{0},y_{0})=(1,1)$. Untuk itu, kita memerlukan semua
+turunan parsial $f$ hingga dan termasuk orde 3.
+\begin{eqnarray*}
+f_{t} & = & \frac{y}{t^{2}}+2t\\
+f_{y} & = & -\frac{1}{t}\\
+f_{tt} & = & -2\frac{y}{t^{3}}+2\\
+f_{ty}=f_{yt} & = & \frac{1}{t^{2}}\\
+f_{yy} & = & 0\\
+f_{ttt} & = & 6\frac{y}{t^{4}}\\
+f_{tty}=f_{tyt}=f_{ytt} & = & -\frac{2}{t^{3}}\\
+f_{tyy}=f_{yty}=f_{yyt} & = & 0\\
+f_{yyy} & = & 0.
+\end{eqnarray*}
+Dengan demikian,
+\begin{eqnarray*}
+f(1,1) & = & 0\\
+f_{t}(1,1) & = & 3\\
+f_{y}(1,1) & = & -1\\
+f_{tt}(1,1) & = & 0\\
+f_{ty}(1,1) & = & 1\\
+f_{yy}(1,1) & = & 0\\
+f_{ttt}(\xi,\mu) & = & 6\frac{\mu}{\xi^{4}}\\
+f_{tty}(\xi,\mu) & = & -\frac{2}{\xi^{3}}\\
+f_{tyy}(\xi,\mu) & = & 0\\
+f_{yyy}(\xi,\mu) & = & 0.
+\end{eqnarray*}
+Oleh karena itu, polinomial Taylor derajat dua untuk $f(t,y)$ adalah
+\begin{eqnarray*}
+T_{2}(t,y) & = & f(1,1)+\left[(t-1)\cdot f_{t}(1,1)+(y-1)\cdot f_{y}(1,1)\right]\\
+ &  & +\frac{1}{2}\left[(t-1)^{2}f_{tt}(1,1)+2(t-1)(y-1)\cdot f_{ty}(1,1)+(y-1)^{2}f_{yy}(1,1)\right]\\
+ & = & 0+3(t-1)-(y-1)+0(t-1)^{2}+(t-1)(y-1)+0(y-1)^{2}\\
+ & = & 3(t-1)-(y-1)+(t-1)(y-1)
+\end{eqnarray*}
+dengan suku sisa
+\begin{eqnarray*}
+R_{2}(t,y) & = & \frac{1}{6}\left[(t-1)^{3}f_{ttt}(\xi,\mu)+3(t-1)^{2}(y-1)f_{tty}(\xi,\mu)+3(t-1)(y-1)^{2}f_{tyy}(\xi,\mu)+(y-1)^{3}f_{yyy}(\xi,\mu)\right]\\
+ & = & \frac{1}{6}\left[(t-1)^{3}\cdot6\frac{\mu}{\xi^{4}}-3(t-1)^{2}(y-1)\cdot\frac{2}{\xi^{3}}+3(t-1)(y-1)^{2}\cdot0+(y-1)^{3}\cdot0\right]\\
+ & = & (t-1)^{3}\frac{\mu}{\xi^{4}}-(t-1)^{2}(y-1)\frac{1}{\xi^{3}}.
+\end{eqnarray*}
+
+Secara lebih umum, misalkan kita ingin memperoleh ekspansi polinomial
+Taylor dari bentuk seperti $f(t_{i}+\beta_{j}h,y_{i}+\beta_{j}hk_{j-1})$,
+sebagaimana dalam pemecah PDB kita. Dengan mengembangkannya di sekitar
+$(t_{i},y_{i})$, kita tetapkan $t_{0}=t_{i}$, $y_{0}=y_{i}$, $t=t_{i}+\beta_{j}h$,
+dan $y=y_{i}+\beta_{j}hk_{j-1}$. Jadi, $t-t_{0}=\beta_{j}h$ dan
+$y-y_{0}=\beta_{j}hk_{j-1}$, sedangkan polinomial Taylor derajat
+dua tanpa menuliskan argumen secara eksplisit $t_{i}$ dan $y_{i}$
+pada ruas kanan adalah 
+\begin{eqnarray*}
+f(t_{i}+\beta_{j}h,y_{i}+\beta_{j}hk_{j-1}) & = & f+h\beta_{j}\left[f_{t}+k_{j-1}f_{y}\right]+\frac{1}{2}h^{2}\beta_{j}^{2}\left[f_{tt}+2k_{j-1}f_{ty}+k_{j-1}^{2}f_{yy}\right]
+\end{eqnarray*}
+dengan suku sisa $O(h^{3})$. 
+
+Khususnya, ketika kita menetapkan $j=1$, $\beta_{j}=\beta_{1}=0$,
+kita peroleh
+\[
+k_{1}=f(t_{i},y_{i})=f.
+\]
+Ketika kita menetapkan $j=2$, 
+\begin{eqnarray*}
+k_{2} & = & f\left(t_{i}+\beta_{2}h,y_{i}+\beta_{2}hk_{1}\right)\\
+ & = & f+h\beta_{2}\left[f_{t}+ff_{y}\right]+\frac{1}{2}h^{2}\beta_{2}^{2}\left[f_{tt}+2ff_{ty}+f^{2}f_{yy}\right]+O(h^{3}).
+\end{eqnarray*}
+Perhitungan $k_{3}$ sedikit lebih rumit karena melibatkan $k_{2}^{2}$.
+Namun, sebelum langsung menyelaminya, pertimbangkan apa yang akan
+kita lakukan dengan $k_{3}$ terlebih dahulu. Setelah menghitung $k_{1}$,
+$k_{2}$, dan $k_{3}$, kita akan menyubstitusikan masing-masing ke
+dalam rumus
+\begin{equation}
+y_{i+1}=y_{i}+h\left[\alpha_{1}k_{1}+\alpha_{2}k_{2}+\alpha_{3}k_{3}\right]\label{eq:rungeKutta3ks}
+\end{equation}
+dan mengurangkan hasilnya dari (\ref{eq:twoVariableTaylorSeries}).
+Untuk pembahasan ini, kita mencari metode dengan galat pemenggalan
+lokal sebesar $O(h^{4})$. Karena itu, kita hanya perlu mempertahankan
+suku konstanta dan suku yang memuat faktor berupa $h^{3}$, $h^{2}$,
+atau $h$ dalam persamaan (\ref{eq:rungeKutta3ks}). Suku-suku dengan
+pangkat $h$ yang lebih tinggi tidak relevan. Suku-suku tersebut akan
+terserap ke dalam $O(h^{4})$. Karena jumlah $\alpha_{1}k_{1}+\alpha_{2}k_{2}+\alpha_{3}k_{3}$
+dikalikan dengan $h$, kita hanya perlu mempertahankan suku yang memuat
+faktor hingga $h^{2}$ dalam $k_{1}$, $k_{2}$, dan $k_{3}$. Dengan
+melihat ekspansi $k_{3}$:
+\begin{eqnarray*}
+k_{3} & = & f\left(t_{i}+\beta_{3}h,y_{i}+\beta_{3}hk_{2}\right)\\
+ & = & f+h\beta_{3}\left[f_{t}+k_{2}f_{y}\right]+\frac{1}{2}h^{2}\beta_{3}^{2}\left[f_{tt}+2k_{2}f_{ty}+k_{2}^{2}f_{yy}\right]
+\end{eqnarray*}
+kita melihat bahwa hanya suku $\frac{1}{2}h^{2}\beta_{3}^{2}\cdot k_{2}^{2}f$
+yang memuat $k_{2}^{2}$, dan suku itu sudah memiliki faktor $h^{2}$.
+Akibatnya, kita hanya perlu menyertakan suku konstanta dari $k_{2}^{2}$.
+Suku-suku lain dari $k_{2}^{2}$ menjadi bagian dari $O(h^{4})$.
+Ternyata tidak terlalu buruk!
+\begin{eqnarray*}
+k_{2}^{2} & = & f^{2}+O(h).
+\end{eqnarray*}
+Demikian pula, ketika kita menyubstitusikan bentuk-bentuk untuk $k_{2}$
+ke dalam $k_{3}$, kita akan berhati-hati menghindari suku apa pun
+yang akan menghasilkan faktor $h$ berpangkat lebih besar dari 2:
+\begin{eqnarray*}
+k_{3} & = & f+h\beta_{3}\left[f_{t}+\left(f+h\beta_{2}\left[f_{t}+ff_{y}\right]\right)f_{y}\right]\\
+ &  & +\frac{1}{2}h^{2}\beta_{3}^{2}\left[f_{tt}+2(f)f_{ty}+\left(f^{2}\right)f_{yy}\right]+O(h^{3})\\
+ & = & f+h\beta_{3}f_{t}+h\beta_{3}ff_{y}+h^{2}\beta_{2}\beta_{3}(f_{t}f_{y}+ff_{y}^{2})\\
+ &  & +\frac{1}{2}h^{2}\beta_{3}^{2}\left[f_{tt}+2ff_{ty}+f^{2}f_{yy}\right]+O(h^{3}).
+\end{eqnarray*}
+
+Setelah semua perhitungan terperinci itu, sekarang saat yang tepat
+untuk bersandar sejenak dan melihat apa yang telah kita peroleh. Kita
+telah mengembangkan semua suku dalam (\ref{eq:rungeKuttaGeneral})
+untuk $s=3$ dan siap membandingkan hasilnya dengan ekspansi Taylor
+PDB pada (\ref{eq:twoVariableTaylorSeries}). Selisih keduanya adalah
+galat pemenggalan lokal, sehingga kita akan mencari pangkat terkecil
+dari $h$ yang tersisa setelah pengurangan. Dengan menyalin kedua
+persamaan di sini agar mudah dirujuk, kita mengurangkan
+\[
+y_{i+1}=y_{i}+hf+\frac{1}{2}h^{2}(f_{t}+f_{y}f)+\frac{1}{6}h^{3}(f_{tt}+2f_{ty}f+f_{yy}f^{2}+f_{t}f_{y}+f_{y}^{2}f)+O(h^{4})
+\]
+dari
+\begin{eqnarray*}
+y_{i+1} & = & y_{i}+h\left[\alpha_{1}k_{1}+\alpha_{2}k_{2}+\alpha_{3}k_{3}\right]\\
+ & = & y_{i}+h\alpha_{1}k_{1}+h\alpha_{2}k_{2}+h\alpha_{3}k_{3}\\
+ & = & y_{i}+h\alpha_{1}f\\
+ &  & +h\alpha_{2}\left(f+h\beta_{2}\left[f_{t}+ff_{y}\right]+\frac{1}{2}h^{2}\beta_{2}^{2}\left[f_{tt}+2ff_{ty}+f^{2}f_{yy}\right]+O(h^{3})\right)\\
+ &  & +h\alpha_{3}\left(f+h\beta_{3}f_{t}+h\beta_{3}ff_{y}+h^{2}\beta_{2}\beta_{3}(f_{t}f_{y}+ff_{y}^{2})+\frac{1}{2}h^{2}\beta_{3}^{2}\left[f_{tt}+2ff_{ty}+f^{2}f_{yy}\right]+O(h^{3})\right).
+\end{eqnarray*}
+Suku konstanta (suku yang tidak memuat faktor $h$) pada setiap persamaan
+hanyalah $y_{i}$, sehingga tidak ada konstanta yang tersisa setelah
+pengurangan. Selisih suku-suku yang melibatkan $h$ adalah $hf-(h\alpha_{1}f+h\alpha_{2}f+h\alpha_{3}f)=hf(1-(\alpha_{1}+\alpha_{2}+\alpha))$,
+jadi agar tidak ada $h$ yang tersisa dalam selisih, harus berlaku
+\[
+\alpha_{1}+\alpha_{2}+\alpha_{3}=1.
+\]
+Selisih suku-suku yang melibatkan $h^{2}f_{t}$ adalah $\frac{1}{2}h^{2}f_{t}-(h^{2}\alpha_{2}\beta_{2}f_{t}+h^{2}\alpha_{3}\beta_{3}f_{t})=h^{2}f_{t}(\frac{1}{2}-(\alpha_{2}\beta_{2}+\alpha_{3}\beta_{3}))$,
+jadi agar tidak ada $h^{2}f_{t}$ yang tersisa dalam selisih, harus
+berlaku
+\[
+\alpha_{2}\beta_{2}+\alpha_{3}\beta_{3}=\frac{1}{2}.
+\]
+Demikian pula, kita meninjau selisih suku-suku lainnya untuk memperoleh
+syarat-syarat berikut bagi $\alpha_{j}$ dan $\beta_{j}$.
+
+\begin{center}
+\begin{tabular}{cc}
+suku & menghasilkan syarat\tabularnewline
+\hline 
+$h^{2}f_{y}f$ & $\alpha_{2}\beta_{2}+\alpha_{3}\beta_{3}=\frac{1}{2}$\tabularnewline
+$h^{3}f_{tt}$ & $\alpha_{2}\beta_{2}^{2}+\alpha_{3}\beta_{3}^{2}=\frac{1}{3}$\tabularnewline
+$h^{3}f_{ty}f$ & $\alpha_{2}\beta_{2}^{2}+\alpha_{3}\beta_{3}^{2}=\frac{1}{3}$\tabularnewline
+$h^{3}f_{yy}f^{2}$ & $\alpha_{2}\beta_{2}^{2}+\alpha_{3}\beta_{3}^{2}=\frac{1}{3}$\tabularnewline
+$h^{3}f_{t}f_{y}$ & $\alpha_{3}\beta_{2}\beta_{3}=\frac{1}{6}$\tabularnewline
+$h^{3}f_{y}^{2}f$ & $\alpha_{3}\beta_{2}\beta_{3}=\frac{1}{6}$\tabularnewline
+\end{tabular}
+\par\end{center}
+
+\noindent Kita telah meninjau kedelapan suku yang berbeda, tetapi
+hanya memperoleh empat syarat yang berlainan:
+\begin{eqnarray}
+\alpha_{1}+\alpha_{2}+\alpha_{3} & = & 1\nonumber \\
+\alpha_{2}\beta_{2}+\alpha_{3}\beta_{3} & = & \frac{1}{2}\nonumber \\
+\alpha_{2}\beta_{2}^{2}+\alpha_{3}\beta_{3}^{2} & = & \frac{1}{3}\nonumber \\
+\alpha_{3}\beta_{2}\beta_{3} & = & \frac{1}{6}.\label{eq:rk3conditions}
+\end{eqnarray}
+Karena terdapat lima variabel dan hanya empat syarat, kita dapat menduga
+bahwa terdapat beberapa pemecah PDB berbentuk (\ref{eq:rungeKuttaGeneral})
+dengan $s=3$ dan galat pemenggalan lokal $O(h^{4})$. 
+
+Bukti dari Bagian \ref{sec:Runge-Kutta-Methods} menunjukkan bahwa
+PDB-tertutup-terbuka seharusnya memiliki galat pemenggalan lokal $O(h^{4}$).
+Mari kita periksa. Untuk metode tersebut, kita memiliki
+\[
+\begin{gathered}\alpha_{1}=\frac{1}{4},\quad\alpha_{2}=0,\quad\alpha_{3}=\frac{3}{4}\\
+\beta_{2}=\frac{1}{3},\quad\beta_{3}=\frac{2}{3},
+\end{gathered}
+\]
+sehingga
+\begin{eqnarray*}
+\alpha_{1}+\alpha_{2}+\alpha_{3} & = & \frac{1}{4}+0+\frac{3}{4}=1\\
+\alpha_{2}\beta_{2}+\alpha_{3}\beta_{3} & = & 0\cdot\frac{1}{3}+\frac{3}{4}\cdot\frac{2}{3}=\frac{1}{2}\\
+\alpha_{2}\beta_{2}^{2}+\alpha_{3}\beta_{3}^{2} & = & 0\left(\frac{1}{3}\right)^{2}+\frac{3}{4}\left(\frac{2}{3}\right)^{2}=\frac{1}{3}\\
+\alpha_{3}\beta_{2}\beta_{3} & = & \frac{3}{4}\cdot\frac{1}{3}\cdot\frac{2}{3}=\frac{1}{6}.
+\end{eqnarray*}
+Memang, PDB-tertutup-terbuka memenuhi semua syarat pemecah PDB dengan
+galat pemenggalan lokal (setidaknya) $O(h^{4})$. Sebenarnya, kita
+harus menunjukkan bahwa setidaknya ada satu suku yang memuat $h^{4}$
+tetap tersisa dalam selisih untuk membuktikan bahwa galat pemenggalan
+lokal tidak berderajat lebih tinggi.
+
+Sebelum akhirnya menjawab apa yang terjadi pada PDB-Simpson, kerja
+keras kita sejauh ini sudah cukup untuk memeriksa bahwa PDB-trapesium
+dan PDB-terbuka memiliki galat pemenggalan lokal $O(h^{3})$ dan bahwa
+metode Euler memiliki galat pemenggalan lokal $O(h^{2})$. Untuk PDB-trapesium,
+kita memiliki $\alpha_{1}=\frac{1}{2}$, $\alpha_{2}=\frac{1}{2}$,
+$\alpha_{3}=0$, $\beta_{2}=1$, dan $\beta_{3}$ tidak terdefinisi
+(kita dapat menetapkan sembarang bilangan yang kita pilih karena $\alpha_{3}=0$
+membuat $\beta_{3}$ tidak relevan bagi metode tersebut), sehingga
+kita memperoleh
+\begin{eqnarray*}
+\alpha_{1}+\alpha_{2}+\alpha_{3} & = & \frac{1}{2}+\frac{1}{2}+0=1\\
+\alpha_{2}\beta_{2}+\alpha_{3}\beta_{3} & = & \frac{1}{2}\cdot1+0=\frac{1}{2}\\
+\alpha_{2}\beta_{2}^{2}+\alpha_{3}\beta_{3}^{2} & = & \frac{1}{2}\left(\frac{1}{3}\right)^{2}+0=\frac{1}{18}\neq\frac{1}{3}\\
+\alpha_{3}\beta_{2}\beta_{3} & = & 0\neq\frac{1}{6}.
+\end{eqnarray*}
+Dua syarat pertama terpenuhi, tetapi dua syarat terakhir tidak. Namun,
+ingat bahwa dua syarat pertama diturunkan dari suku $h$ dan $h^{2}$
+sedangkan dua syarat terakhir diturunkan dari suku $h^{3}$. Jadi,
+untuk PDB-trapesium, galat pemenggalan lokalnya adalah $O(h^{3})$.
+
+Untuk metode Euler, kita memiliki $\alpha_{1}=1$, $\alpha_{2}=\alpha_{3}=0$,
+serta $\beta_{2}$ dan $\beta_{3}$ tidak terdefinisi (atau dapat
+kita pilih sesuka hati), sehingga kita memperoleh
+\begin{eqnarray*}
+\alpha_{1}+\alpha_{2}+\alpha_{3} & = & 1+0+0=1\\
+\alpha_{2}\beta_{2}+\alpha_{3}\beta_{3} & = & 0+0=0\neq\frac{1}{2}\\
+\alpha_{2}\beta_{2}^{2}+\alpha_{3}\beta_{3}^{2} & = & 0+0=0\neq\frac{1}{3}\\
+\alpha_{3}\beta_{2}\beta_{3} & = & 0\neq\frac{1}{6}.
+\end{eqnarray*}
+Persamaan kedua, yang diturunkan dari suku yang melibatkan $h^{2}$,
+tidak terpenuhi, tetapi persamaan pertama, yang diturunkan dari suku
+yang melibatkan $h$, terpenuhi, sehingga galat pemenggalan lokal
+metode Euler adalah $O(h^{2})$.
+
+Terakhir, untuk PDB-Simpson, kita memiliki $\alpha_{1}=\frac{1}{6}$,
+$\alpha_{2}=\frac{2}{3}$, $\alpha_{3}=\frac{1}{6}$, $\beta_{2}=\frac{1}{2}$,
+dan $\beta_{3}=1$, sehingga kita memperoleh
+\begin{eqnarray*}
+\alpha_{1}+\alpha_{2}+\alpha_{3} & = & \frac{1}{6}+\frac{2}{3}+\frac{1}{6}=1\\
+\alpha_{2}\beta_{2}+\alpha_{3}\beta_{3} & = & \frac{2}{3}\cdot\frac{1}{2}+\frac{1}{6}\cdot1=\frac{1}{2}\\
+\alpha_{2}\beta_{2}^{2}+\alpha_{3}\beta_{3}^{2} & = & \frac{2}{3}\left(\frac{1}{2}\right)^{2}+\frac{1}{6}(1)^{2}=\frac{1}{3}\\
+\alpha_{3}\beta_{2}\beta_{3} & = & \frac{1}{6}\cdot\frac{1}{2}\cdot1\neq\frac{1}{6}.
+\end{eqnarray*}
+Dua persamaan pertama terpenuhi, sehingga galat pemenggalan lokalnya
+(setidaknya) $O(h^{3})$, tetapi persamaan terakhir tidak terpenuhi,
+sehingga galat pemenggalan lokalnya tidak berorde lebih tinggi daripada
+$O(h^{3})$. Tidak ada suku yang memuat faktor $h$ atau $h^{2}$
+(yang tidak sekaligus memuat pangkat $h$ yang lebih tinggi) dalam
+galat pemenggalan lokal, tetapi suku $h^{3}\alpha_{3}\beta_{2}\beta_{3}(f_{t}f_{y}+ff_{y}^{2})=\frac{1}{6}h^{3}(f_{t}f_{y}+ff_{y}^{2})$
+muncul, sehingga galatnya adalah $O(h^{3})$.
+
+\subsection{Catatan tentang Konvensi dan Praktik}
+
+Sejauh ini kita telah menurunkan lima pemecah PDB dengan hampir tidak
+mengindahkan praktik yang mapan. Sudah saatnya kita memperbaiki hal
+itu. Metode yang selama ini kita sebut PDB-trapesium (karena diturunkan
+dari Aturan Trapesium) lebih dikenal sebagai metode Euler yang diperbaiki,\index{metode Euler yang diperbaiki}\index{metode!Euler yang diperbaiki|see {metode Euler yang diperbaiki}}
+meskipun sebagian orang menyebutnya metode trapesium eksplisit.\index{metode trapesium eksplisit}\index{metode!trapesium eksplisit|see {metode trapesium eksplisit}}
+Metode yang selama ini kita sebut PDB-tertutup-terbuka lebih dikenal
+sebagai metode orde ketiga Heun.\index{metode orde ketiga Heun}\index{metode!orde ketiga Heun|see {metode orde ketiga Heun}}
+Metode-metode ini mudah ditemukan dalam literatur. Keduanya merupakan
+contoh prototipikal metode yang efisien. Metode Euler yang diperbaiki
+memerlukan dua penghitungan nilai fungsi per langkah dan menghasilkan
+galat pemenggalan lokal $O(h^{3})$. Metode orde ketiga Heun memerlukan
+tiga penghitungan nilai fungsi per langkah dan menghasilkan galat
+pemenggalan lokal $O(h^{4})$.
+
+Metode yang selama ini kita sebut PDB-terbuka tidak diberi nama karena
+tidak akan pernah digunakan dalam praktik. Metode ini tidak efisien
+karena memerlukan tiga penghitungan nilai fungsi, tetapi hanya memiliki
+galat pemenggalan lokal $O(h^{3})$. Karena itu, kecil kemungkinan
+Anda akan menemukannya dalam literatur karena metode ini tidak berguna
+dalam praktik. Metode orde ketiga Heun maupun metode Euler yang diperbaiki
+akan lebih baik daripada PDB-terbuka. Metode orde ketiga Heun menghasilkan
+galat pemenggalan yang lebih kecil dengan jumlah komputasi yang sama
+(tiga penghitungan nilai fungsi), sedangkan metode Euler yang diperbaiki
+menghasilkan galat pemenggalan yang sama dengan komputasi lebih sedikit
+(dua penghitungan nilai fungsi). PDB-Simpson memiliki kekurangan yang
+sama dengan PDB-terbuka, sehingga kecil kemungkinan Anda menemukannya
+dalam literatur. Metode ini juga tidak efisien.
+
+Metode berbentuk (\ref{eq:rungeKuttaGeneral}) termasuk dalam kelas
+metode yang disebut metode Runge-Kutta, dinamai menurut matematikawan
+Jerman Carl Runge\index{Runge!Carl} dan Martin Kutta\index{Kutta!Martin}.
+Gagasan dasar metode tersebut dikemukakan oleh Runge dalam sebuah
+makalah yang diterbitkan pada tahun 1895; di sana Runge memperkenalkan
+metode Euler yang diperbaiki dan metode lainnya. Karyanya dilanjutkan
+oleh Heun\index{Heun!Karl}, yang melalui makalahnya pada tahun 1900
+memperkenalkan metode orde ketiga Heun dan metode lainnya. Pada tahun
+1901, Kutta menurunkan metode Runge-Kutta yang paling terkenal, yang
+kini kadang-kadang disebut metode Runge-Kutta klasik atau metode Runge-Kutta
+orde 4, RK4. Kita akan segera melihat bahwa metode ini merupakan modifikasi
+dari PDB-Simpson.\cite{butcher}
+
+\subsection{Metode Orde Lebih Tinggi}
+
+Metode Runge-Kutta berorde lebih tinggi dapat diturunkan dengan mempertimbangkan
+metode berbentuk (\ref{eq:rungeKuttaGeneral}) dengan sejumlah tahap,
+$s>3$. Tentu saja, metode berorde lebih tinggi harus memenuhi lebih
+banyak syarat. Faktanya, jumlah syarat bertambah lebih cepat ketika
+orde yang diinginkan meningkat daripada pertambahan jumlah variabel
+ketika jumlah tahap meningkat. Dengan kata lain, ada suatu titik ketika
+jumlah tahap untuk mencapai orde $p$ melebihi $p$. Metode orde 1
+dapat diturunkan dengan satu tahap (metode Euler) dan tidak dapat
+kurang dari itu. Metode orde 2 dapat diturunkan dengan dua tahap (metode
+Euler yang diperbaiki) dan tidak dapat kurang dari itu. Metode orde
+3 dapat diturunkan dengan tiga tahap (metode orde ketiga Heun) dan
+tidak dapat kurang dari itu. Metode orde 4 dapat diturunkan dengan
+empat tahap (contohnya akan diberikan) dan tidak dapat kurang dari
+itu. Namun, metode berorde $p$ dengan $p>4$ memerlukan jumlah tahap
+$s>p$, yang pada gilirannya berarti lebih dari $p$ penghitungan
+nilai fungsi. Jadi, metode yang paling efisien dijumpai pada orde
+4 atau lebih rendah.
+
+PDB-Simpson gagal mewujudkan potensinya karena tidak memiliki cukup
+banyak tahap, bukan karena tidak ada rumus yang diturunkan dari Aturan
+Simpson dengan galat pemenggalan lokal $O(h^{5})$. Metode Runge-Kutta
+klasik orde 4 (dengan galat pemenggalan lokal $O(h^{5})$) memiliki
+empat tahap dan diberikan oleh\index{metode RK4}\index{metode!RK4|see {metode RK4}}
+\begin{eqnarray*}
+k_{1} & = & f(t_{i},y_{i})\\
+k_{2} & = & f\left(t_{i}+\frac{h}{2},y_{i}+\frac{h}{2}k_{1}\right)\\
+k_{3} & = & f\left(t_{i}+\frac{h}{2},y_{i}+\frac{h}{2}k_{2}\right)\\
+k_{4} & = & f\left(t_{i}+h,y_{i}+hk_{3}\right)\\
+y_{i+1} & = & y_{i}+\frac{h}{6}\left[k_{1}+2k_{2}+2k_{3}+k_{4}\right].
+\end{eqnarray*}
+Bandingkan ini dengan PDB-Simpson:
+\begin{eqnarray*}
+k_{1} & = & f(t_{i},y_{i})\\
+k_{2} & = & f\left(t_{i}+\frac{h}{2},y_{i}+\frac{h}{2}k_{1}\right)\\
+k_{3} & = & f(t_{i+1},y_{i}+hk_{2})\\
+y_{i+1} & = & y_{i}+\frac{h}{6}\left[k_{1}+4k_{2}+k_{3}\right].
+\end{eqnarray*}
+Keduanya sangat mirip. Jika tahap kedua PDB-Simpson dipisahkan menjadi
+dua tahap, kita memperoleh metode Runge-Kutta orde 4. Itulah perbedaannya.
+Dua tahap digunakan untuk menghampiri $\dot{y}(t_{i}+\frac{h}{2})$
+alih-alih satu!
+
+\noindent\begin{digression}{Penurunan Metode Runge-Kutta Orde 4 (Klasik)}\index{metode RK4}
+
+\noindent Untuk menurunkan metode Runge-Kutta orde 4 mana pun, tahap-tahap
+perhitungannya harus dikembangkan dalam polinomial Taylor derajat
+tiga: 
+\begin{eqnarray*}
+f(t_{i}+\beta_{j}h,y_{i}+\beta_{j}hk_{j-1}) & = & f+h\beta_{j}\left[f_{t}+k_{j-1}f_{y}\right]+\frac{1}{2}h^{2}\beta_{j}^{2}\left[f_{tt}+2k_{j-1}f_{ty}+k_{j-1}^{2}f_{yy}\right]\\
+ &  & +\frac{1}{6}h^{3}\beta_{j}^{3}\left[f_{ttt}+3k_{j-1}f_{tty}+3k_{j-1}^{2}f_{tyy}+k_{j-1}^{3}f_{yyy}\right]+O(h^{4})
+\end{eqnarray*}
+dan $f(t_{0},y_{0})$ harus dikembangkan dalam polinomial Taylor derajat
+empat:
+\[
+y(t_{0}+h)=y(t_{0})+h\dot{y}(t_{0})+\frac{1}{2}h^{2}\ddot{y}(t_{0})+\frac{1}{6}h^{3}\dddot{y}(t_{0})+\frac{1}{24}h^{4}\ddddot{y}(t_{0})+O(h^{5}).
+\]
+Namun, $\ddddot{y}$, dalam bentuk $f$, adalah
+\begin{eqnarray*}
+\frac{d}{dt}(\dddot{y}) & = & \frac{d}{dt}\left(f_{tt}+2f_{ty}f+f_{yy}f^{2}+f_{t}f_{y}+f_{y}^{2}f\right)\\
+ & = & f_{yyy}f^{3}+3f_{tyy}f^{2}+4f_{y}f_{yy}f^{2}+3f_{tty}f+5f_{ty}f_{y}f+f_{y}^{3}f\\
+ &  & +3f_{t}f_{yy}f+f_{t}f_{y}^{2}+f_{tt}f_{y}+f_{ttt}+3f_{t}f_{ty}
+\end{eqnarray*}
+sehingga
+\begin{eqnarray*}
+y_{i+1} & = & y_{i}+hf+\frac{1}{2}h^{2}(f_{t}+f_{y}f)+\frac{1}{6}h^{3}(f_{tt}+2f_{ty}f+f_{yy}f^{2}+f_{t}f_{y}+f_{y}^{2}f)\\
+ &  & +\frac{1}{24}h^{4}\left(f_{yyy}f^{3}+3f_{tyy}f^{2}+4f_{y}f_{yy}f^{2}+3f_{tty}f+5f_{ty}f_{y}f+f_{y}^{3}f\right.\\
+ &  & \qquad\qquad\left.+3f_{t}f_{yy}f+f_{t}f_{y}^{2}+f_{tt}f_{y}+f_{ttt}+3f_{t}f_{ty}\right)+O(h^{5}).
+\end{eqnarray*}
+
+Selanjutnya,
+\[
+k_{1}=f(t_{i},y_{i})=f
+\]
+dan
+\begin{eqnarray*}
+k_{2} & = & f\left(t_{i}+\beta_{2}h,y_{i}+\beta_{2}hk_{1}\right)\\
+ & = & f+h\beta_{2}\left[f_{t}+ff_{y}\right]+\frac{1}{2}h^{2}\beta_{2}^{2}\left[f_{tt}+2ff_{ty}+f^{2}f_{yy}\right]\\
+ &  & +\frac{1}{6}h^{3}\beta_{2}^{3}\left[f_{ttt}+3ff_{tty}+3f^{2}f_{tyy}+f^{3}f_{yyy}\right]+O(h^{4}).
+\end{eqnarray*}
+Akibatnya, $k_{2}^{2}=f^{2}+2h\beta_{2}\left[f_{t}+ff_{y}\right]f+O(h^{2})$
+dan $k_{2}^{3}=f^{3}+O(h)$. Oleh karena itu
+
+\noindent
+\begin{eqnarray*}
+k_{3} & = & f+h\beta_{3}\left[f_{t}+k_{2}f_{y}\right]+\frac{1}{2}h^{2}\beta_{3}^{2}\left[f_{tt}+2k_{2}f_{ty}+k_{2}^{2}f_{yy}\right]\\
+ &  & +\frac{1}{6}h^{3}\beta_{3}^{3}\left[f_{ttt}+3k_{2}f_{tty}+3k_{2}^{2}f_{tyy}+k_{2}^{3}f_{yyy}\right]\\
+ & = & f+h\beta_{3}\left[f_{t}+\left(f+h\beta_{2}\left[f_{t}+ff_{y}\right]+\frac{1}{2}h^{2}\beta_{2}^{2}\left[f_{tt}+2ff_{ty}+f^{2}f_{yy}\right]\right)f_{y}\right]\\
+ &  & +\frac{1}{2}h^{2}\beta_{3}^{2}\left[f_{tt}+2\left(f+h\beta_{2}\left[f_{t}+ff_{y}\right]\right)f_{ty}+\left(f^{2}+2h\beta_{2}\left[f_{t}+ff_{y}\right]f\right)f_{yy}\right]\\
+ &  & +\frac{1}{6}h^{3}\beta_{3}^{3}\left[f_{ttt}+3ff_{tty}+3f^{2}f_{tyy}+f^{3}f_{yyy}\right]+O(h^{4})\\
+ & = & f+h\beta_{3}\left[f_{t}+ff_{y}\right]+h^{2}\beta_{2}\beta_{3}\left[f_{t}+ff_{y}\right]f_{y}+\frac{1}{2}h^{2}\beta_{3}^{2}\left[f_{tt}+2ff_{ty}+f^{2}f_{yy}\right]\\
+ &  & +\frac{1}{2}h^{3}\beta_{3}\beta_{2}^{2}\left[f_{tt}+2ff_{ty}+f^{2}f_{yy}\right]f_{y}+h^{3}\beta_{3}^{2}\beta_{2}\left[f_{t}+ff_{y}\right]\left[f_{ty}+ff_{yy}\right]\\
+ &  & +\frac{1}{6}h^{3}\beta_{3}^{3}\left[f_{ttt}+3ff_{tty}+3f^{2}f_{tyy}+f^{3}f_{yyy}\right]+O(h^{4}).
+\end{eqnarray*}
+Jadi, $k_{3}^{2}=f^{2}+2h\beta_{3}\left[f_{t}+ff_{y}\right]f+O(h^{2})$
+dan $k_{3}^{3}=f^{3}+O(h)$. Oleh karena itu
+\begin{eqnarray*}
+k_{4} & = & f+h\beta_{4}\left[f_{t}+k_{3}f_{y}\right]+\frac{1}{2}h^{2}\beta_{4}^{2}\left[f_{tt}+2k_{3}f_{ty}+k_{3}^{2}f_{yy}\right]\\
+ &  & +\frac{1}{6}h^{3}\beta_{4}^{3}\left[f_{ttt}+3k_{3}f_{tty}+3k_{3}^{2}f_{tyy}+k_{3}^{3}f_{yyy}\right]+O(h^{4})\\
+ & = & f+h\beta_{4}\left[f_{t}+\left(f+h\beta_{3}\left[f_{t}+ff_{y}\right]+h^{2}\beta_{2}\beta_{3}\left[f_{t}+ff_{y}\right]f_{y}+\frac{1}{2}h^{2}\beta_{3}^{2}\left[f_{tt}+2ff_{ty}+f^{2}f_{yy}\right]\right)f_{y}\right]\\
+ &  & +\frac{1}{2}h^{2}\beta_{4}^{2}\left[f_{tt}+2\left(f+h\beta_{3}\left[f_{t}+ff_{y}\right]\right)f_{ty}+\left(f^{2}+2h\beta_{3}\left[f_{t}+ff_{y}\right]f\right)f_{yy}\right]\\
+ &  & +\frac{1}{6}h^{3}\beta_{4}^{3}\left[f_{ttt}+3ff_{tty}+3f^{2}f_{tyy}+f^{3}f_{yyy}\right]+O(h^{4})\\
+ & = & f+h\beta_{4}\left[f_{t}+ff_{y}\right]+h^{2}\beta_{3}\beta_{4}\left[f_{t}+ff_{y}\right]f_{y}+\frac{1}{2}h^{2}\beta_{4}^{2}\left[f_{tt}+2ff_{ty}+f^{2}f_{yy}\right]\\
+ &  & +h^{3}\beta_{2}\beta_{3}\beta_{4}\left[f_{t}+ff_{y}\right]f_{y}^{2}+\frac{1}{2}h^{3}\beta_{4}\beta_{3}^{2}\left[f_{tt}+2ff_{ty}+f^{2}f_{yy}\right]f_{y}\\
+ &  & +h^{3}\beta_{4}^{2}\beta_{3}\left[f_{t}+ff_{y}\right]\left[f_{ty}+ff_{yy}\right]+\frac{1}{6}h^{3}\beta_{4}^{3}\left[f_{ttt}+3ff_{tty}+3f^{2}f_{tyy}+f^{3}f_{yyy}\right]+O(h^{4}).
+\end{eqnarray*}
+Mencocokkan koefisien dalam 
+\begin{eqnarray*}
+y_{i+1} & = & y_{i}+hf+\frac{1}{2}h^{2}(f_{t}+f_{y}f)+\frac{1}{6}h^{3}(f_{tt}+2f_{ty}f+f_{yy}f^{2}+f_{t}f_{y}+f_{y}^{2}f)\\
+ &  & +\frac{1}{24}h^{4}\left(f_{yyy}f^{3}+3f_{tyy}f^{2}+4f_{y}f_{yy}f^{2}+3f_{tty}f+5f_{ty}f_{y}f+f_{y}^{3}f\right.\\
+ &  & \qquad\qquad\left.+3f_{t}f_{yy}f+f_{t}f_{y}^{2}+f_{tt}f_{y}+f_{ttt}+3f_{t}f_{ty}\right)+O(h^{5}).
+\end{eqnarray*}
+dengan koefisien dalam 
+\[
+y_{i+1}=y_{i}+h\left[\alpha_{1}k_{1}+\alpha_{2}k_{2}+\alpha_{3}k_{3}+\alpha_{4}k_{4}\right]
+\]
+hingga orde 4 menghasilkan syarat-syarat 
+
+\noindent
+\begin{eqnarray}
+\alpha_{1}+\alpha_{2}+\alpha_{3}+\alpha_{4} & = & 1\label{eq:rk4cond1}\\
+\alpha_{2}\beta_{2}+\alpha_{3}\beta_{3}+\alpha_{4}\beta_{4} & = & \frac{1}{2}\label{eq:rk4cond2}\\
+\alpha_{2}\beta_{2}^{2}+\alpha_{3}\beta_{3}^{2}+\alpha_{4}\beta_{4}^{2} & = & \frac{1}{3}\label{eq:rk4cond3}\\
+\alpha_{3}\beta_{2}\beta_{3}+\alpha_{4}\beta_{3}\beta_{4} & = & \frac{1}{6}\label{eq:rk4cond4}\\
+\alpha_{2}\beta_{2}^{3}+\alpha_{3}\beta_{3}^{3}+\alpha_{4}\beta_{4}^{3} & = & \frac{1}{4}\label{eq:rk4cond5}\\
+\alpha_{3}\beta_{3}^{2}\beta_{2}+\alpha_{4}\beta_{4}^{2}\beta_{3} & = & \frac{1}{8}\label{eq:rk4cond6}\\
+2\alpha_{3}\beta_{3}^{2}\beta_{2}+2\alpha_{4}\beta_{4}^{2}\beta_{3}+\alpha_{3}\beta_{3}\beta_{2}^{2}+\alpha_{4}\beta_{4}\beta_{3}^{2} & = & \frac{1}{3}\label{eq:rk4cond7}\\
+\alpha_{3}\beta_{3}^{2}\beta_{2}+\alpha_{4}\beta_{4}^{2}\beta_{3}+\alpha_{3}\beta_{3}\beta_{2}^{2}+\alpha_{4}\beta_{4}\beta_{3}^{2} & = & \frac{5}{24}\label{eq:rk4cond8}\\
+\alpha_{3}\beta_{3}\beta_{2}^{2}+\alpha_{4}\beta_{4}\beta_{3}^{2} & = & \frac{1}{12}\label{eq:rk4cond9}\\
+\alpha_{4}\beta_{2}\beta_{3}\beta_{4} & = & \frac{1}{24}.\label{eq:rk4cond10}
+\end{eqnarray}
+Setiap metode Runge-Kutta orde keempat dengan empat tahap ($s=4$)
+yang berbentuk (\ref{eq:rungeKuttaGeneral}) harus memenuhi 10 persamaan
+ini dengan hanya 7 derajat kebebasan (7 variabel). Persamaan-persamaan
+tersebut membentuk himpunan dependen, atau hanya akan ada sedikit
+solusi. Dalam upaya menyelesaikan sistem ini, kita selesaikan (\ref{eq:rk4cond10})
+terhadap $\alpha_{4}$:
+\[
+\alpha_{4}=\frac{1}{24\beta_{2}\beta_{3}\beta_{4}}.
+\]
+Dengan menyubstitusikan rumus yang diperoleh untuk $\alpha_{4}$ ke
+dalam (\ref{eq:rk4cond4}) dan menyelesaikannya terhadap $\alpha_{3}$:
+\[
+\alpha_{3}=\frac{4\beta_{2}-1}{24\beta_{2}^{2}\beta_{3}}.
+\]
+Dengan menyubstitusikan rumus yang diperoleh untuk $\alpha_{3}$ dan
+$\alpha_{4}$ ke dalam (\ref{eq:rk4cond9}) dan menyelesaikannya terhadap
+$\beta_{3}$:
+\[
+\beta_{3}=-4\beta_{2}^{2}+3\beta_{2}.
+\]
+Dengan menyubstitusikan rumus yang diperoleh untuk $\alpha_{3}$,
+$\alpha_{4}$ dan $\beta_{3}$ ke dalam (\ref{eq:rk4cond6}) dan menyelesaikannya
+terhadap $\beta_{4}$:
+\[
+\beta_{4}=(6-16\beta_{2}+16\beta_{2}^{2})\beta_{2}.
+\]
+
+\noindent Dengan menyubstitusikan rumus yang diperoleh untuk $\alpha_{3}$,
+$\alpha_{4}$, $\beta_{3}$ dan $\beta_{4}$ ke dalam (\ref{eq:rk4cond2})
+dan menyelesaikannya terhadap $\alpha_{2}$:
+\[
+\alpha_{2}=\frac{2-16\beta_{2}+52\beta_{2}^{2}-48\beta_{2}^{3}}{24\beta_{2}^{3}\left(3-4\beta_{2}\right)}.
+\]
+Dengan menyubstitusikan rumus yang diperoleh untuk $\alpha_{2}$,
+$\alpha_{3}$, $\alpha_{4}$, $\beta_{3}$ dan $\beta_{4}$ ke dalam
+(\ref{eq:rk4cond3}) dan menyederhanakannya:
+\[
+16\beta_{2}^{3}-12\beta_{2}^{2}+4\beta_{2}-1=0.
+\]
+Akar-akar persamaan terakhir ini adalah $\beta_{2}=\frac{1}{2},\frac{1\pm i\sqrt{7}}{8}$,
+sehingga kita menyimpulkan bahwa $\beta_{2}=\frac{1}{2}$. Dengan
+melakukan substitusi balik, kita peroleh
+\begin{eqnarray*}
+\beta_{2} & = & \frac{1}{2}\\
+\alpha_{2} & = & \frac{1}{3}\\
+\beta_{4} & = & 1\\
+\beta_{3} & = & \frac{1}{2}\\
+\alpha_{3} & = & \frac{1}{3}\\
+\alpha_{4} & = & \frac{1}{6}.
+\end{eqnarray*}
+Dengan menyubstitusikan nilai $\alpha_{2}$, $\alpha_{3}$, dan $\alpha_{4}$
+ke dalam (\ref{eq:rk4cond1}), kita peroleh
+\[
+\alpha_{1}=\frac{1}{6}.
+\]
+Ketujuh nilai ini adalah solusi riil simultan yang unik dari persamaan
+(\ref{eq:rk4cond10}), (\ref{eq:rk4cond4}), (\ref{eq:rk4cond9}),
+(\ref{eq:rk4cond6}), (\ref{eq:rk4cond2}), (\ref{eq:rk4cond3}),
+dan (\ref{eq:rk4cond1}). Jadi, ketujuh parameter ditentukan oleh
+tujuh dari sepuluh syarat tersebut. Tinggal ditunjukkan bahwa ketujuh
+nilai ini juga memenuhi (\ref{eq:rk4cond5}), (\ref{eq:rk4cond7}),
+dan (\ref{eq:rk4cond8}), dan memang demikian. Terakhir, perhatikan
+bahwa inilah nilai-nilai parameter untuk metode Runge-Kutta (klasik)
+orde 4.
+
+\noindent\end{digression}
+
+\subsection{Konsep Kunci}
+\begin{description}
+\item [{Teorema~Taylor~dalam~dua~variabel:}] \index{Teorema!Taylor dua variabel}Misalkan
+$f(t,y)$ beserta semua turunan parsialnya yang berorde $n+1$ atau
+lebih rendah kontinu pada persegi panjang $D=\{(t,y):a\leq t\leq b,c\leq y\leq d\}$,
+dan misalkan $(t_{0},y_{0})\in D$. Maka untuk setiap $(t,y)\in D$,
+terdapat $\xi\in(a,b)$ dan $\mu\in(c,d)$ sedemikian sehingga 
+\begin{eqnarray*}
+f(t,y) & = & f(t_{0},y_{0})+\left[(t-t_{0})\cdot f_{t}(t_{0},y_{0})+(y-y_{0})\cdot f_{y}(t_{0},y_{0})\right]\\
+ &  & +\frac{1}{2}\left[(t-t_{0})^{2}f_{tt}(t_{0},y_{0})+2(t-t_{0})(y-y_{0})\cdot f_{ty}(t_{0},y_{0})+(y-y_{0})^{2}f_{yy}(t_{0},y_{0})\right]\\
+ &  & +\cdots+\\
+ &  & \frac{1}{n!}\left[\sum_{j=0}^{n}\left(\begin{array}{c}
+n\\
+j
+\end{array}\right)(t-t_{0})^{n-j}(y-y_{0})^{j}\frac{\partial^{n}f}{\partial t^{n-j}\partial y^{j}}(t_{0},y_{0})\right]\\
+ &  & +\frac{1}{(n+1)!}\left[\sum_{j=0}^{n+1}\left(\begin{array}{c}
+n+1\\
+j
+\end{array}\right)(t-t_{0})^{n+1-j}(y-y_{0})^{j}\frac{\partial^{n+1}f}{\partial t^{n+1-j}\partial y^{j}}(\xi,\mu)\right].
+\end{eqnarray*}
+\end{description}
+\noindent\startexercises 
+
+\subsection{Latihan}
+\begin{enumerate}
+\item \label{exc:ode-errorAnalysis}Tentukan secara analitis galat pemenggalan
+lokal untuk pemecah PDB yang diturunkan dalam latihan \vref{exc:ode-rungeKutta}.
+Bandingkan hasilnya dengan galat pemenggalan lokal rumus integrasi
+yang mendasarinya. Apakah keduanya sama? Bandingkan pula dengan laju
+kekonvergenan yang ditentukan secara eksperimental (lihat latihan
+\vref{exc:ode-rungeKutta-16}). Apakah nilainya satu derajat lebih
+tinggi, seperti yang seharusnya diharapkan?  \haspartwithsolution  \haspartwithanswer 
+\item \label{exc:ode-errorAnalysis-1}Lakukan satu langkah metode Runge-Kutta
+orde empat untuk menyelesaikan $\dot{y}=ty$ dengan $y(1)=0.5$ dan
+$h=1$, sehingga menghampiri $y(2)$. Bandingkan jawaban Anda dengan
+jawaban pada Bagian \ref{sec:TaylorMethods} latihan \ref{exc:ode-taylor}c
+\vpageref{exc:ode-taylor} tempat Anda menggunakan metode Euler dengan
+dua langkah. Solusi eksaknya adalah $y(2)=\frac{e^{3/2}}{2}\approx2.240844535169032$. \hasasolution 
+\item Jelaskan metode Euler yang diperbaiki secara geometris dan dengan
+kata-kata Anda sendiri.
+\item \octave\ \label{exc:ode-errorAnalysis-2}Tulislah fungsi Octave yang
+mengimplementasikan metode Euler yang diperbaiki (sama seperti latihan
+\vref{exc:ode-rungeKutta-12}, tetapi kali ini metode tersebut memiliki
+nama yang tepat). \hasananswer 
+\item \octave\ \label{exc:ode-errorAnalysis-3}Tulislah fungsi Octave yang
+mengimplementasikan metode orde ketiga Heun (sama seperti latihan
+\vref{exc:ode-rungeKutta-13}, tetapi kali ini metode tersebut memiliki
+nama yang tepat). \hasananswer 
+\item \octave\ \label{exc:ode-errorAnalysis-4}Tulislah fungsi Octave yang
+mengimplementasikan metode RK4. \hasananswer 
+\item \octave\ Gunakan kode Anda dari latihan \ref{exc:ode-errorAnalysis-4}
+untuk menghitung $y(2)$ untuk PDB dalam latihan \ref{exc:ode-taylor}
+\vpageref{exc:ode-taylor} dengan ukuran langkah $h=0.05$.  \haspartwithsolution  \haspartwithanswer 
+\end{enumerate}
+\noindent\finishexercises 

@@ -1,0 +1,5833 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\input $HOME/Documents/textbook/preamble
+\end_preamble
+\use_default_options true
+\master ../scsu/Book-Numerical/TeaTimeNumericalAnalysis.lyx
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 4cm
+\topmargin 2.5cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 1
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:polynomialLagrange"
+
+\end_inset
+
+Polinom Lagrange
+\end_layout
+
+\begin_layout Standard
+Suatu fungsi yang grafiknya harus melalui sekumpulan
+ titik yang ditentukan disebut fungsi interpolasi
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+fungsi interpolasi
+\end_layout
+
+\end_inset
+
+, dan kita mengatakan bahwa fungsi tersebut menginterpolasi titik-titik yang ditentukan.
+ Selanjutnya, proses mencari fungsi semacam itu disebut interpolasi.
+ 
+\end_layout
+
+\begin_layout Standard
+Pada latihan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "polynomials"
+
+\end_inset
+
+a di bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:moreConvergenceDiagrams"
+
+\end_inset
+
+, Anda diminta mencari polinom yang berakar di 
+\begin_inset Formula $-7,2$
+\end_inset
+
+, dan 
+\begin_inset Formula $1\pm5i$
+\end_inset
+
+ (dan tidak memiliki akar lain).
+ Oleh karena itu, fungsi tersebut harus berupa polinom dan grafiknya harus
+ melalui titik-titik 
+\begin_inset Formula 
+\begin{equation}
+(-7,0),\ (2,0),\ (1+5i,0),\mbox{ dan }(1-5i,0).\label{eq:interpolationExample}
+\end{equation}
+
+\end_inset
+
+Jika ditinjau kembali, pertanyaan itu dapat dirumuskan sebagai berikut: carilah polinom
+ yang melalui titik-titik 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:interpolationExample"
+
+\end_inset
+
+ (dan tidak memiliki akar selain 
+\begin_inset Formula $-7$
+\end_inset
+
+, 
+\begin_inset Formula $2$
+\end_inset
+
+, 
+\begin_inset Formula $1+5i$
+\end_inset
+
+, dan 
+\begin_inset Formula $1-5i$
+\end_inset
+
+); ini merupakan masalah interpolasi.
+ Sekarang kita memperluas gagasan ini dengan meninjau polinom yang grafiknya
+ melalui titik-titik dengan ordinat sembarang (bukan hanya 
+\begin_inset Formula $0$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Kita mulai dari hal yang sudah dikenal.
+ Polinom 
+\begin_inset Formula $p(x)=(x+7)(x-2)$
+\end_inset
+
+ berakar di 
+\begin_inset Formula $-7$
+\end_inset
+
+ dan 
+\begin_inset Formula $2$
+\end_inset
+
+ sehingga grafiknya melalui 
+\begin_inset Formula $(-7,0)$
+\end_inset
+
+ dan 
+\begin_inset Formula $(2,0)$
+\end_inset
+
+.
+ Misalkan kita ingin mengubah 
+\begin_inset Formula $p$
+\end_inset
+
+ agar grafiknya juga melalui 
+\begin_inset Formula $(-1,1)$
+\end_inset
+
+.
+ Artinya, kita menginginkan 
+\begin_inset Formula $p(-7)=0$
+\end_inset
+
+, 
+\begin_inset Formula $p(-1)=1$
+\end_inset
+
+, dan 
+\begin_inset Formula $p(2)=0$
+\end_inset
+
+.
+ Berangkat dari 
+\begin_inset Formula $p(x)=(x+7)(x-2)$
+\end_inset
+
+, kita sudah mempunyai 
+\begin_inset Formula $p(-7)=0$
+\end_inset
+
+ dan 
+\begin_inset Formula $p(2)=0$
+\end_inset
+
+, sehingga sebenarnya kita hanya perlu memusatkan perhatian pada 
+\begin_inset Formula $p(-1)=1$
+\end_inset
+
+.
+ Dalam bentuknya sekarang, 
+\begin_inset Formula $p(-1)=(-1+7)(-1-2)=6(-3)=-18$
+\end_inset
+
+, sangat jauh dari 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ Namun, 
+\begin_inset Formula $p(x)=(x+7)(x-2)$
+\end_inset
+
+ bukan satu-satunya polinom yang melalui 
+\begin_inset Formula $(-7,0)$
+\end_inset
+
+ dan 
+\begin_inset Formula $(2,0)$
+\end_inset
+
+.
+ Ambil 
+\begin_inset Formula $a$
+\end_inset
+
+ sembarang bilangan real dan perhatikan bahwa 
+\begin_inset Formula $q(x)=a(x+7)(x-2)$
+\end_inset
+
+ juga melalui 
+\begin_inset Formula $(-7,0)$
+\end_inset
+
+ dan 
+\begin_inset Formula $(2,0)$
+\end_inset
+
+.
+ Jika kita memilih 
+\begin_inset Formula $a$
+\end_inset
+
+ sedemikian rupa sehingga 
+\begin_inset Formula $q(-1)=1$
+\end_inset
+
+, kita memperoleh fungsi yang diinginkan:
+\begin_inset Formula 
+\[
+q(-1)=a(-1+7)(-1-2)=-18a=1\Rightarrow a=-\frac{1}{18}.
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula $q(x)=-\frac{1}{18}(x+7)(x-2)$
+\end_inset
+
+ melalui ketiga titik tersebut, yaitu 
+\begin_inset Formula $(-7,0)$
+\end_inset
+
+, 
+\begin_inset Formula $(2,0)$
+\end_inset
+
+, dan 
+\begin_inset Formula $(-1,1)$
+\end_inset
+
+.
+ Namun, jangan sampai kita kehilangan jejak asal konstruksi ini.
+ 
+\begin_inset Formula $-\frac{1}{18}=\frac{1}{p(-1)}$
+\end_inset
+
+, sehingga sebenarnya fungsi yang diinginkan dapat ditulis sebagai 
+\begin_inset Formula $q(x)=\frac{p(x)}{p(-1)}$
+\end_inset
+
+.
+ Memang, 
+\begin_inset Formula $q(-7)=\frac{p(-7)}{p(-1)}=0$
+\end_inset
+
+, 
+\begin_inset Formula $q(2)=\frac{p(2)}{p(-1)}=0$
+\end_inset
+
+, dan 
+\begin_inset Formula $q(-1)=\frac{p(-1)}{p(-1)}=1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Sekarang misalkan kita menginginkan polinom yang melalui 
+\begin_inset Formula $(-7,0)$
+\end_inset
+
+, 
+\begin_inset Formula $(2,0)$
+\end_inset
+
+, dan 
+\begin_inset Formula $(-1,\sqrt{2})$
+\end_inset
+
+.
+ Seperti sebelumnya, kita mengetahui bahwa 
+\begin_inset Formula $p(x)=(x+7)(x-2)$
+\end_inset
+
+ mempunyai akar yang diinginkan dan 
+\begin_inset Formula $q(x)=\frac{p(x)}{p(-1)}$
+\end_inset
+
+ memiliki sifat yang berguna, yaitu 
+\begin_inset Formula $q(-1)=1$
+\end_inset
+
+.
+ Kita menggunakan kedua fakta ini untuk memperoleh jawaban.
+ Bahkan, tanpa melakukan perhitungan apa pun, kita mengetahui bahwa polinom 
+\begin_inset Formula 
+\[
+l(x)=\frac{p(x)}{p(-1)}\sqrt{2}
+\]
+
+\end_inset
+
+adalah fungsi yang diinginkan.
+ Luangkan waktu sejenak untuk memeriksa bahwa 
+\begin_inset Formula $l(-7)=0$
+\end_inset
+
+, 
+\begin_inset Formula $l(2)=0$
+\end_inset
+
+, dan 
+\begin_inset Formula $l(-1)=\sqrt{2}$
+\end_inset
+
+, dan memahami konstruksinya.
+ Gagasan ini merupakan benih dari apa yang disebut bentuk Lagrange bagi polinom
+ interpolasi.
+\end_layout
+
+\begin_layout Standard
+Kini kita siap membiarkan ordinatnya sembarang! Misalkan kita menginginkan polinom
+ yang melalui 
+\begin_inset Formula $(-7,y_{1}),$
+\end_inset
+
+ 
+\begin_inset Formula $(2,y_{2})$
+\end_inset
+
+, dan 
+\begin_inset Formula $(-1,y_{3})$
+\end_inset
+
+.
+ Kita mengetahui bahwa polinom 
+\begin_inset Formula $p_{3}(x)=(x+7)(x-2)$
+\end_inset
+
+ berakar di 
+\begin_inset Formula $-7$
+\end_inset
+
+ dan 
+\begin_inset Formula $2$
+\end_inset
+
+, sehingga polinom 
+\begin_inset Formula $l_{3}(x)=\frac{p_{3}(x)}{p_{3}(-1)}y_{3}$
+\end_inset
+
+ bernilai nol di 
+\begin_inset Formula $-7$
+\end_inset
+
+ dan 
+\begin_inset Formula $2$
+\end_inset
+
+, sedangkan 
+\begin_inset Formula $l_{3}(-1)=y_{3}$
+\end_inset
+
+.
+ Ini merupakan langkah pertama yang baik.
+ Polinom ini menghasilkan ordinat yang tepat pada 
+\begin_inset Formula $-1$
+\end_inset
+
+ dan bernilai nol di 
+\begin_inset Formula $-7$
+\end_inset
+
+ dan 
+\begin_inset Formula $2$
+\end_inset
+
+.
+ Dengan cara serupa, kita dapat mengonstruksi polinom 
+\begin_inset Formula $p_{2}(x)=(x+7)(x+1)$
+\end_inset
+
+ yang berakar di 
+\begin_inset Formula $-7$
+\end_inset
+
+ dan 
+\begin_inset Formula $-1$
+\end_inset
+
+; dari polinom ini kita dapat mengonstruksi polinom 
+\begin_inset Formula $l_{2}(x)=\frac{p_{2}(x)}{p_{2}(2)}y_{2}$
+\end_inset
+
+ yang bernilai nol di 
+\begin_inset Formula $-7$
+\end_inset
+
+ dan 
+\begin_inset Formula $-1$
+\end_inset
+
+, sedangkan 
+\begin_inset Formula $l_{2}(2)=y_{2}$
+\end_inset
+
+.
+ Ini merupakan langkah kedua yang baik.
+ Polinom ini menghasilkan ordinat yang tepat pada 
+\begin_inset Formula $2$
+\end_inset
+
+ dan bernilai nol di 
+\begin_inset Formula $-7$
+\end_inset
+
+ dan 
+\begin_inset Formula $-1$
+\end_inset
+
+.
+ Sekarang tinjau jumlah 
+\begin_inset Formula $(l_{3}+l_{2})$
+\end_inset
+
+.
+ 
+\begin_inset Formula $l_{3}(-1)=y_{3}$
+\end_inset
+
+ dan 
+\begin_inset Formula $l_{2}(-1)=0$
+\end_inset
+
+, sehingga 
+\begin_inset Formula $(l_{3}+l_{2})(-1)=y_{3}$
+\end_inset
+
+.
+ Dengan cara serupa, 
+\begin_inset Formula $l_{3}(2)=0$
+\end_inset
+
+ dan 
+\begin_inset Formula $l_{2}(2)=y_{2}$
+\end_inset
+
+, sehingga 
+\begin_inset Formula $(l_{3}+l_{2})(2)=y_{2}$
+\end_inset
+
+.
+ Selain itu, 
+\begin_inset Formula $(l_{3}+l_{2})(-7)=0$
+\end_inset
+
+.
+ Kini kita mempunyai polinom yang melalui dua dari tiga titik yang disyaratkan
+ dan bernilai nol pada absis titik ketiga.
+ Jika kita mempunyai polinom yang menghasilkan ordinat yang tepat pada 
+\begin_inset Formula $-7$
+\end_inset
+
+ dan bernilai nol di 
+\begin_inset Formula $2$
+\end_inset
+
+ dan 
+\begin_inset Formula $-1$
+\end_inset
+
+, kita dapat menambahkannya ke jumlah tersebut dan menyelesaikan konstruksi.
+ Namun, justru polinom seperti inilah yang telah kita konstruksikan! Kita
+ menetapkan 
+\begin_inset Formula $p_{1}(x)=(x+1)(x-2)$
+\end_inset
+
+ dan 
+\begin_inset Formula $l_{1}(x)=\frac{p_{1}(x)}{p_{1}(-7)}y_{1}$
+\end_inset
+
+, lalu memperhatikan bahwa 
+\begin_inset Formula $l_{1}$
+\end_inset
+
+ menghasilkan ordinat yang tepat pada 
+\begin_inset Formula $-7$
+\end_inset
+
+ dan bernilai nol di 
+\begin_inset Formula $2$
+\end_inset
+
+ dan 
+\begin_inset Formula $-1$
+\end_inset
+
+, tepat seperti yang kita perlukan.
+ Akhirnya, polinom yang diinginkan adalah 
+\begin_inset Formula $(l_{1}+l_{2}+l_{3})$
+\end_inset
+
+.
+ Tabel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:interpolationExample"
+
+\end_inset
+
+ 
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hrule 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:interpolationExample"
+
+\end_inset
+
+Polinom yang melalui 
+\begin_inset Formula $(-7,y_{1})$
+\end_inset
+
+, 
+\begin_inset Formula $(2,y_{2})$
+\end_inset
+
+, dan 
+\begin_inset Formula $(-1,y_{3})$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $l_{1}(x)=\frac{p_{1}(x)}{p_{1}(-7)}y_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $l_{2}(x)=\frac{p_{2}(x)}{p_{2}(2)}y_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $l_{3}(x)=\frac{p_{3}(x)}{p_{3}(-1)}y_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(l_{1}+l_{2}+l_{3})(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-7$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hrule 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+merangkum konstruksi tersebut.
+\end_layout
+
+\begin_layout Standard
+Sekarang kita siap melakukan generalisasi sepenuhnya.
+ Misalkan 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+ dan 
+\begin_inset Formula $x_{0},x_{1},\ldots,x_{n}$
+\end_inset
+
+ adalah 
+\begin_inset Formula $n$
+\end_inset
+
+ bilangan real yang berbeda.
+ Kita menggunakan notasi 
+\begin_inset Formula $P_{n}(x)$
+\end_inset
+
+ untuk polinom berderajat terendah yang menginterpolasi titik-titik
+\begin_inset Formula 
+\[
+(x_{0},y_{0}),(x_{1},y_{1}),\ldots,(x_{n},y_{n}).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dengan menetapkan 
+\begin_inset Formula ${\displaystyle p_{i}(x)=\prod_{\substack{j=0\\
+j\neq i
+}
+}^{n}(x-x_{j})=(x-x_{0})\cdots(x-x_{i-1})(x-x_{i+1})\cdots(x-x_{n})}$
+\end_inset
+
+, salah satu rumus untuk 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+ adalah 
+\begin_inset Formula 
+\begin{equation}
+L_{n}(x)=\sum_{i=0}^{n}\frac{p_{i}(x)}{p_{i}(x_{i})}y_{i}.\label{eq:lagrangeInterpolatingPolynomial}
+\end{equation}
+
+\end_inset
+
+Dalam bentuk ini, 
+\begin_inset Formula $L_{n}$
+\end_inset
+
+ disebut 
+\shape italic
+bentuk Lagrange
+\shape default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+bentuk Lagrange
+\end_layout
+
+\end_inset
+
+ dari 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+.
+ Demi keringkasan, bentuk ini sering disebut polinom interpolasi Lagrange,
+ atau bahkan polinom Lagrange.
+ Namun, apa pun namanya, polinom interpolasi berderajat terendah itu
+ tetaplah 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+.
+ Kita akan tetap menyebutnya polinom interpolasi
+ berderajat terendah, atau menggunakan notasi 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+, jika bentuknya tidak penting; dan kita akan menambahkan frasa 
+\shape italic
+bentuk Lagrange
+\shape default
+, atau menggunakan notasi 
+\begin_inset Formula $L_{n}$
+\end_inset
+
+, jika bentuknya penting.
+\end_layout
+
+\begin_layout Standard
+Penggunaan utama polinom interpolasi dalam analisis numerik adalah untuk
+ menghampiri fungsi nonpolinom dengan cara berikut.
+ Misalkan kita mengetahui nilai 
+\begin_inset Formula $f$
+\end_inset
+
+ pada beberapa titik.
+ Artinya, kita mengetahui 
+\begin_inset Formula $f(x_{0})=y_{0},f(x_{1})=x_{1},\ldots,f(x_{n})=y_{n}$
+\end_inset
+
+ dan mungkin tidak mengetahui banyak hal lainnya.
+ Berdasarkan konstruksinya, polinom interpolasi berderajat terendah yang melalui 
+\begin_inset Formula $n+1$
+\end_inset
+
+ titik
+\begin_inset Formula 
+\[
+(x_{0},y_{0}),(x_{1},y_{1}),\ldots,(x_{n},y_{n})
+\]
+
+\end_inset
+
+akan sama dengan 
+\begin_inset Formula $f$
+\end_inset
+
+ pada 
+\begin_inset Formula $x_{0},x_{1},\ldots,x_{n}$
+\end_inset
+
+ dan kita dapat menyatakan dengan cukup tepat seberapa dekat polinom interpolasi ini
+ dengan 
+\begin_inset Formula $f$
+\end_inset
+
+ pada titik-titik lain.
+ Nilai polinom interpolasi pada 
+\begin_inset Quotes eld
+\end_inset
+
+titik-titik lain
+\begin_inset Quotes erd
+\end_inset
+
+ inilah yang kita sebut hampiran terhadap fungsi nonpolinom.
+\end_layout
+
+\begin_layout Standard
+Dengan menetapkan 
+\begin_inset Formula $a=\min(x_{0},\ldots,x_{n},x)$
+\end_inset
+
+ dan 
+\begin_inset Formula $b=\max(x_{0},\ldots,x_{n},x)$
+\end_inset
+
+, kita memperoleh hasil berikut.
+ Jika 
+\begin_inset Formula $f$
+\end_inset
+
+ mempunyai 
+\begin_inset Formula $n+1$
+\end_inset
+
+ turunan pada 
+\begin_inset Formula $(a,b)$
+\end_inset
+
+ dan 
+\begin_inset Formula $f,f',f'',\ldots,f^{(n)}$
+\end_inset
+
+ semuanya kontinu pada 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+, maka terdapat 
+\begin_inset Formula $\xi_{x}\in(a,b)$
+\end_inset
+
+ sedemikian sehingga 
+\begin_inset Formula 
+\begin{equation}
+f(x)-P_{n}(x)=\frac{f^{(n+1)}(\xi_{x})}{(n+1)!}(x-x_{0})(x-x_{1})\cdots(x-x_{n}).\label{eq:lagrangeInterpolatingPolynomialError}
+\end{equation}
+
+\end_inset
+
+Menariknya, hasil ini dibuktikan dengan meninjau bentuk Lagrange dari suatu
+ polinom interpolasi dalam variabel 
+\begin_inset Formula $t$
+\end_inset
+
+ yang sama dengan galat pada 
+\begin_inset Formula $x$
+\end_inset
+
+ dan sama dengan nol pada setiap 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+ Polinom itu adalah
+\begin_inset Formula 
+\[
+\Lambda(t)=\left[P_{n}(x)-f(x)\right]\frac{(t-x_{0})(t-x_{1})\cdots(t-x_{n})}{(x-x_{0})(x-x_{1})\cdots(x-x_{n})}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{digression}{$
+\backslash
+Lambda$} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ adalah huruf kapital kesebelas dalam alfabet Yunani dan dilafalkan 
+ 
+\family typewriter
+\series bold
+lam
+\series default
+-
+\shape italic
+da
+\family default
+\shape default
+.
+ Bentuk huruf kecilnya, 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, jauh lebih sering muncul dalam matematika dan kerap menyatakan nilai eigen.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{digression} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Dengan mengurangkan polinom ini dari galat, 
+\begin_inset Formula $e(t)=P_{n}(t)-f(t)$
+\end_inset
+
+, kita memperoleh fungsi
+\begin_inset Formula 
+\[
+g(t)=e(t)-\Lambda(t),
+\]
+
+\end_inset
+
+yang bernilai nol untuk semua 
+\begin_inset Formula $t=x_{0},x_{1},\ldots,x_{n},x$
+\end_inset
+
+.
+ Karena 
+\begin_inset Formula $g,g',\ldots,g^{(n)}$
+\end_inset
+
+ semuanya kontinu pada 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+ dan 
+\begin_inset Formula $g^{(n+1)}$
+\end_inset
+
+ ada pada 
+\begin_inset Formula $(a,b)$
+\end_inset
+
+, berdasarkan Teorema Rolle yang Diperumum terdapat 
+\begin_inset Formula $\xi_{x}\in(a,b)$
+\end_inset
+
+ sedemikian sehingga 
+\begin_inset Formula $g^{(n+1)}(\xi_{x})=0$
+\end_inset
+
+.
+ Di sisi lain, 
+\begin_inset Formula 
+\begin{eqnarray*}
+g^{(n+1)}(\xi_{x}) & = & e^{(n+1)}(\xi_{x})-\Lambda^{(n+1)}(\xi_{x})\\
+ & = & P_{n}^{(n+1)}(\xi_{x})-f^{(n+1)}(\xi_{x})-\Lambda^{(n+1)}(\xi_{x}),
+\end{eqnarray*}
+
+\end_inset
+
+dan 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+ merupakan polinom berderajat paling tinggi 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Oleh karena itu, 
+\begin_inset Formula $P_{n}^{(n+1)}(t)=0$
+\end_inset
+
+ untuk setiap 
+\begin_inset Formula $t$
+\end_inset
+
+ dan kita memperoleh 
+\begin_inset Formula $g^{(n+1)}(\xi_{x})=-f^{(n+1)}(\xi_{x})-\Lambda^{(n+1)}(\xi_{x})=0$
+\end_inset
+
+.
+ Akibatnya, 
+\begin_inset Formula 
+\[
+f^{(n+1)}(\xi_{x})=-\Lambda^{(n+1)}(\xi_{x}).
+\]
+
+\end_inset
+
+Namun, 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ adalah polinom berderajat 
+\begin_inset Formula $n+1$
+\end_inset
+
+ dalam 
+\begin_inset Formula $t$
+\end_inset
+
+, sehingga turunan ke-
+\begin_inset Formula $(n+1)$
+\end_inset
+
+ terhadap 
+\begin_inset Formula $t$
+\end_inset
+
+ konstan terhadap 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Kita menuliskan 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ sebagai
+\begin_inset Formula 
+\[
+\Lambda(t)=\frac{P_{n}(x)-f(x)}{(x-x_{0})(x-x_{1})\cdots(x-x_{n})}\left[t^{n+1}+b_{n}t^{n}+\cdots+b_{0}t^{0}\right]
+\]
+
+\end_inset
+
+untuk beberapa konstanta 
+\begin_inset Formula $b_{n},b_{n-1},\ldots,b_{0}$
+\end_inset
+
+, dan akibatnya,
+\begin_inset Formula 
+\[
+\Lambda^{(n+1)}(t)=\frac{P_{n}(x)-f(x)}{(x-x_{0})(x-x_{1})\cdots(x-x_{n})}\cdot(n+1)!,
+\]
+
+\end_inset
+
+dengan substitusi kita memperoleh
+\begin_inset Formula 
+\[
+f^{(n+1)}(\xi_{x})=\frac{f(x)-P_{n}(x)}{(x-x_{0})(x-x_{1})\cdots(x-x_{n})}\cdot(n+1)!
+\]
+
+\end_inset
+
+atau, secara ekuivalen,
+\begin_inset Formula 
+\[
+\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_{0})(x-x_{1})\cdots(x-x_{n})=f(x)-P_{n}(x)
+\]
+
+\end_inset
+
+seperti yang hendak dibuktikan.
+\end_layout
+
+\begin_layout Standard
+Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Three-interpolating-functions."
+
+\end_inset
+
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Three-interpolating-functions."
+
+\end_inset
+
+Tiga fungsi yang diinterpolasi.
+ Dari atas ke bawah, 
+\begin_inset Formula $e^{\sin\left((x+1)^{2}\right)}$
+\end_inset
+
+, 
+\begin_inset Formula $\sin\left(e^{(x+1)^{2}}\right)$
+\end_inset
+
+, dan 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+fungsi fraktal sebagaimana didefinisikan pada bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:rootFindingChallenge"
+
+\end_inset
+
+.
+ 
+\begin_inset Formula $f$
+\end_inset
+
+ ditampilkan dengan warna hitam, sedangkan interpolannya, 
+\begin_inset Formula $L_{6}$
+\end_inset
+
+, dengan warna merah.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f(x)$
+\end_inset
+
+ dan 
+\begin_inset Formula $L_{6}(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f^{(6)}(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/interpolation-polynomials1.pdf
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/interpolation-polynomials2.pdf
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/interpolation-polynomials3.pdf
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/interpolation-polynomials4.pdf
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/interpolation-polynomials5.pdf
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/undefined.png
+	lyxscale 25
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ memperlihatkan polinom interpolasi untuk tiga fungsi yang berbeda.
+ Koordinat 
+\begin_inset Formula $x$
+\end_inset
+
+ dari titik-titik yang ditentukan sama untuk setiap polinom
+ interpolasi.
+ Koordinat 
+\begin_inset Formula $x$
+\end_inset
+
+ tersebut adalah 
+\begin_inset Formula 
+\[
+0,.1951846177977887,.3554400571592862,.4823905248516196,.9138095996128959,\mbox{ dan }1.
+\]
+
+\end_inset
+
+Empat bilangan di antara 0 dan 1 dipilih dengan generator bilangan acak.
+ Hanya pada kasus pertama polinom interpolasi sangat menyerupai
+ fungsinya.
+ Turunan keenam 
+\begin_inset Formula $f$
+\end_inset
+
+ membantu menjelaskan alasannya.
+ 
+\end_layout
+
+\begin_layout Standard
+Suku galat kita, 
+\begin_inset Formula 
+\[
+\frac{f^{(6)}(\xi)}{6!}(x-x_{0})(x-x_{1})\cdots(x-x_{5})
+\]
+
+\end_inset
+
+menyiratkan bahwa turunan keenam 
+\begin_inset Formula $f$
+\end_inset
+
+ dan polinom 
+\begin_inset Formula $h(x)=\frac{(x-x_{0})(x-x_{1})\cdots(x-x_{5})}{6!}$
+\end_inset
+
+ menentukan seberapa besar perbedaan antara 
+\begin_inset Formula $f$
+\end_inset
+
+ dan 
+\begin_inset Formula $L_{6}$
+\end_inset
+
+.
+ Dengan membatasi 
+\begin_inset Formula $\left|f^{(6)}\right|$
+\end_inset
+
+ dan 
+\begin_inset Formula $\left|h\right|$
+\end_inset
+
+ pada selang 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+, kita dapat memperoleh batas bagi selisih antara 
+\begin_inset Formula $f$
+\end_inset
+
+ dan 
+\begin_inset Formula $L_{6}$
+\end_inset
+
+.
+ Grafik 
+\begin_inset Formula $f^{(6)}$
+\end_inset
+
+ ditampilkan pada Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Three-interpolating-functions."
+
+\end_inset
+
+.
+ Grafik 
+\begin_inset Formula $h$
+\end_inset
+
+ adalah
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/interpolation-polynomials6.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+sehingga 
+\begin_inset Formula $\max_{x\in[0,1]}|h(x)|$
+\end_inset
+
+ terjadi di sekitar 
+\begin_inset Formula $0.75$
+\end_inset
+
+.
+ Kita dapat menerapkan metode pencarian akar pada 
+\begin_inset Formula $h'$
+\end_inset
+
+ untuk menemukan bahwa maksimum 
+\begin_inset Formula $|h|$
+\end_inset
+
+ kira-kira 
+\begin_inset Formula $h(.7409254943919)\approx2.506891519629(10)^{-6}$
+\end_inset
+
+, suatu bilangan yang relatif kecil.
+ Di sisi lain, untuk 
+\begin_inset Formula $f(x)=e^{\sin\left((x+1)^{2}\right)}$
+\end_inset
+
+, kita memperoleh 
+\begin_inset Formula $\max_{x\in[0,1]}\left|f^{(6)}(x)\right|\approx f^{(6)}(.6777170541644)\approx44013.74605321$
+\end_inset
+
+, suatu bilangan yang relatif besar.
+ Hasil kali keduanya,
+\begin_inset Formula 
+\[
+\max_{x\in[0,1]}|h(x)|\cdot\max_{x\in[0,1]}\left|f^{(6)}(x)\right|\approx.11,
+\]
+
+\end_inset
+
+memberikan batas galat.
+ Jarak mutlak terbesar antara 
+\begin_inset Formula $L_{6}$
+\end_inset
+
+ dan 
+\begin_inset Formula $f$
+\end_inset
+
+ pada selang 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+ tidak mungkin melebihi 
+\begin_inset Formula $0.11$
+\end_inset
+
+, suatu bilangan yang relatif kecil.
+ Galat sebenarnya jauh lebih kecil sehingga hampir tidak terlihat pada
+ grafik kiri atas Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Three-interpolating-functions."
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Untuk 
+\begin_inset Formula $f(x)=\sin\left(e^{(x+1)^{2}}\right)$
+\end_inset
+
+, kita memperoleh 
+\begin_inset Formula $\max_{x\in[0,1]}\left|f^{(6)}(x)\right|\approx f^{(6)}(1)\approx8.552147927657737(10)^{13}$
+\end_inset
+
+, suatu bilangan yang relatif besar.
+ Kali ini hasil kalinya,
+\begin_inset Formula 
+\[
+\max_{x\in[0,1]}|h(x)|\cdot\max_{x\in[0,1]}\left|f^{(6)}(x)\right|\approx2.1439307114460004(10)^{8},
+\]
+
+\end_inset
+
+merupakan bilangan yang sangat besar dibandingkan dengan nilai 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ Jadi, batas galat teoretis tidak meramalkan hasil yang baik bagi interpolasi
+ ini.
+ Bahkan, batas itu menunjukkan bahwa interpolasinya dapat jauh, jauh
+ lebih buruk!
+\begin_inset Formula $L_{6}$
+\end_inset
+
+ mungkin berbeda dari 
+\begin_inset Formula $f$
+\end_inset
+
+ sebesar lebih dari dua juta; hal ini patut dikhawatirkan karena 
+\begin_inset Formula $f$
+\end_inset
+
+ bernilai antara 
+\begin_inset Formula $-1$
+\end_inset
+
+ dan 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ Hampiran yang meleset bahkan sebesar 
+\begin_inset Formula $1$
+\end_inset
+
+ sama sekali tidak berguna untuk fungsi 
+\begin_inset Formula $f$
+\end_inset
+
+ ini.
+ Dalam keadaan ini, kita tidak perlu terkejut bahwa 
+\begin_inset Formula $L_{6}$
+\end_inset
+
+ bukan hampiran yang baik terhadap 
+\begin_inset Formula $f$
+\end_inset
+
+ karena suku galatnya dapat sangat besar.
+ Meskipun demikian, metodenya tetap sah.
+ Kegagalan menghampiri 
+\begin_inset Formula $f$
+\end_inset
+
+ dengan baik bukanlah kelemahan metode, melainkan kekeliruan dalam
+ penerapannya.
+ Jika kita benar-benar ingin menghampiri 
+\begin_inset Formula $f$
+\end_inset
+
+ dengan baik, kita perlu memilih himpunan titik interpolasi yang berbeda.
+\end_layout
+
+\begin_layout Standard
+Untuk fungsi fraktal di kiri bawah Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Three-interpolating-functions."
+
+\end_inset
+
+, taksiran galat kita sama sekali tidak relevan.
+ Turunan keenam 
+\begin_inset Formula $f$
+\end_inset
+
+ tidak ada.
+ Bahkan, turunan pertama 
+\begin_inset Formula $f$
+\end_inset
+
+ pun tidak ada.
+ Kita tidak dapat menaksir galat selain dengan melihat grafik.
+ Dan seperti terlihat, 
+\begin_inset Formula $L_{6}$
+\end_inset
+
+ kembali menjadi hampiran yang sangat buruk terhadap 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ Sekali lagi, kegagalan itu bukanlah kelemahan metode, melainkan kekeliruan
+ penerapannya.
+ Menghampiri fungsi dengan polinom interpolasi mengandaikan bahwa
+ fungsi tersebut mempunyai cukup banyak turunan.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{digression}{Polinom Bernstein}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+polinom Bernstein
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Misalkan 
+\begin_inset Formula $f$
+\end_inset
+
+ adalah fungsi kontinu pada selang 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+, dan definisikan polinom
+\begin_inset Formula 
+\[
+B_{n}(x)=\sum_{\nu=0}^{n}\begin{pmatrix}n\\
+\nu
+\end{pmatrix}f\left(\frac{\nu}{n}\right)x^{\nu}(1-x)^{n-\nu},\quad n=1,2,3,\ldots
+\]
+
+\end_inset
+
+Maka 
+\begin_inset Formula 
+\[
+\lim_{n\to\infty}B_{n}(x)=f(x)
+\]
+
+\end_inset
+
+secara seragam.
+ Artinya, 
+\begin_inset Formula $\lim_{n\to\infty}\max\{|B_{n}(x)-f(x)|:x\in[0,1]\}=0$
+\end_inset
+
+.
+ Polinom 
+\begin_inset Formula $B_{n}$
+\end_inset
+
+ disebut polinom Bernstein.
+ Di bawah ini ditampilkan 
+\begin_inset Formula $B_{4}$
+\end_inset
+
+, 
+\begin_inset Formula $B_{20}$
+\end_inset
+
+, 
+\begin_inset Formula $B_{100}$
+\end_inset
+
+, dan 
+\begin_inset Formula $B_{500}$
+\end_inset
+
+ untuk fungsi fraktal pada Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Three-interpolating-functions."
+
+\end_inset
+
+.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename figures/interpolation-polynomials7.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{digression}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Penerapan polinom interpolasi
+\end_layout
+
+\begin_layout Standard
+Sekali lagi kita menghubungkan materi bab sebelumnya dengan bab
+ ini.
+ Metode sekan sebenarnya merupakan penerapan polinom interpolasi
+ pada pencarian akar.
+ Garis sekan yang kemiringannya digunakan untuk menghitung suatu iterasi dapat
+ dipandang sebagai garis interpolasi! Garis itu melalui dua titik
+ pada 
+\begin_inset Formula $g$
+\end_inset
+
+.
+ Karena itu, garis tersebut merupakan hampiran terhadap 
+\begin_inset Formula $g$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dengan sudut pandang ini, kita dapat menggeneralisasi metode tersebut
+ dengan menggunakan turunan polinom interpolasi berderajat lebih tinggi untuk
+ menghampiri 
+\begin_inset Formula $g'$
+\end_inset
+
+ pada setiap langkah.
+ Metode umum ini, yang akan kita sebut metode Sidi berderajat 
+\begin_inset Formula $k$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sidi"
+literal "true"
+
+\end_inset
+
+,
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Sidi
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+metode ! Sidi|see{metode Sidi}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ diringkas oleh rumus 
+\begin_inset Formula 
+\[
+x_{n+1}=x_{n}-\frac{g(x_{n})}{p'_{n,k}(x_{n})}
+\]
+
+\end_inset
+
+ dengan 
+\begin_inset Formula $p_{n,k}$
+\end_inset
+
+ sebagai polinom interpolasi yang melalui titik-titik 
+\begin_inset Formula 
+\[
+(x_{n},g(x_{n})),(x_{n-1},g(x_{n-1})),\ldots,(x_{n-k},g(x_{n-k})).
+\]
+
+\end_inset
+
+Untuk 
+\begin_inset Formula $k=1$
+\end_inset
+
+, metode ini tepat sama dengan metode sekan.
+ Untuk 
+\begin_inset Formula $k=2$
+\end_inset
+
+, metode ini menggunakan parabola yang sama dengan metode Müller, tetapi dengan cara
+ yang berbeda.
+ Pada metode Müller, iterasi berikutnya diperoleh dengan mencari akar
+ polinom interpolasi.
+ Pada metode ini, iterasi berikutnya diperoleh dengan mencari akar garis singgung
+ pada polinom interpolasi.
+\end_layout
+
+\begin_layout Standard
+Ketika 
+\begin_inset Formula $k$
+\end_inset
+
+ bertambah, diperlukan lebih banyak nilai awal, tetapi sebagai imbalannya orde kekonvergenan
+ meningkat.
+ Dengan 
+\begin_inset Formula $\alpha_{k}$
+\end_inset
+
+ sebagai orde kekonvergenan metode Sidi berderajat 
+\begin_inset Formula $k$
+\end_inset
+
+, kita mempunyai 
+\begin_inset Formula $\alpha_{1}=\frac{1+\sqrt{5}}{2}\approx1.618$
+\end_inset
+
+, yaitu orde kekonvergenan metode sekan, dan
+\begin_inset Formula 
+\[
+\alpha_{2}\approx1.839,\ \alpha_{3}\approx1.928,\ \alpha_{4}\approx1.966.
+\]
+
+\end_inset
+
+Untuk setiap 
+\begin_inset Formula $k$
+\end_inset
+
+, metode Sidi mempunyai orde kekonvergenan kurang dari 2 (orde kekonvergenan
+ metode Newton), tetapi mendekati 2 ketika 
+\begin_inset Formula $k$
+\end_inset
+
+ bertambah.
+\end_layout
+
+\begin_layout Standard
+Pada titik ini, Anda mungkin bertanya-tanya seberapa praktis metode tersebut.
+ Lagi pula, menghitung polinom interpolasi Lagrange baru dan mengevaluasi
+ turunannya pada setiap langkah dapat menjadi proses yang merepotkan.
+ Kita akan membahas persoalan ini pada bagian berikutnya.
+\end_layout
+
+\begin_layout Subsection
+Metode Neville
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Neville
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+metode ! Neville|see{metode Neville}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "NevillesMethodDiscussion"
+
+\end_inset
+
+Bagi manusia, bentuk Lagrange dari polinom interpolasi sudah sangat
+ praktis.
+ Dengan sedikit ketelitian dan kesabaran, polinom semacam itu dapat dituliskan
+ bahkan tanpa bantuan kalkulator.
+ Namun, menambahkan titik interpolasi dan mengevaluasi polinom
+ pada titik yang bukan titik interpolasi dapat menjadi pekerjaan yang merepotkan.
+ Tinjau contoh sederhana: polinom yang menginterpolasi 
+\begin_inset Formula $f(x)=e^{x}$
+\end_inset
+
+ pada 
+\begin_inset Formula $x=0,1,2$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{eqnarray*}
+L_{2}(x) & = & \frac{(x-1)(x-2)}{(0-1)(0-2)}e^{0}+\frac{(x-0)(x-2)}{(1-0)(1-2)}e^{1}+\frac{(x-0)(x-1)}{(2-0)(2-1)}e^{2}\\
+ & = & \frac{(x-1)(x-2)}{2}+\frac{x(x-2)}{-1}e+\frac{x(x-1)}{2}e^{2}.
+\end{eqnarray*}
+
+\end_inset
+
+Sebagai contoh, mengevaluasi 
+\begin_inset Formula $L_{2}(1.5)$
+\end_inset
+
+ memerlukan salah satu dari dua cara berikut:
+\end_layout
+
+\begin_layout Enumerate
+menghitung nilai ketiga suku secara terpisah, yang masing-masing merupakan polinom kuadrat,
+ lalu menjumlahkannya:
+\begin_inset Formula 
+\begin{eqnarray*}
+L_{2}(1.5) & = & \frac{(1.5-1)(1.5-2)}{2}+\frac{1.5(1.5-2)}{-1}e+\frac{1.5(1.5-1)}{2}e^{2}\\
+ & = & -.125+.75e+.375e^{2}\\
+ & \approx & 4.684607408443278
+\end{eqnarray*}
+
+\end_inset
+
+atau
+\end_layout
+
+\begin_layout Enumerate
+menjabarkan 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ ke bentuk polinom biasa, lalu mengevaluasinya:
+\begin_inset Formula 
+\begin{eqnarray*}
+L_{2}(x) & = & \frac{(x-1)(x-2)}{2}+\frac{x(x-2)}{-1}e+\frac{x(x-1)}{2}e^{2}\\
+ & = & \frac{1}{2}(x^{2}-3x+2)-e(x^{2}-2x)+\frac{e^{2}}{2}(x^{2}-x)\\
+ & = & \left(\frac{1}{2}-e+\frac{e^{2}}{2}\right)x^{2}+\left(-\frac{3}{2}+2e-\frac{e^{2}}{2}\right)x+1\\
+ & \approx & 1.47624622100628x^{2}+0.242035607452765x+1
+\end{eqnarray*}
+
+\end_inset
+
+sehingga 
+\begin_inset Formula $L_{2}(1.5)\approx1.47624622100628(1.5)^{2}+0.242035607452765(1.5)+1=4.684607408443277$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Metode 2 lebih baik jika Anda hendak mengevaluasi pada lebih banyak titik, sedangkan metode
+ 1 lebih baik jika Anda berencana menambah titik interpolasi.
+ Namun, kedua metode tersebut tidak terlalu praktis.
+ Yang bahkan lebih merepotkan daripada mengevaluasi polinom adalah menambahkan
+ satu lagi titik interpolasi.
+ Hasil perhitungan sebelumnya hanya sedikit membantu.
+ Kita bahkan belum membahas sulitnya menulis program komputer
+ untuk mengotomatiskan perhitungan.
+ Metode Neville dapat mengatasi keterbatasan ini ketika nilai
+ polinom pada suatu titik tertentu diperlukan.
+\end_layout
+
+\begin_layout Standard
+Metode Neville didasarkan pada pengamatan bahwa polinom interpolasi
+ dapat dikonstruksi secara rekursif.
+ Misalkan 
+\begin_inset Formula $P_{k,l}$
+\end_inset
+
+ adalah polinom berderajat paling tinggi 
+\begin_inset Formula $l$
+\end_inset
+
+ yang menginterpolasi data
+\begin_inset Formula 
+\[
+(x_{k},f(x_{k})),(x_{k+1},f(x_{k+1})),\ldots,(x_{k+l},f(x_{k+l})).
+\]
+
+\end_inset
+
+Maka, menurut definisi, 
+\begin_inset Formula $P_{0,n}$
+\end_inset
+
+ adalah polinom berderajat paling tinggi 
+\begin_inset Formula $n$
+\end_inset
+
+ yang menginterpolasi data 
+\begin_inset Formula 
+\[
+(x_{0},f(x_{0})),(x_{1},f(x_{1})),\ldots,(x_{n},f(x_{n})).
+\]
+
+\end_inset
+
+Selain itu, polinom ini dapat dihitung menggunakan rumus rekursif
+\begin_inset Formula 
+\begin{eqnarray}
+P_{i,m+1}(x) & = & \frac{(x-x_{i})P_{i+1,m}(x)-(x-x_{i+m+1})P_{i,m}(x)}{x_{i+m+1}-x_{i}}\nonumber \\
+P_{i,0}(x) & = & f(x_{i}),\qquad i=0,\ldots,n.\label{eq:NevillesRecursion}
+\end{eqnarray}
+
+\end_inset
+
+Pernyataan ini dapat diperiksa dengan memperhatikan lima hal berikut:
+\begin_inset CommandInset label
+LatexCommand label
+name "shellProofOfNevillesMethod"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P_{i,0}$
+\end_inset
+
+ adalah polinom derajat 0 yang menginterpolasi satu datum 
+\begin_inset Formula $(x_{i},f(x_{i}))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P_{i,m}$
+\end_inset
+
+ dan 
+\begin_inset Formula $P_{i+1,m}$
+\end_inset
+
+ adalah polinom-polinom berderajat paling tinggi 
+\begin_inset Formula $m$
+\end_inset
+
+, sehingga 
+\begin_inset Formula $P_{i,m+1}$
+\end_inset
+
+ adalah polinom berderajat paling tinggi 
+\begin_inset Formula $m+1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula ${\displaystyle P_{i,m+1}(x_{i})=\frac{-(x_{i}-x_{i+m+1})P_{i,m}(x_{i})}{x_{i+m+1}-x_{i}}=P_{i,m}(x_{i})=f(x_{i})}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Untuk setiap 
+\begin_inset Formula $j=i+1,\ldots,i+m$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{eqnarray*}
+P_{i,m+1}(x_{j}) & = & \frac{(x_{j}-x_{i})P_{i+1,m}(x_{j})-(x_{j}-x_{i+m+1})P_{i,m}(x_{j})}{x_{i+m+1}-x_{i}}\\
+ & = & \frac{(x_{j}-x_{i})f(x_{j})-(x_{j}-x_{i+m+1})f(x_{j})}{x_{i+m+1}-x_{i}}\\
+ & = & \frac{f(x_{j})\left[(x_{j}-x_{i})-(x_{j}-x_{i+m+1})\right]}{x_{i+m+1}-x_{i}}\\
+ & = & f(x_{j}).
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula ${\displaystyle P_{i,m+1}(x_{i+m+1})=\frac{(x_{i+m+1}-x_{i})P_{i+1,m}(x_{i+m+1})}{x_{i+m+1}-x_{i}}=P_{i+1,m}(x_{i+m+1})=f(x_{i+m+1})}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Bukti ketat dengan induksi terhadap 
+\begin_inset Formula $m$
+\end_inset
+
+, yang diminta dalam latihan, dapat disusun dengan mengikuti catatan ini.
+ Butir 1 dan 2 menunjukkan bahwa 
+\begin_inset Formula $P_{k,l}$
+\end_inset
+
+ berderajat paling tinggi 
+\begin_inset Formula $l$
+\end_inset
+
+.
+ Butir 3 hingga 5 menunjukkan bahwa 
+\begin_inset Formula $P_{k,l}$
+\end_inset
+
+ menginterpolasi titik-titik 
+\begin_inset Formula $(x_{k},f(x_{k})),(x_{k+1},f(x_{k+1})),\ldots,(x_{k+l},f(x_{k+l}))$
+\end_inset
+
+.
+ Rumus 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:NevillesRecursion"
+
+\end_inset
+
+ merangkum metode Neville secara ringkas.
+\end_layout
+
+\begin_layout Standard
+Walaupun metode Neville (rumus 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:NevillesRecursion"
+
+\end_inset
+
+) dapat digunakan untuk mencari rumus polinom interpolasi seperti
+\begin_inset Formula 
+\begin{eqnarray*}
+P_{0,1}(x) & = & \frac{(x-x_{0})P_{1,0}(x)-(x-x_{1})P_{0,0}(x)}{x_{1}-x_{0}}\\
+ & = & \frac{x-x_{1}}{x_{0}-x_{1}}f(x_{0})+\frac{x-x_{0}}{x_{1}-x_{0}}f(x_{1}),
+\end{eqnarray*}
+
+\end_inset
+
+metode ini biasanya digunakan untuk mencari nilai polinom interpolasi pada
+ suatu titik tertentu.
+ Sebelumnya kita memperoleh 
+\begin_inset Formula $L_{2}(1.5)=4.684607408443277$
+\end_inset
+
+ untuk polinom 
+\begin_inset Formula $L_{2}(x)$
+\end_inset
+
+ yang menginterpolasi 
+\begin_inset Formula $f(x)=e^{x}$
+\end_inset
+
+ pada 
+\begin_inset Formula $x=0,1,2$
+\end_inset
+
+.
+ Sekarang kita akan mencari nilai ini menggunakan metode Neville.
+ 
+\begin_inset Formula $P_{0,0}(1.5)=f(0)=1$
+\end_inset
+
+, 
+\begin_inset Formula $P_{1,0}(1.5)=f(1)\approx2.718281828459045$
+\end_inset
+
+, dan 
+\begin_inset Formula $P_{2,0}(1.5)=f(2)\approx7.38905609893065$
+\end_inset
+
+.
+ Jadi
+\begin_inset Formula 
+\begin{eqnarray*}
+P_{0,1}(1.5) & = & \frac{(1.5-x_{0})P_{1,0}(1.5)-(1.5-x_{1})P_{0,0}(1.5)}{x_{1}-x_{0}}\\
+ &  & =\frac{(1.5-0)(2.718281828459045)-(1.5-1)(1)}{1-0}\\
+ &  & \approx3.577422742688568\\
+P_{1,1}(1.5) & = & \frac{(1.5-x_{1})P_{2,0}(1.5)-(1.5-x_{2})P_{1,0}(1.5)}{x_{2}-x_{1}}\\
+ & = & \frac{(1.5-1)(7.38905609893065)-(1.5-2)(2.718281828459045)}{2-1}\\
+ & \approx & 5.053668963694848\\
+P_{0,2}(1.5) & = & \frac{(1.5-x_{0})P_{1,1}(1.5)-(1.5-x_{2})P_{0,1}(1.5)}{x_{2}-x_{0}}\\
+ & = & \frac{(1.5-0)(5.053668963694848)-(1.5-2)(3.577422742688568)}{2-0}\\
+ & \approx & 4.684607408443278.
+\end{eqnarray*}
+
+\end_inset
+
+Menyusun perhitungan dalam tabel dapat memudahkan kita memahami rekursi
+ dan membayangkan cara mengotomatiskan proses ini.
+ Tabel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:NevillesMethodExample"
+
+\end_inset
+
+ 
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hrule 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:NevillesMethodExample"
+
+\end_inset
+
+Contoh metode Neville: menghitung 
+\begin_inset Formula $P_{0,2}(1.5)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P_{i,0}=f(x_{i})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P_{i,1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P_{i,2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.577422742688568$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.684607408443278$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.718281828459045$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5.053668963694848$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $7.38905609893065$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hrule 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ menampilkan tabulasi tersebut.
+ Bagi manusia, menggunakan rumus rekursif ini mungkin lebih sulit daripada
+ menghitungnya secara langsung. Namun, bagi komputer, rekursi jauh lebih cepat
+ dan sederhana, sebagaimana terlihat dari kode semu.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pseudocode} 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Neville ! kode semu
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "NevillesMethodPseudoCode"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Asumsi: 
+\begin_inset Formula $P_{n}(x)$
+\end_inset
+
+ adalah polinom berderajat paling tinggi 
+\begin_inset Formula $n$
+\end_inset
+
+ yang menginterpolasi data
+\begin_inset Formula 
+\[
+(x_{0},f(x_{0})),(x_{1},f(x_{1})),\ldots,(x_{n},f(x_{n}))
+\]
+
+\end_inset
+
+dan nilai 
+\begin_inset Formula $P_{n}(\hat{x})$
+\end_inset
+
+ hendak dicari.
+\end_layout
+
+\begin_layout Description
+Masukan: Nilai 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+; absis 
+\begin_inset Formula $x_{0},x_{1},\ldots,x_{n}$
+\end_inset
+
+; ordinat 
+\begin_inset Formula $f(x_{0}),f(x_{1}),\ldots,f(x_{n})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+1: Untuk 
+\begin_inset Formula $i=0\ldots n$
+\end_inset
+
+ lakukan Langkah 2:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+2: Tetapkan 
+\begin_inset Formula $P_{i,0}=f(x_{i})$
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+3: Untuk 
+\begin_inset Formula $j=1\ldots n$
+\end_inset
+
+ lakukan Langkah 4–5:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+4: Untuk 
+\begin_inset Formula $i=0\ldots n-j$
+\end_inset
+
+ lakukan Langkah 5:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+5: Tetapkan 
+\begin_inset Formula $P_{i,,j}=\frac{(\hat{x}-x_{i})P_{i+1,j-1}(\hat{x}-x_{i+j})P_{i,j-1}}{x_{i+j}-x_{i}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Description
+Keluaran: Tabel nilai, 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ 
+\begin_inset Formula $P_{0,n}$
+\end_inset
+
+ memuat nilai yang dicari, 
+\begin_inset Formula $L_{n}(\hat{x})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pseudocode} 
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Keunikan
+\end_layout
+
+\begin_layout Standard
+Ada beberapa seluk-beluk yang sejauh ini belum kita bahas.
+ Ketika memperkenalkan bentuk Lagrange, kita begitu saja menyatakan 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $L_{n}$
+\end_inset
+
+ disebut 
+\shape italic
+bentuk Lagrange
+\shape default
+ dari 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, yang menyiratkan bahwa bentuk Lagrange menghasilkan polinom interpolasi 
+\shape italic
+berderajat terendah
+\shape default
+ (karena 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+ memang didefinisikan demikian)! Fakta ini sama sekali tidak langsung terlihat.
+ Meskipun demikian, kita melanjutkan seolah-olah sudah jelas bahwa 
+\begin_inset Formula $L_{n}$
+\end_inset
+
+ dan 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+ merupakan polinom yang sama.
+ Lebih buruk lagi, ketika membahas metode Neville, kita menghitung
+ 
+\begin_inset Formula $P_{0,2}(1.5)$
+\end_inset
+
+ dan membandingkannya dengan 
+\begin_inset Formula $L_{2}(1.5)$
+\end_inset
+
+ yang diperoleh sebelumnya, seolah-olah keduanya memang harus sama; sekali lagi,
+ seolah-olah sudah pasti bahwa 
+\begin_inset Formula $P_{0,2}$
+\end_inset
+
+ dan 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ merupakan polinom yang sama.
+ Hasil berikut menunjukkan bahwa kepercayaan kita tanpa bukti bahwa 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+, 
+\begin_inset Formula $L_{n}$
+\end_inset
+
+, dan 
+\begin_inset Formula $P_{0,n}$
+\end_inset
+
+ sekadar nama-nama berbeda bagi objek yang sama ternyata tidak keliru (karena
+ semuanya menginterpolasi data yang sama dan berderajat
+ paling tinggi 
+\begin_inset Formula $n$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:interpolatingPolynomialUniqueness"
+
+\end_inset
+
+Polinom 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+ berderajat terendah yang menginterpolasi data 
+\begin_inset Formula $(x_{0},y_{0}),(x_{1},y_{1}),\ldots,(x_{n},y_{n})$
+\end_inset
+
+ ada dan bersifat unik.
+ Selain itu, setiap polinom interpolasi berderajat paling tinggi 
+\begin_inset Formula $n$
+\end_inset
+
+ sama dengan 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Berdasarkan konstruksinya, 
+\begin_inset Formula $L_{n}$
+\end_inset
+
+ menginterpolasi data.
+ Selain itu, 
+\begin_inset Formula $L_{n}$
+\end_inset
+
+ berderajat paling tinggi 
+\begin_inset Formula $n$
+\end_inset
+
+ karena polinom ini merupakan jumlah dari polinom-polinom 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+ yang masing-masing berderajat tepat 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Dengan demikian, 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+ ada dan berderajat paling tinggi 
+\begin_inset Formula $n$
+\end_inset
+
+ [pada titik ini, harus kita akui bahwa derajat 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+ mungkin lebih rendah daripada derajat 
+\begin_inset Formula $L_{n}$
+\end_inset
+
+].
+ Sekarang misalkan 
+\begin_inset Formula $q$
+\end_inset
+
+ adalah sembarang polinom yang menginterpolasi 
+\begin_inset Formula $(x_{0},y_{0}),(x_{1},y_{1}),\ldots,(x_{n},y_{n})$
+\end_inset
+
+ dan berderajat 
+\begin_inset Formula $n$
+\end_inset
+
+ atau kurang.
+ Maka polinom 
+\begin_inset Formula $f=P_{n}-q$
+\end_inset
+
+ juga berderajat 
+\begin_inset Formula $n$
+\end_inset
+
+ atau kurang.
+ Selain itu, 
+\begin_inset Formula $f(x_{i})=P_{n}(x_{i})-q(x_{i})=y_{i}-y_{i}=0$
+\end_inset
+
+ untuk setiap 
+\begin_inset Formula $i-0,\ldots,n$
+\end_inset
+
+.
+ Dengan demikian, 
+\begin_inset Formula $f$
+\end_inset
+
+ mempunyai 
+\begin_inset Formula $n+1$
+\end_inset
+
+ akar.
+ Satu-satunya cara 
+\begin_inset Formula $f$
+\end_inset
+
+ dapat mempunyai 
+\begin_inset Formula $n+1$
+\end_inset
+
+ akar sekaligus berderajat 
+\begin_inset Formula $n$
+\end_inset
+
+ atau kurang adalah jika 
+\begin_inset Formula $f$
+\end_inset
+
+ identik dengan 0.
+ Oleh karena itu, 
+\begin_inset Formula $f(x)=P_{n}(x)-q(x)=0$
+\end_inset
+
+, sehingga 
+\begin_inset Formula $P_{n}(x)=q(x)$
+\end_inset
+
+ untuk setiap 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Octave
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "NevillesMethodOctaveCode"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Neville ! kode Octave
+\end_layout
+
+\end_inset
+
+Indeks yang disajikan dalam kode semu didasarkan pada pengindeksan yang dimulai
+ dari 0, seperti dalam uraian matematis.
+ Namun, di Octave indeks tidak dapat bernilai 0.
+ Indeks selalu berupa bilangan bulat positif.
+ Sedikit penyesuaian indeks diperlukan untuk mengakomodasi perbedaan
+ ini.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+% Written by Leon Brin                        11 December 2020 %
+\end_layout
+
+\begin_layout Plain Layout
+
+% Purpose: This function implements Neville's method for       %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        computing the value P(xhat) of the interpolating      %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        polynomial P passing through the data (x(1),y(1)),    %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        (x(2),y(2)),...,(x(n),y(n)).
+                          %
+\end_layout
+
+\begin_layout Plain Layout
+
+% INPUT: value xhat; array x of abscissas; array y of          %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        ordinates.
+                                            %
+\end_layout
+
+\begin_layout Plain Layout
+
+% OUTPUT: table of values Q; Q(1,n)=P(xhat).
+                   %
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+function Q = nevilles(xhat,x,y)
+\end_layout
+
+\begin_layout Plain Layout
+
+  n=length(x);
+\end_layout
+
+\begin_layout Plain Layout
+
+  for i=1:n
+\end_layout
+
+\begin_layout Plain Layout
+
+    Q(i,1)=y(i);
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%for
+\end_layout
+
+\begin_layout Plain Layout
+
+  for j=2:n
+\end_layout
+
+\begin_layout Plain Layout
+
+    for i=1:n+1-j
+\end_layout
+
+\begin_layout Plain Layout
+
+      Q(i,j)=((xhat-x(i))*Q(i+1,j-1)-(xhat-x(i+j-1))*Q(i,j-1))/(x(i+j-1)-x(i));
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%for
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%for
+\end_layout
+
+\begin_layout Plain Layout
+
+end%function 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\family typewriter
+nevilles.m
+\family default
+ dapat diunduh di 
+\begin_inset CommandInset href
+LatexCommand href
+name "situs pendamping"
+target "http://lqbrin.github.io/tea-time-numerical/ancillaries.html"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Konsep Utama
+\end_layout
+
+\begin_layout Description
+Fungsi
+\begin_inset space ~
+\end_inset
+
+interpolasi: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+fungsi interpolasi
+\end_layout
+
+\end_inset
+
+Fungsi yang grafiknya harus melalui sekumpulan titik yang ditentukan.
+\end_layout
+
+\begin_layout Description
+Polinom
+\begin_inset space ~
+\end_inset
+
+interpolasi: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+polinom interpolasi
+\end_layout
+
+\end_inset
+
+Polinom yang grafiknya harus melalui sekumpulan titik yang ditentukan.
+ 
+ 
+\end_layout
+
+\begin_layout Description
+Polinom
+\begin_inset space ~
+\end_inset
+
+interpolasi
+\begin_inset space ~
+\end_inset
+
+yang
+\begin_inset space ~
+\end_inset
+
+berderajat
+\begin_inset space ~
+\end_inset
+
+terendah: Polinom berderajat terendah yang menginterpolasi sekumpulan 
+\begin_inset Formula $n+1$
+\end_inset
+
+ titik data bersifat unik.
+ Kita menyatakan polinom ini dengan 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Polinom
+\begin_inset space ~
+\end_inset
+
+interpolasi
+\begin_inset space ~
+\end_inset
+
+dengan
+\begin_inset space ~
+\end_inset
+
+derajat
+\begin_inset space ~
+\end_inset
+
+paling
+\begin_inset space ~
+\end_inset
+
+tinggi
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $n$
+\end_inset
+
+: Polinom yang menginterpolasi 
+\begin_inset Formula $n+1$
+\end_inset
+
+ titik berbeda berderajat paling tinggi 
+\begin_inset Formula $n$
+\end_inset
+
+ dan sama dengan polinom berderajat terendah yang menginterpolasi titik-titik tersebut.
+\end_layout
+
+\begin_layout Description
+Teorema
+\begin_inset space ~
+\end_inset
+
+Rolle
+\begin_inset space ~
+\end_inset
+
+yang Diperumum: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Teorema ! Rolle yang Diperumum
+\end_layout
+
+\end_inset
+
+Misalkan 
+\begin_inset Formula $f$
+\end_inset
+
+ mempunyai 
+\begin_inset Formula $n$
+\end_inset
+
+ turunan pada 
+\begin_inset Formula $(a,b)$
+\end_inset
+
+ dan 
+\begin_inset Formula $f,f',f'',\ldots,f^{(n-1)}$
+\end_inset
+
+ semuanya kontinu pada 
+\begin_inset Formula $[x_{0},x_{n}]$
+\end_inset
+
+.
+ Jika 
+\begin_inset Formula $f(x_{0})=f(x_{1})=\cdots=f(x_{n})$
+\end_inset
+
+ untuk suatu 
+\begin_inset Formula $x_{0}<x_{1}<\cdots<x_{n}$
+\end_inset
+
+, maka terdapat 
+\begin_inset Formula $\xi\in(a,b)$
+\end_inset
+
+ sedemikian sehingga 
+\begin_inset Formula $f^{(n)}(\xi)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Bentuk
+\begin_inset space ~
+\end_inset
+
+Lagrange
+\begin_inset space ~
+\end_inset
+
+dari
+\begin_inset space ~
+\end_inset
+
+suatu
+\begin_inset space ~
+\end_inset
+
+polinom
+\begin_inset space ~
+\end_inset
+
+interpolasi: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+bentuk Lagrange
+\end_layout
+
+\end_inset
+
+Bentuk Lagrange, 
+\begin_inset Formula $L_{n}$
+\end_inset
+
+, dari polinom berderajat paling tinggi 
+\begin_inset Formula $n$
+\end_inset
+
+ yang menginterpolasi titik-titik 
+\begin_inset Formula $(x_{0},y_{0}),(x_{1},y_{1}),\ldots,(x_{n},y_{n})$
+\end_inset
+
+ diberikan oleh rumus
+\begin_inset Formula 
+\[
+L_{n}(x)=\sum_{i=0}^{n}\frac{p_{i}(x)}{p_{i}(x_{i})}y_{i},
+\]
+
+\end_inset
+
+dengan 
+\begin_inset Formula ${\displaystyle p_{i}(x)=\prod_{\substack{j=0\\
+j\neq i
+}
+}^{n}(x-x_{j})=(x-x_{0})\cdots(x-x_{i-1})(x-x_{i+1})\cdots(x-x_{n})}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Galat
+\begin_inset space ~
+\end_inset
+
+interpolasi: Untuk 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+, polinom interpolasi berderajat terendah yang melalui 
+\begin_inset Formula $n+1$
+\end_inset
+
+ titik 
+\begin_inset Formula $(x_{0},y_{0}),(x_{1},y_{1}),\ldots,(x_{n},y_{n})$
+\end_inset
+
+, terdapat 
+\begin_inset Formula $\xi_{x}\in(a,b)$
+\end_inset
+
+ sedemikian sehingga
+\begin_inset Formula 
+\[
+f(x)-P_{n}(x)=\frac{f^{(n+1)}(\xi_{x})}{(n+1)!}(x-x_{0})(x-x_{1})\cdots(x-x_{n}),
+\]
+
+\end_inset
+
+dengan asumsi 
+\begin_inset Formula $f$
+\end_inset
+
+ mempunyai 
+\begin_inset Formula $n+1$
+\end_inset
+
+ turunan pada 
+\begin_inset Formula $(a,b)$
+\end_inset
+
+ dan 
+\begin_inset Formula $f,f',f'',\ldots,f^{(n)}$
+\end_inset
+
+ semuanya kontinu pada 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+, dengan 
+\begin_inset Formula $a=\min(x_{0},\ldots,x_{n},x)$
+\end_inset
+
+ dan 
+\begin_inset Formula $b=\max(x_{0},\ldots,x_{n},x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Metode
+\begin_inset space ~
+\end_inset
+
+Sidi: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Sidi
+\end_layout
+
+\end_inset
+
+Metode pencarian akar yang diringkas oleh rumus 
+\begin_inset Formula 
+\[
+x_{n+1}=x_{n}-\frac{f(x_{n})}{p'_{n,k}(x_{n})}
+\]
+
+\end_inset
+
+dengan 
+\begin_inset Formula $p_{n,k}$
+\end_inset
+
+ sebagai polinom interpolasi yang melalui titik-titik
+\begin_inset Formula 
+\[
+(x_{n},f(x_{n})),(x_{n-1},f(x_{n-1})),\ldots,(x_{n-k},f(x_{n-k})).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Metode
+\begin_inset space ~
+\end_inset
+
+Neville: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Neville
+\end_layout
+
+\end_inset
+
+Metode untuk menghitung polinom interpolasi berderajat terendah atau nilai-nilainya
+ berdasarkan relasi rekursif
+\begin_inset Formula 
+\begin{eqnarray*}
+P_{i,m+1}(x) & = & \frac{(x-x_{i})P_{i+1,m}(x)-(x-x_{i+m+1})P_{i,m}(x)}{x_{i+m+1}-x_{i}}\\
+P_{i,0}(x) & = & f(x_{i})
+\end{eqnarray*}
+
+\end_inset
+
+dengan 
+\begin_inset Formula $P_{k,l}$
+\end_inset
+
+ sebagai polinom berderajat terendah yang menginterpolasi data
+\begin_inset Formula 
+\[
+(x_{k},f(x_{k})),(x_{k+1},f(x_{k+1})),\ldots,(x_{k+l},f(x_{k+l})).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+startexercises 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Latihan
+\end_layout
+
+\begin_layout Enumerate
+Tuliskan polinom interpolasi Lagrange yang melalui 
+\begin_inset Formula $(1,2)$
+\end_inset
+
+, 
+\begin_inset Formula $(1.5,-0.83)$
+\end_inset
+
+, dan 
+\begin_inset Formula $(2.11,-1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Carilah polinom yang melalui keempat titik
+\begin_inset Formula 
+\[
+(0,0),\ (1,2),\ (4,-3),\mbox{ dan }(10,-1).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-lagrange"
+
+\end_inset
+
+Konstruksikan polinom Lagrange (berderajat paling tinggi dua) yang menginterpolasi
+ data berikut.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $(1,1)$
+\end_inset
+
+, 
+\begin_inset Formula $(2,1)$
+\end_inset
+
+, dan 
+\begin_inset Formula $(3,2)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $(0,10)$
+\end_inset
+
+, 
+\begin_inset Formula $(30,58)$
+\end_inset
+
+, 
+\begin_inset Formula $(1029,-32)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-lagrange-8"
+
+\end_inset
+
+
+\begin_inset Formula $(-10,10)$
+\end_inset
+
+, 
+\begin_inset Formula $(20,58)$
+\end_inset
+
+, 
+\begin_inset Formula $(1019,-32)$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\ $
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $15$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $200$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $10$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $15$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\ $
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $15$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $15$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-lagrange-7"
+
+\end_inset
+
+Misalkan data pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:interpolation-lagrange"
+
+\end_inset
+
+ berasal dari suatu fungsi 
+\begin_inset Formula $f$
+\end_inset
+
+ yang dapat didiferensialkan secukupnya.
+ Gunakan polinom interpolasi yang Anda peroleh pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:interpolation-lagrange"
+
+\end_inset
+
+ untuk menghampiri 
+\begin_inset Formula $f(1.3)$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-lagrange-2"
+
+\end_inset
+
+Carilah hampiran pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:interpolation-lagrange-7"
+
+\end_inset
+
+ menggunakan metode Neville.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Diberikan data berikut untuk 
+\begin_inset Formula $f(x)$
+\end_inset
+
+, hampiri 
+\begin_inset Formula $f(0.3)$
+\end_inset
+
+ menggunakan polinom interpolasi berderajat paling tinggi
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+1
+\end_layout
+
+\begin_layout Enumerate
+2
+\end_layout
+
+\begin_layout Enumerate
+3
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.8$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.7$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.75$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-lagrange-9"
+
+\end_inset
+
+Diberikan data berikut untuk 
+\begin_inset Formula $f(x)$
+\end_inset
+
+, hampiri 
+\begin_inset Formula $f(3)$
+\end_inset
+
+ menggunakan polinom interpolasi berderajat paling tinggi
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+1
+\end_layout
+
+\begin_layout Enumerate
+2
+\end_layout
+
+\begin_layout Enumerate
+3
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.8$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.7$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.75$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-lagrange-6"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Gunakan polinom interpolasi berderajat satu, dua, dan tiga untuk menghampiri
+ setiap nilai berikut:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $f(0.43)$
+\end_inset
+
+ jika 
+\begin_inset Formula $f(0)=1$
+\end_inset
+
+, 
+\begin_inset Formula $f(0.25)=1.64872$
+\end_inset
+
+, 
+\begin_inset Formula $f(0.5)=2.71828$
+\end_inset
+
+, 
+\begin_inset Formula $f(0.75)=4.48169$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-lagrange-10"
+
+\end_inset
+
+
+\begin_inset Formula $f(0.18)$
+\end_inset
+
+ jika 
+\begin_inset Formula $f(0.1)=-0.29004986$
+\end_inset
+
+, 
+\begin_inset Formula $f(0.2)=-0.56079734$
+\end_inset
+
+, 
+\begin_inset Formula $f(0.3)=-0.81401972$
+\end_inset
+
+, 
+\begin_inset Formula $f(0.4)=-1.0526302$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-lagrange-11"
+
+\end_inset
+
+
+\begin_inset Formula $f(2.26)$
+\end_inset
+
+ jika 
+\begin_inset Formula $f(1)=1.654$
+\end_inset
+
+, 
+\begin_inset Formula $f(1.5)=-2.569$
+\end_inset
+
+, 
+\begin_inset Formula $f(2)=-1.329$
+\end_inset
+
+, 
+\begin_inset Formula $f(2.5)=1.776$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f(11.26)$
+\end_inset
+
+ jika 
+\begin_inset Formula $f(10)=-0.7865$
+\end_inset
+
+, 
+\begin_inset Formula $f(11)=-1.2352$
+\end_inset
+
+, 
+\begin_inset Formula $f(12)=-0.8765$
+\end_inset
+
+, 
+\begin_inset Formula $f(13)=0.0021$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-lagrange-4"
+
+\end_inset
+
+Misalkan 
+\begin_inset Formula $x_{0}=1$
+\end_inset
+
+, 
+\begin_inset Formula $x_{1}=1.25$
+\end_inset
+
+, dan 
+\begin_inset Formula $x_{2}=1.6$
+\end_inset
+
+.
+ Dengan menggunakan data pada nilai-nilai 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+, konstruksikan polinom interpolasi berderajat paling tinggi satu dan
+ dua, lalu gunakan keduanya untuk menghampiri 
+\begin_inset Formula $f(1.4)$
+\end_inset
+
+.
+ Hitung galat absolutnya.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-lagrange-12"
+
+\end_inset
+
+
+\begin_inset Formula $f(x)=\sin\pi x$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f(x)=\sqrt[3]{x-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f(x)=e^{2x-4}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f(x)=\ln(10x)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-lagrange-13"
+
+\end_inset
+
+Gunakan rumus 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lagrangeInterpolatingPolynomialError"
+
+\end_inset
+
+ untuk mencari batas galat teoretis bagi hampiran pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:interpolation-lagrange-4"
+
+\end_inset
+
+.
+ Bandingkan batas tersebut dengan galat sebenarnya.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-lagrange-3"
+
+\end_inset
+
+Suatu polinom interpolasi Lagrange dikonstruksi untuk fungsi 
+\begin_inset Formula $f(x)=(\sqrt{2})^{x}$
+\end_inset
+
+ dengan menggunakan 
+\begin_inset Formula $x_{0}=0$
+\end_inset
+
+, 
+\begin_inset Formula $x_{1}=1$
+\end_inset
+
+, 
+\begin_inset Formula $x_{2}=2$
+\end_inset
+
+, 
+\begin_inset Formula $x_{3}=3$
+\end_inset
+
+.
+ Polinom tersebut digunakan untuk menghampiri 
+\begin_inset Formula $f(1.5)$
+\end_inset
+
+.
+ Carilah batas bagi galat dalam hampiran ini.
+\end_layout
+
+\begin_layout Enumerate
+Carilah polinom yang dimaksud pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:interpolation-lagrange-3"
+
+\end_inset
+
+.
+ Kemudian
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+gunakan polinom tersebut untuk menghampiri 
+\begin_inset Formula $f(1.5)$
+\end_inset
+
+; dan
+\end_layout
+
+\begin_layout Enumerate
+hitung galat sebenarnya dari hampiran ini, lalu bandingkan dengan
+ batas yang Anda hitung pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:interpolation-lagrange-3"
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Gunakan metode Neville untuk memperoleh hampiran pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:interpolation-lagrange-3"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Ketinggian sebuah roket model diberikan pada beberapa waktu dalam
+ tabel berikut.
+ Hampiri ketinggian roket pada waktu 
+\begin_inset Formula $t=0.6$
+\end_inset
+
+ detik menggunakan sedikitnya dua himpunan titik yang berbeda.
+ Jelaskan hampiran mana yang kemungkinan paling akurat.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Waktu (detik)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ketinggian (kaki)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.53238$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $30.0534$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.56040$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $32.7929$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.58842$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $35.4956$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.61644$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $38.1575$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-lagrange-5"
+
+\end_inset
+
+Tabel berikut merupakan hasil penggunaan metode Neville untuk menghampiri 
+\begin_inset Formula $f(0.4)$
+\end_inset
+
+.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="5">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.6$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P_{0,2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.016$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P_{1,1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.96$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P_{2,0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.75$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tentukan 
+\begin_inset Formula $f(0.5)$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-lagrange-14"
+
+\end_inset
+
+
+\begin_inset Formula $L_{3}(x)=-7x^{3}+57x^{2}-134x+78$
+\end_inset
+
+ adalah polinom interpolasi berderajat paling tinggi 3 untuk data dalam
+ tabel.
+ Tentukan 
+\begin_inset Formula $\omega$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.8$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\omega$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $24.375$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.696$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-17.088$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Misalkan 
+\begin_inset Formula $P_{3}(x)$
+\end_inset
+
+ adalah polinom interpolasi untuk data 
+\begin_inset Formula $(0,0)$
+\end_inset
+
+, 
+\begin_inset Formula $(0.5,y)$
+\end_inset
+
+, 
+\begin_inset Formula $(1,3)$
+\end_inset
+
+, 
+\begin_inset Formula $(2,2)$
+\end_inset
+
+.
+ Tentukan 
+\begin_inset Formula $y$
+\end_inset
+
+ jika koefisien 
+\begin_inset Formula $x^{3}$
+\end_inset
+
+ dalam 
+\begin_inset Formula $P_{3}(x)$
+\end_inset
+
+ adalah 6.
+\end_layout
+
+\begin_layout Enumerate
+Diberikan 
+\begin_inset Formula $f(x)=\sqrt{x-x^{2}}$
+\end_inset
+
+. Misalkan 
+\begin_inset Formula $P_{2}(x)$
+\end_inset
+
+ adalah polinom interpolasi pada 
+\begin_inset Formula $x_{0}=0,$
+\end_inset
+
+ 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+, dan 
+\begin_inset Formula $x_{2}=1$
+\end_inset
+
+.
+ Tentukan nilai terbesar 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ dalam 
+\begin_inset Formula $(0,1)$
+\end_inset
+
+ yang memenuhi 
+\begin_inset Formula $f(0.5)-P_{2}(0.5)=-0.25$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-lagrange-1"
+
+\end_inset
+
+Polinom yang menginterpolasi 
+\begin_inset Formula $n+1$
+\end_inset
+
+ titik tidak selalu berderajat 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Derajatnya paling tinggi 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Buatlah grafik data 
+\begin_inset Formula $(1,1)$
+\end_inset
+
+, 
+\begin_inset Formula $(2,3)$
+\end_inset
+
+, 
+\begin_inset Formula $(3,5)$
+\end_inset
+
+, dan 
+\begin_inset Formula $(4,7)$
+\end_inset
+
+, lalu buat dugaan tentang derajat polinom yang menginterpolasi
+ keempat titik tersebut.
+ Apa yang mendasari dugaan Anda?
+\end_layout
+
+\begin_layout Enumerate
+Gunakan metode Neville untuk mencari polinom yang dijelaskan pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:interpolation-lagrange-1"
+
+\end_inset
+
+.
+ Apakah derajatnya sesuai dengan dugaan Anda?
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-lagrange-15"
+
+\end_inset
+
+Misalkan
+\begin_inset Formula 
+\begin{eqnarray*}
+x_{j} & = & 1-\frac{1}{j+1}\quad\mbox{untuk }j=0,1,2,\ldots\\
+f(x) & = & 5+3x^{2018}\\
+P_{n}(x) & = & \mbox{polinom interpolasi}\\
+ &  & \mbox{yang melalui}\\
+ &  & (x_{0},f(x_{0})),\ldots,(x_{n},f(x_{n})).
+\end{eqnarray*}
+
+\end_inset
+
+Tentukan 
+\begin_inset Formula 
+\[
+\lim_{n\to\infty}P_{n}(1).
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Misalkan 
+\begin_inset Formula $f(x)=e^{-x}$
+\end_inset
+
+.
+ Dua bilangan berbeda dipilih secara acak dari selang 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+, sebutlah 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+.
+ Kemudian titik 
+\begin_inset Formula $(x_{0},f(x_{0}))$
+\end_inset
+
+ dan 
+\begin_inset Formula $(x_{1},f(x_{1}))$
+\end_inset
+
+ digunakan untuk memperoleh hampiran interpolasi Lagrange linear bagi 
+\begin_inset Formula $f$
+\end_inset
+
+ pada selang 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+.
+ Carilah suatu batas (yang berlaku untuk seluruh selang dan setiap pasangan titik 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+) bagi galat penggunaan hampiran ini.
+\end_layout
+
+\begin_layout Enumerate
+Berikan bukti induktif bahwa 
+\begin_inset Formula $P_{0,n}$
+\end_inset
+
+ adalah polinom berderajat paling tinggi 
+\begin_inset Formula $n$
+\end_inset
+
+ yang menginterpolasi data 
+\begin_inset Formula $(x_{0},f(x_{0})),(x_{1},f(x_{1})),\ldots,(x_{n},f(x_{n}))$
+\end_inset
+
+.
+ Lihat catatan 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "shellProofOfNevillesMethod"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+finishexercises 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

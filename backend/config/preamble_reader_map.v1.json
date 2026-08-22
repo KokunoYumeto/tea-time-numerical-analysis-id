@@ -1,0 +1,55 @@
+{
+  "schema_id": "ttna-tex-reader-map-v1",
+  "schema_version": "1.0.0",
+  "source_path": "source/lqbrin-tea-time-numerical-1868821/preamble.tex",
+  "source_bytes": 7879,
+  "source_sha256": "90cc5275c0338abbac21435a58c521693493fb763018e4177739876ea71cb283",
+  "units": [
+    {"key": "details", "kind": "reader_label_group", "source_local_id": "preamble.details", "order": 1},
+    {"key": "digression", "kind": "reader_label_group", "source_local_id": "preamble.digression", "order": 2},
+    {"key": "titleHGP", "kind": "title_template", "source_local_id": "preamble.titleHGP", "order": 3},
+    {"key": "titleGM", "kind": "title_template", "source_local_id": "preamble.titleGM", "order": 4},
+    {"key": "titleTMB", "kind": "title_template", "source_local_id": "preamble.titleTMB", "order": 5},
+    {"key": "titleGP", "kind": "title_template", "source_local_id": "preamble.titleGP", "order": 6},
+    {"key": "titlePP", "kind": "title_template", "source_local_id": "preamble.titlePP", "order": 7}
+  ],
+  "segments": [
+    {"key": "details.float_name", "unit_key": "details", "line": 25, "prefix": "\\floatname{details}{", "suffix": "}", "semantic_slot": "reader_label", "order": 1},
+    {"key": "details.start_heading", "unit_key": "details", "line": 31, "prefix": "  \\begin{center}\\textbf{", "suffix": "} #1\\end{center}", "semantic_slot": "reader_label", "order": 2},
+    {"key": "digression.counter_label", "unit_key": "digression", "line": 78, "prefix": "   \\begin{center}\\textbf{", "suffix": " \\arabic{thecrumpet}:} #1\\end{center}%", "semantic_slot": "reader_label", "order": 1},
+
+    {"key": "titleHGP.author", "unit_key": "titleHGP", "line": 139, "prefix": "  {\\Large ", "suffix": "} \\\\", "semantic_slot": "author_credit", "order": 1},
+    {"key": "titleHGP.title", "unit_key": "titleHGP", "line": 142, "prefix": "  {\\noindent\\Huge\\bfseries ", "suffix": "} \\par", "semantic_slot": "title", "order": 2},
+    {"key": "titleHGP.tagline", "unit_key": "titleHGP", "line": 144, "prefix": "  {\\Large\\itshape ", "suffix": "} \\par", "semantic_slot": "subtitle", "order": 3},
+    {"key": "titleHGP.series", "unit_key": "titleHGP", "line": 146, "prefix": "  {\\scshape ", "suffix": "} \\par", "semantic_slot": "series_tagline", "order": 4},
+    {"key": "titleHGP.institution", "unit_key": "titleHGP", "line": 150, "prefix": "  {\\Large ", "suffix": "}", "semantic_slot": "institution_credit", "order": 5},
+
+    {"key": "titleGM.title", "unit_key": "titleGM", "line": 185, "prefix": "    {\\noindent\\HUGE\\bfseries ", "suffix": "}\\\\[2\\baselineskip]", "semantic_slot": "title", "order": 1},
+    {"key": "titleGM.tagline", "unit_key": "titleGM", "line": 186, "prefix": "    {\\Large\\itshape ", "suffix": "}\\\\[4\\baselineskip]", "semantic_slot": "subtitle", "order": 2},
+    {"key": "titleGM.author", "unit_key": "titleGM", "line": 187, "prefix": "    {\\Large ", "suffix": "}\\par", "semantic_slot": "author_credit", "order": 3},
+    {"key": "titleGM.institution", "unit_key": "titleGM", "line": 189, "prefix": "    {\\noindent ", "suffix": "}\\\\[\\baselineskip]", "semantic_slot": "institution_credit", "order": 4},
+
+    {"key": "titleTMB.measurement", "unit_key": "titleTMB", "line": 201, "prefix": "\\settowidth{\\unitlength}{\\LARGE ", "suffix": "}", "semantic_slot": "measurement_text", "order": 1},
+    {"key": "titleTMB.author", "unit_key": "titleTMB", "line": 203, "prefix": "{\\large\\scshape ", "suffix": "}\\\\[\\baselineskip]", "semantic_slot": "author_credit", "order": 2},
+    {"key": "titleTMB.title", "unit_key": "titleTMB", "line": 206, "prefix": "{\\LARGE ", "suffix": "}\\\\[\\baselineskip]", "semantic_slot": "title", "order": 3},
+    {"key": "titleTMB.tagline", "unit_key": "titleTMB", "line": 207, "prefix": "{\\itshape ", "suffix": "}\\\\[0.2\\baselineskip]", "semantic_slot": "subtitle", "order": 4},
+    {"key": "titleTMB.series", "unit_key": "titleTMB", "line": 210, "prefix": "{\\large\\scshape ", "suffix": "}\\par", "semantic_slot": "series_tagline", "order": 5},
+    {"key": "titleTMB.institution", "unit_key": "titleTMB", "line": 212, "prefix": "{\\large\\scshape ", "suffix": "}\\\\[\\baselineskip]", "semantic_slot": "institution_credit", "order": 6},
+    {"key": "titleTMB.year", "unit_key": "titleTMB", "line": 213, "prefix": "{\\small\\scshape ", "suffix": "}\\par", "semantic_slot": "publication_year", "order": 7},
+
+    {"key": "titleGP.title", "unit_key": "titleGP", "line": 223, "prefix": "{\\LARGE ", "suffix": "}\\\\[0.2\\baselineskip]", "semantic_slot": "title", "order": 1},
+    {"key": "titleGP.tagline", "unit_key": "titleGP", "line": 227, "prefix": "", "suffix": " \\\\", "semantic_slot": "subtitle", "order": 2},
+    {"key": "titleGP.event", "unit_key": "titleGP", "line": 228, "prefix": "", "suffix": "\\par", "semantic_slot": "event_placeholder", "order": 3},
+    {"key": "titleGP.editor_credit", "unit_key": "titleGP", "line": 230, "prefix": "", "suffix": " \\\\[\\baselineskip]", "semantic_slot": "editor_credit", "order": 4},
+    {"key": "titleGP.editors", "unit_key": "titleGP", "line": 231, "prefix": "{\\Large ", "suffix": "\\par}", "semantic_slot": "editor_placeholders", "order": 5},
+    {"key": "titleGP.organization", "unit_key": "titleGP", "line": 232, "prefix": "{\\itshape ", "suffix": "\\par}", "semantic_slot": "organization_address", "order": 6},
+    {"key": "titleGP.year", "unit_key": "titleGP", "line": 235, "prefix": "{\\scshape ", "suffix": "} \\\\", "semantic_slot": "publication_year_placeholder", "order": 7},
+    {"key": "titleGP.publisher", "unit_key": "titleGP", "line": 236, "prefix": "{\\large ", "suffix": "}\\par", "semantic_slot": "publisher_placeholder", "order": 8},
+
+    {"key": "titlePP.title_first", "unit_key": "titlePP", "line": 245, "prefix": "{\\HUGE\\color{MidnightBlue} ", "suffix": "}\\\\[\\baselineskip]", "semantic_slot": "title", "order": 1},
+    {"key": "titlePP.tagline", "unit_key": "titlePP", "line": 246, "prefix": "{", "suffix": "}\\\\[1.1\\baselineskip]", "semantic_slot": "subtitle", "order": 2},
+    {"key": "titlePP.title_second", "unit_key": "titlePP", "line": 247, "prefix": "{\\HUGE\\color{MidnightBlue} ", "suffix": "} \\\\[\\baselineskip]", "semantic_slot": "title", "order": 3},
+    {"key": "titlePP.author", "unit_key": "titlePP", "line": 248, "prefix": "{\\Large ", "suffix": "}\\par", "semantic_slot": "author_credit", "order": 4},
+    {"key": "titlePP.institution", "unit_key": "titlePP", "line": 252, "prefix": "{\\large ", "suffix": "}", "semantic_slot": "institution_credit", "order": 5}
+  ]
+}

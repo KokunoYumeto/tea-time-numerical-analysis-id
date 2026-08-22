@@ -1,0 +1,1541 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+\input $HOME/Documents/textbook/preamble
+\end_preamble
+\use_default_options true
+\master TeaTimeNumericalAnalysis.lyx
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 4cm
+\topmargin 2.5cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 1
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Interpolasi
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Interpolation"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:rootFindingChallenge"
+
+\end_inset
+
+Tantangan pencarian akar
+\end_layout
+
+\begin_layout Standard
+Bab ini kita awali dengan memadukan isinya dengan isi bab sebelumnya.
+ Dalam bab ini, kita akan membahas fungsi interpolasi (fungsi yang grafiknya
+ harus melalui sekumpulan titik yang ditentukan) dan interpolasi (proses
+ mencari fungsi semacam itu).
+ Pada bab sebelumnya, kita membahas penghampiran akar fungsi melalui komputasi
+ numerik.
+ Dengan memadukan gagasan-gagasan tersebut dalam bagian ini, kita menyajikan
+ sebuah fungsi interpolasi, yang akan kita sebut 
+\begin_inset Formula $f$
+\end_inset
+
+, lalu kita menantang pembaca untuk menemukan keenam akar dari 
+\begin_inset Formula $f$
+\end_inset
+
+, 
+\begin_inset Formula $f'$
+\end_inset
+
+, dan suatu antiturunan tertentu dari 
+\begin_inset Formula $f$
+\end_inset
+
+ seakurat dan seefisien mungkin.
+ Grafik ketiga fungsi tersebut dan definisi 
+\begin_inset Formula $f$
+\end_inset
+
+ disajikan berikut ini.
+ Jika Anda menerima tantangan ini, bersiaplah menggunakan seluruh pengetahuan
+ Anda tentang pencarian akar dan Octave.
+ Masalah ini tidak mudah diselesaikan!
+\end_layout
+
+\begin_layout Standard
+Jika ingin langsung mencobanya, Anda dapat melewati sebagian besar isi bagian
+ ini.
+ Gunakan ketiga grafik dan kode Octave sebagai titik awal untuk mencari akar
+ dari 
+\begin_inset Formula $F$
+\end_inset
+
+, 
+\begin_inset Formula $f$
+\end_inset
+
+, dan 
+\begin_inset Formula $f'$
+\end_inset
+
+.
+ Materi selebihnya disediakan untuk membantu Anda memahami definisi dan
+ konstruksi fungsi-fungsi tersebut, tetapi bukan merupakan prasyarat untuk
+ mengikuti tantangan ini.
+\end_layout
+
+\begin_layout Subsection
+Fungsi 
+\begin_inset Formula $f$
+\end_inset
+
+ dan antiturunannya
+\end_layout
+
+\begin_layout Standard
+Fungsi
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/calculus_derivatives3.pdf
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\noindent
+yang akan kita sebut 
+\begin_inset Formula $F$
+\end_inset
+
+, dapat dengan mudah disangka sebagai polinom kubik atau polinom berderajat
+ lebih tinggi, padahal fungsi ini sama sekali tidak sesederhana itu.
+ Pertama, domainnya adalah interval 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+, sehingga grafik yang ditampilkan merupakan keseluruhan grafiknya.
+ Kedua, fungsi ini hanya memiliki dua turunan.
+ Ketiga, definisinya agak tidak lazim.
+ Kita akan segera membahasnya lebih lanjut.
+\end_layout
+
+\begin_layout Standard
+Di sini kita berhadapan dengan antiturunan dari suatu fungsi interpolasi fraktal.
+ Fungsi interpolasi adalah fungsi yang grafiknya melalui sekumpulan titik
+ yang ditentukan.
+ Fungsi ini kebetulan bersifat fraktal, sehingga merupakan fungsi interpolasi
+ 
+\shape italic
+fraktal
+\shape default
+.
+ Fungsi interpolasi fraktal 
+\begin_inset Formula $f$
+\end_inset
+
+ melalui
+\begin_inset Formula 
+\begin{equation}
+(0,.123),\ (.33,-.123),\mbox{ dan }(1,.5)\label{eq:interpolationPoints}
+\end{equation}
+
+\end_inset
+
+sedemikian rupa sehingga grafik yang ditampilkan adalah grafik antiturunannya.
+ Ketidaklaziman definisi 
+\begin_inset Formula $F$
+\end_inset
+
+ berasal dari ketidaklaziman definisi 
+\begin_inset Formula $f$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+f(x)=\begin{cases}
+f_{1}+c_{1}\frac{x}{\alpha}+d_{1}f\left(\frac{x}{\alpha}\right), & 0\leq x\leq\alpha\\
+f_{2}+c_{2}\frac{x-\alpha}{1-\alpha}+d_{2}f\left(\frac{x-\alpha}{1-\alpha}\right), & \alpha\leq x\leq1
+\end{cases}
+\]
+
+\end_inset
+
+dengan
+\begin_inset Formula 
+\[
+\begin{gathered}f_{1}=\frac{8979}{100000},\ c_{1}=-\frac{34779}{100000},\ d_{1}=\frac{27}{100}\\
+f_{2}=-\frac{75891}{550000},\ c_{2}=\frac{317391}{550000},\ d_{2}=\frac{67}{550}\\
+\alpha=\frac{33}{100}.
+\end{gathered}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{digression}{Fungsi Interpolasi Fraktal}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Fungsi interpolasi fraktal dapat melalui lebih dari tiga titik.
+ Bahkan, tiga merupakan jumlah minimum titiknya.
+ Secara umum, untuk 
+\begin_inset Formula $n\geq3$
+\end_inset
+
+, andaikan 
+\begin_inset Formula $x_{1}<x_{2}<\cdots<x_{n}$
+\end_inset
+
+.
+ Fungsi interpolasi fraktal linear (terdapat jenis fungsi interpolasi fraktal
+ lainnya) yang melalui setiap titik
+\begin_inset Formula 
+\[
+(x_{1},y_{1}),(x_{2},y_{2}),\ldots,(x_{n},y_{n})
+\]
+
+\end_inset
+
+dan berdomain 
+\begin_inset Formula $[x_{1},x_{n}]$
+\end_inset
+
+ didefinisikan oleh transformasi linear 
+\begin_inset Formula 
+\[
+L_{i}\left(\begin{array}{c}
+x\\
+y
+\end{array}\right)=\left(\begin{array}{cc}
+a_{i} & 0\\
+c_{i} & d_{i}
+\end{array}\right)\left(\begin{array}{c}
+x\\
+y
+\end{array}\right)+\left(\begin{array}{c}
+e_{i}\\
+f_{i}
+\end{array}\right),\quad i=1,2,\ldots,n-1.
+\]
+
+\end_inset
+
+Parameter 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+, serta 
+\begin_inset Formula $f_{i}$
+\end_inset
+
+ dihitung berdasarkan syarat bahwa fungsi tersebut menginterpolasi titik-titik
+ yang diberikan.
+ Secara khusus, kita mensyaratkan
+\begin_inset Formula 
+\[
+L_{i}\left(\begin{array}{c}
+x_{1}\\
+y_{1}
+\end{array}\right)=\left(\begin{array}{c}
+x_{i}\\
+y_{i}
+\end{array}\right)\mbox{ dan }L_{i}\left(\begin{array}{c}
+x_{n}\\
+y_{n}
+\end{array}\right)=\left(\begin{array}{c}
+x_{i+1}\\
+y_{i+1}
+\end{array}\right).
+\]
+
+\end_inset
+
+Parameter 
+\begin_inset Formula $d_{i}$
+\end_inset
+
+ adalah parameter bebas dengan pembatasan 
+\begin_inset Formula $|d_{i}|<1$
+\end_inset
+
+.
+ Dengan perhitungan aljabar langsung dapat ditunjukkan bahwa
+\begin_inset Formula 
+\begin{eqnarray*}
+a_{i} & = & \frac{x_{i+1}-x_{i}}{x_{n}-x_{1}}\\
+c_{i} & = & \frac{y_{i+1}-y_{i}-d_{i}(y_{n}-y_{1})}{x_{n}-x_{1}}\\
+e_{i} & = & x_{i}-a_{i}x_{1}\\
+f_{i} & = & y_{i}-c_{i}x_{1}-d_{i}y_{1}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Secara bersama-sama, transformasi 
+\begin_inset Formula $L_{i}$
+\end_inset
+
+ mendefinisikan fungsi 
+\begin_inset Formula $f$
+\end_inset
+
+, dengan setiap 
+\begin_inset Formula $L_{i}$
+\end_inset
+
+ menangani subselang 
+\begin_inset Formula $[x_{i},x_{i+1}]$
+\end_inset
+
+ dari domain tersebut.
+ 
+\begin_inset Formula $L_{i}\left(\begin{array}{c}
+x\\
+y
+\end{array}\right)=\left(\begin{array}{c}
+a_{i}x+e_{i}\\
+c_{i}x+d_{i}y+f_{i}
+\end{array}\right)$
+\end_inset
+
+, sehingga ketika 
+\begin_inset Formula $L_{i}$
+\end_inset
+
+ memetakan 
+\begin_inset Formula $x$
+\end_inset
+
+ ke 
+\begin_inset Formula $a_{i}x+e_{i}$
+\end_inset
+
+, transformasi tersebut secara bersamaan memetakan 
+\begin_inset Formula $y$
+\end_inset
+
+ ke 
+\begin_inset Formula $c_{i}x+d_{i}y+f_{i}$
+\end_inset
+
+.
+ Karena 
+\begin_inset Formula $L_{i}$
+\end_inset
+
+ menerapkan pemetaan ini pada fungsi 
+\begin_inset Formula $f$
+\end_inset
+
+, harus berlaku 
+\begin_inset Formula $f(a_{i}x+e_{i})=c_{i}x+d_{i}f(x)+f_{i}$
+\end_inset
+
+ pada 
+\begin_inset Formula $[x_{1},x_{n}]$
+\end_inset
+
+, atau secara ekuivalen,
+\begin_inset Formula 
+\[
+f(x)=f_{i}+c_{i}\left(\frac{x-e_{i}}{a_{i}}\right)+d_{i}f\left(\frac{x-e_{i}}{a_{i}}\right)\mbox{ pada }[x_{i},x_{i+1}].
+\]
+
+\end_inset
+
+Dengan menyatukan seluruh bagian tersebut, 
+\begin_inset Formula $f$
+\end_inset
+
+ didefinisikan oleh 
+\begin_inset Formula 
+\[
+f(x)=\begin{cases}
+h_{1}(x), & x_{1}\leq x\leq x_{2}\\
+h_{2}(x), & x_{2}\leq x\leq x_{3}\\
+ & \vdots\\
+h_{n-1}(x), & x_{n-1}\leq x\leq x_{n}
+\end{cases}
+\]
+
+\end_inset
+
+dengan
+\begin_inset Formula 
+\[
+h_{i}(x)=f_{i}+c_{i}\left(\frac{x-e_{i}}{a_{i}}\right)+d_{i}f\left(\frac{x-e_{i}}{a_{i}}\right).
+\]
+
+\end_inset
+
+Akibatnya, 
+\begin_inset Formula $F(x)=\int_{x_{1}}^{x}f(t)\, dt$
+\end_inset
+
+ didefinisikan oleh
+\begin_inset Formula 
+\[
+F(x)=\begin{cases}
+\int_{x_{1}}^{x}h_{1}(t)dt, & x_{1}\leq x\leq x_{2}\\
+F(x_{2})+\int_{x_{2}}^{x}h_{2}(t)dt, & x_{2}\leq x\leq x_{3}\\
+ & \vdots\\
+F(x_{n-1})+\int_{x_{n-1}}^{x}h_{n-1}(t)dt, & x_{n-1}\leq x\leq x_{n}
+\end{cases}
+\]
+
+\end_inset
+
+tanpa syarat tambahan, sedangkan 
+\begin_inset Formula $f'(x)$
+\end_inset
+
+ didefinisikan oleh
+\begin_inset Formula 
+\[
+f'(x)=\begin{cases}
+h_{1}'(x), & x_{1}\leq x\leq x_{2}\\
+h_{2}'(x), & x_{2}<x\leq x_{3}\\
+ & \vdots\\
+h_{n-1}'(x), & x_{n-1}<x\leq x_{n}
+\end{cases}
+\]
+
+\end_inset
+
+asalkan 
+\begin_inset Formula $f'$
+\end_inset
+
+ ada! Jika 
+\begin_inset Formula $\left|\frac{d_{i}}{a_{i}}\right|<1$
+\end_inset
+
+ untuk setiap 
+\begin_inset Formula $i$
+\end_inset
+
+, maka turunannya ada hampir di mana-mana, tetapi pada umumnya tidak kontinu.
+ Jika selain itu berlaku 
+\begin_inset Formula $h_{i}'(x_{i+1})=h_{i+1}'(x_{i+1})$
+\end_inset
+
+ untuk setiap 
+\begin_inset Formula $i=1,2,\ldots,n-2$
+\end_inset
+
+, maka turunannya ada dan kontinu.
+\end_layout
+
+\begin_layout Description
+Rujukan 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Bab 6"
+key "barnsley"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{digression}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Definisi 
+\begin_inset Formula $f$
+\end_inset
+
+ merujuk pada dirinya sendiri.
+ Nilai-nilainya didefinisikan, antara lain, melalui nilai-nilai fungsi itu
+ sendiri! Karena itu, penghitungan nilai fungsi ini agak berbeda dari penghitungan
+ nilai fungsi biasa.
+ Sebagai contoh, karena 
+\begin_inset Formula $f$
+\end_inset
+
+ melalui titik-titik 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:interpolationPoints"
+
+\end_inset
+
+, harus berlaku 
+\begin_inset Formula $f(0)=.123$
+\end_inset
+
+, 
+\begin_inset Formula $f(.33)=-.123$
+\end_inset
+
+, dan 
+\begin_inset Formula $f(1)=.5$
+\end_inset
+
+, yang dapat kita periksa dengan cukup mudah.
+ Menurut definisi,
+\begin_inset Formula 
+\[
+f(0)=f_{1}+d_{1}f(0)=.08979+.27f(0)
+\]
+
+\end_inset
+
+ sehingga 
+\begin_inset Formula $f(0)$
+\end_inset
+
+ didefinisikan sebagian oleh nilainya sendiri.
+ Kita perlu menyelesaikan persamaan 
+\begin_inset Formula $f(0)=.08979+.27f(0)$
+\end_inset
+
+ untuk memperoleh 
+\begin_inset Formula $f(0)$
+\end_inset
+
+.
+ Dengan demikian, kita memperoleh 
+\begin_inset Formula $f(0)=\frac{.08979}{.73}=.123$
+\end_inset
+
+, seperti yang dijanjikan.
+ Sekali lagi menurut definisi, 
+\begin_inset Formula 
+\[
+f(1)=f_{2}+c_{2}+d_{2}f(1)=-\frac{75891}{550000}+\frac{317391}{550000}+\frac{67}{550}f(1).
+\]
+
+\end_inset
+
+Dengan menyelesaikan persamaan tersebut terhadap 
+\begin_inset Formula $f(1)$
+\end_inset
+
+, kita memperoleh 
+\begin_inset Formula $f(1)=\frac{-\frac{75891}{550000}+\frac{317391}{550000}}{1-\frac{67}{550}}=\frac{1}{2}$
+\end_inset
+
+, seperti yang dijanjikan.
+ Karena 
+\begin_inset Formula $\alpha=.33$
+\end_inset
+
+, definisi tersebut sebenarnya memberikan dua cara untuk menghitung 
+\begin_inset Formula $f(.33)$
+\end_inset
+
+.
+ Menurut bagian pertama definisi 
+\begin_inset Formula $f$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{eqnarray*}
+f(.33)=f(\alpha) & = & f_{1}+c_{1}+d_{1}f(1)\\
+ & = & \frac{8979}{100000}-\frac{34779}{100000}+\frac{27}{100}\cdot\frac{1}{2}\\
+ & = & -.123.
+\end{eqnarray*}
+
+\end_inset
+
+Sekarang adalah saat yang tepat untuk memverifikasi bahwa 
+\begin_inset Formula $f(\alpha)=-.123$
+\end_inset
+
+ juga berlaku menurut bagian kedua definisi 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ Cobalah! Menghitung nilai-nilai lain dari 
+\begin_inset Formula $f$
+\end_inset
+
+ mungkin sedikit lebih menantang, tetapi beberapa di antaranya masih cukup
+ mudah.
+ 
+\begin_inset Formula $\alpha^{2}<\alpha$
+\end_inset
+
+ dan 
+\begin_inset Formula $\alpha+(1-\alpha)\alpha>\alpha$
+\end_inset
+
+, sehingga
+\begin_inset Formula 
+\begin{eqnarray*}
+f(\alpha^{2}) & = & f_{1}+c_{1}\alpha+d_{1}f\left(\alpha\right)\\
+ & = & \frac{8979}{100000}-\frac{34779}{100000}\cdot\frac{33}{100}+\frac{27}{100}\cdot\left(-\frac{123}{1000}\right)\\
+ & = & -.0581907\\
+f(\alpha+(1-\alpha)\alpha) & = & f_{2}+c_{2}\alpha+d_{2}f\left(\alpha\right)\\
+ & = & -\frac{75891}{550000}+\frac{317391}{550000}\cdot\frac{33}{100}+\frac{67}{550}\cdot\left(-\frac{123}{1000}\right)\\
+ & = & \frac{2060703}{55000000}\\
+ & = & .0374673\overline{27}
+\end{eqnarray*}
+
+\end_inset
+
+Dengan tingkat kesulitan yang serupa, sekarang Anda dapat menghitung
+\begin_inset Formula 
+\[
+\begin{gathered}f(\alpha^{3}),\ f(\alpha(\alpha+(1-\alpha)\alpha)),\ f(\alpha+(1-\alpha)\alpha^{2}),\\
+\mbox{dan }f(\alpha+(1-\alpha)(\alpha+(1-\alpha)\alpha)).
+\end{gathered}
+\]
+
+\end_inset
+
+Jawaban 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "ans:evaluatingf"
+
+\end_inset
+
+.
+ Secara lebih umum, setelah Anda menghitung 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ untuk suatu nilai 
+\begin_inset Formula $x$
+\end_inset
+
+, Anda kemudian dapat menghitung 
+\begin_inset Formula $f(\alpha x)$
+\end_inset
+
+ dan 
+\begin_inset Formula $f(\alpha+(1-\alpha)x)$
+\end_inset
+
+ dari nilai tersebut.
+\end_layout
+
+\begin_layout Standard
+Setelah memahami 
+\begin_inset Formula $f$
+\end_inset
+
+, kita mendefinisikan 
+\begin_inset Formula $F$
+\end_inset
+
+ dengan 
+\begin_inset Formula $F(x)=\int_{0}^{x}f(t)\, dt$
+\end_inset
+
+ untuk setiap 
+\begin_inset Formula $x\in[0,1]$
+\end_inset
+
+.
+ Dengan mengintegralkan 
+\begin_inset Formula $f(x)$
+\end_inset
+
+, kita memperoleh
+\begin_inset Formula 
+\[
+F(x)=\begin{cases}
+f_{1}x+\frac{c_{1}x^{2}}{2\alpha}+\alpha d_{1}F\left(\frac{x}{\alpha}\right), & 0\leq x\leq\alpha\\
+F(\alpha)+f_{2}\left(x-\alpha\right)+\frac{c_{2}\left(x-\alpha\right)^{2}}{2(1-\alpha)}+(1-\alpha)d_{2}F\left(\frac{x-\alpha}{1-\alpha}\right), & \alpha\leq x\leq1
+\end{cases}
+\]
+
+\end_inset
+
+dengan kedua rumus tersebut sekali lagi berlaku ketika 
+\begin_inset Formula $x=\alpha$
+\end_inset
+
+.
+ Sama seperti 
+\begin_inset Formula $f$
+\end_inset
+
+, fungsi 
+\begin_inset Formula $F$
+\end_inset
+
+ merujuk pada dirinya sendiri.
+ Untuk mencari nilai-nilai 
+\begin_inset Formula $F$
+\end_inset
+
+, kita harus menjalani proses yang sama seperti ketika mencari nilai-nilai
+ 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ Sebagai permulaan, 
+\begin_inset Formula $F(0)=\alpha d_{1}F(0)\Rightarrow(1-\alpha d_{1})\cdot F(0)=0,$
+\end_inset
+
+ tetapi 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ dan 
+\begin_inset Formula $d_{1}$
+\end_inset
+
+ keduanya kurang dari 1, sehingga 
+\begin_inset Formula $1-\alpha d_{1}\neq0$
+\end_inset
+
+.
+ Oleh karena itu,
+\begin_inset Formula 
+\[
+F(0)=\frac{0}{1-\alpha d_{1}}=0.
+\]
+
+\end_inset
+
+Nilai ini juga dapat kita hitung melalui integrasi: 
+\begin_inset Formula $F(0)=\int_{0}^{0}f(t)\, dt=0$
+\end_inset
+
+.
+ Selanjutnya, menurut rumus tersebut,
+\begin_inset Formula 
+\[
+\begin{gathered}F(1)=F(\alpha)+(1-\alpha)\left(f_{2}+\frac{c_{2}}{2}+d_{2}F(1)\right)\\
+\mbox{dan}\\
+F(\alpha)=\alpha\left(f_{1}+\frac{c_{1}}{2}+d_{1}F(1)\right),
+\end{gathered}
+\]
+
+\end_inset
+
+yang merupakan sistem dua persamaan dengan dua peubah yang tidak diketahui,
+ yaitu 
+\begin_inset Formula $F(\alpha)$
+\end_inset
+
+ dan 
+\begin_inset Formula $F(1)$
+\end_inset
+
+.
+ Solusinya adalah
+\begin_inset Formula 
+\[
+\begin{gathered}F(\alpha)=-\frac{121012947}{6081400000}\approx-.01989886325517151\\
+F(1)=\frac{5361861}{60814000}\approx0.0881682014009932.
+\end{gathered}
+\]
+
+\end_inset
+
+Setelah memperoleh ketiga nilai 
+\begin_inset Formula $F(0),\ F(\alpha),$
+\end_inset
+
+ dan 
+\begin_inset Formula $F(1)$
+\end_inset
+
+, kita dapat menghitung nilai-nilai lainnya seperti sebelumnya.
+ Kedua nilai 
+\begin_inset Formula $F(\alpha x)$
+\end_inset
+
+ dan 
+\begin_inset Formula $F(\alpha+(1-\alpha)x)$
+\end_inset
+
+ sama-sama bergantung pada nilai 
+\begin_inset Formula $F(x)$
+\end_inset
+
+.
+ Jadi, kita dapat menghitung 
+\begin_inset Formula $F(\alpha^{2})$
+\end_inset
+
+ dan 
+\begin_inset Formula $F(\alpha+(1-\alpha)\alpha)$
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{eqnarray*}
+F(\alpha^{2}) & = & f_{1}\alpha^{2}+\frac{c_{1}\alpha^{3}}{2}+\alpha d_{1}F\left(\alpha\right)\\
+ & = & \frac{10678194456039}{6081400000000000}\\
+ & \approx & .001755877668964219\\
+F(\alpha+(1-\alpha)\alpha) & = & F(\alpha)+f_{2}\left(1-\alpha\right)\alpha+\frac{c_{2}\left(1-\alpha\right)\alpha^{2}}{2}+(1-\alpha)d_{2}F\left(\alpha\right)\\
+ & = & -\frac{94196657189979}{3040700000000000}\\
+ & \approx & -.03097860926430723.
+\end{eqnarray*}
+
+\end_inset
+
+Sekarang Anda dapat menghitung sendiri 
+\begin_inset Formula $F(\alpha^{3})$
+\end_inset
+
+, 
+\begin_inset Formula $F(\alpha(\alpha+(1-\alpha)\alpha))$
+\end_inset
+
+, 
+\begin_inset Formula $F(\alpha+(1-\alpha)\alpha^{2})$
+\end_inset
+
+, serta 
+\begin_inset Formula $F(\alpha+(1-\alpha)(\alpha+(1-\alpha)\alpha))$
+\end_inset
+
+.
+ Jawaban 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "ans:evaluatingF"
+
+\end_inset
+
+.
+ Anda tidak perlu bersusah payah menghitung nilai-nilai ini secara eksak.
+ Hal itu memerlukan sistem aljabar komputer dengan presisi arbitrer dan bukan
+ merupakan tujuan sebenarnya.
+ Tujuannya adalah memastikan bahwa Anda memahami cara melakukan perhitungannya.
+ Gunakan kalkulator atau Octave beserta nilai-nilai hampiran yang telah dihitung.
+\end_layout
+
+\begin_layout Subsection
+Turunan 
+\begin_inset Formula $f$
+\end_inset
+
+ dan grafik lainnya
+\end_layout
+
+\begin_layout Standard
+Fungsi 
+\begin_inset Formula $f$
+\end_inset
+
+ memiliki turunan yang kontinu.
+ Bahkan, parameter-parameter yang mendefinisikan 
+\begin_inset Formula $f$
+\end_inset
+
+ dipilih secara khusus agar turunannya ada dan kontinu.
+ Dengan menurunkan 
+\begin_inset Formula $f$
+\end_inset
+
+, kita memperoleh
+\begin_inset Formula 
+\[
+f'(x)=\begin{cases}
+\frac{c_{1}}{\alpha}+\frac{d_{1}}{\alpha}f'\left(\frac{x}{\alpha}\right), & 0\leq x\leq\alpha\\
+\frac{c_{2}}{1-\alpha}+\frac{d_{2}}{1-\alpha}f'\left(\frac{x-\alpha}{1-\alpha}\right), & \alpha\leq x\leq1
+\end{cases}
+\]
+
+\end_inset
+
+ dan seperti sebelumnya, kita dapat memeriksa bahwa definisi tersebut konsisten
+ ketika 
+\begin_inset Formula $x=\alpha$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\begin{gathered}f'(0)=\frac{c_{1}}{\alpha}+\frac{d_{1}}{\alpha}f'(0)\Rightarrow f'(0)=\frac{c_{1}}{\alpha-d_{1}}=-\frac{11593}{2000}=\text{−}5.7965\\
+f'(1)=\frac{c_{2}}{1-\alpha}+\frac{d_{2}}{1-\alpha}f'(1)\Rightarrow f'(1)=\frac{c_{2}}{1-\alpha-d_{2}}=\frac{105797}{100500}\approx1.052706467661692\\
+f'(\alpha)=\frac{c_{1}}{\alpha}+\frac{d_{1}}{\alpha}f'(1)=-\frac{141949}{737000}\approx-.1926037991858887\\
+f'(\alpha)=\frac{c_{2}}{1-\alpha}+\frac{d_{2}}{1-\alpha}f'(0)=-\frac{141949}{737000}\approx-.1926037991858887.
+\end{gathered}
+\]
+
+\end_inset
+
+Nilai-nilai lain dari 
+\begin_inset Formula $f'$
+\end_inset
+
+ dapat dihitung dengan cara yang digunakan untuk 
+\begin_inset Formula $f$
+\end_inset
+
+ dan 
+\begin_inset Formula $F$
+\end_inset
+
+.
+ Grafik 
+\begin_inset Formula $f$
+\end_inset
+
+ dan 
+\begin_inset Formula $f'$
+\end_inset
+
+ ditampilkan pada Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Graphf"
+
+\end_inset
+
+ dan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Graphfprime"
+
+\end_inset
+
+.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Graphf"
+
+\end_inset
+
+Grafik 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/calculus_derivatives2.pdf
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Graphfprime"
+
+\end_inset
+
+Grafik 
+\begin_inset Formula $f'$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/calculus_derivatives1.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Demikianlah pembahasannya.
+ Sekarang, cobalah mencari akar ketiga fungsi tersebut.
+ Kode Octave berikut akan membantu Anda mengevaluasi fungsi-fungsi itu pada
+ titik mana pun dan sangat menghemat waktu!
+\end_layout
+
+\begin_layout Subsection
+Octave
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+% Written by Dr.
+ Len Brin               19 February 2014 %
+\end_layout
+
+\begin_layout Plain Layout
+
+% Purpose: Calculate values of the fractal interpolating %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        function, f, passing through                    %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        (0,f_0), (alpha,f_alpha), and (1,f_1),          %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        its derivative and its integral.
+                %
+\end_layout
+
+\begin_layout Plain Layout
+
+% INPUT: value at which to evaluate, x; array of values, %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        f = [f_0,f_alpha,f_1]; alpha; scaling factors   %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        d1 and d2.
+                                      %
+\end_layout
+
+\begin_layout Plain Layout
+
+% OUTPUT: y=f'(x); yy=f(x); yyy=F(x).
+                    %
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+function [y,yy,yyy] = fractalInterpolator(x,f,alpha,d1,d2)
+\end_layout
+
+\begin_layout Plain Layout
+
+  f1=f(1)*(1-d1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  c1=f(2)-d1*f(3)-f1;
+\end_layout
+
+\begin_layout Plain Layout
+
+  f2=f(2)-d2*f(1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  c2=(1-d2)*f(3)-f2;
+\end_layout
+
+\begin_layout Plain Layout
+
+  F1=(alpha*(f1+c1/2)+(1-alpha)*(f2+c2/2))/(1-(1-alpha)*d2-alpha*d1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  FA=alpha*(f1+c1/2+d1*F1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  l=0;
+\end_layout
+
+\begin_layout Plain Layout
+
+  r=1;
+\end_layout
+
+\begin_layout Plain Layout
+
+  a=[];
+\end_layout
+
+\begin_layout Plain Layout
+
+  if (alpha>1/2)
+\end_layout
+
+\begin_layout Plain Layout
+
+    its=floor(log(10^-16)/log(alpha));
+\end_layout
+
+\begin_layout Plain Layout
+
+  else
+\end_layout
+
+\begin_layout Plain Layout
+
+    its=floor(log(10^-16)/log(1-alpha));
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+  for i=1:its
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (alpha>1/2)
+\end_layout
+
+\begin_layout Plain Layout
+
+      h = (r-l)*alpha;
+\end_layout
+
+\begin_layout Plain Layout
+
+      m = l+h;
+\end_layout
+
+\begin_layout Plain Layout
+
+    else
+\end_layout
+
+\begin_layout Plain Layout
+
+      h = (r-l)*(1-alpha);
+\end_layout
+
+\begin_layout Plain Layout
+
+      m = r-h;
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (x<m)
+\end_layout
+
+\begin_layout Plain Layout
+
+      a(i)=0;
+\end_layout
+
+\begin_layout Plain Layout
+
+      r=m;
+\end_layout
+
+\begin_layout Plain Layout
+
+    else
+\end_layout
+
+\begin_layout Plain Layout
+
+      a(i)=1;
+\end_layout
+
+\begin_layout Plain Layout
+
+      l=m;
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%for
+\end_layout
+
+\begin_layout Plain Layout
+
+  x=0;
+\end_layout
+
+\begin_layout Plain Layout
+
+  y=c1/(alpha-d1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  yy=f(1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  yyy=0;
+\end_layout
+
+\begin_layout Plain Layout
+
+  for i=its:-1:1
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (a(i)==0)
+\end_layout
+
+\begin_layout Plain Layout
+
+      y=(c1+d1*y)/alpha;
+\end_layout
+
+\begin_layout Plain Layout
+
+      yy=c1*x+d1*yy+f1;
+\end_layout
+
+\begin_layout Plain Layout
+
+      yyy=alpha*(f1*x+c1/2*x*x+d1*yyy);
+\end_layout
+
+\begin_layout Plain Layout
+
+      x=alpha*x;
+\end_layout
+
+\begin_layout Plain Layout
+
+    else
+\end_layout
+
+\begin_layout Plain Layout
+
+      y=(c2+d2*y)/(1-alpha);
+\end_layout
+
+\begin_layout Plain Layout
+
+      yy=c2*x+d2*yy+f2;
+\end_layout
+
+\begin_layout Plain Layout
+
+      yyy=FA+(1-alpha)*(f2*x+c2/2*x*x+d2*yyy);
+\end_layout
+
+\begin_layout Plain Layout
+
+      x=alpha+(1-alpha)*x;
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%for
+\end_layout
+
+\begin_layout Plain Layout
+
+end%function 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\family typewriter
+fractalInterpolator.m
+\family default
+ dapat diunduh dari 
+\begin_inset CommandInset href
+LatexCommand href
+name "situs pendamping"
+target "http://lqbrin.github.io/tea-time-numerical/ancillaries.html"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Jawaban
+\end_layout
+
+\begin_layout Description
+Menghitung nilai
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $f$
+\end_inset
+
+: 
+\begin_inset CommandInset label
+LatexCommand label
+name "ans:evaluatingf"
+
+\end_inset
+
+Berikut adalah beberapa nilai 
+\begin_inset Formula $f$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{eqnarray*}
+f(\alpha^{3}) & \approx & .03620418000000000\\
+f(\alpha(\alpha+(1-\alpha)\alpha)) & \approx & -.09176089063636364\\
+f(\alpha+(1-\alpha)\alpha^{2}) & \approx & -.08222890363636364\\
+f(\alpha+(1-\alpha)(\alpha+(1-\alpha)\alpha)) & \approx & .1846063473223140.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Menghitung nilai
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $F$
+\end_inset
+
+: 
+\begin_inset CommandInset label
+LatexCommand label
+name "ans:evaluatingF"
+
+\end_inset
+
+Berikut adalah beberapa nilai 
+\begin_inset Formula $F$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{eqnarray*}
+F(\alpha^{3}) & \approx & .002702687013731212\\
+F(\alpha(\alpha+(1-\alpha)\alpha)) & \approx & -.003859289400223274\\
+F(\alpha+(1-\alpha)\alpha^{2}) & \approx & -.02753062961856850\\
+F(\alpha+(1-\alpha)(\alpha+(1-\alpha)\alpha)) & \approx & -.01466250212441314.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

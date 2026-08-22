@@ -1,0 +1,63 @@
+{
+  "encoding": "UTF-8",
+  "exporter": "ttna-interoperability-v0-exporter-0.1.0",
+  "line_endings": "LF",
+  "ordering": "record.id ascending; canonical JSON object keys ascending",
+  "outputs": [
+    {
+      "bytes": 22050690,
+      "path": "records.jsonl",
+      "records": 28172,
+      "sha256": "203ec965823817e79939f894f871ed6c0445534fbf3a6d06d1e0fa3566e16c79"
+    },
+    {
+      "bytes": 25655273,
+      "path": "records.csv",
+      "records": 28172,
+      "sha256": "a178ec16910340d8482034cd088e81c86805c1bc118f01c0162a934a498845c7"
+    }
+  ],
+  "proprietary_services_required": false,
+  "record_counts": {
+    "artifact": 2,
+    "asset": 15,
+    "asset_version": 15,
+    "build_recipe": 1,
+    "concept": 12,
+    "correction": 325,
+    "course": 1,
+    "edition": 1,
+    "experiment": 2,
+    "localization": 4621,
+    "program": 1,
+    "qa_event": 31,
+    "relation": 17614,
+    "resource": 1,
+    "rights": 4,
+    "segment": 4621,
+    "source_file": 31,
+    "term": 593,
+    "unit": 281
+  },
+  "record_schema": {
+    "bytes": 829,
+    "path": "backend/schema/record.schema.json",
+    "sha256": "1367da6e46a9fd5b24912bd8cde6e274af77965dd90cc36c24d2fd23b4a92fed"
+  },
+  "round_trip": {
+    "csv_sha256": "a178ec16910340d8482034cd088e81c86805c1bc118f01c0162a934a498845c7",
+    "jsonl_sha256": "203ec965823817e79939f894f871ed6c0445534fbf3a6d06d1e0fa3566e16c79",
+    "records": 28172,
+    "round_trip_equal": true,
+    "semantic_sha256": "203ec965823817e79939f894f871ed6c0445534fbf3a6d06d1e0fa3566e16c79",
+    "utf8_lf": true
+  },
+  "schema_id": "ttna-interoperability-export-v0",
+  "schema_version": "0.1.0",
+  "source_manifest": {
+    "bytes": 14060,
+    "path": "backend/manifests/lane_manifest.json",
+    "sha256": "17ef5072077b5b438a883b6bd751ea31b2ec5651567db5d100dba39bf9497cb3"
+  },
+  "total_unique_records": 28172
+}

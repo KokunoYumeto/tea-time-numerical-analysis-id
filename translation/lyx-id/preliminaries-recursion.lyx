@@ -1,0 +1,2985 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\input $HOME/Documents/Book-Numerical/preamble
+\end_preamble
+\use_default_options true
+\master ../scsu/Book-Numerical/TeaTimeNumericalAnalysis.lyx
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 4cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Recursion"
+
+\end_inset
+
+Prosedur Rekursif
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+rekursi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Pesulap Matematika
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\shape smallcaps
+Pesulap Matematika:
+\shape default
+ Saya membawa sehelai seprai biasa.
+ Tidak ada apa-apa di balik lengan baju saya.
+ Tidak ada kantong rahasia.
+ Mungkin hanya sedikit debu ajaib.
+ Namun selain itu, ini hanyalah seprai biasa.
+ Ketika dibentangkan rata, tentu saja tebalnya satu lapis.
+ Saat saya memegang sudut-sudut ini lalu menempatkannya di atas sudut-sudut
+ yang berseberangan sehingga seprai terlipat menjadi dua, berapa lapiskah
+ tebalnya?
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\shape smallcaps
+Penonton:
+\shape default
+ Dua!
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\shape smallcaps
+Pesulap Matematika:
+\shape default
+ Bagus sekali.
+ Izinkan saya melipatnya menjadi dua sekali lagi.
+ Sekarang tebalnya menjadi berapa lapis?
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\shape smallcaps
+Penonton:
+\shape default
+ Empat!
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\shape smallcaps
+Pesulap Matematika:
+\shape default
+ Luar biasa.
+ Perhatikan baik-baik saat saya melipatnya untuk ketiga kalinya.
+ Pikirkan sungguh-sungguh dan beri tahu saya: sekarang seprai yang terlipat
+ ini tebalnya berapa lapis?
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\shape smallcaps
+Penonton:
+\shape default
+ Enam! (dari beberapa orang) Delapan! (dari lebih banyak orang)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\shape smallcaps
+Pesulap Matematika:
+\shape default
+ Betul.
+ Delapan.
+ Cukup sekian pemanasannya.
+ Sekarang saya akan meminta asisten saya yang menawan mengeluarkan sehelai
+ seprai biasa lainnya.
+ Kali ini seprai itu sudah dilipat.
+ Crystal! Tolong bawa seprai itu ...
+ (Crystal membawa seprai yang sudah dilipat).
+ Sekali lagi, ini seprai biasa.
+ Kali ini sudah dilipat.
+ Sekarang akan saya lipat menjadi dua seperti sebelumnya, lalu saya bertanya
+ lagi: seprai ini menjadi berapa lapis?
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\shape smallcaps
+Penonton:
+\shape default
+ (Sebagian besar diam–hanya terdengar sedikit gumaman)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\shape smallcaps
+Pesulap Matematika:
+\shape default
+ Begitu, rupanya.
+ Yah, saya juga tidak tahu...
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\shape smallcaps
+Penonton:
+\shape default
+ (Tertawa)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\shape smallcaps
+Pesulap Matematika:
+\shape default
+ ...tetapi saya dapat memberi tahu Anda bahwa tebalnya sekarang dua kali
+ lipat dari sebelumnya!
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\shape smallcaps
+Penonton:
+\shape default
+ (Sebagian besar diam–hanya beberapa orang yang mengerang)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\shape smallcaps
+Pesulap Matematika:
+\shape default
+ Saya tahu.
+ Saya tahu.
+ Hanya trik sulap murahan.
+ Tapi tunggu! Perhatikan saat saya membuka lipatan seprai ini perlahan-lahan,
+ satu lipatan demi satu.
+ Satu! ...
+ Dua! (ia menengadah seolah sedang berpikir) ...
+ Tiga! ...
+ (sekali lagi tampak sedang berpikir keras) ...
+ Empat! ...
+ Setelah empat kali dilipat menjadi dua, sekarang, seperti yang dapat Anda
+ lihat dengan jelas, seprai ini tebalnya tiga lapis.
+ Pada lipatan pertama, seprai ini dilipat menjadi tiga bagian.
+ (ia menatap kejauhan, mengayunkan tongkatnya, lalu menatap tajam ke mata
+ para penonton) Empat puluh delapan!!!
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\shape smallcaps
+Penonton:
+\shape default
+ (Diam, tetapi jelas menantikan penjelasan)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\shape smallcaps
+Pesulap Matematika:
+\shape default
+ Seprai ini mula-mula tebalnya 3 lapis, lalu ketebalannya digandakan empat
+ kali
+ ...
+ 3 ...
+ 6 ...
+ 12 ...
+ 24 ...
+ 48.
+\end_layout
+
+\begin_layout Standard
+Meskipun dimaksudkan sekadar sebagai celetukan cerdas, pengamatan bahwa melipat
+ seprai menjadi dua akan menggandakan jumlah lapisan merupakan kunci untuk
+ menghitung jumlah lapisan pada seprai yang terlipat.
+ Prosedur rekursif memiliki keajaiban yang sama.
+ Prosedur tersebut seolah tidak menawarkan sesuatu yang berharga, padahal
+ justru menyimpan kuncinya.
+ Prosedur tersebut didasarkan pada prinsip bahwa apa pun keadaan saat ini
+ (berapa pun jumlah lapisan seprai), mengikuti prosedurnya (melipatnya menjadi
+ dua) akan menghasilkan akibat yang dapat diprediksi (ketebalannya menjadi
+ dua kali lipat).
+ 
+\end_layout
+
+\begin_layout Standard
+Barangkali contoh numerik paling sederhana dari gagasan ini dapat dipahami
+ dengan membayangkan sekantong kelereng—kantong tak tembus pandang yang berisi
+ sejumlah kelereng yang tidak diketahui.
+ Satu kelereng ditambahkan, lalu Anda ditanya berapa banyak kelereng yang kini
+ ada di dalamnya.
+ Tentu saja, jawaban terbaik yang dapat Anda berikan kurang lebih adalah 
+\begin_inset Quotes eld
+\end_inset
+
+satu lebih banyak daripada sebelumnya.
+\begin_inset Quotes erd
+\end_inset
+
+ Walaupun Anda tidak mengetahui berapa banyak kelereng di dalam kantong pada
+ awalnya, ketika satu kelereng ditambahkan, Anda tahu bahwa jumlah yang baru
+ satu lebih banyak daripada jumlah sebelumnya.
+ Inilah cara berpikir rekursif.
+\end_layout
+
+\begin_layout Subsection
+Tromino
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+tromino
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hubungkan tiga petak persegi, sisi dengan sisi, hingga membentuk huruf L, dan
+ terbentuklah sebuah tromino.
+ Tromino tidak digunakan dalam permainan seperti domino, tetapi sering digunakan
+ dalam persoalan matematika menarik yang melibatkan pengubinan.
+ Mengubin dengan tromino berarti menutupi suatu bentuk tanpa menumpangtindihkan
+ tromino dan tanpa membiarkan bagian mana pun dari tromino berada di luar bentuk
+ yang diubin.
+ Sebagai contoh, kisi 
+\begin_inset Formula $2\times3$
+\end_inset
+
+ dapat diubin dengan tromino, demikian pula kisi 
+\begin_inset Formula $6\times9$
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:recursion1"
+
+\end_inset
+
+
+\begin_inset Formula $2\times3$
+\end_inset
+
+ dan 
+\begin_inset Formula $6\times9$
+\end_inset
+
+ dapat diubin dengan tromino.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/2x3tiled.pdf
+	rotateAngle 90
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename figures/6x9tiled.pdf
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Lihat Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:recursion1"
+
+\end_inset
+
+.
+ Jika 
+\begin_inset Formula $n$
+\end_inset
+
+ adalah bilangan bulat positif, kisi 
+\begin_inset Formula $2^{n}\times2^{n}$
+\end_inset
+
+ hampir dapat diubin seluruhnya dengan tromino.
+ Semua persegi kecuali satu dapat ditutupi.
+ Cobalah, mula-mula dengan kisi 
+\begin_inset Formula $2\times2$
+\end_inset
+
+.
+ Yang ini tidak terlalu sulit.
+ Kemudian cobalah dengan kisi 
+\begin_inset Formula $4\times4$
+\end_inset
+
+ atau kisi 
+\begin_inset Formula $8\times8$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Bagaimana dengan kisi 
+\begin_inset Formula $1024\times1024$
+\end_inset
+
+? Saya tidak menyarankan Anda benar-benar menyiapkan kisi 
+\begin_inset Formula $1024\times1024$
+\end_inset
+
+ lalu mulai mengisinya dengan tromino.
+ Anda akan memerlukan 
+\begin_inset Formula $349,525$
+\end_inset
+
+ tromino.
+ Anda mungkin tidak akan menyelesaikannya seumur hidup! Sebagai gantinya,
+ sekarang saatnya mulai berpikir secara rekursif.
+ Gunakan hasil sebelumnya dalam jawaban Anda.
+ Seperti ketika Anda cukup mengatakan bahwa kantong kelereng 
+\begin_inset Quotes eld
+\end_inset
+
+berisi satu lebih banyak daripada sebelumnya
+\begin_inset Quotes erd
+\end_inset
+
+, kita dapat menyatakan solusi pengubinan kisi 
+\begin_inset Formula $1024\times1024$
+\end_inset
+
+ berdasarkan pengubinan kisi 
+\begin_inset Formula $512\times512$
+\end_inset
+
+.
+ Caranya sebagai berikut.
+ Ambil kisi 
+\begin_inset Formula $1024\times1024$
+\end_inset
+
+ dan bagi menjadi empat subkisi 
+\begin_inset Formula $512\times512$
+\end_inset
+
+ dengan membelahnya di tengah secara horizontal dan vertikal.
+ Pada kisi 
+\begin_inset Formula $512\times512$
+\end_inset
+
+ di kiri atas, ubin semua persegi kecuali sudut kanan bawah.
+ Pada kisi 
+\begin_inset Formula $512\times512$
+\end_inset
+
+ di kiri bawah, ubin semua persegi kecuali sudut kanan atas.
+ Pada kisi kanan bawah, ubin semua persegi kecuali sudut kiri atas.
+ Terakhir, pada kisi 
+\begin_inset Formula $512\times512$
+\end_inset
+
+ di kanan atas, ubin semua persegi kecuali sudut kanan atas 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:recursion2"
+
+\end_inset
+
+ Kisi 
+\begin_inset Formula $2^{n}\times2^{n}$
+\end_inset
+
+ dapat (hampir) diubin secara rekursif.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/recursiveTiling.pdf
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+(Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:recursion2"
+
+\end_inset
+
+).
+ Hal ini menyisakan ruang untuk satu tromino berbentuk L di tengah dan satu
+ persegi yang tidak tertutupi.
+ Selesai! Cara ini mungkin terasa sedikit curang karena kita tidak menjelaskan
+ cara menangani kisi 
+\begin_inset Formula $512\times512$
+\end_inset
+
+; namun, argumen yang sama berlaku untuk kisi 
+\begin_inset Formula $512\times512$
+\end_inset
+
+.
+ Anda dapat membaginya menjadi empat subkisi, mengubin semuanya, dan selesai.
+\end_layout
+
+\begin_layout Standard
+Argumen pengubinan yang sama dapat diterapkan pada setiap kisi 
+\begin_inset Formula $2^{n}\times2^{n}$
+\end_inset
+
+ berdasarkan pengubinan kisi 
+\begin_inset Formula $2^{n-1}\times2^{n-1}$
+\end_inset
+
+, kecuali ketika 
+\begin_inset Formula $n=1$
+\end_inset
+
+.
+ Anda hanya perlu mengubin sendiri kisi 
+\begin_inset Formula $2\times2$
+\end_inset
+
+! Setelah itu selesai, Anda memperoleh solusi lengkap untuk setiap kisi 
+\begin_inset Formula $2^{n}\times2^{n}$
+\end_inset
+
+.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:recursion3"
+
+\end_inset
+
+ Kisi 
+\begin_inset Formula $32\times32$
+\end_inset
+
+ yang diubin secara rekursif.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/32x32recursive.pdf
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Pengecualian serupa berlaku bagi setiap prosedur rekursif.
+ Rekursi hanya berguna pada hampir semua tahap.
+ Pada suatu titik, Anda harus turun tangan dan memberikan solusi atau jawaban.
+ Jawaban semacam itu sering disebut kondisi awal.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{digression}{Pembuktian dengan induksi} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Pembuktian dengan induksi juga menggunakan semacam cara berpikir rekursif.
+ Dalam metode ini, kita harus membuktikan bahwa suatu klaim benar untuk
+ suatu nilai variabel.
+ Bagian ini serupa dengan memiliki kondisi awal.
+ Selanjutnya, harus dibuktikan bahwa kebenaran klaim untuk nilai 
+\begin_inset Formula $n$
+\end_inset
+
+ mengakibatkan kebenaran klaim untuk 
+\begin_inset Formula $n+1$
+\end_inset
+
+.
+ Hal ini serupa dengan hubungan rekursif antarkeadaan.
+ Bahkan, konstruksi pengubinan kisi 
+\begin_inset Formula $2^{n}\times2^{n}$
+\end_inset
+
+ berdasarkan kisi 
+\begin_inset Formula $2^{n-1}\times2^{n-1}$
+\end_inset
+
+ ditambah pengubinan kisi 
+\begin_inset Formula $2\times2$
+\end_inset
+
+ yang baru saja disajikan pada dasarnya membentuk pembuktian dengan induksi
+ bahwa kisi 
+\begin_inset Formula $2^{n}\times2^{n}$
+\end_inset
+
+, kecuali satu sudutnya, dapat diubin dengan tromino untuk setiap 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+.
+ Dengan demikian, semua pembuktian dengan induksi pada akhirnya bergantung
+ pada kemampuan melihat hubungan rekursif antarkeadaan.
+\end_layout
+
+\begin_layout Standard
+Pada tahun 1954, Solomon Golomb 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Golomb ! Solomon
+\end_layout
+
+\end_inset
+
+ menerbitkan pembuktian dengan induksi bahwa kisi 
+\begin_inset Formula $2^{n}\times2^{n}$
+\end_inset
+
+ yang kehilangan satu persegi 
+\shape italic
+sembarang
+\shape default
+ (tidak harus petak sudut), yang disebut persegi defisien,
+ dapat diubin dengan tromino.
+ Dapatkah Anda menyusun pengubinan (rekursif) untuk persegi defisien 
+\begin_inset Formula $2^{n}\times2^{n}$
+\end_inset
+
+? Dalam konstruksi tersebut, Anda dapat menggunakan pengubinan kisi 
+\begin_inset Formula $2^{k}\times2^{k}$
+\end_inset
+
+ yang dikurangi satu sudut.
+\end_layout
+
+\begin_layout Description
+Referensi 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "golomb"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{digression}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Octave
+\end_layout
+
+\begin_layout Subsubsection
+Fungsi buatan sendiri
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Octave ! fungsi buatan sendiri
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Seperti bahasa pemrograman modern yang berguna pada umumnya, Octave memungkinkan
+ kita membuat fungsi sendiri, tidak hanya fungsi yang dapat ditulis sebagai
+ rumus satu baris seperti fungsi anonim.
+ Misalkan Anda ingin menentukan nilai maksimum suatu fungsi pada sekumpulan
+ nilai yang berjarak sama.
+ Fungsi itu memiliki tujuan yang sangat khusus dan jarang digunakan.
+ Oleh karena itu, fungsi tersebut tidak tersedia sebagai bawaan dalam bahasa
+ pemrograman mana pun; jika benar-benar menginginkannya, Anda perlu menulisnya
+ sendiri.
+ Demikian pula, jika Anda menginginkan fungsi yang menghitung titik simedian
+ suatu segitiga, Anda perlu menulisnya.
+ Bahkan, hampir semua komputasi di luar evaluasi fungsi dasar tidak tersedia
+ sebagai bawaan di Octave.
+\end_layout
+
+\begin_layout Standard
+Fungsi buatan sendiri ditulis berdasarkan tiga informasi pokok: nama fungsi,
+ daftar masukan, dan uraian keluaran.
+ Ketiganya harus ditetapkan dengan jelas sebelum fungsi mulai ditulis.
+ Untuk menulis fungsi, kita hanya perlu memberi tahu Octave nama dan masukan
+ yang diinginkan serta cara menentukan keluarannya.
+ Format dasar suatu fungsi adalah sebagai berikut:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+function ans = myName(input1, input2, ...
+ )
+\end_layout
+
+\begin_layout Plain Layout
+
+  ...
+\end_layout
+
+\begin_layout Plain Layout
+
+  ans = final answer;
+\end_layout
+
+\begin_layout Plain Layout
+
+end%function
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+Baris pertama memuat nama fungsi dan daftar masukan.
+ Bagian fungsi lainnya digunakan untuk menghitung keluaran, 
+\family typewriter
+ans
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Fungsi yang menentukan nilai maksimum suatu fungsi pada sekumpulan nilai yang
+ berjarak sama dapat ditulis melalui langkah-langkah berikut.
+ Pertama, kita memutuskan untuk menamainya 
+\begin_inset Quotes eld
+\end_inset
+
+maxOverMesh
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Perhatikan bahwa nama tersebut tidak mengandung spasi atau karakter khusus.
+ Hanya sedikit karakter nonalfabet yang dapat digunakan dalam nama fungsi.
+ Biasanya tanda garis bawah dan angka aman digunakan, tetapi karakter lain
+ belum tentu dapat digunakan! Sebaiknya batasi diri pada karakter tersebut.
+ Kedua, kita perlu memikirkan masukan yang diperlukan fungsi ini.
+ Tentu saja, fungsi yang akan dimaksimumkan diperlukan, dan kisi titik tempat
+ fungsi itu diperiksa juga harus ditentukan.
+ Ada beberapa cara untuk melakukannya, tetapi cara yang mungkin paling mudah
+ bagi pengguna ialah meminta titik ujung bawah, titik ujung atas, dan jumlah
+ interval pada kisi.
+ Terakhir, kita perlu menulis kode yang menerima masukan tersebut dan menentukan
+ nilai maksimum fungsi pada kisi.
+ Salah satu caranya adalah sebagai berikut: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+%  maxOverMesh() written by Leon Q.
+ Brin 21 January 2013  %
+\end_layout
+
+\begin_layout Plain Layout
+
+%  INPUT: Interval [a,b]; function f; and number of       %
+\end_layout
+
+\begin_layout Plain Layout
+
+%         subintervals n.
+                                 %
+\end_layout
+
+\begin_layout Plain Layout
+
+%  OUTPUT: maximum value of the function over the end     %
+\end_layout
+
+\begin_layout Plain Layout
+
+%         points of the subintervals.
+                     %
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\end_layout
+
+\begin_layout Plain Layout
+
+function ans = maxOverMesh(f,a,b,n)
+\end_layout
+
+\begin_layout Plain Layout
+
+  ans = f(a);
+\end_layout
+
+\begin_layout Plain Layout
+
+  for i=1:n
+\end_layout
+
+\begin_layout Plain Layout
+
+    x = (i*b + (n-i)*a)/n;
+\end_layout
+
+\begin_layout Plain Layout
+
+    F = f(x);
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (F>ans) ans = F;
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%for
+\end_layout
+
+\begin_layout Plain Layout
+
+end%function
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+Merupakan praktik yang baik untuk mengawali setiap fungsi yang Anda tulis dengan
+ komentar berisi uraian tiga hal tentang fungsi tersebut—nama, masukan, dan
+ keluaran.
+ Jika kelak Anda atau orang lain membacanya, tersedia ringkasan singkat tentang
+ cara dan tujuan penggunaan fungsi tersebut.
+\end_layout
+
+\begin_layout Standard
+Nilai yang disimpan dalam 
+\family typewriter
+ans
+\family default
+ saat fungsi selesai menjadi keluaran fungsi.
+ Pada awalnya, 
+\family typewriter
+ans
+\family default
+ diisi dengan nilai fungsi di titik ujung kiri.
+ Selanjutnya, fungsi melakukan perulangan melalui titik-titik ujung subselang
+ lainnya dan menghitung nilai fungsi pada setiap titik.
+ Setiap kali menemukan nilai yang lebih besar daripada 
+\family typewriter
+ans
+\family default
+, fungsi memperbarui nilai 
+\family typewriter
+ans
+\family default
+ dengan nilai tersebut.
+ Pada akhir perulangan, 
+\family typewriter
+ans
+\family default
+ berisi nilai terbesar fungsi.
+\end_layout
+
+\begin_layout Standard
+Untuk menggunakan fungsi buatan sendiri, simpan fungsi tersebut dalam berkas 
+\family typewriter
+.m
+\family default
+ 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Octave ! berkas 
+\family typewriter
+.m
+\family default
+
+\end_layout
+
+\end_inset
+
+ dengan nama yang sama dengan nama fungsi.
+ Sebagai contoh, fungsi 
+\family typewriter
+maxOverMesh()
+\family default
+ akan disimpan dalam berkas bernama 
+\family typewriter
+maxOverMesh.m
+\family default
+.
+ Setelah itu, fungsi buatan sendiri dapat dipanggil seperti fungsi bawaan Octave
+ mana pun, asalkan berkas 
+\family typewriter
+.m
+\family default
+ dan program yang menggunakannya disimpan dalam direktori yang sama.
+ Jika fungsi digunakan dari baris perintah, direktori kerja Octave (direktori
+ tempat Octave dijalankan, kecuali diubah secara eksplisit selama sesi) harus
+ merupakan direktori tempat berkas 
+\family typewriter
+.m
+\family default
+ disimpan:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:1> maxOverMesh(@(x) (x^2-6*x+8)*exp(x), 0, 4, 99)
+\end_layout
+
+\begin_layout Plain Layout
+
+ans =  8.6728
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:2> f = @(x) (x^2+3*x-5)/(x^2-3*x+5)
+\end_layout
+
+\begin_layout Plain Layout
+
+f =
+\end_layout
+
+\begin_layout Plain Layout
+
+@(x) (x ^ 2 + 3 * x - 5) / (x ^ 2 - 3 * x + 5)
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:3> maxOverMesh(f, -5, 5, 225)
+\end_layout
+
+\begin_layout Plain Layout
+
+ans =  2.6362
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\family typewriter
+maxOverMesh.m
+\family default
+ dapat diunduh dari 
+\begin_inset CommandInset href
+LatexCommand href
+name "situs pendamping"
+target "http://lqbrin.github.io/tea-time-numerical/ancillaries.html"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Fungsi rekursif
+\end_layout
+
+\begin_layout Standard
+Dengan berpikir secara rekursif, apa jawaban Anda jika saya menanyakan nilai 
+\begin_inset Formula $10!$
+\end_inset
+
+? Renungkan sejenak sebelum melanjutkan.
+ Betul! 10 faktorial hanyalah 10 dikalikan 
+\begin_inset Formula $9!$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{eqnarray*}
+10! & = & 10\cdot9\cdot8\cdot7\cdot6\cdot5\cdot4\cdot3\cdot2\cdot1\\
+ & = & 10\cdot(9\cdot8\cdot7\cdot6\cdot5\cdot4\cdot3\cdot2\cdot1)\\
+ & = & 10\cdot(9!).
+\end{eqnarray*}
+
+\end_inset
+
+Tidak perlu memperoleh sebuah bilangan.
+ Cukup gunakan gagasan rekursif, sebab gagasan itu tentu sama berlakunya untuk
+ 
+\begin_inset Formula $9!$
+\end_inset
+
+, dan seterusnya 
+\begin_inset Formula $\ldots$
+\end_inset
+
+ hingga (atau mungkin seharusnya saya katakan menurun hingga?) suatu titik.
+ Pada titik apa pernyataan 
+\begin_inset Formula $n!=n\cdot(n-1)!$
+\end_inset
+
+ tidak lagi benar? Ketika 
+\begin_inset Formula $n=0$
+\end_inset
+
+.
+ Kita perlu menetapkan bahwa 
+\begin_inset Formula $0!=1$
+\end_inset
+
+ dan tidak mengandalkan pemikiran rekursif dalam kasus ini.
+ Namun, hanya dalam kasus ini!
+\end_layout
+
+\begin_layout Standard
+Mari kita lihat bagaimana perhitungan rekursif ini bekerja untuk 
+\begin_inset Formula $5!$
+\end_inset
+
+.
+ Menurut rekursi tersebut, 
+\begin_inset Formula $5!=5\cdot4!$
+\end_inset
+
+.
+ Namun, 
+\begin_inset Formula $4!=4\cdot3!$
+\end_inset
+
+ sehingga diperoleh 
+\begin_inset Formula $5!=5\cdot(4\cdot3!)$
+\end_inset
+
+.
+ Namun, 
+\begin_inset Formula $3!=3\cdot2!$
+\end_inset
+
+ sehingga sekarang diperoleh 
+\begin_inset Formula $5!=5(4(3\cdot2!))$
+\end_inset
+
+.
+ Dengan melanjutkan proses ini, 
+\begin_inset Formula $2!=2\cdot1!=2\cdot1\cdot0!$
+\end_inset
+
+ sehingga sekarang diperoleh 
+\begin_inset Formula $5!=5(4(3(2(1\cdot0!))))$
+\end_inset
+
+.
+ Sekarang rekursi berhenti dan kita cukup menyubstitusikan 1 untuk 
+\begin_inset Formula $0!$
+\end_inset
+
+ sehingga diperoleh 
+\begin_inset Formula $5!=5(4(3(2(1(1)))))$
+\end_inset
+
+.
+ Mungkin Anda mengharapkan 
+\begin_inset Formula $5\cdot4\cdot3\cdot2\cdot1$
+\end_inset
+
+ sebagai hasil akhirnya.
+ Tentu saja, kedua cara tersebut sama-sama menghasilkan 120, sehingga dari
+ segi ketepatan, keduanya tidak bermasalah.
+ Secara praktis, perbedaannya tidak berarti.
+ Menghitung faktorial secara rekursif amat tidak efisien dan mustahil dilakukan
+ melampaui kedalaman rekursi maksimum bahasa pemrograman yang digunakan,
+ sehingga cara ini tidak boleh dipakai dalam praktik.
+ Satu-satunya manfaatnya adalah sebagai latihan berpikir dan memprogram secara rekursif.
+\end_layout
+
+\begin_layout Standard
+Secara umum, fungsi rekursif 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Octave ! fungsi rekursif
+\end_layout
+
+\end_inset
+
+ akan tampak seperti berikut:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+function ans = recFunction(input1, input2, ...
+ )
+\end_layout
+
+\begin_layout Plain Layout
+
+  if (recursion does not apply)
+\end_layout
+
+\begin_layout Plain Layout
+
+    return appropriate ans
+\end_layout
+
+\begin_layout Plain Layout
+
+  else
+\end_layout
+
+\begin_layout Plain Layout
+
+    return recFunction(i1, i2, ...
+ )
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+end%function
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+Hal pertama yang perlu dilakukan adalah menentukan apakah rekursi berlaku.
+ Jika tidak, keluaran yang sesuai harus diberikan.
+ Jika ya, fungsi rekursif cukup memanggil dirinya sendiri dengan masukan yang telah diubah.
+ Karena definisi rekursif (yang agak usil) untuk 
+\begin_inset Formula $n!$
+\end_inset
+
+ adalah 
+\begin_inset Formula $n\cdot(n-1)!$
+\end_inset
+
+ dan berlaku setiap kali 
+\begin_inset Formula $n>0$
+\end_inset
+
+, sedangkan 
+\begin_inset Formula $0!=1$
+\end_inset
+
+, fungsi faktorial rekursif dapat tampak seperti berikut:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+%  recFactorial() written by Leon Q.
+ Brin 21 January 2013  %
+\end_layout
+
+\begin_layout Plain Layout
+
+%       is a recursively defined factorial function.
+       %
+\end_layout
+
+\begin_layout Plain Layout
+
+%  INPUT: nonnegative integer n.
+                           %
+\end_layout
+
+\begin_layout Plain Layout
+
+%  OUTPUT: n!                                              %
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+function ans = recFactorial(n)
+\end_layout
+
+\begin_layout Plain Layout
+
+  if (n==0)
+\end_layout
+
+\begin_layout Plain Layout
+
+    ans = 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+  else
+\end_layout
+
+\begin_layout Plain Layout
+
+    ans = n*recFactorial(n-1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+end%function
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Perhatikan 
+\family typewriter
+==
+\family default
+ ketika memeriksa apakah 
+\family typewriter
+n
+\family default
+ sama dengan 
+\family typewriter
+1
+\family default
+.
+ Ini bukan kesalahan ketik.
+ Hal ini sangat penting.
+ Semua bahasa pemrograman harus membedakan penugasan dan kondisi.
+ Di atas kertas, menuliskan 
+\begin_inset Formula $x=3$
+\end_inset
+
+ ketika Anda ingin menetapkan 
+\begin_inset Formula $x$
+\end_inset
+
+ sama dengan 3 mungkin terasa wajar.
+ Menuliskan 
+\begin_inset Quotes eld
+\end_inset
+
+jika 
+\begin_inset Formula $x=3$
+\end_inset
+
+, semuanya baik-baik saja
+\begin_inset Quotes erd
+\end_inset
+
+ juga mungkin terasa wajar.
+ Kita menggunakan 
+\begin_inset Quotes eld
+\end_inset
+
+persamaan
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $x=3$
+\end_inset
+
+ dengan cara yang persis sama di atas kertas untuk menyatakan dua hal yang sangat berbeda.
+ Ketika kita menetapkan 
+\begin_inset Formula $x=3$
+\end_inset
+
+ kita membuat sebuah pernyataan, atau melakukan penugasan nilai 3 kepada variabel
+ 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ Namun, ketika kita menulis 
+\begin_inset Quotes eld
+\end_inset
+
+jika 
+\begin_inset Formula $x=3\ldots$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ kita membuat pernyataan hipotetis, atau pernyataan kondisional.
+ Nilai 
+\begin_inset Formula $x$
+\end_inset
+
+ belum diketahui.
+ Dalam Octave, keduanya dibedakan dengan menggunakan satu tanda sama dengan, 
+\family typewriter
+=
+\family default
+, untuk menyatakan penugasan dan dua tanda sama dengan, 
+\family typewriter
+==
+\family default
+, untuk menguji kesamaan.
+ Operator perbandingan lain yang mungkin Anda perlukan adalah 
+\family typewriter
+<
+\family default
+ dan 
+\family typewriter
+>
+\family default
+, yang memiliki arti sebagaimana lazimnya, serta 
+\family typewriter
+<=
+\family default
+ dan 
+\family typewriter
+>=
+\family default
+ yang masing-masing berarti 
+\begin_inset Formula $\leq$
+\end_inset
+
+ dan 
+\begin_inset Formula $\geq$
+\end_inset
+
+, secara berurutan.
+ 
+\family typewriter
+recFactorial.m
+\family default
+ dapat diunduh dari 
+\begin_inset CommandInset href
+LatexCommand href
+name "situs pendamping"
+target "http://lqbrin.github.io/tea-time-numerical/ancillaries.html"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+startexercises
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Latihan
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah berkas .m dengan sebuah fungsi yang menerima satu masukan, menguadratkannya,
+ dan mengembalikan hasilnya.
+ Berkas Anda harus
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+memuat blok komentar di bagian awal yang berisi nama Anda, tanggal, serta
+ penjelasan mengenai apa yang dilakukan program tersebut dan cara menggunakannya.
+\end_layout
+
+\begin_layout Enumerate
+memuat fungsi berbentuk 
+\family typewriter
+foo(x)
+\family default
+ yang mengembalikan kuadrat dari masukan (argumen) 
+\family typewriter
+x
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Pastikan Anda menguji fungsi tersebut melalui baris perintah Octave.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Fungsi Octave 
+\family typewriter
+foo(x)
+\family default
+ ditampilkan di bawah ini.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+function res = foo(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+  if (x<1)
+\end_layout
+
+\begin_layout Plain Layout
+
+    res = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+  else
+\end_layout
+
+\begin_layout Plain Layout
+
+    half = x/2;
+\end_layout
+
+\begin_layout Plain Layout
+
+    floorhalf = floor(half);
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (half == floorhalf)
+\end_layout
+
+\begin_layout Plain Layout
+
+      res = 0 + foo(floorhalf);
+\end_layout
+
+\begin_layout Plain Layout
+
+    else
+\end_layout
+
+\begin_layout Plain Layout
+
+      res = 1 + foo(floorhalf);
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+end%function
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Hitung 
+\family typewriter
+foo(2)
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Hitung 
+\family typewriter
+foo(23)
+\family default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah fungsi Octave rekursif yang menghitung 
+\begin_inset Formula 
+\[
+\sum_{i=1}^{n}\frac{1}{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah fungsi Octave rekursif yang menghitung 
+\begin_inset Formula $a_{n}$
+\end_inset
+
+ untuk setiap 
+\begin_inset Formula $n\geq0$
+\end_inset
+
+, dengan ketentuan
+\begin_inset Formula 
+\begin{eqnarray*}
+a_{0} & = & 100,000\\
+a_{n} & = & 1.05a_{n-1}-1200,\quad n>0.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "recursive1"
+
+\end_inset
+
+Barisan Fibonacci, 
+\begin_inset Formula $\left\langle F_{n}\right\rangle $
+\end_inset
+
+, didefinisikan secara rekursif oleh
+\begin_inset Formula 
+\begin{align*}
+F_{n+1} & =F_{n}+F_{n-1},\quad n\geq1\\
+F_{0} & =1\\
+F_{1} & =1
+\end{align*}
+
+\end_inset
+
+sehingga beberapa suku pertamanya adalah 
+\begin_inset Formula $1,1,2,3,5,8$
+\end_inset
+
+.
+ 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "recursiveFib"
+
+\end_inset
+
+Tulislah fungsi rekursif yang menghitung suku 
+\begin_inset Formula $n$
+\end_inset
+
+ dalam barisan Fibonacci.
+ Fungsi Anda harus memiliki satu argumen, 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "forloopFib"
+
+\end_inset
+
+Tulislah fungsi yang menggunakan perulangan for untuk menghitung suku 
+\begin_inset Formula $n$
+\end_inset
+
+ dalam barisan Fibonacci.
+ Fungsi Anda harus memiliki satu argumen, 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Tulislah program yang memanggil fungsi dari 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "recursiveFib"
+
+\end_inset
+
+ untuk menghitung 
+\begin_inset Formula $F_{30}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Tulislah program yang memanggil fungsi dari 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "forloopFib"
+
+\end_inset
+
+ untuk menghitung 
+\begin_inset Formula $F_{30}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Kode manakah yang lebih sederhana (rekursif atau nonrekursif)?
+\end_layout
+
+\begin_layout Enumerate
+Kode manakah yang lebih cepat?
+\end_layout
+
+\begin_layout Enumerate
+Kode manakah yang lebih akurat?
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+CATATAN
+\series default
+: 
+\begin_inset Formula $F_{30}=1346269$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "recursive2"
+
+\end_inset
+
+Misalkan barisan 
+\begin_inset Formula $\left\langle a_{n}\right\rangle $
+\end_inset
+
+ didefinisikan oleh 
+\begin_inset Formula 
+\begin{align*}
+a_{n+1} & =\frac{1}{4}\left|5a_{n}^{2}-30a_{n}+25\right|,\quad n\geq1\\
+a_{0} & =\frac{17+2\sqrt{7}}{5}.
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Hitung 
+\begin_inset Formula $a_{1},a_{2}$
+\end_inset
+
+ dan 
+\begin_inset Formula $a_{3}$
+\end_inset
+
+ secara eksak.
+\end_layout
+
+\begin_layout Enumerate
+Tentukan 
+\begin_inset Formula $a_{20}$
+\end_inset
+
+ dan 
+\begin_inset Formula $a_{51}$
+\end_inset
+
+ secara eksak.
+\end_layout
+
+\begin_layout Enumerate
+Tulislah fungsi rekursif yang menghitung suku 
+\begin_inset Formula $n$
+\end_inset
+
+ dari barisan tersebut.
+ Fungsi Anda harus memiliki satu argumen, 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Tulislah program yang memanggil fungsi ini untuk menghitung 
+\begin_inset Formula $a_{1},a_{2},a_{3},a_{20},$
+\end_inset
+
+ dan 
+\begin_inset Formula $a_{51}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Tulislah fungsi yang menggunakan perulangan for untuk menghitung suku 
+\begin_inset Formula $n$
+\end_inset
+
+ dari barisan tersebut.
+ Fungsi Anda harus memiliki satu argumen, 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Tulislah program yang memanggil fungsi ini untuk menghitung 
+\begin_inset Formula $a_{1},a_{2},a_{3},a_{20},$
+\end_inset
+
+ dan 
+\begin_inset Formula $a_{51}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Kode manakah yang lebih sederhana (rekursif atau nonrekursif)?
+\end_layout
+
+\begin_layout Enumerate
+Fungsi manakah yang lebih cepat?
+\end_layout
+
+\begin_layout Enumerate
+Kode manakah yang lebih akurat, dan mengapa?
+\end_layout
+
+\begin_layout Enumerate
+Fungsi manakah yang lebih baik, dan mengapa?
+\end_layout
+
+\begin_layout Enumerate
+Apakah Anda yakin salah satu dari kedua fungsi tersebut dapat menghitung 
+\begin_inset Formula $a_{600}$
+\end_inset
+
+ secara akurat? Jika tidak, mengapa?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:recursion"
+
+\end_inset
+
+Tromino, bagian 1.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Dengan pendekatan rekursif, berapa banyak tromino yang diperlukan untuk mengubin kisi 
+\begin_inset Formula $2^{n}\times2^{n}$
+\end_inset
+
+ dengan menyisakan satu persegi di sudut?
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "tromino-greatest"
+
+\end_inset
+
+Berapa nilai bilangan bulat terbesar untuk 
+\begin_inset Formula $n$
+\end_inset
+
+ yang tidak tercakup dalam definisi rekursif tersebut?
+\end_layout
+
+\begin_layout Enumerate
+Untuk nilai 
+\begin_inset Formula $n$
+\end_inset
+
+ pada bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tromino-greatest"
+
+\end_inset
+
+, berapa banyak tromino yang diperlukan?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:recursion-1"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tromino, bagian 2.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Tulislah fungsi Octave rekursif untuk menghitung banyaknya tromino
+ yang diperlukan untuk mengubin kisi 
+\begin_inset Formula $2^{n}\times2^{n}$
+\end_inset
+
+ dengan menyisakan satu persegi di sudut.
+\end_layout
+
+\begin_layout Enumerate
+Gunakan fungsi Anda untuk memverifikasi bahwa sebanyak 
+\begin_inset Formula $349,525$
+\end_inset
+
+ tromino diperlukan untuk mengubin kisi 
+\begin_inset Formula $1024\times1024$
+\end_inset
+
+ dengan menyisakan satu persegi di sudut.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:recursion-2"
+
+\end_inset
+
+Menara Hanoi, bagian 1.
+ Menara Hanoi adalah permainan yang menggunakan sejumlah cakram dengan ukuran
+ berbeda-beda, yang ditumpuk pada sebuah tiang dari yang terbesar di bawah hingga
+ yang terkecil di atas.
+ Terdapat dua tiang lain yang pada awalnya kosong.
+ Tujuannya adalah memindahkan seluruh tumpukan cakram ke salah satu tiang yang
+ semula kosong dengan mengikuti dua aturan.
+ Anda hanya boleh memindahkan satu cakram pada satu waktu dari satu tiang ke tiang lain.
+ Anda tidak boleh meletakkan cakram di atas cakram yang lebih kecil.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Dengan memulai dari tumpukan tiga cakram, berapakah jumlah langkah minimum
+ yang diperlukan untuk menyelesaikan permainan? Jawablah pertanyaan ini dengan sebuah bilangan.
+\end_layout
+
+\begin_layout Enumerate
+Dengan memulai dari tumpukan empat cakram, berapakah jumlah langkah minimum
+ yang diperlukan untuk menyelesaikan permainan?
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:tower-recursion"
+
+\end_inset
+
+Jawablah pertanyaan ini secara rekursif.
+\end_layout
+
+\begin_layout Enumerate
+Berdasarkan jawaban rekursif Anda, jawablah pertanyaan ini dengan sebuah bilangan.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:recursion-3"
+
+\end_inset
+
+Menara Hanoi, bagian 2.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Dengan memulai dari sebuah 
+\begin_inset Quotes eld
+\end_inset
+
+tumpukan
+\begin_inset Quotes erd
+\end_inset
+
+ yang hanya terdiri dari satu cakram, berapakah jumlah langkah minimum yang diperlukan
+ untuk menyelesaikan permainan?
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Gunakan jawaban Anda untuk bagian (a), bersama generalisasi jawaban Anda atas soal 
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:tower-recursion"
+
+\end_inset
+
+ untuk menulis fungsi Octave rekursif yang menghitung jumlah langkah minimum
+ yang diperlukan untuk menyelesaikan permainan dengan tumpukan 
+\begin_inset Formula $n$
+\end_inset
+
+ cakram.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Gunakan fungsi Octave Anda untuk memverifikasi bahwa jumlah langkah minimum
+ untuk menyelesaikan permainan dengan tumpukan 10 cakram adalah 1023.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Menara Hanoi, bagian 3.
+ Menara Hanoi dengan syarat ketetanggaan.
+ Misalkan aturan Menara Hanoi diubah sehingga setiap cakram hanya boleh dipindahkan
+ ke tiang yang bersebelahan, dan tujuannya adalah memindahkan seluruh tumpukan
+ dari tiang paling kiri ke tiang paling kanan.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Berapa jumlah langkah minimum yang diperlukan untuk menyelesaikan permainan dengan sebuah 
+ 
+\begin_inset Quotes eld
+\end_inset
+
+tumpukan
+\begin_inset Quotes erd
+\end_inset
+
+ yang terdiri atas satu cakram?
+\end_layout
+
+\begin_layout Enumerate
+Tentukan rumus rekurensi untuk jumlah langkah minimum yang diperlukan untuk menyelesaikan
+ permainan dengan tumpukan 
+\begin_inset Formula $n$
+\end_inset
+
+ cakram, 
+\begin_inset Formula $n>1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah fungsi Octave rekursif yang menghitung jumlah langkah minimum untuk menyelesaikan
+ permainan dengan tumpukan 
+\begin_inset Formula $n$
+\end_inset
+
+ cakram.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Gunakan fungsi Octave Anda untuk menghitung jumlah langkah minimum yang diperlukan
+ untuk menyelesaikan permainan dengan tumpukan 
+\begin_inset Formula $5$
+\end_inset
+
+ cakram dan 
+ 
+\begin_inset Formula $10$
+\end_inset
+
+ cakram.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Bilangan Stirling jenis kedua, bagian 1.
+ Misalkan 
+\begin_inset Formula $S(n,k)$
+\end_inset
+
+ menyatakan banyaknya cara mempartisi suatu himpunan yang terdiri atas 
+\begin_inset Formula $n$
+\end_inset
+
+ elemen menjadi 
+\begin_inset Formula $k$
+\end_inset
+
+ subhimpunan tak kosong.
+ Partisi atas suatu himpunan 
+\begin_inset Formula $A$
+\end_inset
+
+ adalah koleksi subhimpunan dari 
+\begin_inset Formula $A$
+\end_inset
+
+ sedemikian sehingga setiap elemen himpunan 
+\begin_inset Formula $A$
+\end_inset
+
+ menjadi anggota tepat satu subhimpunan tersebut.
+ Urutan subhimpunan tidak berpengaruh karena partisi merupakan suatu koleksi
+ (himpunan yang anggotanya juga berupa himpunan).
+ Sebagai contoh, partisi 
+\begin_inset Formula $\{\{1\},\{2,3\},\{4\}\}$
+\end_inset
+
+ merupakan partisi atas 
+\begin_inset Formula $\{1,2,3,4\}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\{\{4\},\{1\},\{2,3\}\}$
+\end_inset
+
+ merupakan partisi yang sama atas 
+\begin_inset Formula $\{1,2,3,4\}$
+\end_inset
+
+.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:recursion-4"
+
+\end_inset
+
+Tentukan 
+\begin_inset Formula $S(10,1)$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Tentukan 
+\begin_inset Formula $S(3,2)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Tentukan 
+\begin_inset Formula $S(4,3)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:recursion-5"
+
+\end_inset
+
+Tentukan 
+\begin_inset Formula $S(4,2)$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Tentukan 
+\begin_inset Formula $S(8,8)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:recursion-6"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:Stirling2"
+
+\end_inset
+
+Bilangan Stirling jenis kedua, bagian 2.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Tentukan 
+\begin_inset Formula $S(n,1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Tentukan 
+\begin_inset Formula $S(n,n)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:recursion-7"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:Stirling3"
+
+\end_inset
+
+Bilangan Stirling jenis kedua, bagian 3.
+ Misalkan 
+\begin_inset Formula $A=\{1,2,3,\ldots,n\}$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Berapa banyak partisi atas 
+\begin_inset Formula $A$
+\end_inset
+
+ menjadi 
+\begin_inset Formula $k$
+\end_inset
+
+ subhimpunan tak kosong yang memuat subhimpunan 
+\begin_inset Formula $\{n\}$
+\end_inset
+
+? Nyatakan jawaban Anda dalam bentuk bilangan Stirling jenis kedua.
+\end_layout
+
+\begin_layout Enumerate
+Berapa banyak partisi atas 
+\begin_inset Formula $A$
+\end_inset
+
+ menjadi 
+\begin_inset Formula $k$
+\end_inset
+
+ subhimpunan tak kosong yang tidak memuat subhimpunan 
+\begin_inset Formula $\{n\}$
+\end_inset
+
+? Nyatakan jawaban Anda dalam bentuk bilangan Stirling jenis kedua.
+ Petunjuk: pertimbangkan partisi atas 
+\begin_inset Formula $B=\{1,2,3,\ldots,n-1\}$
+\end_inset
+
+ menjadi 
+\begin_inset Formula $k$
+\end_inset
+
+ subhimpunan tak kosong.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Bilangan Stirling jenis kedua, bagian 4.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Gunakan jawaban Anda untuk soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:Stirling2"
+
+\end_inset
+
+ dan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:Stirling3"
+
+\end_inset
+
+ guna menurunkan rumus rekurensi beserta syarat awal bagi banyaknya cara
+ suatu himpunan yang terdiri atas 
+\begin_inset Formula $n$
+\end_inset
+
+ elemen dapat dipartisi menjadi 
+\begin_inset Formula $k$
+\end_inset
+
+ subhimpunan.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah fungsi Octave rekursif yang menghitung bilangan Stirling jenis kedua.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Gunakan fungsi Octave Anda untuk memverifikasi bahwa 
+\begin_inset Formula $S(10,4)=34105$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:recursion-8"
+
+\end_inset
+
+Sekumpulan balok terdiri atas beberapa balok setinggi 1 inci dan beberapa balok
+ setinggi 2 inci.
+ Ada berapa cara untuk membentuk tumpukan balok setinggi 
+\begin_inset Formula $15$
+\end_inset
+
+ inci?
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Seekor lebah jantan hanya memiliki satu induk karena lebah jantan berasal
+ dari telur ratu lebah yang tidak dibuahi.
+ Seekor lebah betina (ratu lebah) memiliki dua induk.
+ Jadi, jika ditelusuri 0 generasi ke belakang, seekor lebah jantan memiliki satu leluhur (lebah itu sendiri).
+ Jika ditelusuri 1 generasi ke belakang, lebah itu juga memiliki 1 leluhur (induk betinanya).
+ Jika ditelusuri 2 generasi ke belakang, lebah itu memiliki 2 leluhur (kedua induk dari induk betinanya).
+ Berapa banyak leluhur langsung yang dimiliki seekor lebah jantan jika ditelusuri 
+\begin_inset Formula $n$
+\end_inset
+
+ generasi ke belakang?
+\end_layout
+
+\begin_layout Enumerate
+Berikan argumen bahwa setiap poligon dapat ditriangulasi (ditutupi oleh segitiga-segitiga
+ yang tidak saling tumpang tindih).
+ Berikut ini contoh triangulasi sebuah dodekagon.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/triangulation.png
+	lyxscale 25
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "recursive1"
+
+\end_inset
+
+ dan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "recursive2"
+
+\end_inset
+
+, Anda seharusnya memperhatikan bahwa fungsi-fungsi rekursif lebih lambat daripada
+ padanannya yang menggunakan perulangan for.
+ Berapa kali lebih lambat? Mengapa rekursi Fibonacci jauh lebih lambat daripada
+ padanannya yang menggunakan perulangan for?
+\end_layout
+
+\begin_layout Enumerate
+Misalkan barisan 
+\begin_inset Formula $\left\langle b_{n}\right\rangle $
+\end_inset
+
+ dan 
+\begin_inset Formula $\left\langle c_{n}\right\rangle $
+\end_inset
+
+ didefinisikan sebagai berikut.
+\begin_inset Formula 
+\begin{eqnarray*}
+b_{0} & = & \frac{1}{3};\quad b_{n+1}=4b_{n}-1,\quad n\geq0\\
+c_{0} & = & \frac{1}{10};\quad c_{n+1}=4c_{n}(1-c_{n}),\quad n\geq0
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Tulislah fungsi yang menggunakan perulangan for untuk menghitung suku 
+\begin_inset Formula $n$
+\end_inset
+
+ dari barisan 
+\begin_inset Formula $\left\langle b_{n}\right\rangle $
+\end_inset
+
+.
+ Fungsi Anda harus memiliki satu argumen, 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Tulislah fungsi yang menggunakan perulangan for untuk menghitung suku 
+\begin_inset Formula $n$
+\end_inset
+
+ dari barisan 
+\begin_inset Formula $\left\langle c_{n}\right\rangle $
+\end_inset
+
+.
+ Fungsi Anda harus memiliki satu argumen, 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Tulislah program yang memanggil fungsi Anda dari bagian (a) untuk menghitung 
+\begin_inset Formula $b_{30}$
+\end_inset
+
+.
+ Seberapa akurat hasil perhitungan ini? PETUNJUK: 
+\begin_inset Formula $b_{30}=\frac{1}{3}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Tulislah program yang memanggil fungsi Anda dari bagian (b) untuk menghitung 
+\begin_inset Formula $c_{50}$
+\end_inset
+
+.
+ Seberapa akurat hasil perhitungan ini? PETUNJUK: 
+\begin_inset Formula $c_{50}=.5392$
+\end_inset
+
+, akurat hingga 4 tempat desimal.
+\end_layout
+
+\begin_layout Enumerate
+Dapatkah Anda menemukan cara untuk membuat perhitungan ini lebih andal (lebih
+ akurat)?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+finishexercises 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

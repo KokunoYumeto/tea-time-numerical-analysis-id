@@ -1,0 +1,533 @@
+
+\section{\label{sec:Composite}Integrasi Komposit\index{integrasi numerik!komposit}}
+
+Pada bagian \ref{sec:calculusErrorAnalysis} kita memberikan suku-suku
+galat yang berbentuk $O(h^{k}f^{(l)}(\xi_{h}))$. Sebagai contoh utama,
+Aturan Trapesium, ${\displaystyle \int_{x_{0}}^{x_{0}+h}f(x)dx=\frac{h}{2}\left[f(x_{0})+f(x_{0}+h)\right]+O(h^{3}f''(\xi_{h}))}$,
+memiliki suku galat $O(h^{3}f''(\xi_{h}))$. Kesimpulan ini diperoleh
+langsung dari analisis deret Taylor, tetapi apa artinya?
+
+Suku galat untuk hampiran turunan relatif mudah dipahami. Pertimbangkan
+hampiran turunan pertama ${\displaystyle f'(x_{0})=\frac{-f(x_{0}-h)+f(x_{0}+h)}{2h}+\frac{h^{2}}{6}f'''(\xi_{h})}$.
+Semakin kecil $h$, semakin kecil pula galat dalam menghampiri $f'(x_{0})$
+(selama suku $f'''(\xi_{h})$ tidak meniadakan manfaat dari mengecilkan
+$h$). Suku galat untuk hampiran integral tidak semudah itu dipahami
+karena, dalam setiap kasus, besaran yang dihampiri bergantung pada
+$h$. Mengubah $h$ dalam rumus integrasi juga mengubah besaran yang
+dihampiri. Hal ini berlaku untuk setiap rumus dalam tabel \ref{tab:integrationFormulas}.
+Aturan Trapesium merupakan contoh yang baik untuk tujuan ini. Ruas
+kiri, yaitu besaran yang dihampiri, adalah $\int_{x_{0}}^{x_{0}+h}f(x)dx$,
+sehingga $h$ yang lebih kecil berarti menghampiri integral pada selang
+yang lebih kecil. Jadi, bagaimana galat yang lebih kecil saat menghampiri
+bilangan lain dapat memberi tahu kita tentang manfaat potensial menghitung
+dengan nilai $h$ yang lebih kecil? Telaah cermat terhadap Aturan
+Trapesium akan mengungkap jawabannya.
+
+Menurut Aturan Trapesium, $\frac{h}{2}\left[f(x_{0})+f(x_{0}+h)\right]$
+menghampiri integral $f$ pada selang $[x_{0},x_{0}+h]$. Jika $h$
+diganti dengan $h/2$, hampiran yang dihasilkan, $\frac{h}{4}\left[f(x_{0})+f(x_{0}+\frac{h}{2})\right]$,
+merupakan hampiran bagi integral $f$ pada selang $[x_{0},x_{0}+\frac{h}{2}]$.
+Besaran itu bukan lagi hampiran bagi integral pada $[x_{0},x_{0}+h]$!
+Untuk menggunakan Aturan Trapesium guna menghampiri besaran semula,
+yakni integral $f$ pada $[x_{0},x_{0}+h]$, penggunaan $h/2$ sebagai
+pengganti $h$ memerlukan dua penerapan Aturan Trapesium---satu pada
+selang $[x_{0},x_{0}+\frac{h}{2}]$ dan satu lagi pada selang $[x_{0}+\frac{h}{2},x_{0}+h]$.
+Jumlah kedua hampiran ini merupakan hampiran bagi integral $f$ pada
+$[x_{0},x_{0}+h]$. Jika $h$ diperkecil lagi, Aturan Trapesium harus
+diterapkan pada lebih banyak selang. Secara umum, memperkecil $h$
+menjadi $\frac{h}{n}$ untuk sembarang bilangan bulat $n$ memerlukan
+$n$ penerapan Aturan Trapesium:
+\begin{eqnarray}
+\int_{x_{0}}^{x_{0}+h}f(x)dx & = & \int_{x_{0}}^{x_{0}+\frac{h}{n}}f(x)dx+\int_{x_{0}+\frac{h}{n}}^{x_{0}+2\frac{h}{n}}f(x)dx+\cdots+\int_{x_{0}+(n-1)\frac{h}{n}}^{x_{0}+h}f(x)dx\nonumber \\
+ & \approx & \frac{h}{2n}\left[f(x_{0})+f\left(x_{0}+\frac{h}{n}\right)\right]+\frac{h}{2n}\left[f\left(x_{0}+\frac{h}{n}\right)+f\left(x_{0}+2\frac{h}{n}\right)\right]+\nonumber \\
+ &  & \qquad\qquad\qquad\cdots+\frac{h}{2n}\left[f\left(x_{0}+(n-1)\frac{h}{n}\right)+f(x_{0}+h)\right].\label{eq:compositeTrapezoidal}
+\end{eqnarray}
+Menguraikan $\int_{x_{0}}^{x_{0}+h}f(x)dx$ menjadi jumlah $\int_{x_{0}}^{x_{1}}f(x)dx+\int_{x_{1}}^{x_{2}}f(x)dx+\cdots+\int_{x_{n-1}}^{x_{n}}f(x)dx$
+lalu menjumlahkan hampiran integral-integral tersebut disebut integrasi
+komposit.
+
+Untuk penggunaan Aturan Trapesium dalam penghampiran, galat pada satu
+kali penerapan Aturan Trapesium adalah $O(h^{3}f''(\xi_{h}))$. Karena
+itu, galat dalam jumlah di atas dibatasi oleh $\sum_{i=1}^{n}M\left(\frac{h}{n}\right)^{3}f''(\mu_{i})=Mh\left(\frac{h}{n}\right)^{2}\cdot\frac{1}{n}\sum_{i=1}^{n}f''(\mu_{i})$
+untuk suatu $\mu_{i}$ dengan $x_{0}+(i-1)\frac{h}{n}<\mu_{i}<x_{0}+i\frac{h}{n}$.
+Dengan mengasumsikan $f''$ kontinu pada $[x_{0},x_{0}+h]$, teorema
+nilai antara memungkinkan kita mengganti $\frac{1}{n}\sum_{i=1}^{n}f''(\mu_{i})$
+dengan $f''(\xi_{n})$ untuk suatu $\xi_{n}\in(x_{0},x_{0}+h)$ karena
+$\frac{1}{n}\sum_{i=1}^{n}f''(\mu_{i})$ merupakan rata-rata dari
+$f''(\mu_{i})$, yang tidak melebihi nilai maksimum $f''(\mu_{i})$
+dan tidak kurang dari nilai minimum $f''(\mu_{i})$. Penggantian ini
+memberi kita batas galat $Mh\left(\frac{h}{n}\right)^{2}f''(\xi_{n})$.
+Kesimpulannya, Aturan Trapesium yang digunakan berulang kali bila
+diperlukan untuk menghampiri $\int_{x_{0}}^{x_{0}+h}f(x)dx$ sebenarnya
+memiliki galat $O\left(\left(\frac{1}{n}\right)^{2}f''(\xi_{n})\right)$,
+dengan $n$ adalah banyaknya subselang yang digunakan dalam perhitungan
+dan $\xi_{n}$ bergantung pada $n$. Kini sifat galat tersebut lebih
+jelas. Galat itu ditentukan oleh banyaknya subselang yang digunakan
+dalam perhitungan. Lebih banyak subselang ($n$ yang lebih besar)
+berarti galat lebih kecil (dengan asumsi manfaat penambahan subselang
+tidak ditiadakan oleh faktor $f''$). Rumus integrasi komposit lainnya
+serupa. Jika rumus kuadratur satu selang memiliki galat $O(h^{k}f^{(l)}(\xi_{h}))$,
+versi komposit yang bersesuaian memiliki galat $O\left(\left(\frac{1}{n}\right)^{k-1}f^{(l)}(\xi_{n})\right)$.
+Secara umum, lebih banyak selang berarti galat lebih kecil. 
+
+\begin{digression}{galat anomali}
+
+\noindent Dari tabel pada akhir bagian \ref{sec:calculusErrorAnalysis},
+Anda dapat melihat bahwa galat Aturan Simpson adalah $O(h^{5}f^{(4)}(\xi_{h}))$,
+sehingga kita memperkirakan galat Aturan Simpson komposit sebesar
+$O\left(\frac{1}{n^{4}}f^{(4)}(\xi_{n})\right)$. Berdasarkan definisi,
+notasi O besar digunakan untuk menyatakan batas atas galat; jadi,
+sesungguhnya kita memperkirakan bahwa galat Aturan Simpson komposit
+\textbf{tidak lebih dari } $O\left(\frac{1}{n^{4}}f^{(4)}(\xi_{n})\right)$.
+Bahkan, dalam beberapa kasus kita memperoleh kekonvergenan yang lebih
+baik daripada perkiraan! Salah satu contoh menarik fenomena ini adalah
+penerapan Aturan Simpson komposit pada integral ${\displaystyle \int_{0}^{1}\frac{1}{1+x^{2}}dx}$,
+yang nilai eksaknya adalah $\frac{\pi}{4}$. Tabel di bawah menunjukkan
+bahwa rasio galat mendekati $2^{6}$, bukan $2^{4}$ ketika banyaknya
+subselang digandakan. Terdapat sesuatu yang sangat khusus pada kombinasi
+fungsi dan selang ini. Cobalah mengulangi eksperimen ini dengan fungsi
+yang sama pada selang berbeda atau dengan fungsi berbeda pada selang
+yang sama.
+\begin{center}
+\begin{tabular}{c|ccc}
+subselang, $i$ & Aturan Simpson komposit & galat absolut, $e_{i}$ & rasio galat, $\frac{e_{i}}{e_{i+1}}$\tabularnewline
+\hline 
+$4$ & $0.785398125614677$ & $3.77827(10)^{-8}$ & $63.90$\tabularnewline
+$8$ & $0.785398162806206$ & $5.91242(10)^{-10}$ & $63.99$\tabularnewline
+$16$ & $0.785398163388209$ & $9.23916(10)^{-12}$ & $64.06$\tabularnewline
+$32$ & $0.785398163397304$ & $1.44217(10)^{-13}$ & \tabularnewline
+\end{tabular}
+\par\end{center}
+
+\noindent Terima kasih kepada John George atas contoh ini!
+
+\end{digression}
+
+\subsection{Aturan Trapesium Komposit\index{aturan trapesium!komposit}}
+
+Persamaan \ref{eq:compositeTrapezoidal} merangkum Aturan Trapesium
+komposit, tetapi bukan merupakan cara paling efisien untuk menggunakannya.
+Penyederhanaan ungkapan tersebut akan membantu. Perhatikan bahwa semua
+penghitungan nilai fungsi selain $f(x_{0})$ dan $f(x_{0}+h)$ muncul
+dua kali, sehingga rumusnya dapat dipadatkan menjadi
+\begin{eqnarray*}
+\int_{x_{0}}^{x_{0}+h}f(x)dx & \approx & \frac{h}{2n}\left[f(x_{0})+f(x_{0}+h)\right]+\frac{h}{n}\left[f\left(x_{0}+\frac{h}{n}\right)+\cdots+f\left(x_{0}+(n-1)\frac{h}{n}\right)\right]\\
+ & = & \frac{h}{2n}\left[f(x_{0})+f(x_{0}+h)+2\sum_{i=1}^{n-1}f\left(x_{0}+i\frac{h}{n}\right)\right]\\
+ & = & \frac{h}{n}\left[\frac{f(x_{0})+f(x_{0}+h)}{2}+\sum_{i=1}^{n-1}f\left(x_{0}+i\frac{h}{n}\right)\right].
+\end{eqnarray*}
+Ini menghasilkan kode semu berikut setelah kita melakukan substitusi
+$a=x_{0}$ dan $b=x_{0}+h$.
+
+\noindent\begin{pseudocode} \index{aturan trapesium!komposit, kode semu}
+\begin{description}
+\item [{Asumsi:}] $f$ memiliki turunan kedua yang kontinu pada $[a,b]$.
+\item [{Masukan:}] Fungsi $f$; selang integrasi $[a,b]$; banyaknya subselang
+$n$.
+\item [{Langkah~1:}] Tetapkan $h=b-a$; $d=\frac{h}{n}$; $I=\frac{f(a)+f(b)}{2}$;
+\item [{Langkah~2:}] Untuk $i=1,2,\ldots,n-1$ lakukan Langkah 3:
+
+\begin{description}
+\item [{Langkah~3:}] Tetapkan $I=I+f(a+i\cdot d)$;
+\end{description}
+\item [{Langkah~4:}] Tetapkan $I=dI$;
+\item [{Keluaran:}] Nilai hampiran, $I$, dari $\int_{a}^{b}f(x)dx$.
+\end{description}
+\end{pseudocode} 
+
+\noindent Rumus integrasi komposit lainnya juga perlu disederhanakan
+untuk meminimalkan banyaknya penghitungan nilai $f$.
+
+\subsection{Kuadratur Adaptif\index{integrasi numerik!adaptif}\index{aturan trapesium!adaptif}\index{kuadratur adaptif|see{integrasi numerik, adaptif}}}
+
+\[
+\int_{0}^{3}e^{-x^{2}}dx\approx0.88620734826
+\]
+
+\noindent dan nilai ini cukup mudah dihampiri dengan Aturan Trapesium
+komposit. Tabel \ref{tab:MinimumTrapezoidal} 
+\begin{table}
+\hrule 
+
+\caption{\label{tab:MinimumTrapezoidal}Banyaknya subselang minimum untuk mencapai
+akurasi tertentu dengan Aturan Trapesium komposit guna menghampiri
+$\protect\int_{0}^{3}e^{-x^{2}}dx$.}
+
+\centering{}\medskip{}
+\begin{tabular}{c|cccccc}
+akurasi & $2.2(10)^{-2}$ & $5(10)^{-5}$ & $10^{-5}$ & $10^{-7}$ & $10^{-11}$ & $10^{-15}$\tabularnewline
+\hline 
+subselang & $2$ & $3$ & $8$ & $75$ & $7453$ & $>745300$\tabularnewline
+\end{tabular}\medskip{}
+\hrule 
+\end{table}
+menunjukkan banyaknya subselang minimum yang diperlukan untuk mencapai
+berbagai tingkat akurasi, dengan asumsi perhitungan dilakukan menggunakan
+cukup banyak angka signifikan sehingga galat titik-mengambang tidak
+mendominasi perhitungan. Tampak jelas bahwa mencapai hasil berakurasi
+tinggi dengan \begin{digression}{fungsi galat} 
+
+\noindent Fungsi galat didefinisikan sebagai
+\[
+\mbox{erf}(x)=\frac{2}{\sqrt{\pi}}\int_{0}^{x}e^{-t^{2}}dt
+\]
+dan sangat penting dalam statistika karena digunakan untuk menghitung
+probabilitas yang berkaitan dengan distribusi normal. Faktor $\frac{2}{\sqrt{\pi}}$
+muncul dari fakta bahwa $\int_{-\infty}^{\infty}e^{-t^{2}}dt=\frac{\sqrt{\pi}}{2}$,
+yang juga merupakan fakta menarik.
+
+Sistem aljabar komputer menyediakan fungsi galat sebagai fungsi bawaan,
+sama seperti fungsi sinus atau logaritma. Karena itu, cara termudah
+untuk mengevaluasi $\int_{0}^{3}e^{-x^{2}}dx$ adalah meminta sistem
+aljabar komputer (atau mungkin kalkulator Anda) menghitung $\frac{\sqrt{\pi}}{2}\mbox{erf}(3)$.
+
+\noindent\end{digression} 
+
+\noindent Aturan Trapesium tidak praktis. Aturan ini memerlukan terlalu
+banyak perhitungan. Kekurangan ini akan kita bahas pada bagian berikutnya.
+Untuk saat ini, mari kita analisis kegunaan batas galat $O\left(\left(\frac{1}{n}\right)^{2}f''(\xi_{n})\right)$.
+Dengan mengasumsikan $f''(\xi_{n})$ kira-kira konstan, kita memperkirakan
+bahwa taksiran kita dapat ditingkatkan dari akurasi $2.2(10)^{-2}$
+menjadi akurasi $5(10)^{-5}$, yaitu peningkatan akurasi sebesar $\frac{2.2(10)^{-2}}{5(10)^{-5}}\approx440$
+kali, dengan memperbesar banyaknya subselang kira-kira sebesar faktor
+$\sqrt{440}\approx21$. Dengan kata lain, kita memperkirakan diperlukan
+sekitar 42 subselang untuk mencapai akurasi $5(10)^{-5}$ berdasarkan
+akurasi $2.2(10)^{-2}$ dengan 2 subselang. Karena ternyata hanya
+diperlukan 3, kita menyimpulkan bahwa asumsi $f''(\xi_{2})\approx f''(\xi_{3})$
+tidak tepat! Untungnya, ketidaktepatan asumsi ini justru menguntungkan
+kita. Untuk mencapai akurasi $5(10)^{-5}$, diperlukan lebih sedikit,
+bukan lebih banyak, subselang daripada perkiraan. Di sisi lain, untuk
+meningkatkan akurasi dari $5(10)^{-5}$ menjadi $10^{-5}$, yaitu
+peningkatan dengan faktor 5, kita memperkirakan diperlukan sekitar
+$\sqrt{5}\approx2.2$ kali lebih banyak subselang. $3\times2.2=6.6$;
+jadi, 8 subselang yang diperlukan kurang lebih sesuai dengan perkiraan
+kita. Demikian pula, untuk meningkatkan akurasi dari $10^{-5}$ menjadi
+$10^{-7}$, yaitu peningkatan akurasi dengan faktor 100, kita memperkirakan
+diperlukan sekitar 10 kali lebih banyak subselang. Memang, 75 kira-kira
+10 kali 8. Selanjutnya, untuk meningkatkan akurasi dengan faktor $10,000$
+(seperti dari $10^{-7}$ menjadi $10^{-11}$ atau dari $10^{-11}$
+menjadi $10^{-15}$), kita memperkirakan banyaknya subselang perlu
+ditingkatkan dengan faktor 100. Tabel tersebut juga membenarkan taksiran
+ini.
+
+Ingatlah bahwa jika $f''$ tidak ada, sangat tidak kontinu, atau sekadar
+sangat berfluktuasi, asumsi bahwa $f''(\xi_{n})$ konstan dapat menjadi
+asumsi yang buruk, berapa pun banyaknya subselang yang digunakan.
+Namun, kasus yang lebih umum ialah ketika $f''$ kontinu dan berperilaku
+cukup teratur. Bahkan dalam kasus ini, bila banyaknya subselang kecil,
+asumsi tersebut sering kali kurang baik; tetapi bila banyaknya subselang
+besar, asumsi itu cukup andal. Banyaknya subselang yang tepat agar
+asumsi ini layak berbeda dari satu fungsi ke fungsi lainnya. 
+
+Berbekal pelajaran ini, kita menghampiri
+
+\noindent
+\[
+\int_{0}^{3}\left(x-e^{x}\cos\sqrt{e^{2x}-x^{2}}\right)dx
+\]
+menggunakan Aturan Trapesium dengan 50 subselang dan mendapati bahwa
+hasilnya berselisih hanya sekitar $10^{-1}$ dari nilai eksak. Berapa
+banyak subselang yang diperkirakan kita perlukan untuk mencapai akurasi
+$10^{-3}$? Sekitar 10 kali lebih banyak, yakni sekitar 500. Dengan
+500 subselang, kita benar-benar mencapai akurasi sekitar $.997(10)^{-3}$,
+tepat sekali! Asumsi bahwa $f''(\xi_{n})$ konstan tampaknya berlaku
+bagi integral ini ketika $n\geq50$ (dan mungkin juga untuk beberapa
+$n<50$). Sayangnya, analisis semacam ini tidak dapat dilakukan dalam
+praktik. Dalam praktik, kita menghitung integral secara numerik karena
+tidak tahu cara menghitung nilainya secara eksak! Dalam situasi ``kehidupan
+nyata'', kita tidak memiliki cara untuk mengetahui seberapa akurat
+suatu taksiran integral dengan 3, 50, 500, atau 3000 subselang. Komputer
+perlu menaksir galat sambil melakukan perhitungan, seperti yang sebelumnya
+kita lakukan untuk algoritma pencarian akar.
+
+Walaupun kita tahu asumsi tersebut tidak sempurna, terutama untuk
+ $n$ yang kecil, kita mengasumsikan $f''(\xi_{n})$ konstan, sehingga
+galat Aturan Trapesium menjadi $O\left(\left(\frac{1}{n}\right)^{2}\right)$.
+Faktor $f''$ tercakup dalam konstanta tersirat pada notasi O besar.
+Karena itu, membagi dua banyaknya selang diperkirakan akan memperbesar
+galat dengan faktor sekitar 4. Kita gunakan notasi $T_{k}(a,b)$ untuk
+hampiran integral $\int_{a}^{b}f(x)dx$ oleh Aturan Trapesium komposit
+dengan $k$ subselang, dan $e_{k}=\int_{a}^{b}f(x)dx-T_{k}(a,b)$
+untuk galatnya,
+\[
+e_{n}\approx M\left(\frac{1}{n}\right)^{2}\quad\mbox{dan}\quad e_{2n}\approx M\left(\frac{1}{2n}\right)^{2}
+\]
+sehingga
+\begin{eqnarray*}
+\frac{e_{n}}{e_{2n}} & \approx & \frac{M\left(\frac{1}{n}\right)^{2}}{M\left(\frac{1}{2n}\right)^{2}}=4,\quad\mbox{yang menyiratkan}\quad e_{n}\approx4e_{2n}.
+\end{eqnarray*}
+Secara khusus, $\int_{a}^{b}f(x)dx=T_{2}(a,b)+e_{2}=T_{1}(a,b)+e_{1}$,
+sehingga
+
+\noindent
+\begin{eqnarray*}
+T_{2}(a,b)-T_{1}(a,b) & = & e_{1}-e_{2}\\
+ & \approx & 4e_{2}-e_{2}\\
+ & = & 3e_{2}
+\end{eqnarray*}
+sehingga $e_{2}\approx\frac{1}{3}(T_{2}(a,b)-T_{1}(a,b)).$ Secara
+eksplisit, 
+\[
+\int_{a}^{b}f(x)dx-T_{2}(a,b)\approx\frac{1}{3}(T_{2}(a,b)-T_{1}(a,b)).
+\]
+Kini kita memiliki cara untuk menghampiri galat secara numerik---sebuah
+terobosan penting! Galat kira-kira sama dengan sepertiga selisih antara
+hampiran Aturan Trapesium dengan satu subselang dan dengan dua subselang.
+
+Untuk memanfaatkan pengetahuan ini, kita perlu memasukkan taksiran
+tersebut ke dalam perhitungan. Misalkan kita ingin menghampiri $\int_{a}^{b}f(x)dx$
+dengan akurasi $tol$. Kita mulai dengan menghitung $T_{2}(a,b)$
+dan $T_{1}(a,b)$. Jika $\frac{1}{3}\left|T_{2}(a,b)-T_{1}(a,b)\right|<tol$,
+proses selesai. $T_{2}(a,b)$ merupakan hampiran kita. Dalam kasus
+yang lebih mungkin, yakni $\frac{1}{3}\left|T_{2}(a,b)-T_{1}(a,b)\right|\geq tol$,
+kita membagi selang $[a,b]$ menjadi dua subselang, $[a,\frac{a+b}{2}]$
+dan $[\frac{a+b}{2},b]$, lalu membandingkan taksiran galat pada subselang-subselang
+ini dengan $\frac{tol}{2}$. Jika $\frac{1}{3}\left|T_{2}(a,\frac{a+b}{2})-T_{1}(a,\frac{a+b}{2})\right|<\frac{tol}{2}$,
+subselang $[a,\frac{a+b}{2}]$ telah selesai diproses. $T_{2}(a,\frac{a+b}{2})$
+merupakan hampiran yang memadai bagi $\int_{a}^{\frac{a+b}{2}}f(x)dx$.
+Jika tidak, kita bagi dua lagi selang tersebut dan membandingkan taksiran
+galat dengan $\frac{tol}{4}$. Pada separuh lain dari $[a,b]$, jika
+$\frac{1}{3}\left|T_{2}(\frac{a+b}{2},b)-T_{1}(\frac{a+b}{2},b)\right|<\frac{tol}{2}$,
+subselang $[\frac{a+b}{2},b]$ telah selesai diproses. $T_{2}(\frac{a+b}{2},b)$
+merupakan hampiran yang memadai bagi $\int_{\frac{a+b}{2}}^{b}f(x)dx$.
+Jika tidak, kita bagi dua lagi selang tersebut dan membandingkan taksiran
+galat dengan $\frac{tol}{4}$. Setiap kali suatu subselang gagal memenuhi
+toleransi galat, kita membaginya menjadi dua dan mencoba lagi. Proses
+ini biasanya berakhir dengan sukses karena setiap kali subselang dibagi,
+galat pada umumnya berkurang dengan faktor 4 sedangkan toleransi yang
+disyaratkan hanya berkurang dengan faktor 2. Pada akhirnya, jumlah
+semua hampiran $T_{2}$ yang memenuhi toleransi galat akan memberikan
+hampiran akhir: $\int_{a}^{b}f(x)dx$.
+
+Cara paling sederhana untuk mengodekan algoritma ini adalah menggunakan
+fungsi rekursif. Algoritma ini dapat dibuat tanpa rekursi, tetapi
+pencatatan yang diperlukan cukup rumit. Bergantung pada bahasa pemrograman
+yang digunakan, mungkin ada pertukaran antara kesederhanaan dan kecepatan.
+Beberapa bahasa tidak menangani fungsi rekursif dengan cepat.
+
+\noindent\begin{pseudocode} \index{aturan trapesium!adaptif, kode semu}
+\begin{description}
+\item [{Asumsi:}] $f$ memiliki turunan kedua yang kontinu pada $[a,b]$.
+\item [{Masukan:}] Fungsi $f$; selang integrasi $[a,b]$; toleransi $tol$.
+\item [{Langkah~1:}] Tetapkan $m=\frac{b+a}{2}$; $I_{1}=T_{1}(a,b)$;
+$I_{2}=T_{2}(a,b)$;
+\item [{Langkah~2:}] Jika $|I_{2}-I_{1}|<3tol$ maka kembalikan $I_{2}$;
+\item [{Langkah~3:}] Jalankan Langkah 1--5 dengan masukan $f$; $[a,\frac{a+b}{2}]$;
+dan $\frac{tol}{2}$; lalu tetapkan $A$ sama dengan hasilnya;
+\item [{Langkah~4:}] Jalankan Langkah 1--5 dengan masukan $f$; $[\frac{a+b}{2},b]$;
+dan $\frac{tol}{2}$; lalu tetapkan $B$ sama dengan hasilnya;
+\item [{Langkah~5:}] Kembalikan $A+B$;
+\item [{Keluaran:}] Nilai hampiran bagi $\int_{a}^{b}f(x)dx$.
+\end{description}
+\end{pseudocode} 
+
+\noindent Contoh perhitungan dalam bentuk tabel dapat membantu menjernihkan
+kebingungan tentang cara kerja algoritma ini. Tabel berikut menghampiri
+integral $\int_{0}^{3}\ln(3+x)dx$ dengan toleransi $.006$.
+
+\begin{center}
+%\setlength{\extrarowheight}{3pt} %
+\begin{tabular}{ccccccc}
+$a$ & $b$ & $T_{1}(a,b)$ & $T_{2}(a,b)$ & $\frac{1}{3}\left|T_{2}(a,b)-T_{1}(a,b)\right|$ & $tol$ & \tabularnewline
+\hline 
+$0$ & $3$ & $4.33555$ & $4.42389$ & $.02944$ & $.00600$ & \includegraphics[scale=0.23]{figures/xMarkRed}\tabularnewline
+$0$ & $1.5$ & $1.95201$ & $1.96732$ & $.00510$ & $.00300$ & \includegraphics[scale=0.23]{figures/xMarkRed}\tabularnewline
+$0$ & $0.75$ & $0.90763$ & {\large\textbf{0.90997}} & $.00077$ & $.00150$ & \includegraphics[scale=0.23]{figures/checkMarkGreen}\tabularnewline
+$0.75$ & $1.5$ & $1.05968$ & {\large\textbf{1.06124}} & $.00051$ & $.00150$ & \includegraphics[scale=0.23]{figures/checkMarkGreen}\tabularnewline
+$1.5$ & $3$ & $2.47187$ & {\large\textbf{2.47961}} & $.00257$ & $.00300$ & \includegraphics[scale=0.23]{figures/checkMarkGreen}\tabularnewline
+\hline 
+\multicolumn{7}{c}{$\int_{0}^{3}\ln(3+x)dx\approx0.90997+1.06124+2.47961=4.45082$}\tabularnewline
+\end{tabular}
+\par\end{center}
+
+\noindent Perhitungan dalam tabel memerlukan 7 penghitungan nilai
+$f$ dan menghasilkan taksiran yang lebih rendah daripada nilai integral
+sekitar $.00390$. Berdasarkan urutan kemunculannya, penghitungan
+nilai dilakukan pada $x=0,3,1.5,.75,.375,1.125,2.25$. Aturan Trapesium
+komposit dengan 7 penghitungan nilai (6 subselang, masing-masing panjangnya
+$.5$) juga menghasilkan taksiran yang lebih rendah daripada nilai
+integral sekitar $.00346$. Aturan Trapesium komposit nonadaptif memberikan
+taksiran yang sedikit lebih baik dengan jumlah perhitungan yang pada
+dasarnya sama. Namun, ingatlah bahwa yang kita kejar bukan semata-mata
+efisiensi. Yang kita butuhkan ialah taksiran galat otomatis. Aturan
+Trapesium adaptif melakukan sesuatu yang tidak dilakukan oleh Aturan
+Trapesium komposit konvensional. Aturan adaptif memantau akurasinya
+sendiri; jadi, ketika rutin selesai, Anda tidak hanya memperoleh taksiran,
+tetapi juga dapat cukup yakin akan akurasinya \textit{ bahkan ketika
+Anda tidak memiliki cara untuk menghitung integral secara eksak} sebagai
+pembanding.
+
+\subsection{Konsep Kunci}
+\begin{description}
+\item [{Integrasi~numerik~komposit:}] \index{integrasi numerik!komposit}Membagi
+selang integrasi menjadi sejumlah subselang, menerapkan rumus kuadratur
+sederhana pada setiap subselang, lalu menjumlahkan hasilnya.
+\item [{Integrasi~numerik~adaptif:}] \index{integrasi numerik!adaptif}Memanfaatkan
+suku galat suatu rumus kuadratur sederhana untuk menghitung secara
+otomatis banyaknya dan karakteristik subselang yang diperlukan guna
+memperoleh integral tentu dengan akurasi yang ditetapkan.
+\end{description}
+\noindent\startexercises 
+
+\subsection{Latihan}
+\begin{enumerate}
+\item \label{exc:calculus-composite}Gunakan Aturan Titik Tengah komposit
+dengan 3 subselang untuk menghampiri
+
+\begin{enumerate}
+\item ${\displaystyle \int_{1}^{3}\ln(\sin(x))dx}$ \hasasolution 
+\item ${\displaystyle \int_{5}^{7}\sqrt{x\cos x}\,dx}$
+\item ${\displaystyle \int_{1}^{4}\frac{e^{x}\ln(x)}{x}dx}$ \hasananswer 
+\item ${\displaystyle \int_{10}^{13}\sqrt{1+\cos^{2}x}\,dx}$
+\item ${\displaystyle \int_{\ln3}^{\ln7}\frac{e^{x}}{1+x}dx}$ \hasananswer 
+\item ${\displaystyle \int_{0}^{1}\frac{x^{2}-1}{x^{2}+1}dx}$
+\end{enumerate}
+\item \label{exc:calculus-composite-7}Ulangi soal \ref{exc:calculus-composite}
+menggunakan Aturan Trapesium komposit. \haspartwithsolution  \haspartwithanswer 
+\item \label{exc:calculus-composite-8}Ulangi soal \ref{exc:calculus-composite}
+menggunakan Aturan Simpson komposit. \haspartwithsolution  \haspartwithanswer 
+\item \label{exc:calculus-composite-9}Ulangi soal \ref{exc:calculus-composite}
+menggunakan Aturan Simpson $\frac{3}{8}$ komposit. \haspartwithsolution  \haspartwithanswer 
+\item \label{exc:calculus-composite-10}Ulangi soal \ref{exc:calculus-composite}
+menggunakan versi komposit dari rumus kuadratur \haspartwithsolution  \haspartwithanswer 
+\[
+\int_{x_{0}}^{x_{0}+3h}f(x)dx=\frac{3h}{2}\left[f(x_{0}+h)+f(x_{0}+2h)\right].
+\]
+\item Gunakan versi komposit dari rumus kuadratur
+\[
+\int_{x_{0}}^{x_{0}+h}f(x)\,dx\approx\frac{h}{2}\left[f\left(x_{0}+\frac{h}{3}\right)+f\left(x_{0}+\frac{2h}{3}\right)\right]
+\]
+dengan tiga subselang untuk menghampiri
+\[
+\int_{0}^{3}\frac{x^{3}}{x^{3}+1}dx.
+\]
+\item \label{exc:calculus-composite-11}Gunakan Aturan Trapesium (sederhana)
+pada $\int_{0}^{\pi}\sin^{4}x\,dx$ untuk membantu menaksir banyaknya
+subselang yang diperlukan untuk membagi $[0,\pi]$ agar $\int_{0}^{\pi}\sin^{4}x\,dx$
+dapat dihampiri dengan galat tidak lebih dari $10^{-4}$ menggunakan
+Aturan Trapesium \textit{komposit}. CATATAN: $\int_{0}^{\pi}\sin^{4}x\,dx=\frac{3}{8}\pi$. \hasasolution 
+\item \label{exc:calculus-composite-14}Ulangi soal \ref{exc:calculus-composite-11}
+menggunakan Aturan Titik Tengah. \hasananswer 
+\item Ulangi soal \ref{exc:calculus-composite-11} menggunakan Aturan Simpson.
+\item Misalkan Aturan Simpson komposit dengan 100 subselang digunakan untuk
+menghampiri $\int_{5}^{12}f(x)\,dx$, dan galat absolutnya ternyata
+kurang dari $10^{-5}$. Fungsi apakah yang mungkin menjadi $f(x)$?
+\item Turunkan rumus penjumlahan untuk versi komposit dari
+
+\begin{enumerate}
+\item Aturan Titik Tengah.
+\item \label{exc:calculus-composite-15}Aturan Simpson. \hasananswer 
+\item \label{exc:calculus-composite-16}Aturan Simpson $\frac{3}{8}$. \hasananswer 
+\item rumus kuadratur
+\end{enumerate}
+\[
+\int_{x_{0}}^{x_{0}+h}f(x)\,dx\approx\frac{h}{2}\left[f\left(x_{0}+\frac{h}{3}\right)+f\left(x_{0}+\frac{2h}{3}\right)\right].
+\]
+
+\item Berdasarkan pembahasan kita tentang integrasi komposit, suku galat
+untuk Aturan Simpson komposit yang diterapkan pada $\int_{a}^{b}f(x)\,dx$
+dengan $n$ subselang adalah $O\left(\left(\frac{1}{n}\right)^{4}f^{(4)}(\xi_{n})\right)$.
+Dengan sedikit analisis tambahan, dapat ditunjukkan bahwa suku galat
+itu sebenarnya $-\frac{b-a}{90}h^{4}f^{(4)}(\xi_{n})$, dengan $h=\frac{b-a}{n}$.
+Notasi O besar tidak diperlukan. Galat ini eksak untuk suatu $\xi_{n}\in[a,b]$.
+Gunakan suku galat ini untuk menentukan batas teoretis bagi galat
+dalam menghampiri 
+\[
+\int_{2}^{4}\frac{1}{1-x}\:dx
+\]
+menggunakan Aturan Simpson (komposit) dengan $h=0.1$.
+\item Mengapa Aturan Trapesium komposit SELALU (untuk berapa pun banyaknya
+subselang) menghasilkan taksiran yang lebih rendah daripada nilai
+\[
+\int_{0}^{\pi}\sin x\:dx?
+\]
+\item Tunjukkan secara geometris dan jelaskan dengan kata-kata penghampiran
+terhadap $\int_{7}^{8}\frac{x\sin x}{8}\,dx$ menggunakan Aturan Trapesium
+komposit dengan 4 trapesium (yakni, 4 subselang).
+\item \label{exc:calculus-composite-17}Hampiri $\int_{1}^{3}\ln(\sin(x))dx$
+menggunakan metode Simpson adaptif dengan toleransi $0.002$. \hasasolution 
+\item \label{exc:calculus-composite-18}Gunakan metode Simpson adaptif untuk
+menghampiri ${\displaystyle \int_{0}^{1}\ln(x+1)dx}$ dengan galat
+tidak lebih dari $10^{-4}$. \hasananswer 
+\item \label{exc:calculus-composite-6}Turunkan rumus kuadratur untuk 
+\[
+\int_{a}^{b}f(x)\,dx
+\]
+menggunakan simpul yang belum ditentukan $a\leq x_{0}<x_{1}\leq b$.
+Dengan kata lain, turunkan sebuah ``Aturan Trapesium umum'' dengan
+$x_{0}$ dan $x_{1}$ boleh berupa sembarang dua nilai berbeda dalam
+$[a,b]$.
+\item Pada rumus yang Anda peroleh dari soal \ref{exc:calculus-composite-6},
+lakukan substitusi $x_{0}=a$, $x_{1}=b$, dan $x_{1}-x_{0}=h$, lalu
+tunjukkan bahwa rumus tersebut menyederhana menjadi Aturan Trapesium.
+\item \label{exc:calculus-composite-1}Misalkan $I=\int_{0}^{2}x^{2}\ln(x^{2}+1)\,dx$. \hasananswer 
+
+\begin{enumerate}
+\item Hampiri $I$ menggunakan Aturan Titik Tengah.
+\item \label{est1}Gunakan jawaban Anda untuk bagian (a) guna menaksir banyaknya
+subselang yang diperlukan untuk menghampiri $I$ dengan galat tidak
+lebih dari $10^{-4}$. CATATAN: $I=\frac{24\ln(5)-6\tan^{-1}(2)-4}{9}$.
+\end{enumerate}
+\item \label{exc:calculus-composite-2}Misalkan $I=\int_{0}^{2}x^{2}\ln(x^{2}+1)\,dx$.
+
+\begin{enumerate}
+\item Hampiri $I$ menggunakan Aturan Simpson.
+\item \label{est2}Gunakan jawaban Anda untuk bagian (a) guna menaksir banyaknya
+subselang yang diperlukan untuk menghampiri $I$ dengan galat tidak
+lebih dari $10^{-4}$ menggunakan Aturan Simpson komposit. CATATAN:
+$I=\frac{24\ln(5)-6\tan^{-1}(2)-4}{9}$.
+\end{enumerate}
+\item \label{exc:calculus-composite-19}\octave\ Gunakan Octave untuk menghitung
+hampiran yang disarankan dalam soal \ref{est1}. Apakah galat absolutnya
+kurang dari $10^{-4}$? \hasananswer 
+\item \octave\ Gunakan Octave untuk menghitung taksiran yang disarankan
+dalam soal \ref{est2}. Apakah galat absolutnya kurang dari $10^{-4}$?
+\item \label{exc:calculus-composite-12}\octave\ Gunakan Aturan Trapesium
+komposit untuk menghampiri ${\displaystyle \int_{0}^{1}\ln(x+1)dx}$
+dengan galat tidak lebih dari $10^{-6}$. Berapa banyak subselang
+yang diperlukan? \hasasolution 
+\item \octave\ Ulangi soal \ref{exc:calculus-composite-12} menggunakan
+Aturan Titik Tengah komposit.
+\item \label{exc:calculus-composite-13}\octave\ Gunakan Aturan Simpson
+komposit untuk menghampiri ${\displaystyle \int_{0}^{1}\ln(x+1)dx}$
+dengan galat tidak lebih dari $10^{-6}$. Berapa banyak subselang
+yang diperlukan?
+\item \label{exc:calculus-composite-20}\octave\ Ulangi soal \ref{exc:calculus-composite-13}
+menggunakan Aturan Simpson $\frac{3}{8}$ komposit. \hasananswer 
+\item \octave\ \label{exc:calculus-composite-5}Tulislah fungsi Octave
+yang menerapkan Aturan Simpson adaptif sebagai fungsi rekursif. Beberapa
+catatan tentang strukturnya: \hasananswer 
+
+\begin{enumerate}
+\item Masukan untuk fungsi tersebut harus berupa $f(x)$, $a$, $b$, dan
+galat keseluruhan maksimum, $tol$. 
+\item Keluaran fungsi tersebut harus berupa taksiran dan, jika Anda merasa
+sangat bersemangat, banyaknya penghitungan nilai fungsi.
+\end{enumerate}
+\item \label{exc:calculus-composite-21}\octave\ Gunakan kode Anda dari
+soal \ref{exc:calculus-composite-5} untuk menghampiri $\int_{1}^{3}\ln(\sin(x))dx$
+dengan toleransi $0.002$. \hasananswer 
+\item \octave\ Gunakan kode Anda dari soal \ref{exc:calculus-composite-5}
+untuk menghampiri ${\displaystyle \int_{0}^{1}\ln(x+1)dx}$ dengan
+galat tidak lebih dari $10^{-4}$.
+\item \label{exc:calculus-composite-23}\octave\ (i) Gunakan kode Anda
+dari soal \ref{exc:calculus-composite-5} untuk menghampiri integral
+tersebut menggunakan $tol=10^{-5}$. (ii) Hitung galat sebenarnya
+dari hampiran tersebut. (iii) Apakah hampiran tersebut memiliki galat
+tidak lebih dari $10^{-5}$ seperti yang diminta?
+
+\begin{enumerate}
+\item \label{exc:calculus-composite-22}${\displaystyle \int_{0}^{2\pi}x\sin(x^{2})dx}$ \hasananswer 
+\item ${\displaystyle \int_{0.1}^{2}\frac{1}{x}\,dx}$
+\item ${\displaystyle \int_{0}^{2}x^{2}\ln(x^{2}+1)\,dx}$
+\end{enumerate}
+CATATAN: $\int_{0}^{2}x^{2}\ln(x^{2}+1)\,dx=\frac{24\ln(5)-6\tan^{-1}(2)-4}{9}$.
+\item \label{exc:calculus-composite-3}\octave\ Tulislah fungsi Octave
+yang menerapkan Aturan Trapesium umum dari soal \ref{exc:calculus-composite}
+sedemikian sehingga $x_{0}$ dan $x_{1}$ dipilih secara acak.
+\item \octave\ \label{exc:calculus-composite-4}Tulislah fungsi Octave
+yang menerapkan versi komposit dari metode kuadratur pada soal \ref{exc:calculus-composite-3}.
+\item \octave\ Lakukan beberapa eksperimen numerik untuk membandingkan
+Aturan Trapesium komposit (standar) dengan Aturan Trapesium komposit
+(acak) dari soal \ref{exc:calculus-composite-4}. Apa yang Anda temukan?
+\end{enumerate}
+\finishexercises 

@@ -1,0 +1,4600 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\input $HOME/Documents/textbook/preamble
+\end_preamble
+\use_default_options true
+\master ../scsu/Book-Numerical/TeaTimeNumericalAnalysis.lyx
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 4cm
+\topmargin 2.5cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 1
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:RootsBracketing"
+
+\end_inset
+
+Pengurungan
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+pengurungan
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Metode bagi dua disebut metode pencarian akar dengan pengurungan.
+ Sebuah akar diketahui berada di dalam suatu selang tertentu.
+ Setiap iterasi memperkecil lebar selang sambil mempertahankan jaminan bahwa
+ akar tetap berada di dalamnya.
+ Pada setiap langkah algoritme, akar diketahui berada di antara hampiran terbaru
+ dan salah satu hampiran sebelumnya.
+ Kedua batas ini membentuk selang pengurung bagi akar.
+ Seiring berjalannya algoritme, lebar selang pengurung menyusut hingga lebih
+ kecil daripada toleransi tertentu; pada saat itu akar diketahui sudah dekat
+ dan algoritme berhenti.
+\end_layout
+
+\begin_layout Standard
+Kelemahan metode bagi dua adalah orde kekonvergenannya yang linear.
+ Dibandingkan dengan metode superlinear seperti metode sekan dan metode Newton,
+ metode bagi dua bergerak sangat lambat.
+ Namun, metode bagi dua memiliki sesuatu yang tidak dimiliki metode sekan dan
+ metode Newton—kepastian kekonvergenan.
+ Memang, metode sekan dan metode Newton cepat ketika konvergen, tetapi tidak
+ ada jaminan bahwa keduanya akan konvergen.
+\end_layout
+
+\begin_layout Standard
+Metode yang menggabungkan keunggulan metode bagi dua (kekonvergenan terjamin)
+ dengan metode berorde lebih tinggi (kecepatan) disebut metode berpengaman.
+ Metode tersebut dijamin konvergen dan dapat melakukannya dengan cepat ketika
+ hampiran sudah dekat dengan akar.
+ Setiap metode superlinear dapat dilengkapi dengan pengurungan sehingga menghasilkan
+ metode berpengaman.
+\end_layout
+
+\begin_layout Subsection
+Pengurungan
+\end_layout
+
+\begin_layout Standard
+Pengurungan berarti mempertahankan suatu selang yang diketahui memuat akar.
+ Pengurungan digunakan dalam metode bagi dua.
+ Pada setiap iterasi, akar diketahui berada di antara dua hampiran terbaru.
+ Pengurungan tidak digunakan dalam metode sekan maupun metode Newton.
+ Tidak ada jaminan bahwa akar tetap dekat dengan hampiran-hampiran terbaru.
+ 
+\end_layout
+
+\begin_layout Standard
+Meskipun demikian, tidaklah sulit untuk menggabungkan metode bagi dua dengan
+ metode sekan, metode Newton, atau metode berorde tinggi lainnya, guna membentuk
+ metode hibrida yang menjaga akar tetap terkurung sekaligus membuka peluang
+ bagi kekonvergenan cepat.
+ Dalam metode seperti ini, kandidat hampiran berikutnya dihitung menurut metode
+ berorde tinggi.
+ Jika kandidat berada di dalam selang pengurung, kandidat itu menjadi hampiran
+ berikutnya.
+ Jika kandidat berada di luar selang pengurung, metode bagi dua digunakan untuk
+ menghitung hampiran berikutnya sebagai gantinya.
+\end_layout
+
+\begin_layout Standard
+Metode sekan terkurung
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode sekan terkurung
+\end_layout
+
+\end_inset
+
+, yang lebih dikenal sebagai metode posisi palsu atau regula falsi, memberikan
+ contoh sederhana.
+ Bahkan, metode berorde tinggi (metode sekan) selalu menghasilkan nilai di
+ dalam selang pengurung, sehingga titik tersebut tidak perlu diperiksa.
+ Perbedaan antara posisi palsu dan metode sekan terletak pada pemilihan salah
+ satu dari dua hampiran sebelumnya yang akan dipertahankan.
+ Dalam metode sekan, hampiran terbarulah yang selalu dipertahankan untuk langkah
+ berikutnya.
+ Dalam posisi palsu, hampiran yang mempertahankan selang pengurung bagi akar
+ dipertahankan untuk langkah berikutnya, baik hampiran itu yang paling baru
+ maupun bukan.
+ Metode Newton terkurung
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Newton terkurung
+\end_layout
+
+\end_inset
+
+ memberikan contoh yang sedikit lebih lanjut karena sangat mungkin hampiran
+ yang dihasilkan metode Newton jatuh di luar selang pengurung.
+\end_layout
+
+\begin_layout Standard
+Ambil fungsi 
+\begin_inset Formula $g(x)=3-x-\sin(x)$
+\end_inset
+
+ pada selang 
+\begin_inset Formula $[2,3]$
+\end_inset
+
+.
+ 
+\begin_inset Formula $f$
+\end_inset
+
+ kontinu pada 
+\begin_inset Formula $[2,3]$
+\end_inset
+
+, dan 
+\begin_inset Formula $g(2)\approx0.09$
+\end_inset
+
+ serta 
+\begin_inset Formula $g(3)\approx-0.14$
+\end_inset
+
+ berlainan tanda.
+ Jadi, 
+\begin_inset Formula $[2,3]$
+\end_inset
+
+ mengurung sebuah akar 
+\begin_inset Formula $g$
+\end_inset
+
+; karena itu, tetapkan 
+\begin_inset Formula $x_{0}=2$
+\end_inset
+
+ dan 
+\begin_inset Formula $x_{1}=3$
+\end_inset
+
+.
+ Tabel berikut menunjukkan perhitungan hampiran berikutnya untuk metode sekan
+ terkurung dan metode Newton terkurung.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+kandidat 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sekan terkurung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $x_{1}-g(x_{1})\frac{x_{1}-x_{0}}{g(x_{1})-g(x_{0})}\approx2.3912$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.3912$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Newton terkurung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{1}-\frac{g(x_{1})}{g'(x_{1})}\approx-11.101$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Dalam metode sekan terkurung, kandidat 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ diterima, tetapi dalam metode Newton terkurung, kandidat 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ berada di luar selang pengurung sehingga dibuang, dan 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ menurut metode bagi dua (
+\begin_inset Formula $2.5$
+\end_inset
+
+) digunakan sebagai gantinya.
+\end_layout
+
+\begin_layout Standard
+Untuk menyiapkan hampiran berikutnya, 
+\begin_inset Formula $g(x_{2})$
+\end_inset
+
+ dihitung.
+ Karena 
+\begin_inset Formula $g(x_{2})$
+\end_inset
+
+ bernilai negatif pada kedua metode, 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ lama, yaitu 
+\begin_inset Formula $3$
+\end_inset
+
+, dibuang dan 
+\begin_inset Formula $x_{0}=2$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+dipromosikan
+\begin_inset Quotes erd
+\end_inset
+
+ menjadi 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ untuk mempertahankan selang pengurung.
+ Dengan cara ini, 
+\begin_inset Formula $g$
+\end_inset
+
+ berlainan tanda di 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ dan 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+.
+ Tabel berikut memperlihatkan proses pengambilan keputusan ini sekaligus perhitungan
+ hampiran berikutnya.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $g(x_{2})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+kandidat 
+\begin_inset Formula $x_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sekan terkurung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.073141$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.3912$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $x_{2}-g(x_{2})\frac{x_{2}-x_{1}}{g(x_{2})-g(x_{1})}\approx2.2165$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.2165$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Newton terkurung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.098472$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{2}-\frac{g(x_{2})}{g'(x_{2})}\approx2.0048$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.0048$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Dapatkah Anda melengkapi nilai 
+\begin_inset Formula $x_{4}$
+\end_inset
+
+ berdasarkan nilai-nilai dalam tabel berikut? Perhatikan bahwa 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ lama harus 
+\begin_inset Quotes eld
+\end_inset
+
+dipromosikan
+\begin_inset Quotes erd
+\end_inset
+
+ pada metode sekan terkurung, tetapi tidak pada metode Newton terkurung.
+ Mengapa? Jawaban 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "ans:bracketedx4"
+
+\end_inset
+
+.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $g(x_{3})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+kandidat 
+\begin_inset Formula $x_{4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sekan terkurung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.015215$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.2165$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $x_{3}-g(x_{3})\frac{x_{3}-x_{2}}{g(x_{3})-g(x_{2})}\approx2.1854$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Newton terkurung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.087906$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.0048$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{3}-\frac{g(x_{3})}{g'(x_{3})}\approx2.1565$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+5 hampiran berikutnya dari setiap metode diberikan di sini jika Anda ingin
+ mencoba menghitung beberapa di antaranya sendiri.
+ Sekarang adalah saat yang tepat untuk melakukannya.
+ Nilai-nilai ini dihitung menggunakan kode Octave berikut.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+terkurung
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sekan
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Newton
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.18062942638407$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.17925592233708$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{6}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.17988957044102$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.17975682599184$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{7}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.17977718322867$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.17975706647997$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{8}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.17976012038625$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.17975706648003$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{9}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.17975753008587$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.17975706648003$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Kode Octave untuk Posisi Palsu (Metode Sekan Terkurung)
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode sekan terkurung ! kode Octave
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+% Written by Dr.
+ Len Brin           20 May 2014 %
+\end_layout
+
+\begin_layout Plain Layout
+
+% Purpose: Implementation of the Method of      %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        False Position.
+                        %
+\end_layout
+
+\begin_layout Plain Layout
+
+% INPUT: function g; initial values a and b;    %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        tolerance TOL; maximum iterations N    %
+\end_layout
+
+\begin_layout Plain Layout
+
+% OUTPUT: approximation x and number of         %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        iterations i; or message of failure    %
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+function [x,i] = falsePosition(g,a,b,TOL,N)
+\end_layout
+
+\begin_layout Plain Layout
+
+  i=1;
+\end_layout
+
+\begin_layout Plain Layout
+
+  A=g(a);
+\end_layout
+
+\begin_layout Plain Layout
+
+  B=g(b);
+\end_layout
+
+\begin_layout Plain Layout
+
+  while (i<N)
+\end_layout
+
+\begin_layout Plain Layout
+
+    b
+\end_layout
+
+\begin_layout Plain Layout
+
+    x=b-B*(b-a)/(B-A);
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (abs(x-b)<TOL)
+\end_layout
+
+\begin_layout Plain Layout
+
+      return
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+    X=g(x);
+\end_layout
+
+\begin_layout Plain Layout
+
+    if ((B<0 && X>0) || (B>0 && X<0))
+\end_layout
+
+\begin_layout Plain Layout
+
+      a=b; A=B;
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+    b=x; B=X;
+\end_layout
+
+\begin_layout Plain Layout
+
+    i=i+1;
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%while
+\end_layout
+
+\begin_layout Plain Layout
+
+  x="Method failed---maximum number of iterations reached";
+\end_layout
+
+\begin_layout Plain Layout
+
+end%function
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Kode Octave untuk Metode Newton Terkurung
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Newton terkurung ! kode Octave
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+% Written by Dr.
+ Len Brin           20 May 2014 %
+\end_layout
+
+\begin_layout Plain Layout
+
+% Purpose: Implementation of bracketed Newton's %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        method.
+                                %
+\end_layout
+
+\begin_layout Plain Layout
+
+% INPUT: function g; its derivative gp; initial %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        values a and b; tolerance TOL; maximum %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        iterations N                           %
+\end_layout
+
+\begin_layout Plain Layout
+
+% OUTPUT: approximation x and number of         %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        iterations i; or message of failure    %
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+function [x,i] = bracketedNewton(g,gp,a,b,TOL,N)
+\end_layout
+
+\begin_layout Plain Layout
+
+  i=1;
+\end_layout
+
+\begin_layout Plain Layout
+
+  A=g(a);
+\end_layout
+
+\begin_layout Plain Layout
+
+  B=g(b);
+\end_layout
+
+\begin_layout Plain Layout
+
+  while (i<N)
+\end_layout
+
+\begin_layout Plain Layout
+
+    b
+\end_layout
+
+\begin_layout Plain Layout
+
+    x=b-B/gp(b);
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (x<min([a,b]) || x>max([a,b]))
+\end_layout
+
+\begin_layout Plain Layout
+
+      x=b+(a-b)/2;
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (abs(x-b)<TOL)
+\end_layout
+
+\begin_layout Plain Layout
+
+      return
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+    X=g(x);
+\end_layout
+
+\begin_layout Plain Layout
+
+    if ((B<0 && X>0) || (B>0 && X<0))
+\end_layout
+
+\begin_layout Plain Layout
+
+      a=b; A=B;
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+    b=x; B=X;
+\end_layout
+
+\begin_layout Plain Layout
+
+    i=i+1;
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%while
+\end_layout
+
+\begin_layout Plain Layout
+
+  x="Method failed---maximum number of iterations reached";
+\end_layout
+
+\begin_layout Plain Layout
+
+end%function
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\family typewriter
+falsePosition.m
+\family default
+ dan 
+\family typewriter
+bracketedNewton.m
+\family default
+ dapat diunduh dari 
+\begin_inset CommandInset href
+LatexCommand href
+name "situs pendamping"
+target "http://lqbrin.github.io/tea-time-numerical/ancillaries.html"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Kode untuk metode sekan terkurung dan metode Newton terkurung sangat mirip.
+ Bahkan, keduanya hampir identik.
+ Hanya ada dua perbedaan selain komentar pada bagian awal.
+ Metode sekan terkurung menggunakan baris 
+\family typewriter
+x=b-B*(b-a)/(B-A);
+\family default
+, sedangkan metode Newton terkurung menggunakan baris 
+\family typewriter
+x=b-B/gp(b);
+\family default
+.
+ Inilah perbedaan mendasar antara keduanya karena pada bagian inilah metode
+ berorde tinggi dijalankan.
+ Satu-satunya perbedaan lain adalah metode Newton terkurung menyertakan tiga
+ baris yang memeriksa apakah 
+\family typewriter
+x
+\family default
+ berada di dalam selang pengurung dan menjalankan satu langkah metode bagi
+ dua jika tidak:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (x<min([a,b]) || x>max([a,b]))
+\end_layout
+
+\begin_layout Plain Layout
+
+      x=b+(a-b)/2;
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Sebenarnya, kita dapat menambahkan ketiga baris ini ke metode sekan terkurung
+ dan program akan berjalan sama saja.
+ Metode sekan tidak mungkin menghasilkan nilai 
+\family typewriter
+x
+\family default
+ di luar selang pengurung, sehingga langkah bagi dua tidak akan pernah dijalankan.
+ Satu-satunya perbedaan mendasar antara kedua fungsi adalah pelaksanaan metode
+ berorde tinggi.
+\end_layout
+
+\begin_layout Standard
+Kita dapat menggunakan pengamatan ini untuk membuat semacam cetak biru bagi
+ pengurungan metode berorde tinggi apa pun.
+ Metode Steffensen, metode Müller (selama hampiran tetap riil), atau metode
+ Sidi (Bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:polynomialLagrange"
+
+\end_inset
+
+), misalnya, dapat diberi pengurungan dengan cara ini.
+ Kode semu-semu berikut menyajikan cetak biru tersebut dan memberi panduan
+ untuk mengamankan metode berorde tinggi dengan menggabungkannya dengan metode
+ bagi dua.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pseudocode}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "pseudo:safeguarded"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+pengurungan ! kode semu
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Asumsi: 
+\begin_inset Formula $g$
+\end_inset
+
+ kontinu pada 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+.
+ 
+\begin_inset Formula $g(a)$
+\end_inset
+
+ dan 
+\begin_inset Formula $g(b)$
+\end_inset
+
+ berlainan tanda.
+\end_layout
+
+\begin_layout Description
+Masukan: Selang 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+; fungsi 
+\begin_inset Formula $g$
+\end_inset
+
+; akurasi yang diinginkan 
+\begin_inset Formula $tol$
+\end_inset
+
+; jumlah maksimum iterasi 
+\begin_inset Formula $N$
+\end_inset
+
+; variabel lain yang diperlukan untuk menjalankan iterasi metode superlinear,
+ seperti 
+\begin_inset Formula $g'$
+\end_inset
+
+ dalam metode Newton.
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+1: Tetapkan 
+\begin_inset Formula $A=g(a)$
+\end_inset
+
+; 
+\begin_inset Formula $B=g(b)$
+\end_inset
+
+; 
+\begin_inset Formula $i=2$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+2: Inisialisasikan variabel lain yang diperlukan untuk superlinear();
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+3: Selama 
+\begin_inset Formula $i<N$
+\end_inset
+
+, lakukan Langkah 4–10:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+4: Tetapkan 
+\begin_inset Formula $x=\mbox{superlinear}(a,b,g,\ldots)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+5: Jika 
+\begin_inset Formula $(x-a)(x-b)>0$
+\end_inset
+
+, maka 
+\begin_inset Formula $x=b+\frac{a-b}{2}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+6: Jika 
+\begin_inset Formula $|x-b|<tol$
+\end_inset
+
+, kembalikan 
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+7: Tetapkan 
+\begin_inset Formula $X=g(x)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+8: Jika 
+\begin_inset Formula $BX<0$
+\end_inset
+
+, tetapkan 
+\begin_inset Formula $a=b$
+\end_inset
+
+; 
+\begin_inset Formula $A=B$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+9: Tetapkan 
+\begin_inset Formula $b=x$
+\end_inset
+
+; 
+\begin_inset Formula $B=X$
+\end_inset
+
+; 
+\begin_inset Formula $i=i+1$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+10: Perbarui variabel lain yang diperlukan untuk superlinear();
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+11: Cetak 
+\begin_inset Quotes eld
+\end_inset
+
+Metode gagal.
+ Jumlah maksimum iterasi terlampaui.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Keluaran: Hampiran 
+\begin_inset Formula $m$
+\end_inset
+
+ yang berjarak kurang dari 
+\begin_inset Formula $tol$
+\end_inset
+
+ dari akar eksak, atau pesan kegagalan.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pseudocode}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sebagai alasan perlunya mengembangkan versi metode orde tinggi lain yang memakai
+ selang pengurung, perhatikan fungsi yang sangat bermasalah 
+\begin_inset Formula $g(x)=\frac{1+10x}{1-10x}$
+\end_inset
+
+.
+ Fungsi ini berakar di 
+\begin_inset Formula $-\frac{1}{10}$
+\end_inset
+
+, tetapi metode sekan dengan selang pengurung dapat sangat lambat konvergen
+ menuju akar ini.
+ Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:troubleForSecant"
+
+\end_inset
+
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:troubleForSecant"
+
+\end_inset
+
+Fungsi yang menyulitkan metode sekan dengan selang pengurung.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/rootBracketing01.pdf
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ memperlihatkan kekonvergenan lambat ini jika dimulai dengan selang pengurung
+ 
+\begin_inset Formula $[a,b]=[-4,.05]$
+\end_inset
+
+.
+ Dengan pilihan selang pengurung yang kurang tepat ini, metode membutuhkan
+ 45 iterasi untuk mencapai akurasi 
+\begin_inset Formula $10^{-5}$
+\end_inset
+
+.
+ Algoritma yang lebih cerdas tidak hanya memeriksa bahwa setiap hampiran
+ berada di dalam selang pengurung, tetapi juga memastikan bahwa metode orde
+ tinggi bergerak cukup cepat menuju akar.
+ Jika algoritma mendeteksi kekonvergenan yang lambat, misalnya lebih lambat
+ daripada metode bagi dua, algoritma akan menggunakan langkah bagi dua sebagai
+ gantinya.
+ Perhatikan bahwa metode Newton dengan selang pengurung tidak mengalami masalah
+ berarti pada fungsi ini.
+ Dengan selang pengurung awal yang sama, metode tersebut mencapai jarak 
+\begin_inset Formula $10^{-5}$
+\end_inset
+
+ dari akar hanya dalam 10 iterasi (empat iterasi pertamanya merupakan langkah
+ bagi dua).
+ Sayangnya, metode Newton memerlukan turunan.
+ Metode cepat untuk mencari akar dalam selang pengurung tanpa memerlukan turunan
+ akan sangat berguna.
+\end_layout
+
+\begin_layout Standard
+Pada awal 1970-an, Richard Brent
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Brent
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+metode ! Brent|see{metode Brent}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ mengembangkan karya van Wijngaarden dan Dekker menjadi metode dengan selang
+ pengurung yang memadukan metode bagi dua, metode sekan, dan interpolasi kuadratik
+ invers, sambil terus memeriksa bahwa metode orde tinggi bergerak cukup cepat
+ menuju akar.
+ Hasilnya kini dikenal sebagai metode Brent 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "brent"
+literal "true"
+
+\end_inset
+
+.
+ Metode ini tidak memerlukan turunan.
+ Metode ini cepat.
+ Kekonvergenannya dijamin.
+ Karena itu, metode ini populer sebagai metode serbaguna untuk mencari akar
+ dalam selang pengurung ketika turunan tidak tersedia.
+ Rincian lengkap metode Brent tidak akan disajikan di sini, tetapi satu langkah
+ penting menuju metode tersebut akan disajikan.
+ Metode yang disajikan di sini mirip dengan fungsi MATLAB 
+\family typewriter
+fzero
+\family default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "moler"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Interpolasi Kuadratik Invers
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode interpolasi kuadratik invers
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Seperti yang mungkin Anda ingat, metode Müller memerlukan tiga hampiran awal,
+ misalnya 
+\begin_inset Formula $a$
+\end_inset
+
+, 
+\begin_inset Formula $b$
+\end_inset
+
+, dan 
+\begin_inset Formula $c$
+\end_inset
+
+.
+ Parabola yang melalui titik 
+\begin_inset Formula $(a,g(a))$
+\end_inset
+
+, 
+\begin_inset Formula $(b,g(b))$
+\end_inset
+
+, dan 
+\begin_inset Formula $(c,g(c))$
+\end_inset
+
+ digambar, dan titik potongnya dengan sumbu 
+\begin_inset Formula $x$
+\end_inset
+
+ menghasilkan hampiran berikutnya.
+ Unsur kunci metode ini—proses mencocokkan fungsi kuadrat dengan ketiga titik—disebut
+ interpolasi.
+ Dengan demikian, metode Müller juga dapat disebut 
+\begin_inset Quotes eld
+\end_inset
+
+metode interpolasi kuadratik
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Seperti dapat diduga, metode interpolasi kuadratik invers serupa.
+ Alih-alih mencocokkan fungsi kuadrat dengan titik 
+\begin_inset Formula $(a,g(a))$
+\end_inset
+
+, 
+\begin_inset Formula $(b,g(b))$
+\end_inset
+
+, dan 
+\begin_inset Formula $(c,g(c))$
+\end_inset
+
+, peran 
+\begin_inset Formula $x$
+\end_inset
+
+ dan 
+\begin_inset Formula $y$
+\end_inset
+
+ dipertukarkan.
+ Sebagai gantinya, fungsi kuadrat dicocokkan dengan titik 
+\begin_inset Formula $(g(a),a)$
+\end_inset
+
+, 
+\begin_inset Formula $(g(b),b)$
+\end_inset
+
+, dan 
+\begin_inset Formula $(g(c),c)$
+\end_inset
+
+.
+ Karena dalam kasus ini 
+\begin_inset Formula $x$
+\end_inset
+
+ merupakan fungsi dari 
+\begin_inset Formula $y$
+\end_inset
+
+, grafik fungsi kuadrat itu akan memotong sumbu 
+\begin_inset Formula $x$
+\end_inset
+
+ tepat sekali, yakni saat 
+\begin_inset Formula $y=0$
+\end_inset
+
+.
+ Mengevaluasi fungsi kuadrat di 
+\begin_inset Formula $0$
+\end_inset
+
+ menghasilkan hampiran berikutnya.
+ Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:quadraticVSinverseQuadratic"
+
+\end_inset
+
+ memperlihatkan interpolasi kuadratik dan interpolasi kuadratik invers pada
+ himpunan tiga titik yang sama.
+ Dalam interpolasi kuadratik, 
+\begin_inset Formula $y$
+\end_inset
+
+ diperlakukan sebagai fungsi dari 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ Dalam interpolasi kuadratik invers, 
+\begin_inset Formula $x$
+\end_inset
+
+ diperlakukan sebagai fungsi dari 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ Interpolasi kuadratik invers menghindari komplikasi utama interpolasi kuadratik—menghitung
+ titik potongnya dengan sumbu 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ Dalam interpolasi kuadratik, fungsi kuadrat mungkin memotong sumbu 
+\begin_inset Formula $x$
+\end_inset
+
+ dua kali atau sama sekali tidak memotongnya! Dalam kedua kasus, suatu pilihan
+ harus dibuat pada setiap langkah, dan akar-akar fungsi kuadrat melibatkan rumus
+ kuadrat.
+ Dalam interpolasi kuadratik invers, fungsi kuadrat dijamin memotong sumbu 
+\begin_inset Formula $x$
+\end_inset
+
+ tepat sekali, dan titik potong itu cukup dicari dengan mengevaluasi fungsi
+ kuadrat di 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ Artinya, 
+\begin_inset Formula $y=0$
+\end_inset
+
+.
+ Ingat, fungsi kuadrat memberikan 
+\begin_inset Formula $x$
+\end_inset
+
+ sebagai fungsi dari 
+\begin_inset Formula $y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dengan merujuk kembali pada penurunan metode Müller 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "subsec:mullers"
+
+\end_inset
+
+, jika parabola dipaksa melalui titik 
+\begin_inset Formula $(a,A)$
+\end_inset
+
+, 
+\begin_inset Formula $(b,B)$
+\end_inset
+
+, dan 
+\begin_inset Formula $(c,C)$
+\end_inset
+
+, lalu peran 
+\begin_inset Formula $x$
+\end_inset
+
+ dan 
+\begin_inset Formula $y$
+\end_inset
+
+ dipertukarkan, rumus untuk parabola invers 
+\begin_inset Formula $q$
+\end_inset
+
+ langsung diperoleh:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+q(y)=q_{0}(y-B)^{2}+q_{1}(y-B)+q_{2}
+\]
+
+\end_inset
+
+dengan
+\begin_inset Formula 
+\begin{eqnarray*}
+q_{2} & = & b\\
+q_{1} & = & \frac{(A-B)^{2}(c-b)-(C-B)^{2}(a-b)}{(A-B)(C-B)(A-C)}\\
+q_{0} & = & \frac{(C-B)(a-b)-(A-B)(c-b)}{(A-B)(C-B)(A-C)}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{digression}{Orde kekonvergenan interpolasi kuadratik} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Metode interpolasi kuadratik invers
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode interpolasi kuadratik invers ! orde kekonvergenan
+\end_layout
+
+\end_inset
+
+ memiliki orde kekonvergenan sekitar 
+\begin_inset Formula $1.84$
+\end_inset
+
+ dengan asumsi yang wajar.
+ Jika fungsi yang akarnya dicari memiliki tiga turunan kontinu di suatu lingkungan
+ akar, tiga hampiran terbaru cukup dekat, dan akarnya sederhana, orde kekonvergenannya
+ adalah solusi riil dari 
+\begin_inset Formula 
+\[
+\alpha^{3}-\alpha^{2}-\alpha-1=0.
+\]
+
+\end_inset
+
+Kita dapat menggunakan interpolasi kuadratik invers untuk menghampirinya! 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+>> format('long')
+\end_layout
+
+\begin_layout Plain Layout
+
+>> f=@(x) x^3-x^2-x-1
+\end_layout
+
+\begin_layout Plain Layout
+
+f =
+\end_layout
+
+\begin_layout Plain Layout
+
+@(x) x ^ 3 - x ^ 2 - x - 1
+\end_layout
+
+\begin_layout Plain Layout
+
+>> [res,i]=inverseQuadratic(f,1,2,10^-12,100)
+\end_layout
+
+\begin_layout Plain Layout
+
+res =  1.83928675521416
+\end_layout
+
+\begin_layout Plain Layout
+
+i =  8
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+ Solusi eksaknya adalah
+\begin_inset Formula 
+\[
+\alpha=\left(\frac{\sqrt{11}}{3\sqrt{3}}+\frac{19}{27}\right)^{\frac{1}{3}}+\frac{4}{9\left(\frac{\sqrt{11}}{3\sqrt{3}}+\frac{19}{27}\right)^{\frac{1}{3}}}+\frac{1}{3}.
+\]
+
+\end_inset
+
+Anda mungkin mengenali nilai ini sebagai orde kekonvergenan metode Müller.
+ Memang, setiap metode interpolasi kuadratik konvergen menuju akar sederhana
+ dengan orde ini.
+\end_layout
+
+\begin_layout Description
+Referensi 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sharma"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{digression} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dengan demikian, titik potong dengan sumbu 
+\begin_inset Formula $x$
+\end_inset
+
+ adalah 
+\begin_inset Formula 
+\begin{eqnarray*}
+x & = & q(0)\\
+ & = & B^{2}q_{0}-Bq_{1}+q_{2}\\
+ & = & B^{2}\frac{(C-B)(a-b)-(A-B)(c-b)}{(A-B)(C-B)(A-C)}-B\frac{(A-B)^{2}(c-b)-(C-B)^{2}(a-b)}{(A-B)(C-B)(A-C)}+b\\
+ & = & \frac{\left[B^{2}(C-B)+B(C-B)^{2}\right](a-b)-\left[B^{2}(A-B)+B(A-B)^{2}\right](c-b)}{(A-B)(C-B)(A-C)}+b\\
+ & = & \frac{\left[-B^{2}C+BC^{2}\right](a-b)-\left[-B^{2}A+BA^{2}\right](c-b)}{(A-B)(C-B)(A-C)}+b\\
+ & = & \frac{BC(C-B)(a-b)-BA(A-B)(c-b)}{(A-B)(C-B)(A-C)}+b\\
+ & = & b+\frac{\frac{B}{A}(\frac{C}{B}-1)(a-b)-\frac{A}{C}(1-\frac{B}{A})(c-b)}{(1-\frac{B}{A})(\frac{C}{B}-1)(\frac{A}{C}-1)}\\
+ & = & b+\frac{\frac{A}{C}(1-\frac{B}{A})(c-b)-\frac{B}{A}(\frac{C}{B}-1)(a-b)}{(\frac{B}{A}-1)(\frac{B}{C}-1)(\frac{A}{C}-1)}.
+\end{eqnarray*}
+
+\end_inset
+
+Agar perhitungan 
+\begin_inset Formula $x$
+\end_inset
+
+ sedikit lebih mudah diprogram, diperkenalkan beberapa variabel baru.
+ Misalkan
+\begin_inset Formula 
+\[
+r=\frac{B}{A}-1,\quad s=\frac{C}{B}-1,\quad t=\frac{A}{C}-1
+\]
+
+\end_inset
+
+sehingga
+\begin_inset Formula 
+\begin{equation}
+x=b-\frac{r(t+1)(c-b)+s(r+1)(a-b)}{rst}.\label{eq:inverseQuadratic}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:quadraticVSinverseQuadratic"
+
+\end_inset
+
+Interpolasi kuadratik dan interpolasi kuadratik invers.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/rootBracketing02.pdf
+
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/rootBracketing03.pdf
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Interpolasi kuadratik invers dapat dilengkapi selang pengurung seperti metode
+ orde tinggi lainnya.
+ Namun, metode ini menimbulkan pertanyaan menarik yang tidak muncul pada semua
+ metode orde tinggi.
+ Interpolasi kuadratik memerlukan tiga titik; ketika ketiganya digunakan untuk
+ menghasilkan hampiran berikutnya, terbentuk titik keempat.
+ Dari keempat titik itu, komputer harus menentukan dua titik yang akan menjadi
+ selang pengurung berikutnya dan satu titik yang akan menjadi titik ketiga untuk
+ interpolasi berikutnya.
+ Namun, kita sudah melangkah terlalu jauh.
+\end_layout
+
+\begin_layout Standard
+Setiap iterasi dimulai dengan tiga titik, 
+\begin_inset Formula $(a,g(a))$
+\end_inset
+
+, 
+\begin_inset Formula $(b,g(b))$
+\end_inset
+
+, dan 
+\begin_inset Formula $(c,g(c))$
+\end_inset
+
+, dengan 
+\begin_inset Formula $a$
+\end_inset
+
+ dan 
+\begin_inset Formula $b$
+\end_inset
+
+ mengurung sebuah akar, sedangkan 
+\begin_inset Formula $c$
+\end_inset
+
+ merupakan titik ketiga.
+ Pada iterasi pertama, hanya selang pengurung yang diberikan.
+ 
+\begin_inset Formula $c$
+\end_inset
+
+ disamakan dengan 
+\begin_inset Formula $a$
+\end_inset
+
+.
+ Pada setiap iterasi, tanda 
+\begin_inset Formula $g(a)$
+\end_inset
+
+ dan 
+\begin_inset Formula $g(b)$
+\end_inset
+
+ diperiksa untuk memastikan bahwa 
+\begin_inset Formula $a$
+\end_inset
+
+ dan 
+\begin_inset Formula $b$
+\end_inset
+
+ mengurung sebuah akar.
+ Jika tandanya berlainan, metode dilanjutkan.
+ Jika tandanya sama, berarti 
+\begin_inset Formula $g(b)$
+\end_inset
+
+ dan 
+\begin_inset Formula $g(c)$
+\end_inset
+
+ pasti berlainan tanda, sehingga 
+\begin_inset Formula $a$
+\end_inset
+
+ disamakan dengan 
+\begin_inset Formula $c$
+\end_inset
+
+.
+ Selanjutnya, nilai mutlak 
+\begin_inset Formula $g(a)$
+\end_inset
+
+ dan 
+\begin_inset Formula $g(b)$
+\end_inset
+
+ diperiksa.
+ Jika 
+\begin_inset Formula $|g(a)|<|g(b)|$
+\end_inset
+
+, label 
+\begin_inset Formula $a$
+\end_inset
+
+ dan 
+\begin_inset Formula $b$
+\end_inset
+
+ dipertukarkan dan 
+\begin_inset Formula $c$
+\end_inset
+
+ disamakan dengan nilai baru 
+\begin_inset Formula $a$
+\end_inset
+
+.
+ Setelah pemeriksaan awal ini, perhitungan hampiran berikutnya dimulai
+ dengan jaminan bahwa sebuah akar terletak di antara 
+\begin_inset Formula $a$
+\end_inset
+
+ dan 
+\begin_inset Formula $b$
+\end_inset
+
+; 
+\begin_inset Formula $b$
+\end_inset
+
+ kemungkinan merupakan taksiran akar terbaik sejauh ini; dan 
+\begin_inset Formula $c$
+\end_inset
+
+ kemungkinan merupakan taksiran akar terburuk sejauh ini.
+\end_layout
+
+\begin_layout Standard
+Jika 
+\begin_inset Formula $c=a$
+\end_inset
+
+ setelah pemeriksaan awal dan kemungkinan pelabelan ulang, interpolasi kuadratik
+ tidak dapat dilakukan.
+ Hampiran berikutnya dihasilkan dengan metode sekan (interpolasi linear).
+ Jika 
+\begin_inset Formula $c\neq a$
+\end_inset
+
+ setelah pemeriksaan awal dan kemungkinan pelabelan ulang, calon hampiran
+ berikutnya, 
+\begin_inset Formula $x$
+\end_inset
+
+, dihitung menggunakan interpolasi kuadratik invers.
+ Jika calon tersebut berada di dalam selang pengurung, calon itu diterima sebagai
+ hampiran berikutnya.
+ Jika berada di luar selang pengurung, langkah metode bagi dua digunakan sebagai
+ gantinya.
+ Dalam kedua kasus, 
+\begin_inset Formula $c$
+\end_inset
+
+ disamakan dengan 
+\begin_inset Formula $b$
+\end_inset
+
+ dan 
+\begin_inset Formula $b$
+\end_inset
+
+ disamakan dengan 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ Untuk interpolasi kuadratik invers dengan selang pengurung, hal ini menuntaskan
+ satu iterasi.
+ Metode kemudian diulang sampai ditemukan hampiran yang cukup baik.
+\end_layout
+
+\begin_layout Standard
+Dalam skenario terbaik, interpolasi kuadratik invers digunakan pada setiap
+ langkah dan kekonvergenannya superlinear dengan orde sekitar 
+\begin_inset Formula $1.84$
+\end_inset
+
+.
+ Dalam skenario terburuk, salah satu metode orde tinggi digunakan pada setiap
+ langkah, tetapi fungsinya patologis dan kekonvergenannya lambat, bahkan mungkin
+ lebih lambat daripada metode bagi dua.
+ Meskipun demikian, kekonvergenan lambat jarang terjadi, dan orde kekonvergenan
+ aktual secara umum tidak dapat ditentukan secara pasti.
+ Metode ini berganti-ganti antara metode yang berbeda orde.
+ Yang dapat kita katakan hanyalah bahwa biasanya metode ini cepat.
+\end_layout
+
+\begin_layout Subsubsection
+Kode Octave untuk Interpolasi Kuadratik Invers dengan Selang Pengurung
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+interpolasi kuadratik invers dengan selang pengurung ! kode Octave
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+% Written by Dr.
+ Len Brin           21 May 2014 %
+\end_layout
+
+\begin_layout Plain Layout
+
+% Purpose: Implementation of bracketed inverse  %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        quadratic interpolation method.
+        %
+\end_layout
+
+\begin_layout Plain Layout
+
+% INPUT: function g; initial values a and b;    %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        tolerance TOL; maximum iterations N0   %
+\end_layout
+
+\begin_layout Plain Layout
+
+% OUTPUT: approximation x and number of         %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        iterations i; or message of failure    %
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+function [x,i] = bracketedInverseQuadratic(g,a,b,TOL,N0)
+\end_layout
+
+\begin_layout Plain Layout
+
+  i=1;
+\end_layout
+
+\begin_layout Plain Layout
+
+  A=g(a);
+\end_layout
+
+\begin_layout Plain Layout
+
+  B=g(b);
+\end_layout
+
+\begin_layout Plain Layout
+
+  c=a; C=A;
+\end_layout
+
+\begin_layout Plain Layout
+
+  while (i<N0)
+\end_layout
+
+\begin_layout Plain Layout
+
+    b
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (B*A>0)
+\end_layout
+
+\begin_layout Plain Layout
+
+      a=c; A=C;
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (abs(A) < abs(B))
+\end_layout
+
+\begin_layout Plain Layout
+
+      c=b; C=B;
+\end_layout
+
+\begin_layout Plain Layout
+
+      b=a; B=A;
+\end_layout
+
+\begin_layout Plain Layout
+
+      a=c; A=C;
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (a==c)
+\end_layout
+
+\begin_layout Plain Layout
+
+      x=(b*A-a*B)/(A-B);
+\end_layout
+
+\begin_layout Plain Layout
+
+    else
+\end_layout
+
+\begin_layout Plain Layout
+
+      r=B/A-1; s=C/B-1; t=A/C-1;
+\end_layout
+
+\begin_layout Plain Layout
+
+      p=(t+1)*r*(c-b)+(r+1)*s*(a-b);
+\end_layout
+
+\begin_layout Plain Layout
+
+      q=t*s*r;
+\end_layout
+
+\begin_layout Plain Layout
+
+      x=b-p/q;
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (x<min([a,b]) || x>max([a,b]))
+\end_layout
+
+\begin_layout Plain Layout
+
+      x=b+(a-b)/2;
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (abs(x-b)<TOL)
+\end_layout
+
+\begin_layout Plain Layout
+
+      disp(" ");
+\end_layout
+
+\begin_layout Plain Layout
+
+      return
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+    c=b; C=B;
+\end_layout
+
+\begin_layout Plain Layout
+
+    b=x; B=g(b);
+\end_layout
+
+\begin_layout Plain Layout
+
+    i=i+1;
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%while
+\end_layout
+
+\begin_layout Plain Layout
+
+  x="Method failed---maximum number of iterations reached";
+\end_layout
+
+\begin_layout Plain Layout
+
+end%function
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+ Penerapan metode interpolasi kuadratik invers dengan selang pengurung pada
+ fungsi bermasalah 
+\begin_inset Formula $g(x)=\frac{1+10x}{1-10x}$
+\end_inset
+
+ di selang 
+\begin_inset Formula $[-4,.05]$
+\end_inset
+
+ menghasilkan akurasi 
+\begin_inset Formula $10^{-5}$
+\end_inset
+
+ hanya dalam 11 iterasi.
+ Metode ini hanya membutuhkan satu iterasi lebih banyak daripada metode Newton
+ dengan selang pengurung, tanpa memerlukan turunan 
+\begin_inset Formula $g$
+\end_inset
+
+! 
+\family typewriter
+bracketedInverseQuadratic.m
+\family default
+ dapat diunduh dari 
+\begin_inset CommandInset href
+LatexCommand href
+name "situs pendamping"
+target "http://lqbrin.github.io/tea-time-numerical/ancillaries.html"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Penghentian
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+kriteria penghentian ! untuk pencarian akar
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dalam semua metode pencarian akar kita, algoritme berhenti ketika selisih
+ antara dua hampiran berturut-turut lebih kecil daripada toleransi tertentu.
+ Kriteria ini didasarkan pada asumsi bahwa galat tidak akan melebihi selisih
+ tersebut.
+ Asumsi itu aman bagi setiap metode yang sedang konvergen secara superlinear
+ ketika berhenti.
+ Bahkan, asumsi itu juga aman bagi metode bagi dua yang konvergen secara linear,
+ karena selisih antara dua hampiran berturut-turut tepat sama dengan batas
+ teoretis galat.
+ 
+\end_layout
+
+\begin_layout Standard
+Kriteria ini tidak aman ketika metode superlinear digunakan begitu jauh dari
+ akar sehingga kekonvergenan superlinear tidak tampak.
+ Inilah tepatnya yang terjadi pada Gambar 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "fig:troubleForSecant"
+
+\end_inset
+
+.
+ Selisih antara hampiran-hampiran berturut-turut sebenarnya lebih besar daripada
+ galat absolut pada setiap langkah.
+ Situasi ini tidak lazim, tetapi dapat terjadi.
+ 
+\end_layout
+
+\begin_layout Standard
+Kriteria ini juga tidak aman ketika suatu metode konvergen secara linear dengan
+ konstanta kekonvergenan asimtotik 
+\begin_inset Formula $\lambda>\frac{1}{2}$
+\end_inset
+
+.
+ Namun, metode yang konvergen secara linear sebaiknya tidak pernah digunakan
+ sendiri karena selalu ada alternatif yang lebih cepat.
+\end_layout
+
+\begin_layout Standard
+Ada satu pertimbangan penting lagi mengenai penghentian.
+ Berhenti ketika selisih antara dua hampiran berturut-turut lebih kecil daripada
+ toleransi tertentu bergantung pada galat absolut.
+ Ketika akar mungkin sangat kecil atau sangat besar, barangkali lebih baik
+ menggunakan kriteria berdasarkan galat relatif.
+ Sebagai contoh, alih-alih berhenti ketika 
+\begin_inset Formula $|x_{n+1}-x_{n}|<tol$
+\end_inset
+
+, kita berhenti ketika 
+\begin_inset Formula $|x_{n+1}-x_{n}|<tol\cdot|x_{n+1}|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Konsep Kunci
+\end_layout
+
+\begin_layout Description
+Pengurungan: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+pengurungan
+\end_layout
+
+\end_inset
+
+Memperhalus secara iteratif suatu selang—yang juga disebut selang pengurung—yang
+ diketahui memuat akar, hingga lebarnya lebih kecil daripada toleransi tertentu.
+\end_layout
+
+\begin_layout Description
+Interpolasi
+\begin_inset space ~
+\end_inset
+
+kuadratik
+\begin_inset space ~
+\end_inset
+
+invers: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode interpolasi kuadratik invers
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+metode ! interpolasi kuadratik invers|see{metode interpolasi kuadratik invers}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Sebuah polinom kuadrat dalam 
+\begin_inset Formula $y$
+\end_inset
+
+ dicocokkan dengan tiga hampiran akar berturut-turut.
+ Titik potong kurva kuadratik dengan sumbu 
+\begin_inset Formula $x$
+\end_inset
+
+ menjadi hampiran berikutnya.
+\end_layout
+
+\begin_layout Description
+Metode
+\begin_inset space ~
+\end_inset
+
+sekan
+\begin_inset space ~
+\end_inset
+
+terkurung: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode sekan terkurung
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+metode ! sekan terkurung|see{metode sekan terkurung}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Gabungan metode sekan dan metode bagi dua yang menggunakan pengurungan.
+ Pada setiap iterasi, jika metode sekan menghasilkan nilai di dalam selang
+ pengurung saat ini, nilai itu menjadi hampiran berikutnya.
+ Jika tidak, metode bagi dua digunakan untuk menghasilkan hampiran berikutnya.
+\end_layout
+
+\begin_layout Description
+Posisi
+\begin_inset space ~
+\end_inset
+
+palsu: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+metode ! posisi palsu|see{metode sekan terkurung}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+posisi palsu|see{metode sekan terkurung}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Nama lain untuk metode sekan terkurung.
+\end_layout
+
+\begin_layout Description
+Regula
+\begin_inset space ~
+\end_inset
+
+falsi: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+metode ! regula falsi|see{metode sekan terkurung}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+regula falsi|see{metode sekan terkurung}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Nama lain untuk metode sekan terkurung.
+\end_layout
+
+\begin_layout Description
+Metode
+\begin_inset space ~
+\end_inset
+
+Newton
+\begin_inset space ~
+\end_inset
+
+terkurung: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Newton terkurung
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+metode ! Newton terkurung|see{metode Newton terkurung}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Gabungan metode Newton dan metode bagi dua yang menggunakan pengurungan.
+ Pada setiap iterasi, jika metode Newton menghasilkan nilai di dalam selang
+ pengurung saat ini, nilai itu menjadi hampiran berikutnya.
+ Jika tidak, metode bagi dua digunakan untuk menghasilkan hampiran berikutnya.
+\end_layout
+
+\begin_layout Description
+Interpolasi
+\begin_inset space ~
+\end_inset
+
+kuadratik
+\begin_inset space ~
+\end_inset
+
+invers
+\begin_inset space ~
+\end_inset
+
+terkurung: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+interpolasi kuadratik invers terkurung
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+metode ! interpolasi kuadratik invers terkurung|see{interpolasi kuadratik
+ invers terkurung}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Gabungan interpolasi kuadratik invers, metode sekan, dan metode bagi dua
+ yang menggunakan pengurungan.
+ Pada setiap iterasi, jika interpolasi kuadratik invers menghasilkan nilai
+ di dalam selang pengurung saat ini, nilai itu menjadi hampiran berikutnya.
+ Jika tidak, metode sekan atau metode bagi dua digunakan untuk menghasilkan
+ hampiran berikutnya.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+startexercises 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Latihan
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bracketing"
+
+\end_inset
+
+Gunakan metode sekan terkurung (posisi palsu) untuk menemukan sebuah akar
+ pada selang yang ditunjukkan, dengan akurasi hingga 
+\begin_inset Formula $10^{-2}$
+\end_inset
+
+.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $f(x)=3-x-\sin x$
+\end_inset
+
+; 
+\begin_inset Formula $[2,3]$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $g(x)=3x^{4}-2x^{3}-3x+2$
+\end_inset
+
+; 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $g(x)=3x^{4}-2x^{3}-3x+2$
+\end_inset
+
+; 
+\begin_inset Formula $[0,0.9]$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $h(x)=10-\cosh(x)$
+\end_inset
+
+; 
+\begin_inset Formula $[-3,-2]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f(t)=\sqrt{4+5\sin t}-2.5$
+\end_inset
+
+; 
+\begin_inset Formula $[-600,-500]$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $g(t)=\tan\left(\frac{t^{2}}{1-3t}\right)$
+\end_inset
+
+; 
+\begin_inset Formula $[3486,3487]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $h(t)=\ln(3\sin t)-\frac{3t}{5}$
+\end_inset
+
+; 
+\begin_inset Formula $[1,2]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f(r)=e^{\sin r}-r$
+\end_inset
+
+; 
+\begin_inset Formula $[-20,20]$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $g(r)=\sin(e^{r})+r$
+\end_inset
+
+; 
+\begin_inset Formula $[-3,3]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $h(r)=2^{\sin r}-3^{\cos r}$
+\end_inset
+
+; 
+\begin_inset Formula $[1,3]$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bracketing-1"
+
+\end_inset
+
+Ulangi soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:bracketing"
+
+\end_inset
+
+ dengan menggunakan metode Newton terkurung.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bracketing-2"
+
+\end_inset
+
+Ulangi soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:bracketing"
+
+\end_inset
+
+ dengan menggunakan metode sekan.
+ Bandingkan jawaban Anda dengan hasil posisi palsu.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bracketing-3"
+
+\end_inset
+
+Ulangi soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:bracketing"
+
+\end_inset
+
+ dengan menggunakan metode Newton.
+ Bandingkan jawaban Anda dengan hasil metode Newton terkurung.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bracketing-4"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Ulangi soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:bracketing"
+
+\end_inset
+
+ dengan menggunakan Octave dan toleransi 
+\begin_inset Formula $10^{-6}$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bracketing-5"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Ulangi soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:bracketing-1"
+
+\end_inset
+
+ dengan menggunakan Octave dan toleransi 
+\begin_inset Formula $10^{-6}$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bracketing-6"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Ulangi soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:bracketing"
+
+\end_inset
+
+ dengan menggunakan Octave, interpolasi kuadratik invers dengan pengurungan,
+ dan toleransi 
+\begin_inset Formula $10^{-6}$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bracketing-7"
+
+\end_inset
+
+Bandingkan hasil pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:bracketing-4"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:bracketing-5"
+
+\end_inset
+
+, dan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:bracketing-6"
+
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bracketing-8"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah sebuah fungsi Octave yang mengimplementasikan metode Steffensen dengan pengurungan.
+ 
+\series bold
+CATATAN:
+\series default
+ Metode Steffensen merupakan metode pencarian titik tetap.
+ Metode ini menyelesaikan persamaan 
+\begin_inset Formula $f(x)=x$
+\end_inset
+
+, bukan 
+\begin_inset Formula $f(x)=0$
+\end_inset
+
+.
+ Jadi, selang pengurung 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+ yang sah adalah selang yang memenuhi (
+\begin_inset Formula $f(a)>a$
+\end_inset
+
+ dan 
+\begin_inset Formula $f(b)<b$
+\end_inset
+
+) atau (
+\begin_inset Formula $f(a)<a$
+\end_inset
+
+ dan 
+\begin_inset Formula $f(b)>b$
+\end_inset
+
+).
+ Secara geometris, ini berarti titik-titik 
+\begin_inset Formula $(a,f(a))$
+\end_inset
+
+ dan 
+\begin_inset Formula $(b,f(b))$
+\end_inset
+
+ berada pada sisi berlawanan dari garis 
+\begin_inset Formula $f(x)=x$
+\end_inset
+
+, analog dengan selang pengurung pencarian akar yang kedua titiknya berada pada sisi
+ berlawanan dari garis 
+\begin_inset Formula $f(x)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bracketing-9"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Gunakan kode Anda dari soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:bracketing-8"
+
+\end_inset
+
+ untuk mengulangi soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:bracketing"
+
+\end_inset
+
+ dengan menggunakan Octave, metode Steffensen dengan pengurungan, dan toleransi 
+\begin_inset Formula $10^{-6}$
+\end_inset
+
+.
+ Karena Anda mencari akar 
+\begin_inset Formula $g(x)$
+\end_inset
+
+, gunakan 
+\begin_inset Formula $f(x)=g(x)+x$
+\end_inset
+
+ saat memanggil metode Steffensen.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bracketing-13"
+
+\end_inset
+
+Bandingkan hasil pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:bracketing-6"
+
+\end_inset
+
+ dan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:bracketing-9"
+
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bracketing-10"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah ulang fungsi Octave 
+\family typewriter
+inverseQuadraticInterpolation
+\family default
+ agar berhenti ketika galat relatif hampiran lebih kecil daripada
+ toleransi.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bracketing-11"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Gunakan kode Anda dari soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:bracketing-10"
+
+\end_inset
+
+ untuk mengulangi soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:bracketing"
+
+\end_inset
+
+ dengan toleransi 
+\begin_inset Formula $10^{-6}$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bracketing-14"
+
+\end_inset
+
+Bandingkan hasil pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:bracketing-6"
+
+\end_inset
+
+ dan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:bracketing-11"
+
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+finishexercises 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Jawaban
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $x_{4}$
+\end_inset
+
+: 
+\begin_inset CommandInset label
+LatexCommand label
+name "ans:bracketedx4"
+
+\end_inset
+
+Pada kedua metode, kandidat 
+\begin_inset Formula $x_{4}$
+\end_inset
+
+ diterima karena dalam masing-masing kasus, 
+\begin_inset Formula $x_{4}$
+\end_inset
+
+ berada di dalam selang pengurung yang dibentuk oleh 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ dan 
+\begin_inset Formula $x_{3}$
+\end_inset
+
+.
+ Jadi, untuk metode sekan dengan pengurungan, 
+\begin_inset Formula $x_{4}=2.1854$
+\end_inset
+
+, sedangkan untuk metode Newton dengan pengurungan, 
+\begin_inset Formula $x_{4}=2.1565$
+\end_inset
+ Pada metode sekan dengan pengurungan, 
+.
+ 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ diperbarui menjadi 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ karena 
+\begin_inset Formula $g(x_{3})$
+\end_inset
+
+ bernilai negatif.
+ 
+\begin_inset Formula $g(x_{2})$
+\end_inset
+
+ dan 
+\begin_inset Formula $g(x_{3})$
+\end_inset
+
+ harus berlainan tanda agar selang pengurung tetap terjaga.
+ Pada metode Newton dengan pengurungan, 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ tidak diperbarui karena 
+\begin_inset Formula $g(x_{3})$
+\end_inset
+
+ bernilai positif.
+\end_layout
+
+\end_body
+\end_document

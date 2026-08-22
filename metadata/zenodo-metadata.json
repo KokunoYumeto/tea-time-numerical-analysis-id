@@ -1,0 +1,51 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "creators": [
+      {
+        "name": "Brin, Leon Q."
+      }
+    ],
+    "contributors": [
+      {
+        "name": "OpenAI Codex atas permintaan Floris",
+        "type": "Other"
+      }
+    ],
+    "description": "<p>Edisi Bahasa Indonesia mandiri dari <em>Tea Time Numerical Analysis</em>, Edisi Ketiga, karya Leon Q. Brin. Edisi ini diturunkan dari upstream <code>v3.0</code> pada commit <code>186882108a6da95c8dca5b81ce000fc3f8f3ca21</code> dan tree <code>1e50d3756b695176008c602f0ee89712f5f32d10</code>.</p><p>Perubahan meliputi lokalisasi permukaan pembaca, metadata bahasa, backend modular netral-lokal, dan tooling build portabel. Rumus, struktur pedagogis, sitasi, dan kode yang dapat dieksekusi dipertahankan sesuai sumber yang dipin. Dukungan produksi dan penyiapan teknis diberikan oleh OpenAI Codex atas permintaan Floris; pernyataan ini bukan atribusi identitas penerjemah.</p><p>PDF pembaca final terdiri atas 387 halaman (8.202.476 byte; SHA-256 <code>cbc31e9e27fdee96845d78fa6a625bf956196001b7941ddf0f1232f5def46b45</code>).</p>",
+    "keywords": [
+      "analisis numerik",
+      "Bahasa Indonesia",
+      "buku teks terbuka",
+      "LyX",
+      "GNU Octave",
+      "R015",
+      "C110"
+    ],
+    "language": "ind",
+    "license": "cc-by-sa-4.0",
+    "notes": "Lisensi tingkat-record CC-BY-SA-4.0 hanya mencakup buku dan adaptasi Bahasa Indonesia. Kode tetap GPL-3.0-or-later; aset Heun 1900 menggunakan Public Domain Mark 1.0 (CC-PDM-1.0, bukan CC0); cprotect, jika disertakan, tetap LPPL-1.3c+. Manifest build build/manifests/id-ID-build.json memiliki 53.012 byte dan SHA-256 9437f143c777ca447c5b199f0ea2a7df1e70b2afd7731839c43041ca018fd988. Receipt QA qa/WHOLE_CORPUS_RELEASE_QA_20260822.md memiliki SHA-256 d1b1da7eea68de58154903dde3c53a9e992dfd7eff1c779feefb75927d774665. Lihat COMPONENT_RIGHTS_AND_PROVENANCE.md dalam paket rilis.",
+    "publication_date": "2026-08-22",
+    "publication_type": "book",
+    "related_identifiers": [
+      {
+        "identifier": "https://github.com/lqbrin/tea-time-numerical/releases/tag/v3.0",
+        "relation": "isDerivedFrom",
+        "resource_type": "software"
+      },
+      {
+        "identifier": "https://github.com/lqbrin/tea-time-numerical/commit/186882108a6da95c8dca5b81ce000fc3f8f3ca21",
+        "relation": "isDerivedFrom",
+        "resource_type": "software"
+      },
+      {
+        "identifier": "https://github.com/KokunoYumeto/tea-time-numerical-analysis-id/releases/tag/v3.0-id.1",
+        "relation": "isSupplementTo",
+        "resource_type": "software"
+      }
+    ],
+    "title": "Tea Time Numerical Analysis — Edisi Bahasa Indonesia (Edisi Ketiga)",
+    "upload_type": "publication",
+    "version": "3.0-id.1"
+  }
+}

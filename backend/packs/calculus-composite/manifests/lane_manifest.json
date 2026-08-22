@@ -1,0 +1,105 @@
+{
+  "counts": {
+    "asset_versions": 0,
+    "assets": 0,
+    "experiments": 0,
+    "localizations": 109,
+    "relations": 439,
+    "segments": 109,
+    "terms": 593,
+    "top_level_layouts": 109,
+    "units": 7
+  },
+  "edition_id": "urn:uuid:35b4350d-7202-5d47-8b85-5262d7ca441c",
+  "file_kind": "included_file",
+  "file_order": 19,
+  "files": [
+    {
+      "bytes": 0,
+      "path": "assets/assets.jsonl",
+      "records": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "assets/versions.jsonl",
+      "records": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 391,
+      "path": "authority/editions.jsonl",
+      "records": 1,
+      "sha256": "d0779ce53ecbe96c09c53e8ccc74ea4b23c1ca64115c78e27aa328cfcc019d91"
+    },
+    {
+      "bytes": 313,
+      "path": "authority/resources.jsonl",
+      "records": 1,
+      "sha256": "4284558338c31abb6452e85c4d45a6bc378b2d25e98b68ce43003a9bed97c03d"
+    },
+    {
+      "bytes": 0,
+      "path": "experiments/experiments.jsonl",
+      "records": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 594,
+      "path": "qa/events.jsonl",
+      "records": 1,
+      "sha256": "3bcf9fc92df0e618326d77842560dafab22bea0f942d3a54cdf1c7d99789235e"
+    },
+    {
+      "bytes": 815,
+      "path": "rights/components.jsonl",
+      "records": 2,
+      "sha256": "f3a1b297c4426fc390e9f208dc3183259c677a651df2af5fff26a66105f9034f"
+    },
+    {
+      "bytes": 121061,
+      "path": "topology/relations.jsonl",
+      "records": 439,
+      "sha256": "c07986dbb41ee87fdfdbaa51233178834398dd3ff3e0f3e1965d1466cc387945"
+    },
+    {
+      "bytes": 665,
+      "path": "topology/source_files.jsonl",
+      "records": 1,
+      "sha256": "2af54e26badc85818161a4e08a9ec0678bce7e1faacd3ddcb3c7ed69bf2aa499"
+    },
+    {
+      "bytes": 3224,
+      "path": "topology/units.jsonl",
+      "records": 7,
+      "sha256": "c9c0c00f8fd0663b9ace350c6eecb07625bc50fa900a8363b599c0fe43974fd6"
+    },
+    {
+      "bytes": 213103,
+      "path": "translation/localizations.id-ID.jsonl",
+      "records": 109,
+      "sha256": "4010d0eaf8b1fabfa186b54ebd77982592b153bbbd336b76a4392357c695e54a"
+    },
+    {
+      "bytes": 186769,
+      "path": "translation/segments.en.jsonl",
+      "records": 109,
+      "sha256": "1205e25c45d3938837ffca78122f9f07022650ee65d0de63fcc37df89e7190df"
+    },
+    {
+      "bytes": 221738,
+      "path": "translation/terms.id-ID.jsonl",
+      "records": 593,
+      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+    }
+  ],
+  "generator": "ttna-lyx-indexer-0.3.1",
+  "locale": "id-ID",
+  "recorded_date": "2026-08-20",
+  "resource_id": "urn:uuid:8fbaf4c5-6316-5159-89b9-787aa115c0dc",
+  "schema_id": "ttna-lane-manifest-v1",
+  "schema_version": "1.0.0",
+  "scope": "source/lqbrin-tea-time-numerical-1868821/calculus-composite.lyx",
+  "source_commit": "186882108a6da95c8dca5b81ce000fc3f8f3ca21",
+  "source_tree": "1e50d3756b695176008c602f0ee89712f5f32d10"
+}

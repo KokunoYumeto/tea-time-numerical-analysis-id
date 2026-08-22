@@ -1,0 +1,77 @@
+{
+  "admission": {
+    "build_evidence": {
+      "pdf": "output/pdf/Tea-Time-Numerical-Analysis-id-ID.pdf",
+      "pdf_sha256": "cbc31e9e27fdee96845d78fa6a625bf956196001b7941ddf0f1232f5def46b45",
+      "physical_pdf_page": 256,
+      "render": "tmp/qa/cbc31e9e/high/page-256.png",
+      "render_dpi": 150,
+      "visual_result": "pass_legible_complete_framed"
+    },
+    "build_gate": "pass",
+    "identity_gate": "pass_as_independent_replacement",
+    "rights_gate": "pass"
+  },
+  "authority_sha256": "39bbf79cebe96967dabde26b62faf51c55d6ed1b0376000b3b46bf615f79a2dd",
+  "config_path": "backend/config/heun1900_asset_authority.v1.json",
+  "config_sha256": "d39b2bf48304a1365235099f1c96c1219daeba45996fbbfd2c7ed9c44110a2d7",
+  "counts": {
+    "asset_versions": 1,
+    "assets": 1,
+    "editions": 1,
+    "relations": 1,
+    "resources": 1,
+    "rights": 1
+  },
+  "edition_id": "urn:uuid:35b4350d-7202-5d47-8b85-5262d7ca441c",
+  "file_kind": "asset_authority",
+  "file_order": 27001,
+  "files": [
+    {
+      "bytes": 327,
+      "path": "assets/assets.jsonl",
+      "records": 1,
+      "sha256": "aec48600a4e221e9ce2c25da10d1efba6669759d8069ec8b317824535f29df91"
+    },
+    {
+      "bytes": 1223,
+      "path": "assets/versions.jsonl",
+      "records": 1,
+      "sha256": "c26dc9f6828573a9694577a1f5b6c3744c970b7b6910e0420a624fc04642d8df"
+    },
+    {
+      "bytes": 391,
+      "path": "authority/editions.jsonl",
+      "records": 1,
+      "sha256": "d0779ce53ecbe96c09c53e8ccc74ea4b23c1ca64115c78e27aa328cfcc019d91"
+    },
+    {
+      "bytes": 313,
+      "path": "authority/resources.jsonl",
+      "records": 1,
+      "sha256": "4284558338c31abb6452e85c4d45a6bc378b2d25e98b68ce43003a9bed97c03d"
+    },
+    {
+      "bytes": 1053,
+      "path": "rights/components.jsonl",
+      "records": 1,
+      "sha256": "57fc164a1279e63685caf1c200437b5d22a52f17fe88fa1adf180d6822b7fcf2"
+    },
+    {
+      "bytes": 274,
+      "path": "topology/relations.jsonl",
+      "records": 1,
+      "sha256": "9b67ca282a1fbc68b63636230a61e95bbd6a6661994da275d9ac0561b606a90b"
+    }
+  ],
+  "generator": "ttna-asset-authority-indexer-0.1.0",
+  "locale": "id-ID",
+  "recorded_date": "2026-08-22",
+  "resource_id": "urn:uuid:8fbaf4c5-6316-5159-89b9-787aa115c0dc",
+  "schema_id": "ttna-lane-manifest-v1",
+  "schema_version": "1.0.0",
+  "scope": "authority/third_party/heun1900/ASSET_AUTHORITY.json",
+  "source_commit": "186882108a6da95c8dca5b81ce000fc3f8f3ca21",
+  "source_role": "third_party_asset_authority",
+  "source_tree": "1e50d3756b695176008c602f0ee89712f5f32d10"
+}

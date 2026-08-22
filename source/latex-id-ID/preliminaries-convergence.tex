@@ -1,0 +1,905 @@
+
+\section{\label{sec:Speed}Kecepatan}
+
+Selain akurasi, tidak ada hal yang lebih penting dalam metode numerik
+daripada kecepatan. Namun, hampir selalu terdapat kompromi di antara
+keduanya. Perhitungan cepat sering kali tidak terlalu akurat, sedangkan
+perhitungan akurat sering kali tidak terlalu cepat. Meskipun demikian,
+algoritme tertentu menghasilkan nilai akurat dengan cepat. Menurunkan
+algoritme semacam itu, atau mengenalinya setelah diturunkan, merupakan
+inti analisis numerik.
+
+Jenis metode numerik pertama yang akan kita temui menghasilkan barisan
+hampiran yang, jika semuanya bekerja dengan baik, mendekati suatu
+nilai yang diinginkan, misalnya $p$. Dengan metode ini, kita akan
+memperoleh barisan $\langle p_{n}\rangle$ dengan $\lim_{n\to\infty}p_{n}=p$.
+Anda seharusnya sudah mengenal konsep limit barisan dari Kalkulus,
+tetapi tujuannya di sana sangat berbeda dari tujuan kita di sini.
+Umumnya, perhatian Anda tertuju pada apakah suatu barisan konvergen
+atau tidak. Jika barisan tersebut konvergen dan Anda sangat beruntung,
+Anda dapat menentukan limitnya. Dalam analisis numerik, kita mengetahui
+bahwa barisan tertentu konvergen dan hanya tertarik pada seberapa
+cepat kekonvergenan itu terjadi. 
+
+Pengamatan sederhana (dan sedikit akal sehat) dapat menunjukkan mobil
+mana di jalan raya yang melaju lebih cepat daripada mobil lainnya.
+Pengamatan sederhana (dan sedikit akal sehat) juga sering dapat menunjukkan
+barisan mana yang konvergen lebih cepat daripada barisan lainnya.
+\begin{table}[h]
+\hrule \caption{\label{tab:convergenceTo2.718281828...}Beberapa barisan yang konvergen
+ke $e$.}
+\medskip{}
+
+\centering{}%
+\begin{tabular}{c|cccc}
+$n$ & $q_{n}$ & $r_{n}$ & $s_{n}$ & $t_{n}$\tabularnewline
+\hline 
+0 & 3 & 3 & 3 & 3\tabularnewline
+1 & $2.9436563656918$ & $2.86799618929986$ & $2.82129001274358$ & $2.78177393100014$\tabularnewline
+2 & $2.89858145824525$ & $2.78315514435127$ & $2.73850656616954$ & $2.72150682612711$\tabularnewline
+3 & $2.86252153228801$ & $2.73974041668143$ & $2.71973377603211$ & $2.71829014894701$\tabularnewline
+4 & $2.83367359152222$ & $2.72324781752852$ & $2.71830229432561$ & $2.71828182851442$\tabularnewline
+5 & $2.81059523890958$ & $2.71899828870116$ & $2.71828184916891$ & $2.71828182845904$\tabularnewline
+6 & $2.79213255681947$ & $2.71833715075158$ & $2.71828182845934$ & $2.71828182845904$\tabularnewline
+7 & $2.77736241114739$ & $2.71828369688657$ & $2.71828182845904$ & $2.71828182845904$\tabularnewline
+8 & $2.76554629460972$ & $2.71828184959225$ & $2.71828182845904$ & $2.71828182845904$\tabularnewline
+9 & $2.75609340137958$ & $2.71828182851528$ & $2.71828182845904$ & $2.71828182845904$\tabularnewline
+10 & $2.74853108679547$ & $2.71828182845907$ & $2.71828182845904$ & $2.71828182845904$\tabularnewline
+$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$\tabularnewline
+\end{tabular}\medskip{}
+\hrule 
+\end{table}
+ Perhatikan barisan-barisan dalam Tabel \ref{tab:convergenceTo2.718281828...}
+yang semuanya konvergen ke $e\approx2.71828182845904$. $\langle t_{n}\rangle$
+sudah akurat hingga 15 angka signifikan pada suku keenam; $\langle s_{n}\rangle$
+sudah akurat hingga 15 angka signifikan pada suku kedelapan; $\langle r_{n}\rangle$
+masih belum akurat hingga 15 angka signifikan pada suku kesebelas,
+tetapi tampaknya akan mencapai akurasi 15 angka signifikan pada suku
+kedua belas; sedangkan $\langle q_{n}\rangle$ baru akurat hingga
+2 angka signifikan pada suku kesebelas, sehingga tampaknya memerlukan
+jauh lebih dari dua belas suku untuk mencapai akurasi 15 angka signifikan.
+Karena semuanya dimulai dari 3, cukup masuk akal untuk mengatakan
+bahwa, jika diurutkan dari yang tercepat hingga yang paling lambat,
+urutannya adalah $\langle t_{n}\rangle$, $\langle s_{n}\rangle$,
+$\langle r_{n}\rangle$, $\langle q_{n}\rangle$. Dan urutan itu memang
+benar, sebagaimana akan segera kita lihat. Namun, mengetahui mobil
+mana yang lebih cepat berbeda dengan mengetahui kecepatan masing-masing
+mobil. Demikian pula, mengetahui barisan mana yang konvergen lebih
+cepat berbeda dengan mengetahui seberapa cepat masing-masing barisan
+itu konvergen. Untuk mengukur kecepatan mobil tertentu, Anda memerlukan
+speedometer atau alat pengukur kecepatan radar. Untuk mengukur orde
+kekonvergenan (kecepatan) suatu barisan, Anda memerlukan sebuah definisi
+dan sedikit aljabar. 
+
+\subsubsection{Orde kekonvergenan suatu barisan\index{kekonvergenan!orde}}
+
+Misalkan barisan $\langle p_{n}\rangle$ konvergen ke $p$. Kita mengatakan
+bahwa $\langle p_{n}\rangle$ konvergen dengan orde $\alpha\geq1$
+jika
+\[
+\lim_{n\to\infty}\frac{\left|p_{n+1}-p\right|}{\left|p_{n}-p\right|^{\alpha}}=\lambda
+\]
+untuk suatu bilangan real $\lambda>0$. 
+
+Mari kita lihat cara menggunakan definisi ini untuk menghitung orde
+kekonvergenan barisan-barisan dalam Tabel \ref{tab:convergenceTo2.718281828...}.
+Menurut definisi tersebut, $\alpha$, jika ada, menyatakan kecepatan
+(atau orde) kekonvergenan \index{kekonvergenan!orde} suatu barisan.
+Sekarang, dengan mengasumsikan bahwa $\alpha$ memang ada, kita memperoleh
+$\lim_{n\to\infty}\frac{\left|p_{n+1}-p\right|}{\left|p_{n}-p\right|^{\alpha}}=\lambda$,
+sehingga untuk $n$ yang cukup besar,
+\[
+\frac{\left|p_{n+1}-p\right|}{\left|p_{n}-p\right|^{\alpha}}\approx\frac{\left|p_{n+2}-p\right|}{\left|p_{n+1}-p\right|^{\alpha}}\approx\lambda.
+\]
+Secara khusus, kita dapat menyelesaikan persamaan tersebut terhadap
+$\alpha$ dan memperoleh ${\displaystyle \alpha\approx\frac{\ln\left|\frac{p_{n+2}-p}{p_{n+1}-p}\right|}{\ln\left|\frac{p_{n+1}-p}{p_{n}-p}\right|}}$.
+
+\begin{digression}{Orde kekonvergenan kurang dari atau sama dengan 1?} 
+
+\noindent Tidak ada orde kekonvergenan \index{kekonvergenan!orde}
+yang kurang dari satu, sebab jika $\lim_{n\to\infty}\frac{\left|p_{n+1}-p\right|}{\left|p_{n}-p\right|^{\alpha}}=\lambda$
+untuk suatu $0<\alpha<1$, maka 
+\begin{eqnarray*}
+\lim_{n\to\infty}\frac{|p_{n+1}-p|}{|p_{n}-p|} & = & \lim_{n\to\infty}\frac{|p_{n+1}-p|}{|p_{n}-p|^{\alpha}}\cdot|p_{n}-p|^{\alpha-1},
+\end{eqnarray*}
+yang merupakan kontradiksi. Di satu sisi, uji rasio menyiratkan bahwa
+$\lim_{n\to\infty}\frac{|p_{n+1}-p|}{|p_{n}-p|}$ ada dan kurang dari
+atau sama dengan 1. Di sisi lain, $\alpha<1\implies\alpha-1<0$ sehingga
+ketika $|p_{n}-p|$ bernilai kecil, $|p_{n}-p|^{\alpha-1}$ bernilai
+besar. Oleh karena itu, $\lim_{n\to\infty}\frac{|p_{n+1}-p|}{|p_{n}-p|^{\alpha}}\cdot|p_{n}-p|^{\alpha-1}$
+tidak ada. Untuk membuktikannya secara ketat, misalkan $M$ adalah
+sebarang bilangan real. Maka terdapat $N_{1}$ sedemikian sehingga
+$n>N_{1}$ menyiratkan $\frac{|p_{n+1}-p|}{|p_{n}-p|^{\alpha}}>0.9\lambda$.
+Terdapat pula $N_{2}$ sedemikian sehingga $n>N_{2}$ menyiratkan
+${\displaystyle |p_{n}-p|<\left(\frac{0.9\lambda}{M}\right)^{\frac{1}{1-\alpha}}}$,
+sehingga $|p_{n}-p|^{\alpha-1}>\frac{M}{0.9\lambda}$. Dengan mengambil
+$N=\max\{N_{1},N_{2}\}$, kita memperoleh bahwa $n>N$ menyiratkan
+sekaligus $\frac{|p_{n+1}-p|}{|p_{n}-p|^{\alpha}}>0.9\lambda$ dan
+$|p_{n}-p|^{\alpha-1}>\frac{M}{0.9\lambda}$. Oleh karena itu, untuk
+$n>N$, berlaku 
+\begin{eqnarray*}
+\frac{|p_{n+1}-p|}{|p_{n}-p|} & = & \frac{|p_{n+1}-p|}{|p_{n}-p|^{\alpha}}\cdot|p_{n}-p|^{\alpha-1}>0.9\lambda\cdot\frac{M}{0.9\lambda}=M.
+\end{eqnarray*}
+Dengan demikian, $\lim_{n\to\infty}\frac{|p_{n+1}-p|}{|p_{n}-p|}$
+tidak ada. Ketika $\alpha=1$, haruslah $\lambda\leq1$ karena jika
+tidak, uji rasio menyiratkan bahwa $\langle|p_{n}-p|\rangle$ divergen
+dan, dengan demikian, $\langle p_{n}\rangle$ divergen. 
+
+\noindent\end{digression} 
+
+Sebagai contoh, ${\displaystyle \frac{\ln\left|\frac{q_{2}-e}{q_{1}-e}\right|}{\ln\left|\frac{q_{1}-e}{q_{0}-e}\right|}\approx\frac{\ln\left|\frac{2.8985-e}{2.9436-e}\right|}{\ln\left|\frac{2.9436-e}{3-e}\right|}}\approx1$
+dan ${\displaystyle \frac{\ln\left|\frac{q_{10}-e}{q_{9}-e}\right|}{\ln\left|\frac{q_{9}-e}{q_{8}-e}\right|}=\frac{\ln\left|\frac{2.7485-e}{2.7560-e}\right|}{\ln\left|\frac{2.7560-e}{2.7655-e}\right|}}\approx1$.
+Jika kita mencoba kelompok lain yang terdiri atas tiga suku berurutan
+dari $\langle q_{n}\rangle$, kita memperoleh hasil yang sama. Orde
+kekonvergenan\index{kekonvergenan!orde} dari $\langle q_{n}\rangle$
+kira-kira 1. Tentu saja, kita memerlukan rumus untuk $|q_{n}-e|$
+guna menentukan apakah limit tersebut benar-benar 1, tetapi kita sudah
+memiliki beberapa bukti pendukung. Dengan mengulangi perhitungan untuk
+$\langle r_{n}\rangle$, $\langle s_{n}\rangle$, dan $\langle t_{n}\rangle$,
+kita memperoleh perkiraan orde kekonvergenan masing-masing sebesar
+$1.322$, $1.618$, dan $2$. Sekali lagi kita melihat bahwa, jika
+diurutkan dari yang tercepat hingga yang paling lambat, urutannya
+adalah $\langle t_{n}\rangle$, $\langle s_{n}\rangle$, $\langle r_{n}\rangle$,
+$\langle q_{n}\rangle$. 
+
+Jika Anda mencoba menghitung sendiri orde kekonvergenan tersebut,
+mungkin Anda menyadari bahwa diperlukan informasi tambahan untuk menggunakan
+$s_{n}$ ketika $n>6$ atau $t_{n}$ ketika $n>4$. Semua suku tersebut
+bernilai sama di dalam tabel, sehingga rumus untuk $\alpha$ gagal
+menghasilkan bilangan real! Tabel yang lebih berguna untuk menghitung
+orde kekonvergenan adalah tabel yang memuat galat absolut: 
+\begin{table}[h]
+\hrule \caption{\label{tab:absoluteErrors}Galat absolut.}
+\medskip{}
+
+\centering{}%
+\begin{tabular}{c|cccc}
+$n$ & $|q_{n}-e|$ & $|r_{n}-e|$ & $|s_{n}-e|$ & $|t_{n}-e|$\tabularnewline
+\hline 
+0 & $2.817(10)^{-1}$ & $2.817(10)^{-1}$ & $2.817(10)^{-1}$ & $2.817(10)^{-1}$\tabularnewline
+1 & $2.253(10)^{-1}$ & $1.497(10)^{-1}$ & $1.03(10)^{-1}$ & $6.349(10)^{-2}$\tabularnewline
+2 & $1.802(10)^{-1}$ & $6.487(10)^{-2}$ & $2.022(10)^{-2}$ & $3.224(10)^{-3}$\tabularnewline
+3 & $1.442(10)^{-1}$ & $2.145(10)^{-2}$ & $1.451(10)^{-3}$ & $8.32(10)^{-6}$\tabularnewline
+4 & $1.153(10)^{-1}$ & $4.965(10)^{-3}$ & $2.046(10)^{-5}$ & $5.538(10)^{-11}$\tabularnewline
+5 & $9.231(10)^{-2}$ & $7.164(10)^{-4}$ & $2.07(10)^{-8}$ & $2.453(10)^{-21}$\tabularnewline
+6 & $7.385(10)^{-2}$ & $5.532(10)^{-5}$ & $2.953(10)^{-13}$ & $4.817(10)^{-42}$\tabularnewline
+7 & $5.908(10)^{-2}$ & $1.868(10)^{-6}$ & $4.263(10)^{-21}$ & $1.856(10)^{-83}$\tabularnewline
+8 & $4.726(10)^{-2}$ & $2.113(10)^{-8}$ & $8.777(10)^{-34}$ & $2.757(10)^{-166}$\tabularnewline
+9 & $3.781(10)^{-2}$ & $5.623(10)^{-11}$ & $2.608(10)^{-54}$ & $6.084(10)^{-332}$\tabularnewline
+10 & $3.024(10)^{-2}$ & $2.22(10)^{-14}$ & $1.595(10)^{-87}$ & $2.961(10)^{-663}$\tabularnewline
+\end{tabular}\medskip{}
+\hrule 
+\end{table}
+ Selain mempermudah penghitungan $\alpha$, tabel ini menunjukkan
+dengan sangat jelas bahwa simpulan berdasarkan intuisi kita tentang
+barisan mana yang berkonvergensi lebih cepat memang benar. Bandingkan
+saja akurasi (galat absolut) suku kesebelasnya. 
+
+Sekarang kita dapat menghitung orde kekonvergenan\index{kekonvergenan!orde},
+tetapi apa sebenarnya maknanya? Apa yang diberitahukan orde kekonvergenan
+tentang suku-suku berurutan dalam barisan? Dengan menyelesaikan hampiran
+$\frac{\left|p_{n+1}-p\right|}{\left|p_{n}-p\right|^{\alpha}}\approx\lambda$
+kita peroleh $|p_{n+1}-p|\approx\lambda|p_{n}-p|^{\alpha}$. Jadi,
+secara kasar, kekonvergenan berorde $\alpha$ berarti bahwa, untuk
+$n$ yang cukup besar, hampiran $p_{n+1}$ sekitar $\lambda|p_{n}-p|^{\alpha-1}$
+kali lebih dekat ke limit $p$ daripada $p_{n}$. Untuk menyatakannya
+kembali dalam banyaknya angka signifikan yang akurat, kita lakukan
+sedikit aljabar:
+\begin{eqnarray*}
+|p_{n+1}-p| & \approx & \lambda|p_{n}-p|^{\alpha}\\
+\left|\frac{p_{n+1}-p}{p}\right| & \approx & \lambda\left|\frac{p_{n}-p}{p}\right|^{\alpha}\cdot|p|^{\alpha-1}\\
+-\log\left|\frac{p_{n+1}-p}{p}\right| & \approx & -\log\left|\frac{p_{n}-p}{p}\right|^{\alpha}-\log\left(\lambda|p|^{\alpha-1}\right)\\
+d(p_{n+1}) & \approx & \alpha d(p_{n})-\log\left(\lambda|p|^{\alpha-1}\right).
+\end{eqnarray*}
+Berdasarkan perhitungan ini, kita memperoleh aturan praktis berikut:
+\begin{enumerate}
+\item untuk kekonvergenan linear ($\alpha=1$), $d(p_{n+1})\approx d(p_{n})-\log\lambda$,
+sehingga setiap suku memiliki sejumlah tetap angka signifikan yang
+akurat lebih banyak (kira-kira sama dengan $-\log\lambda$) dibanding
+suku sebelumnya;
+\item untuk kekonvergenan kuadratik ($\alpha=2$), $d(p_{n+1})\approx2d(p_{n})-\log\left(\lambda|p|\right)$,
+sehingga setiap suku memiliki kira-kira dua kali banyaknya angka signifikan
+yang akurat dibanding suku sebelumnya, dengan sedikit penyimpangan;
+\item untuk kekonvergenan kubik ($\alpha=3$), $d(p_{n+1})\approx3d(p_{n})-\log\left(\lambda|p|^{2}\right)$,
+sehingga setiap suku memiliki kira-kira tiga kali banyaknya angka
+signifikan yang akurat dibanding suku sebelumnya, dengan sedikit penyimpangan;
+\end{enumerate}
+dan seterusnya. Ringkasnya, untuk $n$ yang besar, setiap suku diperkirakan
+memiliki $-\log\left(\lambda|p|^{\alpha-1}\right)$ angka signifikan
+akurat lebih banyak daripada $\alpha$ kali banyaknya angka signifikan
+akurat pada suku sebelumnya. Kita dapat melihat klaim ini secara langsung
+dengan menghitung $\lambda$ untuk barisan $\langle t_{n}\rangle$,
+$\langle s_{n}\rangle$, $\langle r_{n}\rangle$, dan $\langle q_{n}\rangle$.
+Dengan menggunakan fakta bahwa $\lambda\approx\frac{\left|p_{n+1}-p\right|}{\left|p_{n}-p\right|^{\alpha}}$,
+kita peroleh $\lambda=0.8$ untuk setiap barisan. Oleh karena itu,
+pada $\langle q_{n}\rangle$, setiap suku seharusnya memiliki $-\log0.8\approx.1$
+angka signifikan akurat lebih banyak daripada suku sebelumnya. Dalam
+istilah yang lebih mudah dipahami, barisan itu memperoleh sekitar
+satu angka signifikan akurat tambahan setiap sepuluh suku. Hal ini
+tampak dari pengamatan bahwa $q_{0}$ memiliki galat sekitar $3(10)^{-1}$,
+sedangkan $q_{10}$ memiliki galat sekitar $3(10)^{-2}$. Untuk $\langle r_{n}\rangle$,
+setiap suku diperkirakan memiliki sekitar $-\log(0.8\cdot e^{.322})\approx-0.04$
+angka signifikan akurat lebih banyak daripada $1.322$ kali banyaknya
+angka signifikan akurat pada suku sebelumnya. Sebagai contoh, $r_{3}$
+memiliki sekitar $\log\left|\frac{e}{2.145(10)^{-2}}\right|\approx2.1$
+angka signifikan akurat, sedangkan $r_{4}$ memiliki sekitar $1.322(2.1)-.04\approx2.73$
+angka signifikan akurat, $r_{5}$ memiliki $1.322(2.73)-.04\approx3.57$
+angka signifikan akurat, dan seterusnya hingga $r_{8}$ memiliki sekitar
+$8.1$ angka signifikan akurat. Hal ini kembali ditegaskan oleh tabel,
+karena $\log\left|\frac{e}{r_{8}-e}\right|=\log\left|\frac{e}{2.113(10)^{-8}}\right|\approx8.1$.
+Walaupun kita dapat melakukan perhitungan serupa untuk $\langle t_{n}\rangle$,
+lebih mudah untuk menilainya secara langsung karena yang perlu kita
+perhatikan hanyalah bahwa eksponen dalam notasi ilmiah kira-kira menjadi
+dua kali lipat dari satu suku ke suku berikutnya. Memang demikian:
+eksponennya berubah dari 1 menjadi 2, lalu 3, 6, 11, dan seterusnya. 
+
+Perhatikan bahwa dalam seluruh analisis ini, kita telah mengabaikan
+syarat bahwa $n$ harus ``besar''. Hal itu dapat diterima dalam
+kasus ini karena barisan-barisan tersebut sengaja dirancang sedemikian
+rupa sehingga bahkan $n=0$ pun sudah cukup besar! Dalam penerapan
+praktis, tidak demikian.
+
+Untuk memahami betapa jauh lebih cepat suatu orde kekonvergenan dibanding
+orde lainnya, tinjau kembali relasi 
+\[
+d(p_{n+1})\approx\alpha d(p_{n})-\log\left(\lambda|p|^{\alpha-1}\right)
+\]
+. Sekarang, anggaplah kita mengetahui bahwa $d(p_{n_{0}})=d_{n_{0}}$
+untuk suatu $n_{0}$ tertentu yang cukup besar sehingga hampiran tersebut
+masuk akal. Maka dapat ditunjukkan bahwa, untuk $\alpha>1$, 
+\[
+d(p_{n_{0}+k})\approx(d_{n_{0}}-C)\alpha^{k}+C
+\]
+dengan ${\displaystyle C=\frac{\log\left(\lambda|p|^{\alpha-1}\right)}{\alpha-1}}$. 
+
+\begin{digression}{Menyelesaikan Relasi Rekurensi} 
+
+\noindent Relasi $d(p_{n+1})\approx\alpha d(p_{n})-\log\left(\lambda|p|^{\alpha-1}\right)$
+merupakan contoh relasi rekurensi. Secara khusus, relasi tersebut
+merupakan relasi rekurensi linear takhomogen orde pertama dengan koefisien
+konstan karena berbentuk
+\[
+a_{n+1}=k_{1}a_{n}+k_{2}
+\]
+dengan $k_{1}$ dan $k_{2}$ adalah konstanta. Relasi rekurensi linear
+takhomogen dapat diselesaikan dengan menjumlahkan solusi homogen dan
+solusi partikular. Untuk solusi partikular, kita mencari solusi berbentuk
+$a_{n}=A$ (untuk semua $n$) dengan menyubstitusikan solusi yang
+diasumsikan ini ke dalam relasi rekurensi. Penyubstitusian itu menghasilkan
+$A=k_{1}A+k_{2}$, sehingga $A=\frac{k_{2}}{1-k_{1}}$ merupakan solusi
+semacam itu. Untuk solusi homogen, kita mencari barisan berbentuk
+$a_{n}=r^{n}$ yang memenuhi $a_{n+1}=k_{1}a_{n}+0$. Dengan menyubstitusikan
+solusi yang diasumsikan ke dalam relasi rekurensi yang telah diubah
+(homogen), kita peroleh $r^{n+1}=k_{1}r^{n}$. Dengan menata ulang,
+$r^{n}(r-k_{1})=0$ sehingga $r=0$ atau $r=k_{1}$. Perhatikan bahwa
+$Bk_{1}^{n}$ juga merupakan solusi untuk sembarang konstanta $B$.
+Hal ini mencakup solusi $a_{n}=0$ yang diperoleh dengan menetapkan
+$r=0$. Akhirnya, dengan menggabungkan solusi partikular dan solusi
+homogen, solusi dari $a_{n+1}=k_{1}a_{n}+k_{2}$ adalah $a_{n}=Bk_{1}^{n}+\frac{k_{2}}{1-k_{1}}$
+untuk sembarang konstanta $B$. Dalam kasus $d(p_{n+1})\approx\alpha d(p_{n})-\log\left(\lambda|p|^{\alpha-1}\right)$,
+$k_{1}=\alpha$ dan $k_{2}=-\log\left(\lambda|p|^{\alpha-1}\right)$
+sehingga $d(p_{n})=B\alpha^{n}+\frac{\log\left(\lambda|p|^{\alpha-1}\right)}{\alpha-1}$.
+Nilai $B$ ditentukan dengan menyubstitusikan sembarang unsur barisan
+yang diketahui ke dalam rumus ini, lalu menyelesaikannya untuk $B$.
+Jika $d(p_{n_{0}})=d_{n_{0}}$, diperoleh $d(p_{n})=\left(d_{n_{0}}-\frac{\log\left(\lambda|p|^{\alpha-1}\right)}{\alpha-1}\right)\alpha^{n}+\frac{\log\left(\lambda|p|^{\alpha-1}\right)}{\alpha-1}$. 
+
+\noindent\end{digression}  
+
+\noindent Hal penting yang perlu diperhatikan di sini ialah bahwa
+$d(p_{n_{0}+k})$ merupakan fungsi eksponensial ketika $\alpha>1$.
+Banyaknya angka signifikan yang akurat bertumbuh secara eksponensial
+dengan basis $\alpha$. Seperti yang telah kita lihat, untuk $\alpha=1$,
+banyaknya angka signifikan bertumbuh secara linear. Dalam kalkulus,
+Anda telah mempelajari bahwa setiap fungsi eksponensial bertumbuh
+jauh lebih cepat daripada setiap fungsi polinomial. Oleh karena itu,
+wajar dan benar untuk menyimpulkan bahwa barisan yang konvergen dengan
+orde lebih besar daripada $1$ berkonvergensi jauh lebih cepat daripada
+barisan dengan orde linear ($\alpha=1$). 
+
+Namun, berhati-hatilah. Berdasarkan pengetahuan kalkulus yang sama,
+Anda juga akan menyimpulkan bahwa barisan $\langle2^{-n}\rangle$
+konvergen ke 0 jauh lebih cepat daripada $\langle n^{-2}\rangle$.
+Menurut sebagian ukuran, hal itu benar, tetapi tidak menurut semua
+ukuran. Tinjau orde kekonvergenan kedua barisan tersebut. Kita mencari
+nilai $\alpha_{1}$ dan $\alpha_{2}$ sedemikian sehingga
+\[
+\lim_{n\to\infty}\frac{|2^{-(n+1)}-0|}{|2^{-n}-0|^{\alpha_{1}}}=\lambda_{1}\qquad\mbox{dan}\qquad\lim_{n\to\infty}\frac{|(n+1)^{-2}-0|}{|n^{-2}-0|^{\alpha_{2}}}=\lambda_{2}
+\]
+untuk suatu bilangan real $\lambda_{1}$ dan $\lambda_{2}$. Sedikit
+aljabar menghasilkan bentuk berikut:
+\[
+\begin{gathered}\frac{|2^{-(n+1)}-0|}{|2^{-n}-0|^{\alpha_{1}}}=\frac{2^{-n-1}}{2^{-\alpha_{1}n}}=2^{(\alpha_{1}-1)n-1}\\
+\mbox{while}\\
+\frac{|(n+1)^{-2}-0|}{|n^{-2}-0|^{\alpha_{2}}}=\frac{n^{2\alpha_{2}}}{n^{2}+2n+1}.
+\end{gathered}
+\]
+Satu-satunya cara agar $\lim_{n\to\infty}2^{(\alpha_{1}-1)n-1}$ menjadi
+konstanta taknol ialah jika $\alpha_{1}=1$. Satu-satunya cara agar
+$\lim_{n\to\infty}\frac{n^{2\alpha_{2}}}{n^{2}+2n+1}$ menjadi konstanta
+taknol ialah jika koefisien utama pembilang dan penyebut sama. Artinya,
+$\alpha_{2}$ juga harus bernilai 1. Jadi, $\langle2^{-n}\rangle$
+dan $\langle n^{-2}\rangle$ keduanya konvergen ke nol dengan orde
+linear. Menurut ukuran ini, keduanya sama-sama sangat lambat berkonvergensi!
+Namun, terasa ada yang kurang tepat jika kita menyatakan bahwa $\langle2^{-n}\rangle$
+dan $\langle n^{-2}\rangle$ berkonvergensi dengan kecepatan yang
+sama. 
+
+\begin{digression}{Orde Kekonvergenan yang Tidak Terdefinisi}
+
+Tidak semua barisan konvergen memiliki orde kekonvergenan yang terdefinisi.
+Barisan ${\displaystyle \left\langle \frac{e^{n}}{e^{e^{n}}}\right\rangle }$,
+yang konvergen ke 0, merupakan salah satu contohnya.
+\begin{align*}
+\frac{\left|\frac{e^{n+1}}{e^{e^{n+1}}}-0\right|}{\left|\frac{e^{n}}{e^{e^{n}}}-0\right|^{\alpha}} & =\frac{\left|\frac{e^{n+1}}{e^{e^{n+1}}}-0\right|}{\left|\frac{e^{n}}{e^{e^{n}}}-0\right|^{\alpha}}\\
+ & =\frac{\left|e^{n+1-e^{n+1}}\right|}{\left|e^{\alpha n-\alpha e^{n}}\right|}\\
+ & =\left|e^{1+(1-\alpha)n+(\alpha-e)e^{n}}\right|
+\end{align*}
+Jika kita menetapkan $\alpha\leq e$, maka ${\displaystyle \lim_{n\to\infty}[1+(1-\alpha)n+(\alpha-e)e^{n}]=-\infty}$,
+yang mengakibatkan ${\displaystyle \lim_{n\to\infty}\left|e^{1+(1-\alpha)n+(\alpha-e)e^{n}}\right|=0}$.
+Jika kita menetapkan $\alpha>e$, maka ${\displaystyle \lim_{n\to\infty}[1+(1-\alpha)n+(\alpha-e)e^{n}]=\infty}$,
+yang mengakibatkan ${\displaystyle \lim_{n\to\infty}\left|e^{1+(1-\alpha)n+(\alpha-e)e^{n}}\right|=\infty}$.
+Tidak ada nilai $\alpha$ yang membuat limit ini menjadi konstanta
+taknol.
+
+\end{digression}
+
+\subsubsection{Laju kekonvergenan suatu barisan\index{kekonvergenan!laju}}
+
+Untuk barisan yang berkonvergensi dengan orde linear, kita memerlukan
+ukuran yang lebih halus daripada orde untuk menentukan mana yang lebih
+cepat. Ingat kembali dari kalkulus, 
+\begin{eqnarray*}
+\lim_{n\to\infty}\frac{2^{-n}}{n^{-2}} & = & \lim_{n\to\infty}\frac{n^{2}}{2^{n}}\\
+ & = & \lim_{n\to\infty}\frac{2n}{2^{n}\ln2}\\
+ & = & \lim_{n\to\infty}\frac{2}{2^{n}(\ln2)^{2}}=0,
+\end{eqnarray*}
+yang menunjukkan bahwa $\langle2^{-n}\rangle$ mendekati 0 jauh lebih
+cepat daripada $\langle n^{-2}\rangle$. Anda mungkin juga mengingat
+perbandingan antara fungsi pangkat:
+\[
+\lim_{n\to\infty}\frac{n^{-p}}{n^{-q}}=0
+\]
+jika $p>q>0$; antara fungsi eksponensial:
+\[
+\lim_{n\to\infty}\frac{a^{-n}}{b^{-n}}=0
+\]
+jika $a>b\geq1$; dan antara keduanya:
+\[
+\lim_{n\to\infty}\frac{a^{-n}}{n^{-q}}=0
+\]
+jika $a>1$. Dengan kata lain, barisan berbentuk $\left\langle \frac{1}{a^{n}}\right\rangle $
+berkonvergensi ke nol lebih cepat daripada barisan berbentuk $\left\langle \frac{1}{n^{p}}\right\rangle $
+jika $a>1$. Barisan $\left\langle \frac{1}{a^{n}}\right\rangle $
+berkonvergensi ke nol lebih cepat daripada $\left\langle \frac{1}{b^{n}}\right\rangle $
+jika $a>b\geq1$. Barisan $\left\langle \frac{1}{n^{p}}\right\rangle $
+berkonvergensi ke nol lebih cepat daripada $\left\langle \frac{1}{n^{q}}\right\rangle $
+jika $p>q>0$. Tidak semua fungsi sesederhana ini, tetapi kita dapat
+menggunakannya sebagai tolok ukur. Misalkan $\langle p_{n}\rangle$
+berkonvergensi ke $p$, $\langle b_{n}\rangle$ berkonvergensi ke
+0 dan $|p_{n}-p|\leq\lambda|b_{n}|$ untuk suatu konstanta $\lambda$
+dan semua $n$ yang cukup besar. Maka kita katakan bahwa $\langle p_{n}\rangle$
+berkonvergensi ke $p$ dengan laju kekonvergenan \index{kekonvergenan!laju}
+$O(b_{n})$, dibaca ``O besar dari $b_{n}$''\index{O besar}. Karena
+kita sudah mengenal barisan berbentuk $\left\langle \frac{1}{a^{n}}\right\rangle $
+untuk suatu konstanta $a>1$ dan $\left\langle \frac{1}{n^{p}}\right\rangle $
+untuk suatu konstanta $p>0$, dan keduanya cukup sederhana, biasanya
+$\langle b_{n}\rangle$ akan berupa salah satunya. Sebagai contoh,
+$\left\langle \frac{2n+1}{4n}\right\rangle $ berkonvergensi ke $\frac{1}{2}$,
+dan
+\[
+\left|\frac{2n+1}{4n}-\frac{1}{2}\right|=\frac{1}{4n}\leq\frac{1}{4}\cdot\frac{1}{n},
+\]
+sehingga $\left\langle \frac{2n+1}{4n}\right\rangle $ berkonvergensi
+dengan laju $O(\frac{1}{n})$. Kita juga dapat menuliskan $\frac{2n+1}{4n}=\frac{1}{2}+O(\frac{1}{n})$
+untuk menyampaikan hal yang persis sama. Biasanya, ketika mencari
+laju kekonvergenan, kita berusaha menemukan barisan dengan kekonvergenan
+tercepat dari kumpulan contoh sederhana kita yang memenuhi definisi
+tersebut. Dalam kasus ini, tidak ada yang lebih cepat.
+
+Pada dasarnya, semua barisan yang dipelajari secara mendalam dalam
+kalkulus konvergen dengan orde linear. Jadi, apa yang diperlukan agar
+suatu barisan berkonvergensi dengan orde yang lebih tinggi? Mari kita
+tinjau $\left\langle e^{-2^{n}}\right\rangle $. 
+\[
+\lim_{n\to\infty}\frac{|e^{-2^{n+1}}-0|}{|e^{-2^{n}}-0|^{\alpha}}=\lim_{n\to\infty}\frac{e^{-2\cdot2^{n}}}{e^{-\alpha2^{n}}}=1
+\]
+ketika $\alpha=2$. Jadi, $\left\langle \frac{1}{e^{2^{n}}}\right\rangle $
+berkonvergensi secara kuadratik. Pada dasarnya, diperlukan eksponen
+yang bertumbuh secara eksponensial agar suatu barisan berkonvergensi
+dengan orde lebih besar daripada $1$.
+
+\begin{digression}{Menghampiri $\pi$} \index{pi@$\pi$!hampiran}
+
+\noindent Barisan 
+\[
+\frac{1103\cdot2^{3/2}}{9801},\ \frac{1130173253125}{313826716467\cdot2^{7/2}},\ \frac{1029347477390786609545}{1116521080257783321\cdot2^{23/2}},\ldots
+\]
+konvergen ke $\frac{1}{\pi}$. Suku-sukunya diberikan oleh rumus 
+\[
+\left\langle \frac{\sqrt{8}}{9801}\sum_{j=0}^{n}\frac{(4j)!(1103+26390j)}{(j!)^{4}\cdot396^{4j}}\right\rangle _{n=0,1,2,3,\ldots}
+\]
+karya Srinivasa Ramanujan\index{Ramanujan!Srinivasa}. Untuk keperluan
+praktis, barisan ini berkonvergensi sangat cepat. Suku pertamanya
+sudah memiliki sekitar 8 angka signifikan yang akurat:
+\begin{eqnarray*}
+\frac{1103\cdot2^{3/2}}{9801} & \approx & 0.31830987844047012321768445317\\
+\frac{1}{\pi} & \approx & 0.31830988618379067153776752674,
+\end{eqnarray*}
+sedangkan suku keduanya memiliki sekitar 16:
+\[
+\left|\frac{1130173253125}{313826716467\cdot2^{7/2}}-\frac{1}{\pi}\right|\approx6.48(10)^{-17},
+\]
+dua kali akurasi suku pertama. Akurasi suku ketiganya bahkan sudah
+melampaui presisi ganda. 
+
+Sangat menggoda untuk percaya, atau berharap, bahwa barisan ini berkonvergensi
+secara kuadratik, tetapi ternyata tidak. Suku ketiganya akurat hingga
+sekitar 24 angka signifikan. Setiap suku dalam barisan kira-kira 8
+angka signifikan lebih akurat daripada suku sebelumnya---ciri khas
+barisan yang berkonvergensi secara linear. 
+
+\end{digression}
+
+\subsection{Konsep Utama}
+\begin{description}
+\item [{Orde~kekonvergenan~barisan\index{kekonvergenan!orde}:}] Barisan
+$\langle p_{n}\rangle$ konvergen ke $p$ dengan orde kekonvergenan
+$\alpha\geq1$ jika
+\[
+\lim_{n\to\infty}\frac{\left|p_{n+1}-p\right|}{\left|p_{n}-p\right|^{\alpha}}=\lambda
+\]
+untuk suatu bilangan real $\lambda>0$. 
+\item [{Galat~absolut:}] Untuk barisan $\langle p_{n}\rangle$ yang konvergen
+ke $p$ dengan orde $\alpha$, galat absolut suku-suku berurutan dihubungkan
+oleh hampiran
+\[
+|p_{n+1}-p|\approx\lambda|p_{n}-p|^{\alpha}
+\]
+untuk $n$ yang cukup besar.
+\item [{Angka~signifikan~yang~akurat:}] \index{akurasi!angka signifikan}Untuk
+barisan $\langle p_{n}\rangle$ yang konvergen ke $p$ dengan orde
+$\alpha$, banyaknya angka signifikan yang akurat pada suku-suku berurutan
+dihubungkan oleh hampiran
+\[
+d(p_{n+1})\approx\alpha d(p_{n})-\log\left(\lambda|p|^{\alpha-1}\right)
+\]
+untuk $n$ yang cukup besar. Dalam bentuk tertutup (untuk $\alpha\neq1$)
+\[
+d(p_{n+k})=(d_{n}-C)\alpha^{k}+C
+\]
+dengan ${\displaystyle C=\frac{\log\left(\lambda|p|^{\alpha-1}\right)}{\alpha-1}}$.
+\item [{Laju~kekonvergenan~barisan\index{O besar}\index{kekonvergenan!laju}:}] Barisan
+$\langle p_{n}\rangle$ konvergen ke $p$ dengan laju kekonvergenan
+$O(b_{n})$ jika $\langle b_{n}\rangle$ konvergen ke 0 dan 
+\[
+|p_{n}-p|\leq\lambda|b_{n}|
+\]
+untuk suatu konstanta $\lambda$ dan semua $n$ yang cukup besar.
+\end{description}
+
+\subsection{Octave}
+
+Perulangan merupakan alat yang sangat berguna dalam segala jenis pemrograman.
+Ketika Anda perlu menjalankan suatu prosedur berulang kali dengan
+masukan yang berbeda-beda, perulangan mungkin merupakan solusi yang
+tepat. Meskipun Octave menyediakan beberapa jenis perulangan, untuk
+saat ini kita hanya akan membahas perulangan \texttt{for} \index{Octave!perulangan for@perulangan \texttt{for}}.
+Gagasannya adalah menggunakan suatu variabel, yang kadang-kadang disebut
+pencacah, untuk menghitung berapa kali prosedur telah dijalankan.
+Ketika prosedur telah dijalankan sebanyak yang diinginkan, perulangan
+berakhir dan program berlanjut dari sana. Hampir pasti Anda sudah
+menjumpai gagasan ini bahkan sebelum pernah menulis program komputer.
+Jika Anda pernah pergi ke pasar malam dan membayar satu dolar untuk
+melempar selusin gelang dengan harapan salah satunya melingkari leher
+botol soda, Anda telah mengalami perulangan. Anda mungkin bahkan menghitung
+gelang-gelang itu saat melemparkannya. Andalah pencacahnya! Anda harus
+menjalankan prosedur melemparkan gelang ke deretan botol sebanyak
+12 kali. Jadi, mungkin Anda melempar gelang pertama dan menghitung
+dalam hati ``1''. Kemudian Anda melempar gelang berikutnya dan menghitung
+``2''. Lalu gelang berikutnya lagi dan menghitung ``3''. Begitu
+seterusnya hingga ``12''. Setelah gelang terakhir dilempar, Anda
+melanjutkan kegiatan di pasar malam. 
+
+Perulangan \texttt{for} merupakan analogi abstrak dari situasi ini.
+Misalkan Anda ingin menghitung $1!$, $2!$, $3!$, dan seterusnya
+hingga $12!$. Di Octave, Anda dapat membuat berkas \texttt{.m} berikut
+lalu menjalankannya. \begin{verbatim}
+factorial(1)
+factorial(2)
+factorial(3)
+factorial(4)
+factorial(5)
+factorial(6)
+factorial(7)
+factorial(8)
+factorial(9)
+factorial(10)
+factorial(11)
+factorial(12)
+\end{verbatim}
+
+\noindent Namun, cara ini dapat menjemukan dan kurang ramah bagi pembaca,
+khususnya jika kita ingin melakukan suatu perhitungan jauh lebih dari
+12 kali. Tujuan perulangan adalah mengurangi pengulangan dalam pendekatan
+ini. Kita ingin menjalankan prosedur untuk menghitung faktorial 12
+bilangan bulat yang berbeda, sehingga perulangan cocok digunakan.
+Sintaks perulangan ialah menyiapkan pencacah, menulis kode untuk menjalankan
+prosedur, lalu menandai akhir \index{Octave!end@\texttt{end}} perulangan.
+Bentuknya kira-kira seperti berikut. \begin{verbatim}
+for j=first:last
+  do something. 
+end%for
+\end{verbatim}
+
+\noindent Perintah ini akan menyebabkan Octave menjalankan prosedur
+sekali untuk setiap bilangan bulat dari \texttt{first} hingga \texttt{last},
+termasuk \texttt{first} dan \texttt{last}. Nilai pencacah, dalam hal
+ini \texttt{j}, dapat digunakan dalam prosedur. Jadi, untuk menghitung
+$1!$ hingga $12!$, kita dapat menulis \begin{verbatim}
+for j=1:12
+  factorial(j)
+end%for
+\end{verbatim}
+
+\noindent Program ini akan menghasilkan keluaran yang persis sama
+dengan program yang memiliki satu baris untuk setiap faktorial. Jika
+kelak Anda ingin menghitung $1!$ hingga $20!$ sebagai gantinya,
+Anda hanya perlu mengubah 12 menjadi 20. Perulangan \texttt{for} adalah
+sahabat Anda!
+
+Sekarang misalkan kita ingin menghitung $\alpha$ untuk setiap kelompok
+tiga nilai $|s_{n}-e|$ yang berurutan pada Tabel \ref{tab:absoluteErrors}.
+Karena ada 9 kelompok seperti itu, kita perlu membuat perulangan yang
+dijalankan 9 kali. Di dalam perulangan tersebut, kita perlu melakukan
+perhitungan ${\displaystyle \alpha=\frac{\ln\left|\frac{s_{n+2}-e}{s_{n+1}-e}\right|}{\ln\left|\frac{s_{n+1}-e}{s_{n}-e}\right|}}$.
+Namun, sebelum memulai, kita perlu memberi tahu Octave tentang 11
+nilai dari tabel tersebut. Cara paling praktis ialah menyimpannya
+dalam sebuah larik. Larik \index{Octave!larik} menyerupai vektor
+dan memiliki komponen. Dalam hal ini, setiap komponen akan menyimpan
+satu nilai dari tabel. Sintaks untuk membuat larik juga sangat mirip
+dengan notasi vektor. Kita akan menggunakan kurung siku untuk mengapit
+komponen-komponen larik dan memisahkannya dengan koma. Jadi, baris
+pertama kode Octave kita akan tampak seperti berikut. \begin{verbatim}
+errs = [2.817*10^(-1), 1.03*10^(-1), 2.022*10^(-2), 1.451*10^(-3), ...
+        2.046*10^(-5), 2.07*10^(-8), 2.953*10^(-13), 4.263*10^(-21), ...
+        8.777*10^(-34), 2.608*10^(-54), 1.595*10^(-87)]
+\end{verbatim}Tanda elipsis (tiga titik berturut-turut) di akhir dua baris pertama
+diperlukan untuk memberi tahu Octave bahwa perintah tersebut berlanjut
+ke baris berikutnya. Tanpa tanda itu, memecah satu perintah menjadi
+beberapa baris akan menimbulkan galat sintaks. Di Octave, memulai
+baris baru juga merupakan isyarat untuk memulai perintah baru.
+
+Sekarang Octave mengetahui nilai-nilai $|s_{n}-e|$. Menggunakan vektor
+ini sangat mirip dengan menggunakan subskrip. Nilai pertama, $2.817(10)^{-1}$,
+disebut \texttt{errs(1)}. Nilai kedua disebut \texttt{errs(2)}. Nilai
+ketiga disebut \texttt{errs(3),} dan seterusnya. Panjang larik \texttt{errs}
+dapat diperoleh dengan fungsi \texttt{length()} \index{Octave!panjang larik}
+di Octave. Perintah \texttt{length(errs)-2} akan digunakan alih-alih
+menuliskan angka 9 langsung di dalam kode. Jadi, kita dapat menyelesaikan
+kode Octave sebagai berikut. \begin{verbatim}
+errs = [2.817*10^(-1), 1.03*10^(-1), 2.022*10^(-2), 1.451*10^(-3), ...
+        2.046*10^(-5), 2.07*10^(-8), 2.953*10^(-13), 4.263*10^(-21), ...
+        8.777*10^(-34), 2.608*10^(-54), 1.595*10^(-87)];
+for j=1:length(errs)-2
+  alpha = log(errs(j+2)/errs(j+1))/log(errs(j+1)/errs(j))
+end%for
+\end{verbatim}
+
+\noindent Kode ini menghasilkan keluaran berikut: \begin{verbatim}
+alpha =  1.6182
+alpha =  1.6181
+alpha =  1.6176
+alpha =  1.6182
+alpha =  1.6180
+alpha =  1.6180
+alpha =  1.6180
+alpha =  1.6180
+alpha =  1.6180
+\end{verbatim}Lumayan, tetapi kita dapat membuatnya lebih baik. Mari kita hitung
+$\alpha$, $\lambda$, dan $d(s_{n})$ dengan dua metode berbeda---secara
+langsung dan menggunakan rumus $d(p_{n+1})\approx\alpha d(p_{n})-\log\left(\lambda|p|^{\alpha-1}\right)$.
+Kemudian, mari tampilkan hasilnya dalam tabel yang diformat dengan
+rapi. 
+
+Kita memerlukan perintah \texttt{disp()} dan larik berindeks dua.
+Perintah \texttt{disp()} \index{Octave!disp@\texttt{disp}} digunakan
+untuk menampilkan teks atau suatu besaran. Jika digunakan untuk teks,
+teks harus diapit tanda petik tunggal; jika digunakan untuk besaran,
+tanda petik itu tidak diperlukan. Jadi, program Octave dapat menampilkan
+kata ``hello'' dengan perintah \texttt{disp('hello')} atau menampilkan
+nilai $\ln(2)$ dengan perintah \texttt{disp(log(2))}. Perintah \texttt{disp()}
+juga dapat menangani variabel. Jadi, jika \texttt{p1} dan \texttt{p2}
+telah diberi nilai, kita dapat menampilkan selisihnya dengan \texttt{disp(p2-p1)}.
+Larik berindeks dua dapat dipandang sebagai tabel atau matriks. Larik
+ini menyimpan nilai dalam susunan baris dan kolom. Jadi, alih-alih
+\texttt{errs(j)} seperti sebelumnya, kita dapat memiliki \texttt{errs(j,k)},
+dengan \texttt{j} menyatakan baris dan \texttt{k} menyatakan kolom.
+Program \begin{verbatim}
+A(2,4) = 7;
+disp(A);
+\end{verbatim}menghasilkan \begin{verbatim}
+   0   0   0   0
+   0   0   0   7 
+\end{verbatim}
+
+\noindent Baiklah, mari kembali ke persoalan yang sedang kita kerjakan.
+Kita akan menggabungkan semua yang telah kita pelajari tentang Octave
+dalam satu program. \begin{verbatim}
+errs = [2.817*10^(-1), 1.03*10^(-1), 2.022*10^(-2), 1.451*10^(-3), ...
+     2.046*10^(-5), 2.07*10^(-8), 2.953*10^(-13), 4.263*10^(-21), ...
+     8.777*10^(-34), 2.608*10^(-54), 1.595*10^(-87)];
+
+d = @(x) -log(x/exp(1))/log(10);
+for j=1:9
+    % alpha:
+  T(j,1) = log(errs(j+2)/errs(j+1))/log(errs(j+1)/errs(j));
+    % lambda:
+  T(j,2) = errs(j+2)/errs(j+1)^T(j,1);
+    % d (explicit):
+  T(j,3) = d(errs(j+2));
+end
+
+alpha = 1.61804;
+lambda = 0.8;
+constant = log(lambda*exp(alpha-1))/log(10);
+T(1,4) = T(1,3);
+for j=2:9
+    % d (recursive)
+  T(j,4) = alpha * T(j-1,4) - constant;
+end%for
+
+disp('      alpha     lambda   d (expl)    d (rec)');
+disp('  --------------------------------------------');
+disp(T) 
+\end{verbatim} menghasilkan \begin{verbatim}
+      alpha     lambda   d (expl)    d (rec)
+  --------------------------------------------
+    1.61816    0.80015    2.12851    2.12851
+    1.61814    0.80010    3.27263    3.27252
+    1.61764    0.79855    5.12339    5.12356
+    1.61822    0.80158    8.11832    8.11863
+    1.61797    0.79941   12.96403   12.96477
+    1.61804    0.80045   20.80458   20.80601
+    1.61805    0.80059   33.49095   33.49346
+    1.61804    0.80031   54.01799   54.02225
+    1.61804    0.80031   87.23153   87.23866 
+\end{verbatim}Ada baiknya meluangkan waktu untuk memastikan bahwa Anda memahami
+semua baris dalam program ini. Program ini menggunakan penugasan,
+fungsi bawaan, fungsi anonim, keluaran sederhana, larik, dan perulangan
+\texttt{for}. Tanda \texttt{\%} \index{Octave!%@\texttt{\%}} pada
+suatu baris memberi tahu Octave agar mengabaikan tanda itu serta seluruh
+isi setelahnya pada baris yang sama. Bagian tersebut disebut komentar\index{Octave!komentar}.
+Komentar ditujukan semata-mata bagi pembaca manusia untuk mendokumentasikan
+apa yang dilakukan program. Program yang panjang harus selalu didokumentasikan
+agar setiap penggunanya lebih mudah memahami apa yang dilakukan program
+tersebut. Di sini komentarnya sederhana, tetapi komentar dapat jauh
+lebih terperinci.
+
+\begin{digression}{Lebih lanjut tentang perulangan \texttt{for}}
+
+\noindent Sintaks \texttt{first:last} yang digunakan dalam perulangan
+\texttt{for} sebenarnya merupakan bentuk ringkas untuk larik yang
+berisi bilangan bulat dari \texttt{first} hingga \texttt{last}. Bilangan
+ketiga dapat ditambahkan ke notasi ini untuk menghasilkan barisan
+aritmetika sebarang seperti $10,13,16,19,22$ dan $1,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2$.
+Bentuk lengkap notasi ini adalah \texttt{first:step:last}; jadi, \texttt{10:3:22}
+akan menghasilkan larik yang berisi suku-suku $10,13,16,19,22$. Selain
+itu, sintaks larik ini sepenuhnya tidak bergantung pada penggunaannya
+dalam perulangan \texttt{for}. Larik dapat dibentuk dengan sintaks
+ini untuk tujuan apa pun, seperti diperlihatkan di sini.\begin{verbatim}
+octave:1> a=1:.1:2
+a =
+ Columns 1 through 7:
+    1.0000    1.1000    1.2000    1.3000    1.4000    1.5000    1.6000
+ Columns 8 through 11:
+    1.7000    1.8000    1.9000    2.0000
+octave:2> b=[1,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2]
+b =
+ Columns 1 through 8:
+   1.0000   1.1000   1.2000   1.3000   1.4000   1.5000   1.6000   1.7000
+ Columns 9 through 11:
+   1.8000   1.9000   2.0000
+octave:3> a==b % Check to see if arrays a and b are equal--they are not!
+ans =
+  1  1  1  1  1  1  1  0  1  1  1
+octave:4> format('bit') % display numbers as stored in memory
+octave:5> a(8) % The eighth term of array a (1.7)
+ans = 0011111111111011001100110011001100110011001100110011001100110100
+octave:6> b(8) % The eighth term of array b (1.7)
+ans = 0011111111111011001100110011001100110011001100110011001100110011
+\end{verbatim}
+
+\noindent Menarik untuk diperhatikan bahwa bilangan $1.7$ yang dihasilkan
+dengan notasi barisan aritmetika (seperti pada variabel \texttt{a})
+berbeda dari bilangan $1.7$ yang dimasukkan dengan menuliskannya
+langsung sebagai konstanta (seperti pada variabel \texttt{b}). Kedua
+representasi $1.7$ tersebut berbeda pada tiga digit biner terakhirnya!
+
+Kembali ke perulangan \texttt{for}, cara larik tersebut dibuat tidaklah
+penting. Perulangan \texttt{for} akan menjalankan kodenya sekali untuk
+setiap nilai dalam larik. Sebagai contoh, program\begin{verbatim}
+for i=[1,5,7,0,8]
+  disp(factorial(i))
+end%for
+\end{verbatim}menghasilkan\begin{verbatim}
+ 1
+ 120
+ 5040
+ 1
+ 40320
+\end{verbatim}
+
+\end{digression}
+
+\noindent\startexercises
+
+\subsection{Latihan}
+\begin{enumerate}
+\item Berikut diberikan beberapa barisan konvergen beserta limitnya. Tentukan
+orde kekonvergenan masing-masing.
+
+\begin{enumerate}
+\item ${\displaystyle \left\langle \frac{n!}{n^{n}}\right\rangle \to0}$
+\item \label{exc:convergence}${\displaystyle \left\langle \frac{1}{3^{e^{n}}}\right\rangle \to0}$ \hasasolution 
+\item \label{exc:convergence-1}${\displaystyle \left\langle \frac{2^{2^{n}}-2}{2^{2^{n}}+3}\right\rangle \to1}$ \hasasolution 
+\item \label{exc:convergence-2}${\displaystyle \left\langle \frac{n^{2}}{1+n^{2}}\right\rangle \to1}$ \hasananswer 
+\item ${\displaystyle \left\langle f^{\circ n}(1)\right\rangle \to\sqrt{3}}$
+dengan ${\displaystyle f(x)=\frac{x^{2}+3}{2x}}$. Catatan: $f^{\circ n}$
+berarti $f$ dikomposisikan dengan dirinya sendiri sebanyak $n$ kali.
+\end{enumerate}
+\item \label{enu:linearConvergenceExample}Tunjukkan bahwa barisan ${\displaystyle \left\langle \frac{n+1}{n-1}\right\rangle }$
+konvergen ke 1 secara linear.
+\item Tunjukkan bahwa barisan $p_{n}=2^{1-2^{n}}$ berkonvergensi secara
+kuadratik.
+\item Berikan contoh barisan yang konvergen ke 0 dengan orde $\alpha=10$.
+\item Perkirakan orde kekonvergenan barisan $p_{n}$ dan jelaskan jawaban
+Anda.
+
+\begin{center}
+\begin{tabular}{c|c|c|c}
+$n$ & $\frac{|p_{n+1}-p|}{|p_{n}-p|^{1.2}}$ & $\frac{|p_{n+1}-p|}{|p_{n}-p|^{1.3}}$ & $\frac{|p_{n+1}-p|}{|p_{n}-p|^{1.4}}$\tabularnewline
+\hline 
+25 & $9.07(10)^{-6}$ & $.0110$ & $13.39$\tabularnewline
+26 & $1.88(10)^{-7}$ & $.00303$ & $48.65$\tabularnewline
+27 & $1.01(10)^{-9}$ & $.000530$ & $277.8$\tabularnewline
+28 &  &  & \tabularnewline
+\end{tabular}
+\par\end{center}
+\item Berikut diberikan beberapa barisan yang konvergen secara linear beserta
+limitnya. Untuk masing-masing, tentukan laju kekonvergenan (tercepat)
+yang berbentuk $O\left(\frac{1}{n^{p}}\right)$ atau $O\left(\frac{1}{a^{n}}\right)$.
+Jika tidak mungkin, usulkan laju kekonvergenan yang masuk akal.
+
+\begin{enumerate}
+\item ${\displaystyle 6,\frac{6}{7},\frac{6}{49},\frac{6}{343},\frac{6}{2401},\ldots\to0}$
+\item ${\displaystyle \left\langle \frac{11n-2}{n+3}\right\rangle \to11}$
+\item \label{exc:convergence-3}${\displaystyle \left\langle \frac{\sin n}{\sqrt{n}}\right\rangle \to0}$ \hasasolution 
+\item \label{exc:convergence-4}${\displaystyle \left\langle \frac{4}{10^{n}+35n+9}\right\rangle \to0}$ \hasasolution 
+\item ${\displaystyle \left\langle \frac{1}{n}+\frac{1}{n^{2}}\right\rangle \to0}$
+\item \label{exc:convergence-5}${\displaystyle \left\langle \frac{4}{10^{n}-35n-9}\right\rangle \to0}$ \hasasolution 
+\item \label{exc:convergence-6}${\displaystyle \left\langle \frac{2n}{\sqrt{n^{2}+3n}}\right\rangle \to2}$ \hasananswer 
+\item ${\displaystyle \left\langle \frac{5^{n}-2}{5^{n}+3}\right\rangle \to1}$
+\item \label{exc:convergence-7}$\left\langle \sqrt{n+47}-\sqrt{n}\right\rangle \to0$ \hasananswer 
+\item ${\displaystyle \left\langle \frac{n^{2}}{3n^{2}+1}\right\rangle \to\frac{1}{3}}$
+\item ${\displaystyle \left\langle \frac{\pi}{e^{n}-\pi^{n}}\right\rangle \to0}$
+\item \label{exc:convergence-8}${\displaystyle \left\langle \frac{n^{2}}{2^{n}}\right\rangle \to0}$ \hasasolution 
+\item ${\displaystyle \left\langle \frac{7+\cos(5n)}{n^{3}+1}\right\rangle \to0}$
+\item ${\displaystyle \left\langle \frac{8n^{2}}{3n^{2}+12}+\frac{n}{3n+10}\right\rangle \to3}$
+\item \label{exc:convergence-9}${\displaystyle \left\langle \frac{2n^{2}+3n}{1-n^{2}}\right\rangle \to-2}$ \hasananswer 
+\item ${\displaystyle \left\langle \frac{3n^{5}-5n}{1-n^{5}}\right\rangle \to-3}$
+\end{enumerate}
+\item Tentukan laju kekonvergenan barisan-barisan berikut saat $n\to\infty$.
+
+\begin{enumerate}
+\item ${\displaystyle \lim_{n\to\infty}\sin\frac{1}{n}=0}$
+\item ${\displaystyle \lim_{n\to\infty}\sin\frac{1}{n^{2}}=0}$
+\item ${\displaystyle \lim_{n\to\infty}\left(\sin\frac{1}{n}\right)^{2}=0}$
+\item ${\displaystyle \lim_{n\to\infty}[\ln(n+1)-\ln(n)]=0}$
+\end{enumerate}
+Untuk soal \ref{exc:firstFunctionROC}-\ref{exc:lastFunctionROC},
+gunakan definisi laju kekonvergenan fungsi berikut. Untuk fungsi $f(h)$,
+kita mengatakan bahwa $\lim_{h\to a}f(h)=L$ memiliki laju kekonvergenan
+$g(h)$ jika $|f(h)-L|\leq\lambda|g(h)|$ untuk suatu $\lambda>0$
+dan semua $|h-a|$ yang cukup kecil.
+\item \label{exc:firstFunctionROC} Gunakan polinomial Taylor untuk menentukan
+laju kekonvergenan dari
+\[
+\lim_{h\to0}(2-e^{h})=1.
+\]
+\item Gunakan polinomial Taylor untuk menentukan laju kekonvergenan dari
+\[
+\lim_{h\to0}\frac{\sin(h)-e^{h}+1}{h}=0.
+\]
+\item Tentukan laju kekonvergenan fungsi-fungsi berikut saat $h\to0$.
+
+\begin{enumerate}
+\item ${\displaystyle \lim_{h\to0}\frac{\sin h}{h}=1}$
+\item ${\displaystyle \lim_{h\to0}\frac{1-\cos h}{h}=0}$
+\item ${\displaystyle \lim_{h\to0}\frac{\sin h-h\cos h}{h}=0}$
+\item ${\displaystyle \lim_{h\to0}\frac{1-e^{h}}{h}=-1}$
+\end{enumerate}
+\item Tentukan laju kekonvergenan dari 
+\[
+\lim_{h\to0}\frac{h^{2}+\cos h-e^{h}}{h}=-1.
+\]
+\item \label{exc:lastFunctionROC}Tunjukkan bahwa 
+\[
+(\sin h)(1-\cos h)=0+O(h^{3}).
+\]
+\item \label{exc:convergence-10}\octave\ Tulislah program Octave (berkas
+\texttt{.m}) yang menggunakan perulangan dan perintah \texttt{disp()}
+untuk menampilkan keluaran berikut (pangkat-pangkat 7). \hasasolution 
+\begin{verbatim}
+ 1
+ 7
+ 49
+ 343
+ 2401
+ 16807
+ 117649
+ 823543
+ 5764801
+ 40353607
+\end{verbatim}
+\item \octave\ Tulislah program Octave (berkas \texttt{.m}) yang menggunakan
+perulangan dan perintah \texttt{disp()} untuk menampilkan 10 nilai
+pertama dari pangkat-pangkat 5, mulai dari $5^{0}$.
+\item \label{exc:convergence-11}\octave\ Tulislah program Octave (berkas
+\texttt{.m}) yang menggunakan perulangan, larik, dan perintah disp()
+untuk menghitung nilai ${\displaystyle f(n)=\frac{2^{2^{n}}-2}{2^{2^{n}}+3}}$
+untuk $n=0,1,2,4,6,10$. \hasasolution 
+\item \octave\ Tulislah program Octave (berkas \texttt{.m}) yang menggunakan
+perulangan, larik, dan perintah disp() untuk menghitung nilai ${\displaystyle f(n)=\frac{2n}{\sqrt{n^{2}+3n}}}$
+untuk $n=0,2,5,10,100,1000,20000$.
+\item \octave\ Kode Octave berikut dimaksudkan untuk menghitung jumlah
+\[
+\sum_{k=1}^{30}\frac{1}{k^{2}}
+\]
+, tetapi tidak berhasil melakukannya. Temukan sebanyak mungkin kesalahan
+pada kode tersebut. Klasifikasikan setiap kesalahan sebagai galat
+kompilasi (galat yang akan mencegah program berjalan sama sekali)
+atau galat logika (galat yang tidak akan mencegah program berjalan,
+tetapi akan menyebabkan jumlah tersebut dihitung secara keliru).
+
+\begin{lyxcode}
+sum=1;~\\
+for~k=1:30~\\
+~~sum=sum+1.0/k{*}k;~\\
+end~\\
+disp(sum)
+\end{lyxcode}
+\item Beberapa barisan tidak memiliki orde kekonvergenan. Misalkan $p_{n}=\frac{2^{n}}{n!}$.
+
+\begin{enumerate}
+\item Tunjukkan bahwa $\lim_{n\to\infty}p_{n}=0$.
+\item Tunjukkan bahwa $\lim_{n\to\infty}\frac{|p_{n+1}|}{|p_{n}|}=0$.
+\item Tunjukkan bahwa $\left\langle \frac{|p_{n+1}|}{|p_{n}|^{\alpha}}\right\rangle $
+divergen untuk setiap $\alpha>1$.
+\end{enumerate}
+\item Gunakan aturan praktis orde kekonvergenan untuk memperkirakan jumlah
+iterasi yang diperlukan guna memperoleh hampiran bagi $\pi$ dengan
+akurasi 12 angka signifikan untuk setiap orde kekonvergenan. Asumsikan
+bahwa setiap barisan berawal dengan satu angka signifikan yang akurat.
+
+\begin{enumerate}
+\item $\alpha=1$, $\lambda=0.8$
+\item \label{exc:convergence-12}$\alpha=1$, $\lambda=0.5$ \hasasolution 
+\item $\alpha=1$, $\lambda=0.1$
+\item $\alpha=1.5$
+\item \label{exc:convergence-13}$\alpha=2$ \hasananswer 
+\item $\alpha=3$
+\end{enumerate}
+\item \label{enu:orderOfConvergenceIsUnique}Buktikan bahwa orde kekonvergenan
+suatu barisan bersifat unik.
+\item \octave\ Tulislah perulangan \texttt{for} yang menampilkan barisan
+bilangan berikut.
+
+\begin{enumerate}
+\item $7,8,9,10,11,12,13,14,15$
+\item $20,19,18,17,16,15,14,13$
+\item $12,12.333,12.667,13,13.333,13.667,14$
+\item $1,9,25,49,81,121,169,225,289,361,441$
+\item $1,.5,.25,.125,.0625,.03125,.015625$
+\end{enumerate}
+\end{enumerate}
+\finishexercises

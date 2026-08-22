@@ -1,0 +1,217 @@
+%% LyX 2.4.4 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[bahasa]{book}
+\usepackage{lmodern}
+\renewcommand{\sfdefault}{lmss}
+\renewcommand{\ttdefault}{lmtt}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{1}
+\usepackage{color}
+\usepackage{babel}
+\usepackage{array}
+\usepackage{cprotect}
+\usepackage{varioref}
+\usepackage{url}
+\usepackage{multirow}
+\usepackage{footnotehyper}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\makeindex
+\usepackage{graphicx}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=1.9cm,bmargin=1.9cm,lmargin=2.5cm,rmargin=1.5cm}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{rotating}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+\usepackage[pdfusetitle,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=true]
+ {hyperref}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+
+\makesavenoteenv{tabular}
+
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+%% A simple dot to overcome graphicx limitations
+\newcommand{\lyxdot}{.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\theoremstyle{plain}
+\newtheorem{thm}{\protect\theoremname}
+\newenvironment{lyxcode}
+	{\par\begin{list}{}{
+		\setlength{\rightmargin}{\leftmargin}
+		\setlength{\listparindent}{0pt}% needed for AMS classes
+		\raggedright
+		\setlength{\itemsep}{0pt}
+		\setlength{\parsep}{0pt}
+		\normalfont\ttfamily}%
+	 \item[]}
+	{\end{list}}
+\newenvironment{lyxlist}[1]
+	{\begin{list}{}
+		{\settowidth{\labelwidth}{#1}
+		 \setlength{\leftmargin}{\labelwidth}
+		 \addtolength{\leftmargin}{\labelsep}
+		 \renewcommand{\makelabel}[1]{##1\hfil}}}
+	{\end{list}}
+\theoremstyle{plain}
+\newtheorem{prop}[thm]{\protect\propositionname}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\input preamble
+
+\makeatother
+
+\providecommand{\propositionname}{Proposisi}
+\providecommand{\theoremname}{Teorema}
+
+\begin{document}
+\thispagestyle{empty}\pagenumbering{roman}\titleHGP
+%\thispagestyle{empty}\titleGM
+%\thispagestyle{empty}\titleTMB
+%\thispagestyle{empty}\titlePP
+
+% License and copyleft 
+
+\newpage\ \vfill 
+
+\begin{center}
+\begin{tabular}{c>{\raggedright}b{3in}}
+\includegraphics{figures/cc-by-sa} & 2020. Tea Time Numerical Analysis karya \href{http://lqbrin.github.io/tea-time-numerical/}{Leon Q. Brin}
+dilisensikan berdasarkan \href{http://creativecommons.org/licenses/by-sa/4.0/}{Lisensi Creative Commons Atribusi-BerbagiSerupa 4.0 Internasional}. \tabularnewline
+\end{tabular}
+\par\end{center}
+
+\bigskip{}
+
+\noindent Kode yang tercetak di dalam Tea Time Numerical Analysis
+dan yang menyertai edisi elektroniknya didistribusikan berdasarkan
+Lisensi Publik Umum GNU (GNU General Public License, GPL). \medskip{}
+
+\noindent Kode ini adalah perangkat lunak bebas: Anda dapat menyebarluaskan
+kembali dan/atau mengubahnya berdasarkan ketentuan Lisensi Publik
+Umum GNU sebagaimana diterbitkan oleh Free Software Foundation, baik
+versi 3 dari Lisensi tersebut maupun (sesuai pilihan Anda) versi mana
+pun yang lebih baru.\medskip{}
+
+\noindent Kode ini didistribusikan dengan harapan akan bermanfaat,
+tetapi TANPA JAMINAN APA PUN; bahkan tanpa jaminan tersirat mengenai
+KELAYAKAN UNTUK DIPERDAGANGKAN atau KESESUAIAN UNTUK TUJUAN TERTENTU.
+Lihat Lisensi Publik Umum GNU untuk rincian lebih lanjut. Salinan
+Lisensi Publik Umum GNU tersedia di \href{http://www.gnu.org/licenses/}{Lisensi Publik Umum GNU (GPL)}.
+
+% Dedication 
+
+\newpage\ \vfill 
+
+\noindent{\Large Untuk}{\Large\par}
+
+\noindent{\Large Victorija, Cecelia, dan Amy}{\Large\par}
+
+\vfill\vfill 
+
+% Table of contents 
+
+\tableofcontents{}
+
+% Preface 
+
+\include{preface}
+
+% Chapter 1 -- Preliminaries 
+
+\include{preliminaries-errors}
+
+\include{preliminaries-taylor}
+
+\include{preliminaries-convergence}
+
+\include{preliminaries-recursion}
+
+% Chapter 2 -- Root Finding 
+
+\include{roots-bisection}
+
+\include{roots-fixedpoint}\include{roots-orderOfConvergence}\include{roots-newtonsMethod}
+
+\include{roots-moreConvergenceDiagrams}
+
+\include{roots-polynomials}
+
+\include{roots-bracketing}
+
+% Chapter 3 -- Interpolation 
+
+\include{interpolation-challenge}
+
+\include{interpolation-lagrange}
+
+\include{interpolation-newton}
+
+% Chapter 4 -- Numerical Calculus 
+
+\include{calculus-rudiments}\include{calculus-undeterminedCoefficients}
+
+\include{calculus-errors}
+
+\include{calculus-composite}\include{calculus-richardsons}
+
+% Chapter 5 -- Splines 
+
+\include{splines-parametric}
+
+\include{splines-cubic}
+
+% Chapter 6 -- ODEs 
+
+\include{ode-pendulum}\include{ode-taylor}
+
+\include{ode-rungeKutta}
+
+\include{ode-errorAnalysis}
+
+\include{ode-adaptive}
+
+% Solutions 
+
+\include{solutions}
+
+% Answers 
+
+\include{answers}
+
+% Bibliography 
+
+\nocite{leader,recipes,vanloan,strang,guichard}
+
+\bibliographystyle{plain}
+\phantomsection\addcontentsline{toc}{chapter}{\bibname}\bibliography{TeaTimeNumericalAnalysis}
+
+% Index 
+
+\addcontentsline{toc}{chapter}{Indeks}
+\fancyhead[RE]{Indeks}
+\fancyhead[LO]{}
+
+\printindex{}
+
+% NOTE: Newton's Method--look at CMJ Nov 2012--crumpet! 
+
+% Chapter 5 -- Ordinary Differential Equations 
+
+% Chapter 6 -- Numerical Linear Algebra 
+\end{document}

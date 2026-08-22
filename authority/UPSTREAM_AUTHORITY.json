@@ -1,0 +1,87 @@
+{
+  "schema_id": "ttna-id-upstream-authority-v1",
+  "recorded": "2026-08-20T15:44:05+02:00",
+  "resource_id": "R015",
+  "course_id": "C110",
+  "work": {
+    "title": "Tea Time Numerical Analysis",
+    "author": "Leon Q. Brin",
+    "edition": "Third Edition",
+    "upstream_language": "en-US"
+  },
+  "official_authority": {
+    "repository": "https://github.com/lqbrin/tea-time-numerical",
+    "site": "https://lqbrin.github.io/tea-time-numerical/",
+    "default_branch": "master",
+    "release_tag": "v3.0",
+    "release_url": "https://github.com/lqbrin/tea-time-numerical/releases/tag/v3.0",
+    "release_published": "2021-06-03T00:00:00Z",
+    "commit": "186882108a6da95c8dca5b81ce000fc3f8f3ca21",
+    "tree": "1e50d3756b695176008c602f0ee89712f5f32d10",
+    "commit_message": "Exercise updates",
+    "commit_author_date": "2021-01-19T00:00:00Z"
+  },
+  "acquisition": {
+    "method": "official GitHub release-tag archive downloaded without Git",
+    "archive": "authority/tea-time-numerical-v3.0.zip",
+    "archive_bytes": 127698144,
+    "archive_sha256": "de4e18f5c22be7dc0432bf9183adb644725004290f7009398158eb5472c6abb6",
+    "zip_entries": 804,
+    "regular_files": 795,
+    "uncompressed_bytes": 192074773,
+    "wrapper_root": "lqbrin-tea-time-numerical-1868821",
+    "duplicate_names": 0,
+    "unsafe_paths": 0,
+    "extracted_root": "source/lqbrin-tea-time-numerical-1868821"
+  },
+  "reader_baseline": {
+    "homepage_pdf": {
+      "pdf": "source/lqbrin-tea-time-numerical-1868821/TeaTimeNumericalAnalysis.pdf",
+      "bytes": 6602148,
+      "sha256": "03980a2f89fd0ba02a79712a6a400b71a576f84424b098110017973128eac61c",
+      "pages": 375,
+      "encrypted": false,
+      "producer": "pdfTeX-1.40.20 / TeX Live 2019",
+      "created": "2020-12-31",
+      "role": "homepage visual witness; stale for at least one published erratum"
+    },
+    "working_copy_pdf": {
+      "pdf": "source/lqbrin-tea-time-numerical-1868821/TeaTimeNumericalAnalysis-workingCopy.pdf",
+      "bytes": 6605246,
+      "sha256": "a43f1c9acb671eef776b540f226879f6e92ed6cdfd1e6be1ecd217e347daf3b3",
+      "pages": 375,
+      "producer": "pdfTeX-1.40.20 / TeX Live 2019",
+      "created": "2021-01-19",
+      "role": "later source-faithful visual witness"
+    },
+    "content_authority_rule": "Use commit-pinned LyX plus the official errata as content authority. Neither PDF is silently substituted for source."
+  },
+  "source": {
+    "primary": "source/lqbrin-tea-time-numerical-1868821/TeaTimeNumericalAnalysis.lyx",
+    "primary_format": "LyX 2.3, format 544",
+    "primary_bytes": 12683,
+    "primary_sha256": "f6ea2c788f29fd3eb42b6aa9507f03e052d490ed599628a7594e80c98eb6f49b",
+    "active_child_includes": 29,
+    "preamble": "source/lqbrin-tea-time-numerical-1868821/preamble.tex",
+    "preamble_sha256": "90cc5275c0338abbac21435a58c521693493fb763018e4177739876ea71cb283",
+    "bibliography": "source/lqbrin-tea-time-numerical-1868821/TeaTimeNumericalAnalysis.bib",
+    "bibliography_sha256": "0aaa9f6d24e2e38a6063bc1f184e2f07718dee8002d19fbd57971939568c011c"
+  },
+  "rights": {
+    "book_text_and_figures": "CC BY-SA 4.0 as declared by the official project",
+    "embedded_and_companion_code": "GNU GPL v3 or later as declared by COPYING.txt",
+    "license_notice": "source/lqbrin-tea-time-numerical-1868821/COPYING.txt",
+    "license_notice_sha256": "46b4cac144e3b696bc860afe256bc03bc1249a1490d44976f4d0d2a2c197e512",
+    "cc_by_sa_text_sha256": "057e865d210eb7582ff47d636586f86b0d39fc86be86b3fc8972776bee858391",
+    "gpl3_text_sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "boundary": "Do not collapse the book/text license and executable-code license into one blanket claim. Third-party component rights remain to be enumerated."
+  },
+  "known_build_constraints": [
+    "The master LyX preamble uses a nonportable $HOME/Documents/Book-Numerical/preamble path although preamble.tex is present locally.",
+    "preface.lyx independently references $HOME/Documents/textbook/preamble.",
+    "LyX, GNU Octave, wxMaxima, and xfig are not currently installed; MiKTeX pdflatex and latexmk are present.",
+    "The official PDF proves an upstream build but an exact local source rebuild has not yet been established."
+  ],
+  "authority_status": "frozen_for_translation",
+  "mutation_policy": "The extracted authority is read-only evidence. Indonesian work is created under translation/ and corrections are explicit deltas."
+}

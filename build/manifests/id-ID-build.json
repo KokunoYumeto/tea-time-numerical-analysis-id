@@ -1,0 +1,1484 @@
+{
+  "schema_id": "ttna-edition-build-v1",
+  "recorded_date": "2026-08-22",
+  "mode": "id-ID",
+  "source_date_epoch": "1787356800",
+  "source_commit": "186882108a6da95c8dca5b81ce000fc3f8f3ca21",
+  "source_tree": "1e50d3756b695176008c602f0ee89712f5f32d10",
+  "overlay_manifest": {
+    "path": "build/manifests/id-ID-overlay.json",
+    "bytes": 151564,
+    "sha256": "1a70b6f41a4b799c978be105825af1ca3d45c59cc3ffecfa9c883f462f10cce6"
+  },
+  "toolchain": {
+    "lyx_product_version": "2.4.4",
+    "lyx_bytes": 11463680,
+    "lyx_sha256": "aa359efbfc16c509a7a91d1c347a6bb702a8fa6b686c0bba8210d058f80c460e",
+    "latexmk_path": "C:\\Users\\Floris\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\latexmk.exe",
+    "latexmk_sha256": "23816f82608189d5aed0bcb4746a8ebc9931c5ce359140a63b6f7e058c516112",
+    "cprotect_sty_sha256": "eafa24d80cff3bb804ed46af5f045d41d596f23c6d23e9cb7b01c15aa4efaef2"
+  },
+  "lyx_export": {
+    "exit_code": 0,
+    "tex_files": 30,
+    "input_files": 289,
+    "input_inventory": [
+      {
+        "path": "answers.tex",
+        "bytes": 58892,
+        "sha256": "92c44f96116afdce24ba92f26e3284199c8368c9902930de47ff6919110ff323"
+      },
+      {
+        "path": "calculus-composite.tex",
+        "bytes": 30340,
+        "sha256": "6721cc862ea91f68ee1bee910c651d7f202648906065ce02388f9f541175225b"
+      },
+      {
+        "path": "calculus-errors.tex",
+        "bytes": 48478,
+        "sha256": "b2c0084eb690485db65505b74dae865af18a823424dca3ad7e3c005276db636c"
+      },
+      {
+        "path": "calculus-richardsons.tex",
+        "bytes": 28701,
+        "sha256": "9322b12c6c2eb1f23c45879b319b649663dfc489ea37b47faaafc3eda238af07"
+      },
+      {
+        "path": "calculus-rudiments.tex",
+        "bytes": 42909,
+        "sha256": "6ac2df63b3fc271dffc5fab3d2c5fbe4f780de0231317aa65c6b422037060093"
+      },
+      {
+        "path": "calculus-undeterminedCoefficients.tex",
+        "bytes": 29034,
+        "sha256": "98e2540127c738e0783e73afeb5567268566b729cf09e70bfba45dc78c570b14"
+      },
+      {
+        "path": "cprotect.sty",
+        "bytes": 8953,
+        "sha256": "eafa24d80cff3bb804ed46af5f045d41d596f23c6d23e9cb7b01c15aa4efaef2"
+      },
+      {
+        "path": "figures/2x3tiled.pdf",
+        "bytes": 2624,
+        "sha256": "45e306679c12b19c3b86b9a8abe6259a2d61c28e7d4f50c7a7934356f42715e3"
+      },
+      {
+        "path": "figures/32x32recursive.pdf",
+        "bytes": 7172,
+        "sha256": "2c8c98f418d2c1de79568d4b2c20451812cd74f5a426e702f599f30763fd1dbc"
+      },
+      {
+        "path": "figures/6x9tiled.pdf",
+        "bytes": 2755,
+        "sha256": "2985791c354a37b560c70d8e813f58011b43a188f03930d441ccd288a6adb8a3"
+      },
+      {
+        "path": "figures/calculus_derivatives1.pdf",
+        "bytes": 6847,
+        "sha256": "7748bc6795b5b8f4d3feb4d9c79e80bf54074e5a97642612664e4a9b383763b4"
+      },
+      {
+        "path": "figures/calculus_derivatives2.pdf",
+        "bytes": 8566,
+        "sha256": "babeae2b8b7dae36291fd2235c09ce245c41fc3897edf19710e5bf9769062724"
+      },
+      {
+        "path": "figures/calculus_derivatives3.pdf",
+        "bytes": 8102,
+        "sha256": "1cf13fc9e41c9cf59a733b6052b834afce3b8aba20ae508b3615a6f30718e7c1"
+      },
+      {
+        "path": "figures/calculus-errors01.pdf",
+        "bytes": 3096,
+        "sha256": "124b3a0f608e620fbee63dfe1894684fd556849b116a167b4bc88afbaa338026"
+      },
+      {
+        "path": "figures/calculus-errors02.pdf",
+        "bytes": 2914,
+        "sha256": "4b208f65cc36ed95bdf221cf8c845a0da7df28a6218fcf95c027422e38d61e40"
+      },
+      {
+        "path": "figures/calculus-errors02.png",
+        "bytes": 5373,
+        "sha256": "a19664ab5d9a51d0e20887bcf192ebe8a69c3a92f08a9bb052086200df3c7b19"
+      },
+      {
+        "path": "figures/calculus-errors03.pdf",
+        "bytes": 2994,
+        "sha256": "f7b5403723c3d00a2fba31a9564f07424283e62efb9d7d868efa209df2f3bc94"
+      },
+      {
+        "path": "figures/calculus-errors04.pdf",
+        "bytes": 3558,
+        "sha256": "8966f878972841b8dfe2d0d404b5d5c1c5cd338bea3e1ba7e3cc6ac9579b857b"
+      },
+      {
+        "path": "figures/calculus-errors05.pdf",
+        "bytes": 3420,
+        "sha256": "32f174cd2d2f753f188905b70e2f2aba5aefc488a5d321d2c9fe6534abc79dfd"
+      },
+      {
+        "path": "figures/calculus-errors06.pdf",
+        "bytes": 3719,
+        "sha256": "59c585dfd0fb5d1822c72f1306f16eed5e8d7c08ffd87e2afd9ac733f8b167f7"
+      },
+      {
+        "path": "figures/calculus-errors07.pdf",
+        "bytes": 4255,
+        "sha256": "23c01dbd7a0415e826594366354c54def3de53ad8c71cbb2fa706ed708b4a6f0"
+      },
+      {
+        "path": "figures/calculus-errors08.pdf",
+        "bytes": 4411,
+        "sha256": "224e265bb692c3f6134130610d7db943ebb55bf97c44873ae43afd4743509289"
+      },
+      {
+        "path": "figures/calculus-errors09.pdf",
+        "bytes": 4312,
+        "sha256": "7bc9dc872898c3aaffc2badba5ff8282401d49f7795d2b0d2df0145c84a6ef09"
+      },
+      {
+        "path": "figures/calculus-errors10.pdf",
+        "bytes": 4537,
+        "sha256": "91bdb602bb0d3eb9322dd2d81b5dd03da6383c1ee4516d8f6998d91c788b34f0"
+      },
+      {
+        "path": "figures/calculus-errors11.pdf",
+        "bytes": 4244,
+        "sha256": "0d1f67c4460e720ba9287f455e6cc64776c357e44c155c5783e4a97bf6761b45"
+      },
+      {
+        "path": "figures/calculus-errors12.pdf",
+        "bytes": 3653,
+        "sha256": "a046c8abb2af0ea10cc2c21293d1199afc056f1587b66bf4a6eafd6f09f524f7"
+      },
+      {
+        "path": "figures/calculus-errors13.pdf",
+        "bytes": 3612,
+        "sha256": "eab80d60d48530d566c50cc9bdbfb576788af0a47594c847bcb92a869bcca326"
+      },
+      {
+        "path": "figures/calculus-errors14.pdf",
+        "bytes": 4122,
+        "sha256": "8870ea1cf5d38038c12eb26201bd7638e0557418c504b4e711654d3c9824812e"
+      },
+      {
+        "path": "figures/calculus-errors15.pdf",
+        "bytes": 2938,
+        "sha256": "8a88372342efe38ee841971034d0ae8daaa486f993aab2b8268605d74bbf6f7d"
+      },
+      {
+        "path": "figures/calculus-errors16.pdf",
+        "bytes": 3460,
+        "sha256": "070ee21066d6f0f8789c1cefab493ba3015a61fe823a694115b996d312615e8a"
+      },
+      {
+        "path": "figures/calculus-errors17.pdf",
+        "bytes": 4155,
+        "sha256": "f24580c2524af8aaa57a9cdb9732729ac4eafbd68fa0735e2d5d0054e7605465"
+      },
+      {
+        "path": "figures/calculus-errors18.pdf",
+        "bytes": 4432,
+        "sha256": "241d7b8c6800ff4412202189bcbcee1365df0f5c992fd9c317c4452ed398aa40"
+      },
+      {
+        "path": "figures/calculus-errors19.pdf",
+        "bytes": 3281,
+        "sha256": "7dfbdee117faf0e2e452e9ea054beb487685d8aa17af8d7f680d1dd437751230"
+      },
+      {
+        "path": "figures/calculus-errors20.pdf",
+        "bytes": 3997,
+        "sha256": "0cf5b9db8d805f4edebdab30e3e91ec3b5cc6a5405d86d12300ed8ab993980c5"
+      },
+      {
+        "path": "figures/calculus-errors21.pdf",
+        "bytes": 4279,
+        "sha256": "b1b0db4645e5ad1b5ed23f29d084a8515284fe48b078115fb5ab92d1eab25280"
+      },
+      {
+        "path": "figures/calculus-errors22.pdf",
+        "bytes": 4876,
+        "sha256": "120c5dbb7d198149f6a2afe76eeadba066d0f29014b523a2d7bdaf9b17368f17"
+      },
+      {
+        "path": "figures/calculus-errors23.pdf",
+        "bytes": 3919,
+        "sha256": "7ed8e2059bdc08671ad1cfb18ac83e29012672ea5e8184b149cfae3fe72050f1"
+      },
+      {
+        "path": "figures/calculus-errors24.pdf",
+        "bytes": 4802,
+        "sha256": "d31c2dbe47f693d2df91d7d5b0f28a098e9cdebdf972b55b2769a800423438b5"
+      },
+      {
+        "path": "figures/calculus-errors25.pdf",
+        "bytes": 5855,
+        "sha256": "73ce8390495d69613518871f38b75188759d599598cbb45f6df7d1d952e79805"
+      },
+      {
+        "path": "figures/calculus-errors26.pdf",
+        "bytes": 3028,
+        "sha256": "395335b398725bb583e58c9329c7f02ac55ad38f9f81724b933b9bb07c7fe600"
+      },
+      {
+        "path": "figures/calculus-rudiments01.pdf",
+        "bytes": 5438,
+        "sha256": "d5b77718b5a12b10bd93c509183867c49cff134ce0b09c84d9a8911e612f0712"
+      },
+      {
+        "path": "figures/calculus-rudiments02.pdf",
+        "bytes": 5614,
+        "sha256": "a347243b57ec3206f6f7cdd756f88c7caa471d19b44ba13161d255ae103ea354"
+      },
+      {
+        "path": "figures/calculus-rudiments03.pdf",
+        "bytes": 4578,
+        "sha256": "4a0cf27b389c24764d927146df0f174e073b90016689e8eefa2f27a9fd47abdb"
+      },
+      {
+        "path": "figures/calculus-rudiments04.pdf",
+        "bytes": 7620,
+        "sha256": "9d2d6e136d41e9cec9f030d10b4d29dd9322f673a7f92e3ef6c0ab42e98a0b0b"
+      },
+      {
+        "path": "figures/calculus-rudiments05.pdf",
+        "bytes": 7806,
+        "sha256": "18abd65d96023b0b2b84687f9794e10d6984abacecf52c814d194471b0d31116"
+      },
+      {
+        "path": "figures/calculus-rudiments06.pdf",
+        "bytes": 5090,
+        "sha256": "fee789241a8d8daf0f4de2fb15de6d62428cedc6dcd63d582b35a8564b20173a"
+      },
+      {
+        "path": "figures/calculus-rudiments07.pdf",
+        "bytes": 6056,
+        "sha256": "215cde0484b8fafadb64d95af238cd2a2eeed6a4ae99f0cbc87cfb12aed41d19"
+      },
+      {
+        "path": "figures/calculus-rudiments08.pdf",
+        "bytes": 5843,
+        "sha256": "1dbbfa5fc4c637fc694204d35020eb903dca8f8676df7820dfe9fcb07b74bc03"
+      },
+      {
+        "path": "figures/calculus-rudiments09.pdf",
+        "bytes": 5757,
+        "sha256": "5c2c43b197babba41ca6305ed9108cb0b14d5f836e5cedcd79b81c9b7976732c"
+      },
+      {
+        "path": "figures/calculus-rudiments10.pdf",
+        "bytes": 5736,
+        "sha256": "897718fc516427ff7debbd63e2dad1240a2c59e5298f94607e5826208f858f9f"
+      },
+      {
+        "path": "figures/calculus-rudiments11.pdf",
+        "bytes": 6548,
+        "sha256": "54e17b78d6c166d6f7d84c7acb5b627c3a30b7fb3c180b2cc4c90b4bbe785f5d"
+      },
+      {
+        "path": "figures/calculus-rudiments12.pdf",
+        "bytes": 4995,
+        "sha256": "3f75352b78c555d438aa28bec4624894a21c0f9299efee08f66292798548cd3e"
+      },
+      {
+        "path": "figures/calculus-rudiments13.pdf",
+        "bytes": 5117,
+        "sha256": "22e2823a8c5a290c94cfc65590485c72373095172dea8dccd6299c2ce6cc44bd"
+      },
+      {
+        "path": "figures/calculus-rudiments14.pdf",
+        "bytes": 5098,
+        "sha256": "7a4b831e3234d41e6d0d2743e93ca2bebf0498766c909db8030569c5781842d0"
+      },
+      {
+        "path": "figures/calculus-rudiments15.pdf",
+        "bytes": 5606,
+        "sha256": "ac86d0a83278e8df295c3a3ce04c775555a8e0dd19b996b1035e2c47320507a6"
+      },
+      {
+        "path": "figures/calculus-rudiments16.pdf",
+        "bytes": 5751,
+        "sha256": "aa6a52645216e7c6ed5a9b9590689cc7c33e6a8e7b036827fc4717b4cb610b22"
+      },
+      {
+        "path": "figures/calculus-rudiments17.pdf",
+        "bytes": 6054,
+        "sha256": "6102e1400b55a0d9ae7939583aae7beed498a10984adbd9aa4e12697ac0d3416"
+      },
+      {
+        "path": "figures/calculus-rudiments18.pdf",
+        "bytes": 6213,
+        "sha256": "19952da7c36c3d479206c05f359d3cb851b7f262408ce500b8a94d02d737336e"
+      },
+      {
+        "path": "figures/calculus-rudiments19.pdf",
+        "bytes": 34019,
+        "sha256": "0fd92b655ecc1f048677f6ca1d9cdb75a99fed1dd653792aaf0a57aa2e909659"
+      },
+      {
+        "path": "figures/calculus-rudiments20.pdf",
+        "bytes": 4278,
+        "sha256": "cdffc6ffe0ed7446263e352c7fe9be47c1b0f784c18aca35810974b5cd3d8699"
+      },
+      {
+        "path": "figures/calculus-rudiments21.pdf",
+        "bytes": 5359,
+        "sha256": "56d028145e72264222780c1e9967ae2019915e4681c2f30ee9790e59b8bd8b69"
+      },
+      {
+        "path": "figures/calculus-rudiments22.pdf",
+        "bytes": 34917,
+        "sha256": "86357f2b3dd925fc4f392fd0abeececc8c416b20fd3bebe975113935f1741c79"
+      },
+      {
+        "path": "figures/calculus-rudiments23.pdf",
+        "bytes": 40905,
+        "sha256": "96c07cde4c85d096b53710341659a49bd3fc02bb2144eaed7c32422b5dfcaa9c"
+      },
+      {
+        "path": "figures/calculus-rudiments24.pdf",
+        "bytes": 28410,
+        "sha256": "1e56cf7c92dd8e6d4a4fdb2c088e87277c2f3e9e8056821c5d1e733bb90ba38e"
+      },
+      {
+        "path": "figures/calculus-rudiments25.pdf",
+        "bytes": 30804,
+        "sha256": "ea4ae1d9b28a6e0b0aa90611432f34712561ae051b8b06ea7552410e7e68a1f8"
+      },
+      {
+        "path": "figures/calculus-rudiments26.pdf",
+        "bytes": 29256,
+        "sha256": "c21640257968631f5a51ac81b5b6a40cb17fe36acafc6aa713e4f159b21c5ac9"
+      },
+      {
+        "path": "figures/calculus-rudiments27.pdf",
+        "bytes": 31853,
+        "sha256": "e939eda05d5b009d9ee2802063256e2f49267883017555a31437c8961523f8ef"
+      },
+      {
+        "path": "figures/calculus-rudiments28.pdf",
+        "bytes": 52650,
+        "sha256": "8d41dd4eaf1a4990df3fa3023bacc61edb30542451dc4f515998309a4438591c"
+      },
+      {
+        "path": "figures/calculus-rudiments29.pdf",
+        "bytes": 46620,
+        "sha256": "5a1897952b617108a5dfded4067b20fe25b691250516fcc9883bd1a068c2b899"
+      },
+      {
+        "path": "figures/calculus-rudiments30.pdf",
+        "bytes": 44410,
+        "sha256": "3b74f06a91060174e3f8911ee80084b232ff02758b731db776ce2de72a9edcac"
+      },
+      {
+        "path": "figures/calculus-rudiments31.pdf",
+        "bytes": 40004,
+        "sha256": "c40483d7eeac4d740325e7d6104413957de9915346061797f84f942635aae5a8"
+      },
+      {
+        "path": "figures/calculus-undetermined01.pdf",
+        "bytes": 5100,
+        "sha256": "2341954b2b646295746b8b170b81269402756397dae1881a769d9398ea5310bc"
+      },
+      {
+        "path": "figures/calculus-undetermined02.pdf",
+        "bytes": 5376,
+        "sha256": "88e995c3c09648b455fbb1785fc7a4e272cdf75996bf8aa2464bc9f8edf2fb86"
+      },
+      {
+        "path": "figures/calculus-undetermined03.pdf",
+        "bytes": 4624,
+        "sha256": "98e29b4e374b4e5a93fa63bcab5118e06b749d8547a4077b6ee334fed324f64a"
+      },
+      {
+        "path": "figures/calculus-undetermined04.pdf",
+        "bytes": 6537,
+        "sha256": "60eac431d9dcf0deb04616f09f9361cc6c7c3b2bbffdf9c573ea3a040d8b7ab8"
+      },
+      {
+        "path": "figures/calculus-undetermined05.pdf",
+        "bytes": 5677,
+        "sha256": "3f3ffddb4670a62a1bd7c6378df8307a7cbb2ecc4006c948ffd8d19b88837459"
+      },
+      {
+        "path": "figures/calculus-undetermined06.pdf",
+        "bytes": 4946,
+        "sha256": "04a05931ff5b9a9aeedc001d33713a9d4da198088849ca778d16eec150100e5e"
+      },
+      {
+        "path": "figures/calculus-undetermined07.pdf",
+        "bytes": 5487,
+        "sha256": "83ba5b0a3fdd4b9890bda5166869d1139158dce4baf927b1b913297e9e2a8c1d"
+      },
+      {
+        "path": "figures/calculus-undetermined08.pdf",
+        "bytes": 5331,
+        "sha256": "3b254015d010524f02b533a0b985eb8b34cf48ab257260d2cb58b09fb7bb1681"
+      },
+      {
+        "path": "figures/calculus-undetermined09.pdf",
+        "bytes": 5262,
+        "sha256": "ae90993bfd3632c028f886f5806f213138503b54bde541cf3fd8ba83734e46ba"
+      },
+      {
+        "path": "figures/calculus-undetermined10.pdf",
+        "bytes": 6302,
+        "sha256": "7bfd9908de72f0d98941407aedff03caf485f4b7084115f04b5548ad25327537"
+      },
+      {
+        "path": "figures/calculus-undetermined11.pdf",
+        "bytes": 6611,
+        "sha256": "57a8c0ff3d97e913e4fa969933d105df535164817ec54e207a345b686254a9a6"
+      },
+      {
+        "path": "figures/calculus-undetermined12.pdf",
+        "bytes": 6095,
+        "sha256": "456e73b105b284a45ae3fa57f2fa67a6303ca16bbe212b5abb5e8415bada9ac8"
+      },
+      {
+        "path": "figures/calculus-undetermined13.pdf",
+        "bytes": 5690,
+        "sha256": "986abcb9372ee110c97a8a72ada812c887d26669bdc34541388cb21a569e5f93"
+      },
+      {
+        "path": "figures/calculus-undetermined14.pdf",
+        "bytes": 5500,
+        "sha256": "8987cde0b541229c1cb712013ad7b4c43ae3e76bce347a897e9ea7a8c1f47614"
+      },
+      {
+        "path": "figures/calculus-undetermined15.pdf",
+        "bytes": 5265,
+        "sha256": "99633c54b361829c0ab966a765b563c38ae8cf95d8648fed9b6068dde52d90ab"
+      },
+      {
+        "path": "figures/calculus-undetermined16.pdf",
+        "bytes": 4229,
+        "sha256": "c933843492435f6365a55517efacd97e81bca53ee3e022d80829c88aeee92984"
+      },
+      {
+        "path": "figures/calculus-undetermined17.pdf",
+        "bytes": 5830,
+        "sha256": "55cf4a0cd06e08378e8b0d75fa3ccc16027d64fb1ec1469efa62e7b66ed9bc9d"
+      },
+      {
+        "path": "figures/calculus-undetermined18.pdf",
+        "bytes": 6165,
+        "sha256": "ca31f09b6231bc5bf3773e5564943f3a3d1a9f7718264a10e3d5094a4ae53b98"
+      },
+      {
+        "path": "figures/calculus-undetermined19.pdf",
+        "bytes": 6362,
+        "sha256": "1f550905a1ec0f19c2f824edf00b5dd9d9600792e44ca014c13a58e98e48f0e3"
+      },
+      {
+        "path": "figures/calculus-undetermined20.pdf",
+        "bytes": 4949,
+        "sha256": "3a80bba0c535a6228f705e9cb3950f07381008a69cb8923032139d3b2f575963"
+      },
+      {
+        "path": "figures/calculus-undetermined21.pdf",
+        "bytes": 6242,
+        "sha256": "66f9523e625d63d96aacf99fd8b87a0b3c7a308dbbe41a7dfc6ffdd2477541ad"
+      },
+      {
+        "path": "figures/cashKarpGlobalError.pdf",
+        "bytes": 4556,
+        "sha256": "38cd9d4e0027b7dceeb645bd5b9aba6d57277cf14c213fafc7141d716793d6be"
+      },
+      {
+        "path": "figures/cashKarpGlobalError2.pdf",
+        "bytes": 3297,
+        "sha256": "eb4ba5b50ca00d5fa30b2569f3e6ee19c2987841f312616c6c66c503f732b8be"
+      },
+      {
+        "path": "figures/cc-by-sa.pdf",
+        "bytes": 6713,
+        "sha256": "8b1f1c098f6ecb8d4ced985b337b1741a8295b9048a71c79cf944d08b394cd9c"
+      },
+      {
+        "path": "figures/checkMarkGreen.png",
+        "bytes": 8760,
+        "sha256": "00aa33a43edefc2ec933717614fed49a1684cc9ec879e37909a2923965b0c419"
+      },
+      {
+        "path": "figures/convergenceDiagram1.1.png",
+        "bytes": 12337,
+        "sha256": "22fa75c10cc5dc985743728fc8e63f0afa679e08896a2276326289c851190b1a"
+      },
+      {
+        "path": "figures/convergenceDiagram1.2a.png",
+        "bytes": 12781,
+        "sha256": "de70ec869cf4ef549da4529da691167e64f1859c4a09769b08a33f64a0db56e3"
+      },
+      {
+        "path": "figures/convergenceDiagram1.3.png",
+        "bytes": 7766,
+        "sha256": "ae7b711f33363ffc34d5f6e5a0b7fce844c847c037cd9d2df43276e09426af52"
+      },
+      {
+        "path": "figures/convergenceDiagram2.1.png",
+        "bytes": 35899,
+        "sha256": "fd9733bfbf8942584f01822cbb1c13528636964ba80fda6905c63784a2023a10"
+      },
+      {
+        "path": "figures/convergenceDiagram2.2.png",
+        "bytes": 32301,
+        "sha256": "550c11f312b597ebf459427cbc697e500eaf03dfa5599fe9c78d0f3693304a7b"
+      },
+      {
+        "path": "figures/convergenceDiagram2.3.png",
+        "bytes": 12680,
+        "sha256": "8fc2de16be03167307c8d42e25308e8846f06d308df49badb1687f888e59d741"
+      },
+      {
+        "path": "figures/generalizedSplines01.pdf",
+        "bytes": 6035,
+        "sha256": "a3405d18cd1e86867083544da123d4f1b12a1184a5fe359ecc72df3f2ae6916e"
+      },
+      {
+        "path": "figures/generalizedSplines02.pdf",
+        "bytes": 9439,
+        "sha256": "6399b1ee0f5bb140200e54ea99721a89cda216a210b63dc6ea3c95fd30043ebb"
+      },
+      {
+        "path": "figures/generalizedSplines03.pdf",
+        "bytes": 9777,
+        "sha256": "229328fa3b39cf3ba7f4202816811caad746f6ee8a9033a0ef6ad55224996967"
+      },
+      {
+        "path": "figures/generalizedSplines04.pdf",
+        "bytes": 9310,
+        "sha256": "9d5bc48ad8bbb35e3fbcfb7adaf64052113cabac34ff298a730d48c4682f322e"
+      },
+      {
+        "path": "figures/generalizedSplines05.pdf",
+        "bytes": 8125,
+        "sha256": "6cb58ac3930363df859608bbc7efe531c308e52b2c6a83468b01b17a585f06a7"
+      },
+      {
+        "path": "figures/generalizedSplines06.pdf",
+        "bytes": 9702,
+        "sha256": "cf0de8b883cf8f558e20336adc0e28751a7d153f52003da2f0e34e0370266a89"
+      },
+      {
+        "path": "figures/generalizedSplines07.pdf",
+        "bytes": 8278,
+        "sha256": "90252cb40877c8398c2942496fc4d99d2ede1e8b079f74cffde624590b4f1e2b"
+      },
+      {
+        "path": "figures/generalizedSplines08.pdf",
+        "bytes": 10201,
+        "sha256": "146fa9aa210fbfc4a183c6359ac714dd66a9c65d38956d4717c89a70f66b5c76"
+      },
+      {
+        "path": "figures/geogebraLogo.png",
+        "bytes": 10167,
+        "sha256": "c07d6e5ff4a16f60ed80685e04b349dc10c220373f8100c42edd13d4a3b5275e"
+      },
+      {
+        "path": "figures/hanoi3disk-0.png",
+        "bytes": 9112,
+        "sha256": "2c0b6747e023d255921b7517da0030b5a2efaf8969bea27670e4cdb78f741898"
+      },
+      {
+        "path": "figures/hanoi3disk-1.png",
+        "bytes": 9109,
+        "sha256": "d2799188d503701d4597053eaf818a95dc89f2249252e700342c71b570a023b7"
+      },
+      {
+        "path": "figures/hanoi3disk-2.png",
+        "bytes": 9095,
+        "sha256": "06ebd13eca562bb07348f2cc16fcef9d627554f42fc0f2e2d827b99730666132"
+      },
+      {
+        "path": "figures/hanoi3disk-3.png",
+        "bytes": 9086,
+        "sha256": "43554aa9f745abb407f8130fe3983c30847cb19c7247f718d1e6da24188ba8d3"
+      },
+      {
+        "path": "figures/hanoi3disk-4.png",
+        "bytes": 9089,
+        "sha256": "614fc7c15d0136ce2f0dbd9064a79428287699776665a660d672a873beb314f9"
+      },
+      {
+        "path": "figures/hanoi3disk-5.png",
+        "bytes": 9099,
+        "sha256": "e6cce6caea372ac818694a454d8c85b753db969babe75d6918f95fb1885551bc"
+      },
+      {
+        "path": "figures/hanoi3disk-6.png",
+        "bytes": 9108,
+        "sha256": "4cf6340beb94b8f033809b584160fc21a83f3feb46ed4b1679259b560b85127e"
+      },
+      {
+        "path": "figures/hanoi3disk-7.png",
+        "bytes": 9121,
+        "sha256": "c3f8150469dffba43fecee8637f19bc073df2eb56e2c232a06bbc7015215247a"
+      },
+      {
+        "path": "figures/hanoi4disk-0.png",
+        "bytes": 9316,
+        "sha256": "b5feb5815a31f53f4a1e3701cda8f5ddcdb1993696758081c6518bf16efb6db2"
+      },
+      {
+        "path": "figures/hanoi4disk-1.png",
+        "bytes": 9277,
+        "sha256": "87f39ba855b179030db1a567d0682fb1736164531428ece8df9eab05298738c4"
+      },
+      {
+        "path": "figures/hanoi4disk-2.png",
+        "bytes": 9288,
+        "sha256": "051b5ef99a605acd6ce470b6f75af86a94f2619f8948ff1fc70dd1bd0dd132ab"
+      },
+      {
+        "path": "figures/hanoi4disk-3.png",
+        "bytes": 9312,
+        "sha256": "98202e1f331e6e5b25266991806bfcd793f2b62aa7b092dc08ff2bfb5a601374"
+      },
+      {
+        "path": "figures/interpolation-newton1.png",
+        "bytes": 346308,
+        "sha256": "cde4db0e5f65d5d97cad679e30905349fe1d432b7bd1f9e665e1a5a3e4e35eb4"
+      },
+      {
+        "path": "figures/interpolation-newton2.png",
+        "bytes": 15414,
+        "sha256": "b711d27da7ff6274a83d21d409c4adc76de26f09d354744cc1983052bc851fa3"
+      },
+      {
+        "path": "figures/interpolation-newton3.png",
+        "bytes": 21342,
+        "sha256": "726f2fd19cee272f5ba989150980a4be98495f52da749872ee59118cee2212f3"
+      },
+      {
+        "path": "figures/interpolation-newton4.png",
+        "bytes": 12746,
+        "sha256": "30757b7ab27ab9074ceeab9d6c3dadf3f0226dc8b0a0154266f68e0267e233c6"
+      },
+      {
+        "path": "figures/interpolation-newton5.png",
+        "bytes": 5544,
+        "sha256": "3c4d090e288efa4c64496507cd153adc2d113adb41fd3ca18ac86afde2521ed6"
+      },
+      {
+        "path": "figures/interpolation-newton6.png",
+        "bytes": 19608,
+        "sha256": "a044acf1fcc74ccc2c05099a6face9c3c4b2668680d58d21bea97e47d0f20460"
+      },
+      {
+        "path": "figures/interpolation-newton7.png",
+        "bytes": 27718,
+        "sha256": "3e800058df6dc9976584d013ea8bbeadfb7a1a9152d29d9282df3a009db827aa"
+      },
+      {
+        "path": "figures/interpolation-newton8.png",
+        "bytes": 26427,
+        "sha256": "28e062e49941f1532410748e011afd75f282f9f72a310d5a423f495b6d008f83"
+      },
+      {
+        "path": "figures/interpolation-newton9.png",
+        "bytes": 18813,
+        "sha256": "d215ef7631f3507469e702178f4f2fd7895a67fe5da4609c60f84f39181cfab0"
+      },
+      {
+        "path": "figures/interpolation-polynomials1.pdf",
+        "bytes": 8007,
+        "sha256": "8db7e2c272097ba47cdf7139b7d6673be9d3c9975929409036cc3e8f3b856b89"
+      },
+      {
+        "path": "figures/interpolation-polynomials2.pdf",
+        "bytes": 8238,
+        "sha256": "71afe94c3b2fbdca320a4a791fd5fe49df91cbe1f4e3de9a2d4be4e389e8dbb3"
+      },
+      {
+        "path": "figures/interpolation-polynomials3.pdf",
+        "bytes": 13785,
+        "sha256": "1ad7649af3781fa56ab54bcd4d43fa48e7076bd3b302e210a5cbb62282cb3bee"
+      },
+      {
+        "path": "figures/interpolation-polynomials4.pdf",
+        "bytes": 8740,
+        "sha256": "877dbaf0698d99424e415c465950125e3452988e04436425de3beb622c1831c2"
+      },
+      {
+        "path": "figures/interpolation-polynomials5.pdf",
+        "bytes": 9920,
+        "sha256": "afd41ef8fbff0d12bb5f2df91981437859ae512c1d4ac09ce49ce0f811a9d50f"
+      },
+      {
+        "path": "figures/interpolation-polynomials6.pdf",
+        "bytes": 9229,
+        "sha256": "17abac2b39423c9d20e9633129a1bce9452c61d4e68d605c1fa142c73d63c409"
+      },
+      {
+        "path": "figures/interpolation-polynomials7.pdf",
+        "bytes": 15519,
+        "sha256": "19a1819ecd543d94958044a5121a197170662d15a25133237eed586660ac368a"
+      },
+      {
+        "path": "figures/non-oscillatory.pdf",
+        "bytes": 2755,
+        "sha256": "6c8737780bffcc04ab646ad002dd4bb75881d495a8363d525f2007f11750128e"
+      },
+      {
+        "path": "figures/octaveLogo.png",
+        "bytes": 9901,
+        "sha256": "c3f7e059514f49479e5f921e6d44238a362b5d95f9405d929a95fc18bfefa1cd"
+      },
+      {
+        "path": "figures/ode-pendulum01.pdf",
+        "bytes": 10376,
+        "sha256": "f4484cc7277ecfe4e6a8ce951fccb1840ddb709309a907a3af566b5ca0a18008"
+      },
+      {
+        "path": "figures/ode-pendulum02.pdf",
+        "bytes": 10939,
+        "sha256": "780850c31d10ccfac1e631f582e2d2df5bfe245554e78aec9bf67ec6451af391"
+      },
+      {
+        "path": "figures/ode-pendulum03.pdf",
+        "bytes": 8843,
+        "sha256": "2c2fb4be4be92591c39752c17f3189b8129a75c72df3fe0cc6a3279ba55e042c"
+      },
+      {
+        "path": "figures/ode-pendulum04.pdf",
+        "bytes": 11493,
+        "sha256": "95291ddc69a5b3ad745f448449c033dd6bccfc9b99a5e42e1d6035ca2a3a3b05"
+      },
+      {
+        "path": "figures/ode-pendulum05.pdf",
+        "bytes": 10213,
+        "sha256": "52c8ec4546e2507583337985e18617723c3f79b936f69fcc755fe56dc4a87f9c"
+      },
+      {
+        "path": "figures/ode-pendulum06.pdf",
+        "bytes": 8893,
+        "sha256": "185fd9a7afffe79b37dc9e08f4fd0a4e49e7350c557f5f119fff2412bcdde624"
+      },
+      {
+        "path": "figures/ode-pendulum07.pdf",
+        "bytes": 8023,
+        "sha256": "e521ee2a3688c95c286c378eb423f8eab054081a8fb04f77936c025cffb98da7"
+      },
+      {
+        "path": "figures/ode-pendulum08.pdf",
+        "bytes": 9286,
+        "sha256": "f5e4fb24be1a1a851b87d57f359ce0060d231adcaae30b35f3a8ea1e1e88431f"
+      },
+      {
+        "path": "figures/ode-pendulum09.pdf",
+        "bytes": 10864,
+        "sha256": "a5ec33b7bd4ff93929f8cd42912c27d8bfc38adbbfe7872dc41815cde7fccff2"
+      },
+      {
+        "path": "figures/ode-pendulum10.pdf",
+        "bytes": 7332,
+        "sha256": "b76498b99eba4c2633bd3fce733b98dfef025e3787b04ae662e4744a27ea057e"
+      },
+      {
+        "path": "figures/ode-pendulum11.pdf",
+        "bytes": 5260,
+        "sha256": "dedc904ca85c9e030646a8e20ede65425cd0b80db42bbd4c940b6d7f57b26cb7"
+      },
+      {
+        "path": "figures/ode-pendulum12.pdf",
+        "bytes": 7150,
+        "sha256": "50b4b30d9012b3fef68d602f8df53b2e1c9182a0765b350b8e3459c00667141c"
+      },
+      {
+        "path": "figures/ode-pendulum13.pdf",
+        "bytes": 3529,
+        "sha256": "96d81c0bb457d4e95b1bb713ce6105462ba9e34ea814a70758e9a52b41873017"
+      },
+      {
+        "path": "figures/ode-pendulum14.pdf",
+        "bytes": 9087,
+        "sha256": "54fe877f299a066604d7b74034724f21199e9cac610d248dcf70e02040be3132"
+      },
+      {
+        "path": "figures/ode-pendulum15.pdf",
+        "bytes": 9296,
+        "sha256": "78d20c2c311e3f79ee9a0bc646288d1e12123ffe159bf4edfbde1588aa88e101"
+      },
+      {
+        "path": "figures/ode-pendulum16.pdf",
+        "bytes": 8020,
+        "sha256": "ce929c339564677ec8023e31d2ad4150cd77f39d9da15fba240d2f4b57a92d14"
+      },
+      {
+        "path": "figures/ode-pendulum17.pdf",
+        "bytes": 10005,
+        "sha256": "921596ecabdea54a314845d3878854bda6cab661006ce7472129915337f39ade"
+      },
+      {
+        "path": "figures/ode-rungekutta01.pdf",
+        "bytes": 2871,
+        "sha256": "d1d497ee1b2bc8dcfcef60a45f9c9e4c70685be44a372116c2fa9dcb216ab994"
+      },
+      {
+        "path": "figures/ode-rungekutta02.pdf",
+        "bytes": 4072,
+        "sha256": "efd083c55335b3addff03023421a2c681b8dbe0088de18b776f259759490472a"
+      },
+      {
+        "path": "figures/ode-rungeKutta03.pdf",
+        "bytes": 3960,
+        "sha256": "37debf5f860aa7f390c7f38d3f41b8e2879c6998fefe9d9a34c3060061139bb9"
+      },
+      {
+        "path": "figures/ode-rungeKutta04.pdf",
+        "bytes": 3867,
+        "sha256": "472d6a4e39f74fe79c55314881436678eb31f93009909da98d43eacc0b7342d0"
+      },
+      {
+        "path": "figures/ode-rungeKutta05.pdf",
+        "bytes": 3959,
+        "sha256": "73402364c14796e9b68cb2c91fa2b0e236e7e51d4e7c912defcad590f894b363"
+      },
+      {
+        "path": "figures/ode-rungeKutta06.pdf",
+        "bytes": 3888,
+        "sha256": "825e142c0261585f0b25d5790a748e3059a9078455b0abab969a8ebd0fb2fece"
+      },
+      {
+        "path": "figures/ode-rungeKutta07.pdf",
+        "bytes": 3964,
+        "sha256": "4cde13c7d1aa31b8a5f388903fba91a250912f6a598a8d4142b36062d54306c2"
+      },
+      {
+        "path": "figures/ode-rungeKutta08.pdf",
+        "bytes": 3886,
+        "sha256": "8ed3ae92912303c8d9cbf411ed53cb93c5e29e68f7b60c08f6cb8fa45fcb28c5"
+      },
+      {
+        "path": "figures/ode-rungeKutta09.pdf",
+        "bytes": 5162,
+        "sha256": "e29c6a25a5a85e601d4205267e0402fa9cd543bf34cfde6a5998c1733e964407"
+      },
+      {
+        "path": "figures/ode-rungeKutta10.pdf",
+        "bytes": 4033,
+        "sha256": "c70d26b1013b47ec272bb9c14fbd57a0dea6ea188088d6fd8c6af7e25e81572b"
+      },
+      {
+        "path": "figures/ode-rungeKutta11.pdf",
+        "bytes": 4728,
+        "sha256": "25797ee47955ebfb099a34df7d39b5409dd3df4c0dedd3247b858cf813102fc6"
+      },
+      {
+        "path": "figures/ode-rungeKutta12.pdf",
+        "bytes": 5300,
+        "sha256": "d872c5e3682ee4d884a7f3eae250983b03586016ee9ba19163085e0c8f99eb25"
+      },
+      {
+        "path": "figures/ode-rungekutta13.pdf",
+        "bytes": 2906,
+        "sha256": "ef6b87f61b2a8262dae9c6db8dee6e69b75bc06c80c9ef5bf67281ff28711c20"
+      },
+      {
+        "path": "figures/ode-stiffFrontEnd.pdf",
+        "bytes": 8149,
+        "sha256": "df5bd8017f30a50c65189381be680d0dddc6d0f974d6fdad520c41ebee37a3ca"
+      },
+      {
+        "path": "figures/ode-stiffMiddle.pdf",
+        "bytes": 10707,
+        "sha256": "2f17382cb5533063f632b4c9072fba807367c285bd6863a38ef2ee6ecf967283"
+      },
+      {
+        "path": "figures/ode-stiffTailEnd.pdf",
+        "bytes": 16838,
+        "sha256": "bc29135488f363698c935adb6316fd26f5d3cb3c8af8cd8595819fe841abe497"
+      },
+      {
+        "path": "figures/ode-taylor01.pdf",
+        "bytes": 10971,
+        "sha256": "2d75dd7a28715b4fe939bb8aee750627f1cc1a3bf098ba2bf00eea22281e172b"
+      },
+      {
+        "path": "figures/ode-taylor02.pdf",
+        "bytes": 7295,
+        "sha256": "56c22e70a89cc8ff3069e66ac7f294a370875a2ca1ebb34bb8a40c363f473ab4"
+      },
+      {
+        "path": "figures/oscillatorySolution.pdf",
+        "bytes": 7299,
+        "sha256": "f9a20bed0523fdd701b51a63675e2bcb2e126bff45ecab7d62a1bc5681fa1703"
+      },
+      {
+        "path": "figures/phaseDiagram.pdf",
+        "bytes": 199455,
+        "sha256": "35c42c32f8004b4470ffc1ba8929e857e44e1045959686f82cbd95191091670e"
+      },
+      {
+        "path": "figures/preliminaries-taylor1.pdf",
+        "bytes": 13452,
+        "sha256": "dca363dfb6fa6876b9030d4e57b68c30967afe4f23cb34876750865e58d16a3a"
+      },
+      {
+        "path": "figures/preliminaries-taylor2.pdf",
+        "bytes": 15131,
+        "sha256": "6b7f68cc651444d0ad2f9db9cd24be2763c8ba72419f4bd7b02d2877ef1614d8"
+      },
+      {
+        "path": "figures/preliminaries-taylor3.pdf",
+        "bytes": 10033,
+        "sha256": "ab0838f9092d269e852836929cdd21485cc64133f8ff740febd07e9240f0213c"
+      },
+      {
+        "path": "figures/recursiveTiling.pdf",
+        "bytes": 2598,
+        "sha256": "6d0df0c968346a8772f55d93979506d8e0bdf1c21ec0486c2478ba40f5b12455"
+      },
+      {
+        "path": "figures/rk23globalError.pdf",
+        "bytes": 3991,
+        "sha256": "16172fa4dca9caa211a1dfdbd8ab4bb657b871826579e30d5e74ca375b7820cb"
+      },
+      {
+        "path": "figures/rk23globalError2.pdf",
+        "bytes": 3854,
+        "sha256": "82b0a438f6648ac607e621ff77896af933ddbcd192043789c505067355a415ab"
+      },
+      {
+        "path": "figures/rk24globalError.pdf",
+        "bytes": 4567,
+        "sha256": "144cd48bd44dfe4b6c136b23f7072d51fa7fe4a6cf8599630e6fc206244daebb"
+      },
+      {
+        "path": "figures/rk24globalError2.pdf",
+        "bytes": 4130,
+        "sha256": "e180eafd9425cd8ad144ae398f72642a86e3557d03598084aa1f4d7123900bd5"
+      },
+      {
+        "path": "figures/rootBracketing01.pdf",
+        "bytes": 14966,
+        "sha256": "29762f88f1f74011c49bac6320dfb0410c60618bd36ee9341ecacf436c3f8f40"
+      },
+      {
+        "path": "figures/rootBracketing02.pdf",
+        "bytes": 18720,
+        "sha256": "f268b22fe1ed9af573acdc397cba99846a5a49b7039ec596f7e43a9f67ea0544"
+      },
+      {
+        "path": "figures/rootBracketing03.pdf",
+        "bytes": 20484,
+        "sha256": "a09d0ee1aa5b6e631e9f53244cbbf3c9d241ca5ecbe6bd426607a587d35ea491"
+      },
+      {
+        "path": "figures/roots-bisection1.pdf",
+        "bytes": 9350,
+        "sha256": "588ff6092a9e078fce06dd4d165218ea2ac9ad7a6d385cf49bc2a09f91906ca6"
+      },
+      {
+        "path": "figures/roots-bisection2.pdf",
+        "bytes": 12559,
+        "sha256": "dd076ff9b4f4ef33e851f502033c74d48aba261fe2dfc263735b9eac7eda69d4"
+      },
+      {
+        "path": "figures/roots-bisection3.pdf",
+        "bytes": 7690,
+        "sha256": "c192d3066e084bd7936758e31cc94ff1f8aef5bff36553b680fe3e0ee7107dd5"
+      },
+      {
+        "path": "figures/roots-fixedpt1.pdf",
+        "bytes": 9396,
+        "sha256": "c0e73de1a24f479f1a76b339f62de2eb32a6c63fb0c180690249517bcc9920ce"
+      },
+      {
+        "path": "figures/roots-fixedpt10.pdf",
+        "bytes": 15851,
+        "sha256": "83e1c8cefade2ca98f30244241d02d718a9228f24aeeeada03b138557bc5eb1c"
+      },
+      {
+        "path": "figures/roots-fixedpt11.pdf",
+        "bytes": 12367,
+        "sha256": "67ab382ab07fdcab83560d1c36b501e0f36a3593edb5bd2ef3244688645adac0"
+      },
+      {
+        "path": "figures/roots-fixedpt12.pdf",
+        "bytes": 12371,
+        "sha256": "b13e06d41a596c6cc47ef8c8b9aac3e415921989e40b96a478cb46f174a48ee5"
+      },
+      {
+        "path": "figures/roots-fixedpt13.pdf",
+        "bytes": 12354,
+        "sha256": "2a81d72369d19b48e839e80efcdecb33fc42328812b938c1a8eeac5e16ba7aed"
+      },
+      {
+        "path": "figures/roots-fixedpt14.pdf",
+        "bytes": 12349,
+        "sha256": "280014fd14aec05599456acc46390b0576bdba78978761ac054f087f49b0f249"
+      },
+      {
+        "path": "figures/roots-fixedpt15.pdf",
+        "bytes": 12363,
+        "sha256": "2dd166ccc84605accd2b09f07f1ccf3ae2d4ed3c5fb12eae52653e22382c4d27"
+      },
+      {
+        "path": "figures/roots-fixedpt16.pdf",
+        "bytes": 12380,
+        "sha256": "487aa687eae554036eaec3e470d24bad3b6af1a539c1520afb1076a7acc4b5dd"
+      },
+      {
+        "path": "figures/roots-fixedpt17.pdf",
+        "bytes": 10508,
+        "sha256": "42296e7325326ec1484c46b4901a3d55c8e224cacee71fa9bc6e3d5bc8b5ea20"
+      },
+      {
+        "path": "figures/roots-fixedpt18.pdf",
+        "bytes": 10286,
+        "sha256": "98b2ecba6638d3e292466ff040c7bc82b6aa40e83acc1f66c3201abd66190cca"
+      },
+      {
+        "path": "figures/roots-fixedpt19.pdf",
+        "bytes": 12567,
+        "sha256": "3c2345788174c4436c5154ca3847e89cddad35f0363d924774bd36fc3fe5b2ca"
+      },
+      {
+        "path": "figures/roots-fixedpt2.pdf",
+        "bytes": 9306,
+        "sha256": "99a75ec85432b493e879dfeb6f7a73f07119b74b8f3a24c77c60b8936a224295"
+      },
+      {
+        "path": "figures/roots-fixedpt20.pdf",
+        "bytes": 8980,
+        "sha256": "49ed738a09397453a93b9b4b38df367baab3bf12bb9888f14889e033491afa36"
+      },
+      {
+        "path": "figures/roots-fixedpt3.pdf",
+        "bytes": 9379,
+        "sha256": "bba6f7c330da2c5662db24473c8da41c3eeafc55ae3a60a38a2e20a8d90e33cd"
+      },
+      {
+        "path": "figures/roots-fixedpt4.pdf",
+        "bytes": 11391,
+        "sha256": "5ec18f38dd1fb37480f7e9abf28be4700300ea42eaf2fc5b704d9d03bda3237c"
+      },
+      {
+        "path": "figures/roots-fixedpt5.pdf",
+        "bytes": 9209,
+        "sha256": "949f449ef646610848b4969d057eb35f47176161326f463b56ea062586aa30ad"
+      },
+      {
+        "path": "figures/roots-fixedpt6.pdf",
+        "bytes": 6634,
+        "sha256": "8624fbe041d622e0b2fefbe136165de8f2be884c42177c8bb0d1c224d3ff24a9"
+      },
+      {
+        "path": "figures/roots-fixedpt7.pdf",
+        "bytes": 6746,
+        "sha256": "60550056bdc61dbac6c7052d7ab0e7369655032e71c624bea3c73d2d23adec5e"
+      },
+      {
+        "path": "figures/roots-fixedpt8.pdf",
+        "bytes": 6396,
+        "sha256": "0160b2d1b91ba6854af28edb755dcec5fac09805c2392b1987b87ca22da67479"
+      },
+      {
+        "path": "figures/roots-fixedpt9.pdf",
+        "bytes": 13707,
+        "sha256": "8f5150319f9dc86eb404a2fad2a294b33b359dc507837469ac2662c3aab0969d"
+      },
+      {
+        "path": "figures/roots-more10.png",
+        "bytes": 2251,
+        "sha256": "7ee2b0c9a0ca6311f2929dcdbbec38c2c665edfe69cbd0269a46e0710b50753f"
+      },
+      {
+        "path": "figures/roots-more11.png",
+        "bytes": 27970,
+        "sha256": "ed1379524ab3040469e83ce65eb3e4a2b7ca99bef3ea2bee1188850463fd9787"
+      },
+      {
+        "path": "figures/roots-more12.png",
+        "bytes": 11836,
+        "sha256": "82f5eb00ad7e6a8c1eccb5d9b6696c5103ad0d726db3635d4df8190ed115c233"
+      },
+      {
+        "path": "figures/roots-more13.png",
+        "bytes": 11744,
+        "sha256": "c0cdbc2c1850e1e705282bbf56b146bb9a6086d1d642edf1a46d5918928c1b39"
+      },
+      {
+        "path": "figures/roots-more14.png",
+        "bytes": 23544,
+        "sha256": "612a1ec7db4fc2fafd97b99d96f4874b9497d6356f453e3c71f591a3e1cfb360"
+      },
+      {
+        "path": "figures/roots-more15.png",
+        "bytes": 15080,
+        "sha256": "d93b88259ae5c6e1282b4a40fdb62f081645e27c9c36f52ab019c2861d3bfa43"
+      },
+      {
+        "path": "figures/roots-more16.png",
+        "bytes": 19966,
+        "sha256": "fba725a84cb3c8a2306e29624fb39a0cc1e675a1e6acc4d3ea7eaf942694d900"
+      },
+      {
+        "path": "figures/roots-more17.png",
+        "bytes": 23813,
+        "sha256": "f62d036b0996c0c453573e8d78c6a6dc9cc9e1624b8f391318e83e61569a952d"
+      },
+      {
+        "path": "figures/roots-more18.png",
+        "bytes": 22358,
+        "sha256": "8d508d1a9556254448ddb7b6018a56af6be78bc7accc919f29d2526408e05a22"
+      },
+      {
+        "path": "figures/roots-more2.pdf",
+        "bytes": 12309,
+        "sha256": "160a1b42a44af79f4bf226d81397cd72806e0759a9b399f0ee1d0a7285ddb29e"
+      },
+      {
+        "path": "figures/roots-more3.pdf",
+        "bytes": 11778,
+        "sha256": "e7d7c11bda61ce5181ca8c97af6aa6e6c790d9b4c4029d86bb992789814b35c7"
+      },
+      {
+        "path": "figures/roots-more3.png",
+        "bytes": 13610,
+        "sha256": "44403cc13334b83cca591f96c0cce19367ccd4e70700431668ea16f39e71437a"
+      },
+      {
+        "path": "figures/roots-more4.png",
+        "bytes": 20888,
+        "sha256": "da3f4debfc716f376f45f3e93d463c30e67f3d11b8d979e3b660d59c76f92651"
+      },
+      {
+        "path": "figures/roots-more5.png",
+        "bytes": 20713,
+        "sha256": "e3b91c8cc63447859d9356cb8e03d793d03827006cbab62633bbb3b9b482db75"
+      },
+      {
+        "path": "figures/roots-more6.png",
+        "bytes": 14973,
+        "sha256": "4ac9d12043d5d1537b99d4842cc0e2f82a695a782c982e07fffc1946d2723d57"
+      },
+      {
+        "path": "figures/roots-more7.png",
+        "bytes": 11500,
+        "sha256": "7f46d00794e8ec760d1d2377cbd9469485a1c2e53cfe6345204505795957fc46"
+      },
+      {
+        "path": "figures/roots-more8.png",
+        "bytes": 16710,
+        "sha256": "b0492c76929e73e09b55396511ca3d0ba7b35e975d4d73ad59a99f1c5fa33be2"
+      },
+      {
+        "path": "figures/roots-more9.png",
+        "bytes": 11043,
+        "sha256": "e7a7aaf79397119cb98fae6dac1087863b11e0d42b3525009533b0aabba18712"
+      },
+      {
+        "path": "figures/roots-newton1.pdf",
+        "bytes": 58666,
+        "sha256": "2e78bdf8172908f2ad755154201824a3153c348ffba8cbd346bd253c2455c3c7"
+      },
+      {
+        "path": "figures/roots-newton2.pdf",
+        "bytes": 28879,
+        "sha256": "f792e987f270a700dfcafb56db21034da4001842ea541c752da627c01ffa95a7"
+      },
+      {
+        "path": "figures/roots-newton3.pdf",
+        "bytes": 66381,
+        "sha256": "528e99cf51d85a1c2728d43a376cebef024e63858dba046f9f833019fdf0a582"
+      },
+      {
+        "path": "figures/roots-newton4.pdf",
+        "bytes": 11129,
+        "sha256": "37044cbbe8a001ec802fb325a378b5cd6fe52542a7b3de309aad3c318dbac129"
+      },
+      {
+        "path": "figures/roots-newton5.pdf",
+        "bytes": 22948,
+        "sha256": "fa7759fc52af33a856bbb40603883a8b4e169bb6ec98824c3ecfa7e10ad47de8"
+      },
+      {
+        "path": "figures/roots-newton6.pdf",
+        "bytes": 23536,
+        "sha256": "717c0f24f06c7039130c9eec2539ee83e414a6eb13fa78f476b60b92befeb47f"
+      },
+      {
+        "path": "figures/roots-newton7.pdf",
+        "bytes": 17424,
+        "sha256": "ad265a59df1fb46f794eca54858b44a6296effe002eec149cdd6bbc27f03179b"
+      },
+      {
+        "path": "figures/roots-order1.pdf",
+        "bytes": 12628,
+        "sha256": "137e7df532062a460a6bca39015599609defd4357fa8ff3d53ca3e3ba962edf6"
+      },
+      {
+        "path": "figures/roots-order2.pdf",
+        "bytes": 12522,
+        "sha256": "4ddfd129d5b322c485db9ffed59d7afc2a346c63cfb7d4643ca0ee43992d1c04"
+      },
+      {
+        "path": "figures/roots-order3.pdf",
+        "bytes": 12371,
+        "sha256": "80ddf9d1ea07a1fb1d5205faf086a20ae6eb92319f15d5cdeceab82b0e87db6c"
+      },
+      {
+        "path": "figures/roots-order4.pdf",
+        "bytes": 12349,
+        "sha256": "936dcb14ae33b5cde9a5667c475ca744084416aa4941ea45096f067433ae6804"
+      },
+      {
+        "path": "figures/roots-order5.pdf",
+        "bytes": 12366,
+        "sha256": "c738f34c3ee83c835b0bab20c0d6ef946a0516bbbf1db1b65d801126cdd556d6"
+      },
+      {
+        "path": "figures/roots-polynomials01.pdf",
+        "bytes": 7427,
+        "sha256": "f04e190c904f5def8ce2b255b8f9575610a64da77eccfc4fe63e3620ccc392d7"
+      },
+      {
+        "path": "figures/roots-polynomials02.pdf",
+        "bytes": 5653,
+        "sha256": "bdd91f0e5461083110fd5aec6a78b74e45b45160abf62096b46d4eec212c14c1"
+      },
+      {
+        "path": "figures/solns001.pdf",
+        "bytes": 8989,
+        "sha256": "cb7f46e913a00f16c67fc7cf03d8b53245b40ba28f5463f3779e36065488e16c"
+      },
+      {
+        "path": "figures/solns002.pdf",
+        "bytes": 9056,
+        "sha256": "8ed2b55e4291e5970191e900f289e98307e0757f2afe31eaad3b3ee733bf3e94"
+      },
+      {
+        "path": "figures/solns003.pdf",
+        "bytes": 8194,
+        "sha256": "1bc0aee309e3f47144d01e6d3837a9a1cc46a9ec354be27d113eeac8421ee3b8"
+      },
+      {
+        "path": "figures/solutions01.pdf",
+        "bytes": 19590,
+        "sha256": "fc1ed94eecb7cea9ca8fd7b25f9a17c018547a39cb6fa5d95654d4d45b36f918"
+      },
+      {
+        "path": "figures/splines-parametric02a.pdf",
+        "bytes": 13661,
+        "sha256": "da981db2a6fe6556f64474dfe028b49cb86804810bb55b292b16e829ec1d0cdb"
+      },
+      {
+        "path": "figures/splines-parametric02b.pdf",
+        "bytes": 13287,
+        "sha256": "b7820b49414929652b060fad1d81c2f1cda63adf2c23e2e123814e16fec762aa"
+      },
+      {
+        "path": "figures/splines-parametric02c.pdf",
+        "bytes": 13520,
+        "sha256": "dcc00b03e852925765bab96b35bf7a1a028b28150ba7a22a6411c857374787a8"
+      },
+      {
+        "path": "figures/splines-parametric03.pdf",
+        "bytes": 8902,
+        "sha256": "4a98173415e28c95fb7fa224188ea25eb3b56f3137449d01b515384ab79505d7"
+      },
+      {
+        "path": "figures/splines-parametric04.pdf",
+        "bytes": 4978,
+        "sha256": "012e3170a661f93b7724b861838977f7ad32aec28808019a370c80c9dfc93837"
+      },
+      {
+        "path": "figures/splines-parametric05.png",
+        "bytes": 4253,
+        "sha256": "a552b4bf5c5a41a9c72138e585d1c9a1ca85d7d61925ae6e21687fd4cc3cbad3"
+      },
+      {
+        "path": "figures/splines-parametric06.pdf",
+        "bytes": 2686,
+        "sha256": "fdf80ab226f9fdd87e33e214a04e947d9e9a3d69c0f12eb675d288eca2bae321"
+      },
+      {
+        "path": "figures/splines-parametric06.png",
+        "bytes": 1969,
+        "sha256": "8daafaf10474df60235d9d8e153924d0a187c719da0d2e04b6188a2cd8c15ead"
+      },
+      {
+        "path": "figures/Taylor--MethodusPage21.png",
+        "bytes": 54471,
+        "sha256": "4c8232745153c5cda9c097df6678ff4d1bbe3692adfc41fe2bab5428ae887a6d"
+      },
+      {
+        "path": "figures/Taylor--MethodusPage23.png",
+        "bytes": 66684,
+        "sha256": "49fbd97684b75515be430c5bc86a132612252feb5d65debcb5fdadfb914ce8c3"
+      },
+      {
+        "path": "figures/triangulation.png",
+        "bytes": 57352,
+        "sha256": "23b65b11a237d4b0007acaba018cbc1ab6b61ac1841940e1fa68c6880bb9859c"
+      },
+      {
+        "path": "figures/undefined.png",
+        "bytes": 7414,
+        "sha256": "4a37d324bb8ecf5e39b49eb5941fe0b4a6ba1f434c749634635e9d9fb568ac60"
+      },
+      {
+        "path": "figures/wxmaximaScreenshot.png",
+        "bytes": 121098,
+        "sha256": "8c1b8a4f5679f2721bed1e65b7ea6b88a1689d1f3cdbe9fef5383c230050469e"
+      },
+      {
+        "path": "figures/xMarkRed.png",
+        "bytes": 5382,
+        "sha256": "b48e391b0676a353be03a4a4d0ea831d2565c7c044e63ef869bb8b84e6c39b2e"
+      },
+      {
+        "path": "interpolation-challenge.tex",
+        "bytes": 16581,
+        "sha256": "c16b856487f1f1420cda6854e3a1147dc2fd13efef4f860660c9e6718be58ca1"
+      },
+      {
+        "path": "interpolation-lagrange.tex",
+        "bytes": 39949,
+        "sha256": "f6f11720b77ae2914787ed5ec76704eacde7848cf15365695bde130f8e724503"
+      },
+      {
+        "path": "interpolation-newton.tex",
+        "bytes": 33296,
+        "sha256": "4785b506d29df5cb0b1965b594b6406f7c8248f8ea441cbbddf8b65852025d09"
+      },
+      {
+        "path": "ode-adaptive.tex",
+        "bytes": 40828,
+        "sha256": "24b1335a5f57d457e0f09e367c016683168b9031eab21b3c4d5ba62749a7b85e"
+      },
+      {
+        "path": "ode-errorAnalysis.tex",
+        "bytes": 35355,
+        "sha256": "7074dd6084fe0e9c72bf2700c64c3fb22db65c0384560938ad45fbe329c4e534"
+      },
+      {
+        "path": "ode-pendulum.tex",
+        "bytes": 31601,
+        "sha256": "48b948892493043744860f862f2af041f5c701e8436b60fc250d6b0470c1cd1d"
+      },
+      {
+        "path": "ode-rungeKutta.tex",
+        "bytes": 34506,
+        "sha256": "b4b40731645eb32f32e664455c567d10cb9a15b5069c04c316303412e886dc77"
+      },
+      {
+        "path": "ode-taylor.tex",
+        "bytes": 25486,
+        "sha256": "330e0b494475e923894848736561022e5a6014a16546d6572ef104627571486d"
+      },
+      {
+        "path": "preamble.tex",
+        "bytes": 8593,
+        "sha256": "fbb62bff7957e3a82ef80b90536203fe1976b073ba9c1b639cdada2b9e7d4401"
+      },
+      {
+        "path": "preface.tex",
+        "bytes": 13500,
+        "sha256": "4f3df44bbc3ebd7decd0c23713ef882544ae9e6cbc600ea7328fc7c1d2730a1f"
+      },
+      {
+        "path": "preliminaries-convergence.tex",
+        "bytes": 47627,
+        "sha256": "2637f076267adea8e290b29cf9324d4f508dc80543b10723adb8f1e6ef8112aa"
+      },
+      {
+        "path": "preliminaries-errors.tex",
+        "bytes": 37170,
+        "sha256": "16d2ba6e574f66ab85201e882c41f3a67695868dc6318c08f48e0ccb8bf5192a"
+      },
+      {
+        "path": "preliminaries-recursion.tex",
+        "bytes": 30659,
+        "sha256": "2df4bc6ff552119ac6c61c85903238dc148e3d7952fe5d5a5b329fef58606da2"
+      },
+      {
+        "path": "preliminaries-taylor.tex",
+        "bytes": 37043,
+        "sha256": "0c10d015c26879ab49efdc670e5490a126332ca5f788ea76eaa217f371504d53"
+      },
+      {
+        "path": "references/heun1900/00000036.png",
+        "bytes": 1739261,
+        "sha256": "d34c3f99ae1740e9ac7f97bec473b44a3d28353ae503bda1c2bf55e4ee8999d7"
+      },
+      {
+        "path": "roots-bisection.tex",
+        "bytes": 39351,
+        "sha256": "00bc6979f92a5a2d4d27ce4a602521cda8d04b092e815f0571b8d4f0b6b350a1"
+      },
+      {
+        "path": "roots-bracketing.tex",
+        "bytes": 32233,
+        "sha256": "0905ba8ca1cce6adfb41610b24847e15b16371481964fa54d7a9364d4be2bd24"
+      },
+      {
+        "path": "roots-fixedpoint.tex",
+        "bytes": 44078,
+        "sha256": "c3274a4134d8376e94225ba665d7bd70e86c7e2987812e94061aef2880cdf51d"
+      },
+      {
+        "path": "roots-moreConvergenceDiagrams.tex",
+        "bytes": 22625,
+        "sha256": "545b40718935fcb9497127e1b7a9ac5e5c49ab716ffae9f2f99103d162f6f5a3"
+      },
+      {
+        "path": "roots-newtonsMethod.tex",
+        "bytes": 35598,
+        "sha256": "856000171def75ebf5732a9632371317d2d1f1e655817b8b88595a4930d33350"
+      },
+      {
+        "path": "roots-orderOfConvergence.tex",
+        "bytes": 39766,
+        "sha256": "aaa9de2e8943902b682ef9e71adb9c0659a4c980e3c2d3e58622497d4f817819"
+      },
+      {
+        "path": "roots-polynomials.tex",
+        "bytes": 39199,
+        "sha256": "f9c353a90d772904b14f806749b86ec236b177adad9bedc023ee0ea91edb98fc"
+      },
+      {
+        "path": "solutions.tex",
+        "bytes": 272739,
+        "sha256": "9fa7371cddac3e7e6a4216ad43bd9f08f801b4da040fbf6118914e7f2487e315"
+      },
+      {
+        "path": "splines-cubic.tex",
+        "bytes": 27857,
+        "sha256": "06b1c62fac4b9610f127dea5a03b910174e5ab71d80ef35df13d0ae242d21c3a"
+      },
+      {
+        "path": "splines-parametric.tex",
+        "bytes": 38494,
+        "sha256": "84f90a7d593e0c1dd5bbc19bfb0cf6502699ddc3f1783c69545ae36f829bfbfc"
+      },
+      {
+        "path": "TeaTimeNumericalAnalysis-id-ID.tex",
+        "bytes": 5644,
+        "sha256": "cdc8a5e0a57115c33a1eefa56c04e5d6f3c3ac4623b1c9e85a706f4b311a553f"
+      },
+      {
+        "path": "TeaTimeNumericalAnalysis.bib",
+        "bytes": 10186,
+        "sha256": "0aaa9f6d24e2e38a6063bc1f184e2f07718dee8002d19fbd57971939568c011c"
+      }
+    ]
+  },
+  "latexmk": {
+    "exit_code": 0,
+    "stdout_log": "build/logs/id-ID-latexmk.stdout.log",
+    "stderr_log": "build/logs/id-ID-latexmk.stderr.log"
+  },
+  "pdf": {
+    "path": "output/pdf/Tea-Time-Numerical-Analysis-id-ID.pdf",
+    "bytes": 8202476,
+    "sha256": "cbc31e9e27fdee96845d78fa6a625bf956196001b7941ddf0f1232f5def46b45",
+    "pages": 387
+  }
+}

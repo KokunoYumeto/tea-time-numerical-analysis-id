@@ -1,0 +1,53 @@
+cff-version: 1.2.0
+message: "Jika Anda menggunakan edisi ini, sitasikan edisi Bahasa Indonesia dan karya asal sesuai metadata berikut."
+title: "Tea Time Numerical Analysis — Edisi Bahasa Indonesia (Edisi Ketiga)"
+type: dataset
+authors:
+  - family-names: "Brin"
+    given-names: "Leon Q."
+version: "3.0-id.1"
+date-released: "2026-08-22"
+doi: "10.5281/zenodo.22054086"
+url: "https://doi.org/10.5281/zenodo.22054086"
+repository-code: "https://github.com/KokunoYumeto/tea-time-numerical-analysis-id"
+abstract: >-
+  Edisi Bahasa Indonesia mandiri dari Tea Time Numerical Analysis, Edisi
+  Ketiga, diturunkan dari rilis upstream v3.0 pada commit
+  186882108a6da95c8dca5b81ce000fc3f8f3ca21 dan tree
+  1e50d3756b695176008c602f0ee89712f5f32d10. Metadata tingkat-record memakai
+  CC-BY-SA-4.0 untuk buku dan adaptasinya; kode, aset Heun, dan dependensi
+  build mempertahankan hak komponennya masing-masing.
+keywords:
+  - "analisis numerik"
+  - "Bahasa Indonesia"
+  - "buku teks terbuka"
+  - "LyX"
+  - "GNU Octave"
+  - "R015"
+  - "C110"
+license: "CC-BY-SA-4.0"
+identifiers:
+  - type: other
+    value: "R015"
+    description: "Identifier sumber daya program"
+  - type: other
+    value: "C110"
+    description: "Identifier mata kuliah program"
+preferred-citation:
+  type: book
+  title: "Tea Time Numerical Analysis — Edisi Bahasa Indonesia (Edisi Ketiga)"
+  authors:
+    - family-names: "Brin"
+      given-names: "Leon Q."
+  version: "3.0-id.1"
+  date-released: "2026-08-22"
+  doi: "10.5281/zenodo.22054086"
+references:
+  - type: book
+    title: "Tea Time Numerical Analysis"
+    authors:
+      - family-names: "Brin"
+        given-names: "Leon Q."
+    version: "3.0"
+    date-released: "2021-06-03"
+    url: "https://github.com/lqbrin/tea-time-numerical/releases/tag/v3.0"

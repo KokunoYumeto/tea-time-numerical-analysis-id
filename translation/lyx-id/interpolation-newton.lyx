@@ -1,0 +1,5192 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\input $HOME/Documents/textbook/preamble
+\end_preamble
+\use_default_options true
+\master ../scsu/Book-Numerical/TeaTimeNumericalAnalysis.lyx
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 4cm
+\topmargin 2.5cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 1
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:polynomialNewton"
+
+\end_inset
+
+Polinom Newton
+\end_layout
+
+\begin_layout Standard
+Pada bagian ini, kita mencari proses otomatis yang efisien untuk menghitung
+ polinom interpolasi.
+ Bentuk Lagrange dari polinom interpolasi paling sesuai untuk perhitungan
+ dengan pensil dan kertas, bukan untuk otomatisasi komputer.
+ Metode Neville sangat sesuai untuk menghitung nilai polinom interpolasi
+ pada titik tertentu, bukan untuk menghitung polinom itu sendiri.
+ Memang, metode Neville 
+\shape italic
+dapat
+\shape default
+ digunakan untuk menghitung polinom interpolasi itu sendiri, tetapi untuk
+ tugas ini metode tersebut tidak lebih cocok daripada bentuk Lagrange.
+ Dalam pembahasan berikut, kita akan melihat bagaimana rumus rekursif yang
+ sama dengan rumus dalam metode Neville digunakan untuk memperoleh metode
+ yang sangat efisien dan cocok untuk komputer guna menghitung polinom interpolasi
+ itu sendiri.
+ Hasil perhitungannya adalah sekumpulan koefisien untuk bentuk Newton dari
+ suatu polinom.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+bentuk Newton
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Andaikan kita telah menghitung polinom 
+\begin_inset Formula $N_{n}(x)$
+\end_inset
+
+ yang menginterpolasi data 
+\begin_inset Formula 
+\[
+(x_{0},f(x_{0})),(x_{1},f(x_{1})),\ldots,(x_{n},f(x_{n})).
+\]
+
+\end_inset
+
+Sekarang kita ingin menghitung polinom 
+\begin_inset Formula $N_{n+1}(x)$
+\end_inset
+
+ yang menginterpolasi data 
+\begin_inset Formula 
+\[
+(x_{0},f(x_{0})),(x_{1},f(x_{1})),\ldots,(x_{n+1},f(x_{n+1})),
+\]
+
+\end_inset
+
+dan memanfaatkan kembali pekerjaan yang telah dilakukan (sebagaimana kita
+ dapat menambahkan satu titik interpolasi dalam metode Neville dan menggunakan
+ kembali semua pekerjaan sebelumnya)! Salah satu cara menangani masalah
+ ini adalah mencari polinom 
+\begin_inset Formula $q(x)$
+\end_inset
+
+ sedemikian sehingga
+\begin_inset Formula 
+\[
+N_{n+1}(x)=N_{n}(x)+q(x).
+\]
+
+\end_inset
+
+Agar cara ini berhasil, harus berlaku 
+\begin_inset Formula $q(x)=N_{n+1}(x)-N_{n}(x)$
+\end_inset
+
+ untuk setiap 
+\begin_inset Formula $x$
+\end_inset
+
+, dan khususnya 
+\begin_inset Formula $q(x_{j})=N_{n+1}(x_{j})-N_{n}(x_{j})$
+\end_inset
+
+ untuk 
+\begin_inset Formula $j=0,1,\ldots,n+1$
+\end_inset
+
+.
+ Namun, 
+\begin_inset Formula $N_{n+1}(x_{j})-N_{n}(x_{j})=f(x_{j})-f(x_{j})=0$
+\end_inset
+
+ untuk 
+\begin_inset Formula $j=0,1,\ldots,n$
+\end_inset
+
+, sedangkan 
+\begin_inset Formula $N_{n+1}(x_{n+1})-N_{n}(x_{n+1})=f(x_{n+1})-N_{n}(x_{n+1})$
+\end_inset
+
+.
+ Dengan kata lain, kita mencari polinom 
+\begin_inset Formula $q$
+\end_inset
+
+ yang menginterpolasi titik-titik
+\begin_inset Formula 
+\[
+(x_{0},0),(x_{1},0),\ldots,(x_{n},0),(x_{n+1},(f-N_{n})(x_{n+1})).
+\]
+
+\end_inset
+
+Ironisnya, pekerjaan ini cocok untuk bentuk Lagrange:
+\begin_inset Formula 
+\begin{eqnarray}
+q(x) & = & \frac{(x-x_{0})\cdots(x-x_{n})}{(x_{n+1}-x_{0})\cdots(x_{n+1}-x_{n})}(f-N_{n})(x_{n+1})\nonumber \\
+ & = & \frac{(f-N_{n})(x_{n+1})}{(x_{n+1}-x_{0})\cdots(x_{n+1}-x_{n})}(x-x_{0})\cdots(x-x_{n}).\label{eq:qLagrange}
+\end{eqnarray}
+
+\end_inset
+
+Namun, 
+\begin_inset Formula $\frac{(f-N_{n})(x_{n+1})}{(x_{n+1}-x_{0})\cdots(x_{n+1}-x_{n})}$
+\end_inset
+
+ hanyalah sebuah konstanta, sehingga kita menggantinya dengan 
+\begin_inset Formula $a_{n+1}$
+\end_inset
+
+ dan memperoleh 
+\begin_inset Formula $q(x)=a_{n+1}(x-x_{0})\cdots(x-x_{n})$
+\end_inset
+
+.
+ Tentu saja kita dapat menghitung 
+\begin_inset Formula $a_{n+1}$
+\end_inset
+
+ menggunakan rumus 
+\begin_inset Formula $\frac{(f-N_{n})(x_{n+1})}{(x_{n+1}-x_{0})\cdots(x_{n+1}-x_{n})}$
+\end_inset
+
+, tetapi ada cara yang lebih baik, yang segera akan kita lihat.
+ Dari perhitungan berikutnya kita juga dapat mengetahui bentuk yang paling
+ praktis untuk 
+\begin_inset Formula $N_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Ketika 
+\begin_inset Formula $n=0$
+\end_inset
+
+, 
+\begin_inset Formula $q$
+\end_inset
+
+ berbentuk 
+\begin_inset Formula $a_{1}(x-x_{0})$
+\end_inset
+
+; ketika 
+\begin_inset Formula $n=1$
+\end_inset
+
+, 
+\begin_inset Formula $q$
+\end_inset
+
+ berbentuk 
+\begin_inset Formula $a_{2}(x-x_{0})(x-x_{1})$
+\end_inset
+
+; ketika 
+\begin_inset Formula $n=2$
+\end_inset
+
+, 
+\begin_inset Formula $q$
+\end_inset
+
+ berbentuk 
+\begin_inset Formula $a_{3}(x-x_{0})(x-x_{1})(x-x_{2})$
+\end_inset
+
+; dan seterusnya.
+ Tentu saja 
+\begin_inset Formula $N_{0}(x)=a_{0}$
+\end_inset
+
+ merupakan konstanta karena merupakan polinom interpolasi berderajat terendah
+ yang melalui satu titik.
+ Jadi, 
+\begin_inset Formula $N_{1}(x)=N_{0}(x)+a_{1}(x-x_{0})$
+\end_inset
+
+ langsung berbentuk 
+\begin_inset Formula $a_{0}+a_{1}(x-x_{0})$
+\end_inset
+
+; 
+\begin_inset Formula $N_{2}(x)$
+\end_inset
+
+ langsung berbentuk 
+\begin_inset Formula $a_{0}+a_{1}(x-x_{0})+a_{2}(x-x_{0})(x-x_{1})$
+\end_inset
+
+; 
+\begin_inset Formula $N_{3}(x)$
+\end_inset
+
+ langsung berbentuk 
+\begin_inset Formula $a_{0}+a_{1}(x-x_{0})+a_{2}(x-x_{0})(x-x_{1})+a_{3}(x-x_{0})(x-x_{1})(x-x_{2})$
+\end_inset
+
+; dan seterusnya.
+ Hal ini menunjukkan bahwa bentuk paling praktis untuk 
+\begin_inset Formula $N_{n+1}$
+\end_inset
+
+, yang tidak memerlukan penyederhanaan, adalah
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+bentuk Newton
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+N_{n+1}(x)=a_{0}+a_{1}(x-x_{0})+a_{2}(x-x_{0})(x-x_{1})+\cdots+a_{n+1}(x-x_{0})\cdots(x-x_{n}).\label{eq:NewtonForm}
+\end{equation}
+
+\end_inset
+
+Jika dinyatakan dalam bentuk ini, besaran yang belum diketahui, 
+\begin_inset Formula $a_{n+1}$
+\end_inset
+
+, muncul sebagai koefisien suku 
+\begin_inset Formula $x^{n+1}$
+\end_inset
+
+.
+ Akibatnya, 
+\begin_inset Formula $a_{n+1}$
+\end_inset
+
+ 
+\shape italic
+berpotensi
+\shape default
+ menjadi koefisien utama 
+\begin_inset Formula $N_{n+1}$
+\end_inset
+
+.
+ Jika 
+\begin_inset Formula $a_{n+1}$
+\end_inset
+
+ bernilai nol, kita tidak menyebutnya koefisien utama.
+ Untuk memudahkan pembahasan selanjutnya, kita perkenalkan istilah berikut.
+ Untuk polinom interpolasi pada 
+\begin_inset Formula $k+1$
+\end_inset
+
+ titik, koefisien suku 
+\begin_inset Formula $x^{k}$
+\end_inset
+
+ disebut 
+\series bold
+koefisien utama potensial 
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+koefisien utama potensial
+\end_layout
+
+\end_inset
+
+(meskipun kebetulan bernilai nol).
+ Karena koefisien utama potensial ini merupakan inti masalah, kita memusatkan
+ perhatian pada penentuan koefisien utama potensial setiap polinom interpolasi.
+\end_layout
+
+\begin_layout Standard
+Di sinilah rumus rekursif
+\begin_inset Formula 
+\begin{eqnarray*}
+P_{i,m+1}(x) & = & \frac{(x-x_{i+m+1})P_{i,m}(x)-(x-x_{i})P_{i+1,m}(x)}{x_{i}-x_{i+m+1}}\\
+P_{i,0}(x) & = & f(x_{i})
+\end{eqnarray*}
+
+\end_inset
+
+yang digunakan untuk menyusun metode Neville menjadi berguna.
+ Karena 
+\begin_inset Formula $P_{i,m}$
+\end_inset
+
+ dan 
+\begin_inset Formula $P_{i+1,m}$
+\end_inset
+
+ sama-sama berderajat paling tinggi 
+\begin_inset Formula $m$
+\end_inset
+
+, koefisien utama potensialnya adalah koefisien suku 
+\begin_inset Formula $x^{m}$
+\end_inset
+
+ masing-masing.
+ Dengan demikian, koefisien suku 
+\begin_inset Formula $x^{m+1}$
+\end_inset
+
+ dari 
+\begin_inset Formula $(x-x_{i+m+1})P_{i,m}(x)$
+\end_inset
+
+ sama dengan koefisien utama potensial 
+\begin_inset Formula $P_{i,m}(x)$
+\end_inset
+
+, dan demikian pula koefisien suku 
+\begin_inset Formula $x^{m+1}$
+\end_inset
+
+ dari 
+\begin_inset Formula $(x-x_{i})P_{i+1,m}$
+\end_inset
+
+ sama dengan koefisien utama potensial 
+\begin_inset Formula $P_{i+1,m}$
+\end_inset
+
+.
+ Oleh karena itu, koefisien suku 
+\begin_inset Formula $x^{m+1}$
+\end_inset
+
+ dari 
+\begin_inset Formula $(x-x_{i+m+1})P_{i,m}(x)-(x-x_{i})P_{i+1,m}(x)$
+\end_inset
+
+ adalah selisih antara koefisien utama potensial 
+\begin_inset Formula $P_{i,m}$
+\end_inset
+
+ dan 
+\begin_inset Formula $P_{i+1,m}$
+\end_inset
+
+.
+ Untuk menyederhanakan pembahasan, kita gunakan notasi 
+\begin_inset Formula $f_{i,j}$
+\end_inset
+
+ untuk koefisien utama potensial 
+\begin_inset Formula $P_{i,j}$
+\end_inset
+
+.
+ Dengan demikian, koefisien suku 
+\begin_inset Formula $x^{m+1}$
+\end_inset
+
+ dari 
+\begin_inset Formula $(x-x_{i+m+1})P_{i,m}(x)-(x-x_{i})P_{i+1,m}(x)$
+\end_inset
+
+ hanyalah 
+\begin_inset Formula $f_{i,m}-f_{i+1,m}$
+\end_inset
+
+.
+ Jadi, koefisien utama potensial 
+\begin_inset Formula $f_{i,m+1}$
+\end_inset
+
+ dari 
+\begin_inset Formula $P_{i,m+1}$
+\end_inset
+
+ (yakni koefisien suku 
+\begin_inset Formula $x^{m+1}$
+\end_inset
+
+ dari 
+\begin_inset Formula $P_{i,m+1}$
+\end_inset
+
+) diberikan oleh
+\begin_inset Formula 
+\begin{eqnarray}
+f_{i,m+1} & = & \frac{f_{i,m}-f_{i+1,m}}{x_{i}-x_{i+m+1}}\label{eq:newtonRecursion}\\
+f_{i,0} & = & f(x_{i}).\nonumber 
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{digression}{Beda Terbagi}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Meskipun kita memilih notasi 
+\begin_inset Formula $f_{i,j}$
+\end_inset
+
+ untuk koefisien utama potensial 
+\begin_inset Formula $P_{i,j}$
+\end_inset
+
+, besaran ini jauh lebih lazim ditulis dengan notasi lengkap 
+\begin_inset Formula $f[x_{i},x_{i+1},\ldots,x_{i+j}]$
+\end_inset
+
+ dan disebut beda terbagi orde 
+\begin_inset Formula $j$
+\end_inset
+
+.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+beda terbagi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{digression}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Akhirnya, kita memperoleh rumus koefisien utama potensial yang menggunakan
+ kembali perhitungan sebelumnya.
+ Karena 
+\begin_inset Formula $N_{n+1}$
+\end_inset
+
+ dan 
+\begin_inset Formula $P_{0,n+1}$
+\end_inset
+
+ menginterpolasi kumpulan titik yang sama dan keduanya berderajat paling
+ tinggi 
+\begin_inset Formula $n+1$
+\end_inset
+
+, berdasarkan Teorema 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:interpolatingPolynomialUniqueness"
+
+\end_inset
+
+ keduanya sama.
+ Oleh karena itu, koefisien utama potensialnya, 
+\begin_inset Formula $a_{n+1}$
+\end_inset
+
+ dan 
+\begin_inset Formula $f_{0,n+1}$
+\end_inset
+
+, juga sama.
+ Dari rekursi 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:newtonRecursion"
+
+\end_inset
+
+, kita kemudian memperoleh 
+\begin_inset Formula $a_{n+1}=f_{0,n+1}=\frac{f_{0,n}-f_{1,n}}{x_{0}-x_{n+1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Perlu ditegaskan bahwa kita tidak menemukan polinom baru.
+ Kita hanya menemukan cara baru untuk menghitung polinom interpolasi yang
+ sama.
+ 
+\begin_inset Formula $N_{n}$
+\end_inset
+
+, 
+\begin_inset Formula $L_{n}$
+\end_inset
+
+, dan 
+\begin_inset Formula $P_{0,n}$
+\end_inset
+
+ semuanya menginterpolasi data yang sama dan semuanya berderajat paling tinggi
+ 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Oleh karena itu, berdasarkan Teorema 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:interpolatingPolynomialUniqueness"
+
+\end_inset
+
+ ketiganya sama.
+ Hanya bentuk penulisannya yang mungkin berbeda.
+ Bentuk polinom dalam Persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:NewtonForm"
+
+\end_inset
+
+ disebut bentuk Newton.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+bentuk Newton
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{digression}{Polinom Newton}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Biasanya, bentuk Newton 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+bentuk Newton
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+beda terbagi
+\end_layout
+
+\end_inset
+
+ dan beda terbagi disajikan sepenuhnya terpisah dari rumus rekursif Neville,
+ suatu pendekatan yang memerlukan jauh lebih banyak upaya untuk dikembangkan.
+ Namun, ada alasan untuk melakukannya.
+ Tidak menggunakan rumus Neville lebih mengikuti perkembangan historis bidang
+ ini, karena Newton (1643–1727) mendahului Neville (1889–1961) lebih dari
+ 200 tahun! Selain itu, mengikuti perkembangan historis secara lebih alami
+ mengarah pada kajian lanjutan tentang beda terbagi.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{digression}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "NewtonPolyExample"
+
+\end_inset
+
+Sebagai contoh, ambil polinom yang menginterpolasi 
+\begin_inset Formula $f(x)=e^{x}$
+\end_inset
+
+ pada 
+\begin_inset Formula $x=0,1,2$
+\end_inset
+
+, seperti yang kita lakukan dalam pembahasan metode Neville 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "NevillesMethodDiscussion"
+
+\end_inset
+
+.
+ 
+\begin_inset Formula $f_{0,0}=f(0)=1$
+\end_inset
+
+, 
+\begin_inset Formula $f_{1,0}=f(1)\approx2.718281828459045$
+\end_inset
+
+, dan 
+\begin_inset Formula $f_{2,0}=f(2)\approx7.38905609893065$
+\end_inset
+
+.
+ Jadi,
+\begin_inset Formula 
+\begin{eqnarray*}
+f_{0,1} & = & \frac{f_{0,0}-f_{1,0}}{x_{0}-x_{1}}=\frac{1-2.718281828459045}{0-1}\\
+ &  & \approx1.718281828459045\\
+f_{1,1} & = & \frac{f_{1,0}-f_{2,0}}{x_{1}-x_{2}}=\frac{2.718281828459045-7.38905609893065}{1-2}\\
+ & \approx & 4.670774270471606\\
+f_{0,2} & = & \frac{f_{0,1}-f_{1,1}}{x_{0}-x_{2}}=\frac{1.718281828459045-4.670774270471606}{0-2}\\
+ & \approx & 1.47624622100628.
+\end{eqnarray*}
+
+\end_inset
+
+Oleh karena itu, 
+\begin_inset Formula $N_{2}(x)=1+1.718281828459045(x)+1.47624622100628(x)(x-1)$
+\end_inset
+
+.
+ Nilai-nilai 
+\begin_inset Formula $f_{0,i}$
+\end_inset
+
+ merupakan koefisien 
+\begin_inset Formula $N_{n}$
+\end_inset
+
+.
+ Meskipun perhitungan ini dapat dilakukan tanpa tabel, paling praktis menabulasikan
+ nilai 
+\begin_inset Formula $f_{i,j}$
+\end_inset
+
+ saat nilai-nilai itu dihitung (seperti pada metode Neville).
+ Hal ini berlaku bagi manusia maupun komputer! Tabulasi perhitungan memudahkan
+ kita memahami rekursi dan membayangkan bagaimana proses ini dapat diotomatisasi.
+ Tabel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:NewtonPolyExample"
+
+\end_inset
+
+, yang disebut tabel beda terbagi,
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+beda terbagi
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hrule 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:NewtonPolyExample"
+
+\end_inset
+
+Contoh bentuk Newton: menghitung 
+\begin_inset Formula $N_{2}(x)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{i,0}=f(x_{i})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{i,1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{i,2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.718281828459045$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.47624622100628$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.718281828459045$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.670774270471606$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $7.38905609893065$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hrule 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ menunjukkan tabulasi tersebut.
+ Menambahkan satu titik data pada interpolasi semudah menghitung satu diagonal
+ koefisien tambahan (seperti pada metode Neville).
+\end_layout
+
+\begin_layout Subsection
+Metode Sidi 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Sidi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sekarang kita kembali membahas metode pencarian akar Sidi berderajat 
+\begin_inset Formula $k$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+x_{n+1}=x_{n}-\frac{g(x_{n})}{p'_{n,k}(x_{n})},
+\]
+
+\end_inset
+
+dengan 
+\begin_inset Formula $p_{n,k}$
+\end_inset
+
+ sebagai polinom interpolasi yang melalui titik-titik 
+\begin_inset Formula 
+\[
+(x_{n},g(x_{n})),(x_{n-1},g(x_{n-1})),\ldots,(x_{n-k},g(x_{n-k})).
+\]
+
+\end_inset
+
+Dalam bentuk Newtonnya,
+\begin_inset Formula 
+\[
+p_{n,k}(x)=g_{n,0}+g_{n-1,1}(x-x_{n})+g_{n-2,2}(x-x_{n})(x-x_{n-1})+\cdots+g_{n-k,k}(x-x_{n})\cdots(x-x_{n-k}),
+\]
+
+\end_inset
+
+sehingga
+\begin_inset Formula 
+\begin{equation}
+p_{n,k}'(x_{n})=g_{n-1,1}+g_{n-2,2}(x_{n}-x_{n-1})+\cdots+g_{n-k,k}(x_{n}-x_{n-1})\cdots(x_{n}-x_{n-k}).\label{eq:sidisDerivative}
+\end{equation}
+
+\end_inset
+
+Khususnya,
+\begin_inset Formula 
+\[
+p_{n,2}'(x_{n})=g_{n-1,1}+(x_{n}-x_{n-1})g_{n-2,2}
+\]
+
+\end_inset
+
+dan
+\begin_inset Formula 
+\[
+p_{n,3}'(x_{n})=g_{n-1,1}+(x_{n}-x_{n-1})g_{n-2,2}+(x_{n}-x_{n-1})(x_{n}-x_{n-2})g_{n-3,3}
+\]
+
+\end_inset
+
+, dan seterusnya.
+ Dalam bentuk hasil kali tersarang,
+\begin_inset Formula 
+\[
+p_{n,k}'(x_{n})=g_{n-1,1}+(x_{n}-x_{n-1})\left[g_{n-2,2}+(x_{n}-x_{n-2})\left[\cdots+(x_{n}-x_{n-k})\left[g_{n-k,k}\right]\cdots\right]\right].
+\]
+
+\end_inset
+
+Bentuk tersarang ini sangat efisien untuk diimplementasikan.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pseudocode} 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Sidi ! kode semu
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Asumsi: 
+\begin_inset Formula $g$
+\end_inset
+
+ dapat didiferensialkan 
+\begin_inset Formula $k$
+\end_inset
+
+ kali.
+\end_layout
+
+\begin_layout Description
+Masukan: Nilai awal 
+\begin_inset Formula $x_{0},x_{1},\ldots,x_{k}$
+\end_inset
+
+; entri diagonal 
+\begin_inset Formula $g_{k,0},g_{k-1,1},\ldots,g_{0,k}$
+\end_inset
+
+ dari tabel beda terbagi untuk 
+\begin_inset Formula $g$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+1: Tetapkan 
+\begin_inset Formula $s=g_{0,k}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+2: Untuk 
+\begin_inset Formula $i=1,2,\ldots,k-1$
+\end_inset
+
+, kerjakan Langkah 3:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+3: Tetapkan 
+\begin_inset Formula $s=(x_{k}-x_{i})s+g_{i,k-i}$
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+4: Tetapkan 
+\begin_inset Formula ${\displaystyle x_{k+1}=x_{k}-\frac{g_{k,0}}{s}}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Keluaran: Hampiran 
+\begin_inset Formula $x_{k+1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pseudocode} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Kode semu ini benar sejauh yang dikerjakannya, tetapi masih jauh dari lengkap.
+ Kekurangan yang paling jelas ialah kode tersebut hanya menjalankan satu
+ langkah metode Sidi.
+ Kekurangan yang kurang kentara ialah jenis maupun jumlah masukannya tidak
+ sama dengan keluarannya, sehingga pada akhir rutin komputer masih belum
+ siap menghitung iterasi berikutnya.
+ Yang kita peroleh dari rutin ini adalah 
+\begin_inset Formula $x_{k+1}$
+\end_inset
+
+.
+ Agar dapat menjalankannya lagi, kita memerlukan dua larik 
+\begin_inset Formula $x_{0},x_{1},\ldots,x_{k}$
+\end_inset
+
+ dan 
+\begin_inset Formula $g_{k,0},g_{k-1,1},\ldots,g_{0,k}$
+\end_inset
+
+.
+ Untuk menyiapkan larik-larik tersebut bagi iterasi berikutnya, kita harus
+ mengindeks ulang nilai 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+, lalu menghitung nilai baru 
+\begin_inset Formula $g_{i,k-i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pseudocode} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Asumsi: 
+\begin_inset Formula $g$
+\end_inset
+
+ dapat didiferensialkan 
+\begin_inset Formula $k$
+\end_inset
+
+ kali.
+\end_layout
+
+\begin_layout Description
+Masukan: Nilai awal 
+\begin_inset Formula $x_{0},x_{1},\ldots,x_{k}$
+\end_inset
+
+; entri diagonal 
+\begin_inset Formula $g_{k,0},g_{k-1,1},\ldots,g_{0,k}$
+\end_inset
+
+ dari tabel beda terbagi untuk 
+\begin_inset Formula $g$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+1: Tetapkan 
+\begin_inset Formula $x_{k+1}$
+\end_inset
+
+ menurut metode Sidi yang diterapkan pada 
+\begin_inset Formula $x_{0},x_{1},\ldots,x_{k}$
+\end_inset
+
+ dan 
+\begin_inset Formula $g_{k,0},g_{k-1,1},\ldots,g_{0,k}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+2: Tetapkan 
+\begin_inset Formula $g_{k+1,0}=g(x_{k+1})$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+3: Untuk 
+\begin_inset Formula $i=k,k-1,\ldots,1$
+\end_inset
+
+, lakukan Langkah 4:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+4: Tetapkan 
+\begin_inset Formula ${\displaystyle g_{i,k+1-i}=\frac{g_{i+1,k-i}-g_{i,k-i}}{x_{k+1}-x_{i}}}$
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Keluaran: Hampiran 
+\begin_inset Formula $x_{1},\ldots,x_{k+1}$
+\end_inset
+
+ dan entri diagonal 
+\begin_inset Formula $g_{k+1,0},g_{k,1},\ldots,g_{1,k}$
+\end_inset
+
+ yang bersesuaian dari tabel beda terbagi untuk 
+\begin_inset Formula $g$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pseudocode} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Kode semu baru ini, yang menggunakan kode semu sebelumnya pada langkah pertamanya,
+ merupakan suatu perbaikan.
+ Kini masukan dan keluarannya sama dalam jenis dan jumlah, sehingga keluaran
+ rutin ini dapat digunakan sebagai masukan bagi iterasi berikutnya.
+ Namun, rutin ini masih hanya menghitung satu langkah metode Sidi.
+ Selain itu, ada masalah lain yang selama ini kita abaikan.
+ Setiap rutin yang sejauh ini dituliskan dalam kode semu mengasumsikan bahwa
+ kita telah memiliki entri diagonal tabel beda terbagi yang bersesuaian.
+ Tidak baik jika pengguna kode harus memikirkan perincian ini.
+ Rutin yang kita tulis harus menyediakan nilai-nilai tersebut.
+ Bagaimanapun, pengguna akhir—orang yang berusaha mencari akar suatu fungsi—hanya
+ akan langsung memiliki fungsi itu dan sejumlah nilai awal.
+ Rutin tersebut harus menyediakan sisanya.
+ Akhirnya, kita menyajikan kode semu dengan semangat yang sama seperti metode-metode
+ pencarian akar lainnya.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pseudocode} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Asumsi: 
+\begin_inset Formula $g$
+\end_inset
+
+ memiliki akar di 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+; 
+\begin_inset Formula $g$
+\end_inset
+
+ dapat didiferensialkan 
+\begin_inset Formula $k$
+\end_inset
+
+ kali; 
+\begin_inset Formula $x_{0},x_{1},\ldots,x_{k}$
+\end_inset
+
+ cukup dekat dengan 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Masukan: Nilai awal 
+\begin_inset Formula $x_{0},x_{1},\ldots,x_{k}$
+\end_inset
+
+; fungsi 
+\begin_inset Formula $g$
+\end_inset
+
+; ketelitian yang diinginkan 
+\begin_inset Formula $tol$
+\end_inset
+
+; jumlah maksimum iterasi 
+\begin_inset Formula $N$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+1: Untuk 
+\begin_inset Formula $i=0,1,\ldots,k$
+\end_inset
+
+, lakukan Langkah 2:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+2: Tetapkan 
+\begin_inset Formula $g_{i,0}=g(x_{i})$
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+3: Untuk 
+\begin_inset Formula $j=1,2,\ldots,k$
+\end_inset
+
+, lakukan Langkah 4–5:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+4: Untuk 
+\begin_inset Formula $i=0,1,\ldots,k-j$
+\end_inset
+
+, lakukan Langkah 5:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+5: Tetapkan 
+\begin_inset Formula ${\displaystyle g_{i,j}=\frac{g_{i+1,j-1}-g_{i,j-1}}{x_{i+j}-x_{i}}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+6: Untuk 
+\begin_inset Formula $i=1\ldots N$
+\end_inset
+
+, lakukan Langkah 7–11:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+7: Hitung 
+\begin_inset Formula $x=x_{k+1}$
+\end_inset
+
+ menurut metode Sidi yang diterapkan pada 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $x_{0},x_{1},\ldots,x_{k}$
+\end_inset
+
+ dan 
+\begin_inset Formula $g_{k,0},g_{k-1,1},\ldots,g_{0,k}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+8: Jika 
+\begin_inset Formula $|x-x_{k}|\leq tol$
+\end_inset
+
+, maka kembalikan 
+\begin_inset Formula $x$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+9: Hitung 
+\begin_inset Formula $g_{k+1,0},g_{k,1},\ldots,g_{1,k}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+10: Tetapkan 
+\begin_inset Formula $x_{0}=x_{1}$
+\end_inset
+
+; 
+\begin_inset Formula $x_{1}=x_{2}$
+\end_inset
+
+; 
+\begin_inset Formula $\cdots$
+\end_inset
+
+ 
+\begin_inset Formula $x_{k-1}=x_{k}$
+\end_inset
+
+; 
+\begin_inset Formula $x_{k}=x$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+11: Tetapkan 
+\begin_inset Formula $g_{k,0}=g_{k+1,0}$
+\end_inset
+
+; 
+\begin_inset Formula $g_{k-1,1}=g_{k,1}$
+\end_inset
+
+; 
+\begin_inset Formula $\cdots$
+\end_inset
+
+ 
+\begin_inset Formula $g_{0,k}=g_{1,k}$
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+12: Cetak 
+\begin_inset Quotes eld
+\end_inset
+
+Metode gagal.
+ Jumlah maksimum iterasi terlampaui.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Keluaran: Hampiran 
+\begin_inset Formula $x$
+\end_inset
+
+ yang dekat dengan akar eksak atau pesan kegagalan.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pseudocode} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Selengkap apa pun kode semu terbaru ini, masih ada satu hal yang belum ditangani.
+ Kode tersebut memerlukan 
+\begin_inset Formula $k$
+\end_inset
+
+ nilai awal untuk menjalankan metode Sidi berderajat 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ Ketika kita menjumpai metode sekan, kita mencatat bahwa kebutuhan akan dua
+ nilai awal, bukan satu, merupakan kelemahan.
+ Kelemahan itu semakin besar dalam metode Sidi, yang memerlukan 
+\begin_inset Formula $k+1$
+\end_inset
+
+ nilai awal.
+ Namun, seperti pada metode sekan, kita dapat menghasilkan nilai awal secara
+ otomatis jika diperlukan.
+ Jika metode Sidi diberi satu nilai awal, 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+, dan kita berusaha mencari akar fungsi 
+\begin_inset Formula $g$
+\end_inset
+
+, kita dapat menetapkan 
+\begin_inset Formula $x_{1}=x_{0}+g(x_{0})$
+\end_inset
+
+, seperti yang dilakukan pada metode sekan.
+ Anda mungkin ingat bahwa cara ini tidak terlalu berhasil.
+ Metode sekan sering gagal konvergen dengan pemilihan kondisi awal tersebut.
+\end_layout
+
+\begin_layout Standard
+Jauh lebih sedikit yang diketahui tentang metode Sidi dan bagaimana pemilihan
+ nilai awal memengaruhi kekonvergenan.
+ Menganalisis praktik yang baik dan buruk dalam memilih nilai awal dapat
+ menjadi proyek yang menarik.
+ Bagaimanapun, jika Anda memiliki nilai awal 
+\begin_inset Formula $x_{0},x_{1},\ldots,x_{j}$
+\end_inset
+
+ dengan 
+\begin_inset Formula $1<j<k$
+\end_inset
+
+, 
+\begin_inset Formula $k+1-j$
+\end_inset
+
+ nilai awal yang tersisa dapat diperoleh dengan menggunakan metode Sidi berderajat
+ 
+\begin_inset Formula $j$
+\end_inset
+
+ (pada 
+\begin_inset Formula $x_{0},x_{1},\ldots,x_{j}$
+\end_inset
+
+) untuk memperoleh 
+\begin_inset Formula $x_{j+1}$
+\end_inset
+
+, kemudian menggunakan metode Sidi berderajat 
+\begin_inset Formula $j+1$
+\end_inset
+
+ (pada 
+\begin_inset Formula $x_{0},x_{1},\ldots,x_{j+1}$
+\end_inset
+
+) untuk memperoleh 
+\begin_inset Formula $x_{j+2}$
+\end_inset
+
+, lalu menggunakan metode Sidi berderajat 
+\begin_inset Formula $j+2$
+\end_inset
+
+ (pada 
+\begin_inset Formula $x_{0},x_{1},\ldots,x_{j+2}$
+\end_inset
+
+) untuk memperoleh 
+\begin_inset Formula $x_{j+3}$
+\end_inset
+
+, dan seterusnya hingga 
+\begin_inset Formula $x_{k}$
+\end_inset
+
+ dihitung.
+\end_layout
+
+\begin_layout Subsection
+Octave
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Sidi ! kode Octave
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Seperti halnya metode Neville, kode Octave mengikuti kode semunya secara
+ identik, kecuali bahwa indeks telah disesuaikan karena pengindeksan dimulai
+ dari 1, bukan 0.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+% Written by Dr.
+ Len Brin             1 April 2014 %
+\end_layout
+
+\begin_layout Plain Layout
+
+% Purpose: Implementation of Sidi's Method         %
+\end_layout
+
+\begin_layout Plain Layout
+
+% INPUT: function g; initial values x0,x1,...,xk;  %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        tolerance TOL; maximum number of          %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        iterations N                              %
+\end_layout
+
+\begin_layout Plain Layout
+
+% OUTPUT: approximation X and number of iterations %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        i; or message of failure                  %
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+function [X,j] = sidi(x, TOL, N, g)
+\end_layout
+
+\begin_layout Plain Layout
+
+  n=length(x);
+\end_layout
+
+\begin_layout Plain Layout
+
+  for i=1:n
+\end_layout
+
+\begin_layout Plain Layout
+
+    G(i,1)=g(x(i));
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%for
+\end_layout
+
+\begin_layout Plain Layout
+
+  for j=2:n
+\end_layout
+
+\begin_layout Plain Layout
+
+    for i=1:n+1-j
+\end_layout
+
+\begin_layout Plain Layout
+
+      G(i,j)=(G(i+1,j-1)-G(i,j-1))/(x(i+j-1)-x(i));
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%for
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%for
+\end_layout
+
+\begin_layout Plain Layout
+
+  for i=1:N
+\end_layout
+
+\begin_layout Plain Layout
+
+    s=G(1,n);
+\end_layout
+
+\begin_layout Plain Layout
+
+    for j=2:n-1
+\end_layout
+
+\begin_layout Plain Layout
+
+      s=(x(n)-x(j))*s+G(j,n+1-j);
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%for
+\end_layout
+
+\begin_layout Plain Layout
+
+    X=x(n)-G(n,1)/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (abs(X-x(n))<TOL)
+\end_layout
+
+\begin_layout Plain Layout
+
+      return
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+    G(n+1,1)=g(X);
+\end_layout
+
+\begin_layout Plain Layout
+
+    for j=n:-1:2
+\end_layout
+
+\begin_layout Plain Layout
+
+      G(j,n+2-j)=(G(j+1,n+1-j)-G(j,n+1-j))/(X-x(j));
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%for
+\end_layout
+
+\begin_layout Plain Layout
+
+    for j=1:n-1
+\end_layout
+
+\begin_layout Plain Layout
+
+      x(j)=x(j+1);
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%for
+\end_layout
+
+\begin_layout Plain Layout
+
+    x(n)=X;
+\end_layout
+
+\begin_layout Plain Layout
+
+    for j=1:n
+\end_layout
+
+\begin_layout Plain Layout
+
+      G(n+1-j,j)=G(n+2-j,j);
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%for
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%for
+\end_layout
+
+\begin_layout Plain Layout
+
+  X = "Method failed.
+ Maximum iterations exceeded.";
+\end_layout
+
+\begin_layout Plain Layout
+
+end%function
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\family typewriter
+sidi.m
+\family default
+ dapat diunduh dari 
+\begin_inset CommandInset href
+LatexCommand href
+name "situs pendamping"
+target "http://lqbrin.github.io/tea-time-numerical/ancillaries.html"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Beda terbagi lebih lanjut
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+beda terbagi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tabel beda terbagi umumnya dihitung untuk mencari koefisien satu polinom
+ interpolasi, dan hanya satu polinom interpolasi.
+ Namun, setiap tabel beda terbagi sarat dengan representasi berbagai polinom
+ interpolasi.
+ Salah satu keunggulan tabel beda terbagi ialah entrinya dapat digunakan
+ kembali apabila data baru ditambahkan.
+ Sifat yang sama dapat dipandang secara terbalik.
+ Misalkan Anda memiliki tabel beda terbagi yang dihitung dari 4 nilai data,
+ tetapi hanya tertarik pada polinom interpolasi berderajat paling tinggi
+ 2.
+ Tabel beda terbagi tersebut
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{0,0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{0,1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{0,2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{0,3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{1,0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{1,1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{1,2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{2,0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{2,1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{3,0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+sebenarnya memberi kita dua polinom interpolasi berbeda berderajat paling tinggi
+ dua, masing-masing dengan empat representasi! Pertama, tabel tersebut dirancang
+ untuk menghitung polinom interpolasi
+\begin_inset Formula 
+\[
+P_{3}(x)=f_{0,0}+f_{0,1}(x-x_{0})+f_{0,2}(x-x_{0})(x-x_{1})+f_{0,3}(x-x_{0})(x-x_{1})(x-x_{2}).
+\]
+
+\end_inset
+
+Perhatikan bahwa jika kita hanya menghapus suku 
+\begin_inset Formula $f_{0,3}(x-x_{0})(x-x_{1})(x-x_{2})$
+\end_inset
+
+ tersebut, kita masih memiliki polinom interpolasi dengan simpul 
+\begin_inset Formula $x_{0},x_{1},x_{2}$
+\end_inset
+
+.
+ Klaim ini dapat didukung setidaknya dengan dua cara.
+ Pertama, suku 
+\begin_inset Formula $f_{0,3}(x-x_{0})(x-x_{1})(x-x_{2})$
+\end_inset
+
+ bernilai 
+\begin_inset Formula $0$
+\end_inset
+
+ pada 
+\begin_inset Formula $x_{0},x_{1},x_{2}$
+\end_inset
+
+ sehingga tidak berkontribusi pada interpolasi di simpul 
+\begin_inset Formula $x_{0},x_{1},x_{2}$
+\end_inset
+
+.
+ Kedua, kita dapat 
+\begin_inset Quotes eld
+\end_inset
+
+merekayasa balik
+\begin_inset Quotes erd
+\end_inset
+
+ tabel itu dengan hanya menghapus diagonal paling bawah.
+ Tabel yang tersisa tetap merupakan tabel beda terbagi yang sah karena tidak
+ ada entri yang tersisa bergantung pada entri yang dihapus:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{0,0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{0,1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{0,2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{1,0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{1,1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{2,0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Jadi 
+\begin_inset Formula 
+\[
+P_{2}(x)=f_{0,0}+f_{0,1}(x-x_{0})+f_{0,2}(x-x_{0})(x-x_{1})
+\]
+
+\end_inset
+
+merupakan salah satu polinom interpolasi berderajat paling tinggi 2.
+ Menghapus baris teratas tabel juga menyisakan tabel beda terbagi yang sah:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{1,0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{1,1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{1,2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{2,0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{2,1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{3,0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+sehingga
+\begin_inset Formula 
+\[
+Q_{2}(x)=f_{1,0}+f_{1,1}(x-x_{1})+f_{1,2}(x-x_{1})(x-x_{2})
+\]
+
+\end_inset
+
+merupakan polinom interpolasi lain berderajat paling tinggi 2.
+ Perhatikan bahwa 
+\begin_inset Formula $P_{2}$
+\end_inset
+
+ dan 
+\begin_inset Formula $Q_{2}$
+\end_inset
+
+ bukan sekadar representasi berbeda dari polinom yang sama.
+ Keduanya adalah dua polinom yang berbeda! 
+\begin_inset Formula $P_{2}$
+\end_inset
+
+ menginterpolasi pada simpul 
+\begin_inset Formula $x_{0},x_{1},x_{2}$
+\end_inset
+
+ sedangkan 
+\begin_inset Formula $Q_{2}$
+\end_inset
+
+ menginterpolasi pada simpul 
+\begin_inset Formula $x_{1},x_{2},x_{3}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Diagonal paling bawah dari setiap tabel yang dipangkas juga memberikan polinom interpolasi berderajat
+ paling tinggi 2.
+ Ingat bahwa 
+\begin_inset Formula $f_{i,j}$
+\end_inset
+
+ menyatakan koefisien utama potensial polinom interpolasi pada simpul 
+\begin_inset Formula $x_{i},x_{i+1},\ldots,x_{i+j}$
+\end_inset
+
+.
+ Oleh karena itu, 
+\begin_inset Formula 
+\[
+\tilde{Q}_{2}(x)=f_{3,0}+f_{2,1}(x-x_{3})+f_{1,2}(x-x_{3})(x-x_{2})
+\]
+
+\end_inset
+
+menginterpolasi pada simpul 
+\begin_inset Formula $x_{3},x_{2},x_{1}$
+\end_inset
+
+ dan
+\begin_inset Formula 
+\[
+\tilde{P}_{2}(x)=f_{2,0}+f_{1,1}(x-x_{2})+f_{0,2}(x-x_{2})(x-x_{1})
+\]
+
+\end_inset
+
+menginterpolasi pada simpul 
+\begin_inset Formula $x_{2},x_{1},x_{0}$
+\end_inset
+
+.
+ Keduanya bukan polinom baru.
+ Keduanya merupakan representasi baru untuk 
+\begin_inset Formula $P_{2}$
+\end_inset
+
+ dan 
+\begin_inset Formula $Q_{2}$
+\end_inset
+
+.
+ Tepatnya, 
+\begin_inset Formula $\tilde{P}_{2}=P_{2}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\tilde{Q}_{2}=Q_{2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Ciri penting setiap representasi polinom interpolasi ini ialah bahwa setiap
+ koefisien berturut-turut bergantung pada semua simpul yang sama dengan koefisien
+ sebelumnya, ditambah satu simpul baru.
+ Sebagai contoh, 
+\begin_inset Formula $f_{2,0}$
+\end_inset
+
+ bergantung pada 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+, 
+\begin_inset Formula $f_{1,1}$
+\end_inset
+
+ bergantung pada 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ dan 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+, sedangkan 
+\begin_inset Formula $f_{0,2}$
+\end_inset
+
+ bergantung pada 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+, 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+, dan 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+.
+ Oleh karena itu, ketiga koefisien ini dapat digunakan untuk menghasilkan
+ polinom interpolasi pada simpul 
+\begin_inset Formula $x_{0},x_{1},x_{2}$
+\end_inset
+
+ dalam bentuk polinom 
+\begin_inset Formula $\tilde{P}_{2}$
+\end_inset
+
+ (yang, seperti telah kita catat, sama dengan 
+\begin_inset Formula $P_{2}$
+\end_inset
+
+).
+ Representasi lain untuk polinom yang sama dapat ditulis dengan menggunakan
+ 
+\begin_inset Formula $f_{1,0}$
+\end_inset
+
+ (yang bergantung pada 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+), 
+\begin_inset Formula $f_{0,1}$
+\end_inset
+
+ (yang bergantung pada 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ dan 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+), serta 
+\begin_inset Formula $f_{0,2}$
+\end_inset
+
+ (yang bergantung pada 
+\begin_inset Formula $x_{1},x_{0},x_{2}$
+\end_inset
+
+):
+\begin_inset Formula 
+\[
+\hat{P}_{2}(x)=f_{1,0}+f_{0,1}(x-x_{1})+f_{0,2}(x-x_{1})(x-x_{0})
+\]
+
+\end_inset
+
+sehingga memberikan representasi polinom yang menginterpolasi pada 
+\begin_inset Formula $x_{0},x_{1},x_{2}$
+\end_inset
+
+ (yang dengan demikian harus sama dengan 
+\begin_inset Formula $P_{2}$
+\end_inset
+
+).
+ Ada satu representasi lain dari 
+\begin_inset Formula $P_{2}$
+\end_inset
+
+ yang dapat diambil dari tabel beda terbagi semula.
+ Representasi itu berasal dari koefisien 
+\begin_inset Formula $f_{1,0},f_{1,1},f_{0,2}$
+\end_inset
+
+.
+ Dapatkah Anda menuliskannya? Jawaban 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "que:p2"
+
+\end_inset
+
+.
+ Ada dua representasi lain dari 
+\begin_inset Formula $Q_{2}$
+\end_inset
+
+ yang dapat diambil dari tabel beda terbagi semula.
+ Dapatkah Anda menuliskannya? Jawaban 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "que:q2"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{small}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Konsep Utama
+\end_layout
+
+\begin_layout Description
+Bentuk
+\begin_inset space ~
+\end_inset
+
+Newton
+\begin_inset space ~
+\end_inset
+
+untuk
+\begin_inset space ~
+\end_inset
+
+suatu
+\begin_inset space ~
+\end_inset
+
+polinom
+\begin_inset space ~
+\end_inset
+
+interpolasi: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+bentuk Newton
+\end_layout
+
+\end_inset
+
+Bentuk Newton, 
+\begin_inset Formula $N_{n}$
+\end_inset
+
+, dari polinom berderajat paling tinggi 
+\begin_inset Formula $n$
+\end_inset
+
+ yang menginterpolasi titik-titik 
+\begin_inset Formula $(x_{0},y_{0}),(x_{1},y_{1}),\ldots,(x_{n},y_{n})$
+\end_inset
+
+ adalah 
+\begin_inset Formula 
+\[
+N_{n}(x)=a_{0}+a_{1}(x-x_{i_{0}})+a_{2}(x-x_{i_{0}})(x-x_{i_{1}})+\cdots+a_{n}(x-x_{i_{0}})\cdots(x-x_{i_{n-1}})
+\]
+
+\end_inset
+
+untuk 
+\begin_inset Formula $n$
+\end_inset
+
+ indeks berbeda 
+\begin_inset Formula $i_{0},i_{1},\ldots,i_{n-1}$
+\end_inset
+
+ dari himpunan 
+\begin_inset Formula $\{0,1,2,\ldots,n\}$
+\end_inset
+
+.
+ Bentuk Newton untuk suatu kumpulan data tertentu tidak bersifat unik.
+\end_layout
+
+\begin_layout Description
+Koefisien
+\begin_inset space ~
+\end_inset
+
+utama
+\begin_inset space ~
+\end_inset
+
+potensial: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+koefisien utama potensial
+\end_layout
+
+\end_inset
+
+Untuk polinom interpolasi pada 
+\begin_inset Formula $k+1$
+\end_inset
+
+ titik, koefisien suku 
+\begin_inset Formula $x^{k}$
+\end_inset
+
+ disebut koefisien utama potensialnya.
+\end_layout
+
+\begin_layout Description
+Beda
+\begin_inset space ~
+\end_inset
+
+terbagi: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+beda terbagi
+\end_layout
+
+\end_inset
+
+Koefisien bentuk Newton dari suatu polinom interpolasi disebut beda terbagi.
+\end_layout
+
+\begin_layout Subsection
+Latihan
+\end_layout
+
+\begin_layout Enumerate
+Ubahlah kode semu metode Neville 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "NevillesMethodPseudoCode"
+
+\end_inset
+
+ agar menghasilkan kode semu untuk menghitung koefisien 
+\begin_inset Formula $N_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-newton-3"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Ubahlah kode Octave metode Neville 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "NevillesMethodOctaveCode"
+
+\end_inset
+
+ agar menghasilkan kode Octave untuk menghitung koefisien 
+\begin_inset Formula $N_{n}$
+\end_inset
+
+.
+ Ujilah kode tersebut dengan menghitung 
+\begin_inset Formula $N_{2}$
+\end_inset
+
+ yang menginterpolasi 
+\begin_inset Formula $f(x)=e^{x}$
+\end_inset
+
+ pada 
+\begin_inset Formula $x=0,1,2$
+\end_inset
+
+ dan membandingkan hasil Anda dengan hasil pada 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "NewtonPolyExample"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Misalkan 
+\begin_inset Formula $f(0.1)=0.12,\ f(0.2)=0.14,\ f(0.3)=0.13$
+\end_inset
+
+, dan 
+\begin_inset Formula $f(0.4)=0.15$
+\end_inset
+
+.
+ 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Carilah koefisien utama polinom berderajat terendah yang menginterpolasi
+ data tersebut.
+\end_layout
+
+\begin_layout Enumerate
+Misalkan juga bahwa 
+\begin_inset Formula $f(0.5)=0.11$
+\end_inset
+
+.
+ Gunakan hasil sebelumnya untuk mencari koefisien utama polinom berderajat
+ terendah yang menginterpolasi seluruh data.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-newton-4"
+
+\end_inset
+
+Carilah bentuk Newton dari polinom berderajat paling tinggi 3 yang menginterpolasi
+ titik-titik 
+\begin_inset Formula $(1,2)$
+\end_inset
+
+, 
+\begin_inset Formula $(2,2)$
+\end_inset
+
+, 
+\begin_inset Formula $(3,0)$
+\end_inset
+
+ dan 
+\begin_inset Formula $(4,0)$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-newton-5"
+
+\end_inset
+
+Gunakan metode beda terbagi untuk mencari polinom berderajat paling tinggi
+ dua yang menginterpolasi titik-titik 
+\begin_inset Formula $(0,10)$
+\end_inset
+
+, 
+\begin_inset Formula $(30,58)$
+\end_inset
+
+, 
+\begin_inset Formula $(1029,-32)$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-newton"
+
+\end_inset
+
+Gunakan beda terbagi untuk mencari polinom interpolasi bagi data
+ 
+\begin_inset Formula $f(1)=0.987$
+\end_inset
+
+, 
+\begin_inset Formula $f(2.2)=-0.123$
+\end_inset
+
+, dan 
+\begin_inset Formula $f(3)=0.432$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Buatlah tabel beda terbagi untuk data berikut hanya dengan menggunakan pensil
+ dan kertas.
+\begin_inset Formula 
+\[
+f(1.2)=2.2\quad f(1.4)=2.1\quad f(1.6)=2.3
+\]
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Apa polinom interpolasi berderajat paling tinggi 2 tersebut? Apakah derajatnya
+ benar-benar 2?
+\end_layout
+
+\begin_layout Enumerate
+Tuliskan dua polinom interpolasi linear yang berbeda untuk data ini berdasarkan
+ tabel Anda.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-newton-6"
+
+\end_inset
+
+Gunakan beda terbagi untuk mencari polinom berderajat paling tinggi tiga dari latihan
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:interpolation-lagrange-1"
+
+\end_inset
+
+ pada bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:polynomialLagrange"
+
+\end_inset
+
+.
+ Apakah derajatnya sesuai dengan yang diharapkan?
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-newton-2"
+
+\end_inset
+
+Carilah polinom interpolasi berderajat paling tinggi dua yang berbentuk 
+\begin_inset Formula 
+\[
+p_{n}(x)=a_{0}+a_{1}(x-x_{0})+a_{2}(x-x_{0})(x-x_{1})+\cdots+a_{n}(x-x_{0})(x-x_{1})\cdots(x-x_{n-1})
+\]
+
+\end_inset
+
+untuk data dalam tabel.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $i$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f(x_{i})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-newton-7"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Gunakan kode Octave dari soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:interpolation-newton-3"
+
+\end_inset
+
+ untuk menghitung polinom interpolasi berderajat paling tinggi empat bagi
+ data berikut:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-6.00000$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-5.89483$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-5.65014$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.6$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-5.17788$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-4.28172$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Kemudian tambahkan 
+\begin_inset Formula $f(1.1)=-3.9958$
+\end_inset
+
+ ke tabel dan hitung polinom interpolasi berderajat paling tinggi 5 dengan
+ menggunakan kalkulator.
+ Anda dapat menggunakan kode Octave untuk memeriksa pekerjaan Anda.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-newton-1"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Gunakan kode Octave dari soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:interpolation-newton-3"
+
+\end_inset
+
+ untuk mencari polinom interpolasi berderajat paling tinggi satu, dua, dan tiga
+ bagi data berikut.
+ Hampiri 
+\begin_inset Formula $f(8.4)$
+\end_inset
+
+ dengan menggunakan setiap polinom.
+\begin_inset Formula 
+\[
+\begin{gathered}f(8.1)=16.94410,\ f(8.3)=17.56492,\\
+f(8.6)=18.50515,\ f(8.7)=18.82091
+\end{gathered}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-newton-8"
+
+\end_inset
+
+Carilah batas galat penggunaan polinom interpolasi dari soal
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:interpolation-newton"
+
+\end_inset
+
+ untuk menghampiri 
+\begin_inset Formula $f(2)$
+\end_inset
+
+ dengan mengasumsikan bahwa semua turunan 
+\begin_inset Formula $f$
+\end_inset
+
+ dibatasi di antara 
+\begin_inset Formula $-2$
+\end_inset
+
+ dan 
+\begin_inset Formula $1$
+\end_inset
+
+ pada interval 
+\begin_inset Formula $[1,3]$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Mengenai polinom pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:interpolation-newton-2"
+
+\end_inset
+
+,
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+gunakan polinom tersebut untuk menghampiri 
+\begin_inset Formula $f(2.5)$
+\end_inset
+
+; dan
+\end_layout
+
+\begin_layout Enumerate
+dengan mengasumsikan 
+\begin_inset Formula $f\in C^{3}$
+\end_inset
+
+, carilah batas teoretis galat dalam menghampiri 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ pada interval 
+\begin_inset Formula $[2,4]$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-newton-9"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Carilah batas galat dalam bentuk 
+\begin_inset Formula $f^{(4)}(\xi_{8.4})$
+\end_inset
+
+ bagi hampiran 
+\begin_inset Formula $P_{3}(8.4)$
+\end_inset
+
+ pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:interpolation-newton-1"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Carilah batas galat dalam bentuk 
+\begin_inset Formula $f^{(4)}(x)$
+\end_inset
+
+ bagi hampiran 
+\begin_inset Formula $P_{3}(x)$
+\end_inset
+
+ pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:interpolation-newton-1"
+
+\end_inset
+
+ yang berlaku untuk setiap 
+\begin_inset Formula $x\in[8.1,8.7]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Misalkan 
+\begin_inset Formula $f^{(4)}(x)=x\cos x-e^{x}$
+\end_inset
+
+ untuk fungsi 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:interpolation-newton-1"
+
+\end_inset
+
+.
+ Gunakan informasi ini untuk mencari batas galat bagi hampiran 
+\begin_inset Formula $P_{3}(x)$
+\end_inset
+
+ yang berlaku untuk setiap 
+\begin_inset Formula $x\in[8.1,8.7]$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-newton-10"
+
+\end_inset
+
+Buck menumpahkan kopi pada tabel beda terbaginya sehingga beberapa angka menjadi tak terbaca.
+ Meskipun demikian, masih ada cukup informasi yang terbaca untuk mencari polinom
+ berderajat paling tinggi 3 yang menginterpolasi data tersebut.
+ Carilah polinom itu.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/interpolation-newton1.gif
+	lyxscale 35
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Tunjukkan bahwa polinom yang menginterpolasi data berikut berderajat 3.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="7">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $11$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $16$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $13$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-newton-11"
+
+\end_inset
+
+Untuk fungsi 
+\begin_inset Formula $f$
+\end_inset
+
+, rumus beda terbagi Newton memberikan polinom interpolasi
+\begin_inset Formula 
+\[
+N_{3}(x)=1+4x+4x(x-0.25)+\frac{16}{3}x(x-0.25)(x-0.5)
+\]
+
+\end_inset
+
+pada simpul 
+\begin_inset Formula $x_{0}=0$
+\end_inset
+
+, 
+\begin_inset Formula $x_{1}=0.25$
+\end_inset
+
+, 
+\begin_inset Formula $x_{2}=0.5$
+\end_inset
+
+, 
+\begin_inset Formula $x_{3}=0.75$
+\end_inset
+
+.
+ Carilah 
+\begin_inset Formula $f(0.75)$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-newton-12"
+
+\end_inset
+
+Pasangkan fungsi dengan diagram kekonvergenan metode Sidi dengan satu nilai awal.
+ Dalam setiap kasus, metode Sidi berderajat 
+\begin_inset Formula $6$
+\end_inset
+
+ digunakan.
+ Sumbu riil melewati pusat setiap diagram, sedangkan sumbu imajiner ditampilkan,
+ tetapi tidak selalu berada di tengah.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+f(x) & = & \sin x\\
+g(x) & = & \sin x-e^{-x}\\
+h(x) & = & e^{x}+2^{-x}+2\cos x-6\\
+l(x) & = & 56-152x+140x^{2}-17x^{3}-48x^{4}+9x^{5}
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(a)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(b)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/interpolation-newton2.png
+	lyxscale 50
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/interpolation-newton5.png
+	lyxscale 50
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(c)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(d)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/interpolation-newton4.png
+	lyxscale 50
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/interpolation-newton3.png
+	lyxscale 50
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:interpolation-newton-13"
+
+\end_inset
+
+Pasangkan fungsi dengan diagram kekonvergenan metode Sidi dengan satu nilai awal.
+ Sumbu riil melewati pusat setiap diagram, sedangkan sumbu imajiner ditampilkan,
+ tetapi tidak selalu berada di tengah.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+f(x) & = & x^{4}+2x^{2}+4\\
+g(x) & = & (x^{2})(\ln x)+(x-3)e^{x}\\
+h(x) & = & 1+2x+3x^{2}+4x^{3}+5x^{4}+6x^{5}\\
+l(x) & = & (\ln x)(x^{3}+1)
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(a)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(b)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/interpolation-newton8.png
+	lyxscale 50
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/interpolation-newton9.png
+	lyxscale 50
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(c)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(d)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/interpolation-newton6.png
+	lyxscale 50
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/interpolation-newton7.png
+	lyxscale 50
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Anda menemukan fungsi Octave berikut tanpa komentar (penulis fungsi itu patut
+ dicela!).
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+function ans = foo(x,y,x0)
+\end_layout
+
+\begin_layout Plain Layout
+
+  n = length(x);
+\end_layout
+
+\begin_layout Plain Layout
+
+  ans = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+  for i=1:n
+\end_layout
+
+\begin_layout Plain Layout
+
+    a=1;
+\end_layout
+
+\begin_layout Plain Layout
+
+    for j=1:n
+\end_layout
+
+\begin_layout Plain Layout
+
+      if (j==i)
+\end_layout
+
+\begin_layout Plain Layout
+
+        a=a*y(i);
+\end_layout
+
+\begin_layout Plain Layout
+
+      else
+\end_layout
+
+\begin_layout Plain Layout
+
+        a=a*(x0-x(j))/(x(i)-x(j));
+\end_layout
+
+\begin_layout Plain Layout
+
+      endif
+\end_layout
+
+\begin_layout Plain Layout
+
+    endfor
+\end_layout
+
+\begin_layout Plain Layout
+
+    ans=ans+a;
+\end_layout
+
+\begin_layout Plain Layout
+
+  endfor
+\end_layout
+
+\begin_layout Plain Layout
+
+endfunction
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Apa keluaran (
+\family typewriter
+ans
+\family default
+) dari perintah Octave
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family typewriter
+foo([1.1,1.2,1.3,1.4],[.78,.81,.79,.75],1.2)
+\family default
+ 
+\end_layout
+
+\begin_layout Standard
+dan mengapa?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{small}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Jawaban
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $P_{2}$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+dari
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $f_{1,0},f_{1,1},f_{0,2}$
+\end_inset
+
+: 
+\begin_inset CommandInset label
+LatexCommand label
+name "que:p2"
+
+\end_inset
+
+
+\begin_inset Formula $\overline{P}_{2}(x)=f_{1,0}+f_{1,1}(x-x_{1})+f_{0,2}(x-x_{1})(x-x_{2})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $Q_{2}$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+dua
+\begin_inset space ~
+\end_inset
+
+cara
+\begin_inset space ~
+\end_inset
+
+baru: 
+\begin_inset CommandInset label
+LatexCommand label
+name "que:q2"
+
+\end_inset
+
+
+\begin_inset Formula $\hat{Q}_{2}(x)=f_{2,0}+f_{1,1}(x-x_{2})+f_{1,2}(x-x_{2})(x-x_{1})$
+\end_inset
+
+ dan 
+\begin_inset Formula $\overline{Q}_{2}(x)=f_{2,0}+f_{2,1}(x-x_{2})+f_{1,2}(x-x_{2})(x-x_{3})$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

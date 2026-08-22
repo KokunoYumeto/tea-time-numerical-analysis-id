@@ -1,0 +1,83 @@
+{
+  "authority": {
+    "bytes": 3695,
+    "path": "authority/third_party/heun1900/ASSET_AUTHORITY.json",
+    "sha256": "39bbf79cebe96967dabde26b62faf51c55d6ed1b0376000b3b46bf615f79a2dd"
+  },
+  "file_kind": "asset_authority",
+  "file_order": 27001,
+  "recorded_date": "2026-08-22",
+  "records": {
+    "asset": {
+      "id": "urn:uuid:c34746a0-acc2-55d9-a22d-70c557bc544f",
+      "logical_path": "references/heun1900/00000036.png",
+      "media_type": "image/png",
+      "record_type": "asset",
+      "resource_id": "urn:uuid:8fbaf4c5-6316-5159-89b9-787aa115c0dc",
+      "rights_id": "urn:uuid:5602adce-6069-5b8f-b5b8-c8a3fe5762f4",
+      "schema_id": "ttna-asset-v1",
+      "schema_version": "1.0.0"
+    },
+    "asset_version": {
+      "acquisition_url": "https://images.sub.uni-goettingen.de/iiif/image/gdz:PPN599415665_0045:00000036/full/800,/0/default.png",
+      "asset_id": "urn:uuid:c34746a0-acc2-55d9-a22d-70c557bc544f",
+      "authority_path": "authority/third_party/heun1900/ASSET_AUTHORITY.json",
+      "edition_id": "urn:uuid:35b4350d-7202-5d47-8b85-5262d7ca441c",
+      "height_px": 1257,
+      "id": "urn:uuid:60ad7244-854b-55ab-8aa7-2c2addb0fe40",
+      "normalization_id": "binary-identity-v1",
+      "normalized_bytes": 1739261,
+      "normalized_sha256": "d34c3f99ae1740e9ac7f97bec473b44a3d28353ae503bda1c2bf55e4ee8999d7",
+      "provenance_master_bytes": 1532934,
+      "provenance_master_path": "authority/third_party/heun1900/PPN599415665_0045_00000036.tif",
+      "provenance_master_sha256": "62c98da75740382743dfa22b14ba408e81fb12575b0ce93da2874661e65df960",
+      "provenance_master_url": "https://gdz.sub.uni-goettingen.de/download/tiff/PPN599415665_0045/00000036.tif",
+      "record_type": "asset_version",
+      "resolution_dpi": 200,
+      "rights_id": "urn:uuid:5602adce-6069-5b8f-b5b8-c8a3fe5762f4",
+      "schema_id": "ttna-asset-version-v1",
+      "schema_version": "1.0.0",
+      "source_bytes": 1739261,
+      "source_path": "translation/lyx-id/references/heun1900/00000036.png",
+      "source_sha256": "d34c3f99ae1740e9ac7f97bec473b44a3d28353ae503bda1c2bf55e4ee8999d7",
+      "width_px": 800
+    },
+    "rights": {
+      "attribution": "Karl Heun, Neue Methode zur approximativen Integration der Differentialgleichungen einer unabhängigen Veränderlichen, Zeitschrift für Mathematik und Physik 45 (1900), p. 30; digitized by SUB Göttingen/GDZ, PPN599415665_0045, scan 00000036; Public Domain Mark 1.0.",
+      "authority_path": "authority/third_party/heun1900/ASSET_AUTHORITY.json",
+      "copyright_status": "public_domain",
+      "id": "urn:uuid:5602adce-6069-5b8f-b5b8-c8a3fe5762f4",
+      "institutional_evidence_url": "https://www.deutsche-digitale-bibliothek.de/item/5G33CMRMVBIFAAP3I2UDRHI3D3WMAHD2",
+      "institutional_rights_label": "Public Domain Mark 1.0 (PDM)",
+      "manifest_url": "https://gdz.sub.uni-goettingen.de/iiif/presentation/PPN599415665_0045/manifest",
+      "not_cc0": true,
+      "record_type": "rights",
+      "rights_statement": "Public Domain Mark 1.0 Universal",
+      "rights_uri": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "schema_id": "ttna-rights-v1",
+      "schema_version": "1.0.0",
+      "scope": "GDZ scan PPN599415665_0045/00000036 and its independently acquired release derivative",
+      "spdx_expression": "CC-PDM-1.0"
+    },
+    "version_of": {
+      "from_id": "urn:uuid:60ad7244-854b-55ab-8aa7-2c2addb0fe40",
+      "id": "urn:uuid:3b90425a-f4ea-5094-a1de-92558f30191c",
+      "record_type": "relation",
+      "relation": "version_of",
+      "schema_id": "ttna-relation-v1",
+      "schema_version": "1.0.0",
+      "to_id": "urn:uuid:c34746a0-acc2-55d9-a22d-70c557bc544f"
+    }
+  },
+  "schema_id": "ttna-asset-authority-map-v1",
+  "schema_version": "1.0.0",
+  "spdx_mapping": {
+    "authority_url": "https://spdx.org/licenses/CC-PDM-1.0.html",
+    "backend_expression": "CC-PDM-1.0",
+    "receipt_expression": "CC-PDM-1.0"
+  },
+  "stable_keys": {
+    "asset": "references/heun1900/00000036.png",
+    "rights": "CC-PDM-1.0|heun1900-scan-00000036"
+  }
+}

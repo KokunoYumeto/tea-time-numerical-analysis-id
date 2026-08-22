@@ -1,0 +1,122 @@
+{
+  "admission": {
+    "derivation_gate": "pass_byte_exact",
+    "identity_gate": "pass",
+    "redistribution_gate": "pass_unmodified_archive_and_exact_generated_file",
+    "rights_gate": "pass"
+  },
+  "archive": {
+    "bytes": 603432,
+    "members": [
+      {
+        "bytes": 1224,
+        "local_path": "authority/toolchain/cprotect-1.0f/package/cprotect/README",
+        "path": "cprotect/README",
+        "sha256": "e725197feed384eb724b3a37770adb70e508cca5be062066b94d3bc4a2897178"
+      },
+      {
+        "bytes": 37563,
+        "local_path": "authority/toolchain/cprotect-1.0f/package/cprotect/cprotect.dtx",
+        "path": "cprotect/cprotect.dtx",
+        "sha256": "202cb2bae2f2277ff71ec2d8c18ecc09f432a203e5ed27b47e123d80234138e2"
+      },
+      {
+        "bytes": 609244,
+        "local_path": "authority/toolchain/cprotect-1.0f/package/cprotect/cprotect.pdf",
+        "path": "cprotect/cprotect.pdf",
+        "sha256": "83541f4eb45df4974d677032d10bd93d806cd851e5c0980ec50465ff07a2c477"
+      }
+    ],
+    "path": "authority/toolchain/cprotect-1.0f/cprotect.zip",
+    "sha256": "4184cfa4df76ca53437a1ea4280db32d3954494cd3ad1f4b46630d2354f60c88",
+    "source_url": "https://mirrors.ctan.org/macros/latex/contrib/cprotect.zip"
+  },
+  "derivation": {
+    "command": [
+      "tex",
+      "-interaction=nonstopmode",
+      "-halt-on-error",
+      "cprotect.ins"
+    ],
+    "declared_by_path": "authority/toolchain/cprotect-1.0f/package/cprotect/README",
+    "declared_by_line_range": [
+      19,
+      30
+    ],
+    "input_paths": [
+      "authority/toolchain/cprotect-1.0f/package/cprotect/cprotect.dtx",
+      "authority/toolchain/cprotect-1.0f/package/cprotect/cprotect.ins"
+    ],
+    "output_path": "authority/toolchain/cprotect-1.0f/package/cprotect/cprotect.sty",
+    "verification": {
+      "byte_equal_to_checked_output": true,
+      "command_exit_code": 0,
+      "engine_identity": "MiKTeX-TeX 4.9 (MiKTeX 26.5)",
+      "output_bytes": 8953,
+      "output_sha256": "eafa24d80cff3bb804ed46af5f045d41d596f23c6d23e9cb7b01c15aa4efaef2",
+      "verified_date": "2026-08-22"
+    }
+  },
+  "license": {
+    "copyright": "Copyright (C) 2010-2011, 2026 by Bruno Le Floch",
+    "declared_grant": "LaTeX Project Public License version 1.3c or, at the recipient's option, any later version",
+    "evidence": [
+      {
+        "line_range": [
+          4,
+          5
+        ],
+        "path": "authority/toolchain/cprotect-1.0f/package/cprotect/README",
+        "sha256": "e725197feed384eb724b3a37770adb70e508cca5be062066b94d3bc4a2897178"
+      },
+      {
+        "line_range": [
+          63,
+          78
+        ],
+        "path": "authority/toolchain/cprotect-1.0f/package/cprotect/cprotect.dtx",
+        "sha256": "202cb2bae2f2277ff71ec2d8c18ecc09f432a203e5ed27b47e123d80234138e2"
+      }
+    ],
+    "maintenance_status": "maintained",
+    "maintainer": "Bruno Le Floch",
+    "redistribution_basis": {
+      "generated_style": "LPPL-1.3c clause 3 permits distribution of a Compiled Work generated from a complete unmodified copy when recipients can install it exactly as if they generated it themselves; the complete byte-exact CTAN archive is preserved alongside the byte-exact generated style.",
+      "unmodified_archive": "LPPL-1.3c clause 2 permits distribution of a complete, unmodified copy of the Work as received."
+    },
+    "spdx_authority_url": "https://spdx.org/licenses/LPPL-1.3c.html",
+    "spdx_expression": "LPPL-1.3c+",
+    "spdx_license_id": "LPPL-1.3c",
+    "spdx_or_later_encoding": "The SPDX unary + operator expresses this license version or any later version."
+  },
+  "package": {
+    "catalog_url": "https://ctan.org/pkg/cprotect",
+    "maintainer": "Bruno Le Floch",
+    "name": "cprotect",
+    "release_date": "2026-04-17",
+    "version": "1.0f"
+  },
+  "recorded_date": "2026-08-22",
+  "schema_id": "ttna-toolchain-authority-v1",
+  "schema_version": "1.0.0",
+  "work_files": [
+    {
+      "bytes": 37563,
+      "path": "authority/toolchain/cprotect-1.0f/package/cprotect/cprotect.dtx",
+      "role": "canonical_source",
+      "sha256": "202cb2bae2f2277ff71ec2d8c18ecc09f432a203e5ed27b47e123d80234138e2"
+    },
+    {
+      "bytes": 2313,
+      "path": "authority/toolchain/cprotect-1.0f/package/cprotect/cprotect.ins",
+      "role": "generated_installer",
+      "sha256": "b802810c7ef64bafce4184e98f12d86f19651d5953912a5f5bb44c5eb67d5784"
+    },
+    {
+      "bytes": 8953,
+      "path": "authority/toolchain/cprotect-1.0f/package/cprotect/cprotect.sty",
+      "role": "generated_installable_style",
+      "sha256": "eafa24d80cff3bb804ed46af5f045d41d596f23c6d23e9cb7b01c15aa4efaef2"
+    }
+  ]
+}

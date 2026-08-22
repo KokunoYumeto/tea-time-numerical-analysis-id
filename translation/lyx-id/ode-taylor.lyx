@@ -1,0 +1,4646 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+\input $HOME/Documents/textbook/preamble
+\end_preamble
+\use_default_options true
+\master TeaTimeNumericalAnalysis.lyx
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 4cm
+\topmargin 2.5cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 1
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Metode Taylor
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:TaylorMethods"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Taylor
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+metode ! Taylor|see {metode Taylor}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Solusi eksak bagi masalah nilai awal 
+\begin_inset Formula 
+\begin{eqnarray}
+\dot{y} & = & -\frac{y}{t}+t^{2}\nonumber \\
+y(4) & = & 20\label{eq:sampleODE}
+\end{eqnarray}
+
+\end_inset
+
+adalah 
+\begin_inset Formula $y(t)=\frac{t^{3}}{4}+\frac{16}{t}$
+\end_inset
+
+, 
+\begin_inset Formula $t>0$
+\end_inset
+
+, sebagaimana diverifikasi dalam latihan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:odePendulum-10"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "exc:odePendulum-10"
+
+\end_inset
+
+.
+ Untuk sementara, mari kita mencoba melupakan bahwa kita mengetahui solusi eksaknya,
+ dan mempelajari metode untuk mengaproksimasinya.
+ Kita akan mengingat kembali bahwa kita memiliki solusi eksak ketika tiba saatnya memeriksa
+ perkembangan aproksimasi tersebut.
+ Kondisi awal, 
+\begin_inset Formula $y(4)=20$
+\end_inset
+
+, berarti grafik solusi eksak melalui 
+\begin_inset Formula $(4,20)$
+\end_inset
+
+.
+ Alangkah baiknya memulai solusi aproksimasi---pada titik yang terletak
+ di grafik solusi eksak! Dengan demikian, aproksimasi tersebut dimulai dari
+ kondisi awal.
+ Ada banyak cara untuk melanjutkan dari sana.
+ Barangkali cara paling sederhana adalah menggunakan persamaan diferensial untuk menghitung
+ kemiringan eksak (turunan) dari 
+\begin_inset Formula $y$
+\end_inset
+
+ pada 
+\begin_inset Formula $(4,20)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{eqnarray*}
+\dot{y}(4) & = & -\frac{y(4)}{4}+4^{2}\\
+ & = & -\frac{20}{4}+4^{2}\\
+ & = & 11.
+\end{eqnarray*}
+
+\end_inset
+
+Anda dapat membayangkan grafik seperti itu dalam Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:numericalODE01"
+
+\end_inset
+
+.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:numericalODE01"
+
+\end_inset
+
+Memulai solusi numerik dengan kondisi awal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/ode-taylor01.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ Grafik tersebut merupakan grafik polinomial Taylor orde pertama yang dikembangkan di sekitar 
+\begin_inset Formula $t_{0}=4$
+\end_inset
+
+.
+ Menurut teorema Taylor, 
+\begin_inset Formula $y(t)=20+11(t-4)+\frac{\ddot{y}(\xi)}{2}(t-4)^{2}$
+\end_inset
+
+ untuk 
+\begin_inset Formula $t$
+\end_inset
+
+ di dekat 4 dan suatu 
+\begin_inset Formula $\xi$
+\end_inset
+
+, yang bergantung pada 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Jadi, 
+\begin_inset Formula $y(2)\approx T_{1}(2)=20+11(2-4)=-2$
+\end_inset
+
+ dan 
+\begin_inset Formula $y(5)\approx T_{1}(5)=20+11(5-4)=31$
+\end_inset
+
+ (selama 
+\begin_inset Formula $y$
+\end_inset
+
+ memiliki dua turunan pada selang terbuka yang memuat 
+\begin_inset Formula $[2,5]$
+\end_inset
+
+), dan seterusnya.
+ Seperti biasa, ada kekhawatiran mengenai seberapa baik aproksimasi ini.
+\end_layout
+
+\begin_layout Standard
+Dalam bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Composite"
+
+\end_inset
+
+, dua aproksimasi berbeda untuk bilangan yang sama digunakan untuk menaksir
+ galat dalam metode adaptif.
+ Pendekatan serupa dapat digunakan di sini.
+ Kita akan membandingkan aproksimasi yang diberikan oleh 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+ dan 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+.
+ Persamaan diferensial dapat digunakan untuk menghitung 
+\begin_inset Formula $\ddot{y}$
+\end_inset
+
+, dalam bentuk 
+\begin_inset Formula $y$
+\end_inset
+
+ dan 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Mendiferensialkan persamaan diferensial secara implisit menghasilkan
+\begin_inset Formula 
+\[
+\ddot{y}=-\frac{\dot{y}t-y}{t^{2}}+2t.
+\]
+
+\end_inset
+
+Namun 
+\begin_inset Formula $\dot{y}=-\frac{y}{t}+t^{2}$
+\end_inset
+
+, sehingga kita dapat menyubstitusikannya dan menyederhanakan bentuk 
+\begin_inset Formula $\ddot{y}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{eqnarray*}
+\ddot{y} & = & -\frac{(-\frac{y}{t}+t^{2})t-y}{t^{2}}+2t\\
+ & = & -\frac{-y+t^{3}-y}{t^{2}}+2t\\
+ & = & \frac{2y}{t^{2}}-\frac{t^{3}}{t^{2}}+2t\\
+ & = & \frac{2y}{t^{2}}+t.
+\end{eqnarray*}
+
+\end_inset
+
+Sekarang kita mengetahui 
+\begin_inset Formula $\ddot{y}(4)=\frac{2y(4)}{4^{2}}+4=\frac{2(20)}{16}+4=\frac{13}{2}$
+\end_inset
+
+, sehingga 
+\begin_inset Formula $T_{2}(t)=20+11(t-4)+\frac{13}{4}(t-4)^{2}$
+\end_inset
+
+.
+ Akhirnya, kita dapat membandingkan nilai 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+ dengan nilai yang bersesuaian dari 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+, seperti dalam Tabel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:ode-taylor1"
+
+\end_inset
+
+.
+ 
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:ode-taylor1"
+
+\end_inset
+
+Perbandingan aproksimasi polinomial orde pertama dan kedua
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T_{1}(t)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T_{2}(t)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+11
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+31
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $34.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $T_{1}(2)$
+\end_inset
+
+ dan 
+\begin_inset Formula $T_{2}(2)$
+\end_inset
+
+ sangat berbeda, sehingga kita harus menganggap bahwa kedua aproksimasi itu tidak dapat
+ dipercaya.
+ 
+\begin_inset Formula $T_{1}(5)$
+\end_inset
+
+ dan 
+\begin_inset Formula $T_{2}(5)$
+\end_inset
+
+ hanya berbeda sekitar 
+\begin_inset Formula $10\%$
+\end_inset
+
+, sehingga aproksimasi ini mungkin masuk akal.
+ Untuk semakin memperhalus aproksimasi 
+\begin_inset Formula $y(2)$
+\end_inset
+
+, kita dapat menghitung 
+\begin_inset Formula $T_{3}(2)$
+\end_inset
+
+ dan membandingkannya lagi.
+ Dapatkah Anda melakukannya? Jawaban 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "ans:T3of2"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Cara lain untuk mengaproksimasi 
+\begin_inset Formula $y(2)$
+\end_inset
+
+ adalah melakukannya sedikit lebih perlahan.
+ Kita dapat menggunakan kondisi awal untuk terlebih dahulu mengaproksimasi 
+\begin_inset Formula $y(3.75)$
+\end_inset
+
+.
+ Kemudian kita dapat menggunakan aproksimasi ini untuk mengaproksimasi 
+\begin_inset Formula $y(3.5)$
+\end_inset
+
+, yang selanjutnya dapat kita gunakan untuk mengaproksimasi 
+\begin_inset Formula $y(3.25)$
+\end_inset
+
+, dan seterusnya hingga akhirnya kita menggunakan aproksimasi 
+\begin_inset Formula $y(2.25)$
+\end_inset
+
+ untuk mengaproksimasi 
+\begin_inset Formula $y(2)$
+\end_inset
+
+.
+ Bagi kita manusia, melakukan semua perhitungan ini mungkin terasa menjengkelkan,
+ tetapi dengan sedikit kode Octave, beban itu diserahkan kepada mesin.
+ Kemampuan memahami proses ini dengan cukup baik untuk menulis kode Octave
+ itulah yang kini menjadi fokus.
+\end_layout
+
+\begin_layout Standard
+Kita mengetahui bahwa 
+\begin_inset Formula $y(4)=20$
+\end_inset
+
+ dan ingin mengaproksimasi 
+\begin_inset Formula $y(3.75)$
+\end_inset
+
+.
+ Karena selisih antara 
+\begin_inset Formula $4$
+\end_inset
+
+ dan 
+\begin_inset Formula $3.75$
+\end_inset
+
+ hanya 
+\begin_inset Formula $.25$
+\end_inset
+
+, penggunaan 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+ mungkin cukup akurat.
+ Dari sebelumnya, kita mengetahui bahwa polinomial Taylor yang dikembangkan di sekitar 
+\begin_inset Formula $t_{0}=4$
+\end_inset
+
+ adalah 
+\begin_inset Formula $T_{1}(t)=20+11(t-4)$
+\end_inset
+
+, sehingga 
+\begin_inset Formula $T_{1}(3.75)=20+11(-.25)=17.25$
+\end_inset
+
+.
+ Sekarang kita dapat menggunakan 
+\begin_inset Formula $y(3.75)=17.25$
+\end_inset
+
+ sebagai kondisi awal 
+\begin_inset Quotes eld
+\end_inset
+
+baru
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\begin_inset Formula $\dot{y}(3.75)=-\frac{17.25}{3.75}+3.75^{2}=9.4625$
+\end_inset
+
+.
+ Kita dapat menggunakan informasi ini untuk mengaproksimasi polinomial Taylor bagi 
+\begin_inset Formula $y$
+\end_inset
+
+ yang dikembangkan di sekitar 
+\begin_inset Formula $3.75$
+\end_inset
+
+: 
+\begin_inset Formula $T_{1}(t)\approx17.25+9.4625(t-3.75)$
+\end_inset
+
+, dan menggunakan pengembangan ini untuk mengaproksimasi 
+\begin_inset Formula $y(3.5)$
+\end_inset
+
+: 
+\begin_inset Formula $y(3.5)\approx T_{1}(3.5)\approx17.25+9.4625(3.5-3.75)=14.884375$
+\end_inset
+
+.
+ Selanjutnya, kita dapat menggunakan 
+\begin_inset Formula $y(3.5)=14.884375$
+\end_inset
+
+ sebagai kondisi awal, dengan mengaproksimasi polinomial Taylor bagi 
+\begin_inset Formula $y$
+\end_inset
+
+ yang dikembangkan di sekitar 
+\begin_inset Formula $3.5$
+\end_inset
+
+.
+ Melanjutkan cara ini menghasilkan hasil tabel dan grafik dalam Gambar
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Euler's method"
+
+\end_inset
+
+.
+ Dapatkah Anda mereproduksi hasil tersebut? Rincian 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "ans:details"
+
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Euler's method"
+
+\end_inset
+
+Perhitungan numerik berulang (dipotong hingga 5 tempat desimal)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $t_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y(t_{0})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $20$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.75$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $17.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $14.88437$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $12.88504$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $11.23557$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.75$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9.92187$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8.93323$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8.26406$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $7.91666$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisebox{-.5
+\backslash
+height}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/ode-taylor02.pdf
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Metode perhitungan berulang menghasilkan 
+\begin_inset Formula $y(2)\approx7.91$
+\end_inset
+
+, tetapi yang lebih penting, memperlihatkan algoritme untuk mengaproksimasi solusi
+ persamaan diferensial.
+ Dengan menyebut kondisi awal 
+\begin_inset Formula $(t_{0},y_{0})$
+\end_inset
+
+, dan titik-titik berikutnya 
+\begin_inset Formula $(t_{1},y_{1}),$
+\end_inset
+
+
+\begin_inset Formula $(t_{2},y_{2}),$
+\end_inset
+
+
+\begin_inset Formula $(t_{3},y_{3})\ldots$
+\end_inset
+
+, prosedur yang sama digunakan untuk menghitung 
+\begin_inset Formula $(t_{1},y_{1})$
+\end_inset
+
+ dari 
+\begin_inset Formula $(t_{0},y_{0})$
+\end_inset
+
+ seperti yang digunakan untuk menghitung 
+\begin_inset Formula $(t_{2},y_{2})$
+\end_inset
+
+ dari 
+\begin_inset Formula $(t_{1},y_{1})$
+\end_inset
+
+ seperti yang digunakan untuk menghitung 
+\begin_inset Formula $(t_{3},y_{3})$
+\end_inset
+
+ dari 
+\begin_inset Formula $(t_{2},y_{2})$
+\end_inset
+
+, dan seterusnya.
+ Kita tinggal menyatakan prosedur itu dalam suatu rumus.
+ Ringkasnya, prosedur tersebut menggunakan titik yang diberikan, sebutlah 
+\begin_inset Formula $(t_{i},y_{i})$
+\end_inset
+
+ untuk 
+\end_layout
+
+\begin_layout Enumerate
+menghitung 
+\begin_inset Formula $\dot{y}(t_{i},y_{i})$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+menggunakan ketiga nilai 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+, dan 
+\begin_inset Formula $\dot{y}(t_{i},y_{i})$
+\end_inset
+
+ untuk membentuk 
+\begin_inset Formula $T_{1}(t)$
+\end_inset
+
+ yang dikembangkan di sekitar 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+; dan akhirnya
+\end_layout
+
+\begin_layout Enumerate
+menetapkan 
+\begin_inset Formula $y_{i+1}=T_{1}(t_{i+1})$
+\end_inset
+
+, yang menghasilkan titik baru, 
+\begin_inset Formula $(t_{i+1},y_{i+1})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Namun 
+\begin_inset Formula $T_{1}(t_{i+1})=y_{i}+\dot{y}(t_{i},y_{i})\cdot(t_{i+1}-t_{i})$
+\end_inset
+
+, sehingga prosedur tersebut sebenarnya cukup dengan menetapkan
+\begin_inset Formula 
+\begin{equation}
+y_{i+1}=y_{i}+\dot{y}(t_{i},y_{i})\cdot(t_{i+1}-t_{i}).\label{eq:EulersMethodGeneral}
+\end{equation}
+
+\end_inset
+
+Metode yang menggunakan rumus 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:EulersMethodGeneral"
+
+\end_inset
+
+ berulang kali untuk menghitung barisan titik yang secara aproksimasi terletak pada kurva solusi
+ persamaan diferensial biasa paling sering disebut metode Euler.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "butcher"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Euler
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+metode ! Euler|see {metode Euler}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Metode ini juga dapat disebut metode Taylor berderajat 1 karena menggunakan
+ polinomial Taylor berderajat 1 pada setiap langkah.
+ Nilai 
+\begin_inset Formula $t_{i+1}-t_{i}$
+\end_inset
+
+ disebut ukuran langkah dan sering dibuat konstan, sehingga metode Euler lazim
+ ditulis sebagai
+\begin_inset Formula 
+\begin{equation}
+y_{i+1}=y_{i}+h\cdot\dot{y}(t_{i},y_{i})\label{eq:EulersMethodConstantStepSize}
+\end{equation}
+
+\end_inset
+
+dengan 
+\begin_inset Formula $h=t_{i+1}-t_{i}$
+\end_inset
+
+ adalah ukuran langkah konstan.
+ 
+\end_layout
+
+\begin_layout Subsection
+Metode Euler (kode semu)
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Euler ! kode semu
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sebagaimana lazimnya, metode Euler akan dikodekan dengan ukuran langkah konstan.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pseudocode} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Asumsi: Solusi PDB
+ ada dan tunggal pada selang dari 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ hingga 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Masukan: Persamaan diferensial 
+\begin_inset Formula $\dot{y}=f(t,y)$
+\end_inset
+
+; kondisi awal 
+\begin_inset Formula $y(t_{0})=y_{0}$
+\end_inset
+
+; bilangan 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+; jumlah langkah 
+\begin_inset Formula $N$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space \space{}
+\end_inset
+
+1: Tetapkan 
+\begin_inset Formula $t=t_{0}$
+\end_inset
+
+; 
+\begin_inset Formula $y=y_{0}$
+\end_inset
+
+; 
+\begin_inset Formula $h=(t_{1}-t_{0})/N$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+2: Untuk 
+\begin_inset Formula $j=1\ldots N$
+\end_inset
+
+ lakukan Langkah 3-4:
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+3: Tetapkan 
+\begin_inset Formula $y=y+hf(t,y)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+4: Tetapkan 
+\begin_inset Formula $t=t_{0}+\frac{i}{N}(t_{1}-t_{0})$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Keluaran: Nilai aproksimasi 
+\begin_inset Formula $y$
+\end_inset
+
+ bagi solusi pada 
+\begin_inset Formula $t=t_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pseudocode} 
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Metode Taylor Berderajat Lebih Tinggi
+\end_layout
+
+\begin_layout Standard
+Metode Taylor berderajat lebih tinggi jarang digunakan dalam praktik karena
+ memerlukan perhitungan turunan, suatu tugas yang tidak selalu mudah atau bahkan
+ mungkin dilakukan.
+ Meskipun demikian, mempertimbangkan metode berderajat lebih tinggi tidaklah jauh
+ dari apa yang telah kita lakukan.
+ Dengan menulis ulang langkah-langkah dalam enumerasi yang menghasilkan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:EulersMethodGeneral"
+
+\end_inset
+
+, metode Taylor berderajat tiga dapat diringkas sebagai
+\end_layout
+
+\begin_layout Enumerate
+hitung 
+\begin_inset Formula $\dot{y}(t_{i},y_{i})$
+\end_inset
+
+ 
+\color blue
+dan 
+\begin_inset Formula $\ddot{y}(t_{i},y_{i})$
+\end_inset
+
+ dan 
+\begin_inset Formula $\dddot{y}(t_{i},y_{i})$
+\end_inset
+
+
+\color inherit
+;
+\end_layout
+
+\begin_layout Enumerate
+gunakan 
+\strikeout on
+\color red
+tiga
+\strikeout default
+\color inherit
+ 
+\color blue
+lima
+\color inherit
+ nilai 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+, 
+\strikeout on
+\color red
+dan
+\strikeout default
+\color inherit
+ 
+\begin_inset Formula $\dot{y}(t_{i},y_{i})$
+\end_inset
+
+
+\color blue
+, 
+\begin_inset Formula $\ddot{y}(t_{i},y_{i})$
+\end_inset
+
+, dan 
+\begin_inset Formula $\dddot{y}(t_{i},y_{i})$
+\end_inset
+
+
+\color inherit
+ untuk membentuk 
+\strikeout on
+\color red
+
+\begin_inset Formula $T_{1}(t)$
+\end_inset
+
+
+\strikeout default
+\color inherit
+ 
+\color blue
+
+\begin_inset Formula $T_{3}(x)$
+\end_inset
+
+
+\color inherit
+ yang dikembangkan di sekitar 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+; dan akhirnya
+\end_layout
+
+\begin_layout Enumerate
+tetapkan 
+\strikeout on
+\color red
+
+\begin_inset Formula $y_{i+1}=T_{1}(t_{i+1})$
+\end_inset
+
+
+\strikeout default
+\color inherit
+ 
+\begin_inset Formula ${\color{blue}y_{i+1}=T_{3}(t_{i+1})}$
+\end_inset
+
+, yang menghasilkan titik baru, 
+\begin_inset Formula $(t_{i+1},y_{i+1})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Setelah ditulis tanpa semua penandaan, prosedurnya adalah
+\end_layout
+
+\begin_layout Enumerate
+hitung 
+\begin_inset Formula $\dot{y}(t_{i},y_{i})$
+\end_inset
+
+, 
+\begin_inset Formula $\ddot{y}(t_{i},y_{i})$
+\end_inset
+
+, dan 
+\begin_inset Formula $\dddot{y}(t_{i},y_{i})$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+gunakan kelima nilai 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $\dot{y}(t_{i},y_{i})$
+\end_inset
+
+, 
+\begin_inset Formula $\ddot{y}(t_{i},y_{i})$
+\end_inset
+
+, dan 
+\begin_inset Formula $\dddot{y}(t_{i},y_{i})$
+\end_inset
+
+ untuk membentuk 
+\begin_inset Formula $T_{3}(x)$
+\end_inset
+
+ yang dikembangkan di sekitar 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+; dan akhirnya
+\end_layout
+
+\begin_layout Enumerate
+tetapkan 
+\begin_inset Formula $y_{i+1}=T_{3}(t_{i+1})$
+\end_inset
+
+, yang menghasilkan titik baru, 
+\begin_inset Formula $(t_{i+1},y_{i+1})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Metode Taylor berderajat lebih tinggi memerlukan turunan berorde lebih tinggi pada langkah 1 dan
+ polinomial Taylor berderajat lebih tinggi pada langkah 2 dan 3.
+ Seperti yang dapat diduga, metode berderajat lebih tinggi umumnya lebih akurat
+ daripada metode berderajat lebih rendah selama rumus untuk 
+\begin_inset Formula $\dot{y}(t,y)$
+\end_inset
+
+ cukup mulus.
+ Untuk mengilustrasikan hal tersebut, sekarang kita membandingkan solusi hampiran untuk 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sampleODE"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Metode Taylor Berderajat 3 (Kode Semu)
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Taylor berderajat 3 ! kode semu
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Metode Taylor berderajat 3 akan dikodekan untuk ukuran langkah konstan.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pseudocode} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Asumsi: Solusi PDB
+ ada dan tunggal pada interval dari 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ hingga 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Masukan: Persamaan diferensial 
+\begin_inset Formula $\dot{y}=f(t,y)$
+\end_inset
+
+; rumus 
+\begin_inset Formula $\ddot{y}(t,y)$
+\end_inset
+
+ dan 
+\begin_inset Formula $\dddot{y}(t,y)$
+\end_inset
+
+; syarat awal 
+\begin_inset Formula $y(t_{0})=y_{0}$
+\end_inset
+
+; bilangan 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+; jumlah langkah 
+\begin_inset Formula $N$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space \space{}
+\end_inset
+
+1: Tetapkan 
+\begin_inset Formula $t=t_{0}$
+\end_inset
+
+; 
+\begin_inset Formula $y=y_{0}$
+\end_inset
+
+; 
+\begin_inset Formula $h=(t_{1}-t_{0})/N$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+2: Untuk 
+\begin_inset Formula $j=1\ldots N$
+\end_inset
+
+ lakukan Langkah 3-4:
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+3: Tetapkan 
+\begin_inset Formula $y=y+hf(t,y)+\frac{1}{2}h^{2}\ddot{y}(t,y)+\frac{1}{6}h^{3}\dddot{y}(t,y)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+4: Tetapkan 
+\begin_inset Formula $t=t_{0}+\frac{i}{N}(t_{1}-t_{0})$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Keluaran: Hampiran 
+\begin_inset Formula $y$
+\end_inset
+
+ untuk solusi pada 
+\begin_inset Formula $t=t_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pseudocode} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Dengan kode Octave yang didasarkan pada kode semu yang disajikan dalam bagian ini, Tabel
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:taylorApproximatingODE"
+
+\end_inset
+
+ merangkum solusi hampiran untuk 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sampleODE"
+
+\end_inset
+
+ dengan metode Euler dan metode Taylor berderajat 3 untuk menghampiri 
+\begin_inset Formula $y(2)$
+\end_inset
+
+.
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:taylorApproximatingODE"
+
+\end_inset
+
+Nilai hampiran 
+\begin_inset Formula $y(2)$
+\end_inset
+
+ yang diperoleh dengan menyelesaikan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sampleODE"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="7">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $h=0.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+galat
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $h=0.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+galat
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $h=0.125$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+galat
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Metode Euler
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $6.1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.9$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $7.91666$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.08333$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8.91911$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.08088$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Metode Taylor berderajat 3 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9.975765$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.024234$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9.996280$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.003719$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9.999485$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.000514$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Kini saat yang tepat untuk membahas galat metode Taylor.
+ Ingatlah bahwa polinomial Taylor berderajat 
+\begin_inset Formula $n$
+\end_inset
+
+ memiliki galat berorde 
+\begin_inset Formula $n+1$
+\end_inset
+
+, sehingga metode Euler menggunakan polinomial Taylor dengan galat berorde 2, sedangkan
+ metode Taylor berderajat 3 menggunakan polinomial Taylor dengan galat berorde 4.
+ Namun, bagaimana hal tersebut tercermin dalam suku galat 
+\shape italic
+metode Taylor
+\shape default
+? 
+\end_layout
+
+\begin_layout Standard
+Meskipun kita tidak akan menjawab pertanyaan ini sepenuhnya di sini, kita dapat memperoleh
+ gambaran tentang apa yang dapat diharapkan dari Tabel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:taylorApproximatingODE"
+
+\end_inset
+
+.
+ Dari baris metode Euler, kita melihat galat berkurang dari (kira-kira) 3.9
+ menjadi 2.08, lalu 1.08, ketika ukuran langkah diperkecil menjadi setengahnya.
+ Karena 
+\begin_inset Formula 
+\[
+\frac{2.08}{3.9}\approx\frac{1.08}{2.08}\approx\left(\frac{1}{2}\right)^{1},
+\]
+
+\end_inset
+
+kita menyimpulkan bahwa orde metode Euler adalah satu.
+ Dengan meninjau baris metode Taylor berderajat 3, kita melihat galat berkurang
+ dari sekitar 
+\begin_inset Formula $.024$
+\end_inset
+
+ menjadi 
+\begin_inset Formula $.0037$
+\end_inset
+
+ lalu 
+\begin_inset Formula $.00051$
+\end_inset
+
+ ketika ukuran langkah diperkecil menjadi setengahnya.
+ Karena
+\begin_inset Formula 
+\[
+\frac{.0037}{.024}\approx\frac{.00051}{.0037}\approx\frac{1}{8}=\left(\frac{1}{2}\right)^{3},
+\]
+
+\end_inset
+
+kita menyimpulkan bahwa orde metode Taylor berderajat 3 adalah 3.
+\end_layout
+
+\begin_layout Standard
+Perhatikan kemiripan antara pengamatan ini dan pengamatan yang kita buat
+ mengenai integrasi komposit.
+ Pada bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Composite"
+
+\end_inset
+
+, kita berpendapat bahwa orde suku galat untuk rumus integrasi komposit adalah
+ satu tingkat lebih rendah daripada orde penerapan tunggal rumus integrasi
+ yang mendasarinya.
+ Hal yang sama terjadi di sini.
+ Jika galat pemenggalan polinomial Taylor yang mendasarinya berorde
+ 
+\begin_inset Formula $n$
+\end_inset
+
+, metode penyelesai PDB yang bersesuaian
+ berorde 
+\begin_inset Formula $n-1$
+\end_inset
+
+, yaitu orde yang sama dengan derajat polinomial Taylor itu sendiri.
+\end_layout
+
+\begin_layout Subsection
+Mereduksi persamaan orde kedua menjadi sistem orde pertama 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+persamaan diferensial ! orde kedua
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Metode Taylor dan metode Runge-Kutta yang akan dibahas semuanya dirancang untuk
+ menangani persamaan diferensial orde pertama.
+ Namun, semua persamaan gerak yang telah kita turunkan merupakan persamaan diferensial
+ orde kedua.
+ Untuk mengatasi ketidaksesuaian ini, sebuah PDB orde kedua
+ dapat direduksi menjadi sistem orde pertama.
+ Gagasannya sederhana.
+ Misalkan 
+\begin_inset Formula $y$
+\end_inset
+
+ adalah variabel terikat dalam sebuah PDB orde kedua
+ dan kita memiliki persamaan berbentuk 
+\begin_inset Formula $y''=f(y',y,x)$
+\end_inset
+
+.
+ Kita memperkenalkan variabel bantu 
+\begin_inset Formula $u$
+\end_inset
+
+ dan menetapkan 
+\begin_inset Formula $u=y'$
+\end_inset
+
+.
+ Akibatnya, 
+\begin_inset Formula $u'=y''=f(y',y,x)=f(u,y,x)$
+\end_inset
+
+.
+ Dengan demikian, kita memperoleh sistem orde pertama
+\begin_inset Formula 
+\begin{eqnarray*}
+u' & = & f(u,y,x)\\
+y' & = & u
+\end{eqnarray*}
+
+\end_inset
+
+yang dapat diselesaikan dengan metode numerik untuk persamaan diferensial orde
+ pertama.
+ 
+\end_layout
+
+\begin_layout Standard
+Sebagai contoh, persamaan pendulum (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:pendulum"
+
+\end_inset
+
+) dapat disusun ulang menjadi 
+\begin_inset Formula $\ddot{\theta}=-\frac{c}{m}\dot{\theta}-\frac{g}{\ell}\sin\theta$
+\end_inset
+
+.
+ Jika kita menyubstitusikan variabel bantu 
+\begin_inset Formula $u=\dot{\theta}$
+\end_inset
+
+ ke dalam persamaan, persamaan tersebut menjadi 
+\begin_inset Formula $\dot{u}=-\frac{c}{m}u-\frac{g}{\ell}\sin\theta$
+\end_inset
+
+, dan sistem 
+\begin_inset Formula 
+\begin{eqnarray*}
+\dot{u} & = & -\frac{c}{m}u-\frac{g}{l}\sin\theta\\
+\dot{\theta} & = & u
+\end{eqnarray*}
+
+\end_inset
+
+ekuivalen dengan (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:pendulum"
+
+\end_inset
+
+).
+ Metode Euler, misalnya, dapat diterapkan pada sistem ini dengan cara
+ berikut:
+\begin_inset Formula 
+\begin{eqnarray*}
+u_{n+1} & = & u_{n}+h\left(-\frac{c}{m}u_{n}-\frac{g}{l}\sin\theta_{n}\right)\\
+\theta_{n+1} & = & \theta_{n}+hu_{n}\\
+t_{n+1} & = & t_{n}+h
+\end{eqnarray*}
+
+\end_inset
+
+dengan 
+\begin_inset Formula $u_{0},\theta_{0},$
+\end_inset
+
+ dan 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ diambil dari syarat awal.
+\end_layout
+
+\begin_layout Subsection
+Konsep Kunci
+\end_layout
+
+\begin_layout Description
+Metode
+\begin_inset space \space{}
+\end_inset
+
+Taylor: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Taylor
+\end_layout
+
+\end_inset
+
+Metode untuk menghampiri solusi sebuah PDB orde pertama
+ yang pada setiap langkah menggunakan polinomial Taylor dengan derajat yang telah ditentukan
+ untuk menghitung nilai berikutnya.
+\end_layout
+
+\begin_layout Description
+Metode
+\begin_inset space \space{}
+\end_inset
+
+Euler: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Euler
+\end_layout
+
+\end_inset
+
+Nama lain untuk metode Taylor orde pertama, dengan rumus 
+\begin_inset Formula $y_{i+1}=y_{i}+h\cdot\dot{y}(t_{i},y_{i})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+startexercises 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Latihan
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-taylor"
+
+\end_inset
+
+Gunakan metode Euler dengan ukuran langkah 
+\begin_inset Formula $h=0.5$
+\end_inset
+
+ untuk menghampiri 
+\begin_inset Formula $y(2)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-taylor-6"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{dy}{dx} & = & 3x-2y\\
+y(1) & = & 1
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{dy}{dx} & = & 3x^{3}-y\\
+y(1) & = & 3
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-taylor-7"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+\dot{y} & = & ty\\
+y(1) & = & 0.5
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-taylor-8"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+\cos(x)y'+\sin(x)y & = & 2\cos^{3}(x)\sin(x)-1\\
+y(1) & = & 0
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula 
+\begin{eqnarray*}
+7\dot{y}+3y & = & 5\\
+y(1) & = & 2
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-taylor-9"
+
+\end_inset
+
+Ulangi latihan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor"
+
+\end_inset
+
+ dengan menggunakan metode Taylor orde 2.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-taylor-10"
+
+\end_inset
+
+Ulangi latihan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor"
+
+\end_inset
+
+ dengan menggunakan metode Taylor orde 3.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-taylor-1"
+
+\end_inset
+
+Lakukan dua langkah metode Euler untuk menyelesaikan 
+\begin_inset Formula $\dot{y}=ty$
+\end_inset
+
+ dengan 
+\begin_inset Formula $y(1)=-0.5$
+\end_inset
+
+ dan 
+\begin_inset Formula $h=0.25$
+\end_inset
+
+, sehingga diperoleh aproksimasi 
+\begin_inset Formula $y(1.5)$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-taylor-11"
+
+\end_inset
+
+Tulislah kode semu untuk metode Taylor orde 2.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Tulislah kode semu untuk metode Taylor orde 4.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-taylor-2"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah fungsi Octave yang mengimplementasikan metode Euler.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-taylor-3"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah fungsi Octave yang mengimplementasikan metode Taylor berderajat 2.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-taylor-4"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah fungsi Octave yang mengimplementasikan metode Taylor berderajat 3.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-taylor-5"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah fungsi Octave yang mengimplementasikan metode Taylor berderajat 4.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-taylor-12"
+
+\end_inset
+
+Gunakan kode Anda dari latihan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor-3"
+
+\end_inset
+
+ untuk menghitung 
+\begin_inset Formula $y(2)$
+\end_inset
+
+ untuk PDB
+ pada 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor-6"
+
+\end_inset
+
+ dengan menggunakan 
+\begin_inset Formula $h=0.5,\ 0.25,\ 0.125,$
+\end_inset
+
+ dan 
+\begin_inset Formula $0.0625$
+\end_inset
+
+.
+ Gunakan hasil perhitungan Anda dan fakta bahwa nilai eksak dari 
+\begin_inset Formula $y(2)$
+\end_inset
+
+ adalah 
+\begin_inset Formula $\frac{9+e^{-2}}{4}$
+\end_inset
+
+ untuk memverifikasi bahwa metode Taylor berderajat 2 merupakan metode numerik orde 2.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Gunakan kode Anda dari latihan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor-4"
+
+\end_inset
+
+ untuk menghitung 
+\begin_inset Formula $y(2)$
+\end_inset
+
+ untuk PDB
+ pada 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor-6"
+
+\end_inset
+
+ dengan menggunakan 
+\begin_inset Formula $h=0.5,\ 0.25,\ 0.125,$
+\end_inset
+
+ dan 
+\begin_inset Formula $0.0625$
+\end_inset
+
+.
+ Gunakan hasil perhitungan Anda dan fakta bahwa nilai eksak dari 
+\begin_inset Formula $y(2)$
+\end_inset
+
+ adalah 
+\begin_inset Formula $\frac{9+e^{-2}}{4}$
+\end_inset
+
+ untuk memverifikasi bahwa metode Taylor berderajat 3 merupakan metode numerik orde 3.
+\end_layout
+
+\begin_layout Enumerate
+Gunakan kode Anda dari latihan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor-5"
+
+\end_inset
+
+ untuk menghitung 
+\begin_inset Formula $y(2)$
+\end_inset
+
+ untuk PDB
+ pada 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor-6"
+
+\end_inset
+
+ dengan menggunakan 
+\begin_inset Formula $h=0.5,\ 0.25,\ 0.125,$
+\end_inset
+
+ dan 
+\begin_inset Formula $0.0625$
+\end_inset
+
+.
+ Gunakan hasil perhitungan Anda dan fakta bahwa nilai eksak dari 
+\begin_inset Formula $y(2)$
+\end_inset
+
+ adalah 
+\begin_inset Formula $\frac{9+e^{-2}}{4}$
+\end_inset
+
+ untuk memverifikasi bahwa metode Taylor berderajat 4 merupakan metode numerik orde 4.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-taylor-13"
+
+\end_inset
+
+ Tuliskan persamaan gerak yang Anda turunkan dalam latihan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:odePendulum-34"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "exc:odePendulum-34"
+
+\end_inset
+
+ sebagai sistem orde pertama.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-taylor-21"
+
+\end_inset
+
+Dengan nilai parameter dan kondisi awal berikut untuk sistem yang dirujuk,
+ gunakan metode Euler dengan ukuran langkah 
+\begin_inset Formula $h=0.25$
+\end_inset
+
+ untuk menghitung 
+\begin_inset Formula $s(0.5)$
+\end_inset
+
+ atau 
+\begin_inset Formula $\theta(0.5)$
+\end_inset
+
+, sesuai dengan yang diperlukan.
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor-13"
+
+\end_inset
+
+a: 
+\begin_inset Formula $g=9.81$
+\end_inset
+
+ m/s
+\begin_inset Formula $^{2}$
+\end_inset
+
+; 
+\begin_inset Formula $\ell=.31$
+\end_inset
+
+ m; 
+\begin_inset Formula $\theta(0)=\frac{\pi}{3}$
+\end_inset
+
+; 
+\begin_inset Formula $\dot{\theta}(0)=0$
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor-13"
+
+\end_inset
+
+b: 
+\begin_inset Formula $g=32.2$
+\end_inset
+
+ ft/s
+\begin_inset Formula $^{2}$
+\end_inset
+
+; 
+\begin_inset Formula $\mu=.21$
+\end_inset
+
+; 
+\begin_inset Formula $\alpha=.25$
+\end_inset
+
+ rad; 
+\begin_inset Formula $s(0)=0$
+\end_inset
+
+; 
+\begin_inset Formula $\dot{s}(0)=.3$
+\end_inset
+
+ ft/s 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor-13"
+
+\end_inset
+
+c: 
+\begin_inset Formula $g=32.2$
+\end_inset
+
+ ft/s
+\begin_inset Formula $^{2}$
+\end_inset
+
+; 
+\begin_inset Formula $\mu=.21$
+\end_inset
+
+; 
+\begin_inset Formula $\alpha=.25$
+\end_inset
+
+ rad; 
+\begin_inset Formula $s(0)=0$
+\end_inset
+
+; 
+\begin_inset Formula $\dot{s}(0)=0$
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor-13"
+
+\end_inset
+
+d: 
+\begin_inset Formula $g=32.2$
+\end_inset
+
+ ft/s
+\begin_inset Formula $^{2}$
+\end_inset
+
+; 
+\begin_inset Formula $\mu=.21$
+\end_inset
+
+; 
+\begin_inset Formula $\alpha=.25$
+\end_inset
+
+ rad; 
+\begin_inset Formula $m=.19$
+\end_inset
+
+ lbm; 
+\begin_inset Formula $F_{applied}=15$
+\end_inset
+
+ lb; 
+\begin_inset Formula $s(0)=0$
+\end_inset
+
+; 
+\begin_inset Formula $\dot{s}(0)=1$
+\end_inset
+
+ ft/s
+\end_layout
+
+\begin_layout Description
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor-13"
+
+\end_inset
+
+e: 
+\begin_inset Formula $g=9.81$
+\end_inset
+
+ m/s
+\begin_inset Formula $^{2}$
+\end_inset
+
+; 
+\begin_inset Formula $\mu=.15$
+\end_inset
+
+; 
+\begin_inset Formula $m=35$
+\end_inset
+
+ kg; 
+\begin_inset Formula $F_{applied}=75$
+\end_inset
+
+ N; 
+\begin_inset Formula $s(0)=0$
+\end_inset
+
+; 
+\begin_inset Formula $\dot{s}(0)=.03$
+\end_inset
+
+ m/s 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor-13"
+
+\end_inset
+
+f: 
+\begin_inset Formula $g=9.81$
+\end_inset
+
+ m/s
+\begin_inset Formula $^{2}$
+\end_inset
+
+; 
+\begin_inset Formula $\mu=.15$
+\end_inset
+
+; 
+\begin_inset Formula $\beta=\frac{\pi}{10}$
+\end_inset
+
+ rad; 
+\begin_inset Formula $m=35$
+\end_inset
+
+ kg; 
+\begin_inset Formula $F_{applied}=75$
+\end_inset
+
+ N; 
+\begin_inset Formula $s(0)=0$
+\end_inset
+
+; 
+\begin_inset Formula $\dot{s}(0)=.03$
+\end_inset
+
+ m/s 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor-13"
+
+\end_inset
+
+g: 
+\begin_inset Formula $g=9.81$
+\end_inset
+
+ m/s
+\begin_inset Formula $^{2}$
+\end_inset
+
+; 
+\begin_inset Formula $\mu=.15$
+\end_inset
+
+; 
+\begin_inset Formula $\alpha=.05$
+\end_inset
+
+ rad; 
+\begin_inset Formula $\beta=\frac{\pi}{10}$
+\end_inset
+
+ rad; 
+\begin_inset Formula $m=35$
+\end_inset
+
+ kg; 
+\begin_inset Formula $F_{applied}=90$
+\end_inset
+
+ N; 
+\begin_inset Formula $s(0)=0$
+\end_inset
+
+; 
+\begin_inset Formula $\dot{s}(0)=.03$
+\end_inset
+
+ m/s 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor-13"
+
+\end_inset
+
+h: 
+\begin_inset Formula $g=32.2$
+\end_inset
+
+ ft/s
+\begin_inset Formula $^{2}$
+\end_inset
+
+; 
+\begin_inset Formula $\mu=.01$
+\end_inset
+
+; 
+\begin_inset Formula $s(0)=0$
+\end_inset
+
+; 
+\begin_inset Formula $\dot{s}(0)=30$
+\end_inset
+
+ ft/s 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor-13"
+
+\end_inset
+
+i: 
+\begin_inset Formula $g=32.2$
+\end_inset
+
+ ft/s
+\begin_inset Formula $^{2}$
+\end_inset
+
+; 
+\begin_inset Formula $\mu=.01$
+\end_inset
+
+; 
+\begin_inset Formula $\alpha=\frac{\pi}{6}$
+\end_inset
+
+ rad; 
+\begin_inset Formula $s(0)=0$
+\end_inset
+
+; 
+\begin_inset Formula $\dot{s}(0)=10$
+\end_inset
+
+ ft/s 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor-13"
+
+\end_inset
+
+j: 
+\begin_inset Formula $g=32.2$
+\end_inset
+
+ ft/s
+\begin_inset Formula $^{2}$
+\end_inset
+
+; 
+\begin_inset Formula $\mu=.003$
+\end_inset
+
+; 
+\begin_inset Formula $s(0)=0$
+\end_inset
+
+; 
+\begin_inset Formula $\dot{s}(0)=88$
+\end_inset
+
+ ft/s 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor-13"
+
+\end_inset
+
+k: 
+\begin_inset Formula $g=32.2$
+\end_inset
+
+ ft/s
+\begin_inset Formula $^{2}$
+\end_inset
+
+; 
+\begin_inset Formula $\mu=0$
+\end_inset
+
+; 
+\begin_inset Formula $s(0)=0$
+\end_inset
+
+; 
+\begin_inset Formula $\dot{s}(0)=88$
+\end_inset
+
+ ft/s
+\end_layout
+
+\begin_layout Description
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor-13"
+
+\end_inset
+
+l: 
+\begin_inset Formula $g=9.81$
+\end_inset
+
+ m/s
+\begin_inset Formula $^{2}$
+\end_inset
+
+; 
+\begin_inset Formula $c=4.5$
+\end_inset
+
+; 
+\begin_inset Formula $m=70$
+\end_inset
+
+ kg; 
+\begin_inset Formula $s(0)=10000$
+\end_inset
+
+; 
+\begin_inset Formula $\dot{s}(0)=-10$
+\end_inset
+
+ m/s 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor-13"
+
+\end_inset
+
+m: 
+\begin_inset Formula $g=9.81$
+\end_inset
+
+ m/s
+\begin_inset Formula $^{2}$
+\end_inset
+
+; 
+\begin_inset Formula $c=26$
+\end_inset
+
+; 
+\begin_inset Formula $m=70$
+\end_inset
+
+ kg; 
+\begin_inset Formula $s(0)=2000$
+\end_inset
+
+; 
+\begin_inset Formula $\dot{s}(0)=-55$
+\end_inset
+
+ m/s 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Tentukan rumus untuk sudut ketika sebuah balok diam pada bidang
+ miring (yang sudut kemiringannya terus bertambah) mulai bergerak.
+\end_layout
+
+\begin_layout Enumerate
+Tentukan rumus untuk sudut ketika sebuah balok yang bergerak menuruni bidang miring
+ (yang sudut kemiringannya terus berkurang) berhenti bergerak.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Koefisien Tak Tentu.
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+koefisien tak tentu
+\end_layout
+
+\end_inset
+
+ Untuk setiap persamaan diferensial, diusulkan sebuah solusi dengan koefisien
+ tak tentu.
+ Tentukan nilai koefisien yang membuat solusi usulan tersebut benar-benar menjadi
+ solusi.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-taylor-14"
+
+\end_inset
+
+
+\begin_inset Formula $y''+5y'-8y=3x^{2}$
+\end_inset
+
+; 
+\begin_inset Formula $y(x)=Ax^{2}+Bx+C$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $2y'''-5y''+3y'+5y=x+1;$
+\end_inset
+
+ 
+\begin_inset Formula $y(x)=Ax+B$
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $y(x)=\frac{1}{5}x+\frac{2}{25}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-taylor-15"
+
+\end_inset
+
+
+\begin_inset Formula $3y'+2y=3x+2$
+\end_inset
+
+; 
+\begin_inset Formula $y(x)=Ax+B$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-taylor-16"
+
+\end_inset
+
+
+\begin_inset Formula $y''-14y'+7y=2x^{2}+3x-1$
+\end_inset
+
+; 
+\begin_inset Formula $y(x)=Ax^{2}+Bx+C$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-taylor-17"
+
+\end_inset
+
+
+\begin_inset Formula $2\dot{y}+y=t^{4}+1$
+\end_inset
+
+; 
+\begin_inset Formula $y(t)=A+Bt+Ct^{2}+Dt^{3}+Et^{4}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\ddot{x}+2\dot{x}-x=1+te^{t}$
+\end_inset
+
+; 
+\begin_inset Formula $x(t)=Ate^{t}+Be^{t}+C$
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The answer is 
+\begin_inset Formula $x(t)=\frac{1}{2}te^{t}-e^{t}-1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-taylor-20"
+
+\end_inset
+
+
+\begin_inset Formula $\dot{\theta}-\theta=e^{-t}\sin t$
+\end_inset
+
+; 
+\begin_inset Formula $\theta(t)=Ae^{-t}\sin t+Be^{-t}\cos t$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-taylor-18"
+
+\end_inset
+
+
+\begin_inset Formula $\ddot{\theta}+\frac{1}{10}\dot{\theta}+\theta=t\cos t$
+\end_inset
+
+; 
+\begin_inset Formula $\theta(t)=At\cos t+Bt\sin t+C\cos t+D\sin t$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-taylor-19"
+
+\end_inset
+
+
+\begin_inset Formula $\ddot{x}-2\dot{x}-35x=e^{7t}+1$
+\end_inset
+
+; 
+\begin_inset Formula $x(t)=Ate^{7t}+Be^{7t}+C$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Add discussion and examples of integrating factors? separation of
+ variables?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+finishexercises 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Jawaban
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $T_{3}(2)$
+\end_inset
+
+: 
+\begin_inset CommandInset label
+LatexCommand label
+name "ans:T3of2"
+
+\end_inset
+
+Mulailah dengan menghitung 
+\begin_inset Formula $\dddot{y}=\frac{d}{dt}\ddot{y}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{eqnarray*}
+\dddot{y} & = & \frac{d}{dt}\left(\frac{2y}{t^{2}}+t\right)\\
+ & = & \frac{2\dot{y}t^{2}-4ty}{t^{4}}+1\\
+ & = & \frac{2\left(-\frac{y}{t}+t^{2}\right)t^{2}-4ty}{t^{4}}+1\\
+ & = & \frac{-2ty+2t^{4}-4ty}{t^{4}}+1\\
+ & = & \frac{-6y}{t^{3}}+3
+\end{eqnarray*}
+
+\end_inset
+
+sehingga 
+\begin_inset Formula $\dddot{y}(4)=\frac{-6(20)}{4^{3}}+3=3-\frac{120}{64}=\frac{9}{8}$
+\end_inset
+
+.
+ Oleh karena itu, 
+\begin_inset Formula $T_{3}(t)=20+11(t-4)+\frac{13}{4}(t-4)^{2}+\frac{3}{16}(t-4)^{3}$
+\end_inset
+
+, dan 
+\begin_inset Formula $T_{3}(2)=9.5$
+\end_inset
+
+ sehingga nilainya dekat dengan 
+\begin_inset Formula $T_{2}(2)=11$
+\end_inset
+
+.
+ Kita mulai dapat menduga bahwa 
+\begin_inset Formula $y(2)$
+\end_inset
+
+ kira-kira bernilai 
+\begin_inset Formula $9.5$
+\end_inset
+
+ atau 
+\begin_inset Formula $11$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Rincian: 
+\begin_inset Formula $\ $
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "ans:details"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $t_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y(t_{0})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\dot{y}(t_{0})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T_{1}$
+\end_inset
+
+ dikembangkan di sekitar 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T_{1}(t_{0}-.25)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $20$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $11$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $20+11(t-4)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $17.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.75$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $17.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9.4625$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $17.25+9.4625(t-3.75)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $14.88437$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $14.88437$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $7.99732$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $14.88437+7.99732(t-3.5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $12.88504$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $12.88504$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $6.59787$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $12.88504+6.59787(t-3.25)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $11.23557$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $11.23557$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5.25480$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $11.23557+5.25480(t-3)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9.92187$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.75$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9.92187$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.95454$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9.92187+3.95454(t-2.75)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8.93323$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8.93323$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.67670$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8.93323+2.67670(t-2.5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8.26406$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8.26406$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.38958$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8.26406+1.38958(t-2.25)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $7.91666$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $7.91666$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

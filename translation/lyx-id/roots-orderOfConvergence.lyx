@@ -1,0 +1,6717 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\input $HOME/Documents/textbook/preamble
+\end_preamble
+\use_default_options true
+\master ../scsu/Book-Numerical/TeaTimeNumericalAnalysis.lyx
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 4cm
+\topmargin 2.5cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 1
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:fixedptOrder"
+
+\end_inset
+
+Orde Kekonvergenan untuk Iterasi Titik Tetap 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode iterasi titik tetap ! analisis
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Misalkan 
+\begin_inset Formula $f$
+\end_inset
+
+ adalah fungsi dengan titik tetap 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+ dan 
+\begin_inset Formula $f'(\hat{x})$
+\end_inset
+
+ ada.
+ Misalkan 
+\begin_inset Formula $x_{0},x_{1},x_{2},\ldots$
+\end_inset
+
+ merupakan barisan yang diperoleh dari iterasi titik tetap (
+\begin_inset Formula $x_{k+1}=f(x_{k})$
+\end_inset
+
+ untuk semua 
+\begin_inset Formula $k\geq1$
+\end_inset
+
+) sedemikian sehingga 
+\begin_inset Formula ${\displaystyle \lim_{k\to\infty}x_{k}=\hat{x}}$
+\end_inset
+
+ dan 
+\begin_inset Formula $x_{k}\neq\hat{x}$
+\end_inset
+
+ untuk semua 
+\begin_inset Formula $k=0,1,2,\ldots$
+\end_inset
+
+.
+ Maka
+\begin_inset Formula 
+\[
+\frac{\left|x_{n+1}-\hat{x}\right|}{\left|x_{n}-\hat{x}\right|^{1}}=\left|\frac{f(x_{n})-f(\hat{x})}{x_{n}-\hat{x}}\right|
+\]
+
+\end_inset
+
+dan
+\begin_inset Formula 
+\begin{equation}
+\lim_{n\to\infty}\left|\frac{f(x_{n})-f(\hat{x})}{x_{n}-\hat{x}}\right|=|f'(\hat{x})|.\label{eq:fixedPtOrder}
+\end{equation}
+
+\end_inset
+
+Oleh karena itu, iterasi titik tetap konvergen secara linear selama 
+\begin_inset Formula $f'(\hat{x})\neq0$
+\end_inset
+
+.
+ Proposisi berikut dapat disajikan sebagai korolari dari Teorema
+ Kekonvergenan Titik Tetap karena sebagian besar argumennya sekadar mengulangi hal
+ yang telah dikemukakan di sana, tetapi kita memilih menyajikannya sebagai pernyataan terpisah berdasarkan
+ persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:fixedPtOrder"
+
+\end_inset
+
+.
+ Lebih tepatnya, kita memperoleh hasil berikut.
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:fixedPointErrorBound"
+
+\end_inset
+
+(Batas Galat Titik Tetap) 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Teorema ! Batas Galat Titik Tetap
+\end_layout
+
+\end_inset
+
+ 
+\shape italic
+Misalkan 
+\begin_inset Formula $f$
+\end_inset
+
+ adalah fungsi terdiferensialkan dengan titik tetap 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+ dan misalkan 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+ merupakan interval yang memuat 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+.
+ Jika 
+\begin_inset Formula $|f'(x)|\leq M<1$
+\end_inset
+
+ untuk semua 
+\begin_inset Formula $x\in[a,b]$
+\end_inset
+
+ dan 
+\begin_inset Formula $f([a,b])\subseteq[a,b]$
+\end_inset
+
+, maka untuk sembarang nilai awal 
+\begin_inset Formula $x_{0}\in[a,b]$
+\end_inset
+
+, iterasi titik tetap, dengan 
+\begin_inset Formula $x_{k+1}=f(x_{k})$
+\end_inset
+
+ untuk semua 
+\begin_inset Formula $k\geq0$
+\end_inset
+
+, memberikan hampiran bagi 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+ dengan galat absolut tidak lebih dari 
+\begin_inset Formula $M^{k}|x_{0}-\hat{x}|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Bukti induksi elementer (yang diminta dalam latihan) akan menunjukkan
+ bahwa 
+\begin_inset Formula $x_{k}\in[a,b]$
+\end_inset
+
+ untuk semua 
+\begin_inset Formula $k\geq0$
+\end_inset
+
+.
+ Selanjutnya kita buktikan batas galat tersebut.
+ Galat absolut ketika menghampiri 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+ dengan 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ adalah 
+\begin_inset Formula $|x_{0}-\hat{x}|=M^{0}|x_{0}-\hat{x}|$
+\end_inset
+
+ sehingga pernyataan tersebut benar untuk 
+\begin_inset Formula $k=0$
+\end_inset
+
+.
+ Sekarang misalkan pernyataan itu benar untuk suatu nilai tertentu tetapi sembarang 
+\begin_inset Formula $k\geq0$
+\end_inset
+
+.
+ Berdasarkan teorema nilai rata-rata, terdapat 
+\begin_inset Formula $c$
+\end_inset
+
+ dalam interval antara 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+ dan 
+\begin_inset Formula $x_{k}$
+\end_inset
+
+ sedemikian sehingga 
+\begin_inset Formula $f'(c)=\frac{f(x_{k})-f(\hat{x})}{x_{k}-\hat{x}}$
+\end_inset
+
+.
+ Karena 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+ dan 
+\begin_inset Formula $x_{k}$
+\end_inset
+
+ keduanya berada di 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+, demikian pula 
+\begin_inset Formula $c$
+\end_inset
+
+.
+ Akibatnya, 
+\begin_inset Formula $|f'(c)|\leq M$
+\end_inset
+
+, sehingga 
+\begin_inset Formula $|f(x_{k})-f(\hat{x})|\leq M|x_{k}-\hat{x}|$
+\end_inset
+
+.
+ Namun, 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+ adalah titik tetap dari 
+\begin_inset Formula $f$
+\end_inset
+
+, sehingga 
+\begin_inset Formula $f(\hat{x})=\hat{x}$
+\end_inset
+
+, dari sini diperoleh 
+\begin_inset Formula $|f(x_{k})-\hat{x}|\leq M|x_{k}-\hat{x}|$
+\end_inset
+
+, dan oleh karena itu 
+\begin_inset Formula $|x_{k+1}-\hat{x}|\leq M|x_{k}-\hat{x}|$
+\end_inset
+
+.
+ Berdasarkan hipotesis induksi, 
+\begin_inset Formula $|x_{k}-\hat{x}|\leq M^{k}|x_{0}-\hat{x}|$
+\end_inset
+
+, sehingga 
+\begin_inset Formula $|x_{k+1}-\hat{x}|\leq M\cdot M^{k}|x_{0}-\hat{x}|=M^{k+1}|x_{0}-\hat{x}|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Ketika 
+\begin_inset Formula $f'(\hat{x})=0$
+\end_inset
+
+, persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:fixedPtOrder"
+
+\end_inset
+
+ menunjukkan bahwa iterasi titik tetap tidak konvergen secara linear.
+ Untuk setiap barisan 
+\begin_inset Formula $\langle p_{n}\rangle$
+\end_inset
+
+ yang konvergen ke 
+\begin_inset Formula $p$
+\end_inset
+
+, jika 
+\begin_inset Formula $\lim_{n\to\infty}\frac{|p_{n+1}-p|}{|p_{n}-p|}=0$
+\end_inset
+
+ kita mengatakan bahwa barisan tersebut konvergen secara superlinear 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+kekonvergenan ! superlinear
+\end_layout
+
+\end_inset
+
+ atau bahwa kekonvergenannya lebih cepat daripada linear.
+\end_layout
+
+\begin_layout Standard
+Perhatikan fungsi 
+\begin_inset Formula $f(x)=\frac{1}{8}x^{3}-x^{2}+2x+1$
+\end_inset
+
+ dan 
+\begin_inset Formula $f_{1}(x)=-x^{3}+5x^{2}-3x-6$
+\end_inset
+
+ dari bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Fixedpt"
+
+\end_inset
+
+.
+ Ingat bahwa 
+\begin_inset Formula $2$
+\end_inset
+
+ adalah titik tetap dari 
+\begin_inset Formula $f$
+\end_inset
+
+ dan 
+\begin_inset Formula $3$
+\end_inset
+
+ adalah titik tetap dari 
+\begin_inset Formula $f_{1}$
+\end_inset
+
+ serta perhatikan bahwa 
+\begin_inset Formula $f'(2)=\frac{3}{8}\cdot2^{2}-2\cdot2+2=-\frac{1}{2}$
+\end_inset
+
+ dan 
+\begin_inset Formula $f_{1}'(3)=-3\cdot3^{2}+10\cdot3-3=0$
+\end_inset
+
+ Akibatnya, kita mengharapkan iterasi titik tetap untuk 
+\begin_inset Formula $f_{1}$
+\end_inset
+
+ konvergen ke 3 lebih cepat daripada iterasi 
+\begin_inset Formula $f$
+\end_inset
+
+ konvergen ke 2.
+ Dengan 
+\begin_inset Formula $s_{0},s_{1},s_{2},\ldots=1.75,f(1.75),f(f(1.75)),\ldots$
+\end_inset
+
+ dan 
+\begin_inset Formula $t_{0},t_{1},t_{2},\ldots=2.75,f_{1}(2.75),f_{1}(f_{1}(2.75)),\ldots$
+\end_inset
+
+, tabel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:fixedPointOrderComparison"
+
+\end_inset
+
+ 
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hrule 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:fixedPointOrderComparison"
+
+\end_inset
+
+Membandingkan orde kekonvergenan iterasi titik tetap ketika turunan
+ pada titik tetap tidak nol (
+\begin_inset Formula $s_{n}$
+\end_inset
+
+) dengan ketika turunan pada titik tetap bernilai nol (
+\begin_inset Formula $t_{n}$
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="12" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $n$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $|2-s_{n}|$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $|3-t_{n}|$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.5(10)^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.5(10)^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.074(10)^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.343(10)^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5.644(10)^{-2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.068(10)^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.740(10)^{-2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.623(10)^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.388(10)^{-2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.010(10)^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $6.894(10)^{-3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.984(10)^{-2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.459(10)^{-3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $6.286(10)^{-3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.726(10)^{-3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.578(10)^{-4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8.640(10)^{-4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9.966(10)^{-8}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.318(10)^{-4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.973(10)^{-14}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.159(10)^{-4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $6.317(10)^{-27}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hrule 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+menunjukkan perbandingan laju kekonvergenannya.
+ 
+\begin_inset Formula $\langle s_{n}\rangle$
+\end_inset
+
+ konvergen secara linear seperti yang diharapkan, sedangkan 
+\begin_inset Formula $\langle t_{n}\rangle$
+\end_inset
+
+ tampaknya konvergen secara kuadratik.
+ Empat eksponen terakhir pada kolom 
+\begin_inset Formula $|3-t_{n}|$
+\end_inset
+
+ adalah 
+\begin_inset Formula $-4,-8,-14,-27$
+\end_inset
+
+, yang menunjukkan bahwa banyaknya angka signifikan dalam akurasi kira-kira
+ berlipat dua pada setiap iterasi.
+ Dengan kata lain, galat suatu suku kira-kira merupakan kuadrat galat suku sebelumnya
+ (artinya 
+\begin_inset Formula $\alpha=2$
+\end_inset
+
+ dalam definisi orde kekonvergenan).
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "FixedPointIterationConvergesQuadratically"
+
+\end_inset
+
+Teorema Taylor akan memberikan bukti yang kita perlukan bahwa kekonvergenan ini memang
+ kuadratik.
+ Misalkan 
+\begin_inset Formula $f$
+\end_inset
+
+ memiliki turunan ketiga dalam suatu lingkungan 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+.
+ Definisikan 
+\begin_inset Formula $e_{n}=\hat{x}-x_{n}$
+\end_inset
+
+.
+ Maka, menurut teorema Taylor, 
+\begin_inset Formula $\hat{x}=f(\hat{x})=f(x_{n}+e_{n})=f(x_{n})+e_{n}f'(x_{n})+\frac{1}{2}e_{n}^{2}f''(x_{n})+O(e_{n}^{3})$
+\end_inset
+
+.
+ Namun, 
+\begin_inset Formula $f(x_{n})=x_{n+1}$
+\end_inset
+
+ sehingga kita peroleh
+\begin_inset Formula 
+\begin{equation}
+\hat{x}-x_{n+1}=e_{n+1}=e_{n}f'(x_{n})+\frac{1}{2}e_{n}^{2}f''(x_{n})+O(e_{n}^{3}).\label{eq:fixedptIsQuadratic1}
+\end{equation}
+
+\end_inset
+
+Juga menurut teorema Taylor, 
+\begin_inset Formula $f'(\hat{x})=f'(x_{n}+e_{n})=f'(x_{n})+e_{n}f''(x_{n})+O(e_{n}^{2})$
+\end_inset
+
+.
+ Namun, 
+\begin_inset Formula $f'(\hat{x})=0$
+\end_inset
+
+ sehingga
+\begin_inset Formula 
+\begin{equation}
+f'(x_{n})=-e_{n}f''(x_{n})-O(e_{n}^{2}).\label{eq:fixedptIsQuadratic2}
+\end{equation}
+
+\end_inset
+
+Dengan menyubstitusikan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:fixedptIsQuadratic2"
+
+\end_inset
+
+ ke dalam 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:fixedptIsQuadratic1"
+
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{eqnarray*}
+e_{n+1} & = & e_{n}(-e_{n}f''(x_{n})-O(e_{n}^{2}))+\frac{1}{2}e_{n}^{2}f''(x_{n})+O(e_{n}^{3})\\
+ & = & -\frac{1}{2}e_{n}^{2}f''(x_{n})+O(e_{n}^{3}).
+\end{eqnarray*}
+
+\end_inset
+
+Jadi, 
+\begin_inset Formula $\frac{\hat{x}-x_{n+1}}{(\hat{x}-x_{n})^{2}}=\frac{e_{n+1}}{e_{n}^{2}}=-\frac{1}{2}f''(x_{n})+O(e_{n})$
+\end_inset
+
+ dan
+\begin_inset Formula 
+\[
+\lim_{n\to\infty}\frac{|\hat{x}-x_{n+1}|}{|\hat{x}-x_{n}|^{2}}=\lim_{n\to\infty}\left|\frac{1}{2}f''(x_{n})+O(e_{n})\right|=\left|\frac{1}{2}f''(\hat{x})\right|,
+\]
+
+\end_inset
+
+yang menunjukkan bahwa kekonvergenannya setidaknya kuadratik.
+ Jika 
+\begin_inset Formula $f''(\hat{x})$
+\end_inset
+
+ kebetulan bernilai 0, kekonvergenannya menjadi superkuadratik.
+\end_layout
+
+\begin_layout Standard
+Ringkasnya, jika secara kebetulan pada suatu titik tetap 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+, 
+\begin_inset Formula $f'(\hat{x})=0$
+\end_inset
+
+, iterasi titik tetap berhasil dan cepat untuk nilai awal di dekat 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+.
+ Namun, ketika 
+\begin_inset Formula $f'(\hat{x})\neq0$
+\end_inset
+
+, iterasi titik tetap mungkin gagal konvergen ke 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+, dan ketika konvergen, kekonvergenannya lambat.
+ Akan tetapi, ada perbaikan cepat (cepat diterapkan, bukan cepat dijelaskan) untuk sebagian
+ kekurangan ini ketika 
+\begin_inset Formula $f'(\hat{x})\neq0$
+\end_inset
+
+.
+ Pertama-tama, kita akan berfokus pada kecepatan kekonvergenan.
+\end_layout
+
+\begin_layout Standard
+Misalkan barisan 
+\begin_inset Formula $\langle c_{n}\rangle$
+\end_inset
+
+ didefinisikan oleh
+\begin_inset Formula 
+\begin{eqnarray*}
+c_{0} & = & 1\\
+c_{k} & = & \cos(c_{k-1}),\quad k>0.
+\end{eqnarray*}
+
+\end_inset
+
+Anda seharusnya dapat memverifikasi bahwa beberapa suku pertama barisan ini adalah
+ (secara hampiran)
+\begin_inset Formula 
+\[
+1,.5403,.8575,.6542,.7934,\ldots
+\]
+
+\end_inset
+
+Ini tepat merupakan barisan yang Anda buat dalam eksperimen kalkulator 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "sec:Fixedpt"
+
+\end_inset
+
+ pada bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Fixedpt"
+
+\end_inset
+
+.
+ Definisikan barisan baru 
+\begin_inset Formula $\langle a_{n}\rangle$
+\end_inset
+
+ dengan
+\begin_inset Formula 
+\[
+a_{n}=c_{n}-\frac{(c_{n+1}-c_{n})^{2}}{c_{n+2}-2c_{n+1}+c_{n}}.
+\]
+
+\end_inset
+
+Tabel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:deltaSquaredAcceleration"
+
+\end_inset
+
+ 
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hrule 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:deltaSquaredAcceleration"
+
+\end_inset
+
+Mempercepat kekonvergenan suatu barisan yang konvergen secara linear.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="7">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $n$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $c_{n}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a_{n}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $|c_{n}-c|$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $|a_{n}-c|$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left|\frac{a_{n}-c}{c_{n}-c}\right|$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{\left|a_{n+1}-c\right|}{\left|a_{n}-c\right|^{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.728010$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.609(10)^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.107(10)^{-2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.0934$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.0110$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.5403$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.733665$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.987(10)^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5.419(10)^{-3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.0639$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $44.19$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.8575$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.736906$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.184(10)^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.178(10)^{-3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.0400$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $74.17$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.6542$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.738050$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8.479(10)^{-2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.034(10)^{-3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.0274$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $217.9$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.7934$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.738636$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5.439(10)^{-2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.490(10)^{-4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.0180$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $419.4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.7103$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.738876$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.771(10)^{-2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.085(10)^{-4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.0122$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1034$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.7639$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.738992$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.487(10)^{-2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9.289(10)^{-5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.0081$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.7221$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.7504$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hrule 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ menunjukkan beberapa suku pertama kedua barisan beserta sejumlah analisis galat.
+ Seperti yang dijanjikan, barisan 
+\begin_inset Formula $\langle a_{n}\rangle$
+\end_inset
+
+ konvergen lebih cepat daripada 
+\begin_inset Formula $\langle c_{n}\rangle$
+\end_inset
+
+, sebagaimana ditunjukkan oleh fakta bahwa 
+\begin_inset Formula $\left|\frac{a_{n}-c}{c_{n}-c}\right|$
+\end_inset
+
+ menuju nol.
+ Namun, kolom terakhir tabel menunjukkan bahwa kekonvergenan 
+\begin_inset Formula $\langle a_{n}\rangle$
+\end_inset
+
+ ke 
+\begin_inset Formula $c$
+\end_inset
+
+ bukan kuadratik.
+\end_layout
+
+\begin_layout Standard
+Secara lebih umum, misalkan 
+\begin_inset Formula $\langle p_{n}\rangle$
+\end_inset
+
+ adalah sembarang barisan yang konvergen secara linear ke 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ Maka kita memiliki 
+\begin_inset Formula ${\displaystyle \lim_{n\to\infty}}\frac{|p-p_{n+1}|}{|p-p_{n}|}=\lambda\neq0$
+\end_inset
+
+, sehingga kita mengharapkan 
+\begin_inset Formula $\frac{|p-p_{n+2}|}{|p-p_{n+1}|}\approx\frac{|p-p_{n+1}|}{|p-p_{n}|}\approx\lambda$
+\end_inset
+
+ untuk 
+\begin_inset Formula $n$
+\end_inset
+
+yang cukup besar, dan dari sini kita peroleh 
+\begin_inset Formula $|(p-p_{n+2})(p-p_{n})|\approx|p-p_{n+1}|^{2}$
+\end_inset
+
+.
+ Dengan mengasumsikan bahwa 
+\begin_inset Formula $p-p_{n+2}$
+\end_inset
+
+ dan 
+\begin_inset Formula $p-p_{n}$
+\end_inset
+
+ bertanda sama untuk 
+\begin_inset Formula $n$
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Hal ini akan terjadi dalam dua keadaan yang umum: semua 
+\begin_inset Formula $\hat{x}-x_{n}$
+\end_inset
+
+ bertanda sama, atau tanda 
+\begin_inset Formula $\hat{x}-x_{n}$
+\end_inset
+
+ berselang-seling. Jadi, asumsi ini bukanlah asumsi yang tidak masuk akal.
+\end_layout
+
+\end_inset
+
+, kita dapat menghapus nilai mutlak dan memperoleh
+\begin_inset Formula 
+\begin{eqnarray*}
+(p-p_{n+2})(p-p_{n}) & \approx & (p-p_{n+1}){}^{2}\\
+p^{2}-(p_{n+2}+p_{n})p+p_{n+2}p_{n} & \approx & p^{2}-2p_{n+1}p+p_{n+1}^{2}\\
+(-p_{n+2}+2p_{n+1}-p_{n})p & \approx & -p_{n+2}p_{n}+p_{n+1}^{2}\\
+p & \approx & \frac{p_{n+2}p_{n}-p_{n+1}^{2}}{p_{n+2}-2p_{n+1}+p_{n}}.
+\end{eqnarray*}
+
+\end_inset
+
+Oleh karena itu, kita dapat mengambil sembarang tiga suku berurutan dari 
+\begin_inset Formula $\langle p_{n}\rangle$
+\end_inset
+
+ dan memperkirakan 
+\begin_inset Formula $p$
+\end_inset
+
+ menggunakan rumus ini.
+ Untuk 
+\begin_inset Formula $n$
+\end_inset
+
+yang cukup besar, perkiraan ini akan menjadi hampiran yang jauh lebih baik bagi 
+\begin_inset Formula $p$
+\end_inset
+
+ daripada 
+\begin_inset Formula $p_{n}$
+\end_inset
+
+.
+ Namun, sebagaimana kita dapat menyatakan 
+\begin_inset Formula $|(p-p_{n+2})(p-p_{n})|\approx|p-p_{n+1}|^{2}$
+\end_inset
+
+, harus pula berlaku 
+\begin_inset Formula $p_{n+2}p_{n}\approx p_{n+1}^{2}$
+\end_inset
+
+, sehingga pembilang hampiran kita mendekati nol.
+ Tentu saja, itu berarti penyebutnya juga harus mendekati nol, sebab
+ hasil baginya adalah 
+\begin_inset Formula $p$
+\end_inset
+
+, suatu nilai yang mungkin tidak nol.
+ Untuk menghindari sebagian galat yang melekat dalam perhitungan ini, sebaiknya
+ kita menghitung hampiran yang ekuivalen secara aljabar 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode delta-kuadrat Aitken
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+metode ! delta-kuadrat Aitken|see{metode delta-kuadrat Aitken}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{equation}
+p\approx p_{n}-\frac{(p_{n+1}-p_{n})^{2}}{p_{n+2}-2p_{n+1}+p_{n}}\label{eq:aitkensDeltaSquared}
+\end{equation}
+
+\end_inset
+
+ sebagai gantinya.
+ Mari kembali meninjau barisan 
+\begin_inset Formula $\langle s_{n}\rangle$
+\end_inset
+
+ dan menerapkan hampiran ini.
+\end_layout
+
+\begin_layout Standard
+Definisikan 
+\begin_inset Formula $a_{n}=s_{n}-\frac{(s_{n+1}-s_{n})^{2}}{s_{n+2}-2s_{n+1}+s_{n}}$
+\end_inset
+
+ dan perhatikan tabel 
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hrule 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:fixedPointAitkens"
+
+\end_inset
+
+Membandingkan iterasi titik tetap ketika turunan pada titik tetap
+ tidak nol, 
+\begin_inset Formula $s_{n}$
+\end_inset
+
+, dengan barisan delta-kuadrat Aitken, 
+\begin_inset Formula $a_{n}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $n$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $s_{n}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $|2-s_{n}|$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a_{n}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $|2-a_{n}|$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{|2-a_{n}|}{|2-s_{n+2}|^{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.75$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.5(10)^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.99506842493985$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.931(10)^{-3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.54$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.107421875$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.074(10)^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.999022858310434$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9.771(10)^{-4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.30$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.943559146486223$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5.644(10)^{-2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.999737171760319$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.628(10)^{-4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.36$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.027401559734717$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.740(10)^{-2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.999937151202653$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $6.284(10)^{-5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.32$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.986114080555812$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.388(10)^{-2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.999983969455146$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.603(10)^{-5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.32$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.006894420349172$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $6.894(10)^{-3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.996540947531514$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.459(10)^{-3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hrule 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:fixedPointAitkens"
+
+\end_inset
+
+ yang membandingkan kedua barisan 
+\begin_inset Formula $\langle s_{n}\rangle$
+\end_inset
+
+ dan 
+\begin_inset Formula $\langle a_{n}\rangle$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\langle a_{n}\rangle$
+\end_inset
+
+ konvergen jauh lebih cepat daripada barisan yang konvergen secara linear dan
+ menjadi asalnya, persis seperti sebelumnya! Fakta bahwa 
+\begin_inset Formula $\frac{|2-a_{n}|}{|2-s_{n}|^{2}}\approx1.32$
+\end_inset
+
+ merupakan bukti bagi pernyataan ini, tetapi kekonvergenan 
+\begin_inset Formula $\langle a_{n}\rangle$
+\end_inset
+
+ tetap linear.
+ Anda dapat memeriksa bahwa rasio 
+\begin_inset Formula $\frac{|2-a_{n+1}|}{|2-a_{n}|^{1}}$
+\end_inset
+
+ kira-kira konstan (sekitar 
+\begin_inset Formula $0.25$
+\end_inset
+
+) untuk 
+\begin_inset Formula $n=0,1,2,3,4$
+\end_inset
+
+.
+ Pastikan Anda memahami mengapa hal ini menyiratkan kekonvergenan linear dan dapat
+ menghitung sendiri 
+\begin_inset Formula $a_{n}$
+\end_inset
+
+ dalam tabel ini sebelum melanjutkan membaca.
+\end_layout
+
+\begin_layout Standard
+Secara praktis, tidak ada gunanya menghitung semua suku 
+\begin_inset Formula $a_{0},a_{1},\ldots,a_{n-2}$
+\end_inset
+
+ seperti yang dilakukan dalam tabel.
+ Suku-suku 
+\begin_inset Formula $\langle a_{n}\rangle$
+\end_inset
+
+ hanya bergantung pada suku-suku 
+\begin_inset Formula $\langle s_{n}\rangle$
+\end_inset
+
+ , sehingga 
+\begin_inset Formula $a_{n-2}$
+\end_inset
+
+ tetap dapat dihitung tanpa terlebih dahulu menghitung 
+\begin_inset Formula $a_{0},a_{1},\ldots,a_{n-3}$
+\end_inset
+
+.
+ Tabel menampilkan semuanya hanya untuk tujuan ilustrasi dan agar Anda
+ mendapat latihan menggunakan rumus 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:aitkensDeltaSquared"
+
+\end_inset
+
+.
+ Hal penting yang perlu diperhatikan adalah bahwa 
+\begin_inset Formula $a_{n}$
+\end_inset
+
+ memiliki kira-kira dua kali lebih banyak angka signifikan yang akurat dibandingkan
+ 
+\begin_inset Formula $s_{n+2}$
+\end_inset
+
+ (karena 
+\begin_inset Formula $|2-a_{n}|\approx|2-s_{n+2}|^{2}$
+\end_inset
+
+).
+ Akibatnya, 
+\begin_inset Formula $a_{0}$
+\end_inset
+
+ merupakan hampiran yang jauh lebih baik daripada 
+\begin_inset Formula $s_{2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{digression}{Metode delta-kuadrat Aitken dirancang untuk sembarang barisan yang
+ konvergen secara linear, bukan hanya barisan yang diperoleh dari iterasi titik tetap.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Penurunan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:aitkensDeltaSquared"
+
+\end_inset
+
+, yang disebut rumus delta-kuadrat Aitken, sama sekali tidak merujuk pada iterasi
+ titik tetap.
+ Bahkan, penurunan tersebut tidak membuat asumsi apa pun tentang asal barisannya.
+ Asalnya tidak berpengaruh.
+ Barisan itu dapat berupa barisan jumlah parsial, barisan hasil kali parsial,
+ barisan yang diperoleh dari sembarang relasi rekurensi, barisan yang berasal dari
+ teori bilangan, atau apa pun yang lain.
+ Satu-satunya karakteristik penting adalah bahwa barisan tersebut konvergen dan
+ melakukannya secara linear.
+\end_layout
+
+\begin_layout Standard
+Deret 
+\begin_inset Formula $\frac{1}{1}-\frac{1}{3}+\frac{1}{5}-\frac{1}{7}+\frac{1}{9}-\cdots$
+\end_inset
+
+ konvergen ke 
+\begin_inset Formula $\frac{\pi}{4}$
+\end_inset
+
+ secara linear, sehingga metode delta-kuadrat Aitken seharusnya membantu.
+ Jika kita tetapkan 
+\begin_inset Formula $p_{n}=\sum_{k=1}^{n}\frac{(-1)^{k+1}}{2k-1}$
+\end_inset
+
+ sebagai jumlah parsial ke- 
+\begin_inset Formula $n$
+\end_inset
+
+ , maka 
+\begin_inset Formula $p_{2}=\frac{13}{15}$
+\end_inset
+
+, 
+\begin_inset Formula $p_{3}=\frac{76}{105}$
+\end_inset
+
+, 
+\begin_inset Formula $p_{4}=\frac{263}{315}$
+\end_inset
+
+, dan 
+\begin_inset Formula $p_{5}=\frac{2578}{3465}$
+\end_inset
+
+.
+ Ekstrapolasi Aitken menghasilkan 
+\begin_inset Formula $a_{2}=\frac{13}{15}-\frac{(\frac{76}{105}-\frac{13}{15})^{2}}{\frac{263}{315}-2\frac{76}{105}+\frac{13}{15}}=\frac{1321}{1680}$
+\end_inset
+
+ dan 
+\begin_inset Formula $a_{3}=\frac{76}{105}-\frac{(\frac{263}{315}-\frac{76}{105})^{2}}{\frac{2578}{3465}-2\frac{263}{315}+\frac{76}{105}}=\frac{989}{1260}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\frac{|\frac{\pi}{4}-p_{4}|^{2}}{|\frac{\pi}{4}-a_{2}|}\approx2.6$
+\end_inset
+
+ dan 
+\begin_inset Formula $\frac{|\frac{\pi}{4}-p_{5}|^{2}}{|\frac{\pi}{4}-a_{3}|}\approx3.5$
+\end_inset
+
+ sehingga ekstrapolasi menghasilkan galat yang lebih kecil daripada kuadrat galat pada
+ barisan semula.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{digression}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Barangkali fakta ini memberi Anda suatu gagasan.
+ Setelah 
+\begin_inset Formula $s_{2}$
+\end_inset
+
+ dihitung, kita dapat menggunakan persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:aitkensDeltaSquared"
+
+\end_inset
+
+, yang juga dikenal sebagai 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode delta-kuadrat Aitken
+\end_layout
+
+\end_inset
+
+metode delta-kuadrat Aitken, untuk menghitung hampiran yang lebih baik daripada
+ yang telah kita miliki.
+ Setelah memperoleh hampiran yang baik ini, rasanya agak konyol jika kita
+ mengesampingkannya dan terus menghitung 
+\begin_inset Formula $s_{3}=f(s_{2}),s_{4}=f(s_{3}),$
+\end_inset
+
+ dan seterusnya.
+ Bagaimana jika kita menggunakan 
+\begin_inset Formula $a_{0}$
+\end_inset
+
+ sebagai pengganti 
+\begin_inset Formula $s_{3}$
+\end_inset
+
+ dalam iterasi? Dengan kata lain, kita akan memperoleh 
+\begin_inset Formula $s_{1}=f(s_{0}),s_{2}=f(s_{1}),s_{3}=a_{0},s_{4}=f(s_{3}),$
+\end_inset
+
+ dan seterusnya.
+ Hal itu seharusnya memperbaiki 
+\begin_inset Formula $s_{3},s_{4},\mbox{ dan }s_{5}$
+\end_inset
+
+.
+ Setelah memperoleh 
+\begin_inset Formula $s_{5}$
+\end_inset
+
+ kita kembali memiliki tiga iterasi titik tetap berurutan, sehingga dapat menerapkan
+ metode delta-kuadrat Aitken lagi.
+ Alih-alih menghitung 
+\begin_inset Formula $s_{6}=f(s_{5})$
+\end_inset
+
+, kita dapat memperoleh hampiran yang semestinya lebih baik dengan menerapkan persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:aitkensDeltaSquared"
+
+\end_inset
+
+ pada 
+\begin_inset Formula $s_{3},s_{4},\mbox{ dan }s_{5}$
+\end_inset
+
+.
+ Dengan kata lain, 
+\begin_inset Formula $s_{6}=a_{3}$
+\end_inset
+
+, 
+\begin_inset Formula $s_{7}=f(s_{6})$
+\end_inset
+
+, 
+\begin_inset Formula $s_{8}=f(s_{7})$
+\end_inset
+
+.
+ Sekali lagi, kita memiliki tiga iterasi titik tetap berurutan, sehingga 
+\begin_inset Formula $s_{9}=a_{6}$
+\end_inset
+
+, dan seterusnya.
+ Ini menghasilkan barisan berikut
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.75,$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.107421875,$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.943559146486222,$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.995068424939850,$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.002459692429676,$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.998768643123618,$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.999997974970982,$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.000001012513483,$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.999999493743001,$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.999999999999658,$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.000000000000170,$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.999999999999914,$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $1.999999999999999,$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\ldots$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+yang konvergen ke 2 dengan sangat cepat dibandingkan 
+\begin_inset Formula $\langle s_{n}\rangle$
+\end_inset
+
+.
+ Jika kita menganggap perhitungan 
+\begin_inset Formula $s_{1},s_{2},s_{4},s_{5},s_{7},s_{8},\ldots$
+\end_inset
+
+ sebagai perhitungan perantara dan memusatkan perhatian pada subbarisan 
+\begin_inset Formula $s_{0},s_{3},s_{6},s_{9},\ldots=s_{0},a_{0},a_{3},a_{6},\ldots$
+\end_inset
+
+ sebagai barisan tersendiri, kita memperoleh 
+\begin_inset Formula 
+\[
+1.75,\ 1.995068424939850,\ 1.999997974970982,\ 1.999999999999658,\ 1.999999999999999,\ldots
+\]
+
+\end_inset
+
+yang konvergen dengan sangat cepat! Pembentukan subbarisan ini sebagai
+ barisan tersendiri disebut 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Steffensen
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+metode ! Steffensen|see{metode Steffensen}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ metode Steffensen, dan kekonvergenannya kuadratik selama 
+\begin_inset Formula $\langle s_{n}\rangle$
+\end_inset
+
+ konvergen.
+ Berikut adalah argumen heuristik bahwa metode Steffensen memberikan kekonvergenan
+ kuadratik.
+ Seperti terlihat, galat pada 
+\begin_inset Formula $s_{2}$
+\end_inset
+
+ tidak jauh berbeda dari galat pada 
+\begin_inset Formula $s_{0}$
+\end_inset
+
+.
+ Namun, 
+\begin_inset Formula $a_{0}$
+\end_inset
+
+ memiliki galat yang kira-kira sama dengan kuadrat galat pada 
+\begin_inset Formula $s_{2}$
+\end_inset
+
+, sehingga galat pada 
+\begin_inset Formula $a_{0}$
+\end_inset
+
+ kira-kira sama dengan kuadrat galat pada 
+\begin_inset Formula $s_{0}$
+\end_inset
+
+.
+ Demikian pula, galat pada 
+\begin_inset Formula $s_{5}$
+\end_inset
+
+ tidak jauh berbeda dari galat pada 
+\begin_inset Formula $a_{0}=s_{3}$
+\end_inset
+
+.
+ Namun, galat pada 
+\begin_inset Formula $a_{1}$
+\end_inset
+
+ kira-kira sama dengan kuadrat galat pada 
+\begin_inset Formula $s_{5}$
+\end_inset
+
+, sehingga galat pada 
+\begin_inset Formula $a_{1}$
+\end_inset
+
+ kira-kira sama dengan kuadrat galat pada 
+\begin_inset Formula $a_{0}$
+\end_inset
+
+.
+ Demikian pula, galat pada 
+\begin_inset Formula $a_{n+1}$
+\end_inset
+
+ kira-kira sama dengan kuadrat galat pada 
+\begin_inset Formula $a_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dengan menerapkan metode Steffensen pada fungsi 
+\begin_inset Formula $f(x)=\cos x$
+\end_inset
+
+ dengan 
+\begin_inset Formula $x_{0}=1$
+\end_inset
+
+, kita dapat mempercepat kekonvergenan barisan 
+\begin_inset Formula $\langle c_{n}\rangle$
+\end_inset
+
+ secara drastis.
+ Tabel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:steffensens2"
+
+\end_inset
+
+ 
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hrule 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:steffensens2"
+
+\end_inset
+
+Metode Steffensen diterapkan pada 
+\begin_inset Formula $f(x)=\cos x$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $n$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a_{n}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $g(a_{n})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $g(g(a_{n}))$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $|a_{n}-c|$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{\left|a_{n+1}-c\right|}{\left|a_{n}-c\right|^{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.5403023058681398$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.8575532158463934$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.609(10)^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.162$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.7280103614676171$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.7464997560452203$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.7340702837365296$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.107(10)^{-2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.148$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.7390669669086738$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.7390973701357808$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.7390768902228948$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.816(10)^{-5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.148$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.7390851331660755$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.739085133248225$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.739085133192888$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.908(10)^{-11}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.148$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.7390851332151607$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.063(10)^{-17}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hrule 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ menunjukkan beberapa suku pertama 
+\begin_inset Formula $\langle a_{n}\rangle$
+\end_inset
+
+ beserta sejumlah analisis galat.
+ Kolom terakhir tabel menunjukkan bahwa 
+\begin_inset Formula 
+\[
+\lim_{n\to\infty}\frac{\left|a_{n+1}-c\right|}{\left|a_{n}-c\right|^{2}}\approx.148
+\]
+
+\end_inset
+
+dan, akibatnya, barisan 
+\begin_inset Formula $\langle a_{n}\rangle$
+\end_inset
+
+ konvergen secara kuadratik.
+\end_layout
+
+\begin_layout Standard
+Terakhir, kita memiliki dua cara untuk memperoleh kekonvergenan cepat dari iterasi titik tetap.
+ Pertama, kita cukup melakukan iterasi ketika turunan fungsi bernilai nol pada titik
+ tetapnya.
+ Kedua, kita menggunakan metode Steffensen.
+\end_layout
+
+\begin_layout Subsection
+Diagram Kekonvergenan
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+diagram kekonvergenan
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mempercepat iterasi titik tetap hanya mengatasi salah satu kekurangan
+ metode tersebut.
+ Masih ada masalah divergensi dari titik tetap ketika nilai mutlak turunan
+ fungsi sama dengan atau lebih besar daripada 1.
+ Metode Steffensen membantu.
+ Bandingkan Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:FiveConvergenceDiagrams"
+
+\end_inset
+
+ dengan Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SixConvergenceDiagrams"
+
+\end_inset
+
+.
+ Diagram kekonvergenan untuk metode Steffensen menunjukkan kekonvergenan pada
+ interval nilai awal yang lebih luas.
+ Selain itu, untuk 
+\begin_inset Formula $f_{1}$
+\end_inset
+
+ dan 
+\begin_inset Formula $f_{2}$
+\end_inset
+
+ , metode Steffensen menemukan ketiga titik tetap, sama seperti
+ iterasi titik tetap pada 
+\begin_inset Formula $f_{6}$
+\end_inset
+
+ .
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:FiveConvergenceDiagrams"
+
+\end_inset
+
+Diagram kekonvergenan untuk 5 fungsi yang memiliki titik-titik tetap yang sama—metode
+ Steffensen.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Formula $f_{1}$
+\end_inset
+
+: 
+\begin_inset Graphics
+	filename figures/roots-order1.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Formula $f_{2}$
+\end_inset
+
+: 
+\begin_inset Graphics
+	filename figures/roots-order2.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Formula $f_{3}$
+\end_inset
+
+: 
+\begin_inset Graphics
+	filename figures/roots-order3.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Formula $f_{4}$
+\end_inset
+
+: 
+\begin_inset Graphics
+	filename figures/roots-order4.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Formula $f_{5}$
+\end_inset
+
+: 
+\begin_inset Graphics
+	filename figures/roots-order5.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+hitam: tidak konvergen; hijau: konvergen ke 
+\begin_inset Formula $3$
+\end_inset
+
+; merah: konvergen ke 
+\begin_inset Formula $1+\sqrt{3}$
+\end_inset
+
+; biru: konvergen ke 
+\begin_inset Formula $1-\sqrt{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Metode Steffensen (kode semu)
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Steffensen ! kode semu
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Karena metode Steffensen sangat rentan terhadap galat titik-mengambang,
+ kita melakukan pemeriksaan awal terhadap kekonvergenan sebelum langkah delta-kuadrat
+ Aitken.
+ Hal ini membantu mencegah galat besar atau pembagian dengan nol pada Langkah 4.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pseudocode} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Asumsi: Iterasi titik tetap konvergen ke suatu titik tetap dari 
+\begin_inset Formula $f$
+\end_inset
+
+ dengan nilai awal 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Masukan: Nilai awal 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+; fungsi 
+\begin_inset Formula $f$
+\end_inset
+
+; akurasi yang diinginkan 
+\begin_inset Formula $tol$
+\end_inset
+
+; jumlah maksimum iterasi 
+\begin_inset Formula $N$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+1: Untuk 
+\begin_inset Formula $j=1\ldots N$
+\end_inset
+
+ lakukan Langkah 2-6:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+2: Tetapkan 
+\begin_inset Formula $x_{1}=f(x_{0})$
+\end_inset
+
+; 
+\begin_inset Formula $x_{2}=f(x_{1})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+3: Jika 
+\begin_inset Formula $|x_{2}-x_{1}|\leq tol$
+\end_inset
+
+ maka kembalikan 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+4: Tetapkan 
+\begin_inset Formula $x=x_{0}-\frac{(x_{1}-x_{0})^{2}}{x_{2}-2x_{1}+x_{0}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+5: Jika 
+\begin_inset Formula $|x-x_{2}|\leq tol$
+\end_inset
+
+ maka kembalikan 
+\begin_inset Formula $x$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+6: Tetapkan 
+\begin_inset Formula $x_{0}=x$
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+7: Cetak 
+\begin_inset Quotes eld
+\end_inset
+
+Metode gagal.
+ Jumlah iterasi maksimum terlampaui.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Keluaran: Hampiran 
+\begin_inset Formula $x$
+\end_inset
+
+ yang mendekati titik tetap eksak atau pesan kegagalan.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pseudocode} 
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Konsep Utama
+\end_layout
+
+\begin_layout Description
+Metode
+\begin_inset space ~
+\end_inset
+
+delta-kuadrat
+\begin_inset space ~
+\end_inset
+
+Aitken: Jika 
+\begin_inset Formula $\langle p_{n}\rangle$
+\end_inset
+
+ konvergen secara linear ke 
+\begin_inset Formula $p$
+\end_inset
+
+, barisan 
+\begin_inset Formula $\langle a_{n}\rangle$
+\end_inset
+
+ yang didefinisikan oleh 
+\begin_inset Formula $a_{n}=p_{n}-\frac{(p_{n+1}-p_{n})^{2}}{p_{n+2}-2p_{n+1}+p_{n}}$
+\end_inset
+
+ konvergen lebih cepat ke 
+\begin_inset Formula $p$
+\end_inset
+
+, tetapi tetap berorde linear.
+\end_layout
+
+\begin_layout Description
+Batas
+\begin_inset space ~
+\end_inset
+
+Galat
+\begin_inset space ~
+\end_inset
+
+Titik
+\begin_inset space ~
+\end_inset
+
+Tetap: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Teorema ! Batas Galat Titik Tetap
+\end_layout
+
+\end_inset
+
+ Misalkan 
+\begin_inset Formula $f$
+\end_inset
+
+ adalah fungsi terdiferensial yang memiliki titik tetap 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+ dan misalkan 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+ adalah interval yang memuat 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+.
+  Jika 
+\begin_inset Formula $|f'(x)|\leq M<1$
+\end_inset
+
+ untuk setiap 
+\begin_inset Formula $x\in[a,b]$
+\end_inset
+
+ dan 
+\begin_inset Formula $f([a,b])\subseteq[a,b]$
+\end_inset
+
+, maka untuk sembarang nilai awal 
+\begin_inset Formula $x_{0}\in[a,b]$
+\end_inset
+
+, iterasi titik tetap dengan 
+\begin_inset Formula $x_{k+1}=f(x_{k})$
+\end_inset
+
+ untuk setiap 
+\begin_inset Formula $k\geq0$
+\end_inset
+
+ menghasilkan hampiran terhadap 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+ dengan galat absolut tidak lebih dari 
+\begin_inset Formula $M^{k}|x_{0}-\hat{x}|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Orde
+\begin_inset space ~
+\end_inset
+
+Kekonvergenan
+\begin_inset space ~
+\end_inset
+
+untuk
+\begin_inset space ~
+\end_inset
+
+Iterasi
+\begin_inset space ~
+\end_inset
+
+Titik
+\begin_inset space ~
+\end_inset
+
+Tetap: Misalkan 
+\begin_inset Formula $f$
+\end_inset
+
+ adalah fungsi dengan titik tetap 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+ dan 
+\begin_inset Formula $f'(\hat{x})$
+\end_inset
+
+ ada.
+ Misalkan 
+\begin_inset Formula $x_{0},x_{1},x_{2},\ldots$
+\end_inset
+
+ merupakan barisan yang diperoleh dari iterasi titik tetap (
+\begin_inset Formula $x_{k+1}=f(x_{k})$
+\end_inset
+
+ untuk setiap 
+\begin_inset Formula $k\geq1$
+\end_inset
+
+) sedemikian sehingga 
+\begin_inset Formula ${\displaystyle \lim_{k\to\infty}x_{k}=\hat{x}}$
+\end_inset
+
+ dan 
+\begin_inset Formula $x_{k}\neq\hat{x}$
+\end_inset
+
+ untuk setiap 
+\begin_inset Formula $k=0,1,2,\ldots$
+\end_inset
+
+.
+ Maka barisan 
+\begin_inset Formula $\langle x_{n}\rangle$
+\end_inset
+
+ konvergen secara linear ke 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+ jika 
+\begin_inset Formula $f'(\hat{x})\neq0$
+\end_inset
+
+ dan berorde setidaknya kuadratik jika 
+\begin_inset Formula $f'(\hat{x})=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Metode
+\begin_inset space ~
+\end_inset
+
+Steffensen: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Steffensen
+\end_layout
+
+\end_inset
+
+Modifikasi iterasi titik tetap dengan setiap suku ketiga dihitung menggunakan
+ metode delta-kuadrat Aitken.
+\end_layout
+
+\begin_layout Description
+Kekonvergenan
+\begin_inset space ~
+\end_inset
+
+superlinear: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+kekonvergenan ! superlinear
+\end_layout
+
+\end_inset
+
+ Jika barisan 
+\begin_inset Formula $p_{0},p_{1},p_{2},\ldots$
+\end_inset
+
+ konvergen ke 
+\begin_inset Formula $p$
+\end_inset
+
+ dan 
+\begin_inset Formula ${\displaystyle \lim_{k\to\infty}\frac{|p_{k+1}-p|}{|p_{k}-p|}=0}$
+\end_inset
+
+, maka barisan tersebut dikatakan konvergen secara superlinear.
+\end_layout
+
+\begin_layout Description
+Kekonvergenan
+\begin_inset space ~
+\end_inset
+
+superkuadratik: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+kekonvergenan ! superkuadratik
+\end_layout
+
+\end_inset
+
+ Jika barisan 
+\begin_inset Formula $p_{0},p_{1},p_{2},\ldots$
+\end_inset
+
+ konvergen ke 
+\begin_inset Formula $p$
+\end_inset
+
+ dan 
+\begin_inset Formula ${\displaystyle \lim_{k\to\infty}\frac{|p_{k+1}-p|}{|p_{k}-p|^{2}}=0}$
+\end_inset
+
+, maka barisan tersebut dikatakan konvergen secara superkuadratik.
+\end_layout
+
+\begin_layout Subsection
+Octave
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:WhileLoop"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pada Bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Speed"
+
+\end_inset
+
+, kita telah mempelajari perulangan 
+\family typewriter
+for
+\family default
+.
+ Dengan perulangan 
+\family typewriter
+for
+\family default
+, Anda harus mengetahui berapa kali perulangan itu hendak dijalankan, atau
+ setidaknya menentukan jumlah maksimum.
+ Anda dapat menghentikan perulangan 
+\family typewriter
+for
+\family default
+ sebelum selesai dengan keluar (mengembalikan nilai) dari fungsi.
+ Namun, adakalanya Anda tidak tahu berapa kali perulangan perlu dijalankan
+ dan bahkan tidak memiliki batas maksimum yang sesuai.
+ Dalam kasus ini, perulangan 
+\family typewriter
+while
+\family default
+ 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Octave ! perulangan 
+\family typewriter
+while
+\family default
+
+\end_layout
+
+\end_inset
+
+ lebih tepat.
+ Perulangan 
+\family typewriter
+while
+\family default
+ akan terus berulang selama kondisi tertentu terpenuhi; Anda sendiri yang
+ menentukan kondisi tersebut.
+ Sintaks perulangan while adalah 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+while (condition)
+\end_layout
+
+\begin_layout Plain Layout
+
+  do something.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+end%while
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+, tetapi harus digunakan dengan hati-hati.
+ 
+\family typewriter
+for
+\family default
+ selalu memiliki akhir, tetapi perulangan 
+\family typewriter
+while
+\family default
+ bisa tidak berakhir jika diprogram dengan ceroboh.
+ Jika 
+\family typewriter
+condition
+\family default
+ pada perulangan 
+\family typewriter
+while
+\family default
+ tidak pernah terpenuhi, perulangan akan berjalan tanpa henti! Berikut
+ contoh sederhana perulangan 
+\family typewriter
+while
+\family default
+ yang tidak pernah berakhir.
+ Jangan jalankan! 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+i=0;
+\end_layout
+
+\begin_layout Plain Layout
+
+while (i<12)
+\end_layout
+
+\begin_layout Plain Layout
+
+  disp("Help! I'm stuck in a never-ending loop!!")
+\end_layout
+
+\begin_layout Plain Layout
+
+end%while
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+ Masalahnya, 
+\family typewriter
+i
+\family default
+ ditetapkan kurang dari 12 dan tidak pernah berubah, sehingga selalu tetap
+ kurang dari 12.
+ Dengan demikian, kondisi perulangan 
+\family typewriter
+while
+\family default
+ ini selalu terpenuhi.
+ Perulangan ini dapat dengan mudah diubah agar berhenti.
+ Jika kita menaikkan 
+\family typewriter
+i
+\family default
+ di dalam perulangan, perulangan tersebut akan berakhir.
+ Modifikasi terhadap perulangan tanpa akhir ini benar-benar berakhir dan
+ menampilkan pesan sebanyak 12 kali: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+i=0;
+\end_layout
+
+\begin_layout Plain Layout
+
+while (i<12)
+\end_layout
+
+\begin_layout Plain Layout
+
+  disp("That's better.
+ I can handle a dozen iterations.")
+\end_layout
+
+\begin_layout Plain Layout
+
+  i=i+1;
+\end_layout
+
+\begin_layout Plain Layout
+
+end%while
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+ Sebagai catatan, setiap perulangan 
+\family typewriter
+for
+\family default
+ dapat digantikan oleh perulangan 
+\family typewriter
+while
+\family default
+ seperti yang satu ini.
+ 
+\end_layout
+
+\begin_layout Standard
+Kita adalah manusia.
+ Tak terelakkan, suatu saat kita akan memprogram perulangan while yang tidak
+ pernah berakhir.
+ Apa yang harus dilakukan setelah perulangan itu mulai berjalan? Tentu saja,
+ Anda dapat mematikan komputer, tetapi itu seperti membawa cangkir kopi ke
+ dapur dengan buldoser.
+ Ada cara yang lebih mudah.
+ Anda cukup menghentikan aplikasi tempat Octave sedang dijalankan.
+ Jika menggunakan jendela baris perintah (terminal) atau GUI Octave, Anda
+ cukup menutupnya.
+ Namun, jika masih ingat, Anda juga dapat menekan 
+\family typewriter
+Ctrl-c
+\family default
+.
+ Artinya, tekan tombol 
+\family typewriter
+c
+\family default
+ sambil menahan tombol 
+\family typewriter
+Ctrl
+\family default
+.
+ Tindakan ini akan menghentikan perulangan tanpa akhir tersebut.
+\end_layout
+
+\begin_layout Standard
+Untuk contoh yang lebih praktis, metode bagi dua dapat dengan mudah diprogram
+ ulang menggunakan perulangan while.
+ Pertama, kode semunya:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pseudocode} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Asumsi: 
+\begin_inset Formula $f$
+\end_inset
+
+ kontinu pada 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+.
+ 
+\begin_inset Formula $f(a)$
+\end_inset
+
+ dan 
+\begin_inset Formula $f(b)$
+\end_inset
+
+ memiliki tanda yang berlawanan.
+\end_layout
+
+\begin_layout Description
+Masukan: Interval 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+; fungsi 
+\begin_inset Formula $f$
+\end_inset
+
+; akurasi yang diinginkan 
+\begin_inset Formula $tol$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+1: Tetapkan 
+\begin_inset Formula $m=a$
+\end_inset
+
+; 
+\begin_inset Formula $err=|b-a|$
+\end_inset
+
+; 
+\begin_inset Formula $L=f(a)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+2: Selama 
+\begin_inset Formula $err>tol$
+\end_inset
+
+, lakukan Langkah 3-5:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+3: Tetapkan 
+\begin_inset Formula $m=\frac{a+b}{2}$
+\end_inset
+
+; 
+\begin_inset Formula $M=f(m)$
+\end_inset
+
+; 
+\begin_inset Formula $err=err/2$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+4: Jika 
+\begin_inset Formula $M=0$
+\end_inset
+
+ maka kembalikan 
+\begin_inset Formula $m$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+5: Jika 
+\begin_inset Formula $LM<0$
+\end_inset
+
+ maka tetapkan 
+\begin_inset Formula $b=m$
+\end_inset
+
+; jika tidak, tetapkan 
+\begin_inset Formula $a=m$
+\end_inset
+
+ dan 
+\begin_inset Formula $L=M$
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+6: Kembalikan 
+\begin_inset Formula $m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Keluaran: Hampiran 
+\begin_inset Formula $m$
+\end_inset
+
+ yang berjarak tidak lebih dari 
+\begin_inset Formula $tol$
+\end_inset
+
+ dari akar eksak.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pseudocode} 
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+Sekarang kode Octave-nya.
+ Jika Anda memutuskan untuk menggunakan kode ini, kode tersebut harus disimpan
+ dalam berkas bernama 
+\family typewriter
+bisectionWhile.m
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+function p = bisectionWhile(a,b,f,tol)
+\end_layout
+
+\begin_layout Plain Layout
+
+  p = a;
+\end_layout
+
+\begin_layout Plain Layout
+
+  err = abs(b-a);
+\end_layout
+
+\begin_layout Plain Layout
+
+  FA = f(a);
+\end_layout
+
+\begin_layout Plain Layout
+
+  while (err>tol)
+\end_layout
+
+\begin_layout Plain Layout
+
+    p = a + (b-a)/2;
+\end_layout
+
+\begin_layout Plain Layout
+
+    FP = f(p);
+\end_layout
+
+\begin_layout Plain Layout
+
+    err=err/2;
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (FP == 0)
+\end_layout
+
+\begin_layout Plain Layout
+
+      return
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (FA*FP > 0)
+\end_layout
+
+\begin_layout Plain Layout
+
+      a = p;
+\end_layout
+
+\begin_layout Plain Layout
+
+      FA = FP;
+\end_layout
+
+\begin_layout Plain Layout
+
+    else
+\end_layout
+
+\begin_layout Plain Layout
+
+      b = p;
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%while
+\end_layout
+
+\begin_layout Plain Layout
+
+end%function 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+ Gunakan kode ini dengan hati-hati! Kode ini dapat berjalan dalam perulangan
+ tak berujung! Jika fungsi dipanggil dengan nilai negatif untuk 
+\family typewriter
+tol
+\family default
+, seperti dalam 
+\family typewriter
+bisectionWhile(g,1,2,-10)
+\family default
+, kode ini akan berjalan hingga dihentikan secara paksa (dengan 
+\family typewriter
+Ctrl-c
+\family default
+ atau dengan menutup aplikasi Octave), karena 
+\family typewriter
+err
+\family default
+ akan selalu lebih besar daripada 
+\begin_inset Formula $-10$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Pemeriksaan galat
+\end_layout
+
+\begin_layout Standard
+Perangkat lunak yang paling berguna menyertakan pemeriksaan galat.
+ Untuk fungsi 
+\family typewriter
+bisectionWhile
+\family default
+ tersebut, kita ingin menghindari perulangan tak berujung dalam setiap keadaan
+ yang dapat kita bayangkan.
+ Menambahkan beberapa baris pada awal fungsi memberikan perlindungan:
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+function p = bisectionWhile(a,b,f,tol)
+\end_layout
+
+\begin_layout Plain Layout
+
+  if (tol<=0)
+\end_layout
+
+\begin_layout Plain Layout
+
+    p = "ERROR:tol must be positive.";
+\end_layout
+
+\begin_layout Plain Layout
+
+    return
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+  p = a;
+\end_layout
+
+\begin_layout Plain Layout
+
+  err = abs(b-a);
+\end_layout
+
+\begin_layout Plain Layout
+
+  FA = f(a);
+\end_layout
+
+\begin_layout Plain Layout
+
+  while (err>tol)
+\end_layout
+
+\begin_layout Plain Layout
+
+    p = a + (b-a)/2;
+\end_layout
+
+\begin_layout Plain Layout
+
+    FP = f(p);
+\end_layout
+
+\begin_layout Plain Layout
+
+    err=err/2;
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (FP == 0)
+\end_layout
+
+\begin_layout Plain Layout
+
+      return
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (FA*FP > 0)
+\end_layout
+
+\begin_layout Plain Layout
+
+      a = p;
+\end_layout
+
+\begin_layout Plain Layout
+
+      FA = FP;
+\end_layout
+
+\begin_layout Plain Layout
+
+    else
+\end_layout
+
+\begin_layout Plain Layout
+
+      b = p;
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%while
+\end_layout
+
+\begin_layout Plain Layout
+
+end%function 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Secara umum, tindakan meminta program memeriksa galat masukan seperti ini disebut
+ pemeriksaan galat 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+pemeriksaan galat
+\end_layout
+
+\end_inset
+
+ atau validasi 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+validasi
+\end_layout
+
+\end_inset
+
+.
+ Pada umumnya, kita akan menulis kode dengan mengasumsikan bahwa masukannya
+ valid dan tidak melakukan pemeriksaan galat.
+ Ini menyederhanakan pemrograman, tetapi juga memungkinkan timbulnya masalah
+ seperti perulangan tak berujung! 
+\family typewriter
+bisectionWhile.m
+\family default
+ dapat diunduh dari 
+\begin_inset CommandInset href
+LatexCommand href
+name "situs pendamping"
+target "http://lqbrin.github.io/tea-time-numerical/ancillaries.html"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+startexercises 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Latihan
+\end_layout
+
+\begin_layout Enumerate
+Berikan bukti bahwa 
+\begin_inset Formula $x_{k}\in[a,b]$
+\end_inset
+
+ untuk setiap 
+\begin_inset Formula $k\geq0$
+\end_inset
+
+ dalam proposisi 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:fixedPointErrorBound"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Tunjukkan bahwa 
+\begin_inset Formula 
+\[
+{\displaystyle \frac{p_{n+2}p_{n}-p_{n+1}^{2}}{p_{n+2}-2p_{n+1}+p_{n}}}
+\]
+
+\end_inset
+
+dan 
+\begin_inset Formula 
+\[
+{\displaystyle p_{n}-\frac{(p_{n+1}-p_{n})^{2}}{p_{n+2}-2p_{n+1}+p_{n}}}
+\]
+
+\end_inset
+
+ekuivalen secara aljabar.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah fungsi Octave yang mengimplementasikan metode Steffensen.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah program Octave (berkas 
+\family typewriter
+.m
+\family default
+) yang menggunakan perulangan 
+\family typewriter
+ while
+\family default
+ dan perintah 
+\family typewriter
+disp()
+\family default
+ untuk menampilkan 10 hasil pemangkatan pertama dari 5, dimulai dengan 
+\begin_inset Formula $5^{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:orderOfConvergence"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah program Octave (berkas 
+\family typewriter
+.m
+\family default
+) yang menggunakan perulangan 
+\family typewriter
+while
+\family default
+, sebuah larik, dan perintah 
+\family typewriter
+disp()
+\family default
+ untuk menghitung nilai 
+\begin_inset Formula ${\displaystyle f(n)=\frac{2^{2^{n}}-2}{2^{2^{n}}+3}}$
+\end_inset
+
+ untuk 
+\begin_inset Formula $n=0,1,2,4,6,10$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah program Octave (berkas 
+\family typewriter
+.m
+\family default
+) yang menggunakan perulangan 
+\family typewriter
+while
+\family default
+, sebuah larik, dan perintah 
+\family typewriter
+disp()
+\family default
+ untuk menghitung nilai 
+\begin_inset Formula ${\displaystyle f(n)=\frac{2n}{\sqrt{n^{2}+3n}}}$
+\end_inset
+
+ untuk 
+\begin_inset Formula $n=0,2,5,10,100,1000,20000$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Kode Octave berikut dimaksudkan untuk menghitung jumlah 
+\begin_inset Formula 
+\[
+\sum_{k=1}^{30}\frac{1}{k^{2}}
+\]
+
+\end_inset
+
+, tetapi tidak berhasil melakukannya.
+ Temukan sebanyak mungkin kesalahan dalam kode tersebut.
+ Klasifikasikan setiap kesalahan sebagai galat kompilasi (galat yang akan
+ membuat program sama sekali tidak dapat dijalankan) atau galat logika (galat yang tidak
+ mencegah program berjalan, tetapi menyebabkan jumlah tersebut dihitung secara
+ keliru).
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+sum=1;
+\begin_inset Newline newline
+\end_inset
+
+k=1;
+\begin_inset Newline newline
+\end_inset
+
+while k<30
+\begin_inset Newline newline
+\end_inset
+
+  sum=sum+1.0/k*k;
+\begin_inset Newline newline
+\end_inset
+
+end
+\begin_inset Newline newline
+\end_inset
+
+diss(sum)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah perulangan 
+\family typewriter
+while
+\family default
+ yang menampilkan barisan bilangan berikut.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $7,8,9,10,11,12,13,14,15$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:orderOfConvergence-1"
+
+\end_inset
+
+
+\begin_inset Formula $20,19,18,17,16,15,14,13$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $12,12.333,12.667,13,13.333,13.667,14$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $1,9,25,49,81,121,169,225,289,361,441$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $1,.5,.25,.125,.0625,.03125,.015625$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Fungsi 
+\begin_inset Formula $g(x)=\sqrt[3]{5-3x}$
+\end_inset
+
+ memenuhi hipotesis proposisi 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:fixedPointErrorBound"
+
+\end_inset
+
+ pada interval 
+\begin_inset Formula $[1,1.3]$
+\end_inset
+
+.
+ Tentukan batas bagi banyaknya iterasi yang diperlukan untuk menentukan titik
+ tetap dengan ketelitian 
+\begin_inset Formula $10^{-5}$
+\end_inset
+
+ dengan nilai awal 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ yang Anda pilih.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:orderOfConvergence-2"
+
+\end_inset
+
+Iterasi titik tetap pada fungsi 
+\begin_inset Formula $g(x)=\sqrt[3]{x^{2}+x}$
+\end_inset
+
+ akan konvergen ke sekitar 
+\begin_inset Formula $1.618033988749895$
+\end_inset
+
+ untuk setiap 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ dalam 
+\begin_inset Formula $[0.5,3.5]$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Tentukan batas bagi banyaknya iterasi yang diperlukan untuk mencapai ketelitian 
+\begin_inset Formula $10^{-4}$
+\end_inset
+
+ dengan 
+\begin_inset Formula $x_{0}=2.5.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Berapa banyak iterasi yang sebenarnya diperlukan untuk mencapai ketelitian 
+\begin_inset Formula $10^{-4}$
+\end_inset
+
+ dengan 
+\begin_inset Formula $x_{0}=2.5$
+\end_inset
+
+?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:orderOfConvergence-3"
+
+\end_inset
+
+Misalkan 
+\begin_inset Formula $f(x)=\frac{3x^{2}\text{−}1}{6x+4}$
+\end_inset
+
+.
+ Dalam latihan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:fixedpt-12"
+
+\end_inset
+
+ pada bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Fixedpt"
+
+\end_inset
+
+, Anda diminta menunjukkan bahwa 
+\begin_inset Formula $f$
+\end_inset
+
+ memiliki titik tetap tunggal pada 
+\begin_inset Formula $[-4,-0.9]$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Tentukan batas bagi banyaknya iterasi yang diperlukan untuk menghampiri titik
+ tetap dengan ketelitian 
+\begin_inset Formula $10^{-11}$
+\end_inset
+
+, menggunakan iterasi titik tetap dengan sembarang nilai awal dalam 
+\begin_inset Formula $[-4,-0.9]$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Gunakan iterasi titik tetap dengan 
+\begin_inset Formula $x_{0}=-4$
+\end_inset
+
+ untuk memperoleh hampiran titik tetap yang akurat hingga
+ 
+\begin_inset Formula $10^{-11}$
+\end_inset
+
+.
+ Titik tetapnya adalah 
+\begin_inset Formula $x=-1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Bandingkan batas tersebut dengan banyaknya iterasi yang sebenarnya diperlukan.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Misalkan 
+\begin_inset Formula $g(x)=\pi+0.5\sin(x/2)$
+\end_inset
+
+.
+ Dalam latihan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:ShowPart2"
+
+\end_inset
+
+ pada bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Fixedpt"
+
+\end_inset
+
+, Anda diminta menunjukkan bahwa 
+\begin_inset Formula $g$
+\end_inset
+
+ memiliki titik tetap tunggal pada 
+\begin_inset Formula $[0,2\pi]$
+\end_inset
+
+.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Tentukan batas bagi banyaknya iterasi yang diperlukan untuk mencapai ketelitian 
+\begin_inset Formula $10^{-2}$
+\end_inset
+
+, menggunakan iterasi titik tetap dengan sembarang nilai awal dalam 
+\begin_inset Formula $[0,2\pi]$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Gunakan iterasi titik tetap dengan 
+\begin_inset Formula $x_{0}=0$
+\end_inset
+
+ untuk mencari hampiran titik tetap dengan galat tidak lebih dari
+ 
+\begin_inset Formula $10^{-2}$
+\end_inset
+
+.
+ Titik tetapnya adalah 
+\begin_inset Formula $x=???$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Bandingkan batas tersebut dengan banyaknya iterasi yang sebenarnya diperlukan.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:orderOfConvergence-4"
+
+\end_inset
+
+Hitung dua iterasi metode Steffensen untuk 
+\begin_inset Formula $g(x)=\sqrt[3]{x^{2}+x}$
+\end_inset
+
+ dengan 
+\begin_inset Formula $x_{0}=2.5$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:orderOfConvergence-5"
+
+\end_inset
+
+Gunakan metode Steffensen untuk mencari akar 
+\begin_inset Formula $g(x)=x^{4}-2x^{3}-4x^{2}+4x+4$
+\end_inset
+
+ dalam interval 
+\begin_inset Formula $[2,3]$
+\end_inset
+
+ dengan ketelitian lima angka signifikan.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:aitkensOnSequence"
+
+\end_inset
+
+Hitung 
+\begin_inset Formula $a_{0},a_{1},$
+\end_inset
+
+ dan 
+\begin_inset Formula $a_{2}$
+\end_inset
+
+ dari metode delta-kuadrat Aitken untuk barisan pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:linearConvergenceExample"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "enu:linearConvergenceExample"
+
+\end_inset
+
+.
+ Karena barisan tersebut memiliki suku yang tidak terdefinisi pada 
+\begin_inset Formula $n=1$
+\end_inset
+
+, mulailah barisan 
+\begin_inset Formula $\langle\frac{n+1}{n-1}\rangle$
+\end_inset
+
+ dari 
+\begin_inset Formula $n=2$
+\end_inset
+
+.
+ Dengan kata lain, anggap barisan pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:linearConvergenceExample"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "enu:linearConvergenceExample"
+
+\end_inset
+
+ sebagai 
+\begin_inset Formula $3,2,\frac{5}{3},\frac{3}{2},\frac{7}{5}\ldots$
+\end_inset
+
+ sehingga 
+\begin_inset Formula $p_{0}=3$
+\end_inset
+
+, 
+\begin_inset Formula $p_{1}=2$
+\end_inset
+
+, 
+\begin_inset Formula $p_{2}=\frac{5}{3}$
+\end_inset
+
+, dan seterusnya.
+\end_layout
+
+\begin_layout Enumerate
+Barisan-barisan berikut konvergen secara linear.
+ Bangkitkan lima suku pertama barisan 
+\begin_inset Formula $\langle a_{n}\rangle$
+\end_inset
+
+ menggunakan perhitungan delta-kuadrat Aitken.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:orderOfConvergence-6"
+
+\end_inset
+
+
+\begin_inset Formula $p_{0}=0.5$
+\end_inset
+
+, 
+\begin_inset Formula $p_{n}=(2-e^{p_{n-1}}+p_{n-1}^{2})/3$
+\end_inset
+
+ untuk 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $p_{0}=0.75$
+\end_inset
+
+, 
+\begin_inset Formula $p_{n}=\sqrt{e^{p_{n-1}}/3}$
+\end_inset
+
+ untuk 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Gunakan metode delta-kuadrat Aitken untuk mencari 
+\begin_inset Formula ${\displaystyle p=\lim_{n\to\infty}p_{n}}$
+\end_inset
+
+ dengan ketelitian 3 tempat desimal.
+\begin_inset Formula 
+\begin{align*}
+p_{n} & =\{-2,\ -1.85271,\ -1.74274,\ -1.66045,\\
+ & \qquad-1.59884,\ -1.55266,\ -1.51804,\ \\
+ & \qquad-1.49208,\ -1.47261,\ \ldots\}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:orderOfConvergence-7"
+
+\end_inset
+
+Barisan 
+\begin_inset Formula $\langle a_{n}\rangle$
+\end_inset
+
+ pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:aitkensOnSequence"
+
+\end_inset
+
+ konvergen lebih cepat daripada barisan pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:linearConvergenceExample"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "enu:linearConvergenceExample"
+
+\end_inset
+
+.
+ Jika metode delta-kuadrat Aitken diterapkan pada barisan 
+\begin_inset Formula $\langle a_{n}\rangle$
+\end_inset
+
+, apakah Anda memperkirakan konvergensinya akan lebih cepat lagi? Jelaskan.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Ingat kembali dari kalkulus bahwa 
+\begin_inset Formula $\lim_{n\to\infty}n\sin\left(\frac{1}{n}\right)=1$
+\end_inset
+
+.
+ Oleh karena itu, jika kita menetapkan 
+\begin_inset Formula $p_{n}=n\sin\left(\frac{1}{n}\right)$
+\end_inset
+
+, maka barisan 
+\begin_inset Formula $\langle p_{1},p_{2},p_{3},\ldots\rangle\approx\langle.84147,.95885,.98158,\ldots\rangle$
+\end_inset
+
+ konvergen ke 1, meskipun sangat lambat.
+ Bangkitkan tiga suku pertama barisan 
+\begin_inset Formula $\langle a_{n}\rangle$
+\end_inset
+
+ menggunakan perhitungan delta-kuadrat Aitken.
+ Apakah barisan itu tampak mendekati 1 lebih cepat daripada 
+\begin_inset Formula $\langle p_{n}\rangle$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:orderOfConvergence-8"
+
+\end_inset
+
+Iterasi titik tetap yang diterapkan pada 
+\begin_inset Formula $f(x)=\sin(x)$
+\end_inset
+
+ dengan 
+\begin_inset Formula $x_{0}=1$
+\end_inset
+
+ memerlukan 
+\begin_inset Formula $29,992$
+\end_inset
+
+ iterasi untuk mencapai bilangan di bawah 
+\begin_inset Formula $0.01$
+\end_inset
+
+ ketika menuju titik tetap 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ Kebetulan, 
+\begin_inset Formula $x_{29992}\approx0.099999$
+\end_inset
+
+.
+ Berapa iterasi yang diperlukan metode Steffensen dengan 
+\begin_inset Formula $x_{0}=1$
+\end_inset
+
+ untuk mencapai bilangan di bawah 
+\begin_inset Formula $0.01$
+\end_inset
+
+? Berikan komentar.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:orderOfConvergence-9"
+
+\end_inset
+
+Misalkan 
+\begin_inset Formula $f(x)=1+(\sin x)^{2}$
+\end_inset
+
+ dan 
+\begin_inset Formula $p_{0}=1$
+\end_inset
+
+.
+ Dengan kalkulator, hitung 
+\begin_inset Formula $a_{1}$
+\end_inset
+
+ dan 
+\begin_inset Formula $a_{2}$
+\end_inset
+
+ dari metode Steffensen.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Hitung tiga iterasi pertama metode Steffensen yang diterapkan pada 
+\begin_inset Formula $g(x)=(\sqrt{2})^{x}$
+\end_inset
+
+ dengan 
+\begin_inset Formula $p_{0}=3$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:orderOfConvergence-10"
+
+\end_inset
+
+Metode Steffensen diterapkan pada fungsi 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ dengan 
+\begin_inset Formula $p_{0}=1$
+\end_inset
+
+.
+ Jika 
+\begin_inset Formula $f(f(p_{0}))=3$
+\end_inset
+
+ dan 
+\begin_inset Formula $a_{1}=0.75$
+\end_inset
+
+, berapakah 
+\begin_inset Formula $f(p_{0})$
+\end_inset
+
+?
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "Steffensens"
+
+\end_inset
+
+Cari titik tetap 
+\begin_inset Formula $f(x)=x-0.002(e^{x}\cos(x)-100)$
+\end_inset
+
+ dalam interval 
+\begin_inset Formula $[5,6]$
+\end_inset
+
+ menggunakan metode Steffensen.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Dalam soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Steffensens"
+
+\end_inset
+
+ Anda menemukan suatu titik tetap 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+.
+ Fungsi 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ apakah yang memiliki 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+ sebagai akar?
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah perulangan 
+\family typewriter
+while
+\family default
+ yang menampilkan bilangan-bilangan 
+\begin_inset Formula $1,.5,.25,.125,.0625,.03125,.015625,\ldots$
+\end_inset
+
+ hingga mencapai suatu bilangan yang lebih kecil daripada 
+\begin_inset Formula $10^{-4}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+finishexercises
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

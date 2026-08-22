@@ -1,0 +1,399 @@
+{
+  "experiments": [
+    {
+      "expected_output_segments": [
+        {
+          "id": "urn:uuid:6d50df59-fc0a-5e2e-bc24-e9635f8c92c1",
+          "source_text_sha256": "c03308724e8d25867364c9f2db33a8fad58a8813b1746555810331200caf38d2"
+        }
+      ],
+      "experiment_key": "preliminaries-taylor/experiment1-script-run",
+      "instruction_segments": [
+        {
+          "id": "urn:uuid:1b85234b-e7f9-5a32-9136-66bac523d63a",
+          "source_text_sha256": "61709b5409e45031b896bd24e1722099b2d047dc49b24ef97bc3d11402541e14"
+        }
+      ],
+      "invocation": "experiment1",
+      "kind": "script_run",
+      "runner_segment_ids": [
+        "urn:uuid:1f006247-a919-5394-8972-f3ba01080405"
+      ],
+      "source_rel": "source/lqbrin-tea-time-numerical-1868821/preliminaries-taylor.lyx",
+      "unit_id": "urn:uuid:c9c7d35e-e219-5aa8-876c-f998860b7db2"
+    },
+    {
+      "experiment_key": "interpolation-challenge/find-six-roots",
+      "instruction_segments": [
+        {
+          "id": "urn:uuid:42d7892a-b07d-57c6-a147-cc6055a57828",
+          "source_text_sha256": "a57c73b9ee940a4fb132bbc3a8272a34ad03ab9ff085b4def01237c1cc3ebbc8"
+        },
+        {
+          "id": "urn:uuid:a813a200-671c-57a9-9c04-c3a244f7ddba",
+          "source_text_sha256": "5220a75239e226be3ba4355ce83efdc7e79e2f8ce10eb04414aba9f9811d9ddf"
+        },
+        {
+          "id": "urn:uuid:3b3831f8-0dda-572f-a207-5b77db1a806a",
+          "source_text_sha256": "ec56b93c0eb4c22ca012fab44ba0b7083eb5d7fd931d6365160ad02800a4bbec"
+        }
+      ],
+      "kind": "open_ended_challenge",
+      "objective_code": "find_all_six_roots_of_f_f_prime_and_particular_antiderivative",
+      "parameter_evidence_segments": [
+        {
+          "id": "urn:uuid:6961a55c-4e31-5537-b36c-5d4736f40ac2",
+          "source_text_sha256": "c57273893d2be9371e07685a305a92fb3793a9f4a1e48cef54df49ac4bd10a41"
+        }
+      ],
+      "result_mode": "open_ended",
+      "runner_segment_ids": [
+        "urn:uuid:148e5f7a-51ea-5a2d-82ca-da25b6d4a7df"
+      ],
+      "source_rel": "source/lqbrin-tea-time-numerical-1868821/interpolation-challenge.lyx",
+      "unit_id": "urn:uuid:7983daac-1f3d-55e5-b994-99b815a27a81"
+    }
+  ],
+  "mappings": [
+    {
+      "asset_normalized_bytes": 569,
+      "asset_normalized_sha256": "dedcc15fe1491657f936dc4433968a302e6961fe37ea764a90118e4cec9faa15",
+      "asset_path": "source/lqbrin-tea-time-numerical-1868821/octave/maxOverMesh.m",
+      "asset_raw_bytes": 570,
+      "asset_raw_sha256": "af87f47c079c48e61d0c5644a1dc98e554146af4486759172beee4c32e51edaf",
+      "evidence_segments": [
+        {
+          "id": "urn:uuid:9ed1a6ed-c3a2-5193-8941-5764b8f570fc",
+          "source_text_sha256": "178673e9ab7a0215db85a95cc79fc597362ce34163f987e70dbc2aecaea9efb8"
+        },
+        {
+          "id": "urn:uuid:97594467-d947-52c4-8950-4dcd5425c69c",
+          "source_text_sha256": "3dc8d19cd6bfcd5faec5323d42cd0282fd07316bdf3f8c7864b1b4f98e55071c"
+        }
+      ],
+      "match_kind": "normalized_full_equal",
+      "segment_id": "urn:uuid:0e60aea2-b450-58ef-9ce7-39cf7f4db8ab",
+      "source_block_sha256": "81505ab6829a143f705f0ae90b31c1ec55a5a1f726c6527f5c87bfa4b6ac4106",
+      "source_locator": {
+        "end_line": 973,
+        "ert_ordinal": 3,
+        "layout": "Standard",
+        "layout_ordinal": 33,
+        "start_line": 878
+      },
+      "source_normalized_bytes": 569,
+      "source_normalized_sha256": "dedcc15fe1491657f936dc4433968a302e6961fe37ea764a90118e4cec9faa15",
+      "source_rel": "source/lqbrin-tea-time-numerical-1868821/preliminaries-recursion.lyx",
+      "source_text_bytes": 570,
+      "source_text_sha256": "af87f47c079c48e61d0c5644a1dc98e554146af4486759172beee4c32e51edaf"
+    },
+    {
+      "asset_normalized_bytes": 1602,
+      "asset_normalized_sha256": "a1d94b1b76ec62ed70e75d02dad347086002b77bc838e7ece980b5c9739bcbf8",
+      "asset_path": "source/lqbrin-tea-time-numerical-1868821/octave/fractalInterpolator.m",
+      "asset_raw_bytes": 1603,
+      "asset_raw_sha256": "a27d4175c83d61e1fa386b7e8b53b48fc26f0011a829fc760a875817b9e1324c",
+      "evidence_segments": [
+        {
+          "id": "urn:uuid:05ef253e-a3e5-56c7-a71c-24777d11dea5",
+          "source_text_sha256": "413893d728ed4af2d30f1ebfca0132fdd5f223ba200d8a61b574781085cd13ac"
+        }
+      ],
+      "match_kind": "normalized_full_equal",
+      "segment_id": "urn:uuid:148e5f7a-51ea-5a2d-82ca-da25b6d4a7df",
+      "source_block_sha256": "80038e07b8415dc2f4a4575da3e65fa97b6ca4283757ddfd1e4bd72607af6e5c",
+      "source_locator": {
+        "end_line": 1449,
+        "ert_ordinal": 1,
+        "layout": "Standard",
+        "layout_ordinal": 21,
+        "start_line": 1128
+      },
+      "source_normalized_bytes": 1602,
+      "source_normalized_sha256": "a1d94b1b76ec62ed70e75d02dad347086002b77bc838e7ece980b5c9739bcbf8",
+      "source_rel": "source/lqbrin-tea-time-numerical-1868821/interpolation-challenge.lyx",
+      "source_text_bytes": 1603,
+      "source_text_sha256": "6bc31603ec8d8483836cc3fa0a1ccea4baf4d764be069508496360b6b856d219"
+    },
+    {
+      "asset_normalized_bytes": 118,
+      "asset_normalized_sha256": "bc328685966718401aeabdfb8d4778e936b0ce8bb94feaf33ae278eeed242dcf",
+      "asset_path": "source/lqbrin-tea-time-numerical-1868821/octave/experiment1.m",
+      "asset_raw_bytes": 119,
+      "asset_raw_sha256": "f020e301411326022d52a8053c484211f88400fd0a27b921353ccc1527b8c585",
+      "evidence_segments": [
+        {
+          "id": "urn:uuid:1b85234b-e7f9-5a32-9136-66bac523d63a",
+          "source_text_sha256": "61709b5409e45031b896bd24e1722099b2d047dc49b24ef97bc3d11402541e14"
+        }
+      ],
+      "match_kind": "normalized_full_equal",
+      "segment_id": "urn:uuid:1f006247-a919-5394-8972-f3ba01080405",
+      "source_block_sha256": "b0246c4292c4ba20a9ab3170723d462702265c053ccde2df8c1c08c5f17f014b",
+      "source_locator": {
+        "end_line": 2312,
+        "ert_ordinal": 1,
+        "layout": "Standard",
+        "layout_ordinal": 46,
+        "start_line": 2255
+      },
+      "source_normalized_bytes": 118,
+      "source_normalized_sha256": "bc328685966718401aeabdfb8d4778e936b0ce8bb94feaf33ae278eeed242dcf",
+      "source_rel": "source/lqbrin-tea-time-numerical-1868821/preliminaries-taylor.lyx",
+      "source_text_bytes": 119,
+      "source_text_sha256": "b6c13712364cbbf40213b14a76a151bb1ed6616f48dd2050b2c63bf73830910a"
+    },
+    {
+      "asset_normalized_bytes": 481,
+      "asset_normalized_sha256": "046bf2ae99ac11ce7033ee787133451da9bfde1da390ccd2f49248fbceddd636",
+      "asset_path": "source/lqbrin-tea-time-numerical-1868821/octave/recFactorial.m",
+      "asset_raw_bytes": 484,
+      "asset_raw_sha256": "54a1adc3ca26207c2331f8ca39dbc8dc430f3dbd104f3db3a105f4826470ec2a",
+      "evidence_segments": [
+        {
+          "id": "urn:uuid:465424b5-c66f-5e0d-9a3e-3aed5be96e6a",
+          "source_text_sha256": "ccf41d75b1f6929672011b74a254882d3f54f92714f667ff5ebdbaba77fc0a1f"
+        },
+        {
+          "id": "urn:uuid:4c9968b7-c52a-5c4a-8280-7d283fd980e7",
+          "source_text_sha256": "f4708d03eac6e12eb5be6664723224d73f98ddbab8c2a70eac347dff8d4ed20e"
+        }
+      ],
+      "match_kind": "normalized_full_equal",
+      "segment_id": "urn:uuid:3fb11d14-d0a3-5b86-8740-941709606661",
+      "source_block_sha256": "762851d26038bdae18073510ce3348ded64d8dec8b1f9af7e30395e0ee19a4d7",
+      "source_locator": {
+        "end_line": 1410,
+        "ert_ordinal": 7,
+        "layout": "Standard",
+        "layout_ordinal": 39,
+        "start_line": 1325
+      },
+      "source_normalized_bytes": 481,
+      "source_normalized_sha256": "046bf2ae99ac11ce7033ee787133451da9bfde1da390ccd2f49248fbceddd636",
+      "source_rel": "source/lqbrin-tea-time-numerical-1868821/preliminaries-recursion.lyx",
+      "source_text_bytes": 481,
+      "source_text_sha256": "046bf2ae99ac11ce7033ee787133451da9bfde1da390ccd2f49248fbceddd636"
+    },
+    {
+      "asset_normalized_bytes": 1109,
+      "asset_normalized_sha256": "cda18cc88dfee3affc8087ba86aa37cdc254e499cf1f6bf488794f24b9031ce1",
+      "asset_path": "source/lqbrin-tea-time-numerical-1868821/octave/bracketedInverseQuadratic.m",
+      "asset_raw_bytes": 1109,
+      "asset_raw_sha256": "cda18cc88dfee3affc8087ba86aa37cdc254e499cf1f6bf488794f24b9031ce1",
+      "evidence_segments": [
+        {
+          "id": "urn:uuid:0eeef1d0-24b4-5345-9f56-6e8e238ba24c",
+          "source_text_sha256": "e07a3a08a3630960035edb2db25ef6d026f058fdd492ace41ce35ca741762282"
+        }
+      ],
+      "match_kind": "normalized_full_equal",
+      "segment_id": "urn:uuid:7e348c15-929e-504b-a0ff-f8e8f11cc0f3",
+      "source_block_sha256": "25118136fa16cf25f2f2320b2199f21e55b2c64fdb4e82b1b0a4937a906c16db",
+      "source_locator": {
+        "end_line": 3177,
+        "ert_ordinal": 1,
+        "layout": "Standard",
+        "layout_ordinal": 59,
+        "start_line": 2933
+      },
+      "source_normalized_bytes": 1109,
+      "source_normalized_sha256": "cda18cc88dfee3affc8087ba86aa37cdc254e499cf1f6bf488794f24b9031ce1",
+      "source_rel": "source/lqbrin-tea-time-numerical-1868821/roots-bracketing.lyx",
+      "source_text_bytes": 1109,
+      "source_text_sha256": "cda18cc88dfee3affc8087ba86aa37cdc254e499cf1f6bf488794f24b9031ce1"
+    },
+    {
+      "asset_line_range": [
+        1,
+        12
+      ],
+      "asset_normalized_bytes": 1313,
+      "asset_normalized_sha256": "358db5fbcea756d894967166796dab7bc932a7ff72d890eb2900ad8bbd18ff1f",
+      "asset_path": "source/lqbrin-tea-time-numerical-1868821/octave/preliminaries_convergence.m",
+      "asset_raw_bytes": 1314,
+      "asset_raw_sha256": "dbfe61aa0f725838bec5b97b5d7abdff6ec4e021f0f72eb20dc2950c55e50c16",
+      "evidence_segments": [
+        {
+          "id": "urn:uuid:9c93d639-9802-563f-be67-666f826a3589",
+          "source_text_sha256": "20311944d2df771bd8148e4138c43b638ca64b3f781b3c49889f6418ed69dac3"
+        }
+      ],
+      "match_kind": "exact_excerpt",
+      "segment_id": "urn:uuid:0b576889-2046-5fa3-84a7-e559b5c195c9",
+      "source_block_sha256": "5c5a4ec65be0a75742b63d5941dfb00a42a9d3a0862f82708149031735fe5c7d",
+      "source_locator": {
+        "end_line": 3744,
+        "ert_ordinal": 5,
+        "layout": "Standard",
+        "layout_ordinal": 42,
+        "start_line": 3667
+      },
+      "source_normalized_bytes": 158,
+      "source_normalized_sha256": "8df05a1c60a89258095bacdbbb4f31a00309186cbb665c803ca618efbc9584a8",
+      "source_rel": "source/lqbrin-tea-time-numerical-1868821/preliminaries-convergence.lyx",
+      "source_text_bytes": 158,
+      "source_text_sha256": "8df05a1c60a89258095bacdbbb4f31a00309186cbb665c803ca618efbc9584a8"
+    },
+    {
+      "asset_normalized_bytes": 940,
+      "asset_normalized_sha256": "aba753ec2fa0d4ec193308e476af74b45992affa4f570d9f8b4007b8a8a44ad5",
+      "asset_path": "source/lqbrin-tea-time-numerical-1868821/octave/bracketedNewton.m",
+      "asset_raw_bytes": 940,
+      "asset_raw_sha256": "aba753ec2fa0d4ec193308e476af74b45992affa4f570d9f8b4007b8a8a44ad5",
+      "declared_function": "bracketedNewton",
+      "evidence_segments": [
+        {
+          "id": "urn:uuid:4c8efa67-9ad0-545a-9957-4185d575172d",
+          "source_text_sha256": "549c8133c4a61ad72151a8d7879897b5b24e15bf927946616b273f4e464aa648"
+        }
+      ],
+      "match_kind": "documented_revision",
+      "segment_id": "urn:uuid:31379b26-7151-537d-8ead-1f0222fe92c7",
+      "source_block_sha256": "ddbd3c8f4a4fa2f32bc997eba7c067d7cc98e1b2ad370fac339601c67db42bc0",
+      "source_locator": {
+        "end_line": 1715,
+        "ert_ordinal": 1,
+        "layout": "Standard",
+        "layout_ordinal": 21,
+        "start_line": 1536
+      },
+      "source_normalized_bytes": 913,
+      "source_normalized_sha256": "c55936db1f87b6fb8defc8a34f7abb739f043a85fc9a7237aa13b9ab6daebe02",
+      "source_rel": "source/lqbrin-tea-time-numerical-1868821/roots-bracketing.lyx",
+      "source_text_bytes": 913,
+      "source_text_sha256": "c55936db1f87b6fb8defc8a34f7abb739f043a85fc9a7237aa13b9ab6daebe02"
+    },
+    {
+      "asset_normalized_bytes": 813,
+      "asset_normalized_sha256": "77cd317a7a7d3bb88c6d0ec02111ec681a5a94de8f72dbeff7c93dd47f49452f",
+      "asset_path": "source/lqbrin-tea-time-numerical-1868821/octave/falsePosition.m",
+      "asset_raw_bytes": 813,
+      "asset_raw_sha256": "77cd317a7a7d3bb88c6d0ec02111ec681a5a94de8f72dbeff7c93dd47f49452f",
+      "declared_function": "falsePosition",
+      "evidence_segments": [
+        {
+          "id": "urn:uuid:4c8efa67-9ad0-545a-9957-4185d575172d",
+          "source_text_sha256": "549c8133c4a61ad72151a8d7879897b5b24e15bf927946616b273f4e464aa648"
+        }
+      ],
+      "match_kind": "documented_revision",
+      "segment_id": "urn:uuid:fb91bed9-2e3a-576e-abe1-3b21e8db70f7",
+      "source_block_sha256": "fa37aeb85c86abe721e2b98249ae451efcf0f78964eba0bd839263d353967209",
+      "source_locator": {
+        "end_line": 1515,
+        "ert_ordinal": 1,
+        "layout": "Standard",
+        "layout_ordinal": 19,
+        "start_line": 1356
+      },
+      "source_normalized_bytes": 796,
+      "source_normalized_sha256": "e2e4d11163a16f062541f9f7efa4f753ce279a52b0a5597dc214a4da0abdf26e",
+      "source_rel": "source/lqbrin-tea-time-numerical-1868821/roots-bracketing.lyx",
+      "source_text_bytes": 796,
+      "source_text_sha256": "e2e4d11163a16f062541f9f7efa4f753ce279a52b0a5597dc214a4da0abdf26e"
+    },
+    {
+      "asset_normalized_bytes": 797,
+      "asset_normalized_sha256": "80239728d92548fc7cfb76b0048aecafb2bc10654b1e06ad32bb52b13270256c",
+      "asset_path": "source/lqbrin-tea-time-numerical-1868821/octave/bisection.m",
+      "asset_raw_bytes": 798,
+      "asset_raw_sha256": "786609aada289a968554747e0921421eaeab5af852eaabd66c48defeb2d47c3b",
+      "declared_function": "bisection",
+      "evidence_segments": [
+        {
+          "id": "urn:uuid:de2e15df-b648-5ea0-bac5-f18a19833a86",
+          "source_text_sha256": "81c808a5f11afc419419c3307820fef1f07c9fa878e7ea76f76fe1740b7951e9"
+        }
+      ],
+      "match_kind": "documented_revision",
+      "segment_id": "urn:uuid:5280fa6b-2632-5643-96e3-01858a23bf45",
+      "source_block_sha256": "2b8d5de2ef86cee37ef044055ae2b7f14a4f94ab3c4296033086c7cc63daef76",
+      "source_locator": {
+        "end_line": 3529,
+        "ert_ordinal": 11,
+        "layout": "Standard",
+        "layout_ordinal": 62,
+        "start_line": 3394
+      },
+      "source_normalized_bytes": 626,
+      "source_normalized_sha256": "bc2d58759f6dd72c55c0a196d6e449dbe3d58cee77157315f45bdeec9ccbbb4a",
+      "source_rel": "source/lqbrin-tea-time-numerical-1868821/roots-bisection.lyx",
+      "source_text_bytes": 626,
+      "source_text_sha256": "bc2d58759f6dd72c55c0a196d6e449dbe3d58cee77157315f45bdeec9ccbbb4a"
+    },
+    {
+      "asset_normalized_bytes": 928,
+      "asset_normalized_sha256": "3ed267407e200de1bebba3574240f58df40e7c5b491a11efc1e180117765ae6b",
+      "asset_path": "source/lqbrin-tea-time-numerical-1868821/octave/bisectionWhile.m",
+      "asset_raw_bytes": 929,
+      "asset_raw_sha256": "bde686191e8c5bf87cc69d7999872ebeea75392e45d08698566f3de47e1395d1",
+      "declared_function": "bisectionWhile",
+      "evidence_segments": [
+        {
+          "id": "urn:uuid:6de34a40-b753-53b4-8feb-4b7a429bd0db",
+          "source_text_sha256": "1134c70f0d5f0245541173b20182a21501e11c64760cdc473aaa5a3bd58db552"
+        },
+        {
+          "id": "urn:uuid:14dc4d38-45e2-51f1-8b5c-4fc09d6f9dac",
+          "source_text_sha256": "3c07b8587a116db29fe9604bdee7bb96a52a363074d48868b7bb0cb70f20fc24"
+        }
+      ],
+      "match_kind": "documented_revision",
+      "segment_id": "urn:uuid:0437b41a-6692-58c2-b49a-118139b38406",
+      "source_block_sha256": "f335ff4d43dba356a03ac8cefe39560664c42df57f1a129a73dbcc7b03a8636c",
+      "source_locator": {
+        "end_line": 5338,
+        "ert_ordinal": 1,
+        "layout": "Standard",
+        "layout_ordinal": 61,
+        "start_line": 5226
+      },
+      "source_normalized_bytes": 293,
+      "source_normalized_sha256": "9e808b0c8a2e54e53f66ea98e4d7b36209106aa18750afc66aba5bf772907c04",
+      "source_rel": "source/lqbrin-tea-time-numerical-1868821/roots-orderOfConvergence.lyx",
+      "source_text_bytes": 294,
+      "source_text_sha256": "d45cec0b03a2f09b91f508f99ccc338b5d472ad95f692b9d933513216ffb991a"
+    },
+    {
+      "asset_normalized_bytes": 928,
+      "asset_normalized_sha256": "3ed267407e200de1bebba3574240f58df40e7c5b491a11efc1e180117765ae6b",
+      "asset_path": "source/lqbrin-tea-time-numerical-1868821/octave/bisectionWhile.m",
+      "asset_raw_bytes": 929,
+      "asset_raw_sha256": "bde686191e8c5bf87cc69d7999872ebeea75392e45d08698566f3de47e1395d1",
+      "declared_function": "bisectionWhile",
+      "evidence_segments": [
+        {
+          "id": "urn:uuid:ee8a3396-4086-58e9-bf60-2b358abe70e1",
+          "source_text_sha256": "774a05e37ffc17b209109f7fae5eec4fda1ea618fdcabe301d684a253321ff24"
+        },
+        {
+          "id": "urn:uuid:204ed8f0-6f4b-5a6e-9854-f4d4d56f6493",
+          "source_text_sha256": "250f229e6d3f90cd1e42099f5e35caf010eac645dfeb4ffe0c832f8826892479"
+        }
+      ],
+      "match_kind": "documented_revision",
+      "segment_id": "urn:uuid:6aa8d746-72db-5e67-970f-b913b976e2b3",
+      "source_block_sha256": "64015ad9fed527300961fe1390d2d797e5013344e039332da6d8f55593808bc3",
+      "source_locator": {
+        "end_line": 5509,
+        "ert_ordinal": 1,
+        "layout": "Standard",
+        "layout_ordinal": 63,
+        "start_line": 5377
+      },
+      "source_normalized_bytes": 366,
+      "source_normalized_sha256": "840e534a894029b03d8d055677376774d144cba850e15d8d1d5cccdb51b0e312",
+      "source_rel": "source/lqbrin-tea-time-numerical-1868821/roots-orderOfConvergence.lyx",
+      "source_text_bytes": 367,
+      "source_text_sha256": "56ee5ef3c51434e7973759867bbbaead432d306cc50f2ee9ba983989a01b7cdc"
+    }
+  ],
+  "normalizer": {
+    "description": "UTF-8; CRLF and CR to LF; strip trailing SP/TAB per line; remove outer empty lines; no terminal LF",
+    "id": "octave-text-v1"
+  },
+  "path_root": "../..",
+  "schema_id": "ttna-code-evidence-map-v1",
+  "schema_version": "1.0.0"
+}

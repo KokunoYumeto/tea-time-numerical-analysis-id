@@ -1,0 +1,4653 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\input $HOME/Documents/textbook/preamble
+\end_preamble
+\use_default_options true
+\master ../scsu/Book-Numerical/TeaTimeNumericalAnalysis.lyx
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 4cm
+\topmargin 2.5cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 1
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Fixedpt"
+
+\end_inset
+
+Iterasi Titik Tetap
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode iterasi titik tetap
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+metode ! iterasi titik tetap|see{metode iterasi titik tetap}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ambil kalkulator Anda.
+ Kalkulator apa pun yang memiliki tombol kosinus sudah memadai.
+ Jika Anda menggunakan kalkulator ilmiah sederhana, tekan tombol hapus semua,
+ yang biasanya bertanda 
+\family typewriter
+AC
+\family default
+ atau cukup 
+\family typewriter
+C
+\family default
+.
+ Layar kini seharusnya menampilkan 0.
+ Tekan tombol kosinus, yang seharusnya bertanda 
+\family typewriter
+cos
+\family default
+.
+ Layar seharusnya menampilkan 1.
+ Tekan lagi tombol kosinus.
+ Layar seharusnya menampilkan 
+\begin_inset Formula $0.540302\ldots$
+\end_inset
+
+.
+ Ulangi.
+ Ulangi lagi.
+ Bahkan, teruslah menekan tombol kosinus sampai Anda melihat suatu pola.
+ 
+\end_layout
+
+\begin_layout Standard
+Jika Anda memiliki kalkulator yang lebih canggih dengan tombol jawaban sebelumnya,
+ biasanya bertanda 
+\family typewriter
+Ans
+\family default
+, tekan 0 lalu 
+\family typewriter
+Enter
+\family default
+ atau 
+\family typewriter
+=
+\family default
+.
+ Kemudian tekan tombol kosinus lalu tombol jawaban sebelumnya.
+ Setelah itu, tekan 
+\family typewriter
+Enter
+\family default
+ atau 
+\family typewriter
+=
+\family default
+ untuk melakukan perhitungan.
+ Pada kali pertama, layar seharusnya menampilkan 1 (sama seperti pada kalkulator
+ ilmiah).
+ Namun, untuk mengulanginya, cukup tekan 
+\family typewriter
+Enter
+\family default
+ atau 
+\family typewriter
+=
+\family default
+ lagi.
+ Tindakan ini akan mengulangi perhitungan terakhir, yaitu kosinus dari jawaban sebelumnya.
+ Layar seharusnya menampilkan 
+\begin_inset Formula $0.540302\ldots$
+\end_inset
+
+.
+ Sekarang ulangi sampai Anda melihat suatu pola.
+\end_layout
+
+\begin_layout Standard
+Setelah sekitar 30 pengulangan, atau yang akan kita sebut iterasi
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+iterasi
+\end_layout
+
+\end_inset
+
+, kalkulator Anda seharusnya menampilkan bilangan seperti 
+\begin_inset Formula $0.739083847\ldots$
+\end_inset
+
+.
+ Berapa kali pun Anda mengulangi, atau mengiterasi, perhitungan itu, nilainya
+ tidak akan banyak berubah.
+ Bahkan, setelah mencapai 
+\begin_inset Formula $0.7390851332\ldots$
+\end_inset
+
+, nilainya tidak akan berubah sama sekali (kecuali kalkulator Anda menampilkan lebih banyak tempat desimal—setelah
+ sekitar 90 iterasi, kalkulator yang menampilkan 15 tempat desimal akan menunjukkan
+ 
+\begin_inset Formula $0.739085133215161$
+\end_inset
+
+ dan nilainya tidak akan berubah lagi).
+ Artinya, 
+\begin_inset Formula $\cos(0.7390851332\ldots)=0.7390851332\ldots$
+\end_inset
+
+.
+ Kita menyebut 
+\begin_inset Formula $0.7390851332\ldots$
+\end_inset
+
+ sebagai 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+titik tetap
+\end_layout
+
+\end_inset
+
+ titik tetap dari fungsi kosinus.
+ Nilai itu tetap (tidak berubah) ketika fungsi kosinus diterapkan.
+ Dengan kata lain, pada 
+\begin_inset Formula $0.7390851332\ldots$
+\end_inset
+
+, masukan dan keluaran fungsi kosinus sama.
+ Lihat simulasi iterasi ini secara daring di 
+\begin_inset CommandInset href
+LatexCommand href
+name "situs pendamping"
+target "http://lqbrin.github.io/tea-time-numerical/ancillaries.html"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Barangkali sekarang muncul serangkaian pertanyaan.
+ Mengapa ini berhasil? Bagaimana jika kita mulai dengan bilangan selain 0? Apakah ini
+ berhasil untuk sembarang fungsi? Dapatkah kita meramalkan kapan cara ini akan berhasil atau tidak? Dapatkah
+ kita mencari akar dengan cara ini? Apakah kekonvergenannya cepat? Dalam bagian ini dan bagian berikutnya,
+ kita akan memberikan setidaknya jawaban parsial untuk semua pertanyaan tersebut.
+ Kita mulai dengan 
+\begin_inset Quotes eld
+\end_inset
+
+Mengapa ini berhasil?
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Perhatikan penyelesaian sistem 
+\begin_inset Formula 
+\[
+\begin{cases}
+y=\cos(x)\\
+y=x
+\end{cases}.
+\]
+
+\end_inset
+
+Salah satu cara menyelesaikannya adalah dengan metode substitusi.
+ Jika kita menyubstitusikan 
+\begin_inset Formula $y=x$
+\end_inset
+
+ ke dalam 
+\begin_inset Formula $y=\cos x$
+\end_inset
+
+ kita memperoleh 
+\begin_inset Formula $x=\cos x$
+\end_inset
+
+ atau 
+\begin_inset Formula $\cos x=x$
+\end_inset
+
+.
+ Solusi sistem tersebut tepat berimpit dengan titik-titik tetap fungsi
+ kosinus, karena setiap solusi 
+\begin_inset Formula $\cos x=x$
+\end_inset
+
+ merupakan nilai 
+\begin_inset Formula $x$
+\end_inset
+
+ yang tidak berubah oleh fungsi kosinus.
+ Karena sistem dua persamaan dengan dua peubah dapat diselesaikan, setidaknya
+ secara hampiran, dengan menggambar grafik, hal ini menyarankan agar kita melihat
+ grafik sistem tersebut untuk memahami lebih jauh apa yang terjadi selama
+ iterasi.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:cosine-fixed-point"
+
+\end_inset
+
+Menentukan titik tetap 
+\begin_inset Formula $\cos(x)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(a)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(b)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/roots-fixedpt5.eps
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/roots-fixedpt1.eps
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cosine-fixed-point"
+
+\end_inset
+
+(a) memperlihatkan grafik 
+\begin_inset Formula $y=\cos(x)$
+\end_inset
+
+ dan 
+\begin_inset Formula $y=x$
+\end_inset
+
+ pada interval 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+.
+ Kita dapat melihat titik potong di sekitar 
+\begin_inset Formula $(0.75,0.75)$
+\end_inset
+
+ sehingga kita patut menduga bahwa titik tetapnya berada di sekitar 
+\begin_inset Formula $0.75$
+\end_inset
+
+ (yang tentu saja kita ketahui benar dari percobaan kalkulator).
+ Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cosine-fixed-point"
+
+\end_inset
+
+(b) menggambarkan proses menghitung 
+\begin_inset Formula $\cos(0),\cos(1),\cos(0.540302\ldots),\ldots$
+\end_inset
+
+.
+ Menelusuri ruas garis vertikal dari 
+\begin_inset Formula $(0,0)$
+\end_inset
+
+ ke 
+\begin_inset Formula $(0,1)$
+\end_inset
+
+ menunjukkan perhitungan 
+\begin_inset Formula $\cos(0)$
+\end_inset
+
+.
+ Menelusuri kelanjutan horizontal dari 
+\begin_inset Formula $(0,1)$
+\end_inset
+
+ ke 
+\begin_inset Formula $(1,1)$
+\end_inset
+
+ lalu ruas garis vertikal dari 
+\begin_inset Formula $(1,1)$
+\end_inset
+
+ ke 
+\begin_inset Formula $(1,0.540302\ldots)$
+\end_inset
+
+ menunjukkan perhitungan 
+\begin_inset Formula $\cos(1)$
+\end_inset
+
+.
+ Menelusuri garis horizontal dari 
+\begin_inset Formula $(1,0.540302\ldots)$
+\end_inset
+
+ ke 
+\begin_inset Formula $(0.540302\ldots,0.540302\ldots)$
+\end_inset
+
+ lalu garis vertikal dari 
+\begin_inset Formula $(0.540302\ldots,0.540302\ldots)$
+\end_inset
+
+ ke 
+\begin_inset Formula $(0.540302\ldots,0.857553\ldots)$
+\end_inset
+
+ menunjukkan perhitungan 
+\begin_inset Formula $\cos(0.540302\ldots)$
+\end_inset
+
+, dan seterusnya.
+ Setiap pasangan ruas garis—yang satu bergerak horizontal dari grafik
+ 
+\begin_inset Formula $y=\cos(x)$
+\end_inset
+
+ menuju grafik 
+\begin_inset Formula $y=x$
+\end_inset
+
+ dan yang lain bergerak vertikal dari garis 
+\begin_inset Formula $y=x$
+\end_inset
+
+ menuju grafik 
+\begin_inset Formula $y=\cos(x)$
+\end_inset
+
+—menunjukkan satu iterasi lagi.
+ Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cosine-fixed-point"
+
+\end_inset
+
+(b) kadang disebut diagram jaring
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+diagram jaring
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "barnsley"
+literal "true"
+
+\end_inset
+
+, dan lazim digunakan untuk menggambarkan konsep iterasi.
+ Lintasan diagram jaring yang menuju 
+\begin_inset Formula $(0.739085\ldots,0.739085\ldots)$
+\end_inset
+
+ merupakan akibat tak terhindarkan dari geometri grafik 
+\begin_inset Formula $\cos(x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Bagaimana jika kita mulai dengan bilangan selain 0? Dengan menggunakan Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cosine-fixed-point"
+
+\end_inset
+
+, Anda seharusnya dapat meyakinkan diri bahwa kekonvergenan menuju titik
+ 
+\begin_inset Formula $(0.7390851332\ldots,0.7390851332\ldots)$
+\end_inset
+
+ terjamin untuk setiap nilai awal antara 0 dan 1.
+ Cobalah.
+ Mulailah dari sembarang titik pada garis 
+\begin_inset Formula $y=x$
+\end_inset
+
+.
+ Bergeraklah secara vertikal ke grafik 
+\begin_inset Formula $y=\cos(x)$
+\end_inset
+
+.
+ Lalu bergeraklah secara horizontal ke garis 
+\begin_inset Formula $y=x$
+\end_inset
+
+.
+ Ulangi.
+ Anda akan mendapati bahwa lintasan diagram jaring selalu menuju perpotongan
+ kedua grafik.
+ Sekarang pertimbangkan untuk memulai dengan sembarang bilangan real, 
+\begin_inset Formula $r$
+\end_inset
+
+.
+ Kosinus setiap bilangan real berada dalam interval 
+\begin_inset Formula $[-1,1]$
+\end_inset
+
+ sehingga 
+\begin_inset Formula $\cos(r)\in[-1,1]$
+\end_inset
+
+.
+ Kosinus setiap bilangan dalam interval 
+\begin_inset Formula $[-1,1]$
+\end_inset
+
+ berada dalam interval 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+ sehingga 
+\begin_inset Formula $\cos(\cos(r))\in[0,1]$
+\end_inset
+
+.
+ Artinya, iterasi kedua berada dalam interval dari 0 sampai 1.
+ Jadi, hanya setelah dua iterasi, setiap nilai awal akan menjadi nilai antara
+ 0 dan 1.
+ Diagram jaring kita menunjukkan bahwa iterasi selanjutnya akan menuju titik
+ tetap.
+ Jadi, apa pun nilai awalnya, iterasi menuju titik tetap.
+ Argumen sebelumnya menjadi cikal bakal bukti fakta ini.
+\end_layout
+
+\begin_layout Standard
+Namun, tidak semua fungsi berperilaku sebaik itu.
+ Sebagai contoh, 
+\begin_inset Formula $1^{2}=1$
+\end_inset
+
+.
+ Dengan kata lain, 
+\begin_inset Formula $1$
+\end_inset
+
+ adalah titik tetap fungsi 
+\begin_inset Formula $y=x^{2}$
+\end_inset
+
+.
+ Akan tetapi, iterasi yang dimulai dari sembarang bilangan selain 
+\begin_inset Formula $1$
+\end_inset
+
+ atau 
+\begin_inset Formula $-1$
+\end_inset
+
+ tidak menuju titik tetap ini.
+ Jika kita mulai dengan sembarang bilangan yang lebih besar dari 1 lalu menguadratkannya, nilainya menjadi lebih besar.
+ Jika hasilnya dikuadratkan, nilainya menjadi lebih besar lagi.
+ Menguadratkannya sekali lagi hanya memperbesar nilai tersebut tanpa batas.
+ Oleh karena itu, iterasi yang dimulai dari sembarang nilai yang lebih besar dari 1 (atau lebih kecil dari 
+\begin_inset Formula $-1$
+\end_inset
+
+) tidak konvergen ke titik tetap 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ Demikian pula iterasi yang dimulai dari sembarang bilangan yang nilai mutlaknya kurang dari 1.
+ Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:quadratic-fixed-point"
+
+\end_inset
+
+ 
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:quadratic-fixed-point"
+
+\end_inset
+
+Memvisualisasikan iterasi 
+\begin_inset Formula $f(x)=x^{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/roots-fixedpt2.eps
+	scale 120
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ menggambarkan iterasi 
+\begin_inset Formula $y=x^{2}$
+\end_inset
+
+ dengan nilai awal 
+\begin_inset Formula $0.9$
+\end_inset
+
+.
+ Ikuti diagram jaring dari titik 
+\begin_inset Formula $(0.9,0.9)$
+\end_inset
+
+ secara vertikal ke grafik 
+\begin_inset Formula $y=x^{2}$
+\end_inset
+
+ lalu secara horizontal kembali ke garis 
+\begin_inset Formula $y=x$
+\end_inset
+
+, dan seterusnya, untuk memeriksanya sendiri.
+ Ini menggambarkan dengan baik fakta bahwa kuadrat setiap bilangan yang terletak
+ ketat antara 0 dan 1 lebih kecil daripada bilangan itu sendiri.
+ Untuk nilai awal antara 
+\begin_inset Formula $-1$
+\end_inset
+
+ dan 
+\begin_inset Formula $1$
+\end_inset
+
+, dengan mengecualikan 
+\begin_inset Formula $\pm1$
+\end_inset
+
+, iterasi menghasilkan barisan yang konvergen ke 0, bukan 1.
+ Singkatnya, selain 
+\begin_inset Formula $-1$
+\end_inset
+
+ dan 1, tidak ada nilai awal yang menghasilkan barisan yang konvergen ke 1 di bawah iterasi
+ fungsi 
+\begin_inset Formula $y=x^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Terdapat perbedaan mendasar antara titik tetap 
+\begin_inset Formula $0.7390851332\ldots$
+\end_inset
+
+ dari 
+\begin_inset Formula $f(x)=\cos(x)$
+\end_inset
+
+ dan titik tetap 
+\begin_inset Formula $1$
+\end_inset
+
+ dari 
+\begin_inset Formula $g(x)=x^{2}$
+\end_inset
+
+.
+ Iterasi titik tetap konvergen ke 
+\begin_inset Formula $0.7390851332\ldots$
+\end_inset
+
+ di bawah 
+\begin_inset Formula $f(x)=\cos(x)$
+\end_inset
+
+ untuk sembarang nilai awal.
+ Iterasi titik tetap gagal konvergen ke 
+\begin_inset Formula $1$
+\end_inset
+
+ di bawah 
+\begin_inset Formula $g(x)=x^{2}$
+\end_inset
+
+ untuk semua nilai awal kecuali 
+\begin_inset Formula $\pm1$
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Untuk jenis perilaku ketiga, iterasi titik tetap konvergen ke 
+\begin_inset Formula $0$
+\end_inset
+
+ di bawah 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ untuk nilai awal di dekat 0, tetapi tidak untuk nilai awal lainnya!
+\end_layout
+
+\end_inset
+
+ Memeriksa grafik 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ dan 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ yang masing-masing ditumpangtindihkan dengan garis 
+\begin_inset Formula $y=x$
+\end_inset
+
+ di lingkungan titik tetapnya dapat memberi petunjuk [Gambar
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:fixed-pt-zoom"
+
+\end_inset
+
+] tentang perbedaannya.
+ 
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:fixed-pt-zoom"
+
+\end_inset
+
+Kiri: 
+\color blue
+
+\begin_inset Formula $f(x)=\cos(x)$
+\end_inset
+
+
+\color inherit
+ dan 
+\begin_inset Formula $y=x$
+\end_inset
+
+.
+ Kanan: 
+\color blue
+
+\begin_inset Formula $g(x)=x^{2}$
+\end_inset
+
+
+\color inherit
+ dan 
+\begin_inset Formula $y=x$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/roots-fixedpt3.eps
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename figures/roots-fixedpt4.eps
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Memang, 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ memiliki gradien negatif di titik tetapnya, sedangkan 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ memiliki gradien positif di titik tetapnya.
+ Anda dapat melihatnya dari grafik atau 
+\begin_inset Quotes eld
+\end_inset
+
+melakukan kalkulusnya
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Namun, perbedaan yang penting lebih halus.
+ Bukan tanda gradien di titik tetap yang menentukan.
+ Nilai mutlak gradien di titik tetaplah yang menentukan.
+ Untuk fungsi mulus, lingkungan titik-titik dengan nilai mutlak gradien
+ lebih besar dari 1 cenderung ekspansif.
+ Artinya, titik-titik saling menjauh ketika fungsi diterapkan.
+ Sebaliknya, lingkungan titik-titik dengan nilai mutlak gradien kurang dari 1 cenderung
+ kontraktif.
+ Artinya, titik-titik saling mendekat ketika fungsi diterapkan.
+ 
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:contractive"
+
+\end_inset
+
+Jika 
+\begin_inset Formula $h(x)$
+\end_inset
+
+ dapat didiferensialkan pada 
+\begin_inset Formula $(a,b)$
+\end_inset
+
+ dengan 
+\begin_inset Formula $|h'(x)|<1$
+\end_inset
+
+ untuk semua 
+\begin_inset Formula $x\in(a,b)$
+\end_inset
+
+, maka untuk setiap 
+\begin_inset Formula $x_{1},x_{2}\in(a,b)$
+\end_inset
+
+, 
+\begin_inset Formula $|h(x_{2})-h(x_{1})|<|x_{2}-x_{1}|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Ambil 
+\begin_inset Formula $x_{1},x_{2}\in(a,b)$
+\end_inset
+
+ dan, tanpa mengurangi keumuman, ambil 
+\begin_inset Formula $x_{2}>x_{1}$
+\end_inset
+
+ agar kita dapat dengan tepat merujuk pada interval dari 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+hingga 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+.
+ Karena 
+\begin_inset Formula $h(x)$
+\end_inset
+
+ kontinu pada 
+\begin_inset Formula $[x_{1},x_{2}]$
+\end_inset
+
+ dan dapat didiferensialkan pada 
+\begin_inset Formula $(x_{1},x_{2})$
+\end_inset
+
+, Teorema Nilai Rata-Rata memberi kita 
+\begin_inset Formula $c\in(x_{1},x_{2})\subseteq(a,b)$
+\end_inset
+
+ sedemikian sehingga 
+\begin_inset Formula $h'(c)=\left|\frac{h(x_{2})-h(x_{1})}{x_{2}-x_{1}}\right|$
+\end_inset
+
+.
+ Namun, 
+\begin_inset Formula $h'(c)<1$
+\end_inset
+
+ menurut asumsi, sehingga 
+\begin_inset Formula $h'(c)=\left|\frac{h(x_{2})-h(x_{1})}{x_{2}-x_{1}}\right|<1$
+\end_inset
+
+, yang langsung memberikan 
+\begin_inset Formula $|h(x_{2})-h(x_{1})|<|x_{2}-x_{1}|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Selain itu, fungsi yang nilai mutlak turunannya kurang dari 1 hanya dapat
+ memotong garis 
+\begin_inset Formula $y=x$
+\end_inset
+
+ satu kali.
+ Setelah memotongnya, fungsi tersebut tidak pernah dapat 
+\begin_inset Quotes eld
+\end_inset
+
+menyusul
+\begin_inset Quotes erd
+\end_inset
+
+ karena hal itu membutuhkan gradien yang lebih besar dari 1, yaitu gradien garis
+ 
+\begin_inset Formula $y=x$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:uniquenessOfFixedPoint"
+
+\end_inset
+
+Misalkan 
+\begin_inset Formula $h(x)$
+\end_inset
+
+ kontinu pada 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+, dapat didiferensialkan pada 
+\begin_inset Formula $(a,b)$
+\end_inset
+
+ dengan 
+\begin_inset Formula $|h'(x)|<1$
+\end_inset
+
+ untuk semua 
+\begin_inset Formula $x\in(a,b)$
+\end_inset
+
+, dan 
+\begin_inset Formula $h([a,b])\subseteq[a,b]$
+\end_inset
+
+.
+ Maka 
+\begin_inset Formula $h$
+\end_inset
+
+ mempunyai tepat satu titik tetap dalam 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Jika 
+\begin_inset Formula $h(a)=a$
+\end_inset
+
+ atau 
+\begin_inset Formula $h(b)=b$
+\end_inset
+
+, keberadaan telah terbukti. Karena itu, misalkan 
+\begin_inset Formula $h(a)\neq a$
+\end_inset
+
+ dan 
+\begin_inset Formula $h(b)\neq b$
+\end_inset
+
+.
+ Karena 
+\begin_inset Formula $h([a,b])\subseteq[a,b]$
+\end_inset
+
+ harus berlaku 
+\begin_inset Formula $h(a)>a$
+\end_inset
+
+ dan 
+\begin_inset Formula $h(b)<b$
+\end_inset
+
+.
+ Langsung diperoleh 
+\begin_inset Formula $h(a)-a>0$
+\end_inset
+
+ dan 
+\begin_inset Formula $h(b)-b<0$
+\end_inset
+
+.
+ Karena fungsi bantu 
+\begin_inset Formula $f(x)=h(x)-x$
+\end_inset
+
+ kontinu pada 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+, Teorema Nilai Antara menjamin adanya 
+\begin_inset Formula $c\in(a,b)$
+\end_inset
+
+ sedemikian sehingga 
+\begin_inset Formula $f(c)=0$
+\end_inset
+
+.
+ Dengan substitusi, 
+\begin_inset Formula $h(c)-c=0$
+\end_inset
+
+, yang menyiratkan 
+\begin_inset Formula $h(c)=c$
+\end_inset
+
+, sehingga 
+\begin_inset Formula $c$
+\end_inset
+
+ adalah titik tetap 
+\begin_inset Formula $h$
+\end_inset
+
+.
+ Keberadaan titik tetap telah terbukti.
+ Sekarang misalkan 
+\begin_inset Formula $c_{1}\in[a,b]$
+\end_inset
+
+ dan 
+\begin_inset Formula $c_{2}\in[a,b]$
+\end_inset
+
+ adalah titik-titik tetap yang berbeda dari 
+\begin_inset Formula $h$
+\end_inset
+
+.
+ Maka 
+\begin_inset Formula 
+\[
+\frac{h(c_{1})-h(c_{2})}{c_{1}-c_{2}}=\frac{c_{1}-c_{2}}{c_{1}-c_{2}}=1.
+\]
+
+\end_inset
+
+ Berdasarkan Teorema Nilai Rata-Rata, terdapat 
+\begin_inset Formula $c_{3}$
+\end_inset
+
+ di antara 
+\begin_inset Formula $c_{1}$
+\end_inset
+
+ dan 
+\begin_inset Formula $c_{2}$
+\end_inset
+
+ sedemikian sehingga 
+\begin_inset Formula $h'(c_{3})=1$
+\end_inset
+
+, yang bertentangan dengan fakta bahwa 
+\begin_inset Formula $|h'(x)|<1$
+\end_inset
+
+ untuk semua 
+\begin_inset Formula $x\in(a,b)$
+\end_inset
+
+.
+ Oleh karena itu, tidak mungkin 
+\begin_inset Formula $c_{1}$
+\end_inset
+
+ dan 
+\begin_inset Formula $c_{2}$
+\end_inset
+
+ berbeda.
+\end_layout
+
+\begin_layout Standard
+Jadi, kita dapat secara wajar menduga bahwa jika nilai mutlak turunan di suatu titik tetap
+ kurang dari 1, iterasi merupakan metode yang layak untuk menghampiri
+ (menentukan) titik tetap tersebut, sedangkan jika nilai mutlak turunan di suatu titik tetap
+ lebih besar dari 1, iterasi bukan metode yang layak untuk menghampiri
+ titik tetap itu.
+ Namun, kita harus berhati-hati agar tidak menganggap kaidah praktis ini mutlak.
+ Kaidah ini hanya berlaku untuk apa yang disebut fungsi yang berperilaku baik.
+ Dalam hal ini, memiliki turunan pertama yang kontinu di lingkungan
+ titik tetap sudah cukup untuk disebut berperilaku baik.
+ Teorema berikut menetapkan bahwa iterasi titik tetap akan konvergen
+ dalam suatu lingkungan titik tetap jika nilai mutlak turunan fungsi kurang
+dari 1 di sana.
+ 
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:fixedPointConvergence"
+
+\end_inset
+
+(Teorema Kekonvergenan Titik Tetap) 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Teorema ! Kekonvergenan Titik Tetap
+\end_layout
+
+\end_inset
+
+ Diberikan suatu fungsi 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ dengan turunan pertama yang kontinu dan titik tetap 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+, jika 
+\begin_inset Formula $|f'(\hat{x})|<1$
+\end_inset
+
+ maka terdapat suatu lingkungan 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+ tempat iterasi titik tetap konvergen ke titik tetap tersebut untuk setiap nilai
+ awal dalam lingkungan itu.
+\end_layout
+
+\begin_layout Proof
+Dari kekontinuan, terdapat 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ sedemikian sehingga 
+\begin_inset Formula $|f'(x)|<1$
+\end_inset
+
+ untuk semua 
+\begin_inset Formula $x\in(\hat{x}-\varepsilon,\hat{x}+\varepsilon)$
+\end_inset
+
+.
+ Ambil 
+\begin_inset Formula $0<\delta<\varepsilon$
+\end_inset
+
+ dan tetapkan 
+\begin_inset Formula ${\displaystyle M=\max_{x\in[\hat{x}-\delta,\hat{x}+\delta]}|f'(x)|}$
+\end_inset
+
+.
+ Sekarang misalkan 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ adalah suatu nilai tertentu tetapi sembarang dalam 
+\begin_inset Formula $(\hat{x}-\delta,\hat{x}+\delta)$
+\end_inset
+
+.
+ Seperti pada Proposisi 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:contractive"
+
+\end_inset
+
+, kita menerapkan Teorema Nilai Rata-Rata.
+ Kali ini, dijamin terdapat 
+\begin_inset Formula ${\displaystyle c\in(\hat{x}-\delta,\hat{x}+\delta)}$
+\end_inset
+
+ sedemikian sehingga 
+\begin_inset Formula $f'(c)=\frac{f(\hat{x})-f(x_{0})}{\hat{x}-x_{0}}$
+\end_inset
+
+.
+ Namun, 
+\begin_inset Formula $|f'(c)|\leq M$
+\end_inset
+
+ sehingga 
+\begin_inset Formula $|f(\hat{x})-f(x_{0})|\leq M|\hat{x}-x_{0}|$
+\end_inset
+
+.
+ Selain itu, 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+ adalah titik tetap, sehingga 
+\begin_inset Formula $f(\hat{x})=\hat{x}$
+\end_inset
+
+, dan dari sini diperoleh 
+\begin_inset Formula $|\hat{x}-f(x_{0})|\leq M|\hat{x}-x_{0}|$
+\end_inset
+
+.
+ Sekarang kita mendefinisikan 
+\begin_inset Formula $x_{k}=f(x_{k-1})$
+\end_inset
+
+ untuk semua 
+\begin_inset Formula $k\geq1$
+\end_inset
+
+ dan membuktikan dengan induksi bahwa 
+\begin_inset Formula $|\hat{x}-x_{k}|\leq M^{k}|\hat{x}-x_{0}|$
+\end_inset
+
+ untuk semua 
+\begin_inset Formula $k\geq1$
+\end_inset
+
+.
+ Karena 
+\begin_inset Formula $x_{1}=f(x_{0})$
+\end_inset
+
+, kita telah menunjukkan 
+\begin_inset Formula $|\hat{x}-x_{1}|\leq M|\hat{x}-x_{0}|$
+\end_inset
+
+, sehingga klaim benar ketika 
+\begin_inset Formula $k=1$
+\end_inset
+
+.
+ Sekarang misalkan 
+\begin_inset Formula $|\hat{x}-x_{k}|\leq M^{k}|\hat{x}-x_{0}|$
+\end_inset
+
+ untuk suatu nilai tertentu tetapi sembarang 
+\begin_inset Formula $k\geq1$
+\end_inset
+
+.
+ Perhatikan bahwa 
+\begin_inset Formula $|\hat{x}-x_{k}|\leq M^{k}|\hat{x}-x_{0}|$
+\end_inset
+
+ menyiratkan 
+\begin_inset Formula $x_{k}\in(\hat{x}-\delta,\hat{x}+\delta)$
+\end_inset
+
+ sehingga kita menerapkan Teorema Nilai Rata-Rata seperti sebelumnya dan menyimpulkan 
+\begin_inset Formula $|\hat{x}-f(x_{k})|\leq M|\hat{x}-x_{k}|$
+\end_inset
+
+.
+ Dengan mengganti 
+\begin_inset Formula $x_{k+1}$
+\end_inset
+
+ dengan 
+\begin_inset Formula $f(x_{k})$
+\end_inset
+
+ dan menggunakan hipotesis induksi, kita memperoleh 
+\begin_inset Formula $|\hat{x}-x_{k+1}|\leq M\cdot M^{k}|\hat{x}-x_{0}|=M^{k+1}|\hat{x}-x_{0}|$
+\end_inset
+
+.
+ Jadi, kita mempunyai 
+\begin_inset Formula $0\leq|\hat{x}-x_{k}|\leq M^{k}|\hat{x}-x_{0}|$
+\end_inset
+
+.
+ Tentu saja 
+\begin_inset Formula ${\displaystyle \lim_{k\to\infty}0=0}$
+\end_inset
+
+ dan 
+\begin_inset Formula ${\displaystyle \lim_{k\to\infty}M^{k}|\hat{x}-x_{0}|=0}$
+\end_inset
+
+, sehingga berdasarkan Teorema Apit, 
+\begin_inset Formula ${\displaystyle \lim_{k\to\infty}|\hat{x}-x_{k}|=0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Seperti disinggung sebelumnya, kita tidak semestinya mengharapkan iterasi titik tetap konvergen
+ ketika nilai mutlak turunan di suatu titik tetap lebih besar dari satu.
+ Bahkan, yang terjadi kurang lebih adalah kebalikannya.
+ Terdapat suatu lingkungan titik tetap yang pasti ditinggalkan oleh iterasi titik tetap
+ untuk setiap nilai awal di lingkungan itu selain titik tetap
+tersebut.
+ Mengingat fakta itu, kita tergoda untuk berpikir bahwa Teorema Kekonvergenan Titik
+Tetap mungkin dapat diperkuat menjadi implikasi dua arah, yaitu pernyataan jika dan hanya
+jika.
+ Dan hal itu 
+\begin_inset Quotes eld
+\end_inset
+
+hampir
+\begin_inset Quotes erd
+\end_inset
+
+ dapat dilakukan.
+ Pernyataan yang dapat dibuat di sini memiliki padanan langsung dengan uji rasio untuk deret.
+ Ingatlah bahwa untuk setiap barisan bilangan real 
+\begin_inset Formula $a_{0},a_{1},a_{2},\ldots$
+\end_inset
+
+, limit 
+\begin_inset Formula ${\displaystyle L=\lim_{k\to\infty}\left|\frac{a_{k+1}}{a_{k}}\right|}$
+\end_inset
+
+ membantu menentukan kekonvergenan 
+\begin_inset Formula ${\displaystyle \sum_{k=0}^{\infty}a_{k}}$
+\end_inset
+
+ sebagai berikut:
+\end_layout
+
+\begin_layout Itemize
+Jika 
+\begin_inset Formula $L<1$
+\end_inset
+
+, maka 
+\begin_inset Formula ${\displaystyle \sum_{k=0}^{\infty}a_{k}}$
+\end_inset
+
+ konvergen (mutlak).
+\end_layout
+
+\begin_layout Itemize
+Jika 
+\begin_inset Formula $L>1$
+\end_inset
+
+, maka 
+\begin_inset Formula ${\displaystyle \sum_{k=0}^{\infty}a_{k}}$
+\end_inset
+
+ divergen.
+\end_layout
+
+\begin_layout Itemize
+Jika 
+\begin_inset Formula $L=1$
+\end_inset
+
+, maka 
+\begin_inset Formula ${\displaystyle \sum_{k=0}^{\infty}a_{k}}$
+\end_inset
+
+ dapat konvergen (mutlak atau bersyarat), atau dapat divergen.
+\end_layout
+
+\begin_layout Standard
+Secara analog, untuk setiap fungsi 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ dengan turunan pertama yang kontinu dan titik tetap 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+, turunan 
+\begin_inset Formula $f'(\hat{x})$
+\end_inset
+
+ membantu menentukan kekonvergenan metode iterasi titik tetap sebagai
+ berikut:
+\end_layout
+
+\begin_layout Itemize
+Jika 
+\begin_inset Formula $|f'(\hat{x})|<1$
+\end_inset
+
+, maka iterasi titik tetap konvergen ke 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+ untuk setiap nilai awal dalam suatu lingkungan 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Jika 
+\begin_inset Formula $|f'(\hat{x})|>1$
+\end_inset
+
+, maka terdapat suatu lingkungan 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+ yang ditinggalkan oleh iterasi titik tetap untuk setiap nilai awal di lingkungan tersebut selain 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Jika 
+\begin_inset Formula $|f'(\hat{x})|=1$
+\end_inset
+
+, maka iterasi titik tetap dapat konvergen ke 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+ untuk setiap nilai awal dalam suatu lingkungan 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+; atau dapat meninggalkan suatu lingkungan untuk setiap nilai awal di lingkungan tersebut
+ selain 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+; atau mungkin tidak ada lingkungan yang membuat semua nilai awal menghasilkan kekonvergenan
+ dan juga tidak ada lingkungan yang membuat semua nilai selain 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+ meninggalkannya.
+\end_layout
+
+\begin_layout Standard
+Grafik fungsi-fungsi yang turunannya sama dengan satu di titik tetap masing-masing pada Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:derivativeEqualsOne"
+
+\end_inset
+
+ membantu menggambarkan kasus terakhir ini.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:derivativeEqualsOne"
+
+\end_inset
+
+Perilaku kekonvergenan ketika turunan di titik tetap sama dengan 1.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/roots-fixedpt6.eps
+	scale 80
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename figures/roots-fixedpt7.eps
+	scale 80
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename figures/roots-fixedpt8.eps
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Pada salah satu fungsi ini, iterasi titik tetap konvergen untuk semua nilai
+ dalam suatu lingkungan titik tetap.
+ Pada fungsi lainnya, iterasi titik tetap meninggalkan suatu lingkungan
+ titik tetap untuk semua nilai awal di lingkungan tersebut kecuali
+ titik tetap itu sendiri.
+ Pada fungsi ketiga, iterasi titik tetap konvergen ke
+ titik tetap untuk beberapa nilai awal dan meninggalkan suatu lingkungan titik
+ tetap untuk nilai awal lainnya (dan 
+\shape italic
+setiap
+\shape default
+ lingkungan titik tetap akan memuat kedua jenis nilai awal).
+ Dapatkah Anda menentukan yang mana? Temukan jawabannya dengan membuat diagram jaring untuk
+ masing-masing.
+ Jawaban 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "subsec:Answers-fixedPointIteration"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Bukti Teorema Kekonvergenan Titik Tetap dapat dengan mudah diperluas
+ untuk mencakup nilai awal dalam sembarang lingkungan titik tetap tempat
+ nilai mutlak turunan tetap kurang dari 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ Ukuran dan kesimetrian interval tidak penting.
+ Sebagai contoh, 
+\begin_inset Formula $f(x)=\frac{1}{8}x^{3}-x^{2}+2x+1$
+\end_inset
+
+ memiliki titik tetap di 
+\begin_inset Formula $\hat{x}=2$
+\end_inset
+
+.
+ Bukti Teorema Kekonvergenan Titik Tetap menetapkan kekonvergenan
+ menuju 
+\begin_inset Formula $2$
+\end_inset
+
+ dalam interval simetris di sekitar 
+\begin_inset Formula $2$
+\end_inset
+
+ misalnya 
+\begin_inset Formula $[1.9,2.1]$
+\end_inset
+
+.
+ Namun, interval ini jauh dari lingkungan terbesar nilai-nilai awal
+ yang membuat iterasi titik tetap konvergen ke 
+\begin_inset Formula $2$
+\end_inset
+
+.
+ Kita dapat mencari batas-batas interval terbesar semacam itu dengan menyelesaikan persamaan
+ 
+\begin_inset Formula $|f'(x)|=1$
+\end_inset
+
+.
+ Untuk itu:
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{3}{8}x^{2}-2x+2 & = & \pm1\\
+3x^{2}-16x+16 & = & \pm8\\
+3x^{2}-16x+24=0 & atau & 3x^{2}-16x+8=0\\
+x=\frac{8\pm i2\sqrt{2}}{3} & atau & x=\frac{8\pm2\sqrt{10}}{3}\\
+\frac{8-2\sqrt{10}}{3}\approx0.558 & dan & \frac{8+2\sqrt{10}}{3}\approx4.775,
+\end{eqnarray*}
+
+\end_inset
+
+Jadi, kita patut mengharapkan iterasi titik tetap konvergen ke 2 pada setiap interval tertutup
+ yang termuat dalam
+\begin_inset Formula 
+\[
+\left(\frac{8-2\sqrt{10}}{3},\frac{8+2\sqrt{10}}{3}\right).
+\]
+
+\end_inset
+
+ Sekarang, jika kita meminta komputer menjalankan iterasi titik tetap untuk sejumlah besar
+ nilai awal yang berjarak sama, misalnya 100 nilai, pada interval 
+\begin_inset Formula $[-2,8]$
+\end_inset
+
+ lalu mencatat hasilnya pada garis bilangan dengan mewarnai suatu nilai awal
+ hitam jika tidak konvergen ke 2 dan hijau jika konvergen ke 2 (diagram semacam itu
+ akan kita sebut diagram kekonvergenan), kita memperoleh
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/roots-fixedpt9.eps
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\noindent
+yang menunjukkan bahwa iterasi titik tetap konvergen ke 2 untuk nilai awal pada interval kira-kira 
+\begin_inset Formula $[-0.5,6.5]$
+\end_inset
+
+.
+ Memang, eksperimen tersebut menegaskan bahwa iterasi titik tetap konvergen pada
+ setiap interval tertutup yang termuat dalam 
+\begin_inset Formula $\left(\frac{8-2\sqrt{10}}{3},\frac{8+2\sqrt{10}}{3}\right)$
+\end_inset
+
+ sebagaimana diprediksi.
+ Namun, diagram itu menunjukkan kekonvergenan pada himpunan yang bahkan lebih besar.
+ Kita dapat menyimpulkan bahwa Teorema Kekonvergenan Titik Tetap memberikan syarat yang cukup,
+ tetapi bukan syarat yang perlu, bagi kekonvergenan dalam suatu lingkungan titik
+ tetap.
+ 
+\end_layout
+
+\begin_layout Standard
+Grafik fungsi 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ yang ditumpangtindihkan dengan garis 
+\begin_inset Formula $y=x$
+\end_inset
+
+ (Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:basinOfAttractionExplanation"
+
+\end_inset
+
+) 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:basinOfAttractionExplanation"
+
+\end_inset
+
+
+\begin_inset Formula $f(x)=\frac{1}{8}x^{3}-x^{2}+2x+1$
+\end_inset
+
+ dan garis 
+\begin_inset Formula $y=x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/roots-fixedpt10.eps
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ memberi gambaran mengapa batas 
+\begin_inset Formula $\frac{8\pm2\sqrt{10}}{3}$
+\end_inset
+
+ belum menceritakan keseluruhan keadaan.
+ Dengan membayangkan diagram jaring untuk sembarang nilai awal di antara dua titik
+ tetap selain 2, yakni 
+\begin_inset Formula $-0.61$
+\end_inset
+
+ dan 
+\begin_inset Formula $6.61$
+\end_inset
+
+, Anda seharusnya dapat meyakinkan diri bahwa iterasi titik tetap konvergen
+ ke 
+\begin_inset Formula $2$
+\end_inset
+
+ untuk sembarang nilai awal dalam interval 
+\begin_inset Formula $(-0.61,6.61)$
+\end_inset
+
+.
+ Dapatkah Anda membuktikannya? Grafik seperti dalam Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:fixed-pt-zoom"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:derivativeEqualsOne"
+
+\end_inset
+
+, dan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:basinOfAttractionExplanation"
+
+\end_inset
+
+ sangat diperlukan dan harus selalu diperiksa ketika mencoba memahami
+ iterasi titik tetap, tetapi grafik tersebut tidak boleh dijadikan bukti.
+ Untuk pembuktian, kita perlu mengandalkan teorema seperti Teorema Kekonvergenan Titik
+ Tetap.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{digression}{Sebuah kuadrat yang menarik} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Mencoba mencari akar persamaan logistik 
+\begin_inset Formula 
+\[
+g(x)=(\alpha-1)x-\alpha x^{2}
+\]
+
+\end_inset
+
+dengan menerapkan iterasi titik tetap pada fungsi yang bersesuaian 
+\begin_inset Formula $f(x)=x+g(x)=\alpha x(1-x)$
+\end_inset
+
+ merupakan latihan terkenal dalam sistem dinamis, tetapi cara ini terkenal sering tidak
+ berhasil! Selesaikan penyelidikan berikut untuk melihat apa yang terjadi.
+\end_layout
+
+\begin_layout Enumerate
+Tunjukkan bahwa 
+\begin_inset Formula $f(x)=\alpha x(1-x)$
+\end_inset
+
+ seperti yang dinyatakan.
+\end_layout
+
+\begin_layout Enumerate
+Untuk setiap nilai 
+\begin_inset Formula $\alpha=2.5$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha=3.2$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha=3.833$
+\end_inset
+
+, dan 
+\begin_inset Formula $\alpha=4$
+\end_inset
+
+, lakukan langkah-langkah berikut.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\noindent
+Tentukan secara analitis titik tetap positif dari 
+\begin_inset Formula $f$
+\end_inset
+
+ (akar 
+\begin_inset Formula $g$
+\end_inset
+
+) (dengan pensil, kertas, dan sedikit aljabar).
+ 
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+Tetapkan 
+\begin_inset Formula $x_{0}=0.1$
+\end_inset
+
+ dan gunakan program komputer untuk menghitung 
+\begin_inset Formula $x_{975}$
+\end_inset
+
+ sampai 
+\begin_inset Formula $x_{1000}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+Amati 26 hasil iterasi pada bagian (b) dan jelaskan apa yang Anda lihat.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Hubungkan hasil yang Anda peroleh pada bagian 2 dengan diagram berikut.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename figures/phaseDiagram.pdf
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Gunakan diagram tersebut untuk memperkirakan nilai 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ yang menurut Anda akan membuat iterasi titik tetap menghasilkan 
+\begin_inset Formula $x_{975}$
+\end_inset
+
+ sampai 
+\begin_inset Formula $x_{1000}$
+\end_inset
+
+ yang berulang dalam siklus empat nilai berbeda.
+ Periksa perkiraan Anda.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{digression}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Pencarian Akar
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:RootFindingInvestigation"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Jika berhasil, iterasi titik tetap menemukan solusi persamaan berbentuk
+ 
+\begin_inset Formula $f(x)=x$
+\end_inset
+
+.
+ Masalah pencarian akar menuntut solusi persamaan berbentuk
+ 
+\begin_inset Formula $g(x)=0$
+\end_inset
+
+.
+ Namun, persamaan 
+\begin_inset Formula $f(x)=x$
+\end_inset
+
+ memiliki solusi yang persis sama dengan persamaan 
+\begin_inset Formula $f(x)-x=0$
+\end_inset
+
+, sehingga mencari titik tetap 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ ekuivalen dengan mencari akar 
+\begin_inset Formula $g(x)=f(x)-x$
+\end_inset
+
+.
+ Memang, contoh pencarian titik tetap 
+\begin_inset Formula $f(x)=\frac{1}{8}x^{3}-x^{2}+2x+1$
+\end_inset
+
+ dapat kita nyatakan ulang sebagai masalah pencarian akar 
+\begin_inset Formula $g(x)=f(x)-x=\frac{1}{8}x^{3}-x^{2}+x+1$
+\end_inset
+
+.
+ Akan tetapi, justru masalah sebaliknya jauh lebih umum.
+ Kita dihadapkan pada masalah mencari akar suatu fungsi dan perlu menyatakannya ulang
+ sebagai masalah titik tetap.
+\end_layout
+
+\begin_layout Standard
+Misalkan kita ingin mencari akar 
+\begin_inset Formula $g(x)=-x^{3}+5x^{2}-4x-6$
+\end_inset
+
+.
+ Pertanyaan untuk menyelesaikan 
+\begin_inset Formula $g(x)=0$
+\end_inset
+
+ dapat kita nyatakan ulang sebagai masalah mencari titik tetap dari banyak fungsi yang berbeda!
+ Namun, untuk menurunkan fungsi-fungsi itu, Anda harus mengabaikan beberapa nasihat bijak guru aljabar Anda!
+ Kuncinya adalah menggunakan aljabar untuk menulis ulang persamaan 
+\begin_inset Formula $-x^{3}+5x^{2}-4x-6=0$
+\end_inset
+
+ sebagai persamaan berbentuk 
+\begin_inset Formula $x=f(x)$
+\end_inset
+
+.
+ Cara paling sederhana adalah menambahkan 
+\begin_inset Formula $x$
+\end_inset
+
+ pada kedua ruas persamaan.
+ Manipulasi ini dan beberapa manipulasi lainnya ditunjukkan dalam daftar berikut.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $-x^{3}+5x^{2}-4x-6=0\Rightarrow-x^{3}+5x^{2}-3x-6=x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $-x^{3}+5x^{2}-4x-6=0\Rightarrow-x^{3}+5x^{2}-6=4x\Rightarrow\frac{-x^{3}+5x^{2}-6}{4}=x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $-x^{3}+5x^{2}-4x-6=0\Rightarrow-x^{3}-4x-6=-5x^{2}\Rightarrow\frac{x^{3}+4x+6}{5}=x^{2}\Rightarrow\pm\sqrt{\frac{x^{3}+4x+6}{5}}=x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $-x^{3}+5x^{2}-4x-6=0\Rightarrow5x^{2}-4x-6=x^{3}\Rightarrow\sqrt[3]{5x^{2}-4x-6}=x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dapatkah Anda melihat apa yang dilakukan pada masing-masing baris? Dengan demikian, kita memiliki lima kandidat
+ untuk iterasi titik tetap, 
+\begin_inset Formula $f_{1}(x)=-x^{3}+5x^{2}-3x-6$
+\end_inset
+
+, 
+\begin_inset Formula $f_{2}(x)=\frac{-x^{3}+5x^{2}-6}{4}$
+\end_inset
+
+, 
+\begin_inset Formula $f_{3}(x)=\sqrt{\frac{x^{3}+4x+6}{5}}$
+\end_inset
+
+, 
+\begin_inset Formula $f_{4}(x)=-\sqrt{\frac{x^{3}+4x+6}{5}}$
+\end_inset
+
+, dan 
+\begin_inset Formula $f_{5}(x)=\sqrt[3]{5x^{2}-4x-6}$
+\end_inset
+
+, yang semuanya berpotensi menghasilkan akar 
+\begin_inset Formula $g(x)$
+\end_inset
+
+.
+ Ada fungsi keenam yang akan kita bahas jauh lebih rinci nanti: 
+\begin_inset Formula $f_{6}(x)=\frac{2x^{3}\text{−}5x^{2}\text{−}6}{3x^{2}\text{−}10x+4}$
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Dengan menghitung 
+\begin_inset Formula $f_{6}(1-\sqrt{3})$
+\end_inset
+
+, 
+\begin_inset Formula $f_{6}(1+\sqrt{3})$
+\end_inset
+
+, dan 
+\begin_inset Formula $f_{6}(3)$
+\end_inset
+
+, Anda dapat memverifikasi bahwa 
+\begin_inset Formula $f_{6}$
+\end_inset
+
+ juga memiliki ketiga nilai ini sebagai titik tetap.
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SixConvergenceDiagrams"
+
+\end_inset
+
+Diagram kekonvergenan bagi 6 fungsi dengan titik tetap yang sama.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Formula $f_{1}$
+\end_inset
+
+: 
+\begin_inset Graphics
+	filename figures/roots-fixedpt11.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Formula $f_{2}$
+\end_inset
+
+: 
+\begin_inset Graphics
+	filename figures/roots-fixedpt12.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Formula $f_{3}$
+\end_inset
+
+: 
+\begin_inset Graphics
+	filename figures/roots-fixedpt13.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Formula $f_{4}$
+\end_inset
+
+: 
+\begin_inset Graphics
+	filename figures/roots-fixedpt14.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Formula $f_{5}$
+\end_inset
+
+: 
+\begin_inset Graphics
+	filename figures/roots-fixedpt15.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Formula $f_{6}$
+\end_inset
+
+: 
+\begin_inset Graphics
+	filename figures/roots-fixedpt16.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+hitam: tidak konvergen; hijau: konvergen ke 
+\begin_inset Formula $3$
+\end_inset
+
+; merah: konvergen ke 
+\begin_inset Formula $1+\sqrt{3}$
+\end_inset
+
+; biru: konvergen ke 
+\begin_inset Formula $1-\sqrt{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Akar-akar 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ adalah 
+\begin_inset Formula $1-\sqrt{3}\approx-0.73$
+\end_inset
+
+, 
+\begin_inset Formula $1+\sqrt{3}\approx2.73$
+\end_inset
+
+, dan 
+\begin_inset Formula $3$
+\end_inset
+
+, sehingga kita akan meninjau diagram kekonvergenan pada interval 
+\begin_inset Formula $[-2,5]$
+\end_inset
+
+.
+ Iterasi titik tetap konvergen ke titik tetap yang berbeda untuk fungsi yang berbeda
+ meskipun keenam fungsi memiliki tepat tiga titik tetap yang sama.
+ Diagram kekonvergenan pada Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SixConvergenceDiagrams"
+
+\end_inset
+
+ diberi kode warna untuk menggambarkan kenyataan ini.
+ Seperti sebelumnya, warna hitam menunjukkan ketakkonvergenan.
+ Warna hijau, merah, dan biru masing-masing menunjukkan kekonvergenan ke 
+\begin_inset Formula $3$
+\end_inset
+
+, 
+\begin_inset Formula $1+\sqrt{3}$
+\end_inset
+
+, dan 
+\begin_inset Formula $1-\sqrt{3}$
+\end_inset
+
+, secara berurutan.
+ Perhatikan bahwa hanya 
+\begin_inset Formula $f_{6}$
+\end_inset
+
+ yang menghasilkan kekonvergenan, sejauh yang dapat kita ketahui, untuk setiap nilai awal dalam
+ 
+\begin_inset Formula $[-2,5]$
+\end_inset
+
+, dan fungsi ini juga merupakan satu-satunya fungsi yang membuat iterasi titik tetap konvergen ke
+ titik tetap berbeda untuk nilai awal berbeda.
+ Cobalah memahami alasan perilaku kekonvergenan setiap fungsi dengan mengamati grafik
+ 
+\begin_inset Formula $f_{1},f_{2},\ldots,f_{6}$
+\end_inset
+
+.
+ Berikan perhatian khusus pada grafik di sekitar 
+\begin_inset Formula $1+\sqrt{3}$
+\end_inset
+
+ dan 
+\begin_inset Formula $3$
+\end_inset
+
+.
+ Tampilan grafik dapat menyesatkan di daerah itu karena kedua titik tetap sangat
+ berdekatan.
+ Coba juga temukan dua nilai awal dalam 
+\begin_inset Formula $[-2,5]$
+\end_inset
+
+ yang menyebabkan iterasi titik tetap dengan 
+\begin_inset Formula $f_{6}$
+\end_inset
+
+ tidak konvergen.
+ Lalu, apa yang terjadi? Sebagai tantangan tambahan, cobalah menemukan nilai ketiga
+ dalam 
+\begin_inset Formula $[-2,5]$
+\end_inset
+
+ yang menyebabkan iterasi titik tetap dengan 
+\begin_inset Formula $f_{6}$
+\end_inset
+
+ tidak konvergen.
+ Petunjuk: Anda mungkin perlu menggunakan sistem aljabar komputer untuk menemukan nilai semacam itu
+ secara eksak, atau menggunakan iterasi titik tetap untuk menghampirinya! Jawaban 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "subsec:Answers-fixedPointIteration"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Metode Iterasi Titik Tetap (kode semu)
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode iterasi titik tetap ! kode semu
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Meskipun kita telah banyak membahas cara menentukan apakah metode iterasi titik tetap
+ diperkirakan akan konvergen atau tidak, tak satu pun informasi tersebut
+ diperlukan secara langsung untuk mengodekan metode itu.
+ Setiap implementasi metode ini harus memungkinkan pengguna mencoba iterasi titik tetap
+ untuk sembarang fungsi dengan sembarang nilai awal.
+ Pengguna bertanggung jawab memahami bahwa ketika asumsi-asumsinya
+ tidak terpenuhi, hasilnya tidak dapat diprediksi.
+ Ingat, 
+\begin_inset Quotes eld
+\end_inset
+
+sampah masuk...sampah keluar.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Metode iterasi titik tetap menimbulkan masalah yang tidak terdapat pada metode bagi dua.
+ Dalam metode bagi dua, terdapat rumus yang sederhana dan praktis untuk
+ batas atas galat.
+ Untuk menyediakan hal serupa dalam metode iterasi titik tetap, kita harus
+ mengorbankan kesederhanaan, kepraktisan, atau keduanya, sedangkan manfaatnya tidak
+ sebanding dengan pengorbanan tersebut.
+ Sebagai gantinya, digunakan kriteria penghentian yang lebih umum.
+ Ketika dua nilai iterasi berturut-turut lebih dekat satu sama lain daripada toleransi yang diberikan,
+ metode berhenti.
+ Pada saat itu, selisih antara nilai iterasi, katakanlah 
+\begin_inset Formula $x_{k}$
+\end_inset
+
+ dan 
+\begin_inset Formula $x_{k+1}$
+\end_inset
+
+, lebih kecil daripada toleransi.
+ Untuk barisan yang dihasilkan oleh iterasi titik tetap, 
+\begin_inset Formula $x_{k+1}=f(x_{k})$
+\end_inset
+
+, sehingga 
+\begin_inset Formula $|x_{k+1}-x_{k}|=|f(x_{k})-x_{k}|$
+\end_inset
+
+.
+ Ketika 
+\begin_inset Formula $|x_{k+1}-x_{k}|$
+\end_inset
+
+ kecil, 
+\begin_inset Formula $|f(x_{k})-x_{k}|$
+\end_inset
+
+ juga kecil, sehingga 
+\begin_inset Formula $f(x_{k})\approx x_{k}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $x_{k}$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+hampir
+\begin_inset Quotes erd
+\end_inset
+
+ merupakan titik tetap.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pseudocode} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Asumsi: 
+\begin_inset Formula $f$
+\end_inset
+
+ terdiferensialkan.
+ 
+\begin_inset Formula $f$
+\end_inset
+
+ mempunyai titik tetap 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ berada dalam lingkungan 
+\begin_inset Formula $(\hat{x}-\delta,\hat{x}+\delta)$
+\end_inset
+
+ tempat nilai mutlak 
+\begin_inset Formula $f'$
+\end_inset
+
+ kurang dari satu.
+\end_layout
+
+\begin_layout Description
+Masukan: Nilai awal 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+; fungsi 
+\begin_inset Formula $f$
+\end_inset
+
+; akurasi yang diinginkan 
+\begin_inset Formula $tol$
+\end_inset
+
+; jumlah maksimum iterasi 
+\begin_inset Formula $N$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+1: Untuk 
+\begin_inset Formula $j=1\ldots N$
+\end_inset
+
+ lakukan Langkah 2-4:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+2: Tetapkan 
+\begin_inset Formula $x=f(x_{0})$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+3: Jika 
+\begin_inset Formula $|x-x_{0}|\leq tol$
+\end_inset
+
+ maka kembalikan 
+\begin_inset Formula $x$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+4: Tetapkan 
+\begin_inset Formula $x_{0}=x$
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+5: Cetak 
+\begin_inset Quotes eld
+\end_inset
+
+Metode gagal.
+ Jumlah maksimum iterasi terlampaui.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Keluaran: Hampiran 
+\begin_inset Formula $x$
+\end_inset
+
+ yang mendekati titik tetap eksak, atau pesan kegagalan.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pseudocode} 
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Konsep Utama
+\end_layout
+
+\begin_layout Description
+Titik
+\begin_inset space ~
+\end_inset
+
+tetap: 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ adalah titik tetap fungsi 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ jika 
+\begin_inset Formula $f(x_{0})=x_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Iterasi
+\begin_inset space ~
+\end_inset
+
+titik
+\begin_inset space ~
+\end_inset
+
+tetap: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode iterasi titik tetap
+\end_layout
+
+\end_inset
+
+ Menghitung barisan 
+\begin_inset Formula $x_{0},x_{1}=f(x_{0}),x_{2}=f(x_{1}),x_{3}=f(x_{2}),\ldots$
+\end_inset
+
+ berdasarkan fungsi 
+\begin_inset Formula $f$
+\end_inset
+
+ dan nilai awal 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Titik
+\begin_inset space ~
+\end_inset
+
+tetap
+\begin_inset space ~
+\end_inset
+
+atraktif: Suatu titik tetap disebut 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+titik tetap ! atraktif
+\end_layout
+
+\end_inset
+
+ atraktif (atau penarik) jika terdapat lingkungan titik tetap tersebut
+ yang membuat iterasi titik tetap konvergen untuk semua nilai awal di dalam
+ lingkungan itu.
+\end_layout
+
+\begin_layout Description
+Titik
+\begin_inset space ~
+\end_inset
+
+tetap
+\begin_inset space ~
+\end_inset
+
+repulsif: Suatu titik tetap disebut 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+titik tetap ! repulsif
+\end_layout
+
+\end_inset
+
+ repulsif (atau penolak) jika iterasi titik tetap meninggalkan suatu lingkungan
+ titik tetap tersebut untuk sembarang nilai awal di dalam lingkungan itu selain
+ titik tetap itu sendiri.
+\end_layout
+
+\begin_layout Description
+Teorema
+\begin_inset space ~
+\end_inset
+
+Nilai
+\begin_inset space ~
+\end_inset
+
+Rata-Rata: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Teorema ! Nilai Rata-Rata
+\end_layout
+
+\end_inset
+
+Jika 
+\begin_inset Formula $f$
+\end_inset
+
+ kontinu pada 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+ dan dapat didiferensialkan pada 
+\begin_inset Formula $(a,b)$
+\end_inset
+
+, maka terdapat 
+\begin_inset Formula $c\in(a,b)$
+\end_inset
+
+ sedemikian sehingga 
+\begin_inset Formula $f'(c)=\frac{f(b)-f(a)}{b-a}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Teorema
+\begin_inset space ~
+\end_inset
+
+Kekonvergenan
+\begin_inset space ~
+\end_inset
+
+Titik
+\begin_inset space ~
+\end_inset
+
+Tetap: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Teorema ! Kekonvergenan Titik Tetap
+\end_layout
+
+\end_inset
+
+ Diberikan suatu fungsi 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ dengan turunan pertama yang kontinu dan titik tetap 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+, jika 
+\begin_inset Formula $|f'(\hat{x})|<1$
+\end_inset
+
+ maka terdapat suatu lingkungan 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+ tempat iterasi titik tetap konvergen ke titik tetap tersebut untuk setiap nilai
+ awal dalam lingkungan itu.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+startexercises
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Latihan
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:fixedPtIterationCode"
+
+\end_inset
+
+Tulislah fungsi Octave yang mengimplementasikan metode iterasi titik tetap.
+ Simpan fungsi tersebut sebagai berkas 
+\family typewriter
+.m
+\family default
+ untuk digunakan di kemudian hari.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:mvtExamples"
+
+\end_inset
+
+(i) Tentukan apakah fungsi pada interval tersebut memenuhi hipotesis Teorema Nilai
+ Rata-Rata.
+ (ii) Jika hipotesis terpenuhi, carilah nilai 
+\begin_inset Formula $c$
+\end_inset
+
+ yang keberadaannya dijamin oleh teorema tersebut.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $f(x)=3-x-\sin x$
+\end_inset
+
+; 
+\begin_inset Formula $[2,3]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $g(x)=3x^{4}-2x^{3}-3x+2$
+\end_inset
+
+; 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:fixedpt"
+
+\end_inset
+
+
+\begin_inset Formula $g(x)=3x^{4}-2x^{3}-3x+2$
+\end_inset
+
+; 
+\begin_inset Formula $[0,0.9]$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:fixedpt-16"
+
+\end_inset
+
+
+\begin_inset Formula $h(x)=10-\cosh(x)$
+\end_inset
+
+; 
+\begin_inset Formula $[-3,-2]$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f(t)=\sqrt{4+5\sin t}-2.5$
+\end_inset
+
+; 
+\begin_inset Formula $[-6,-5]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:fixedpt-1"
+
+\end_inset
+
+
+\begin_inset Formula $g(t)=\frac{3t^{2}\tan t}{1-t^{2}}$
+\end_inset
+
+; 
+\begin_inset Formula $[20,23]$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:fixedpt-2"
+
+\end_inset
+
+
+\begin_inset Formula $h(t)=\ln(3\sin t)-\frac{3t}{5}$
+\end_inset
+
+; 
+\begin_inset Formula $[2,4]$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:fixedpt-3"
+
+\end_inset
+
+
+\begin_inset Formula $f(r)=e^{\sin r}-r$
+\end_inset
+
+; 
+\begin_inset Formula $[-20,20]$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $g(r)=\sin(e^{r})+r$
+\end_inset
+
+; 
+\begin_inset Formula $[-3,3]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $h(r)=2^{\sin r}-3^{\cos r}$
+\end_inset
+
+; 
+\begin_inset Formula $[1,3]$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Carilah semua titik tetap fungsi tersebut secara eksak.
+ Gunakan aljabar.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $f(x)=\sqrt[3]{2x^{3}-x^{2}-x}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f(x)=\frac{\ln(2e^{x})}{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:fixedpt-4"
+
+\end_inset
+
+
+\begin_inset Formula $f(x)=\log(x^{2}-3x)-1+x$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:fixedpt-5"
+
+\end_inset
+
+
+\begin_inset Formula $g(x)=3x^{2}+5x+1$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $g(t)=t+\frac{5000}{1+2e^{-3t}}-2500$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $g(x)=e^{\ln(x+1)-3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $h(x)=\sqrt{4x^{2}+4x+1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:fixedpt-6"
+
+\end_inset
+
+
+\begin_inset Formula $h(x)=x-10+3^{x}+25\cdot3^{-x}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $h(x)=x+6-3\log_{5}(2x)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Carilah setidaknya dua fungsi kandidat, 
+\begin_inset Formula $f_{1}(x)$
+\end_inset
+
+ dan 
+\begin_inset Formula $f_{2}(x)$
+\end_inset
+
+, untuk mencari akar 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ melalui iterasi titik tetap.
+ Dengan kata lain, ubah masalah mencari akar 
+\begin_inset Formula $g$
+\end_inset
+
+ menjadi masalah mencari titik tetap 
+\begin_inset Formula $f_{1}$
+\end_inset
+
+ atau 
+\begin_inset Formula $f_{2}$
+\end_inset
+
+.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $g(x)=7x^{2}+5x-9$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $g(x)=x+\cos x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:fixedpt-7"
+
+\end_inset
+
+
+\begin_inset Formula $g(x)=6x^{5}+12x^{2}-8$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:fixedpt-8"
+
+\end_inset
+
+
+\begin_inset Formula $g(x)=x^{2}-e^{3x+4}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $g(x)=7x-3\cos(\pi x-2)+\ln|2x^{2}+4x-8|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:fixedpt-9"
+
+\end_inset
+
+
+\begin_inset Formula $g(x)=3^{x^{2}-5x+1}-2^{-x^{2}-5x-1}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:fixedPtIterationExamples"
+
+\end_inset
+
+Hitung 5 iterasi pertama metode iterasi titik tetap dengan menggunakan
+ fungsi dan nilai awal yang diberikan.
+ Berdasarkan kelima iterasi ini, apakah Anda memperkirakan metode tersebut akan konvergen?
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $f(x)=3-\sin x$
+\end_inset
+
+; 
+\begin_inset Formula $x_{0}=2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:fixedpt-10"
+
+\end_inset
+
+
+\begin_inset Formula $g(x)=10+x-\cosh(x)$
+\end_inset
+
+; 
+\begin_inset Formula $x_{0}=-3$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:fixedpt-11"
+
+\end_inset
+
+
+\begin_inset Formula $h(t)=\ln(3\sin t)+\frac{2t}{5}$
+\end_inset
+
+; 
+\begin_inset Formula $t_{0}=1$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $w(r)=2^{\sin r}-3^{\cos r}+r$
+\end_inset
+
+; 
+\begin_inset Formula $r_{0}=1$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:usingOctave"
+
+\end_inset
+
+Gunakan fungsi Octave Anda dari soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:fixedPtIterationCode"
+
+\end_inset
+
+ untuk setiap pasangan fungsi dan nilai awal pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:fixedPtIterationExamples"
+
+\end_inset
+
+.
+ Atur toleransi menjadi 
+\begin_inset Formula $10^{-10}$
+\end_inset
+
+ dan jumlah maksimum iterasi menjadi 100.
+ Untuk setiap pasangan, apakah metode tersebut konvergen dalam paling banyak 100 iterasi? Jika ya, ke nilai berapa? Laporkan
+ setidaknya 10 angka signifikan.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:usingWeb"
+
+\end_inset
+
+Buatlah diagram jaring untuk setiap pasangan fungsi/nilai awal pada soal
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:fixedPtIterationExamples"
+
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Bandingkan hasil dari soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:usingOctave"
+
+\end_inset
+
+ dengan hasil dari soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:usingWeb"
+
+\end_inset
+
+.
+ Apakah keduanya konsisten?
+\end_layout
+
+\begin_layout Enumerate
+Gunakan Proposisi 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:uniquenessOfFixedPoint"
+
+\end_inset
+
+ untuk menunjukkan bahwa 
+\begin_inset Formula $g(x)=2x(1-x)$
+\end_inset
+
+ mempunyai tepat satu titik tetap pada 
+\begin_inset Formula $[0.3,0.7]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:fixedpt-12"
+
+\end_inset
+
+Misalkan 
+\begin_inset Formula $f(x)=\frac{3x^{2}\text{−}1}{6x+4}$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Tunjukkan bahwa 
+\begin_inset Formula $f$
+\end_inset
+
+ mempunyai tepat satu titik tetap pada 
+\begin_inset Formula $[-4,-0.9]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Gunakan iterasi titik tetap untuk mencari hampiran titik tetap dengan galat
+ tidak lebih dari 
+\begin_inset Formula $10^{-2}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:ShowPart2"
+
+\end_inset
+
+Misalkan 
+\begin_inset Formula $g(x)=\pi+0.5\sin(x/2)$
+\end_inset
+
+.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Tunjukkan bahwa 
+\begin_inset Formula $g$
+\end_inset
+
+ mempunyai tepat satu titik tetap pada 
+\begin_inset Formula $[0,2\pi]$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Gunakan iterasi titik tetap untuk mencari hampiran titik tetap dengan galat
+ tidak lebih dari 
+\begin_inset Formula $10^{-2}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:fixedpt-13"
+
+\end_inset
+
+Tunjukkan bahwa metode iterasi titik tetap yang diterapkan pada 
+\begin_inset Formula $f(x)=\sqrt[3]{8-4x}$
+\end_inset
+
+ akan konvergen ke suatu akar 
+\begin_inset Formula $g(x)=x^{3}+4x-8$
+\end_inset
+
+ untuk setiap nilai awal 
+\begin_inset Formula $x_{0}\in[1.2,1.5]$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Tunjukkan bahwa iterasi titik tetap dijamin konvergen ke titik tetap
+ dari
+\begin_inset Formula 
+\[
+f(x)=(\sqrt{2})^{x}
+\]
+
+\end_inset
+
+untuk setiap 
+\begin_inset Formula $x_{0}\in[1,3]$
+\end_inset
+
+.
+ PETUNJUK: 
+\begin_inset Formula $f'(x)=\frac{1}{2}\ln(2)\cdot(\sqrt{2})^{x}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Misalkan 
+\begin_inset Formula $g(x)=x^{2}-3x-2$
+\end_inset
+
+.
+ 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Carilah fungsi 
+\begin_inset Formula $f$
+\end_inset
+
+ yang membuat iterasi titik tetap konvergen ke suatu akar 
+\begin_inset Formula $g$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Gunakan fungsi tersebut untuk mencari akar 
+\begin_inset Formula $g$
+\end_inset
+
+ dengan galat tidak lebih dari 
+\begin_inset Formula $10^{-3}$
+\end_inset
+
+ dari nilai eksaknya.
+\end_layout
+
+\begin_layout Enumerate
+Nyatakan nilai awal yang Anda gunakan dan banyaknya iterasi yang diperlukan untuk memperoleh
+ hampiran tersebut.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Gunakan iterasi titik tetap dengan 
+\begin_inset Formula $p_{0}=-1$
+\end_inset
+
+ untuk menghampiri akar 
+\begin_inset Formula $g(x)=x^{3}-3x+3$
+\end_inset
+
+ hingga ketelitian 
+\begin_inset Formula $10^{-4}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Gunakan suatu metode iterasi titik tetap untuk mencari hampiran 
+\begin_inset Formula $\sqrt{3}$
+\end_inset
+
+ dengan galat tidak lebih dari 
+\begin_inset Formula $10^{-4}$
+\end_inset
+
+.
+ Fungsi Anda hanya boleh menggunakan konstanta bilangan bulat.
+ Fungsi dan nilai awal apa yang Anda gunakan?
+\end_layout
+
+\begin_layout Enumerate
+Fungsi 
+\begin_inset Formula $g(x)=x^{4}+2x^{2}-x-3$
+\end_inset
+
+ mempunyai dua akar.
+ Salah satunya berada dalam 
+\begin_inset Formula $[-1,0]$
+\end_inset
+
+ dan yang lainnya berada dalam 
+\begin_inset Formula $[1,2]$
+\end_inset
+
+.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Sebagai persiapan untuk mencari akar 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ dengan iterasi titik tetap, salah satu cara memanipulasi persamaan 
+\begin_inset Formula $x^{4}+2x^{2}-x-3=0$
+\end_inset
+
+ adalah dengan menambahkan 
+\begin_inset Formula $x$
+\end_inset
+
+ pada kedua ruas.
+ Hasilnya
+\begin_inset Formula 
+\[
+x=x^{4}+2x^{2}-3
+\]
+
+\end_inset
+
+Buatlah grafik yang sesuai untuk menentukan apakah iterasi fungsi 
+\begin_inset Formula $f(x)=x^{4}+2x^{2}-3$
+\end_inset
+
+ akan menemukan akar dalam 
+\begin_inset Formula $[-1,0]$
+\end_inset
+
+.
+ Bagaimana dengan akar dalam 
+\begin_inset Formula $[1,2]$
+\end_inset
+
+? Jelaskan bagaimana Anda memperoleh kesimpulan tersebut.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "root1"
+
+\end_inset
+
+Manipulasilah persamaan 
+\begin_inset Formula $x^{4}+2x^{2}-x-3=0$
+\end_inset
+
+ sedemikian rupa sehingga iterasi titik tetap berhasil menemukan akar dalam
+ 
+\begin_inset Formula $[-1,0]$
+\end_inset
+
+.
+ Gambarlah grafik yang menunjukkan bahwa metode Anda akan berhasil.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "root2"
+
+\end_inset
+
+Apakah manipulasi yang sama memungkinkan Anda menemukan akar dalam 
+\begin_inset Formula $[1,2]$
+\end_inset
+
+? Jika tidak, carilah manipulasi lain yang dapat melakukannya.
+ Sekali lagi, tampilkan grafik yang menunjukkan bahwa metode Anda akan berhasil.
+\end_layout
+
+\begin_layout Enumerate
+Gunakan metode Anda dari bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "root1"
+
+\end_inset
+
+ dan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "root2"
+
+\end_inset
+
+ untuk mencari kedua akar hingga 3 tempat desimal.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:fixedpt-14"
+
+\end_inset
+
+Iterasi titik tetap pada 
+\begin_inset Formula $f(x)=\sqrt[3]{2x^{3}-x^{2}-x}$
+\end_inset
+
+ tidak akan konvergen ke suatu titik tetap.
+ Akan tetapi, iterasi titik tetap pada fungsi 
+\begin_inset Formula $g(x)=\sqrt[3]{x^{2}+x}$
+\end_inset
+
+ akan konvergen kira-kira ke 
+\begin_inset Formula $1.618033988749895$
+\end_inset
+
+ untuk setiap 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ dalam 
+\begin_inset Formula $[0.5,3.5]$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Berapa banyak iterasi yang diperlukan untuk mencapai akurasi 
+\begin_inset Formula $10^{-4}$
+\end_inset
+
+ dengan menggunakan 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ dengan 
+\begin_inset Formula $x_{0}=2.5$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Enumerate
+Jelaskan mengapa 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ dan 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ mempunyai titik-titik tetap yang sama.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Carilah satu nol (nol mana pun) dari 
+\begin_inset Formula $g(x)=x^{2}+10\cos x$
+\end_inset
+
+ dengan galat tidak lebih dari 
+\begin_inset Formula $10^{-4}$
+\end_inset
+
+ menggunakan iterasi titik tetap.
+ Nyatakan:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+fungsi 
+\begin_inset Formula $f$
+\end_inset
+
+ yang Anda gunakan dalam iterasi titik tetap
+\end_layout
+
+\begin_layout Enumerate
+nilai awal, 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+, yang Anda gunakan
+\end_layout
+
+\begin_layout Enumerate
+jumlah iterasi yang diperlukan
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:fixedExp"
+
+\end_inset
+
+Misalkan 
+\begin_inset Formula $c$
+\end_inset
+
+ adalah bilangan real tak nol.
+ Tunjukkan bahwa setiap titik tetap tak nol dari 
+\begin_inset Formula $f(x)=xe^{c\cdot g(x)}$
+\end_inset
+
+ merupakan akar dari 
+\begin_inset Formula $g$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Hampiri 
+\begin_inset Formula $\sqrt{3}$
+\end_inset
+
+ dengan metode yang disarankan oleh soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:fixedExp"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:findC"
+
+\end_inset
+
+Misalkan 
+\begin_inset Formula $g(\hat{x})=0$
+\end_inset
+
+, 
+\begin_inset Formula $g$
+\end_inset
+
+ memiliki turunan pertama yang kontinu, dan 
+\begin_inset Formula $g'(\hat{x})\neq0$
+\end_inset
+
+.
+ Tunjukkan bahwa terdapat suatu nilai 
+\begin_inset Formula $c$
+\end_inset
+
+ sehingga iterasi titik tetap pada 
+\begin_inset Formula $f(x)=x+cg(x)$
+\end_inset
+
+ konvergen ke 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+ dalam suatu lingkungan 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:fixedpt-15"
+
+\end_inset
+
+Tentukan nilai 
+\begin_inset Formula $c$
+\end_inset
+
+ yang menjamin bahwa iterasi titik tetap untuk fungsi
+ 
+\begin_inset Formula $f(x)=x+c(x-5\cos x)$
+\end_inset
+
+ konvergen dari sembarang nilai awal 
+\begin_inset Formula $x_{0}\in[0,\pi/2]$
+\end_inset
+
+.
+ Jelaskan.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Misalkan 
+\begin_inset Formula $g(x)=$
+\end_inset
+
+
+\begin_inset Formula $\frac{1}{2}^{x}+\frac{1}{5}^{x}-10^{-5}$
+\end_inset
+
+.
+ 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Tunjukkan bahwa jika 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ memiliki nol di 
+\begin_inset Formula $p$
+\end_inset
+
+, maka fungsi 
+\begin_inset Formula $f(x)=x+cg(x)$
+\end_inset
+
+ memiliki titik tetap di 
+\begin_inset Formula $p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "findc"
+
+\end_inset
+
+Tentukan nilai 
+\begin_inset Formula $c$
+\end_inset
+
+ sehingga iterasi titik tetap pada 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ konvergen untuk setiap nilai awal, 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+, dalam interval 
+\begin_inset Formula $[16,17]$
+\end_inset
+
+.
+ Buat sketsa grafik yang menunjukkan bahwa pilihan 
+\begin_inset Formula $c$
+\end_inset
+
+ Anda tepat.
+\end_layout
+
+\begin_layout Enumerate
+Gunakan fungsi dari bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "findc"
+
+\end_inset
+
+ dengan nilai 
+\begin_inset Formula $c$
+\end_inset
+
+ yang telah Anda tentukan untuk mencari akar 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ yang akurat hingga 
+\begin_inset Formula $10^{-4}$
+\end_inset
+
+.
+ Nyatakan nilai yang Anda gunakan untuk 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+.
+ Tunjukkan tiga iterasi terakhir.
+ Berapa iterasi yang diperlukan?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Buktikan bahwa untuk 
+\begin_inset Formula $f(x)=\cos x$
+\end_inset
+
+, iterasi titik tetap konvergen untuk setiap nilai awal.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:convergenceStrengthened"
+
+\end_inset
+
+Teorema Kekonvergenan Titik Tetap dapat diperkuat.
+ Syarat bahwa turunan pertama harus kontinu dapat diganti.
+ Ubah bukti dalam teks untuk menunjukkan pernyataan berikut.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\shape italic
+Diberikan suatu fungsi 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ yang dapat didiferensialkan dengan titik tetap 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+, jika 
+\begin_inset Formula $|f'(x)|\leq M<1$
+\end_inset
+
+ untuk setiap 
+\begin_inset Formula $x$
+\end_inset
+
+ dalam suatu lingkungan 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+, maka iterasi titik tetap konvergen ke titik tetap tersebut untuk setiap nilai
+ awal dalam lingkungan itu.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Buat tiga grafik yang serupa dengan grafik pada Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:derivativeEqualsOne"
+
+\end_inset
+
+ untuk menganalisis keadaan ketika turunan di titik tetap sama dengan
+ 
+\begin_inset Formula $-1$
+\end_inset
+
+.
+ Apakah keadaan itu berbeda dari keadaan ketika turunan di titik tetap
+ sama dengan 
+\begin_inset Formula $1$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+finishexercises
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Jawaban
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Answers-fixedPointIteration"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Gambar
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:derivativeEqualsOne"
+
+\end_inset
+
+: Dari kiri ke kanan: setiap lingkungan titik tetap memuat kedua
+ jenis nilai awal; iterasi titik tetap konvergen untuk semua nilai dalam suatu
+ lingkungan titik tetap; iterasi titik tetap meninggalkan suatu lingkungan
+ titik tetap untuk semua nilai awal dalam lingkungan itu kecuali
+ titik tetap itu sendiri.
+\end_layout
+
+\begin_layout Description
+Gambar
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SixConvergenceDiagrams"
+
+\end_inset
+
+: Ketika penyebutnya nol, 
+\begin_inset Formula $f_{6}(x)$
+\end_inset
+
+ tidak terdefinisi (terdapat asimtot vertikal pada grafik), sehingga kita menyelesaikan
+ 
+\begin_inset Formula $3x^{2}\text{−}10x+4=0$
+\end_inset
+
+ untuk memperoleh dua nilai awal yang menyebabkan iterasi titik tetap gagal (karena
+ iterasi pertama tidak terdefinisi).
+ Nilai-nilai itu adalah 
+\begin_inset Formula $x=\frac{5\pm\sqrt{13}}{3}\approx.4648\mbox{ dan }2.868$
+\end_inset
+
+.
+ Untuk mencari titik ketiga yang menyebabkan iterasi titik tetap gagal, kita menyelesaikan
+ persamaan 
+\begin_inset Formula $f_{6}(x)=\frac{5+\sqrt{13}}{5}$
+\end_inset
+
+ (kita juga dapat menyelesaikan 
+\begin_inset Formula $f_{6}(x)=\frac{5-\sqrt{13}}{5}$
+\end_inset
+
+ sebagai gantinya).
+ Maka iterasi kedua tidak terdefinisi karena iterasi pertama menghasilkan
+ 
+\begin_inset Formula $\frac{5+\sqrt{13}}{5}$
+\end_inset
+
+.
+ Satu-satunya solusi real kira-kira 
+\begin_inset Formula $1.055909763230534$
+\end_inset
+
+, yang dapat ditemukan melalui iterasi titik tetap pada 
+\begin_inset Formula $\sqrt[3]{\frac{\sqrt{13}x^{2}+10x^{2}\text{−}\frac{10\sqrt{13}x}{3}\text{−}\frac{50x}{3}+\frac{4\sqrt{13}}{3}+\frac{38}{3}}{2}}$
+\end_inset
+
+.
+ Buktikan.
+ Namun, perhatikan bahwa pernyataan bahwa iterasi titik tetap akan gagal didasarkan pada
+ asumsi aritmetika 
+\shape italic
+eksak
+\shape default
+.
+ Fakta bahwa setiap implementasi wajar metode iterasi titik tetap
+ akan melibatkan aritmetika titik mengambang dapat menimbulkan galat yang cukup besar
+ sehingga metode tersebut konvergen bahkan untuk nilai-nilai awal ini.
+\end_layout
+
+\end_body
+\end_document

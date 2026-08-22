@@ -1,0 +1,5807 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\input $HOME/Documents/textbook/preamble
+\end_preamble
+\use_default_options true
+\master TeaTimeNumericalAnalysis.lyx
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 4cm
+\topmargin 2.5cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 1
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Interpolasi Lebih Lanjut
+\end_layout
+
+\begin_layout Section
+Polinom Oskulasi
+\end_layout
+
+\begin_layout Standard
+Polinom Taylor pada Bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Taylor"
+
+\end_inset
+
+ dan polinom interpolasi pada Bab 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Interpolation"
+
+\end_inset
+
+ merepresentasikan dua ekstrem berlawanan dalam spektrum polinom oskulasi.
+ Polinom Taylor memerlukan nilai polinom pada satu titik,
+ sedangkan polinom interpolasi pada umumnya memerlukan nilai polinom di
+ beberapa titik.
+ Polinom Taylor pada umumnya memerlukan nilai beberapa turunan,
+ sedangkan polinom interpolasi tidak memperbolehkan penentuan turunan.
+\end_layout
+
+\begin_layout Standard
+Himpunan polinom oskulasi mencakup polinom Taylor, polinom interpolasi,
+ serta bentuk-bentuk hibrida.
+ Setiap polinom yang diharuskan melalui sebarang himpunan titik dengan sebarang banyak
+ turunan yang ditentukan pada titik-titik tersebut disebut polinom oskulasi.
+ Jadi, polinom Taylor merupakan kasus khusus polinom oskulasi
+ yang ditentukan oleh satu titik dan sebarang banyak turunan pada titik tersebut.
+ Polinom interpolasi merupakan kasus khusus polinom oskulasi
+ yang ditentukan oleh sebarang banyak titik tanpa turunan pada titik mana pun.
+ Tepatnya, polinom oskulasi adalah polinom yang diharuskan melalui
+ suatu himpunan titik
+\begin_inset Formula 
+\[
+(t_{0},y_{0}),(t_{1},y_{1}),\ldots,(t_{n},y_{n})
+\]
+
+\end_inset
+
+dengan 
+\begin_inset Formula $m_{i}$
+\end_inset
+
+ turunan pertama yang ditentukan pada 
+\begin_inset Formula $(t_{i},y_{i})$
+\end_inset
+
+, 
+\begin_inset Formula $i=0,1,\ldots,n$
+\end_inset
+
+.
+ Seperti sebelumnya, 
+\begin_inset Formula $t_{0},t_{1},\ldots,t_{n}$
+\end_inset
+
+ disebut simpul.
+\end_layout
+
+\begin_layout Standard
+Salah satu jenis polinom oskulasi yang berguna ialah polinom Hermite, dengan
+ nilai polinom dan turunan pertamanya diberikan pada
+ setiap simpul.
+ Secara lebih khusus lagi, polinom Hermite berderajat tiga, atau kubik,
+ berperan penting dalam teori aproksimasi.
+ Karena polinom berderajat tiga memiliki empat parameter, data—ordinat
+ dan turunan pertama—pada dua simpul cukup untuk menentukan polinom semacam itu.
+ Jadi, misalkan kita hendak mencari suatu polinom 
+\begin_inset Formula $p$
+\end_inset
+
+ berderajat paling tinggi tiga yang melalui 
+\begin_inset Formula $(t_{0},y_{0})$
+\end_inset
+
+ dan 
+\begin_inset Formula $(t_{1},y_{1})$
+\end_inset
+
+ dengan turunan 
+\begin_inset Formula $\dot{y}_{0}$
+\end_inset
+
+ pada 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\dot{y}_{1}$
+\end_inset
+
+ pada 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dengan mengingat pelajaran dari kajian kita tentang polinom interpolasi, kita dapat
+ memulai dengan bentuk Lagrange dari polinom interpolasi yang melalui
+ 
+\begin_inset Formula $(t_{0},y_{0})$
+\end_inset
+
+ dan 
+\begin_inset Formula $(t_{1},y_{1})$
+\end_inset
+
+ dan memikirkan turunannya kemudian.
+ Dengan demikian, mula-mula kita peroleh 
+\begin_inset Formula $f(t)=\frac{t-t_{1}}{t_{0}-t_{1}}y_{0}+\frac{t-t_{0}}{t_{1}-t_{0}}y_{1}$
+\end_inset
+
+ sebagai titik awal.
+ Tentu saja, 
+\begin_inset Formula $f$
+\end_inset
+
+ melalui titik-titik yang disyaratkan, tetapi polinom ini bahkan tidak mungkin kubik,
+ dan turunannya adalah 
+\begin_inset Formula $f'(t)=\frac{y_{0}}{t_{0}-t_{1}}+\frac{y_{1}}{t_{1}-t_{0}}$
+\end_inset
+
+, suatu konstanta.
+ Alangkah baiknya jika kita dapat menambahkan padanya suatu polinom berderajat tiga yang
+ bernilai nol pada 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+ serta turunannya dapat kita kendalikan.
+ Nah, 
+\begin_inset Formula $g(t)=(t-t_{0})(t-t_{1})^{2}$
+\end_inset
+
+, misalnya, bersifat kubik, bernilai nol pada 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+, serta memiliki turunan 
+\begin_inset Formula $(t-t_{1})^{2}+2(t-t_{0})(t-t_{1})$
+\end_inset
+
+, sehingga kita setidaknya memiliki sedikit kendali atas turunannya.
+ Baik, sekarang mari kita cermati sedikit lebih saksama:
+\begin_inset Formula 
+\[
+g'(t)=(t-t_{1})^{2}+2(t-t_{0})(t-t_{1})=(t-t_{1})\left[(t-t_{1})+2(t-t_{0})\right].
+\]
+
+\end_inset
+
+Jadi, 
+\begin_inset Formula $g'(t_{1})=0$
+\end_inset
+
+ dan 
+\begin_inset Formula $g'(t_{0})=(t_{0}-t_{1})^{2}$
+\end_inset
+
+ tidak nol.
+ Hal itu semestinya mengingatkan Anda pada cara kita menyusun polinom interpolasi Lagrange.
+
+ Hanya saja, di sana, nilai polinom adalah 
+\begin_inset Formula $0$
+\end_inset
+
+ atau 
+\begin_inset Formula $1$
+\end_inset
+
+ pada setiap simpul sebelum kita menambahkan koefisien yang belum diketahui.
+ Tentu saja, 
+\begin_inset Formula $\hat{g}(t)=\frac{g(t)}{(t_{0}-t_{1})^{2}}$
+\end_inset
+
+ memiliki turunan 
+\begin_inset Formula $1$
+\end_inset
+
+ pada 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+ dan 
+\begin_inset Formula $0$
+\end_inset
+
+ pada 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+.
+ Jika semuanya digabungkan, 
+\begin_inset Formula $\hat{g}_{a}(t)=a\frac{(t-t_{0})(t-t_{1})^{2}}{(t_{0}-t_{1})^{2}}$
+\end_inset
+
+ memiliki segala yang kita perlukan untuk mengendalikan turunan pada 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+.
+ Demikian pula, 
+\begin_inset Formula $\hat{h}_{b}(t)=b\frac{(t-t_{0})^{2}(t-t_{1})}{(t_{1}-t_{0})^{2}}$
+\end_inset
+
+ memiliki segala yang kita perlukan untuk mengendalikan turunan pada 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+.
+ Jumlah 
+\begin_inset Formula $\hat{g}_{a}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\hat{h}_{b}$
+\end_inset
+
+ merupakan polinom berderajat paling tinggi tiga yang bernilai nol pada 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+ serta turunannya mudah ditentukan pada 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+.
+ Akhirnya, suatu polinom 
+\begin_inset Formula $p$
+\end_inset
+
+ berbentuk
+\begin_inset Formula 
+\begin{eqnarray*}
+p(t) & = & \frac{t-t_{1}}{t_{0}-t_{1}}y_{0}+\frac{t-t_{0}}{t_{1}-t_{0}}y_{1}+g_{a}(t)+h_{b}(t)\\
+ &  & \frac{t-t_{1}}{t_{0}-t_{1}}y_{0}+\frac{t-t_{0}}{t_{1}-t_{0}}y_{1}+a\frac{(t-t_{0})(t-t_{1})^{2}}{(t_{0}-t_{1})^{2}}+b\frac{(t-t_{0})^{2}(t-t_{1})}{(t_{1}-t_{0})^{2}}
+\end{eqnarray*}
+
+\end_inset
+
+akan menjadi polinom Hermite yang kita cari.
+ Dua suku pertama membentuk polinom interpolasi yang melalui
+ titik-titik yang disyaratkan.
+ Dua suku terakhir bernilai nol pada 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+ sehingga tidak memengaruhi interpolasi ini.
+ Selain itu, dua suku terakhir dipilih agar turunannya memiliki nilai yang mudah
+ digunakan pada 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+.
+ Turunan 
+\begin_inset Formula $\frac{(t-t_{1})^{2}(t-t_{0})}{(t_{0}-t_{1})^{2}}$
+\end_inset
+
+ adalah 
+\begin_inset Formula $1$
+\end_inset
+
+ pada 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $0$
+\end_inset
+
+ pada 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+.
+ Turunan 
+\begin_inset Formula $\frac{(t-t_{0})^{2}(t-t_{1})}{(t_{1}-t_{0})^{2}}$
+\end_inset
+
+ adalah 
+\begin_inset Formula $0$
+\end_inset
+
+ pada 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $1$
+\end_inset
+
+ pada 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+.
+ Ciri-ciri ini memastikan nilai sederhana untuk 
+\begin_inset Formula $a$
+\end_inset
+
+ dan 
+\begin_inset Formula $b$
+\end_inset
+
+ dalam hubungannya dengan turunan yang ditentukan.
+ Untuk mengetahui secara tepat nilainya, tinggal kita paksakan 
+\begin_inset Formula $\dot{p}(t_{0})=\dot{y}_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\dot{p}(t_{1})=\dot{y}_{1}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\dot{p}(x)=\frac{y_{1}-y_{0}}{t_{1}-t_{0}}+2\frac{(t-t_{1})(t-t_{0})}{(t_{0}-t_{1})^{2}}a+2\frac{(t-t_{0})(t-t_{1})}{(t_{1}-t_{0})^{2}}b+\frac{(t-t_{1})^{2}}{(t_{0}-t_{1})^{2}}a+\frac{(t-t_{0})^{2}}{(t_{1}-t_{0})^{2}}b
+\]
+
+\end_inset
+
+sehingga
+\begin_inset Formula 
+\[
+\begin{gathered}\dot{p}(t_{0})=\frac{y_{1}-y_{0}}{t_{1}-t_{0}}+a\\
+\mbox{dan}\\
+\dot{p}(t_{1})=\frac{y_{1}-y_{0}}{t_{1}-t_{0}}+b.
+\end{gathered}
+\]
+
+\end_inset
+
+Oleh karena itu, kita memerlukan 
+\begin_inset Formula $c=\dot{y}_{0}-\frac{y_{1}-y_{0}}{t_{1}-t_{0}}$
+\end_inset
+
+ dan 
+\begin_inset Formula $d=\dot{y}_{1}-\frac{y_{1}-y_{0}}{t_{1}-t_{0}}$
+\end_inset
+
+.
+ Polinom Hermite (oskulasi) berderajat paling tinggi tiga yang diinginkan adalah 
+\begin_inset Formula 
+\begin{equation}
+p(t)=\frac{t-t_{1}}{t_{0}-t_{1}}y_{0}+\frac{t-t_{0}}{t_{1}-t_{0}}y_{1}+\frac{(t-t_{1})^{2}(t-t_{0})}{(t_{0}-t_{1})^{2}}(\dot{y}_{0}-m)+\frac{(t-t_{0})^{2}(t-t_{1})}{(t_{1}-t_{0})^{2}}(\dot{y}_{1}-m)\label{eq:HermiteCubicForHumans}
+\end{equation}
+
+\end_inset
+
+dengan 
+\begin_inset Formula $m=\frac{y_{1}-y_{0}}{t_{1}-t_{0}}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Bentuk polinom Hermite kubik ini mudah digunakan oleh manusia.
+ Bentuk ini bersifat formulaik dan hanya memerlukan sedikit perhitungan untuk dituliskan.
+ Kita akan menyebutnya bentuk Manusia dari polinom Hermite kubik.
+ Bentuk yang lebih ramah-komputer, yang akan kita sebut sebagai bentuk Komputer
+ dari polinom Hermite kubik, diperoleh melalui beda terbagi.
+ Secara umum, untuk polinom oskulasi dengan 
+\begin_inset Formula $k$
+\end_inset
+
+ turunan pertama ditentukan pada 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ dan 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ harus diulang 
+\begin_inset Formula $k+1$
+\end_inset
+
+ kali dalam tabel beda terbagi.
+ Hasil bagi yang seharusnya tidak terdefinisi akibat pengulangan tersebut
+ diganti dengan turunan yang ditentukan: turunan pertama untuk beda terbagi
+ tingkat pertama, turunan kedua untuk beda terbagi tingkat kedua,
+ dan seterusnya.
+\end_layout
+
+\begin_layout Standard
+Untuk polinom Hermite kubik 
+\begin_inset Formula $p$
+\end_inset
+
+ yang melalui 
+\begin_inset Formula $(t_{0},y_{0})$
+\end_inset
+
+ dan 
+\begin_inset Formula $(t_{1},y_{1})$
+\end_inset
+
+ dengan turunan 
+\begin_inset Formula $\dot{y}_{0}$
+\end_inset
+
+ pada 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\dot{y}_{1}$
+\end_inset
+
+ pada 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+, tabelnya tampak sebagai berikut:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $t_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y_{0}'$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $t_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $t_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y_{1}'$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $t_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Keempat entri yang tersisa harus diisi dengan metode beda terbagi
+ biasa.
+ Dapatkah Anda menghitungnya secara umum (dalam 
+\begin_inset Formula $t_{0},t_{1},y_{0},y_{1},\dot{y}_{0},\dot{y}_{1}$
+\end_inset
+
+)? Jawaban 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "ans:hermiteCoefficients"
+
+\end_inset
+
+.
+ Dengan menggunakan hasilnya, kita tuliskan polinom interpolasi dalam dua cara:
+\begin_inset Formula 
+\begin{eqnarray*}
+p(t) & = & y_{0}+\left[\dot{y}_{0}\right](t-t_{0})+\left[\frac{y_{1}-y_{0}}{(t_{1}-t_{0})^{2}}-\frac{\dot{y}_{0}}{t_{1}-t_{0}}\right](t-t_{0})^{2}\\
+ &  & \qquad+\left[\frac{\dot{y}_{1}+\dot{y}_{0}}{(t_{1}-t_{0})^{2}}-2\frac{y_{1}-y_{0}}{(t_{1}-t_{0})^{3}}\right](t-t_{0})^{2}(t-t_{1})
+\end{eqnarray*}
+
+\end_inset
+
+dan
+\begin_inset Formula 
+\begin{eqnarray*}
+p(t) & = & y_{1}+\left[\dot{y}_{1}\right](t-t_{1})+\left[\frac{\dot{y}_{1}}{t_{1}-t_{0}}-\frac{y_{1}-y_{0}}{(t_{1}-t_{0})^{2}}\right](t-t_{1})^{2}\\
+ &  & \qquad+\left[\frac{\dot{y}_{1}+\dot{y}_{0}}{(t_{1}-t_{0})^{2}}-2\frac{y_{1}-y_{0}}{(t_{1}-t_{0})^{3}}\right](t-t_{1})^{2}(t-t_{0}).
+\end{eqnarray*}
+
+\end_inset
+
+Seperti pada polinom interpolasi, kita memiliki dua cara untuk menentukan polinom oskulasi
+ Hermite kubik.
+ Satu cara mudah bagi manusia dan cara lainnya bagi komputer.
+\end_layout
+
+\begin_layout Subsection
+Kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier
+\end_layout
+
+\begin_layout Standard
+Kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier adalah kurva parametrik dengan parameter 
+\begin_inset Formula $t\in[0,1]$
+\end_inset
+
+ yang menghubungkan dua titik.
+ Kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier paling sederhana ialah garis lurus yang melalui kedua titik.
+ Sebagai contoh, kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier paling sederhana dari 
+\begin_inset Formula $(-1,2)$
+\end_inset
+
+ ke 
+\begin_inset Formula $(5,-2)$
+\end_inset
+
+ diberikan oleh fungsi linear parametrik
+\begin_inset Formula 
+\begin{eqnarray*}
+x(t) & = & (1-t)(-1)+t(5)\\
+y(t) & = & (1-t)(2)+t(-2),
+\end{eqnarray*}
+
+\end_inset
+
+yang kita pilih untuk dituliskan dalam bentuk Lagrange.
+ Anda dapat memeriksa bahwa 
+\begin_inset Formula $x(0)=-1$
+\end_inset
+
+, 
+\begin_inset Formula $x(1)=5$
+\end_inset
+
+, 
+\begin_inset Formula $y(0)=2$
+\end_inset
+
+, dan 
+\begin_inset Formula $y(1)=-2$
+\end_inset
+
+.
+ Dengan kata lain, 
+\begin_inset Formula $x$
+\end_inset
+
+ melalui 
+\begin_inset Formula $(0,-1)$
+\end_inset
+
+ dan 
+\begin_inset Formula $(1,5)$
+\end_inset
+
+ sedangkan 
+\begin_inset Formula $y$
+\end_inset
+
+ melalui 
+\begin_inset Formula $(0,2)$
+\end_inset
+
+ dan 
+\begin_inset Formula $(1,-2)$
+\end_inset
+
+.
+ Parametrisasi ini unik karena 
+\begin_inset Formula $x$
+\end_inset
+
+ dan 
+\begin_inset Formula $y$
+\end_inset
+
+ merupakan polinom interpolasi.
+\end_layout
+
+\begin_layout Standard
+Sebaliknya, jika kita memperbolehkan 
+\begin_inset Formula $x$
+\end_inset
+
+ dan 
+\begin_inset Formula $y$
+\end_inset
+
+ bersifat kuadratik, terdapat tak hingga banyak pasangan fungsi (parametrik)
+ yang menghubungkan 
+\begin_inset Formula $(-1,2)$
+\end_inset
+
+ ke 
+\begin_inset Formula $(5,-2)$
+\end_inset
+
+ bahkan jika kita mensyaratkan 
+\begin_inset Formula $x$
+\end_inset
+
+ dan 
+\begin_inset Formula $y$
+\end_inset
+
+ sebagai polinom interpolasi dan membatasi parameter 
+\begin_inset Formula $t$
+\end_inset
+
+ pada interval 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+.
+ Hal ini bukan berarti tidak ada kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier kuadratik, melainkan kita perlu menentukan lebih dari sekadar dua titik
+ yang akan dihubungkan.
+ Sebagai contoh, kita dapat memilih fungsi parameternya sebagai 
+\begin_inset Formula 
+\begin{eqnarray*}
+x(t) & = & a_{x}+b_{x}t+c_{x}t^{2}\\
+y(t) & = & a_{y}+b_{y}t+c_{y}t^{2},
+\end{eqnarray*}
+
+\end_inset
+
+yang menghasilkan enam peubah tak diketahui atau enam koefisien tak tentu, jika Anda suka.
+ 
+\end_layout
+
+\begin_layout Standard
+Dengan memaksakan 
+\begin_inset Formula $(x(0),y(0))=(-1,2)$
+\end_inset
+
+, kita memerlukan 
+\begin_inset Formula 
+\begin{eqnarray*}
+x(0) & = & a_{x}=-1\\
+y(0) & = & a_{y}=2.
+\end{eqnarray*}
+
+\end_inset
+
+Dengan memaksakan 
+\begin_inset Formula $(x(1),y(1))=(5,-2)$
+\end_inset
+
+, kita memerlukan
+\begin_inset Formula 
+\begin{eqnarray*}
+x(1) & = & a_{x}+b_{x}+c_{x}=-1+b_{x}+c_{x}=5\\
+y(1) & = & a_{y}+b_{y}+c_{y}=2+b_{y}+c_{y}=-2
+\end{eqnarray*}
+
+\end_inset
+
+atau
+\begin_inset Formula 
+\begin{eqnarray*}
+b_{x}+c_{x} & = & 6\\
+b_{y}+c_{y} & = & -4.
+\end{eqnarray*}
+
+\end_inset
+
+Secara keseluruhan, kita memperoleh 
+\begin_inset Formula $a_{x}=1$
+\end_inset
+
+, 
+\begin_inset Formula $b_{x}=6-c_{x}$
+\end_inset
+
+, 
+\begin_inset Formula $a_{y}=2$
+\end_inset
+
+, dan 
+\begin_inset Formula $b_{y}=-4-c_{y}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $c_{x}$
+\end_inset
+
+ dan 
+\begin_inset Formula $c_{y}$
+\end_inset
+
+ merupakan parameter bebas, sehingga kita masih leluasa memberlakukan dua syarat lagi
+ pada fungsi parameter.
+\end_layout
+
+\begin_layout Standard
+Setiap kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier kuadratik tertentu ditentukan dengan menetapkan satu titik kontrol yang berbeda dari
+ kedua titik ujung.
+ Dua kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier linear, satu menghubungkan 
+\begin_inset Formula $(-1,2)$
+\end_inset
+
+ ke titik kontrol dan yang lain menghubungkan titik kontrol ke 
+\begin_inset Formula $(5,-2)$
+\end_inset
+
+, kemudian menentukan kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier kuadratik.
+ Misalkan 
+\begin_inset Formula $\vec{B}_{1,0}(t)$
+\end_inset
+
+ adalah kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier linear dari 
+\begin_inset Formula $(-1,2)$
+\end_inset
+
+ ke titik kontrol dan 
+\begin_inset Formula $\vec{B}_{1,1}(t)$
+\end_inset
+
+ adalah kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier linear dari titik kontrol ke 
+\begin_inset Formula $(5,-2)$
+\end_inset
+
+.
+ Kedua kurva ini mendefinisikan suatu keluarga kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier linear, yaitu himpunan kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier linear dari 
+\begin_inset Formula $\vec{B}_{1,0}(t_{0})$
+\end_inset
+
+ ke 
+\begin_inset Formula $\vec{B}_{1,1}(t_{0})$
+\end_inset
+
+, dengan 
+\begin_inset Formula $t_{0}\in[0,1]$
+\end_inset
+
+.
+ Misalkan 
+\begin_inset Formula $\vec{B}_{2,0,t_{0}}(t)$
+\end_inset
+
+ adalah kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier linear dari 
+\begin_inset Formula $\vec{B}_{1,0}(t_{0})$
+\end_inset
+
+ ke 
+\begin_inset Formula $\vec{B}_{1,1}(t_{0})$
+\end_inset
+
+; titik 
+\begin_inset Formula $\vec{B}_{2,0,t_{0}}(t_{0})$
+\end_inset
+
+ terletak pada kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier kuadratik dari 
+\begin_inset Formula $(-1,2)$
+\end_inset
+
+ ke 
+\begin_inset Formula $(5,-2)$
+\end_inset
+
+ melalui titik kontrol yang diberikan.
+ Kumpulan semua titik tersebut ketika 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ bervariasi dari 
+\begin_inset Formula $0$
+\end_inset
+
+ sampai 
+\begin_inset Formula $1$
+\end_inset
+
+ merupakan kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier kuadratik yang kita cari.
+ Titik kontrol yang berbeda menentukan kuadratik yang berbeda.
+ Sebagai contoh, jika titik kontrolnya adalah 
+\begin_inset Formula $(0,4)$
+\end_inset
+
+, 
+\begin_inset Formula $\vec{B}_{1,0}$
+\end_inset
+
+ merupakan kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier linear yang menghubungkan 
+\begin_inset Formula $(-1,2)$
+\end_inset
+
+ ke 
+\begin_inset Formula $(0,4)$
+\end_inset
+
+ dan 
+\begin_inset Formula $\vec{B}_{1,1}$
+\end_inset
+
+ merupakan kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier linear dari 
+\begin_inset Formula $(0,4)$
+\end_inset
+
+ ke 
+\begin_inset Formula $(5,-2$
+\end_inset
+
+): 
+\begin_inset Formula 
+\[
+\begin{gathered}\vec{B}_{1,0}(t)=\left(\begin{array}{c}
+(1-t)(-1)\\
+(1-t)(2)+t(4)
+\end{array}\right)\\
+\mbox{dan}\\
+\vec{B}_{1,1}(t)=\left(\begin{array}{c}
+t(5)\\
+(1-t)(4)+t(-2)
+\end{array}\right).
+\end{gathered}
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\vec{B}_{2,0,t_{0}}$
+\end_inset
+
+ adalah kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier linear yang menghubungkan 
+\begin_inset Formula $\vec{B}_{1,0}(t_{0})$
+\end_inset
+
+ ke 
+\begin_inset Formula $\vec{B}_{1,1}(t_{0})$
+\end_inset
+
+.
+ Oleh karena itu, 
+\begin_inset Formula $\vec{B}_{2,0,t_{0}}(t)=(1-t)\vec{B}_{1,0}(t_{0})+t\vec{B}_{1,1}(t_{0})$
+\end_inset
+
+ atau 
+\begin_inset Formula 
+\[
+\vec{B}_{2,0,t_{0}}(t)=(1-t)\left(\begin{array}{c}
+(1-t_{0})(-1)\\
+(1-t_{0})(2)+t_{0}(4)
+\end{array}\right)+t\left(\begin{array}{c}
+t_{0}(5)\\
+(1-t_{0})(4)+t_{0}(-2)
+\end{array}\right).
+\]
+
+\end_inset
+
+Maka
+\begin_inset Formula 
+\[
+\vec{B}_{2,0,t_{0}}(t_{0})=(1-t_{0})\left(\begin{array}{c}
+(1-t_{0})(-1)\\
+(1-t_{0})(2)+t_{0}(4)
+\end{array}\right)+t_{0}\left(\begin{array}{c}
+t_{0}(5)\\
+(1-t_{0})(4)+t_{0}(-2)
+\end{array}\right).
+\]
+
+\end_inset
+
+Perhatikan bahwa 
+\begin_inset Formula $\vec{B}_{2,0,t_{0}}$
+\end_inset
+
+ bersifat kuadratik sebagai fungsi 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ dan bahwa 
+\begin_inset Formula $\vec{B}_{2,0,0}(0)=\begin{pmatrix}-1\\
+2
+\end{pmatrix}$
+\end_inset
+
+ serta 
+\begin_inset Formula $\vec{B}_{2,0,1}(1)=\begin{pmatrix}5\\
+-2
+\end{pmatrix}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Namun, notasi 
+\begin_inset Formula $\vec{B}_{2,0,t_{0}}(t_{0})$
+\end_inset
+
+ merepotkan, dan yang sesungguhnya kita minati adalah parametrisasi
+ kuadratik tersebut.
+ Dengan menetapkan 
+\begin_inset Formula $\vec{B}_{2,0}(t)=\vec{B}_{2,0,t}(t)$
+\end_inset
+
+, kita memperoleh kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier kuadratik dari 
+\begin_inset Formula $(-1,2)$
+\end_inset
+
+ ke 
+\begin_inset Formula $(5,-2)$
+\end_inset
+
+ melalui titik kontrol 
+\begin_inset Formula $(0,4)$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+\vec{B}_{2,0}(t)=(1-t)\left(\begin{array}{c}
+(1-t)(-1)\\
+(1-t)(2)+t(4)
+\end{array}\right)+t\left(\begin{array}{c}
+t(5)\\
+(1-t)(4)+t(-2)
+\end{array}\right)
+\]
+
+\end_inset
+
+dan kita memperoleh notasi yang lebih ringkas.
+\end_layout
+
+\begin_layout Standard
+Dengan sedikit aljabar, ekspresi untuk 
+\begin_inset Formula $\vec{B}_{2,0}$
+\end_inset
+
+ dapat disederhanakan, tetapi membiarkannya tanpa penyederhanaan menegaskan asalnya.
+ Ekspresi tersebut merupakan hasil interpolasi linear bersarang.
+ Kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier berorde lebih tinggi dibangun dengan persarangan yang berlanjut.
+ Sekarang kita gunakan gagasan ini untuk mendefinisikan kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier dari 
+\begin_inset Formula $\vec{P}_{0}$
+\end_inset
+
+ ke 
+\begin_inset Formula $\vec{P_{n}}$
+\end_inset
+
+ melalui titik-titik kontrol 
+\begin_inset Formula $\vec{P}_{1},\vec{P}_{2},\ldots,\vec{P}_{n-1}$
+\end_inset
+
+.
+ Biasanya, 
+\begin_inset Formula $\vec{P}_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\vec{P}_{n}$
+\end_inset
+
+ juga dianggap sebagai titik kontrol, sehingga kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier ini juga disebut sebagai kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier dengan titik-titik kontrol 
+\begin_inset Formula $\vec{P}_{0},\vec{P}_{1},\ldots,\vec{P}_{n}$
+\end_inset
+
+.
+ Kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier semacam itu akan berderajat paling tinggi 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Kita mulai dengan mendefinisikan kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier linear
+\begin_inset Formula 
+\begin{equation}
+\vec{B}_{1,i}(t)=(1-t)\vec{P}_{i}+(t)\vec{P}_{i+1},\qquad i=0,1,\ldots,n-1.\label{eq:bezierPart1}
+\end{equation}
+
+\end_inset
+
+Perhatikan bahwa 
+\begin_inset Formula $\vec{B}_{1,i}$
+\end_inset
+
+ adalah kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier linear dari 
+\begin_inset Formula $\vec{P}_{i}$
+\end_inset
+
+ ke 
+\begin_inset Formula $\vec{P}_{i+1}$
+\end_inset
+
+.
+ Kemudian
+\begin_inset Formula 
+\begin{equation}
+\vec{B}_{j,i}(t)=(1-t)\cdot\vec{B}_{j-1,i}(t)+(t)\cdot\vec{B}_{j-1,i+1}(t),\qquad j=2,3,\ldots,n;\ i=0,1,\ldots,n-j.\label{eq:bezierPart2}
+\end{equation}
+
+\end_inset
+
+Perhatikan bahwa 
+\begin_inset Formula $\vec{B}_{2,i}(t)$
+\end_inset
+
+ adalah kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier berderajat paling tinggi dua yang menghubungkan 
+\begin_inset Formula $\vec{P}_{i}$
+\end_inset
+
+ ke 
+\begin_inset Formula $\vec{P}_{i+2}$
+\end_inset
+
+ melalui titik kontrol 
+\begin_inset Formula $\vec{P}_{i+1}$
+\end_inset
+
+.
+ Dengan sedikit aljabar, Anda dapat memastikan bahwa 
+\begin_inset Formula $\vec{B}_{3,i}(t)$
+\end_inset
+
+ berderajat paling tinggi tiga dan menghubungkan 
+\begin_inset Formula $\vec{P}_{i}$
+\end_inset
+
+ ke 
+\begin_inset Formula $\vec{P}_{i+3}$
+\end_inset
+
+.
+ Bukti induktif akan menunjukkan bahwa 
+\begin_inset Formula $\vec{B}_{j,i}(t)$
+\end_inset
+
+ merupakan parametrisasi polinom berderajat paling tinggi 
+\begin_inset Formula $j$
+\end_inset
+
+ yang menghubungkan 
+\begin_inset Formula $\vec{P_{i}}$
+\end_inset
+
+ ke 
+\begin_inset Formula $\vec{P_{i+j}}$
+\end_inset
+
+.
+ Dapatkah Anda memberikan buktinya? Jawaban pada halaman 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ans:bezierProof"
+
+\end_inset
+
+.
+ Dengan demikian, 
+\begin_inset Formula $\vec{B}_{n,0}(t)$
+\end_inset
+
+ berderajat paling tinggi 
+\begin_inset Formula $n$
+\end_inset
+
+ serta merupakan kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier yang menghubungkan 
+\begin_inset Formula $\vec{P}_{0}$
+\end_inset
+
+ ke 
+\begin_inset Formula $\vec{P}_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Kembali ke contoh sebelumnya, kita tambahkan titik kontrol 
+\begin_inset Formula $(5,1)$
+\end_inset
+
+ sehingga sekarang kita memiliki empat titik kontrol:
+\begin_inset Formula 
+\[
+\vec{P}_{0}=\begin{pmatrix}-1\\
+2
+\end{pmatrix},\ \vec{P}_{1}=\begin{pmatrix}0\\
+4
+\end{pmatrix},\ \vec{P}_{2}=\begin{pmatrix}5\\
+1
+\end{pmatrix},\ \vec{P}_{3}=\begin{pmatrix}5\\
+-2
+\end{pmatrix}.
+\]
+
+\end_inset
+
+Menurut persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:bezierPart1"
+
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{eqnarray*}
+\vec{B}_{1,0}(t) & = & (1-t)\vec{P}_{0}+(t)\vec{P}_{1}=(1-t)\begin{pmatrix}-1\\
+2
+\end{pmatrix}+t\begin{pmatrix}0\\
+4
+\end{pmatrix}=\begin{pmatrix}-1+t\\
+2+2t
+\end{pmatrix}\\
+\vec{B}_{1,1}(t) & = & (1-t)\vec{P}_{1}+(t)\vec{P}_{2}=(1-t)\begin{pmatrix}0\\
+4
+\end{pmatrix}+t\begin{pmatrix}5\\
+1
+\end{pmatrix}=\begin{pmatrix}5t\\
+4-3t
+\end{pmatrix}\\
+\vec{B}_{1,2}(t) & = & (1-t)\vec{P}_{2}+(t)\vec{P}_{3}=(1-t)\begin{pmatrix}5\\
+1
+\end{pmatrix}+t\begin{pmatrix}5\\
+-2
+\end{pmatrix}=\begin{pmatrix}5\\
+1-3t
+\end{pmatrix}.
+\end{eqnarray*}
+
+\end_inset
+
+Dan menurut persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:bezierPart2"
+
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{eqnarray*}
+\vec{B}_{2,0}(t) & = & (1-t)\vec{B}_{1,0}(t)+(t)\vec{B}_{1,1}(t)=(1-t)\begin{pmatrix}-1+t\\
+2+2t
+\end{pmatrix}+t\begin{pmatrix}5t\\
+4-3t
+\end{pmatrix}=\begin{pmatrix}-1+2t+4t^{2}\\
+2+4t-5t^{2}
+\end{pmatrix}\\
+\vec{B}_{2,1}(t) & = & (1-t)\vec{B}_{1,1}(t)+(t)\vec{B}_{1,2}(t)=(1-t)\begin{pmatrix}5t\\
+4-3t
+\end{pmatrix}+t\begin{pmatrix}5\\
+1-3t
+\end{pmatrix}=\begin{pmatrix}10t-5t^{2}\\
+4-6t
+\end{pmatrix},
+\end{eqnarray*}
+
+\end_inset
+
+serta
+\begin_inset Formula 
+\begin{eqnarray}
+\vec{B}_{3,0}(t) & = & (1-t)\vec{B}_{2,0}(t)+(t)\vec{B}_{2,1}(t)\nonumber \\
+ & = & (1-t)\begin{pmatrix}-1+2t+4t^{2}\\
+2+4t-5t^{2}
+\end{pmatrix}+t\begin{pmatrix}10t-5t^{2}\\
+4-6t
+\end{pmatrix}\nonumber \\
+ & = & \begin{pmatrix}-1+3t+12t^{2}-9t^{3}\\
+2+6t-15t^{2}+5t^{3}
+\end{pmatrix}.\label{eq:bezierCubicExample}
+\end{eqnarray}
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\vec{B}_{3,0}(t)$
+\end_inset
+
+ adalah kurva B
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier kubik dari 
+\begin_inset Formula $\begin{pmatrix}-1\\
+2
+\end{pmatrix}$
+\end_inset
+
+ ke 
+\begin_inset Formula $\begin{pmatrix}5\\
+-2
+\end{pmatrix}$
+\end_inset
+
+ melalui titik kontrol 
+\begin_inset Formula $\begin{pmatrix}0\\
+4
+\end{pmatrix}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\begin{pmatrix}5\\
+1
+\end{pmatrix}$
+\end_inset
+
+.
+ Gambar 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:bezierViaLinearInterpolation"
+
+\end_inset
+
+Tiga titik pada suatu kurva 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+B
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier kubik yang dibangun melalui interpolasi linear rekursif.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/splines-parametric02a.pdf
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename figures/splines-parametric02b.pdf
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename figures/splines-parametric02c.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:bezierViaLinearInterpolation"
+
+\end_inset
+
+ memperlihatkan kurva
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ B
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier ini beserta konstruksi tiga titiknya melalui interpolasi linear
+ rekursif.
+ Titik-titik biru terletak di sepanjang kurva linear 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+B
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier 
+\begin_inset Formula $\vec{B}_{1,0},\vec{B}_{1,1},\vec{B}_{1,2}$
+\end_inset
+
+.
+ Titik-titik jingga terletak di sepanjang kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier kuadratik 
+\begin_inset Formula $\vec{B}_{2,0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\vec{B}_{2,1}$
+\end_inset
+
+.
+ Titik-titik hitam terletak di sepanjang kurva
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ B
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier kubik.
+ Grafik kurva-kurva kuadratik tersebut tidak ditampilkan agar gambar tidak
+ menjadi terlalu rumit.
+\end_layout
+
+\begin_layout Standard
+Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:bezierViaLinearInterpolation"
+
+\end_inset
+
+ dapat membantu Anda memahami rekursi tersebut, tetapi yang mungkin lebih penting,
+ membantu Anda memahami hubungan antara titik-titik kontrol dan kurva 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+B
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier.
+ Sebagai contoh, setelah diperiksa dengan saksama, Anda mungkin menduga bahwa ruas garis
+ 
+\begin_inset Formula $\vec{B}_{1,0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\vec{B}_{1,2}$
+\end_inset
+
+ bersinggungan dengan kurva 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+B
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier kubik 
+\begin_inset Formula $\vec{B}_{3,0}$
+\end_inset
+
+ di 
+\begin_inset Formula $\vec{P}_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\vec{P}_{3}$
+\end_inset
+
+, secara berturut-turut.
+ Pemeriksaan saksama atas rumus-rumusnya akan menegaskan hal tersebut.
+\end_layout
+
+\begin_layout Standard
+Menurut rumus 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:bezierPart1"
+
+\end_inset
+
+ dan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:bezierPart2"
+
+\end_inset
+
+, kurva 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+B
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier berderajat paling tinggi tiga dengan titik-titik kontrol 
+\begin_inset Formula $\vec{P}_{0},\vec{P}_{1},\vec{P}_{2},\vec{P}_{3}$
+\end_inset
+
+ dihitung sebagai berikut:
+\begin_inset Formula 
+\begin{eqnarray*}
+\vec{B}_{1,0}(t) & = & (1-t)\vec{P}_{0}+(t)\vec{P}_{1}\\
+\vec{B}_{1,1}(t) & = & (1-t)\vec{P}_{1}+(t)\vec{P}_{2}\\
+\vec{B}_{1,2}(t) & = & (1-t)\vec{P}_{2}+(t)\vec{P}_{3}
+\end{eqnarray*}
+
+\end_inset
+
+sehingga
+\begin_inset Formula 
+\begin{eqnarray*}
+\vec{B}_{2,0}(t) & = & (1-t)\vec{B}_{1,0}(t)+(t)\vec{B}_{1,1}(t)=(1-t)\left[(1-t)\vec{P}_{0}+(t)\vec{P}_{1}\right]+t\left[(1-t)\vec{P}_{1}+(t)\vec{P}_{2}\right]\\
+ & = & (1-t)^{2}\vec{P}_{0}+2t(1-t)\vec{P}_{1}+t^{2}\vec{P}_{2}\\
+\vec{B}_{2,1}(t) & = & (1-t)\vec{B}_{1,1}(t)+(t)\vec{B}_{1,2}(t)=(1-t)\left[(1-t)\vec{P}_{1}+(t)\vec{P}_{2}\right]+t\left[(1-t)\vec{P}_{2}+(t)\vec{P}_{3}\right]\\
+ & = & (1-t)^{2}\vec{P}_{1}+2t(1-t)\vec{P}_{2}+t^{2}\vec{P}_{3}
+\end{eqnarray*}
+
+\end_inset
+
+sehingga
+\begin_inset Formula 
+\begin{eqnarray}
+\vec{B}_{3,0}(t) & = & (1-t)\vec{B}_{2,0}(t)+(t)\vec{B}_{2,1}(t)\nonumber \\
+ & = & (1-t)\left[(1-t)^{2}\vec{P}_{0}+2t(1-t)\vec{P}_{1}+t^{2}\vec{P}_{2}\right]+t\left[(1-t)^{2}\vec{P}_{1}+2t(1-t)\vec{P}_{2}+t^{2}\vec{P}_{3}\right]\label{eq:bezierCubicGeneral}\\
+ & = & (1-t)^{3}\vec{P}_{0}+3t(1-t)^{2}\vec{P}_{1}+3t^{2}(1-t)\vec{P_{2}}+t^{3}\vec{P}_{3}.\nonumber 
+\end{eqnarray}
+
+\end_inset
+
+Dengan demikian, 
+\begin_inset Formula $\frac{d}{dt}\vec{B}_{3,0}(t)=-3(1-t)^{2}\vec{P}_{0}+3\left[(1-t)^{2}-2t(1-t)\right]\vec{P}_{1}+3\left[2t(1-t)-t^{2}\right]\vec{P}_{2}+3t^{2}\vec{P}_{3}$
+\end_inset
+
+, dan dari sini diperoleh
+\begin_inset Formula 
+\begin{eqnarray*}
+\left.\frac{d}{dt}\vec{B}_{3,0}(t)\right|_{t=0} & = & -3\vec{P}_{0}+3\vec{P}_{1}=3(\vec{P}_{1}-\vec{P}_{0})\\
+\left.\frac{d}{dt}\vec{B}_{3,0}(t)\right|_{t=1} & = & -3\vec{P}_{2}+3\vec{P}_{3}=3(\vec{P}_{3}-\vec{P}_{2}).
+\end{eqnarray*}
+
+\end_inset
+
+Memang, turunan 
+\begin_inset Formula $\vec{B}_{3,0}$
+\end_inset
+
+ pada 
+\begin_inset Formula $0$
+\end_inset
+
+ searah dengan ruas garis dari 
+\begin_inset Formula $\vec{P}_{1}$
+\end_inset
+
+ ke 
+\begin_inset Formula $\vec{P}_{2}$
+\end_inset
+
+, dan turunan 
+\begin_inset Formula $\vec{B}_{3,0}$
+\end_inset
+
+ pada 
+\begin_inset Formula $1$
+\end_inset
+
+ searah dengan ruas garis dari 
+\begin_inset Formula $\vec{P}_{2}$
+\end_inset
+
+ ke 
+\begin_inset Formula $\vec{P}_{3}$
+\end_inset
+
+.
+ Selain itu, magnitudo turunan-turunan ini tepat tiga kali magnitudo
+ ruas-ruas garis tersebut.
+\end_layout
+
+\begin_layout Standard
+Meskipun kita menempuh jalur yang agak berputar, kini kita melihat cara lain untuk menghitung
+ kurva 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+B
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier kubik selain dengan menggunakan rekursi 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:bezierPart1"
+
+\end_inset
+
+/
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:bezierPart2"
+
+\end_inset
+
+ atau rumus 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:bezierCubicGeneral"
+
+\end_inset
+
+.
+ Titik kontrol 
+\begin_inset Formula $\vec{P}_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\vec{P}_{3}$
+\end_inset
+
+ memberi kita dua titik yang harus dilalui oleh 
+\begin_inset Formula $x$
+\end_inset
+
+ dan 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ Titik kontrol 
+\begin_inset Formula $\vec{P}_{1}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\vec{P}_{2}$
+\end_inset
+
+ memberi kita 
+\begin_inset Formula $\dot{x}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\dot{y}$
+\end_inset
+
+ pada kedua titik tersebut.
+ Dengan penentuan demikian, 
+\begin_inset Formula $x$
+\end_inset
+
+ dan 
+\begin_inset Formula $y$
+\end_inset
+
+ merupakan polinom Hermite kubik! 
+\end_layout
+
+\begin_layout Standard
+Tepatnya, misalkan 
+\begin_inset Formula $\vec{P}_{i}=(x_{i},y_{i})$
+\end_inset
+
+ untuk 
+\begin_inset Formula $i=0,1,2,3$
+\end_inset
+
+.
+ Maka, 
+\begin_inset Formula $x(t)$
+\end_inset
+
+ adalah polinom Hermite kubik dengan 
+\begin_inset Formula $x(0)=x_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $\dot{x}(0)=3(x_{1}-x_{0})$
+\end_inset
+
+, 
+\begin_inset Formula $x(1)=x_{3}$
+\end_inset
+
+, dan 
+\begin_inset Formula $\dot{x}(1)=3(x_{3}-x_{2})$
+\end_inset
+
+; sedangkan 
+\begin_inset Formula $y(t)$
+\end_inset
+
+ adalah polinom Hermite kubik dengan 
+\begin_inset Formula $y(0)=y_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $\dot{y}(0)=3(y_{1}-y_{0})$
+\end_inset
+
+, 
+\begin_inset Formula $y(1)=y_{3}$
+\end_inset
+
+, dan 
+\begin_inset Formula $\dot{y}(1)=3(y_{3}-y_{2})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Kita tutup bagian ini dengan menghitung kurva 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+B
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier dari 
+\begin_inset Formula $\begin{pmatrix}-1\\
+2
+\end{pmatrix}$
+\end_inset
+
+ ke 
+\begin_inset Formula $\begin{pmatrix}5\\
+-2
+\end{pmatrix}$
+\end_inset
+
+ melalui titik kontrol 
+\begin_inset Formula $\begin{pmatrix}0\\
+4
+\end{pmatrix}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\begin{pmatrix}5\\
+1
+\end{pmatrix}$
+\end_inset
+
+ dengan menggunakan persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:HermiteCubicForHumans"
+
+\end_inset
+
+ dan membandingkan hasilnya dengan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:bezierCubicExample"
+
+\end_inset
+
+.
+ Dengan 
+\begin_inset Formula $x(0)=-1$
+\end_inset
+
+, 
+\begin_inset Formula $\dot{x}(0)=3$
+\end_inset
+
+, 
+\begin_inset Formula $x(1)=5$
+\end_inset
+
+, dan 
+\begin_inset Formula $\dot{x}(1)=0$
+\end_inset
+
+ (dan substitusi 
+\begin_inset Formula $x$
+\end_inset
+
+ untuk 
+\begin_inset Formula $y$
+\end_inset
+
+ yang dipahami), persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:HermiteCubicForHumans"
+
+\end_inset
+
+ menghasilkan 
+\begin_inset Formula $m=\frac{5+1}{1-0}=6$
+\end_inset
+
+ dan
+\begin_inset Formula 
+\[
+x(t)=\frac{t-1}{-1}(-1)+\frac{t}{1}(5)+\frac{(t-1)^{2}t}{1}\left(3-6\right)+\frac{t^{2}(t-1)}{1}\left(-6\right).
+\]
+
+\end_inset
+
+Persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:HermiteCubicForHumans"
+
+\end_inset
+
+ dengan 
+\begin_inset Formula $y(0)=2$
+\end_inset
+
+, 
+\begin_inset Formula $\dot{y}(0)=6$
+\end_inset
+
+, 
+\begin_inset Formula $y(1)=-2$
+\end_inset
+
+, dan 
+\begin_inset Formula $\dot{y}(1)=-9$
+\end_inset
+
+ menghasilkan 
+\begin_inset Formula $m=\frac{-2-2}{1-0}=-4$
+\end_inset
+
+ dan
+\begin_inset Formula 
+\[
+y(t)=\frac{t-1}{-1}(2)+\frac{t}{1}(-2)+\frac{(t-1)^{2}t}{1}\left(6+4\right)+\frac{t^{2}(t-1)}{1}\left(-9+4\right).
+\]
+
+\end_inset
+
+Walaupun persamaan-persamaan ini lengkap dan benar, sulit membandingkannya
+ dengan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:bezierCubicExample"
+
+\end_inset
+
+ tanpa penyederhanaan.
+ Dapatkah Anda menunjukkan
+\begin_inset Formula 
+\begin{eqnarray*}
+x(t) & = & -1+3t+12t^{2}-9t^{3}\\
+y(t) & = & 2+6t-15t^{2}+5t^{3}
+\end{eqnarray*}
+
+\end_inset
+
+ sebagaimana disyaratkan? Jawaban 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "ans:parametricCubics"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{digression}{Kurva B
+\backslash
+'ezier dan CAGD}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier pertama kali dikembangkan sekitar tahun 1960 oleh para pegawai perusahaan
+ manufaktur otomotif Prancis.
+ Paul de Casteljau dari Citro
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+"e
+\end_layout
+
+\end_inset
+
+n adalah yang pertama, tetapi Pierre B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier dari Renault memopulerkan metode ini sehingga namanya dikaitkan dengan
+ polinom-polinom tersebut.
+\end_layout
+
+\begin_layout Standard
+Saat ini, hampir semua perangkat lunak desain grafis berbantuan komputer, atau CAGD, menggunakan
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ kurva B
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier, khususnya yang kubik, untuk menggambar objek halus.
+ Perangkat lunak CAGD dengan alat kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier kubik akan menampilkan keempat titik kontrol dan memungkinkan pengguna memindah-mindahkannya.
+
+ Bahkan, perangkat lunak tersebut juga akan menggambar dua kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier linear pada titik-titik ujung.
+ Ini memberi pengguna 
+\begin_inset Quotes eld
+\end_inset
+
+gagang kontrol
+\begin_inset Quotes erd
+\end_inset
+
+ untuk memanipulasi kurva.
+ Beberapa perangkat lunak juga akan menyertakan kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier linear ketiga.
+ Ketiga kurva linear 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+B
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier tersebut bersama-sama membentuk apa yang disebut poligon kontrol.
+ Karena hubungan antara titik-titik kontrol dan kurva bersifat intuitif,
+ manipulasi titik-titik kontrol, baik melalui gagang kontrol maupun poligon
+ kontrol, menyediakan sarana untuk memodelkan bentuk-bentuk halus dengan cepat.
+ 
+\end_layout
+
+\begin_layout Standard
+Namun, beberapa bentuk terlalu rumit untuk dimodelkan dengan satu kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier kubik.
+ Untuk menangani bentuk-bentuk seperti itu, perangkat lunak CAGD memungkinkan pengguna merangkai kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier kubik ujung ke ujung sehingga membentuk kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier komposit, atau sepotong-sepotong, seperti yang ditampilkan di sini.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/splines-parametric03.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Kurva ini terdiri atas dua kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier kubik, yang pertama bertitik kontrol 
+\begin_inset Formula $\vec{P}_{0},\vec{P}_{1},\vec{P}_{2},\vec{P}_{3}$
+\end_inset
+
+ dan yang kedua bertitik kontrol 
+\begin_inset Formula $\vec{P}_{3},\vec{P}_{4},\vec{P}_{5},\vec{P}_{6}$
+\end_inset
+
+.
+ Karena kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier dimaksudkan untuk memodelkan objek halus, perangkat lunak akan menyediakan
+ opsi untuk memaksakan kecocokan turunan pada titik bersama seperti 
+\begin_inset Formula $\vec{P}_{3}$
+\end_inset
+
+.
+ Hal ini dilakukan dengan memastikan bahwa titik bersama berada pada ruas garis di antara
+ dua titik kontrol yang bersebelahan dengannya (
+\begin_inset Formula $\vec{P}_{2}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\vec{P}_{4}$
+\end_inset
+
+ pada diagram ini).
+ Anda dapat melihat versi interaktif diagram ini di 
+\begin_inset CommandInset href
+LatexCommand href
+name "situs pendamping"
+target "http://lqbrin.github.io/tea-time-numerical/ancillaries.html"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Perangkat lunak bebas dan sumber terbuka seperti Inkscape, LibreOffice Drawing,
+ dan Dia menyediakan alat untuk menggambar kurva Bézier, tetapi tidak semuanya
+ menggunakan istilah teknis tersebut.
+ Inkscape memiliki alat kurva Bézier dengan nama itu, tetapi alat kurva Bézier
+ pada LibreOffice Drawing hanya disebut 
+\begin_inset Quotes eld
+\end_inset
+
+kurva
+\begin_inset Quotes erd
+\end_inset
+
+, sedangkan alat Dia yang hanya untuk kurva Bézier tunggal, bukan komposit,
+ bernama 
+\begin_inset Quotes eld
+\end_inset
+
+Bezierline
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Description
+Referensi 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bezier,decasteljau,amsbezier,inkscape,dia,libreoffice"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{digression}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Konsep Utama
+\end_layout
+
+\begin_layout Description
+polinom
+\begin_inset space ~
+\end_inset
+
+oskulasi: Polinom yang grafiknya harus melalui sekumpulan
+ titik yang ditentukan 
+\begin_inset Formula 
+\[
+(x_{0},y_{0}),(x_{1},y_{1}),\ldots,(x_{n},y_{n})
+\]
+
+\end_inset
+
+serta 
+\begin_inset Formula $m_{i}$
+\end_inset
+
+ turunan pertamanya juga dapat ditentukan pada 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+polinom
+\begin_inset space ~
+\end_inset
+
+Hermite: Polinom oskulasi yang harus melalui dua titik dengan turunan
+ pertamanya ditentukan pada setiap titik.
+\end_layout
+
+\begin_layout Description
+kurva
+\begin_inset space ~
+\end_inset
+
+B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier: Kurva yang menghubungkan dua titik melalui polinom oskulasi parametrik.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+startexercises 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Latihan
+\end_layout
+
+\begin_layout Enumerate
+Tentukan polinom Hermite kubik yang menginterpolasi data berikut.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f'(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Tentukan polinom Hermite berderajat (paling tinggi) 5 yang menginterpolasi data berikut.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f'(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Misalkan 
+\begin_inset Formula $g(x)=(\sqrt{2})^{x}$
+\end_inset
+
+.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Dengan menggunakan 
+\begin_inset Formula $x_{0}=1$
+\end_inset
+
+ dan 
+\begin_inset Formula $x_{1}=2$
+\end_inset
+
+, tentukan polinom interpolasi Hermite untuk 
+\begin_inset Formula $g$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Gunakan polinom Hermite untuk menghampiri 
+\begin_inset Formula $g(1.5)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Hitung galat aktual dari hampiran ini, lalu bandingkan dengan galat yang Anda
+ peroleh pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:interpolation-lagrange-5"
+
+\end_inset
+
+ di bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:polynomialLagrange"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "exc:interpolation-lagrange-5"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Polinom manakah yang menghampiri 
+\begin_inset Formula $g(1.5)$
+\end_inset
+
+ dengan galat absolut yang lebih kecil, polinom Hermite atau polinom interpolasi
+ Lagrange?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Tentukan polinom yang melalui titik-titik 
+\begin_inset Formula $(0,0)$
+\end_inset
+
+ dan 
+\begin_inset Formula $(4,-3)$
+\end_inset
+
+ dan yang turunannya melalui titik-titik 
+\begin_inset Formula $(0,1)$
+\end_inset
+
+ dan 
+\begin_inset Formula $(4,1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "data"
+
+\end_inset
+
+Susun polinom interpolasi Hermite untuk data yang diberikan.
+ Lakukan ini dengan pensil, kertas dan kalkulator, atau lembar sebar.
+ Jangan gunakan kode Octave.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f'(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.29004996$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-2.8019975$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.56079734$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-2.6159201$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.81401972$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-2.4533949$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Tentukan persamaan parametrik untuk kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier kubik.
+ Ujung-ujung 
+\begin_inset Quotes eld
+\end_inset
+
+gagang kontrol
+\begin_inset Quotes erd
+\end_inset
+
+ adalah keempat titik kontrol.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/splines-parametric04.eps
+	lyxscale 75
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Tuliskan persamaan parametrik kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier dengan titik-titik kontrol 
+\begin_inset Formula $(-1,2)$
+\end_inset
+
+, 
+\begin_inset Formula $(-3,2)$
+\end_inset
+
+, 
+\begin_inset Formula $(3,1)$
+\end_inset
+
+, dan 
+\begin_inset Formula $(3,0)$
+\end_inset
+
+.
+ Jawaban Anda tidak perlu disederhanakan.
+\end_layout
+
+\begin_layout Enumerate
+Susun persamaan parametrik untuk kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier dengan titik-titik kontrol 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $(1,1),(2,1.5),(7,1.5),(6,2)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Tentukan persamaan polinom-polinom kubik yang membentuk kurva B
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier komposit.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/splines-parametric06.gif
+	lyxscale 60
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Data pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "data"
+
+\end_inset
+
+ dihasilkan dengan menggunakan 
+\begin_inset Formula $f(x)=x^{2}\cos(x)-3x$
+\end_inset
+
+.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "approximation"
+
+\end_inset
+
+Hampiri 
+\begin_inset Formula $f(0.18)$
+\end_inset
+
+ dengan menggunakan polinom dari soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "data"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "error"
+
+\end_inset
+
+Hitung galat absolut dari hampiran ini.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Misalkan 
+\begin_inset Formula $H(x)=x^{5}-3x^{4}+2x^{3}-6x+2$
+\end_inset
+
+ merupakan polinom Hermite yang menginterpolasi data
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f'(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-6$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-10$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+diperoleh dari suatu fungsi 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ Carilah datum yang hilang.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Suatu polinom Hermite 
+\begin_inset Formula $H(x)$
+\end_inset
+
+ dikonstruksi menggunakan data
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.6$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.8$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.8$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.6$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f'(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-1.2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-5.3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+Carilah 
+\begin_inset Formula $(H\circ H)'(0.6)$
+\end_inset
+
+.
+ Dengan kata lain, carilah turunan dari 
+\begin_inset Formula $H(H(x))$
+\end_inset
+
+ yang dievaluasi pada 
+\begin_inset Formula $x=0.6$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+Carilah 
+\begin_inset Formula $(f\circ f)'(0.8)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Polinom interpolasi Hermite untuk data berikut berbentuk
+ 
+\begin_inset Formula $H(x)=a_{0}+a_{1}(x-0.3)+a_{2}(x-0.3)^{2}+\ldots$
+\end_inset
+
+.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f'(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.30$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.295$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.155$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.32$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.314$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.149$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.35$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.342$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.139$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Isilah bagian yang hilang dalam bentuk 
+\begin_inset Formula $H(x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Berapakah derajat maksimum yang mungkin untuk 
+\begin_inset Formula $H(x)$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Enumerate
+Carilah 
+\begin_inset Formula $a_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $a_{1}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Konstruksikan tabel beda terbagi yang menghasilkan polinom Hermite
+\begin_inset Formula 
+\[
+p(x)=2-(x-1)+\frac{1}{4}(x-1)^{2}+\frac{1}{4}(x-1)^{2}(x-3).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier
+\begin_inset Formula 
+\begin{eqnarray*}
+x(t) & = & 11t^{3}-18t^{2}+3t+5\\
+y(t) & = & t^{3}+1
+\end{eqnarray*}
+
+\end_inset
+
+memiliki titik kontrol 
+\begin_inset Formula $(5,1)$
+\end_inset
+
+, 
+\begin_inset Formula $(6,1)$
+\end_inset
+
+, dan 
+\begin_inset Formula $(1,2)$
+\end_inset
+
+.
+ Carilah titik kontrol keempat.
+\end_layout
+
+\begin_layout Enumerate
+Berapakah jumlah minimum kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier kubik pada diagram tersebut, dan mengapa?
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/splines-parametric06.eps
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Perhatikan grafik berikut.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/splines-parametric05.gif
+	lyxscale 20
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Grafik tersebut tidak mungkin merupakan grafik satu kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier kubik.
+ Mengapa?
+\end_layout
+
+\begin_layout Enumerate
+Grafik tersebut adalah grafik kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier kubik komposit.
+ Setidaknya berapa kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier kubik yang telah digabungkan, dan mengapa?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Berikan tiga alasan yang dapat membuat Anda menggunakan kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier alih-alih polinom Lagrange untuk memodelkan suatu grafik.
+\end_layout
+
+\begin_layout Enumerate
+Polinom oskulasi 
+\begin_inset Formula $p(x)$
+\end_inset
+
+ yang melalui 
+\begin_inset Formula $(x_{0},f(x_{0}))$
+\end_inset
+
+ dengan 
+\begin_inset Formula $P'(x_{0})=f'(x_{0})$
+\end_inset
+
+, 
+\begin_inset Formula $P''(x_{0})=f''(x_{0})$
+\end_inset
+
+, dan 
+\begin_inset Formula $P'''(x_{0})=f'''(x_{0})$
+\end_inset
+
+ juga disebut apa? Berikan jawaban sespesifik mungkin.
+\end_layout
+
+\begin_layout Enumerate
+Kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier polar kubik merupakan satu-satunya fungsi polar kubik (terparametrisasi) 
+\begin_inset Formula $(r(t),\theta(t))$
+\end_inset
+
+ yang memenuhi data berikut.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $r(t)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta(t)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\dot{r}(t)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\dot{\theta(t)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $r_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\delta_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mu_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $r_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\delta_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mu_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+Sebuah kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier kubik standar ditentukan oleh titik kontrol 
+\begin_inset Formula $(0,0)$
+\end_inset
+
+, 
+\begin_inset Formula $(2,0)$
+\end_inset
+
+, 
+\begin_inset Formula $(0,1)$
+\end_inset
+
+, dan 
+\begin_inset Formula $(0,3)$
+\end_inset
+
+ (dalam urutan tersebut).
+ Konversikan data ini menjadi data koordinat polar.
+ Ingatlah bahwa konversi dari koordinat Kartesius ke koordinat polar melibatkan
+ rumus 
+\begin_inset Formula 
+\[
+r=\sqrt{x^{2}+y^{2}}\quad\mbox{dan}\quad\tan\theta=\frac{y}{x}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+Carilah kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier polar kubik berdasarkan hasil Anda dari (a).
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah fungsi Octave untuk menghitung polinom Hermite.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Sebuah mobil yang melaju di sepanjang jalan lurus diukur pada sejumlah titik.
+ Data hasil pengamatan diberikan dalam tabel berikut, dengan waktu dalam detik,
+ jarak dalam kaki, dan kecepatan dalam kaki per detik.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="6">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Waktu
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Jarak
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+225
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+383
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+623
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+993
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kecepatan
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+75
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+77
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+80
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+74
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+72
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Hitunglah polinom interpolasi Hermite untuk data tersebut.
+\end_layout
+
+\begin_layout Enumerate
+Gunakan polinom Anda dari bagian (a) untuk memprediksi posisi (jarak) mobil
+ dan kecepatannya pada saat 
+\begin_inset Formula $t=10$
+\end_inset
+
+ detik.
+\end_layout
+
+\begin_layout Enumerate
+Tentukan apakah mobil tersebut pernah melebihi batas kecepatan 55 mil per
+ jam di jalan tersebut.
+ Jika ya, kapan mobil tersebut pertama kali melebihi kecepatan ini?
+\end_layout
+
+\begin_layout Enumerate
+Berapakah prediksi kecepatan maksimum mobil tersebut?
+\end_layout
+
+\begin_layout Standard
+CATATAN: Kecepatan adalah turunan dari jarak.
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+55\frac{\textrm{mil}}{\textrm{jam}} & = & 55\frac{\textrm{mil}}{\textrm{jam}}\times\frac{5280\textrm{ kaki}}{\textrm{mil}}\times\frac{1\textrm{ jam}}{3600\textrm{ detik}}\\
+ & \approx & 80.67\frac{\textrm{kaki}}{\textrm{detik}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Lengkapilah kode berikut.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+#######################################
+\end_layout
+
+\begin_layout LyX-Code
+# Written by Dr.
+ Len Brin             #
+\end_layout
+
+\begin_layout LyX-Code
+# 13 March 2012                       #
+\end_layout
+
+\begin_layout LyX-Code
+# Purpose: Evaluate an interpolating  #
+\end_layout
+
+\begin_layout LyX-Code
+#      polynomial at the value z.
+     #
+\end_layout
+
+\begin_layout LyX-Code
+# INPUT: number z                     #
+\end_layout
+
+\begin_layout LyX-Code
+#      Data x0,x1,...,xn used to      #
+\end_layout
+
+\begin_layout LyX-Code
+#      calculate the polynomial: x    #
+\end_layout
+
+\begin_layout LyX-Code
+#      Entries a0;0, a1;0,1, ...
+      #
+\end_layout
+
+\begin_layout LyX-Code
+#      an;0,1,...,n as an array: c    #
+\end_layout
+
+\begin_layout LyX-Code
+# OUTPUT: P(z), the value of the      #
+\end_layout
+
+\begin_layout LyX-Code
+#      interpolating polynomial at z.
+ #
+\end_layout
+
+\begin_layout LyX-Code
+#######################################
+\end_layout
+
+\begin_layout LyX-Code
+function ans = divDiffEval(z,x,c)
+\end_layout
+
+\begin_layout LyX-Code
+  n = length(x);
+\end_layout
+
+\begin_layout LyX-Code
+  ans = c(n);
+\end_layout
+
+\begin_layout LyX-Code
+  for i=1:n-1
+\end_layout
+
+\begin_layout LyX-Code
+    ans=(z-x(???))*ans+c(???);
+\end_layout
+
+\begin_layout LyX-Code
+  end#for
+\end_layout
+
+\begin_layout LyX-Code
+end#function
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+finishexercises 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Jawaban
+\end_layout
+
+\begin_layout Description
+Bentuk
+\begin_inset space ~
+\end_inset
+
+komputasi
+\begin_inset space ~
+\end_inset
+
+polinom
+\begin_inset space ~
+\end_inset
+
+Hermite: 
+\begin_inset CommandInset label
+LatexCommand label
+name "ans:hermiteCoefficients"
+
+\end_inset
+
+Empat entri yang tersisa adalah
+\begin_inset Formula 
+\begin{eqnarray*}
+f_{1,1} & = & \frac{y_{1}-y_{0}}{t_{1}-t_{0}}\\
+f_{0,2} & = & \frac{f_{1,1}-\dot{y}_{0}}{t_{1}-t_{0}}=\frac{y_{1}-y_{0}}{(t_{1}-t_{0})^{2}}-\frac{\dot{y}_{0}}{t_{1}-t_{0}}\\
+f_{1,2} & = & \frac{\dot{y}_{1}-f_{1,1}}{t_{1}-t_{0}}=\frac{\dot{y}_{1}}{t_{1}-t_{0}}-\frac{y_{1}-y_{0}}{(t_{1}-t_{0})^{2}}\\
+f_{0,3} & = & \frac{f_{1,2}-f_{0,2}}{t_{1}-t_{0}}=\frac{\dot{y}_{1}+\dot{y}_{0}}{(t_{1}-t_{0})^{2}}-2\frac{y_{1}-y_{0}}{(t_{1}-t_{0})^{3}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Kurva
+\begin_inset space ~
+\end_inset
+
+Bézier
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\vec{B}_{j,i}(t)$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+adalah
+\begin_inset space ~
+\end_inset
+
+polinom
+\begin_inset space ~
+\end_inset
+
+berderajat paling tinggi 
+\begin_inset Formula $j$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+yang
+\begin_inset space ~
+\end_inset
+
+menghubungkan
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\vec{P_{i}}$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+dengan
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\vec{P_{i+j}}$
+\end_inset
+
+: 
+\begin_inset CommandInset label
+LatexCommand label
+name "ans:bezierProof"
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+Pembuktian dilakukan dengan induksi terhadap 
+\begin_inset Formula $j$
+\end_inset
+
+, dimulai dari 
+\begin_inset Formula $j=1$
+\end_inset
+
+: Berdasarkan
+\begin_inset Formula 
+\[
+\vec{B}_{1,i}(t)=(1-t)\vec{P}_{i}+(t)\vec{P}_{i+1},\qquad i=0,1,\ldots,n-1,
+\]
+
+\end_inset
+
+
+, berlaku 
+\begin_inset Formula $\vec{B}_{1,i}(0)=\vec{P}_{i}$
+\end_inset
+
+ dan 
+\begin_inset Formula $B_{1,i}(1)=\vec{P}_{i+1}$
+\end_inset
+
+, sehingga 
+\begin_inset Formula $\vec{B}_{1,i}$
+\end_inset
+
+ menghubungkan 
+\begin_inset Formula $\vec{P}_{i}$
+\end_inset
+
+ dengan 
+\begin_inset Formula $\vec{P}_{i+1}$
+\end_inset
+
+.
+ Selain itu, 
+\begin_inset Formula $\vec{B}_{1,i}(t)=\vec{P}_{i}+t(\vec{P}_{i+1}-\vec{P}_{i})$
+\end_inset
+
+, sehingga 
+\begin_inset Formula $\vec{B}_{1,i}$
+\end_inset
+
+ merupakan polinom berderajat paling tinggi 1.
+ Sekarang andaikan 
+\begin_inset Formula $\vec{B}_{j,i}(t)$
+\end_inset
+
+ merupakan polinom berderajat paling tinggi 
+\begin_inset Formula $j$
+\end_inset
+
+ yang menghubungkan 
+\begin_inset Formula $\vec{P_{i}}$
+\end_inset
+
+ dengan 
+\begin_inset Formula $\vec{P_{i+j}}$
+\end_inset
+
+ untuk suatu 
+\begin_inset Formula $j\geq1$
+\end_inset
+
+ (dan semua 
+\begin_inset Formula $i$
+\end_inset
+
+ yang berlaku).
+ Berdasarkan definisi, 
+\begin_inset Formula $\vec{B}_{j+1,i}(0)=\vec{B}_{j,i}(0)$
+\end_inset
+
+ dan 
+\begin_inset Formula $\vec{B}_{j+1,i}(1)=\vec{B}_{j,i+1}(1)$
+\end_inset
+
+.
+ Berdasarkan hipotesis induksi, 
+\begin_inset Formula $\vec{B}_{j,i}(0)=\vec{P}_{i}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\vec{B}_{j,i+1}(1)=\vec{P}_{i+j+1}$
+\end_inset
+
+, sehingga 
+\begin_inset Formula $\vec{B}_{j+1,i}$
+\end_inset
+
+ menghubungkan 
+\begin_inset Formula $\vec{P}_{i}$
+\end_inset
+
+ dengan 
+\begin_inset Formula $\vec{P}_{i+j+1}$
+\end_inset
+
+.
+ Selain itu,
+\begin_inset Formula 
+\[
+\vec{B}_{j+1,i}(t)=(1-t)\cdot\vec{B}_{j,i}(t)+(t)\cdot\vec{B}_{j,i+1}(t)
+\]
+
+\end_inset
+
+berderajat paling tinggi 
+\begin_inset Formula $j+1$
+\end_inset
+
+ karena 
+\begin_inset Formula $\vec{B}_{j,i}(t)$
+\end_inset
+
+ dan 
+\begin_inset Formula $\vec{B}_{j,i+1}(t)$
+\end_inset
+
+ masing-masing berderajat paling tinggi 
+\begin_inset Formula $j$
+\end_inset
+
+ (berdasarkan hipotesis induksi).
+ Dengan demikian, pembuktian selesai.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Kurva B
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+zier
+\begin_inset space ~
+\end_inset
+
+melalui
+\begin_inset space ~
+\end_inset
+
+polinom
+\begin_inset space ~
+\end_inset
+
+Hermite
+\begin_inset space ~
+\end_inset
+
+kubik: 
+\begin_inset CommandInset label
+LatexCommand label
+name "ans:parametricCubics"
+
+\end_inset
+
+Penyederhanaannya dapat dilakukan sebagai berikut.
+\begin_inset Formula 
+\begin{eqnarray*}
+x(t) & = & \frac{t-1}{-1}(-1)+\frac{t}{1}(5)+\frac{(t-1)^{2}t}{1}\left(3-6\right)+\frac{t^{2}(t-1)}{1}\left(-6\right)\\
+ & = & (t-1)+5t-3t(t-1)^{2}-6t^{2}(t-1)\\
+ & = & 6t-1-3t(t^{2}-2t+1)-6t^{3}+6t^{2}\\
+ & = & 6t-1-3t^{3}+6t^{2}-3t-6t^{3}+6t^{2}\\
+ & = & -9t^{3}+12t^{2}+3t-1
+\end{eqnarray*}
+
+\end_inset
+
+dan
+\begin_inset Formula 
+\begin{eqnarray*}
+y(t) & = & \frac{t-1}{-1}(2)+\frac{t}{1}(-2)+\frac{(t-1)^{2}t}{1}\left(6+4\right)+\frac{t^{2}(t-1)}{1}\left(-9+4\right)\\
+ & = & -2(t-1)-2t+10t(t-1)^{2}-5t^{2}(t-1)\\
+ & = & -2t+2-2t+10t(t^{2}-2t+1)-5t^{3}+5t^{2}\\
+ & = & 2-4t+10t^{3}-20t^{2}+10t-5t^{3}+5t^{2}\\
+ & = & 5t^{3}-15t^{2}+6t+2.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

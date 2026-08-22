@@ -1,0 +1,191 @@
+{
+  "admission": {
+    "artifact_build_receipt_gate": "pass",
+    "correction_rows_complete": 325,
+    "exact_input_hash_gate": "pass",
+    "local_relation_closure": "pass",
+    "unknown_curriculum_fields_preserved_as_null": true
+  },
+  "config_bytes": 3115,
+  "config_path": "backend/config/interoperability_v0.release.json",
+  "config_sha256": "a1a70f0ddda50cd365e2a92f1363d9dca07e06d1a3b6234364cb871e330112cc",
+  "counts": {
+    "artifact": 2,
+    "concept": 12,
+    "correction": 325,
+    "course": 1,
+    "edition": 1,
+    "program": 1,
+    "relation": 489,
+    "resource": 1,
+    "rights": 3,
+    "segment": 314,
+    "source_file": 31,
+    "term": 12,
+    "unit": 103
+  },
+  "course_id": "urn:uuid:a17f1fe0-73ca-5852-9ad3-d207c62467ea",
+  "dependency_packs": [
+    "backend/packs/preamble",
+    "backend/packs/TeaTimeNumericalAnalysis",
+    "backend/packs/preface",
+    "backend/packs/preliminaries-errors",
+    "backend/packs/preliminaries-taylor",
+    "backend/packs/preliminaries-convergence",
+    "backend/packs/preliminaries-recursion",
+    "backend/packs/roots-bisection",
+    "backend/packs/roots-fixedpoint",
+    "backend/packs/roots-orderOfConvergence",
+    "backend/packs/roots-newtonsMethod",
+    "backend/packs/roots-moreConvergenceDiagrams",
+    "backend/packs/roots-polynomials",
+    "backend/packs/roots-bracketing",
+    "backend/packs/interpolation-challenge",
+    "backend/packs/interpolation-lagrange",
+    "backend/packs/interpolation-newton",
+    "backend/packs/calculus-rudiments",
+    "backend/packs/calculus-undeterminedCoefficients",
+    "backend/packs/calculus-errors",
+    "backend/packs/calculus-composite",
+    "backend/packs/calculus-richardsons",
+    "backend/packs/splines-parametric",
+    "backend/packs/splines-cubic",
+    "backend/packs/ode-pendulum",
+    "backend/packs/ode-taylor",
+    "backend/packs/ode-rungeKutta",
+    "backend/packs/ode-errorAnalysis",
+    "backend/packs/ode-adaptive",
+    "backend/packs/solutions",
+    "backend/packs/answers",
+    "backend/packs/heun1900-page30",
+    "backend/packs/cprotect-1.0f"
+  ],
+  "edition_id": "urn:uuid:35b4350d-7202-5d47-8b85-5262d7ca441c",
+  "file_kind": "interoperability_envelope",
+  "file_order": 29001,
+  "files": [
+    {
+      "bytes": 3835,
+      "path": "artifacts/artifacts.jsonl",
+      "records": 2,
+      "sha256": "92db88b4c483487c04afa70bc185ddfc5fce8873cc6151c175c9fb5dd807f616"
+    },
+    {
+      "bytes": 391,
+      "path": "authority/editions.jsonl",
+      "records": 1,
+      "sha256": "d0779ce53ecbe96c09c53e8ccc74ea4b23c1ca64115c78e27aa328cfcc019d91"
+    },
+    {
+      "bytes": 313,
+      "path": "authority/resources.jsonl",
+      "records": 1,
+      "sha256": "4284558338c31abb6452e85c4d45a6bc378b2d25e98b68ce43003a9bed97c03d"
+    },
+    {
+      "bytes": 478856,
+      "path": "corrections/corrections.jsonl",
+      "records": 325,
+      "sha256": "15d3f61a91f157f732676ee6f69d0acfebb30c2ee3e190305132f9938caac404"
+    },
+    {
+      "bytes": 917,
+      "path": "curriculum/courses.jsonl",
+      "records": 1,
+      "sha256": "f37bbd2f8f3917542af1cd768e33173b790fe00e1475b83fdcaa44e125d4f74b"
+    },
+    {
+      "bytes": 796,
+      "path": "curriculum/programs.jsonl",
+      "records": 1,
+      "sha256": "a050136feb6a462419ba6ce3b8c9c0d629c187658423272e5f9ac35716cdb89b"
+    },
+    {
+      "bytes": 1868,
+      "path": "rights/components.jsonl",
+      "records": 3,
+      "sha256": "07ee9d29cf2c5a258119d9fac0541a9106dcf227b0112929d182325a3ab41fa5"
+    },
+    {
+      "bytes": 9872,
+      "path": "semantics/concepts.jsonl",
+      "records": 12,
+      "sha256": "81c5480979e8f7778ecd3314ab53311ecb825d5b930462e04fabff376e907b81"
+    },
+    {
+      "bytes": 154005,
+      "path": "topology/relations.jsonl",
+      "records": 489,
+      "sha256": "791d9c85527c33875c7ec0fef2e21a9177cb8f008a6cac991809b6615766a058"
+    },
+    {
+      "bytes": 23568,
+      "path": "topology/source_files.jsonl",
+      "records": 31,
+      "sha256": "0d6e4a09c70065e131d3ab085fba041c9d6a57687547ab5a3b0ab9a220fae524"
+    },
+    {
+      "bytes": 55135,
+      "path": "topology/units.jsonl",
+      "records": 103,
+      "sha256": "4b98d95a8ce6cf8ce6989bdc68140b03009a581a20899794a22a8d21e8e9554e"
+    },
+    {
+      "bytes": 694585,
+      "path": "translation/segments.en.jsonl",
+      "records": 314,
+      "sha256": "032ec01286cdb3642fc83b916ab23bc234295a67786c5fa19bdc725da38d47e7"
+    },
+    {
+      "bytes": 4417,
+      "path": "translation/terms.id-ID.jsonl",
+      "records": 12,
+      "sha256": "b3f1e19b3d2979eae4215801e3aed9e7717412cc8bf2ce2ffac68f51c8d25c29"
+    }
+  ],
+  "generator": "ttna-interoperability-v0-indexer-0.1.0",
+  "input_snapshot": {
+    "adverse_ledger": {
+      "bytes": 152062,
+      "path": "00_control/ADVERSE_LEDGER.csv",
+      "sha256": "668843fef72f9899302cf17c5800634efd3f73b63164b58cbc15b606ab5b0ee0"
+    },
+    "artifacts": [
+      {
+        "build_manifest_bytes": 53055,
+        "build_manifest_path": "build/manifests/en-baseline-build.json",
+        "build_manifest_sha256": "241285cb4f76d560c67c49b905b4be401fecf4dc7d9b86cc8ffaf74335cdefd5",
+        "bytes": 8186285,
+        "path": "tmp/pdfs/en-baseline/TeaTimeNumericalAnalysis-en-baseline.pdf",
+        "role": "english-baseline-pdf",
+        "sha256": "17cd4abc74cff4934cc78a2f42378489829207f534ad9a051c45ad67b2b18180"
+      },
+      {
+        "build_manifest_bytes": 53012,
+        "build_manifest_path": "build/manifests/id-ID-build.json",
+        "build_manifest_sha256": "9437f143c777ca447c5b199f0ea2a7df1e70b2afd7731839c43041ca018fd988",
+        "bytes": 8202476,
+        "path": "output/pdf/Tea-Time-Numerical-Analysis-id-ID.pdf",
+        "role": "id-ID-release-pdf",
+        "sha256": "cbc31e9e27fdee96845d78fa6a625bf956196001b7941ddf0f1232f5def46b45"
+      }
+    ],
+    "task_evidence": {
+      "bytes": 5647,
+      "path": "00_control/TASK.md",
+      "sha256": "b68c37076755bbdf816021ae3635c95ac39b5ff4fe6aaa432dfd37a72a81418a",
+      "source_locator": "00_control/TASK.md:3-4,34-39"
+    }
+  },
+  "locale": "id-ID",
+  "program_id": "urn:uuid:f2771510-259f-55cc-a524-79d48fce6dba",
+  "recorded_date": "2026-08-22",
+  "resource_id": "urn:uuid:8fbaf4c5-6316-5159-89b9-787aa115c0dc",
+  "schema_id": "ttna-lane-manifest-v1",
+  "schema_version": "1.0.0",
+  "scope": "00_control/TASK.md + 00_control/ADVERSE_LEDGER.csv",
+  "source_commit": "186882108a6da95c8dca5b81ce000fc3f8f3ca21",
+  "source_role": "modular_backend_interoperability_v0",
+  "source_tree": "1e50d3756b695176008c602f0ee89712f5f32d10",
+  "total_unique_records": 1295
+}

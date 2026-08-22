@@ -1,0 +1,5418 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\input $HOME/Documents/textbook/preamble
+\end_preamble
+\use_default_options true
+\master ../scsu/Book-Numerical/TeaTimeNumericalAnalysis.lyx
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 4cm
+\topmargin 2.5cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 1
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:RootsOfPolynomials"
+
+\end_inset
+
+Akar Polinom
+\end_layout
+
+\begin_layout Subsection
+Meninjau Kembali Pembagian Sintetis
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+pembagian sintetis
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+pembagian ! sintetis
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Anda mungkin masih ingat menggunakan teorema akar rasional dan pembagian
+ sintetis untuk menemukan akar polinom berderajat 3 atau lebih dalam pelajaran
+ aljabar.
+ Prosesnya kurang lebih seperti berikut.
+ Anda membuat daftar akar yang mungkin berdasarkan teorema akar rasional.
+ Anda memeriksa setiap kandidat dengan pembagian sintetis hingga menemukan
+ sebuah akar atau kehabisan kandidat.
+ Mungkin saja pelajaran Anda hanya membahas proses itu sampai tahap tersebut,
+ tetapi masih ada hal lain yang perlu dibahas.
+\end_layout
+
+\begin_layout Standard
+Misalkan kita mempunyai polinom 
+\begin_inset Formula $p(x)$
+\end_inset
+
+ dan suatu bilangan 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Pembagian sintetis memberikan koefisien-koefisien 
+\begin_inset Formula $q(x)$
+\end_inset
+
+ sedemikian sehingga 
+\begin_inset Formula $p(x)=q(x)\cdot(x-t)+p(t)$
+\end_inset
+
+.
+ Sebagai contoh, pembagian sintetis berikut
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{gathered}t\\
+\overbrace{\quad}
+\end{gathered}
+$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{gathered}p(x)\\
+\overbrace{\qquad\qquad\qquad\qquad\qquad}
+\end{gathered}
+$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-6$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $12$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-42$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $117$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $14$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-39$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $111$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{gathered}\underbrace{\qquad\qquad\qquad}\\
+q(x)
+\end{gathered}
+$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{gathered}\underbrace{\qquad\quad}\\
+p(t)
+\end{gathered}
+$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+menunjukkan bahwa 
+\begin_inset Formula $p(x)=-4x^{3}+2x^{2}+3x-6=(-4x^{2}+14x-39)(x+3)+111$
+\end_inset
+
+.
+ Menghitung nilai ekspresi 
+\begin_inset Formula $-4x^{3}+2x^{2}+3x-6$
+\end_inset
+
+ ketika 
+\begin_inset Formula $x=-3$
+\end_inset
+
+ hanya memerlukan sedikit usaha, sedangkan menghitung nilai 
+\begin_inset Formula $(-4x^{2}+14x-39)(x+3)+111$
+\end_inset
+
+ ketika 
+\begin_inset Formula $x=-3$
+\end_inset
+
+ sama sekali tidak memerlukan usaha.
+ Faktor 
+\begin_inset Formula $(x+3)$
+\end_inset
+
+ bernilai nol, sehingga nilai 
+\begin_inset Formula $(-4x^{2}+14x-39)$
+\end_inset
+
+ tidak menjadi soal.
+ Hasil kalinya nol dan 
+\begin_inset Formula $(-4x^{2}+14x-39)(x+3)+111$
+\end_inset
+
+ bernilai 
+\begin_inset Formula $111$
+\end_inset
+
+.
+ Oleh karena itu, 
+\begin_inset Formula $p(-3)=111$
+\end_inset
+
+.
+ Pembagian sintetis menyediakan cara cepat untuk menghitung nilai sebuah
+ polinom.
+ Bilangan pada akhir pembagian adalah nilai polinom pada bilangan yang digunakan
+ untuk membentuk pembagi.
+\end_layout
+
+\begin_layout Standard
+Secara lebih umum, berikut adalah uraian pembagian 
+\begin_inset Formula $p(x)=a_{0}+a_{1}x+\cdots+a_{n}x^{n}$
+\end_inset
+
+ oleh 
+\begin_inset Formula $x-t$
+\end_inset
+
+ menggunakan pembagian sintetis:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a_{n}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a_{n-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a_{n-2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cdots$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a_{n}t$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a_{n}(a_{n}t+a_{n-1})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cdots$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a_{n}(\cdots a_{n}(a_{n}(a_{n}t+a_{n-1})+a_{n-2})+\cdots+a_{1})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a_{n}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a_{n}t+a_{n-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a_{n}(a_{n}t+a_{n-1})+a_{n-2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cdots$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $p(t)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Dimulai dengan 
+\begin_inset Formula $t$
+\end_inset
+
+ di sudut kiri atas, kita berakhir dengan 
+\begin_inset Formula $p(t)$
+\end_inset
+
+ di sudut kanan bawah.
+ Kita tidak hanya menemukan sesuatu yang menarik ketika bilangan di sudut
+ kanan bawah bernilai nol.
+ Setiap pembagian sintetis menghasilkan sesuatu yang menarik! Bilangan di
+ sudut kanan bawah adalah 
+\begin_inset Formula $p(t)$
+\end_inset
+
+, baik hasilnya nol maupun tidak.
+ Dan masih ada lagi.
+\end_layout
+
+\begin_layout Standard
+Bilangan 
+\begin_inset Formula $a_{n}$
+\end_inset
+
+, 
+\begin_inset Formula $a_{n}t+a_{n-1}$
+\end_inset
+
+, 
+\begin_inset Formula $a_{n}(a_{n}t+a_{n-1})+a_{n-2}$
+\end_inset
+
+, dan seterusnya, yang muncul pada baris bawah pembagian sintetis, memberikan
+ koefisien hasil bagi, 
+\begin_inset Formula $q(x)$
+\end_inset
+
+.
+ Setiap pembagian sintetis memberikan dekomposisi polinom menjadi hasil bagi
+ dan sisa.
+ Dengan demikian, dari setiap pembagian sintetis kita memperoleh ekspresi
+ ekuivalen berbentuk 
+\begin_inset Formula $q(x)\cdot(x-t)+p(t)$
+\end_inset
+
+.
+ Masih ada lagi.
+\end_layout
+
+\begin_layout Standard
+Mendiferensialkan persamaan 
+\begin_inset Formula $p(x)=q(x)\cdot(x-t)+p(t)$
+\end_inset
+
+ terhadap 
+\begin_inset Formula $x$
+\end_inset
+
+ menghasilkan
+\begin_inset Formula 
+\[
+p'(x)=q'(x)\cdot(x-t)+q(x).
+\]
+
+\end_inset
+
+Oleh karena itu, 
+\begin_inset Formula $p'(t)=q'(t)\cdot(t-t)+q(t)=q(t)$
+\end_inset
+
+.
+ Jadi, bilangan-bilangan pada baris bawah tidak hanya memberikan koefisien
+ hasil bagi; bilangan-bilangan tersebut sekaligus menjadi koefisien yang
+ tepat untuk menghitung 
+\begin_inset Formula $p'(t)$
+\end_inset
+
+.
+ Kembali ke contoh sebelumnya, jika kita ingin menghitung 
+\begin_inset Formula $p'(-3)$
+\end_inset
+
+, kita cukup melanjutkan pembagian sintetis seperti pada
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-6$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $12$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-42$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $117$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $14$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-39$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $111$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $12$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-78$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $26$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-117$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+dan kita memperoleh 
+\begin_inset Formula $p'(-3)=-117$
+\end_inset
+
+.
+ Prosedur menghitung 
+\begin_inset Formula $p(t)$
+\end_inset
+
+ dan 
+\begin_inset Formula $p'(t)$
+\end_inset
+
+ melalui pembagian sintetis secara berturut-turut dikenal sebagai metode Horner
+ 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Horner
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+metode ! Horner|see{metode Horner}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ dan sangat praktis digunakan dalam metode Newton.
+ Jika kita mencoba menemukan akar 
+\begin_inset Formula $p(x)=-4x^{3}+2x^{2}+3x-6$
+\end_inset
+
+ dengan hampiran awal 
+\begin_inset Formula $x_{0}=-3$
+\end_inset
+
+, pada tahap ini kita akan memperoleh 
+\begin_inset Formula $x_{1}=x_{0}-\frac{p(x_{0})}{p'(x_{0})}=-3-\frac{111}{-117}\approx-2.05128$
+\end_inset
+
+.
+ Namun, masih ada lagi.
+\end_layout
+
+\begin_layout Subsection
+Menemukan Semua Akar Polinom
+\end_layout
+
+\begin_layout Standard
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+polinom ! menemukan semua akar
+\end_layout
+
+\end_inset
+
+Ketika kita menemukan sebuah akar dari polinom 
+\begin_inset Formula $p(x)$
+\end_inset
+
+, hasil pembagian sintetis, 
+\begin_inset Formula $p(x)=q(x)(x-t)+p(t)$
+\end_inset
+
+, menyederhana menjadi 
+\begin_inset Formula $p(x)=q(x)(x-t)$
+\end_inset
+
+ karena 
+\begin_inset Formula $t$
+\end_inset
+
+ merupakan akar, yang berarti 
+\begin_inset Formula $p(t)=0$
+\end_inset
+
+.
+ Dalam kasus ini, kita memperoleh faktorisasi 
+\begin_inset Formula $p(x)$
+\end_inset
+
+.
+ Akar-akar 
+\begin_inset Formula $p$
+\end_inset
+
+ selebihnya tepat merupakan akar-akar 
+\begin_inset Formula $q$
+\end_inset
+
+. Jadi, setelah menemukan satu akar, kita telah mereduksi masalah pencarian
+ akar 
+\begin_inset Formula $p$
+\end_inset
+
+ menjadi (a) mencatat akar yang telah ditemukan dan (b) mencari akar polinom
+ 
+\begin_inset Formula $q$
+\end_inset
+
+, yang derajatnya satu lebih rendah daripada 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ Dengan cara ini, kita telah 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+deflasi
+\end_layout
+
+\end_inset
+
+ melakukan deflasi terhadap masalah pencarian 
+\begin_inset Formula $n$
+\end_inset
+
+ akar dari polinom berderajat 
+\begin_inset Formula $n$
+\end_inset
+
+ yang dinyatakan dengan 
+\begin_inset Formula $p$
+\end_inset
+
+ menjadi pencarian 
+\begin_inset Formula $n-1$
+\end_inset
+
+ akar dari polinom berderajat 
+\begin_inset Formula $(n-1)$
+\end_inset
+
+ yang dinyatakan dengan 
+\begin_inset Formula $q$
+\end_inset
+
+.
+ Melangkah lebih jauh, ketika kita menemukan akar 
+\begin_inset Formula $q$
+\end_inset
+
+, kita dapat menggunakan pembagian sintetis untuk kembali mereduksi masalah.
+ Kita (a) mencatat akar 
+\begin_inset Formula $q$
+\end_inset
+
+ dan (b) melanjutkan pencarian akar hasil baginya, yaitu polinom berderajat
+ 
+\begin_inset Formula $(n-2)$
+\end_inset
+
+.
+ Kita terus melakukannya, dengan mendeflasi masalah satu derajat setiap kali
+ menemukan akar, hingga masalah tersebut tereduksi menjadi polinom berderajat
+ 
+\begin_inset Formula $2$
+\end_inset
+
+.
+ Pada tahap ini, kita mempunyai polinom kuadrat dan dapat menggunakan rumus
+ kuadrat untuk menemukan dua akar terakhir.
+\end_layout
+
+\begin_layout Standard
+Sebagai contoh, 
+\begin_inset Formula $-1.18985$
+\end_inset
+
+ merupakan (kira-kira) sebuah akar dari 
+\begin_inset Formula $p(x)=-4x^{3}+2x^{2}+3x-6$
+\end_inset
+
+.
+ Pembagian sintetis 
+\begin_inset Formula $p(x)$
+\end_inset
+
+ oleh 
+\begin_inset Formula $(x+1.18985)$
+\end_inset
+
+ menghasilkan
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-1.18985$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-6$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.7594$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-8.04267$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $6.00002$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $6.7594$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-5.04267$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.00002$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Nilai (hampir) nol di dalam kotak pada sudut kanan bawah menunjukkan bahwa
+ 
+\begin_inset Formula $-1.18985$
+\end_inset
+
+ kira-kira merupakan sebuah akar.
+ Tidak terdapat sisa yang berarti ketika 
+\begin_inset Formula $-4x^{3}+2x^{2}+3x-6$
+\end_inset
+
+ dibagi dengan 
+\begin_inset Formula $x+1.18985$
+\end_inset
+
+.
+ Selain itu, bilangan 
+\begin_inset Formula $-4,6.7594,-5.04267$
+\end_inset
+
+ pada baris bawah memberikan koefisien 
+\begin_inset Formula $q(x)$
+\end_inset
+
+.
+ Dengan demikian, dari pembagian ini kita memperoleh 
+\begin_inset Formula $-4x^{3}+2x^{2}+3x-6=\approx(-4x^{2}+6.7594x-5.04267)(x+118985)$
+\end_inset
+
+.
+ Sekarang kita dapat menemukan dua akar lainnya dengan mencari akar 
+\begin_inset Formula $q(x)=-4x^{2}+6.7594x-5.04267$
+\end_inset
+
+.
+ Dengan rumus kuadrat, akar-akarnya adalah
+\begin_inset Formula 
+\[
+\frac{-6.7594\pm\sqrt{6.7594^{2}-4(-4)(-5.04267)}}{-8}\approx.84493\pm.73944i.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Proses ini akan menghasilkan kesemua 
+\begin_inset Formula $n$
+\end_inset
+
+ akar dari setiap polinom berderajat 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Penting untuk dicatat bahwa sebagian akar tersebut mungkin kompleks dan
+ sebagian mungkin berulang.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{digression}{Teorema Dasar Aljabar}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Proses menemukan satu akar dari suatu polinom, melakukan deflasi, lalu menemukan
+ akar lainnya sangat selaras dengan teorema-teorema matematika dalam aljabar.
+ Teorema Dasar Aljabar
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Teorema ! Dasar Aljabar
+\end_layout
+
+\end_inset
+
+ menyatakan bahwa setiap polinom berkoefisien kompleks dan berderajat setidaknya
+ satu memiliki sebuah akar kompleks.
+ Jadi, pencarian akar kita tidak sia-sia! Selanjutnya, kita dapat menuliskan
+ polinom dalam bentuk terfaktor dan melanjutkan proses.
+ Teorema Dasar Aljabar menyatakan bahwa polinom hasil deflasi itu juga memiliki
+ sebuah akar.
+ Jika kita mencatat semua akar saat menemukannya, pada akhirnya kita menuliskan
+ polinom dalam bentuk
+\begin_inset Formula 
+\begin{equation}
+p(x)=a(x-r_{1})^{e_{1}}(x-r_{2})^{e_{2}}\cdots(x-r_{k})^{e_{k}},\label{eq:factoredPolynomial}
+\end{equation}
+
+\end_inset
+
+Di sini, 
+\begin_inset Formula $a$
+\end_inset
+
+ adalah konstanta tak nol, 
+\begin_inset Formula $r_{1},r_{2},\ldots,r_{k}$
+\end_inset
+
+ adalah 
+\begin_inset Formula $k$
+\end_inset
+
+ akar kompleks yang berbeda, dan 
+\begin_inset Formula $e_{1},e_{2},\ldots,e_{k}$
+\end_inset
+
+ adalah apa yang disebut multiplisitas (bilangan bulat positif) dari akar-akar
+ tersebut.
+ Dari bentuk ini kita melihat bahwa derajat polinom sama dengan jumlah multiplisitas,
+ 
+\begin_inset Formula $e_{1}+e_{2}+\cdots+e_{k}$
+\end_inset
+
+.
+ Inilah yang dimaksud ketika kita mengatakan bahwa jumlah akar, jika multiplisitas
+ diperhitungkan, sama dengan derajat polinom.
+ Jadi, ketika mencari akar-akar polinom berderajat 
+\begin_inset Formula $n$
+\end_inset
+
+, kita mengetahui bahwa kita mencari 
+\begin_inset Formula $n$
+\end_inset
+
+ akar, tetapi tidak harus 
+\begin_inset Formula $n$
+\end_inset
+
+ akar yang berbeda.
+ Sebagian dapat berulang, dan pengulangannya diperhitungkan dalam multiplisitas.
+ Untuk merumuskan secara formal pernyataan dalam persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:factoredPolynomial"
+
+\end_inset
+
+, kita memperoleh teorema berikut.
+\end_layout
+
+\begin_layout Theorem
+(Teorema Faktorisasi Fundamental)
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Teorema ! Faktorisasi Fundamental
+\end_layout
+
+\end_inset
+
+ Jika 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+ dan 
+\begin_inset Formula $p$
+\end_inset
+
+ adalah polinom berderajat 
+\begin_inset Formula $n$
+\end_inset
+
+, maka 
+\begin_inset Formula 
+\[
+p(x)=a(x-r_{1})^{e_{1}}(x-r_{2})^{e_{2}}\cdots(x-r_{k})^{e_{k}}
+\]
+
+\end_inset
+
+untuk suatu konstanta 
+\begin_inset Formula $a\neq0$
+\end_inset
+
+, akar-akar 
+\begin_inset Formula $r_{1},r_{2},\ldots,r_{k}$
+\end_inset
+
+, dan eksponen bilangan bulat positif 
+\begin_inset Formula $e_{1},e_{2},\ldots,e_{k}$
+\end_inset
+
+ yang memenuhi
+\begin_inset Formula 
+\[
+\sum_{j=1}^{k}e_{j}=n.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Misalkan 
+\begin_inset Formula $n=1$
+\end_inset
+
+, sehingga 
+\begin_inset Formula $p(x)$
+\end_inset
+
+ berbentuk 
+\begin_inset Formula $ax+b$
+\end_inset
+
+ dengan 
+\begin_inset Formula $a\neq0$
+\end_inset
+
+.
+ Maka 
+\begin_inset Formula $p(x)=a(x-(-\frac{b}{a}))^{1}$
+\end_inset
+
+ sehingga memenuhi bentuk yang disyaratkan.
+ Sekarang, misalkan semua polinom dengan suatu derajat 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+ memenuhi bentuk yang disyaratkan, dan misalkan 
+\begin_inset Formula $p$
+\end_inset
+
+ adalah polinom berderajat 
+\begin_inset Formula $n+1$
+\end_inset
+
+.
+ Menurut Teorema Dasar Aljabar, 
+\begin_inset Formula $p$
+\end_inset
+
+ mempunyai sebuah akar.
+ Namakan akar tersebut 
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+ Maka 
+\begin_inset Formula $x-\rho$
+\end_inset
+
+ adalah faktor dari 
+\begin_inset Formula $p$
+\end_inset
+
+, sehingga 
+\begin_inset Formula $p$
+\end_inset
+
+ dapat ditulis sebagai 
+\begin_inset Formula $p(x)=(x-\rho)\cdot q(x)$
+\end_inset
+
+ untuk suatu polinom 
+\begin_inset Formula $q$
+\end_inset
+
+ berderajat 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Berdasarkan hipotesis induksi, 
+\begin_inset Formula $q$
+\end_inset
+
+ memenuhi bentuk yang disyaratkan, sehingga 
+\begin_inset Formula 
+\[
+p(x)=(x-\rho)\cdot a(x-r_{1})^{e_{1}}(x-r_{2})^{e_{2}}\cdots(x-r_{k})^{e_{k}}
+\]
+
+\end_inset
+
+dengan 
+\begin_inset Formula $e_{1}+e_{2}+\cdots+e_{k}=n$
+\end_inset
+
+.
+ Jika 
+\begin_inset Formula $\rho$
+\end_inset
+
+ berbeda dari 
+\begin_inset Formula $r_{1},r_{2},\ldots,r_{k}$
+\end_inset
+
+, maka 
+\begin_inset Formula $p$
+\end_inset
+
+ berbentuk
+\begin_inset Formula 
+\[
+p(x)=a(x-r_{1})^{e_{1}}(x-r_{2})^{e_{2}}\cdots(x-r_{k})^{e_{k}}(x-\rho)^{1}.
+\]
+
+\end_inset
+
+Jika 
+\begin_inset Formula $\rho$
+\end_inset
+
+ sama dengan salah satu dari 
+\begin_inset Formula $r_{1},r_{2},\ldots,r_{k}$
+\end_inset
+
+, misalnya 
+\begin_inset Formula $r_{j}$
+\end_inset
+
+, maka 
+\begin_inset Formula $p$
+\end_inset
+
+ berbentuk 
+\begin_inset Formula 
+\[
+p(x)=a(x-r_{1})^{e_{1}}(x-r_{2})^{e_{2}}\cdots(x-r_{j})^{e_{j}+1}\cdots(x-r_{k})^{e_{k}}.
+\]
+
+\end_inset
+
+Dalam kedua kasus, 
+\begin_inset Formula $p$
+\end_inset
+
+ memenuhi bentuk yang disyaratkan, sehingga pembuktian selesai.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{digression}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Kode semu-semu untuk prosedur ini mungkin tampak seperti berikut:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pseudocode}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Asumsi: 
+\begin_inset Formula $p$
+\end_inset
+
+ adalah polinom berderajat 
+\begin_inset Formula $n>2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Masukan: Polinom 
+\begin_inset Formula $p(x)$
+\end_inset
+
+; toleransi 
+\begin_inset Formula $tol$
+\end_inset
+
+; jumlah maksimum iterasi 
+\begin_inset Formula $N$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+1: Untuk 
+\begin_inset Formula $i=1$
+\end_inset
+
+ hingga 
+\begin_inset Formula $n-2$
+\end_inset
+
+, lakukan Langkah 2-5:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+2: Temukan sebuah akar 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ dari 
+\begin_inset Formula $p(x)$
+\end_inset
+
+ [dengan menggunakan 
+\begin_inset Formula $tol$
+\end_inset
+
+, 
+\begin_inset Formula $N$
+\end_inset
+
+, dan suatu metode pencarian akar];
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+3: Jika terjadi galat saat mencari 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+, maka
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\qquad$
+\end_inset
+
+kembalikan 
+\begin_inset Quotes eld
+\end_inset
+
+Metode gagal.
+ Akar polinom berderajat 
+\begin_inset Formula $n-i+1$
+\end_inset
+
+ tidak ditemukan.
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+4: Faktorkan 
+\begin_inset Formula $p(x)$
+\end_inset
+
+ sebagai 
+\begin_inset Formula $q(x)\cdot(x-x_{0})$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+5: Tetapkan 
+\begin_inset Formula $x_{i}=x_{0}$
+\end_inset
+
+; 
+\begin_inset Formula $p(x)=q(x)$
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Keluaran: Akar hampiran.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pseudocode}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Untuk menyempurnakan kode semu-semu menjadi kode semu, kita akan menggunakan
+ metode Newton, dengan bantuan metode Horner, pada Langkah 2.
+ Kelemahan metode Newton yang lazim, yakni syarat bahwa turunannya harus diketahui
+ dan dihitung, hanyalah sedikit merepotkan ketika metode Horner digunakan.
+ Namun, bagaimana kita merepresentasikan polinom dalam program komputer agar
+ dapat melaksanakan Langkah 4 dan 5? Dengan cara yang sama seperti ketika kita
+ mengimplementasikan kode untuk menjalankan metode Horner.
+ Kode semu untuk metode Horner, dengan sebuah larik:
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Horner ! kode semu
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pseudocode}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Asumsi: 
+\begin_inset Formula $p$
+\end_inset
+
+ adalah polinom berderajat 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Masukan: larik 
+\begin_inset Formula $[c]$
+\end_inset
+
+ yang memuat koefisien 
+\begin_inset Formula $p(x)=c_{1}+c_{2}x+c_{3}x^{2}+\cdots+c_{n+1}x^{n}$
+\end_inset
+
+; 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+1: Tetapkan 
+\begin_inset Formula $y=c_{n+1}$
+\end_inset
+
+; 
+\begin_inset Formula $z=c_{n+1}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+2: Untuk 
+\begin_inset Formula $j=n,n-1,\ldots,2$
+\end_inset
+
+, lakukan Langkah 3
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+3: Tetapkan 
+\begin_inset Formula $y=x_{0}y+c_{j}$
+\end_inset
+
+; 
+\begin_inset Formula $z=x_{0}z+y$
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+4: Tetapkan 
+\begin_inset Formula $y=x_{0}y+c_{1}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Keluaran: 
+\begin_inset Formula $y=p(x_{0})$
+\end_inset
+
+ dan 
+\begin_inset Formula $z=p'(x_{0})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pseudocode}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Seperti dalam pembagian sintetis, variabel dengan berbagai pangkatnya tidak
+ perlu disimpan.
+ Hanya koefisien yang diperlukan untuk mendefinisikan sebuah polinom.
+ Oleh karena itu, dalam program, polinom direpresentasikan sebagai larik bilangan.
+ Dengan menggabungkan kode semu-semu kita, metode Newton, dan metode Horner menjadi
+ satu program, kita memperoleh metode untuk menemukan semua akar suatu polinom:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pseudocode}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "pseudo:allroots"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Asumsi: 
+\begin_inset Formula $p$
+\end_inset
+
+ adalah polinom berderajat 
+\begin_inset Formula $n>2$
+\end_inset
+
+ dan 
+\begin_inset Formula $c_{1}$
+\end_inset
+
+, yaitu koefisien konstanta dari 
+\begin_inset Formula $p$
+\end_inset
+
+, tidak nol.
+\end_layout
+
+\begin_layout Description
+Masukan: larik 
+\begin_inset Formula $[c]$
+\end_inset
+
+ yang memuat koefisien 
+\begin_inset Formula $p(x)=c_{1}+c_{2}x+c_{3}x^{2}+\cdots+c_{n+1}x^{n}$
+\end_inset
+
+; toleransi 
+\begin_inset Formula $tol$
+\end_inset
+
+; jumlah iterasi maksimum 
+\begin_inset Formula $N$
+\end_inset
+
+; nilai awal 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+1: Tetapkan 
+\begin_inset Formula $m=n$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+2: Untuk 
+\begin_inset Formula $i=1$
+\end_inset
+
+ sampai 
+\begin_inset Formula $n-2$
+\end_inset
+
+, lakukan Langkah 3-13:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+3: Tetapkan 
+\begin_inset Formula $k=0$
+\end_inset
+
+; tetapkan 
+\begin_inset Formula $x=x_{0}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+4: Selama 
+\begin_inset Formula $|x-x_{0}|>tol$
+\end_inset
+
+ atau 
+\begin_inset Formula $k=0$
+\end_inset
+
+, lakukan Langkah 5-12:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+5: Jika 
+\begin_inset Formula $k=N$
+\end_inset
+
+, maka kembalikan 
+\begin_inset Quotes eld
+\end_inset
+
+Metode gagal.
+ Tidak semua akar ditemukan.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+6: Tetapkan 
+\begin_inset Formula $x_{0}=x$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+7: Tetapkan 
+\begin_inset Formula $d_{m}=c_{m+1}$
+\end_inset
+
+; 
+\begin_inset Formula $z=c_{m+1}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+8: Untuk 
+\begin_inset Formula $j=m,m-1,\ldots,2$
+\end_inset
+
+, lakukan Langkah 9
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+9: Tetapkan 
+\begin_inset Formula $d_{j-1}=x_{0}d_{j}+c_{j}$
+\end_inset
+
+; 
+\begin_inset Formula $z=x_{0}z+d_{j-1}$
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+10: Tetapkan 
+\begin_inset Formula $y=x_{0}d_{1}+c_{1}$
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+11: Tetapkan 
+\begin_inset Formula $x=x_{0}-\frac{y}{z}$
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+12: Tetapkan 
+\begin_inset Formula $k=k+1$
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+13: Tetapkan 
+\begin_inset Formula $r_{i}=x$
+\end_inset
+
+; 
+\begin_inset Formula $[c]=[d]$
+\end_inset
+
+; 
+\begin_inset Formula $m=m-1$
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+14: Tetapkan 
+\begin_inset Formula $D=\sqrt{c_{2}^{2}-4c_{1}c_{3}}$
+\end_inset
+
+; 
+\begin_inset Formula $s_{1}=-c_{2}+D$
+\end_inset
+
+; 
+\begin_inset Formula $s_{2}=-c_{2}-D$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+15: Jika bagian riil 
+\begin_inset Formula $c_{2}$
+\end_inset
+
+ negatif, tetapkan 
+\begin_inset Formula $r_{n-1}=\frac{s_{1}}{2c_{3}}$
+\end_inset
+
+ dan 
+\begin_inset Formula $r_{n}=\frac{2c_{1}}{s_{1}}$
+\end_inset
+
+; jika tidak, tetapkan 
+\begin_inset Formula $r_{n-1}=\frac{s_{2}}{2c_{3}}$
+\end_inset
+
+ dan 
+\begin_inset Formula $r_{n}=\frac{2c_{1}}{s_{2}}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Keluaran: Larik 
+\begin_inset Formula $[r_{1},r_{2},\ldots,r_{n}]$
+\end_inset
+
+ yang berisi akar-akar hampiran.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pseudocode}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Langkah 4 sampai 12 menerapkan metode Newton untuk mencari satu akar, dengan
+ menggunakan metode Horner pada Langkah 7 sampai 10 untuk menghitung nilai
+ polinom dan turunannya di 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+.
+ Koefisien 
+\begin_inset Formula $[d]$
+\end_inset
+
+ dari hasil bagi dihitung dan disimpan dengan cermat agar mudah dirujuk pada
+ Langkah 13.
+ Akar kuadrat yang dihitung pada Langkah 14 diasumsikan berada pada cabang
+ utama akar kuadrat kompleks.
+ Langkah 14 dan 15 menggunakan bentuk alternatif rumus kuadrat yang sebisa
+ mungkin menghindari pengurangan dua besaran yang nilainya hampir sama.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{digression}{Rumus Kuadrat Alternatif}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+rumus kuadrat ! alternatif
+\end_layout
+
+\end_inset
+
+Jika akar-akar 
+\begin_inset Formula $p(x)=ax^{2}+bx+c$
+\end_inset
+
+ bernilai kecil, pembilang dalam rumus kuadrat, 
+\begin_inset Formula $x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$
+\end_inset
+
+, tentu juga bernilai kecil.
+ Dalam kasus ini, sebaiknya tanda dari 
+\begin_inset Formula $-b$
+\end_inset
+
+ dan 
+\begin_inset Formula $\pm\sqrt{b^{2}-4ac}$
+\end_inset
+
+ dibuat sama agar tidak terjadi pengurangan antara besaran-besaran yang nilainya
+ hampir sama.
+ Memilih tanda suku akar kuadrat dengan cara ini menghasilkan salah satu akar
+ seakurat mungkin, tetapi membiarkan akar lainnya belum ditentukan.
+ Dengan mengalikan pembilang dan penyebut dengan konjugat pembilang, diperoleh
+ bentuk alternatif rumus kuadrat:
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}\cdot\frac{-b\mp\sqrt{b^{2}-4ac}}{-b\mp\sqrt{b^{2}-4ac}} & = & \frac{b^{2}-(b^{2}-4ac)}{2a(-b\mp\sqrt{b^{2}-4ac})}\\
+ & = & \frac{4ac}{2a(-b\mp\sqrt{b^{2}-4ac})}\\
+ & = & \frac{2c}{-b\mp\sqrt{b^{2}-4ac}}.
+\end{eqnarray*}
+
+\end_inset
+
+Jika kedua pilihan tanda dituliskan secara eksplisit, diperoleh
+\begin_inset Formula 
+\[
+\frac{-b+\sqrt{b^{2}-4ac}}{2a}=\frac{2c}{-b-\sqrt{b^{2}-4ac}}
+\]
+
+\end_inset
+
+dan
+\begin_inset Formula 
+\[
+\frac{-b-\sqrt{b^{2}-4ac}}{2a}=\frac{2c}{-b+\sqrt{b^{2}-4ac}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{digression}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Namun, tidak banyak yang dapat dilakukan pada tahap ini jika nol ternyata
+ merupakan akar ganda.
+ Dalam keadaan ini, baik 
+\begin_inset Formula $c_{1}$
+\end_inset
+
+ maupun 
+\begin_inset Formula $c_{2}$
+\end_inset
+
+ akan bernilai nol atau hampir nol sehingga 
+\begin_inset Formula $s_{1}$
+\end_inset
+
+ dan 
+\begin_inset Formula $s_{2}$
+\end_inset
+
+ menjadi sangat kecil.
+ Karena itulah kumpulan asumsi mencantumkan syarat 
+\begin_inset Formula $c_{1}\neq0$
+\end_inset
+
+.
+ Syarat ini memastikan bahwa nol bukan akar dari 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Metode Newton dan polinom
+\end_layout
+
+\begin_layout Standard
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Newton
+\end_layout
+
+\end_inset
+
+Masih ada satu masalah lagi yang perlu ditangani terkait penggunaan metode
+ Newton untuk mencari akar polinom.
+ Untuk polinom berkoefisien riil, jika 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ riil, maka 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+, dan setiap iterasi berikutnya juga riil! Akar kompleks tidak akan mungkin
+ ditemukan.
+ Hal ini bukan masalah jika polinom memiliki paling banyak dua akar kompleks.
+ Akar-akar riil akan ditemukan, dan polinom kuadrat yang dihasilkan akan memuat
+ kedua akar kompleks itu.
+ Kedua akar kompleks kemudian diperoleh dengan rumus kuadrat.
+ Namun, secara umum, kita tidak dapat mengandalkan bahwa suatu polinom memiliki
+ paling banyak dua akar kompleks.
+ Metode kita harus dapat bekerja pada polinom dengan sebanyak apa pun akar
+ kompleks, termasuk ketika semua akarnya kompleks.
+\end_layout
+
+\begin_layout Standard
+Solusinya tidak sulit, dengan satu syarat.
+ Secara matematis, metode Newton dan metode Horner bekerja sama baiknya untuk
+ bilangan kompleks maupun bilangan riil.
+ Selama bahasa pemrograman yang digunakan mampu menangani bilangan kompleks,
+ mulailah dengan hampiran awal kompleks (bukan riil murni) 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+, dan akar kompleks akan ditemukan! Meskipun demikian, mungkin saja semua
+ akar riil ditemukan lebih dahulu sehingga yang tersisa adalah polinom dengan
+ lebih dari dua akar kompleks dan tanpa akar riil.
+ Di sinilah ketidakakuratan aritmetika titik-mengambang justru membantu!
+ Karena galat pembulatan, koefisien-koefisien maupun nilai 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ tidak akan benar-benar riil.
+ Pada umumnya, akar-akar kompleks akan ditemukan.
+\end_layout
+
+\begin_layout Subsection
+Metode Müller
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:mullers"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Metode lain yang sangat cepat untuk mencari akar persamaan adalah metode Müller
+ 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Müller
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+metode ! Müller|see {metode Müller}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ Pada prinsipnya, metode ini sangat mirip dengan metode sekan.
+ Dalam metode sekan, dibuat dua hampiran awal 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $p_{1}$
+\end_inset
+
+.
+ Garis sekan yang melalui titik 
+\begin_inset Formula $(p_{0},f(p_{0}))$
+\end_inset
+
+ dan 
+\begin_inset Formula $(p_{1},f(p_{1}))$
+\end_inset
+
+ digambar, dan perpotongannya dengan sumbu 
+\begin_inset Formula $x$
+\end_inset
+
+ menghasilkan 
+\begin_inset Formula $p_{2}$
+\end_inset
+
+.
+ Dalam metode Müller diperlukan tiga hampiran awal 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $p_{1}$
+\end_inset
+
+, dan 
+\begin_inset Formula $p_{2}$
+\end_inset
+
+.
+ Parabola yang melalui titik 
+\begin_inset Formula $(p_{0},f(p_{0}))$
+\end_inset
+
+, 
+\begin_inset Formula $(p_{1},f(p_{1}))$
+\end_inset
+
+, dan 
+\begin_inset Formula $(p_{2},f(p_{2}))$
+\end_inset
+
+ digambar, dan perpotongannya dengan sumbu 
+\begin_inset Formula $x$
+\end_inset
+
+ menghasilkan 
+\begin_inset Formula $p_{3}$
+\end_inset
+
+.
+ Namun, ada dua masalah yang perlu diatasi.
+ Pertama, jika parabola yang digambar itu memotong sumbu 
+\begin_inset Formula $x$
+\end_inset
+
+, parabola tersebut memotongnya di dua titik.
+ Kita perlu memilih salah satu nol sebagai 
+\begin_inset Formula $p_{3}$
+\end_inset
+
+.
+ Kedua, mungkin saja parabola tersebut sama sekali tidak memotong sumbu 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Masalah pemilihan akar mudah diselesaikan.
+ Kita menganggap hampiran 
+\begin_inset Formula $p_{2}$
+\end_inset
+
+ lebih baik daripada yang lain, sehingga kita memilih akar yang paling dekat
+ dengan 
+\begin_inset Formula $p_{2}$
+\end_inset
+
+.
+ Sebenarnya, ini sekaligus menyelesaikan 
+\begin_inset Quotes eld
+\end_inset
+
+masalah
+\begin_inset Quotes erd
+\end_inset
+
+ kedua.
+ Bahkan ketika parabola tidak memotong sumbu 
+\begin_inset Formula $x$
+\end_inset
+
+, parabola tersebut tetap memiliki nol.
+ Nol-nol itu kompleks.
+ Hal ini tidak perlu dikhawatirkan.
+ Kita cukup mengambil akar kompleks yang paling dekat dengan 
+\begin_inset Formula $p_{2}$
+\end_inset
+
+.
+ Pendekatan ini memiliki keuntungan: sekalipun semua koefisien 
+\begin_inset Formula $p(x)$
+\end_inset
+
+ riil, 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $p_{1}$
+\end_inset
+
+, dan 
+\begin_inset Formula $p_{2}$
+\end_inset
+
+ semuanya riil, dan semua akar 
+\begin_inset Formula $p(x)$
+\end_inset
+
+ kompleks, metode ini tetap dapat menemukan sebuah akar kompleks.
+\end_layout
+
+\begin_layout Standard
+Untuk mencari parabola yang melalui 
+\begin_inset Formula $(p_{0},f(p_{0}))$
+\end_inset
+
+, 
+\begin_inset Formula $(p_{1},f(p_{1}))$
+\end_inset
+
+, dan 
+\begin_inset Formula $(p_{2},f(p_{2}))$
+\end_inset
+
+, kita gunakan parabola 
+\begin_inset Formula $P(x)$
+\end_inset
+
+ berbentuk
+\begin_inset Formula 
+\[
+P(x)=a(x-p_{2})^{2}+b(x-p_{2})+c.
+\]
+
+\end_inset
+
+Dengan melakukan substitusi 
+\begin_inset Formula $x=p_{i}$
+\end_inset
+
+ dan 
+\begin_inset Formula $P(x)=f(p_{i})$
+\end_inset
+
+, diperoleh tiga persamaan
+\begin_inset Formula 
+\begin{eqnarray*}
+f(p_{0}) & = & a(p_{0}-p_{2})^{2}+b(p_{0}-p_{2})+c\\
+f(p_{1}) & = & a(p_{1}-p_{2})^{2}+b(p_{1}-p_{2})+c\\
+f(p_{2}) & = & c
+\end{eqnarray*}
+
+\end_inset
+
+Jadi, langsung diperoleh 
+\begin_inset Formula $c=f(p_{2})$
+\end_inset
+
+, dan kita harus menyelesaikan persamaan simultan
+\begin_inset Formula 
+\begin{eqnarray*}
+f(p_{0})-f(p_{2}) & = & a(p_{0}-p_{2})^{2}+b(p_{0}-p_{2})\\
+f(p_{1})-f(p_{2}) & = & a(p_{1}-p_{2})^{2}+b(p_{1}-p_{2})
+\end{eqnarray*}
+
+\end_inset
+
+untuk 
+\begin_inset Formula $a$
+\end_inset
+
+ dan 
+\begin_inset Formula $b$
+\end_inset
+
+.
+ Solusinya adalah
+\begin_inset Formula 
+\begin{eqnarray*}
+b & = & \frac{(p_{0}-p_{2})^{2}(f(p_{1})-f(p_{2}))-(p_{1}-p_{2})^{2}(f(p_{0})-f(p_{2}))}{(p_{0}-p_{2})(p_{1}-p_{2})(p_{0}-p_{1})}\\
+a & = & \frac{(p_{1}-p_{2})(f(p_{0})-f(p_{2}))-(p_{0}-p_{2})(f(p_{1})-f(p_{2}))}{(p_{0}-p_{2})(p_{1}-p_{2})(p_{0}-p_{1})}.
+\end{eqnarray*}
+
+\end_inset
+
+Selanjutnya, dengan menyubstitusikan 
+\begin_inset Formula $a$
+\end_inset
+
+, 
+\begin_inset Formula $b$
+\end_inset
+
+, dan 
+\begin_inset Formula $c$
+\end_inset
+
+ ke rumus kuadrat, diperoleh akar 
+\begin_inset Formula $x=p_{2}-\frac{2}{b\pm\sqrt{b^{2}-4ac}}$
+\end_inset
+
+.
+ Untuk memilih akar yang paling dekat dengan 
+\begin_inset Formula $p_{2}$
+\end_inset
+
+, kita membandingkan 
+\begin_inset Formula $|b+\sqrt{b^{2}-4ac}|$
+\end_inset
+
+ dengan 
+\begin_inset Formula $|b-\sqrt{b^{2}-4ac}|$
+\end_inset
+
+ dan menggunakan yang nilainya lebih besar.
+ Dengan demikian diperoleh nilai terkecil untuk 
+\begin_inset Formula $|x-p_{2}|$
+\end_inset
+
+, yaitu jarak akar dari 
+\begin_inset Formula $p_{2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Sebagai contoh, kita akan menggunakan metode Müller dengan 
+\begin_inset Formula $p_{0}=1$
+\end_inset
+
+, 
+\begin_inset Formula $p_{1}=2$
+\end_inset
+
+, dan 
+\begin_inset Formula $p_{2}=3$
+\end_inset
+
+ untuk mencari sebuah akar dari 
+\begin_inset Formula $f(x)=x^{3}+1$
+\end_inset
+
+.
+ Kita hitung
+\begin_inset Formula 
+\begin{eqnarray*}
+\delta_{0} & = & f(p_{0})-f(p_{2})=2-28=-26\\
+\delta_{1} & = & f(p_{1})-f(p_{2})=9-28=-19\\
+h_{0} & = & p_{0}-p_{2}=-2\\
+h_{1} & = & p_{1}-p_{2}=-1\\
+h_{2} & = & p_{0}-p_{1}=-1
+\end{eqnarray*}
+
+\end_inset
+
+sehingga diperoleh 
+\begin_inset Formula $c=28$
+\end_inset
+
+, 
+\begin_inset Formula $b=\frac{h_{0}^{2}\delta_{1}-h_{1}^{2}\delta_{0}}{h_{0}h_{1}h_{2}}=\frac{4(-19)-1(-26)}{-2}=25$
+\end_inset
+
+, dan 
+\begin_inset Formula $a=\frac{h_{1}\delta_{0}-h_{0}\delta_{1}}{h_{0}h_{1}h_{2}}=\frac{-1(-26)-(-2)(-19)}{-2}=6$
+\end_inset
+
+.
+ Jika grafik 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ dan 
+\begin_inset Formula $P(x)=6x^{2}+25x+28$
+\end_inset
+
+ diperhatikan dengan saksama, tampak bahwa keduanya memang berpotongan di tiga
+ titik (yakni titik-titik yang disyaratkan), dan bahwa 
+\begin_inset Formula $P(x)$
+\end_inset
+
+ tidak mempunyai akar riil:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/roots-polynomials02.eps
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Formula $b\pm\sqrt{b^{2}-4ac}=25\pm\sqrt{625-672}=25\pm i\sqrt{47}$
+\end_inset
+
+.
+ Karena 
+\begin_inset Formula $|25+i\sqrt{47}|=|25-i\sqrt{47}|$
+\end_inset
+
+, akar mana pun dapat dipilih.
+ Dengan memilih 
+\begin_inset Formula $p_{3}=p_{2}-\frac{2c}{b-\sqrt{b^{2}-4ac}}$
+\end_inset
+
+, diperoleh 
+\begin_inset Formula $p_{3}=3-\frac{56}{25-i\sqrt{47}}=\frac{11}{12}-\frac{\sqrt{47}}{12}i$
+\end_inset
+
+.
+ Jika proses ini dilanjutkan, diperoleh iterasi-iterasi 
+\begin_inset Formula $0.75238-0.75810i,\ 0.57069-0.84288i,\ldots,0.50000-0.86603i$
+\end_inset
+
+, yang konvergen ke 
+\begin_inset Formula $\frac{1}{2}-\frac{\sqrt{3}}{2}i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{digression}{Orde Kekonvergenan}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Müller ! orde kekonvergenan
+\end_layout
+
+\end_inset
+
+Orde kekonvergenan metode Müller menuju akar sederhana (akar yang tidak berulang)
+ adalah
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(\frac{\sqrt{11}}{3\sqrt{3}}+\frac{19}{27}\right)^{\frac{1}{3}}+\frac{4}{9\left(\frac{\sqrt{11}}{3\sqrt{3}}+\frac{19}{27}\right)^{\frac{1}{3}}}+\frac{1}{3}\approx1.839286755214161
+\]
+
+\end_inset
+
+ dan menuju akar ganda adalah
+\begin_inset Formula 
+\[
+\left(\frac{\sqrt{139}}{24\sqrt{3}}+\frac{8}{27}\right)^{\frac{1}{3}}+\frac{7}{36\left(\frac{\sqrt{139}}{24\sqrt{3}}+\frac{8}{27}\right)^{\frac{1}{3}}}+\frac{1}{6}\approx1.233751928528259.
+\]
+
+\end_inset
+
+ Metode Laguerre konvergen menuju akar sederhana dengan orde 3.
+\end_layout
+
+\begin_layout Description
+Referensi 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "muller,recipes"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{digression}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tabel berikut merangkum keunggulan dan kelemahan relatif metode Newton, metode
+ sekan, dan metode Müller.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Newton
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sekan
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Müller
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nilai awal yang diperlukan
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Perlu turunan?
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ya
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tidak
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tidak
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Orde Kekonvergenan
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Orde yang dicantumkan berlaku untuk akar sederhana, bukan akar berulang.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\approx1.618$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\approx1.839$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Akar kompleks ditemukan secara otomatis?
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tidak
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tidak
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ya
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Lebih sederhana untuk polinom?
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ya
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tidak
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tidak
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Konsep Utama
+\end_layout
+
+\begin_layout Description
+Pembagian
+\begin_inset space ~
+\end_inset
+
+sintetis: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+pembagian sintetis
+\end_layout
+
+\end_inset
+
+Metode untuk membagi polinom 
+\begin_inset Formula $p(x)$
+\end_inset
+
+ dengan monomial 
+\begin_inset Formula $(x-x_{0})$
+\end_inset
+
+ hanya dengan menggunakan penjumlahan, perkalian, dan koefisien-koefisien 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ Proses ini identik dengan mengevaluasi polinom melalui penyarangan.
+ Pembagian sintetis sekadar menyediakan alat penataan agar penyarangan dapat
+ dilakukan dengan mudah menggunakan pensil dan kertas.
+\end_layout
+
+\begin_layout Description
+Metode
+\begin_inset space ~
+\end_inset
+
+Horner: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Horner
+\end_layout
+
+\end_inset
+
+Metode yang menghitung nilai suatu polinom dan turunannya pada satu titik
+ secara bersamaan melalui pembagian sintetis.
+\end_layout
+
+\begin_layout Description
+Metode
+\begin_inset space ~
+\end_inset
+
+Müller: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Müller
+\end_layout
+
+\end_inset
+
+Metode pencarian akar yang serupa dengan metode sekan, tetapi menggunakan
+ parabola sebagai pengganti garis sekan.
+\end_layout
+
+\begin_layout Description
+Deflasi: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+deflasi
+\end_layout
+
+\end_inset
+
+Metode untuk menyatakan suatu polinom 
+\begin_inset Formula $p(x)$
+\end_inset
+
+ sebagai hasil kali monomial 
+\begin_inset Formula $(x-x_{0})$
+\end_inset
+
+ dan polinom 
+\begin_inset Formula $q(x)$
+\end_inset
+
+ yang derajatnya satu lebih rendah daripada derajat polinom semula.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+startexercises 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Latihan
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:polynomials"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah sebuah fungsi Octave yang menghitung akar-akar fungsi kuadrat
+ dengan menggunakan bentuk alternatif rumus kuadrat bila diperlukan.
+ Baris pertama fungsi Anda harus berupa 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+
+\family typewriter
+function [r1,r2] = quadraticRoots(a,b,c)
+\end_layout
+
+\begin_layout Standard
+di mana 
+\family typewriter
+r1
+\family default
+ dan 
+\family typewriter
+r2
+\family default
+ merupakan akar-akar dari 
+\begin_inset Formula $p(x)=ax^{2}+bx+c$
+\end_inset
+
+.
+ Dengan demikian, nilai 
+\family typewriter
+r1
+\family default
+ dan 
+\family typewriter
+r2
+\family default
+ dikembalikan oleh fungsi dalam sebuah larik.
+ Fungsi tersebut dipanggil seperti berikut:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family typewriter
+[s,t]=quadraticRoots(1,2,3),
+\end_layout
+
+\begin_layout Standard
+yang menetapkan 
+\family typewriter
+s
+\family default
+ sebagai nilai salah satu akar dan 
+\family typewriter
+t
+\family default
+ sebagai nilai akar lainnya.
+ Uji kode Anda secara menyeluruh dengan membandingkan keluaran fungsi Anda
+ dengan hasil perhitungan manual atau kalkulator.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:polynomials-1"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah sebuah fungsi Octave yang mengimplementasikan metode Horner.
+ Baris pertama fungsi Anda harus berupa 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+
+\family typewriter
+function [p,pprime] = horner(x0,c)
+\end_layout
+
+\begin_layout Standard
+di mana 
+\family typewriter
+c
+\family default
+ adalah larik yang memuat koefisien polinom, 
+\family typewriter
+x0
+\family default
+ adalah bilangan yang menjadi titik evaluasi polinom, 
+\family typewriter
+p
+\family default
+ adalah nilai polinom pada 
+\family typewriter
+x0
+\family default
+, dan 
+\family typewriter
+pprime
+\family default
+ adalah nilai turunan polinom pada 
+\family typewriter
+x0
+\family default
+.
+ Dengan demikian, nilai 
+\family typewriter
+p
+\family default
+ dan 
+\family typewriter
+pprime
+\family default
+ dikembalikan oleh fungsi dalam sebuah larik.
+ Fungsi tersebut dipanggil seperti berikut:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family typewriter
+[y,yy]=horner(-2,[5,4,3,2,1]),
+\end_layout
+
+\begin_layout Standard
+yang menetapkan 
+\family typewriter
+y
+\family default
+ sebagai nilai polinom dan 
+\family typewriter
+yy
+\family default
+ sebagai nilai turunannya.
+ Uji kode Anda secara menyeluruh dengan membandingkan keluaran fungsi Anda
+ dengan hasil perhitungan manual atau kalkulator.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:polynomials-2"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah sebuah fungsi Octave yang mengimplementasikan metode Newton dengan metode Horner.
+ Baris pertama fungsi Anda harus berupa
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+
+\family typewriter
+function x = newtonhorner(c,x0,tol,N)
+\end_layout
+
+\begin_layout Standard
+di mana 
+\family typewriter
+c
+\family default
+ adalah larik yang memuat koefisien polinom, 
+\family typewriter
+x0
+\family default
+ adalah nilai awal, 
+\family typewriter
+tol
+\family default
+ adalah toleransi, dan 
+\family typewriter
+N
+\family default
+ adalah jumlah iterasi maksimum sebelum proses dihentikan.
+ Kodenya harus serupa dengan kode yang sebelumnya Anda tulis untuk
+ mengimplementasikan metode Newton, tetapi kode ini hanya berlaku untuk polinom.
+ Di dalam fungsi 
+\family typewriter
+newtonhorner
+\family default
+, JANGAN tuliskan kode metode Horner.
+ Cukup panggil fungsi 
+\family typewriter
+horner
+\family default
+ yang Anda tulis pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:polynomials-1"
+
+\end_inset
+
+.
+ Uji kode Anda secara menyeluruh dengan membandingkan keluaran fungsi Anda dengan
+ keluaran kode yang Anda tulis pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:newtonsMethodCode"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "enu:newtonsMethodCode"
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:polynomials-12"
+
+\end_inset
+
+Lengkapilah kode fungsi deflate yang diawali di sini.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+% This function will deflate a polynomial
+\end_layout
+
+\begin_layout Plain Layout
+
+% given a root.
+\end_layout
+
+\begin_layout Plain Layout
+
+% INPUT: coefficients c of the polynomial;
+\end_layout
+
+\begin_layout Plain Layout
+
+%        a root r of the polynomial.
+\end_layout
+
+\begin_layout Plain Layout
+
+% OUTPUT: coefficients d of the deflated
+\end_layout
+
+\begin_layout Plain Layout
+
+%        polynomial.
+\end_layout
+
+\begin_layout Plain Layout
+
+function d = deflate(c,r)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+end%function
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah sebuah fungsi Octave yang mengimplementasikan metode Müller.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:polynomials-3"
+
+\end_inset
+
+Gunakan metode Horner/pembagian sintetis untuk menentukan 
+\begin_inset Formula $g(2)$
+\end_inset
+
+ dan 
+\begin_inset Formula $g'(2)$
+\end_inset
+
+.
+ Jangan gunakan komputer.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:polynomials-6"
+
+\end_inset
+
+
+\begin_inset Formula $g(x)=3x^{3}+12x^{2}-13x-8$
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:polynomials-7"
+
+\end_inset
+
+
+\begin_inset Formula $g(x)=-7+8x-3x^{2}+5x^{3}-2x^{4}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:polynomials-4"
+
+\end_inset
+
+Gunakan metode Horner untuk menghitung 
+\begin_inset Formula $g(-2)$
+\end_inset
+
+ dan 
+\begin_inset Formula $g'(-2)$
+\end_inset
+
+ dengan 
+\begin_inset Formula $g(x)=4x^{4}-5x^{3}+6x-7$
+\end_inset
+
+.
+ Jangan gunakan komputer.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:polynomials-10"
+
+\end_inset
+
+Gunakan hasil pekerjaan Anda pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:polynomials-3"
+
+\end_inset
+
+ untuk membantu melakukan dua iterasi metode Newton dengan pensil, kertas,
+ kalkulator, dan metode Horner/pembagian sintetis.
+ Gunakan nilai awal 
+\begin_inset Formula $x_{0}=2$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Gunakan hasil pekerjaan Anda pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:polynomials-4"
+
+\end_inset
+
+ untuk membantu melakukan dua iterasi metode Newton dengan pensil, kertas,
+ kalkulator, dan metode Horner/pembagian sintetis.
+ Gunakan nilai awal 
+\begin_inset Formula $x_{0}=-2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Hitung 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ dari metode Newton secara manual (dengan menggunakan metode Horner/pembagian
+ sintetis) untuk 
+\begin_inset Formula $f(x)=x^{3}+4x-8$
+\end_inset
+
+ dengan nilai awal 
+\begin_inset Formula $x_{0}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Tentukan 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ dari metode Newton secara manual (dengan menggunakan metode Horner/pembagian
+ sintetis) untuk 
+\begin_inset Formula $f(x)=x^{4}-2x^{3}-4x^{2}+4x+4$
+\end_inset
+
+ dengan nilai awal 
+\begin_inset Formula $x_{0}=2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Dengan bantuan metode Horner dan tanpa menggunakan kalkulator, tentukan
+ iterasi pertama metode Newton untuk fungsi 
+\begin_inset Formula $f(x)=2x^{3}-10x+1$
+\end_inset
+
+ dengan nilai awal 
+\begin_inset Formula $x_{0}=2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Secara manual, tunjukkan dua iterasi metode Newton (dengan menggunakan metode
+ Horner/pembagian sintetis) yang diterapkan pada 
+\begin_inset Formula $f(x)=5x^{3}-2x^{2}+7x-3$
+\end_inset
+
+ dengan 
+\begin_inset Formula $p_{0}=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "findall"
+
+\end_inset
+
+Carilah semua akar polinom dengan langkah-langkah berikut.
+ Gunakan metode Newton dengan toleransi 
+\begin_inset Formula $10^{-5}$
+\end_inset
+
+ untuk menghampiri salah satu akar polinom tersebut.
+ Anda boleh menggunakan fungsi 
+\family typewriter
+newtonhorner
+\family default
+ yang Anda buat pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:polynomials-2"
+
+\end_inset
+
+.
+ Kemudian, gunakan pembagian sintetis untuk melakukan deflasi pada polinom
+ tersebut sehingga derajatnya berkurang satu. Jangan gunakan komputer untuk deflasi.
+ Selanjutnya, gunakan metode Newton dengan toleransi 
+\begin_inset Formula $10^{-5}$
+\end_inset
+
+ untuk menghampiri salah satu akar polinom hasil deflasi.
+ Kemudian, gunakan kembali pembagian sintetis untuk melakukan deflasi pada polinom
+ hasil deflasi tersebut sehingga derajatnya berkurang satu lagi. Ulangi hingga
+ polinom hasil deflasi berderajat dua. Setelah itu, gunakan rumus kuadrat (atau
+ rumus kuadrat alternatif) untuk mencari dua akar terakhir.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:polynomials-5"
+
+\end_inset
+
+
+\begin_inset Formula $g(x)=x^{4}+6x^{3}\text{−}59x^{2}+144x\text{−}144$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:polynomials-14"
+
+\end_inset
+
+
+\begin_inset Formula $g(x)=-280+909x-154x^{2}-178x^{3}+54x^{4}+9x^{5}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Carilah semua akar polinom dengan langkah-langkah berikut.
+ Gunakan metode Newton dengan toleransi 
+\begin_inset Formula $10^{-5}$
+\end_inset
+
+ untuk menghampiri salah satu akar polinom tersebut.
+ Anda boleh menggunakan fungsi 
+\family typewriter
+newtonhorner
+\family default
+ yang Anda buat pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:polynomials-2"
+
+\end_inset
+
+.
+ Kemudian, gunakan pembagian sintetis untuk melakukan deflasi pada polinom
+ tersebut sehingga derajatnya berkurang satu. Anda boleh menggunakan fungsi 
+\family typewriter
+deflate
+\family default
+ yang Anda buat pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:polynomials-12"
+
+\end_inset
+
+ untuk proses deflasi tersebut.
+ Selanjutnya, gunakan metode Newton dengan toleransi 
+\begin_inset Formula $10^{-5}$
+\end_inset
+
+ untuk menghampiri salah satu akar polinom hasil deflasi.
+ Kemudian, gunakan kembali pembagian sintetis untuk melakukan deflasi pada polinom
+ hasil deflasi tersebut sehingga derajatnya berkurang satu lagi. Ulangi hingga
+ polinom hasil deflasi berderajat dua. Setelah itu, gunakan rumus kuadrat untuk
+ mencari dua akar terakhir. Anda boleh menggunakan fungsi 
+\family typewriter
+quadraticRoots
+\family default
+ yang Anda buat pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:polynomials"
+
+\end_inset
+
+ untuk menyelesaikan polinom kuadrat tersebut.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:polynomials-16"
+
+\end_inset
+
+
+\begin_inset Formula $g(x)=x^{4}-2x^{3}-12x^{2}+16x-40$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:polynomials-17"
+
+\end_inset
+
+
+\begin_inset Formula $g(x)=56-152x+140x^{2}-17x^{3}-48x^{4}+9x^{5}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:polynomials-18"
+
+\end_inset
+
+Untuk setiap akar yang Anda temukan pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "findall"
+
+\end_inset
+
+, selain akar pertama, gunakan akar tersebut sebagai hampiran awal dalam metode Newton
+ dengan toleransi 
+\begin_inset Formula $10^{-5}$
+\end_inset
+
+ untuk melihat apakah Anda dapat memperbaiki hampiran akar tersebut.
+ Apakah hasilnya berubah?
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f(x)=x^{3}-1.255x^{2}-.9838x+1.2712$
+\end_inset
+
+ memiliki akar di 
+\begin_inset Formula $x=1.12$
+\end_inset
+
+.
+ 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Gunakan metode Newton dengan hampiran awal 
+\begin_inset Formula $x_{0}=1.13$
+\end_inset
+
+ untuk mencoba menemukan akar ini.
+ Jelaskan apa yang terjadi.
+\end_layout
+
+\begin_layout Enumerate
+Carilah semua akar 
+\begin_inset Formula $f(x)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Sekitar 800 tahun lalu, John dari Palermo menantang para matematikawan untuk
+ mencari solusi persamaan 
+\begin_inset Formula $x^{3}+2x^{2}+10x=20$
+\end_inset
+
+.
+ Pada tahun 1224, Fibonacci menjawab tantangan tersebut di hadapan Kaisar Frederick
+ II.
+ Ia menghampiri satu-satunya akar riil dengan teknik geometris Omar
+ Khayyam (1048-1131), hingga memperoleh taksiran
+\begin_inset Formula 
+\[
+\begin{gathered}1+22\left(\frac{1}{60}\right)+7\left(\frac{1}{60}\right)^{2}+42\left(\frac{1}{60}\right)^{3}+\\
+\qquad\qquad33\left(\frac{1}{60}\right)^{4}+4\left(\frac{1}{60}\right)^{5}+40\left(\frac{1}{60}\right)^{6}.
+\end{gathered}
+\]
+
+\end_inset
+
+Seberapa akuratkah hampirannya?
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Referensi 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "hlm. 96, soal 10"
+key "burdenfaires"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Hitung nilai polinom untuk nilai 
+\begin_inset Formula $x$
+\end_inset
+
+ yang diberikan dengan dua cara berbeda.
+ (i) Gunakan fungsi 
+\family typewriter
+horner
+\family default
+ yang Anda buat pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:polynomials-1"
+
+\end_inset
+
+; dan (ii) gunakan fungsi anonim.
+ Kemudian, (iii) bandingkan kedua hasil tersebut menggunakan operator 
+\family typewriter
+==
+\family default
+ pada Octave.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:polynomials-8"
+
+\end_inset
+
+
+\begin_inset Formula $p(x)=x^{4}-2x^{3}-12x^{2}+16x-40$
+\end_inset
+
+ pada 
+\begin_inset Formula $x=\sqrt{3}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:polynomials-9"
+
+\end_inset
+
+
+\begin_inset Formula $q(x)=56-152x+140x^{2}-17x^{3}-48x^{4}+9x^{5}$
+\end_inset
+
+ pada 
+\begin_inset Formula $x=\pi/2$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:polynomials-11"
+
+\end_inset
+
+
+\begin_inset Formula $r(x)=x^{6}+11x^{4}-34x^{3}-130x^{2}-275x+819$
+\end_inset
+
+ pada 
+\begin_inset Formula $\frac{1-\sqrt{5}}{2}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $s(x)=5x^{10}+3x^{8}-46x^{6}-102x^{4}+365x^{2}+1287$
+\end_inset
+
+ pada 
+\begin_inset Formula $\frac{1}{e}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:polynomials-13"
+
+\end_inset
+
+Tulislah fungsi Octave yang menggunakan fungsi-fungsi Anda dari soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:polynomials"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:polynomials-2"
+
+\end_inset
+
+, dan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:polynomials-12"
+
+\end_inset
+
+ untuk mencari semua akar suatu polinom.
+ Uji fungsi Anda secara menyeluruh pada polinom-polinom dengan berbagai derajat
+ yang akar-akarnya telah Anda ketahui.
+ Anda boleh mendasarkan fungsi Anda pada kode semu 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "pseudo:allroots"
+
+\end_inset
+
+, tetapi kode Anda seharusnya jauh lebih sederhana karena Anda cukup memanggil
+ fungsi-fungsi tersebut alih-alih menuliskan ulang kodenya.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:polynomials-15"
+
+\end_inset
+
+Gunakan kode Anda dari soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:polynomials-13"
+
+\end_inset
+
+ untuk mencari semua solusi persamaan berikut.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $x^{5}+11x^{4}-34x^{3}-130x^{2}-275x+819=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $5x^{5}+3x^{4}-46x^{3}-102x^{2}+365x+1287=0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Carilah semua akar 
+\begin_inset Formula $g(x)=25x^{3}-105x^{2}+148x-174$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Ingatlah bahwa metode sekan dan metode Müller memiliki beberapa
+ kemiripan.
+ Keduanya memerlukan beberapa hampiran awal.
+ Keduanya melibatkan penentuan nol suatu fungsi yang melalui titik-titik awal
+ tersebut.
+ Keduanya konvergen secara superlinear menuju akar sederhana.
+ Dan tentu saja, keduanya merupakan metode pencarian akar.
+ Mari kita ubah sedikit gagasan ini sebagai berikut.
+ Untuk mencari akar dari 
+\begin_inset Formula $g$
+\end_inset
+
+, mulailah seperti pada metode sekan dengan menggunakan dua hampiran, 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+.
+ Kemudian, alih-alih menggunakan nol dari garis yang melalui 
+\begin_inset Formula $(x_{0},g(x_{0}))$
+\end_inset
+
+ dan 
+\begin_inset Formula $(x_{1},g(x_{1}))$
+\end_inset
+
+, carilah fungsi berbentuk
+\begin_inset Formula 
+\[
+h(x)=ax^{3}+b
+\]
+
+\end_inset
+
+yang melalui 
+\begin_inset Formula $(x_{0},g(x_{0}))$
+\end_inset
+
+ dan 
+\begin_inset Formula $(x_{1},g(x_{1}))$
+\end_inset
+
+.
+ Misalkan 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ merupakan nol dari 
+\begin_inset Formula $h$
+\end_inset
+
+.
+ Kemudian, ulangi proses tersebut dengan 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ dan 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ untuk memperoleh 
+\begin_inset Formula $x_{3}$
+\end_inset
+
+, dan seterusnya.
+ 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Misalkan 
+\begin_inset Formula $g(x)=2\ln(1+x^{2})-x$
+\end_inset
+
+, 
+\begin_inset Formula $x_{0}=5$
+\end_inset
+
+, dan 
+\begin_inset Formula $x_{1}=6$
+\end_inset
+
+.
+ Tentukan 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ dengan menggunakan metode ini.
+\end_layout
+
+\begin_layout Enumerate
+Carilah rumus untuk 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ jika diberikan sebarang fungsi 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ dan sebarang kondisi awal 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+.
+ Rumus tersebut harus dinyatakan dalam 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $g(x_{0})$
+\end_inset
+
+, dan 
+\begin_inset Formula $g(x_{1})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Carilah rumus umum untuk 
+\begin_inset Formula $x_{n}$
+\end_inset
+
+ yang dinyatakan dalam 
+\begin_inset Formula $x_{n-2}$
+\end_inset
+
+, 
+\begin_inset Formula $x_{n-1}$
+\end_inset
+
+, 
+\begin_inset Formula $g(x_{n-2})$
+\end_inset
+
+, dan 
+\begin_inset Formula $g(x_{n-1})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah fungsi Octave yang mengimplementasikan metode ini dan menampilkan
+ hasil setiap iterasi.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Gunakan fungsi Octave Anda untuk menentukan apakah orde kekonvergenan
+ metode ini linear atau superlinear.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Pilihlah fungsi yang akar-akarnya Anda ketahui secara eksak.
+ Gunakan metode Müller untuk mencari salah satu akar tersebut.
+ Gunakan tiga iterasi berurutan untuk memperkirakan orde kekonvergenannya.
+\end_layout
+
+\begin_layout Enumerate
+Galat dalam tiga iterasi berurutan metode Müller ditampilkan
+ dalam tabel.
+ Gunakan informasi ini untuk memperkirakan orde kekonvergenannya.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $n$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $|x_{n}-x|$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.53627(10)^{-349}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.67365(10)^{-642}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.83922(10)^{-1181}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:polynomials-19"
+
+\end_inset
+
+Grafik 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ ditampilkan.
+ Carilah beberapa himpunan nilai 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $p_{1}$
+\end_inset
+
+, dan 
+\begin_inset Formula $p_{2}$
+\end_inset
+
+ yang berbeda satu sama lain, sehingga metode M
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+"u
+\end_layout
+
+\end_inset
+
+ller
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+akan menghasilkan nilai kompleks untuk 
+\begin_inset Formula $p_{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+akan menghasilkan akar di 
+\begin_inset Formula $x\approx4.4$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+akan menghasilkan akar di 
+\begin_inset Formula $x\approx2.8$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/roots-polynomials01.eps
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Fungsi yang ditampilkan pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:polynomials-19"
+
+\end_inset
+
+ adalah 
+\begin_inset Formula $f(x)=\frac{x^{2}-7x+10}{2}+\sin(3x)$
+\end_inset
+
+.
+ Gunakan informasi ini untuk menguji dugaan-dugaan Anda pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:polynomials-19"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+finishexercises 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

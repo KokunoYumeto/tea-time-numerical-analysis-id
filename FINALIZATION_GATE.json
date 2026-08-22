@@ -1,0 +1,121 @@
+{
+  "schema_id": "ttna-id-publication-finalization-gate-v1",
+  "schema_version": "1.0.0",
+  "release_identity": {
+    "course_local_id": "C110",
+    "downstream_slug": "tea-time-numerical-analysis-id",
+    "locale": "id-ID",
+    "release_date": "2026-08-22",
+    "resource_local_id": "R015",
+    "tag": "v3.0-id.1",
+    "version": "3.0-id.1"
+  },
+  "current_phase": "ready_to_publish",
+  "admitted_release_evidence_recorded": true,
+  "metadata_scaffold_complete": true,
+  "publication_permitted": true,
+  "release_complete": false,
+  "required_prepublication_checks": [
+    {
+      "id": "final_reader_artifact",
+      "status": "pass",
+      "requirement": "Freeze the QA-passing final reader artifact and bind its exact identity.",
+      "evidence": {
+        "bytes": 8202476,
+        "pages": 387,
+        "path": "output/pdf/Tea-Time-Numerical-Analysis-id-ID.pdf",
+        "sha256": "cbc31e9e27fdee96845d78fa6a625bf956196001b7941ddf0f1232f5def46b45"
+      }
+    },
+    {
+      "id": "final_build_manifest",
+      "status": "pass",
+      "requirement": "Bind the exact final build manifest.",
+      "evidence": {
+        "bytes": 53012,
+        "path": "build/manifests/id-ID-build.json",
+        "sha256": "9437f143c777ca447c5b199f0ea2a7df1e70b2afd7731839c43041ca018fd988"
+      }
+    },
+    {
+      "id": "bounded_release_qa",
+      "status": "pass",
+      "requirement": "Close language, mathematics, build, visual, provenance, and rights gates with no unresolved P1/P2 defect.",
+      "evidence": {
+        "path": "qa/WHOLE_CORPUS_RELEASE_QA_20260822.md",
+        "sha256": "d1b1da7eea68de58154903dde3c53a9e992dfd7eff1c779feefb75927d774665"
+      }
+    },
+    {
+      "id": "final_source_backend_package",
+      "status": "pass",
+      "requirement": "Create and validate the reproducible source/backend package before recording its inventory or checksums.",
+      "evidence": {
+        "archive": "Tea-Time-Numerical-Analysis-id-ID-v3.0-id.1-source-backend.zip",
+        "bytes": 33363089,
+        "entries": 897,
+        "sha256": "852b56f6af66378b67543c0ad96256a1fb8f54b1d27a3d9641763f1b826c5a71",
+        "inventory": "PACKAGE_INVENTORY.json",
+        "inventory_sha256": "38c4b1afd69b54041824ff9160601673e5a67515ebcc9d4d9f2aaebad0f17dc1",
+        "zip_member_hash_verification": "pass"
+      }
+    },
+    {
+      "id": "component_license_payload",
+      "status": "pass",
+      "requirement": "Include the applicable license texts, modification notice, component-rights ledger, and Heun provenance receipt in the final package.",
+      "evidence": {
+        "license_directory": "LICENSES/",
+        "rights_ledger": "COMPONENT_RIGHTS_AND_PROVENANCE.md",
+        "heun_receipt": "authority/third_party/heun1900/ASSET_AUTHORITY.json",
+        "cprotect_receipt": "authority/toolchain/cprotect-1.0f/TOOLCHAIN_AUTHORITY.json",
+        "modification_notice": "README.md#pemberitahuan-adaptasi"
+      }
+    },
+    {
+      "id": "downstream_identity",
+      "status": "pass",
+      "requirement": "Resolve the authorized GitHub owner and create or adopt exactly one matching downstream repository before adding downstream URLs.",
+      "evidence": {
+        "owner": "KokunoYumeto",
+        "repository_id": 1342510527,
+        "url": "https://github.com/KokunoYumeto/tea-time-numerical-analysis-id"
+      }
+    }
+  ],
+  "required_publication_transactions": [
+    {
+      "id": "github_release",
+      "status": "pending",
+      "requirement": "Publish tag v3.0-id.1 and one GitHub release with the exact finalized assets."
+    },
+    {
+      "id": "zenodo_initial_version",
+      "status": "draft_created",
+      "requirement": "Publish one initial Zenodo book record and capture its generated concept DOI and version DOI; do not create a duplicate lineage.",
+      "evidence": {
+        "deposition_id": 22054086,
+        "concept_record_id": 22054085,
+        "reserved_version_doi": "10.5281/zenodo.22054086",
+        "duplicate_search_matches": 0
+      }
+    }
+  ],
+  "required_postpublication_checks": [
+    {
+      "id": "public_byte_readback",
+      "status": "pending",
+      "requirement": "Anonymously read back every public release artifact and prove filename, byte count, and SHA-256 identity."
+    },
+    {
+      "id": "public_metadata_readback",
+      "status": "pending",
+      "requirement": "Read back GitHub and Zenodo metadata and verify repository, tag, release, version, concept DOI, version DOI, rights, and related identifiers."
+    },
+    {
+      "id": "central_hub_handoff",
+      "status": "pending",
+      "requirement": "Finalize the central-hub handoff using only the public identifiers and verified artifact evidence."
+    }
+  ]
+}

@@ -1,0 +1,580 @@
+
+\section{\label{sec:Extrapolation}Ekstrapolasi}
+
+Dalam kalkulus, Anda tentu pernah menjumpai konstanta Euler, $e$,
+yang mungkin diberitahukan kepada Anda bernilai kira-kira $2.718$,
+atau mungkin hanya $2.7$. Dan kecuali jika Anda pernah mengikuti
+lomba menghafal digit-digit $e$, Anda mungkin tidak pernah melihat
+lebih banyak digit $e$ daripada yang dapat ditampilkan kalkulator
+Anda. Kita akan segera mengubahnya. Lima puluh digit pertama $e$
+adalah
+\[
+2.7182818284590452353602874713526624977572470936999.
+\]
+Berapa banyak yang Anda ingat? Tidak perlu khawatir jika tidak terlalu
+banyak. Tidak akan ada kuis tentang digit-digit $e$ dalam waktu dekat. 
+
+\noindent\begin{digression}{Digit-digit $e$} 
+
+\noindent Seribu digit pertama $e$, sebanyak 50 digit per baris,
+adalah
+\[
+\begin{gathered}2.7182818284590452353602874713526624977572470936999\\
+59574966967627724076630353547594571382178525166427\\
+42746639193200305992181741359662904357290033429526\\
+05956307381323286279434907632338298807531952510190\\
+11573834187930702154089149934884167509244761460668\\
+08226480016847741185374234544243710753907774499206\\
+95517027618386062613313845830007520449338265602976\\
+06737113200709328709127443747047230696977209310141\\
+69283681902551510865746377211125238978442505695369\\
+67707854499699679468644549059879316368892300987931\\
+27736178215424999229576351482208269895193668033182\\
+52886939849646510582093923982948879332036250944311\\
+73012381970684161403970198376793206832823764648042\\
+95311802328782509819455815301756717361332069811250\\
+99618188159304169035159888851934580727386673858942\\
+28792284998920868058257492796104841984443634632449\\
+68487560233624827041978623209002160990235304369941\\
+84914631409343173814364054625315209618369088870701\\
+67683964243781405927145635490613031072085103837505\\
+10115747704171898610687396965521267154688957035035
+\end{gathered}
+\]
+
+\noindent\end{digression}
+
+\noindent Namun, ingatkah Anda dari kalkulus bahwa 
+\[
+\lim_{h\to0}(1+h)^{1/h}=e?
+\]
+Dapatkah Anda membuktikannya? Bukti \vpageref{proofOfLimit}. Berdasarkan
+fakta ini, kita dapat menggunakan 
+\[
+\tilde{e}(h)=(1+h)^{1/h}
+\]
+untuk menghampiri $e$. Mari langsung mencobanya!
+\begin{eqnarray*}
+\tilde{e}(0.01) & \approx & 2.704813829421529\\
+\tilde{e}(0.005) & \approx & 2.711517122929293\\
+\tilde{e}(0.0025) & \approx & 2.714891744381238\\
+\tilde{e}(0.00125) & \approx & 2.716584846682473\\
+\tilde{e}(0.000625) & \approx & 2.717432851769196.
+\end{eqnarray*}
+Sayangnya, barisan hampiran ini tidak konvergen dengan cepat. Hampiran
+pertama memiliki dua digit akurat, sedangkan hampiran kelima pun masih
+hanya memiliki tiga digit akurat. Tentu saja, kita dapat terus memperkecil
+$h$ untuk memperoleh hampiran yang lebih akurat, tetapi berdasarkan
+lambatnya peningkatan sejauh ini, cara tersebut tampaknya kurang menjanjikan.
+Sebagai gantinya, kita dapat menggabungkan taksiran yang sudah ada
+untuk memperoleh hampiran yang lebih baik. Gagasan ini, setidaknya
+secara sepintas, seharusnya mengingatkan Anda pada metode delta-kuadrat
+Aitken. Dalam metode itu, tiga hampiran berurutan digabungkan untuk
+membentuk hampiran baru yang umumnya lebih baik daripada ketiga hampiran
+asalnya. Di sini kita akan melakukan hal serupa: menggabungkan hampiran
+yang kurang memadai untuk memperoleh hampiran yang lebih baik. Berbagai
+hampiran baru ini akan kita beri nama agar dapat terus digunakan.
+\begin{eqnarray}
+2\tilde{e}(0.005)-\tilde{e}(0.01) & \equiv & \tilde{e}_{1}(0.01)=2.718220416437056\nonumber \\
+2\tilde{e}(0.0025)-\tilde{e}(0.005) & \equiv & \tilde{e}_{1}(0.005)=2.718266365833184\nonumber \\
+2\tilde{e}(0.00125)-\tilde{e}(0.0025) & \equiv & \tilde{e}_{1}(0.0025)=2.718277948983707\nonumber \\
+2\tilde{e}(0.000625)-\tilde{e}(0.00125) & \equiv & \tilde{e}_{1}(0.00125)=2.718280856855920.\label{eq:richardsonC2}
+\end{eqnarray}
+Setiap hampiran baru ini akurat hingga 5 atau 6 digit signifikan!
+Itu sudah merupakan peningkatan besar. Kita dapat menggabungkannya
+lebih lanjut untuk memperoleh hampiran yang lebih baik lagi:
+\begin{eqnarray}
+\frac{4\tilde{e}_{1}(0.005)-\tilde{e}_{1}(0.01)}{3} & \equiv & \tilde{e}_{2}(0.01)=2.718281682298560\nonumber \\
+\frac{4\tilde{e}_{1}(0.0025)-\tilde{e}_{1}(0.005)}{3} & \equiv & \tilde{e}_{2}(0.005)=2.718281810033881\nonumber \\
+\frac{4\tilde{e}_{1}(0.00125)-\tilde{e}(0.0025)}{3} & \equiv & \tilde{e}_{2}(0.0025)=2.718281826146657.\label{eq:richardsonC3}
+\end{eqnarray}
+Hampiran pertama akurat hingga tujuh digit signifikan, yang kedua
+hingga delapan, dan yang ketiga hingga sembilan! Kita masih dapat
+menggabungkannya lebih lanjut:
+\begin{eqnarray}
+\frac{8\tilde{e}_{2}(0.005)-\tilde{e}_{2}(0.01)}{7} & \equiv & \tilde{e}_{3}(0.01)=2.718281828281785\nonumber \\
+\frac{8\tilde{e}_{2}(0.0025)-\tilde{e}_{2}(0.005)}{7} & \equiv & \tilde{e}_{3}(0.005)=2.718281828448482.\label{eq:richardsonC4}
+\end{eqnarray}
+Kini kita memiliki hampiran yang akurat hingga sepuluh dan sebelas
+digit signifikan! Jika ditinjau kembali, kita mengambil lima hampiran
+yang masing-masing akurat tidak lebih dari 3 digit signifikan, lalu
+menggabungkannya menjadi dua hampiran yang masing-masing akurat hingga
+sedikitnya 10 digit signifikan. Ajaib! Baiklah, bukan sulap, melainkan
+keajaiban matematika! Berikut cara kerjanya.
+
+Misalkan kita menghampiri $p$ dengan menggunakan rumus $\tilde{p}(h)$,
+dan kita mengetahui bahwa
+\[
+\tilde{p}(h)=p+c_{1}\cdot h^{m_{1}}+c_{2}\cdot h^{m_{2}}+c_{3}\cdot h^{m_{3}}+\cdots.
+\]
+Maka
+\[
+\tilde{p}\left(\alpha h\right)=p+c_{1}\cdot\left(\alpha h\right)^{m_{1}}+c_{2}\cdot(\alpha h)^{m_{2}}+c_{3}\cdot(\alpha h)^{m_{3}}+\cdots.
+\]
+Sekarang, jika persamaan kedua dikalikan dengan $\alpha^{-m_{1}}$
+lalu persamaan pertama dikurangkan darinya, suku $h^{m_{1}}$ lenyap,
+dan kita memperoleh hampiran dengan suku galat yang diawali oleh $c_{2}\cdot h^{m_{2}}$:
+
+\begin{center}
+\begin{tabular}{rcl}
+$\alpha^{-m_{1}}\tilde{p}\left(\alpha h\right)$ & $=$ & $\alpha^{-m_{1}}p+c_{1}\cdot h^{m_{1}}+c_{2}\alpha^{m_{2}-m_{1}}\cdot h^{m_{2}}+c_{3}\alpha^{m_{3}-m_{1}}\cdot h^{m_{3}}+\cdots$\tabularnewline
+$-\left[\tilde{p}(h)\right.$ & $=$ & $\left.p+c_{1}\cdot h^{m_{1}}+c_{2}\cdot h^{m_{2}}+c_{3}\cdot h^{m_{3}}+\cdots\right]$\tabularnewline
+\hline 
+$\alpha^{-m_{1}}\tilde{p}\left(\alpha h\right)-\tilde{p}(h)$ & $=$ & $(\alpha^{-m}-1)p+c_{2}(\alpha^{m_{2}-m_{1}}-1)\cdot h^{m_{2}}+c_{3}(\alpha^{m_{3}-m_{1}}-1)\cdot h^{m_{3}}+\cdots$\tabularnewline
+\end{tabular}
+\par\end{center}
+
+\noindent Dengan sedikit penataan ulang,
+\begin{equation}
+\frac{\alpha^{-m_{1}}\tilde{p}\left(\alpha h\right)-\tilde{p}(h)}{\alpha^{-m_{1}}-1}=p+d_{2}\cdot h^{m_{2}}+d_{3}\cdot h^{m_{3}}+\cdots\label{eq:richardsonBasis}
+\end{equation}
+untuk beberapa konstanta $d_{2},d_{3},\ldots$. Jika $m_{2}>m_{1}$,
+metode ini cenderung memperbaiki kedua hampiran $\tilde{p}(h)$ dan
+$\tilde{p}\left(\alpha h\right)$ dengan menggabungkannya menjadi
+satu hampiran yang galatnya seorde dengan suatu kelipatan konstan
+dari $h^{m_{2}}$. Perhitungan ini menjadi dasar ekstrapolasi Richardson.\index{ekstrapolasi Richardson}
+
+Secara kebetulan, $\tilde{e}(h)$ memiliki tepat bentuk yang diperlukan.
+\begin{equation}
+\tilde{e}(h)=e+c_{1}h+c_{2}h^{2}+c_{3}h^{3}+c_{4}h^{4}+O(h^{5})\label{eq:eErrorForm}
+\end{equation}
+untuk beberapa konstanta $c_{1},c_{2},c_{3},c_{4}$. Nilai sebenarnya
+dari konstanta-konstanta tersebut tidak relevan bagi perhitungan ini.
+Untuk memahami perhitungan $\tilde{e}_{1},$, kita menggunakan Persamaan
+\ref{eq:richardsonBasis} dengan $\alpha=\frac{1}{2}$ dan $m_{1}=1$
+untuk memperoleh
+\begin{eqnarray*}
+\tilde{e}_{1}(h) & = & \frac{2\tilde{e}\left(\frac{h}{2}\right)-\tilde{e}(h)}{2-1}\\
+ & = & 2e+c_{1}h+\frac{1}{2}c_{2}h^{2}+\frac{1}{4}c_{3}h^{3}+\frac{1}{8}c_{4}h^{4}+O(h^{5})\\
+ &  & \qquad-\left[e+c_{1}h+c_{2}h^{2}+c_{3}h^{3}+c_{4}h^{4}+O(h^{5})\right]\\
+ & = & e+d_{2}h^{2}+d_{3}h^{3}+d_{4}h^{4}+O(h^{5})
+\end{eqnarray*}
+untuk beberapa konstanta $d_{2},d_{3},d_{4}$. $\tilde{e}_{1}(h)$
+merupakan rumus yang menghasilkan deretan hampiran akurat hingga 5
+atau 6 digit signifikan. Menentukan konstanta $d_{i}$ berdasarkan
+konstanta $c_{i}$ tidaklah sulit, tetapi sekali lagi nilai konstanta-konstanta
+itu tidak penting dan hanya akan memperumit penyempurnaan selanjutnya.
+Yang penting adalah bentuk galatnya. Setelah mengetahui $\tilde{e}_{1}(h)=e+d_{2}h^{2}+d_{3}h^{3}+d_{4}h^{4}+O(h^{5})$,
+kita memperoleh $\tilde{e}_{2}(h)$ dengan menggunakan rumus \ref{eq:richardsonBasis}
+dengan $\alpha=\frac{1}{2}$ dan $m_{1}=2$:
+\begin{eqnarray*}
+\tilde{e}_{2}(h) & = & \frac{4\tilde{e}_{1}\left(\frac{h}{2}\right)-\tilde{e}_{1}(h)}{3}\\
+ & = & e+k_{3}h^{3}+k_{4}h^{4}+O(h^{5})
+\end{eqnarray*}
+untuk beberapa konstanta $k_{3}$ dan $k_{4}$. $\tilde{e}_{2}(h)$
+merupakan rumus yang menghasilkan deretan hampiran akurat hingga 7
+sampai 9 digit signifikan. Kita kembali dapat menggunakan rumus \ref{eq:richardsonBasis},
+kali ini dengan $\alpha=\frac{1}{2}$ dan $m_{1}=3$:
+\begin{eqnarray*}
+\tilde{e}_{3}(h) & = & \frac{8\tilde{e}_{2}\left(\frac{h}{2}\right)-\tilde{e}_{2}(h)}{7}\\
+ & = & e+l_{4}h^{4}+O(h^{5})
+\end{eqnarray*}
+untuk suatu konstanta $l_{4}$. $\tilde{e}_{3}(h)$ merupakan rumus
+yang menghasilkan hampiran akurat hingga 10 dan 11 digit signifikan.
+Sekarang cobalah menggunakan bentuk $\tilde{e}_{3}(h)$ dan rumus
+\ref{eq:richardsonBasis} untuk menurunkan rumus $O(h^{5})$ bagi
+$\tilde{e}_{4}(h)$. Kemudian gunakan rumus Anda untuk menghitung
+$\tilde{e}_{4}(0.01)$ dengan menggunakan nilai $\tilde{e}_{3}(0.01)$
+dan $\tilde{e}_{3}(0.005)$. Seberapa akurat $\tilde{e}_{4}(0.01)?$
+Jawaban \vpageref{eTilde4}.
+
+Sebagai kasus khusus, penerapan ekstrapolasi Richardson dengan $\alpha=\frac{1}{2}$
+pada sebarang hampiran berbentuk
+\[
+\tilde{p}_{0}(h)=p+c_{1}h+c_{2}h^{2}+c_{3}h^{3}+\cdots
+\]
+menghasilkan penyempurnaan yang didefinisikan secara rekursif
+\[
+\tilde{p}_{k}(h)=\frac{2^{k}\tilde{p}_{k-1}\left(\frac{h}{2}\right)-\tilde{p}_{k-1}(h)}{2^{k}-1},\quad k=1,2,3,\ldots
+\]
+yang diharapkan semakin akurat ketika $k$ bertambah. Untuk nilai
+$\alpha$ lain atau bentuk galat lain, rumus bagi $\tilde{p}_{k}(h)$
+berubah sesuai dengan \ref{eq:richardsonBasis}.
+
+\noindent\begin{digression}{Polinom Taylor untuk $\tilde e(h)$} \label{crumpet:eApproximate}
+
+\noindent$\tilde{e}$ tidak terdefinisi pada $0$, sehingga turunannya
+pada $0$ juga tidak terdefinisi. Namun, jika kita memperluas definisi
+$\tilde{e}$ menjadi
+\[
+\tilde{e}(h)=\begin{cases}
+(1+h)^{1/h} & \mbox{ jika }h\neq0\\
+e & \mbox{ jika }h=0
+\end{cases},
+\]
+, dengan demikian mendefinisikan $\tilde{e}$ pada $0$, maka $\tilde{e}(h)$
+dapat didiferensialkan tak berhingga kali pada $0$, dan polinom Taylor
+kelimanya, misalnya, adalah:
+
+\noindent
+\[
+\tilde{e}(h)=e-\frac{e}{2}\cdot h+\frac{11e}{24}\cdot h^{2}-\frac{7e}{16}\cdot h^{3}+\frac{2447e}{5760}\cdot h^{4}+\frac{f^{(5)}(\xi)}{120}h^{5}
+\]
+untuk suatu $\xi\in(0,h)$.
+
+\noindent\end{digression} 
+
+\subsection{Diferensiasi}
+
+Dengan ekstrapolasi, rumus hampiran diferensiasi berorde tinggi dapat
+diturunkan dari rumus berorde rendah. Kita mulai dengan hampiran berorde
+terendah, ${\displaystyle f'(x_{0})=\frac{-f(x_{0})+f(x_{0}+h)}{h}-\frac{h}{2}f''(\xi_{h})}$.
+Suku galat standar, $-\frac{h}{2}f''(\xi_{h})$ tidak menyatakan galat
+dalam bentuk $c\cdot h^{m_{1}}+O(h^{m_{2}})$ sebagaimana disyaratkan
+oleh ekstrapolasi Richardson, sehingga kita kembali ke deret Taylor
+untuk menentukan suku $O(h^{m_{2}})$ berikut:
+\[
+f(x_{0}+h)=f(x_{0})+hf'(x_{0})+\frac{1}{2}h^{2}f''(x_{0})+\frac{1}{6}h^{3}f'''(x_{0})+\cdots
+\]
+sehingga
+\[
+\frac{-f(x_{0})+f(x_{0}+h)}{h}=f'(x_{0})+\frac{1}{2}hf''(x_{0})+\frac{1}{6}h^{2}f'''(x_{0})+\cdots.
+\]
+Dengan demikian, 
+\begin{eqnarray*}
+f'(x_{0})-\frac{-f(x_{0})+f(x_{0}+h)}{h} & = & -\frac{1}{2}hf''(x_{0})-\frac{1}{6}h^{2}f'''(x_{0})-\cdots\\
+ & = & c_{1}h+O(h^{2})
+\end{eqnarray*}
+dan ekstrapolasi akan menghasilkan rumus dengan galat $O(h^{2})$.
+Dengan menetapkan $\tilde{p}(h)=\frac{-f(x_{0})+f(x_{0}+h)}{h}$,
+$\alpha=2$, dan $m_{1}=1$, rumus \ref{eq:richardsonBasis} memberikan
+hampiran
+\[
+\frac{\frac{1}{2}\tilde{p}(2h)-\tilde{p}(h)}{\frac{1}{2}-1}
+\]
+yang akan menjadi rumus dengan galat $O(h^{2})$ untuk $f'(x_{0})$.
+Setelah disederhanakan,
+\begin{eqnarray*}
+\frac{\frac{1}{2}\tilde{p}(2h)-\tilde{p}(h)}{\frac{1}{2}-1} & = & \frac{\frac{1}{2}\left[\frac{-f(x_{0})+f(x_{0}+2h)}{2h}\right]-\frac{-f(x_{0})+f(x_{0}+h)}{h}}{-\frac{1}{2}}\\
+ & = & \frac{\frac{-f(x_{0})+f(x_{0}+2h)}{4h}-\frac{-4f(x_{0})+4f(x_{0}+h)}{4h}}{-\frac{1}{2}}\\
+ & = & \frac{\frac{3f(x_{0})-4f(x_{0}+h)+f(x_{0}+2h)}{4h}}{-\frac{1}{2}}\\
+ & = & \frac{-3f(x_{0})+4f(x_{0}+h)-f(x_{0}+2h)}{2h}.
+\end{eqnarray*}
+Dengan demikian, kita memperoleh $f'(x_{0})=\frac{-3f(x_{0})+4f(x_{0}+h)-f(x_{0}+2h)}{2h}+O(h^{2})$,
+tetapi hasil ini bukan hal baru. Ini adalah rumus 3 titik pertama
+dalam Tabel \ref{tab:firstDerivativeFormulas}! Rumus turunan berorde
+tinggi lainnya juga dapat diturunkan dengan ekstrapolasi, tetapi umumnya
+hasilnya tidak memberi pengetahuan baru. Kita hanya memperoleh cara
+baru untuk menurunkan rumus diferensiasi berorde tinggi.
+
+\subsection{Integrasi}
+
+Penerapan ekstrapolasi pada integral tentu memberikan hasil yang lebih
+bermanfaat. Kita mulai dengan sebarang rumus integrasi komposit dan
+menerapkan ekstrapolasi Richardson. Sekarang kita tinjau aturan trapesium
+komposit dan menggunakan notasi $T_{k}(a,b)$ untuk menyatakan hampiran
+$\int_{a}^{b}f(x)dx$ dengan aturan trapesium yang menggunakan $k$
+subselang.
+
+Sebelum melanjutkan, kita perlu memahami dengan baik arti aturan trapesium
+komposit yang memiliki suku galat $O\left(\left(\frac{1}{n}\right)^{2}\right)$.
+Pada dasarnya, kita mengharapkan galat berkurang dengan faktor sekitar
+4 ketika jumlah interval digandakan. Kita mengharapkan galat berkurang
+dengan faktor sekitar 9 ketika jumlah interval dibuat tiga kali lipat.
+Secara umum, kita mengharapkan galat berkurang dengan faktor sekitar
+$\beta^{2}$ ketika jumlah interval dikalikan dengan $\beta$. Untuk
+melihat dampak ini secara nyata, tinjau integral tentu
+\[
+\int_{0}^{1}\sin x\,dx
+\]
+yang nilai eksaknya adalah $1-\cos(1)\approx.4596976941318602$. Galat
+absolut dari $T_{5}(0,1)$, $T_{10}(0,1),$ dan $T_{15}(0,1)$ adalah
+\begin{eqnarray*}
+\left|\int_{0}^{1}\sin x\,dx-T_{5}(0,1)\right| & \approx & 1.533(10)^{-3}\\
+\left|\int_{0}^{1}\sin x\,dx-T_{10}(0,1)\right| & \approx & 3.831(10)^{-4}\\
+\left|\int_{0}^{1}\sin x\,dx-T_{15}(0,1)\right| & \approx & 1.702(10)^{-4}
+\end{eqnarray*}
+Kita mengharapkan galat $\left|\int_{0}^{1}\sin x\,dx-T_{5}(0,1)\right|$
+sekitar empat kali galat $\left|\int_{0}^{1}\sin x\,dx-T_{10}(0,1)\right|$
+dan sembilan kali galat $\left|\int_{0}^{1}\sin x\,dx-T_{15}(0,1)\right|$.
+Untuk memeriksanya, kita hitung rasionya:
+\begin{eqnarray*}
+\frac{\left|\int_{0}^{1}\sin x\,dx-T_{5}(0,1)\right|}{\left|\int_{0}^{1}\sin x\,dx-T_{10}(0,1)\right|} & = & \frac{1.533(10)^{-3}}{3.831(10)^{-4}}\approx4.001\\
+\frac{\left|\int_{0}^{1}\sin x\,dx-T_{5}(0,1)\right|}{\left|\int_{0}^{1}\sin x\,dx-T_{15}(0,1)\right|} & = & \frac{1.533(10)^{-3}}{1.702(10)^{-4}}\approx9.007.
+\end{eqnarray*}
+Kira-kira berapa nilai rasio $\frac{\left|\int_{0}^{1}\sin x\,dx-T_{10}(0,1)\right|}{\left|\int_{0}^{1}\sin x\,dx-T_{15}(0,1)\right|}$
+yang Anda harapkan? Jawaban \vpageref{errorRatio}.
+
+Akhirnya, kita menerapkan ekstrapolasi Richardson dengan $\alpha=\frac{1}{2}$
+dan $m_{1}=2$ untuk menghasilkan taksiran berorde lebih tinggi,
+\[
+T_{k,1}(a,b)\equiv\frac{4T_{2k}(a,b)-T_{k}(a,b)}{3}.
+\]
+Kita menggunakan perhitungan numerik untuk memahami suku galat dari
+penyempurnaan $T_{k,1}$. Kita mulai dengan mengumpulkan beberapa
+data. Dengan melanjutkan analisis $\int_{0}^{1}\sin x\,dx$, perhatikan
+bahwa
+\begin{eqnarray*}
+T_{5}(0,1) & \approx & .4581643459604436\\
+T_{10}(0,1) & \approx & .4593145488579763\\
+T_{20}(0,1) & \approx & .4596019197882473\\
+T_{40}(0,1) & \approx & .4596737512942187.
+\end{eqnarray*}
+Dengan demikian,
+\begin{eqnarray*}
+T_{5,1}(0,1) & = & \frac{4T_{10}(0,1)-T_{5}(0,1)}{3}\approx.4596979498238206\\
+T_{10,1}(0,1) & = & \frac{4T_{20}(0,1)-T_{10}(0,1)}{3}\approx.4596977100983375\\
+T_{20,1}(0,1) & = & \frac{4T_{40}(0,1)-T_{20}(0,1)}{3}\approx.4596976951295424
+\end{eqnarray*}
+dan
+\begin{eqnarray*}
+\frac{\left|\int_{0}^{1}\sin x\,dx-T_{5,1}(0,1)\right|}{\left|\int_{0}^{1}\sin x\,dx-T_{10,1}(0,1)\right|} & \approx & 16.01\\
+\frac{\left|\int_{0}^{1}\sin x\,dx-T_{10,1}(0,1)\right|}{\left|\int_{0}^{1}\sin x\,dx-T_{20,1}(0,1)\right|} & \approx & 16.00.
+\end{eqnarray*}
+Ketika jumlah subselang digandakan, galat berkurang dengan faktor
+16. Nilai itu adalah $2^{4}$, bukan $2^{3}$ seperti yang mungkin
+kita duga! Penyempurnaan pertama meningkatkan hampiran dengan galat
+$O\left(\left(\frac{1}{n}\right)^{2}\right)$ menjadi hampiran dengan
+galat $O\left(\left(\frac{1}{n}\right)^{4}\right)$. Dengan kata lain,
+galat $T_{n,1}$ adalah $O\left(\left(\frac{1}{n}\right)^{4}\right)$.
+
+Setelah mengetahui bahwa galat $T_{n,1}$ adalah $O\left(\left(\frac{1}{n}\right)^{4}\right)$,
+kita dapat melakukan ekstrapolasi lagi. Dengan menerapkan ekstrapolasi
+Richardson dengan $\alpha=\frac{1}{2}$ dan $m_{1}=4$, kita memperoleh
+\begin{eqnarray*}
+T_{5,2}(0,1) & = & \frac{16T_{10,1}(0,1)-T_{5,1}(0,1)}{15}\approx.4596976941166387\\
+T_{10,2}(0,1) & = & \frac{16T_{20,1}(0,1)-T_{10,1}(0,1)}{15}\approx.4596976941316228.
+\end{eqnarray*}
+Kini kita memiliki hampiran $T_{5,2}$ dan $T_{10,2}$ yang galatnya
+masing-masing hanya sekitar $1.522(10)^{-11}$ dan $2.374(10)^{-13}$.
+Gunakan informasi ini untuk menghitung $T_{5,3}$ beserta galat absolutnya.
+Jawaban \vpageref{t35}.
+
+Metode yang menggabungkan ekstrapolasi Richardson dengan aturan trapesium
+dikenal sebagai metode Romberg atau integrasi Romberg.\index{integrasi numerik!Romberg}\index{integrasi Romberg}
+Perhitungan sering ditabelkan untuk memudahkan penataan, seperti dalam
+Tabel 
+\begin{table}
+\hrule \caption{\label{tab:Romberg}Metode Romberg}
+
+\centering{}\medskip{}
+\begin{tabular}{ccccc}
+$T_{1}$ & $T_{1,1}$ & $T_{1,2}$ & $T_{1,3}$ & $\cdots$\tabularnewline
+$T_{2}$ & $T_{2,1}$ & $T_{2,2}$ & $\vdots$ & \tabularnewline
+$T_{4}$ & $T_{4,1}$ & $\vdots$ &  & \tabularnewline
+$T_{8}$ & $\vdots$ &  &  & \tabularnewline
+$\vdots$ &  &  &  & \tabularnewline
+\end{tabular}\medskip{}
+\hrule 
+\end{table}
+ \ref{tab:Romberg}. Baris ditambahkan sampai kedua selisih $\left|T_{k,n}-T_{k,n+1}\right|$
+dan $\left|T_{2k,n}-T_{k,n+1}\right|$ lebih kecil daripada suatu
+toleransi.
+
+Meskipun ekstrapolasi Richardson dapat diterapkan pada sebarang rumus
+integrasi komposit, perhitungan suku galat di atas membantu menjelaskan
+mengapa aturan trapesium merupakan pilihan yang tepat. Dari perhitungan
+tersebut, kita dapat menduga (dan hal ini dapat dibuktikan) bahwa
+suku galat aturan trapesium komposit hanya memuat pangkat genap dari
+$\frac{1}{n}$. Secara eksplisit, kita memperoleh
+\[
+\int_{a}^{b}f(x)dx=T_{n}(a,b)+c_{2}\left(\frac{1}{n}\right)^{2}+c_{4}\left(\frac{1}{n}\right)^{4}+c_{6}\left(\frac{1}{n}\right)^{6}+\cdots
+\]
+sehingga setiap penyempurnaan menaikkan derajat terendah dalam suku
+galat sebesar 2, bukan 1. Dengan melewati derajat ganjil, pilihan
+ini menjadi sangat efisien. Namun, metode ini memiliki konsekuensi.
+Di balik $c_{2}$ tersimpan asumsi bahwa $f$ memiliki turunan kedua
+yang kontinu. Di balik $c_{4}$ tersimpan asumsi bahwa $f$ memiliki
+turunan keempat yang kontinu. Demikian seterusnya. Keakuratan setiap
+penyempurnaan mensyaratkan $f$ yang memiliki dua turunan kontinu
+tambahan. Semakin banyak penyempurnaan yang dilakukan, $f$ harus
+semakin mulus agar metode ini bekerja. Karena itu, metode Romberg
+sebaiknya digunakan hanya apabila integran diketahui memiliki turunan
+yang memadai.
+
+\subsection{Konsep Utama}
+\begin{description}
+\item [{Ekstrapolasi~Richardson:}] Jika hampiran $\tilde{p}$ diketahui
+berbentuk
+\[
+\tilde{p}(h)=p+c_{1}h^{m_{1}}+O(h^{m_{2}})
+\]
+maka hampiran 
+\[
+\frac{\alpha^{-m_{1}}\tilde{p}\left(\alpha h\right)-\tilde{p}(h)}{\alpha^{-m_{1}}-1}
+\]
+akan memiliki galat $O(h^{m_{2}})$.
+\item [{Integrasi~Romberg:}] Penerapan ekstrapolasi Richardson pada metode
+trapesium.
+\end{description}
+\noindent\startexercises 
+
+\subsection{Latihan}
+\begin{enumerate}
+\item \label{exc:calculus-extrapolation}Polinom Taylor dapat digunakan
+untuk menunjukkan bahwa
+\[
+\pi=2\sin^{-1}(1-h^{4})+K_{2}h^{2}+K_{4}h^{6}+K_{6}h^{10}+\cdots.
+\]
+Karena itu, $N(h)=2\sin^{-1}(1-h^{4})$ merupakan hampiran dengan
+galat $O(h^{2})$ untuk $\pi$. Gunakan ekstrapolasi Richardson untuk
+menurunkan hampiran dengan galat $O(h^{6})$ untuk $\pi$. \hasananswer 
+\item Menarik untuk diperhatikan bahwa kita dapat merekayasa balik penyempurnaan
+Richardson guna menghampiri $c_{i}$ pada persamaan \vref{eq:eErrorForm}.
+Sebagai contoh, $\tilde{e}(h)=e+c_{1}h+O(h^{2})$, dan kita mengasumsikan
+suku $O(h^{2})$ relatif kecil, sehingga persamaan ini dapat disusun
+ulang untuk memperoleh
+\[
+\frac{\tilde{e}(h)-e}{h}\approx c_{1}.
+\]
+Sebagai contoh khusus, $\frac{\tilde{e}(.005)-e}{.005}=\frac{2.711517122929293-e}{.005}\approx-1.35$,
+sehingga $c_{1}\approx-1.35$. Jika kita mencermati bagaimana konstanta-konstanta
+tersebut berubah ketika kita menyempurnakan hampiran awal, kita juga
+dapat memperoleh $c_{2}$, $c_{3}$, dan $c_{4}$. 
+\begin{eqnarray*}
+\tilde{e}_{1}(h) & = & 2\tilde{e}\left(\frac{h}{2}\right)-\tilde{e}(h)\\
+ & = & 2e+c_{1}h+\frac{c_{2}}{2}h^{2}+\frac{c_{3}}{4}h^{3}+\frac{c_{4}}{8}h^{4}+O(h^{5})\\
+ &  & -(e+c_{1}h+c_{2}h^{2}+c_{3}h^{3}+c_{4}h^{4}+O(h^{5}))\\
+ & = & e-\frac{c_{2}}{2}h^{2}-\frac{3c_{3}}{4}h^{3}-\frac{7c_{4}}{8}h^{4}+O(h^{5}).
+\end{eqnarray*}
+Oleh karena itu, $\tilde{e}_{1}(h)-e\approx-\frac{c_{2}}{2}h^{2}$,
+dan dari sini kita menyimpulkan 
+\[
+\frac{-2(\tilde{e}_{1}(h)-e)}{h^{2}}\approx c_{2}.
+\]
+
+\begin{enumerate}
+\item Gunakan rumus ini dan nilai-nilai pada $\ref{eq:richardsonC2}$ untuk
+memverifikasi bahwa $c_{2}\approx1.24$.
+\item Hampiri $c_{3}$ menggunakan nilai-nilai pada \ref{eq:richardsonC3}.
+\item Hampiri $c_{4}$ menggunakan nilai-nilai pada \ref{eq:richardsonC4}.
+\item Bandingkan hampiran-hampiran untuk $c_{1},c_{2},c_{3},c_{4}$ ini
+dengan nilai-nilai eksak pada kudapan \ref{crumpet:eApproximate}.
+\end{enumerate}
+\item \label{exc:calculus-extrapolation-1}Misalkan $N$ menghampiri $M$
+menurut $N(h)=M+K_{1}h^{3}+K_{2}h^{5}+K_{3}h^{7}+\cdots$. Berorde
+apakah $N_{3}(h)$ (ekstrapolasi Richardson generasi ketiga)? \hasananswer 
+\item \label{exc:calculus-extrapolation-2}Misalkan $N$ menghampiri $M$
+menurut $N(h)=M+K_{1}h^{2}+K_{2}h^{4}+K_{3}h^{6}+\cdots$. Kira-kira
+berapakah nilai 
+\[
+\frac{\left|M-N(h/3)\right|}{\left|M-N(h/4)\right|}
+\]
+ untuk $h$ yang kecil? \hasananswer 
+\item \label{exc:calculus-extrapolation-3}$N(h)=\frac{1-\cos h}{h^{2}}$
+dapat digunakan untuk menghampiri \hasananswer  
+\[
+\lim_{h\to0}\frac{1-\cos h}{h^{2}}
+\]
+
+\begin{enumerate}
+\item Hitung $N(1.0)$ dan $N(0.5)$.
+\item \label{exc:calculus-extrapolation-4}Hitung $N_{1}(1.0)$, yaitu ekstrapolasi
+Richardson pertama, dengan mengasumsikan
+
+\begin{enumerate}
+\item $N(h)$ memiliki galat berbentuk $K_{1}h+K_{2}h^{2}+K_{3}h^{3}+\cdots$
+\item $N(h)$ memiliki galat berbentuk $K_{2}h^{2}+K_{4}h^{4}+K_{6}h^{6}+\cdots$
+\end{enumerate}
+\item Menurut Anda, asumsi manakah pada bagian \ref{exc:calculus-extrapolation-4}
+yang memberikan bentuk galat yang benar, dan mengapa?
+\end{enumerate}
+\item Rumus beda mundur dapat dinyatakan sebagai
+\[
+\begin{gathered}f'(x_{0})=\frac{1}{h}[f(x_{0})-f(x_{0}-h)]\qquad\qquad\\
+\qquad+\frac{h}{2}f''(x_{0})-\frac{h^{2}}{6}f'''(x_{0})+O(h^{3})
+\end{gathered}
+\]
+
+\begin{enumerate}
+\item Gunakan ekstrapolasi Richardson untuk menurunkan rumus $O(h^{2})$
+bagi $f'(x_{0})$.
+\item Rumus yang Anda turunkan seharusnya tampak familier. Rumus apakah
+yang mirip dengannya? Apakah keduanya benar-benar sama? Mengapa atau
+mengapa tidak?
+\end{enumerate}
+\item \label{exc:calculus-extrapolation-5}Turunkan rumus $O(h^{3})$ untuk
+menghampiri $M$ yang menggunakan $N(h)$, $N(\frac{h}{2})$, dan
+$N(\frac{h}{3})$, serta didasarkan pada asumsi bahwa \hasasolution 
+\[
+M=N(h)+K_{1}h+K_{2}h^{2}+K_{3}h^{3}+\cdots.
+\]
+\item \label{exc:calculus-extrapolation-6}Data berikut memberikan taksiran
+integral $M=\int_{0}^{3\pi/2}\cos x\,dx$.
+\[
+\begin{gathered}N(h)=2.356194\qquad N(h/2)=-0.4879837\\
+N(h/4)=-0.8815732\qquad N(h/8)=-0.9709157
+\end{gathered}
+\]
+Dengan mengasumsikan $M-N(h)=K_{1}h^{2}+K_{2}h^{4}+K_{3}h^{6}+\cdots$,
+tentukan ekstrapolasi Richardson ketiga untuk $M$. \hasasolution 
+\item \label{exc:calculus-extrapolation-7}Misalkan $N(h)$ merupakan hampiran
+bagi $M$ untuk setiap $h>0$ dan bahwa 
+\[
+M-N(h)=K_{1}h+K_{2}h^{2}+K_{3}h^{3}+\cdots
+\]
+untuk beberapa konstanta $K_{1},K_{2},K_{3},\ldots$. Gunakan nilai
+$N(h)$, $N(h/3)$, dan $N(h/9)$ untuk menghasilkan hampiran $O(h^{3})$
+bagi $M$. \hasananswer 
+\item \label{exc:calculus-extrapolation-11}Gunakan integrasi Romberg untuk
+menghitung integral dengan toleransi $10^{-4}$.
+
+\begin{enumerate}
+\item ${\displaystyle \int_{1}^{3}\ln(\sin(x))dx}$ \hasasolution 
+\item ${\displaystyle \int_{5}^{7}\sqrt{x\cos x}\,dx}$
+\item ${\displaystyle \int_{1}^{4}\frac{e^{x}\ln(x)}{x}dx}$ \hasananswer 
+\item ${\displaystyle \int_{10}^{13}\sqrt{1+\cos^{2}x}\,dx}$
+\item ${\displaystyle \int_{\ln3}^{\ln7}\frac{e^{x}}{1+x}dx}$ \hasananswer 
+\item ${\displaystyle \int_{0}^{1}\frac{x^{2}-1}{x^{2}+1}dx}$
+\item ${\displaystyle \int_{0}^{2}x^{2}\ln(x^{2}+1)dx}$ \hasananswer 
+\end{enumerate}
+\item \label{exc:calculus-extrapolation-8}\octave\ Tulislah fungsi Octave
+yang menerapkan integrasi Romberg. \hasananswer 
+\item \label{exc:calculus-extrapolation-10}\octave\ (i) Gunakan kode Anda
+dari soal \ref{exc:calculus-extrapolation-8} untuk menghampiri integral
+tersebut menggunakan $tol=10^{-5}$. (ii) Hitung galat sebenarnya
+dari hampiran tersebut. (iii) Apakah hampiran tersebut memiliki galat
+tidak lebih dari $10^{-5}$ seperti yang diminta?
+
+\begin{enumerate}
+\item \label{exc:calculus-extrapolation-9}${\displaystyle \int_{0}^{2\pi}x\sin(x^{2})dx}$ \hasananswer 
+\item ${\displaystyle \int_{0.1}^{2}\frac{1}{x}\,dx}$
+\item ${\displaystyle \int_{0}^{2}x^{2}\ln(x^{2}+1)\,dx}$
+\end{enumerate}
+CATATAN: $\int_{0}^{2}x^{2}\ln(x^{2}+1)\,dx=\frac{24\ln(5)-6\tan^{-1}(2)-4}{9}$.
+\item Bandingkan hasil soal \ref{exc:calculus-extrapolation-10} dengan
+hasil soal \vref{exc:calculus-composite-23}.
+\end{enumerate}
+\finishexercises 
+
+\subsection{Jawaban}
+\begin{description}
+\item [{${\displaystyle \lim_{h\to0}(1+h)^{1/h}=e}$:}] \label{proofOfLimit}Mulailah
+dengan memperhatikan bahwa $\ln\left[(1+h)^{1/h}\right]=\frac{\ln(1+h)}{h}$.
+Tetapkan 
+\begin{eqnarray*}
+L & = & \lim_{h\to0}\frac{\ln(1+h)}{h}\\
+ & = & \lim_{h\to0}\frac{\frac{d}{dh}(\ln(1+h))}{\frac{d}{dh}(h)}\\
+ & = & \lim_{h\to0}\frac{1}{1+h}\\
+ & = & 1.
+\end{eqnarray*}
+Dengan demikian, $L=1$, dan karena fungsi eksponensial $e^{x}$ kontinu,
+\begin{eqnarray*}
+e=e^{L}=e^{\lim_{h\to0}\frac{\ln(1+h)}{h}}=\lim_{h\to0}e^{\frac{\ln(1+h)}{h}} & = & \lim_{h\to0}e^{\ln\left[(1+h)^{1/h}\right]}\\
+ & = & \lim_{h\to0}(1+h)^{1/h}.
+\end{eqnarray*}
+\item [{$\tilde{e}_{4}(h)$:}] \label{eTilde4}Kita menggunakan rumus \ref{eq:richardsonBasis}
+dengan $\alpha=\frac{1}{2}$, $m=4$, dan $n=5$ untuk memperoleh
+\begin{eqnarray*}
+\tilde{e}_{4}(h) & = & \frac{16\tilde{e}_{3}\left(\frac{h}{2}\right)-\tilde{e}_{3}(h)}{15}\\
+ & = & e+O(h^{5}).
+\end{eqnarray*}
+Dengan menerapkan rumus ini pada $\tilde{e}_{3}(0.01)$ dan $\tilde{e}_{3}(0.005)$,
+kita memperoleh
+\begin{eqnarray*}
+\tilde{e}_{4}(0.01) & = & \frac{16(2.718281828448482)-2.718281828281785}{15}\\
+ & = & 2.718281828459595,
+\end{eqnarray*}
+nilai yang akurat hingga 13 angka signifikan!
+\item [{rasio~galat:}] \label{errorRatio}Kita mengharapkan $\frac{\left|\int_{0}^{1}\sin x\,dx-T_{10}\right|}{\left|\int_{0}^{1}\sin x\,dx-T_{15}\right|}$
+bernilai kira-kira $1.5^{2}=2.25$ karena 15 (jumlah subselang yang
+digunakan dalam hampiran penyebut) adalah $1.5$ kali 10 (jumlah subselang
+yang digunakan dalam hampiran pembilang).
+\item [{$T_{5,3}$~dan~galat~absolutnya:}] \label{t35}$\frac{\left|\int_{0}^{1}\sin x\,dx-T_{5,2}\right|}{\left|\int_{0}^{1}\sin x\,dx-T_{10,2}\right|}\approx\frac{1.522(10)^{-11}}{2.374(10)^{-13}}\approx64$
+sehingga 
+\begin{eqnarray*}
+T_{5,3} & = & \frac{64T_{10,2}-T_{5,2}}{63}\approx.4596976941318606\\
+\left|\int_{0}^{1}\sin x\,dx-T_{5,3}\right| & \approx & 4(10)^{-16}
+\end{eqnarray*}
+\end{description}
+

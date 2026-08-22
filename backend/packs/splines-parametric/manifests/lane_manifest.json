@@ -1,0 +1,105 @@
+{
+  "counts": {
+    "asset_versions": 0,
+    "assets": 0,
+    "experiments": 0,
+    "localizations": 121,
+    "relations": 468,
+    "segments": 121,
+    "terms": 593,
+    "top_level_layouts": 121,
+    "units": 8
+  },
+  "edition_id": "urn:uuid:35b4350d-7202-5d47-8b85-5262d7ca441c",
+  "file_kind": "included_file",
+  "file_order": 21,
+  "files": [
+    {
+      "bytes": 0,
+      "path": "assets/assets.jsonl",
+      "records": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "assets/versions.jsonl",
+      "records": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 391,
+      "path": "authority/editions.jsonl",
+      "records": 1,
+      "sha256": "d0779ce53ecbe96c09c53e8ccc74ea4b23c1ca64115c78e27aa328cfcc019d91"
+    },
+    {
+      "bytes": 313,
+      "path": "authority/resources.jsonl",
+      "records": 1,
+      "sha256": "4284558338c31abb6452e85c4d45a6bc378b2d25e98b68ce43003a9bed97c03d"
+    },
+    {
+      "bytes": 0,
+      "path": "experiments/experiments.jsonl",
+      "records": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 595,
+      "path": "qa/events.jsonl",
+      "records": 1,
+      "sha256": "feb30b316afe36472d2344e4a0f7bfd8772445a4b5c11d37abc952f0e692aa7a"
+    },
+    {
+      "bytes": 815,
+      "path": "rights/components.jsonl",
+      "records": 2,
+      "sha256": "f3a1b297c4426fc390e9f208dc3183259c677a651df2af5fff26a66105f9034f"
+    },
+    {
+      "bytes": 129121,
+      "path": "topology/relations.jsonl",
+      "records": 468,
+      "sha256": "cafbcf03771d5a1f39118535549b965451397134d934744267372dd28cfd8c3c"
+    },
+    {
+      "bytes": 830,
+      "path": "topology/source_files.jsonl",
+      "records": 1,
+      "sha256": "2f3f15f321307b24a2424ae8b1ef603346ad26a75bdd1ca59da830dfec40cf50"
+    },
+    {
+      "bytes": 4354,
+      "path": "topology/units.jsonl",
+      "records": 8,
+      "sha256": "3869da4e4ab718f587f611e6d51fb2b43a2765a2ea531a81252c6035aec01427"
+    },
+    {
+      "bytes": 248390,
+      "path": "translation/localizations.id-ID.jsonl",
+      "records": 121,
+      "sha256": "7e6000d4f71bd217fc9590536db9e87ef5cd19ef550a516fd4861b820b622b2e"
+    },
+    {
+      "bytes": 218770,
+      "path": "translation/segments.en.jsonl",
+      "records": 121,
+      "sha256": "d2720b60ee4dceb7b6e26d9642d9e0972e3e950141531101b611516a940d3a0d"
+    },
+    {
+      "bytes": 221738,
+      "path": "translation/terms.id-ID.jsonl",
+      "records": 593,
+      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+    }
+  ],
+  "generator": "ttna-lyx-indexer-0.3.1",
+  "locale": "id-ID",
+  "recorded_date": "2026-08-20",
+  "resource_id": "urn:uuid:8fbaf4c5-6316-5159-89b9-787aa115c0dc",
+  "schema_id": "ttna-lane-manifest-v1",
+  "schema_version": "1.0.0",
+  "scope": "source/lqbrin-tea-time-numerical-1868821/splines-parametric.lyx",
+  "source_commit": "186882108a6da95c8dca5b81ce000fc3f8f3ca21",
+  "source_tree": "1e50d3756b695176008c602f0ee89712f5f32d10"
+}

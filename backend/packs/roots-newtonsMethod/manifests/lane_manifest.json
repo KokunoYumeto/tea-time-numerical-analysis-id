@@ -1,0 +1,105 @@
+{
+  "counts": {
+    "asset_versions": 0,
+    "assets": 0,
+    "experiments": 0,
+    "localizations": 131,
+    "relations": 540,
+    "segments": 131,
+    "terms": 593,
+    "top_level_layouts": 131,
+    "units": 11
+  },
+  "edition_id": "urn:uuid:35b4350d-7202-5d47-8b85-5262d7ca441c",
+  "file_kind": "included_file",
+  "file_order": 9,
+  "files": [
+    {
+      "bytes": 0,
+      "path": "assets/assets.jsonl",
+      "records": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "assets/versions.jsonl",
+      "records": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 391,
+      "path": "authority/editions.jsonl",
+      "records": 1,
+      "sha256": "d0779ce53ecbe96c09c53e8ccc74ea4b23c1ca64115c78e27aa328cfcc019d91"
+    },
+    {
+      "bytes": 313,
+      "path": "authority/resources.jsonl",
+      "records": 1,
+      "sha256": "4284558338c31abb6452e85c4d45a6bc378b2d25e98b68ce43003a9bed97c03d"
+    },
+    {
+      "bytes": 0,
+      "path": "experiments/experiments.jsonl",
+      "records": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 594,
+      "path": "qa/events.jsonl",
+      "records": 1,
+      "sha256": "30589704277868530e4d756161a78e19139d72956e402f76c931edfbb7bd50bb"
+    },
+    {
+      "bytes": 815,
+      "path": "rights/components.jsonl",
+      "records": 2,
+      "sha256": "f3a1b297c4426fc390e9f208dc3183259c677a651df2af5fff26a66105f9034f"
+    },
+    {
+      "bytes": 148879,
+      "path": "topology/relations.jsonl",
+      "records": 540,
+      "sha256": "6298b1b6520b881b16d219531007e141ef5a29755e16e294c64129fcf862db42"
+    },
+    {
+      "bytes": 667,
+      "path": "topology/source_files.jsonl",
+      "records": 1,
+      "sha256": "1e4e9e5a95416cb2ec151deb4c2ed0ad0d37294b1903507c08440a9eadc3768e"
+    },
+    {
+      "bytes": 5218,
+      "path": "topology/units.jsonl",
+      "records": 11,
+      "sha256": "e0314383a84e09a7dda2b878f578b39049be34a9797fce118ef9e9af7bfd1110"
+    },
+    {
+      "bytes": 262115,
+      "path": "translation/localizations.id-ID.jsonl",
+      "records": 131,
+      "sha256": "606c78c63613d625b227acc33d0177a94bfa4e7b4fdf7284106a9bd87fdbb83f"
+    },
+    {
+      "bytes": 229530,
+      "path": "translation/segments.en.jsonl",
+      "records": 131,
+      "sha256": "e1e372d1f5b606c7813a1db97402561688b513cf15432ae02b7afd32a42cca0b"
+    },
+    {
+      "bytes": 221738,
+      "path": "translation/terms.id-ID.jsonl",
+      "records": 593,
+      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+    }
+  ],
+  "generator": "ttna-lyx-indexer-0.3.1",
+  "locale": "id-ID",
+  "recorded_date": "2026-08-20",
+  "resource_id": "urn:uuid:8fbaf4c5-6316-5159-89b9-787aa115c0dc",
+  "schema_id": "ttna-lane-manifest-v1",
+  "schema_version": "1.0.0",
+  "scope": "source/lqbrin-tea-time-numerical-1868821/roots-newtonsMethod.lyx",
+  "source_commit": "186882108a6da95c8dca5b81ce000fc3f8f3ca21",
+  "source_tree": "1e50d3756b695176008c602f0ee89712f5f32d10"
+}

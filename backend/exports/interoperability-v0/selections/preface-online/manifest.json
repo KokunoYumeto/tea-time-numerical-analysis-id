@@ -1,0 +1,89 @@
+{
+  "exporter": "ttna-interoperability-v0-exporter-0.1.0",
+  "output": {
+    "bytes": 28896,
+    "path": "records.jsonl",
+    "records": 51,
+    "sha256": "e06757514aaaa53960b7992381224dc2e7bf2a1e9f6923479d35177062a5666d"
+  },
+  "proprietary_services_required": false,
+  "record_counts": {
+    "course": 1,
+    "edition": 1,
+    "localization": 6,
+    "program": 1,
+    "qa_event": 1,
+    "relation": 24,
+    "resource": 1,
+    "rights": 1,
+    "segment": 6,
+    "source_file": 1,
+    "term": 3,
+    "unit": 5
+  },
+  "schema_id": "ttna-dependency-closed-selection-v0",
+  "schema_version": "0.1.0",
+  "selection": {
+    "all_emitted_relation_endpoints_present": true,
+    "all_foreign_keys_resolve": true,
+    "content_segment_ids": [
+      "urn:uuid:711a13e6-4792-5d49-94f4-7ebd49b3ae6b",
+      "urn:uuid:7b839644-f99b-5d56-96eb-04c4e461dfee",
+      "urn:uuid:c3962fe6-e0f4-537d-8b11-cd44ff2e4199",
+      "urn:uuid:cd1ecff9-b8b9-533d-bd66-f6e9ee4e52be",
+      "urn:uuid:f8be565d-cfc4-5a2f-9886-199472d701bd",
+      "urn:uuid:ff09b1fb-b169-5a14-a321-96bed49c27a5"
+    ],
+    "content_unit_ids": [
+      "urn:uuid:309948d3-a03e-5749-a53b-6f5dcf605717"
+    ],
+    "context_unit_ids": [
+      "urn:uuid:b00f7eba-fa8c-533b-bbdf-281ef37c8daf",
+      "urn:uuid:bbe5e441-2af6-532c-9a0f-f3c12b3e9e40",
+      "urn:uuid:cedf6aaa-124d-5d11-813d-1fd61bb72ff9",
+      "urn:uuid:e82b6fd9-710a-5b6b-8806-8eda5e0f580f"
+    ],
+    "followed_inbound_relation_types": [
+      "corrects",
+      "defined_by",
+      "expected_output",
+      "parameterized_by_evidence",
+      "presented_by",
+      "scoped_to",
+      "translates"
+    ],
+    "followed_outbound_relation_types": [
+      "built_from",
+      "covers_concept",
+      "denotes",
+      "documented_revision_of",
+      "exact_excerpt_of",
+      "extracted_from",
+      "generated_by",
+      "generated_from",
+      "normalized_equivalent_to",
+      "supersedes",
+      "uses",
+      "uses_resource",
+      "uses_term",
+      "version_of"
+    ],
+    "reverse_foreign_key_record_types": [
+      "correction",
+      "experiment",
+      "localization",
+      "qa_event"
+    ],
+    "root_unit_ids": [
+      "urn:uuid:309948d3-a03e-5749-a53b-6f5dcf605717"
+    ],
+    "unresolved_dependencies": []
+  },
+  "semantic_sha256": "e06757514aaaa53960b7992381224dc2e7bf2a1e9f6923479d35177062a5666d",
+  "source_records": {
+    "bytes": 22050690,
+    "path": "backend/exports/interoperability-v0/records.jsonl",
+    "sha256": "203ec965823817e79939f894f871ed6c0445534fbf3a6d06d1e0fa3566e16c79"
+  },
+  "total_unique_records": 51
+}

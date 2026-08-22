@@ -1,0 +1,77 @@
+{
+  "admission": {
+    "derivation_gate": "pass_byte_exact",
+    "identity_gate": "pass",
+    "redistribution_gate": "pass_unmodified_archive_and_exact_generated_file",
+    "rights_gate": "pass"
+  },
+  "authority_sha256": "e39c7d63546ad6fa93bbe7738cea21a35b1c34e23c69985a5f14c16eaf2d6d9f",
+  "config_path": "backend/config/cprotect_toolchain_authority.v1.json",
+  "config_sha256": "e857f20925d622ca0f1c976a88fbd55bd10fac805920bdda2d22fbeda674d08f",
+  "counts": {
+    "asset_versions": 4,
+    "assets": 4,
+    "build_recipes": 1,
+    "editions": 1,
+    "relations": 9,
+    "resources": 1,
+    "rights": 1
+  },
+  "edition_id": "urn:uuid:35b4350d-7202-5d47-8b85-5262d7ca441c",
+  "file_kind": "toolchain_authority",
+  "file_order": 28001,
+  "files": [
+    {
+      "bytes": 1769,
+      "path": "assets/assets.jsonl",
+      "records": 4,
+      "sha256": "19b5b40bfa0b8826734099175b87be6556316a6ae053ec494424e1d67a5068b2"
+    },
+    {
+      "bytes": 3635,
+      "path": "assets/versions.jsonl",
+      "records": 4,
+      "sha256": "8246cca15420eb1b7712e4952f97690a6e7beccc26cf3def8fad2252dde01cca"
+    },
+    {
+      "bytes": 391,
+      "path": "authority/editions.jsonl",
+      "records": 1,
+      "sha256": "d0779ce53ecbe96c09c53e8ccc74ea4b23c1ca64115c78e27aa328cfcc019d91"
+    },
+    {
+      "bytes": 313,
+      "path": "authority/resources.jsonl",
+      "records": 1,
+      "sha256": "4284558338c31abb6452e85c4d45a6bc378b2d25e98b68ce43003a9bed97c03d"
+    },
+    {
+      "bytes": 1046,
+      "path": "build/recipes.jsonl",
+      "records": 1,
+      "sha256": "66e38e3e90c513e696f947c8ea656863e211297eacf2a00f4b40b897762f2886"
+    },
+    {
+      "bytes": 540,
+      "path": "rights/components.jsonl",
+      "records": 1,
+      "sha256": "4d7ccaa37ef1ed62a13c61dac4437eedd32cb36b92490b53fdfb7e1aeb3db192"
+    },
+    {
+      "bytes": 2484,
+      "path": "topology/relations.jsonl",
+      "records": 9,
+      "sha256": "10803fe17608341cea9064ed8ba106eec837af54cbabf1960e8e69cda6ea1430"
+    }
+  ],
+  "generator": "ttna-toolchain-authority-indexer-0.1.0",
+  "locale": "id-ID",
+  "recorded_date": "2026-08-22",
+  "resource_id": "urn:uuid:8fbaf4c5-6316-5159-89b9-787aa115c0dc",
+  "schema_id": "ttna-lane-manifest-v1",
+  "schema_version": "1.0.0",
+  "scope": "authority/toolchain/cprotect-1.0f/TOOLCHAIN_AUTHORITY.json",
+  "source_commit": "186882108a6da95c8dca5b81ce000fc3f8f3ca21",
+  "source_role": "release_toolchain_authority",
+  "source_tree": "1e50d3756b695176008c602f0ee89712f5f32d10"
+}

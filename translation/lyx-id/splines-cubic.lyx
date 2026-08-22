@@ -1,0 +1,2808 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+\input $HOME/Documents/textbook/preamble
+\end_preamble
+\use_default_options true
+\master TeaTimeNumericalAnalysis.lyx
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 4cm
+\topmargin 2.5cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 1
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Splin
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Splines"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Polinom oskulasi memiliki kegunaan terbatas dalam aplikasi yang mengharuskan
+ suatu kurva melalui sejumlah besar titik.
+ Dan jumlah besar mungkin hanya berarti sekitar 
+\shape italic
+setengah lusin
+\shape default
+.
+ Perhatikan himpunan titik yang tampak biasa berikut ini.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/generalizedSplines01.pdf
+	width 7.5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Mudah untuk membayangkan suatu fungsi yang tampak sama sederhananya dan melalui
+ titik ini, tetapi mencari fungsi tersebut ternyata sedikit menantang.
+ Polinom interpolasi berderajat terendah berosilasi terlalu lebar.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/generalizedSplines02.pdf
+	width 7.5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Ini merupakan masalah umum pada polinom interpolasi berderajat tinggi.
+ Tidak ada kendali terhadap osilasinya, dan osilasi tersebut biasanya tidak
+ diinginkan.
+ Osilasinya dapat diredam sampai tingkat tertentu dengan mencari polinom
+ oskulasi yang melalui titik-titik ini dengan, misalnya, turunan pertama sebesar
+ 
+\begin_inset Formula $0$
+\end_inset
+
+ pada 
+\begin_inset Formula $0$
+\end_inset
+
+ dan sebesar 
+\begin_inset Formula $-\frac{1}{2}$
+\end_inset
+
+ pada titik ketujuh dari kiri (titik yang koordinat 
+\begin_inset Formula $x$
+\end_inset
+
+-nya berada di antara 5 dan 6).
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/generalizedSplines03.pdf
+	width 7.5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Itu lebih baik, tetapi masih belum sepenuhnya memuaskan.
+ Menetapkan turunan pertama pada dua titik semata-mata untuk mengurangi osilasi
+ juga agak sewenang-wenang---lebih baik membiarkan sifat masalah yang menentukan.
+ Osilasi pada percobaan sebelumnya membuat hasilnya terlalu khas dan menarik
+ bagi himpunan titik hambar yang menjadi titik awal kita.
+ Cara yang sepantasnya sederhana untuk menginterpolasi data tersebut adalah
+ menghubungkan titik-titik berurutan dengan ruas garis.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/generalizedSplines04.pdf
+	width 7.5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Ini membentuk apa yang dikenal sebagai interpolasi linear sepotong-sepotong
+ dari himpunan data tersebut.
+ Jenis grafik ini sering terlihat di media massa.
+ Namun, banyak aplikasi, terutama yang berasal dari bidang teknik, memerlukan
+ suatu tingkat kehalusan.
+ Menghubungkan setiap tiga titik berurutan dengan fungsi kuadratik dapat membantu.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/generalizedSplines05.pdf
+	width 7.5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Hal itu menjamin kehalusan pada tiga titik, tetapi fungsi tersebut masih
+ belum terdiferensialkan pada titik-titik yang dipakai bersama oleh fungsi
+ kuadratik berurutan.
+ Selain itu, menggunakan tiga titik pertama untuk fungsi kuadratik pertama
+ (yang tampak linear bagi mata telanjang), titik ketiga sampai kelima untuk
+ fungsi kuadratik kedua, dan titik kelima sampai ketujuh untuk fungsi kuadratik
+ ketiga (yang juga tampak linear bagi mata telanjang) hanya menyisakan titik
+ ketujuh dan kedelapan untuk fungsi yang semestinya merupakan fungsi kuadratik
+ keempat.
+ Namun, karena hanya ada dua titik, sebagai gantinya digunakan ruas garis.
+ Solusi yang lebih halus adalah memastikan bahwa turunan pertama fungsi kuadratik
+ berurutan cocok pada titik bersama.
+ Dengan gagasan ini, masuk akal untuk mencocokkan hanya dua titik dengan setiap
+ parabola, sehingga tersisa satu koefisien (dari tiga pada setiap fungsi kuadratik)
+ untuk mencocokkan turunan fungsi kuadratik tetangganya.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/generalizedSplines06.pdf
+	width 7.5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Itu lebih baik! Fungsi parabola sepotong-sepotong ini memiliki turunan pertama
+ yang kontinu, tetapi masih ada sesuatu yang sewenang-wenang.
+ Ketujuh parabola itu secara keseluruhan memiliki 21 koefisien.
+ Membuat setiap parabola melalui dua titik memberikan 14 syarat pada koefisien-koefisien
+ tersebut.
+ Mencocokkan turunan pertama parabola-parabola yang berdampingan pada titik
+ bersama memberikan 6 syarat lagi, satu pada masing-masing dari 6 titik interior.
+ Hal ini menyisakan satu koefisien 
+\begin_inset Quotes eld
+\end_inset
+
+bebas
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Menetapkan satu syarat terakhir tampak agak sewenang-wenang, dan memang demikian.
+ Grafik menunjukkan hasil ketika turunan pada 
+\begin_inset Formula $0$
+\end_inset
+
+ ditetapkan menjadi 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ Perhatikan bahwa tidak ada kendali terhadap turunan di ujung kanan.
+ Selain sifatnya yang sewenang-wenang, ketidaksimetrian ini mengganggu.
+ Andaikan kita memiliki satu derajat kebebasan lagi...
+\end_layout
+
+\begin_layout Subsection
+Polinom sepotong-sepotong
+\end_layout
+
+\begin_layout Standard
+Suatu fungsi yang didefinisikan sepotong-sepotong dan semua potongannya berupa
+ polinom disebut polinom sepotong-sepotong.
+ Bentuknya adalah
+\begin_inset Formula 
+\[
+p(x)=\begin{cases}
+p_{1}(x), & x\in[x_{0},x_{1}]\\
+p_{2}(x), & x\in(x_{1},x_{2}]\\
+ & \vdots\\
+p_{n}(x) & x\in(x_{n-1},x_{n}]
+\end{cases}
+\]
+
+\end_inset
+
+dengan 
+\begin_inset Formula $p_{i}(x)$
+\end_inset
+
+ merupakan polinom untuk setiap 
+\begin_inset Formula $i=1,2,\ldots,n$
+\end_inset
+
+ dan 
+\begin_inset Formula $x_{0}<x_{1}<\cdots<x_{n}$
+\end_inset
+
+; atau suatu varian yang membuat 
+\begin_inset Formula $p(x_{j})$
+\end_inset
+
+ didefinisikan oleh tepat satu dari 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+.
+ Jika setiap 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+ merupakan fungsi linear, 
+\begin_inset Formula $p$
+\end_inset
+
+ disebut linear sepotong-sepotong.
+ Jika setiap 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+ merupakan fungsi kuadratik, 
+\begin_inset Formula $p$
+\end_inset
+
+ disebut kuadratik sepotong-sepotong.
+ Jika setiap 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+ merupakan fungsi kubik, 
+\begin_inset Formula $p$
+\end_inset
+
+ disebut kubik sepotong-sepotong.
+ Demikian seterusnya.
+ Contoh fungsi linear sepotong-sepotong dan kuadratik sepotong-sepotong terdapat
+ pada pendahuluan bagian ini.
+\end_layout
+
+\begin_layout Subsection
+Splin
+\end_layout
+
+\begin_layout Standard
+Definisi polinom sepotong-sepotong sama sekali tidak mengharuskan fungsi tersebut
+ terdiferensialkan atau bahkan kontinu.
+ Fungsi berikut merupakan polinom sepotong-sepotong.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/generalizedSplines07.pdf
+	width 7.5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Namun, sebagian besar aplikasi polinom sepotong-sepotong memerlukan kekontinuan
+ atau keterdiferensialan.
+ Setiap polinom sepotong-sepotong dengan sedikitnya satu turunan kontinu disebut
+ splin.
+ Titik-titik yang memisahkan potongan-potongan yang berdampingan, yaitu 
+\begin_inset Formula $x_{j}$
+\end_inset
+
+, untuk 
+\begin_inset Formula $j=1,2,\ldots,n-1$
+\end_inset
+
+, disebut simpul atau sambungan.
+\end_layout
+
+\begin_layout Standard
+Grafik terakhir pada pendahuluan bagian ini memperlihatkan splin kuadratik.
+ Setiap potongan fungsi sepotong-sepotong tersebut merupakan fungsi kuadratik,
+ dan fungsi-fungsi kuadratik itu dipilih agar turunannya cocok pada sambungan.
+ Namun, seperti yang telah dinyatakan di sana, kita perlu memberikan satu syarat
+ yang tidak alami---turunan pada titik ujung kiri.
+ Syarat itu dapat berupa turunan pada titik mana pun, atau bahkan turunan kedua
+ pada salah satu titik.
+ Dalam arti yang sangat nyata, pilihan tersebut sewenang-wenang.
+ Pilihan itu tidak ditentukan secara alami oleh masalah yang dihadapi.
+ Akibatnya, terdapat suatu keluarga solusi untuk masalah menghubungkan delapan
+ titik tersebut dengan fungsi kuadratik sepotong-sepotong yang terdiferensialkan
+ secara kontinu.
+\end_layout
+
+\begin_layout Subsection
+Splin kubik
+\end_layout
+
+\begin_layout Standard
+Splin yang paling umum digunakan adalah splin kubik.
+ Seperti pada splin kuadratik, splin kubik dihitung dengan mencocokkan turunan
+ pada sambungan.
+ Bahkan, himpunan fungsi kubik memiliki cukup banyak koefisien sehingga turunan
+ pertama maupun kedua dapat dicocokkan.
+ Namun, perhatikan bahwa menurut definisi splin kita, pencocokan turunan pertama
+ dan kedua pada sambungan tidak sepenuhnya diperlukan.
+ Sumber lain akan memberikan definisi splin yang lebih ketat, yang mengharuskan
+ pencocokan kedua turunan tersebut.
+ Sebagai konvensi, kita berfokus pada splin seperti itu.
+\end_layout
+
+\begin_layout Standard
+Splin kubik yang harus menginterpolasi 
+\begin_inset Formula $n+1$
+\end_inset
+
+ titik memiliki 
+\begin_inset Formula $n-1$
+\end_inset
+
+ sambungan dan 
+\begin_inset Formula $n$
+\end_inset
+
+ potongan.
+ Oleh karena itu, himpunan fungsi kubik tersebut memiliki 
+\begin_inset Formula $4n$
+\end_inset
+
+ koefisien.
+ Mengharuskan setiap fungsi kubik melalui 
+\begin_inset Formula $2$
+\end_inset
+
+ titik menghasilkan 
+\begin_inset Formula $2n$
+\end_inset
+
+ syarat pada koefisien.
+ Mengharuskan turunan pertama cocok pada sambungan memberikan 
+\begin_inset Formula $n-1$
+\end_inset
+
+ syarat lagi.
+ Mengharuskan turunan kedua cocok pada sambungan memberikan tambahan
+ 
+\begin_inset Formula $n-1$
+\end_inset
+
+ syarat, sehingga jumlah keseluruhannya adalah 
+\begin_inset Formula $4n-2$
+\end_inset
+
+ syarat.
+ Hal ini menyisakan 
+\begin_inset Formula $2$
+\end_inset
+
+ koefisien 
+\begin_inset Quotes eld
+\end_inset
+
+bebas
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Secara matematis, kita memiliki suatu keluarga splin dengan dua derajat kebebasan.
+ Untuk memperoleh suatu splin tertentu, kita perlu memberlakukan dua syarat
+ lagi pada koefisien.
+ Syarat-syarat ini dapat berupa turunan pertama, kedua, atau ketiga pada dua
+ simpul; turunan pertama dan kedua pada satu simpul; atau kombinasi lain dari
+ dua persyaratan turunan.
+\end_layout
+
+\begin_layout Standard
+Mungkin dengan berpedoman pada pengetahuan tentang splin juru gambar, konvensi
+ mengarahkan kita untuk menetapkan syarat titik ujung.
+ Artinya, kita mensyaratkan sesuatu mengenai suatu turunan di 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ dan di 
+\begin_inset Formula $x_{n}$
+\end_inset
+
+.
+ Menentukan turunan pertama serupa dengan mengarahkan splin juru gambar ke
+ arah tertentu pada kedua ujungnya.
+ Menetapkan turunan kedua sama dengan 
+\begin_inset Formula $0$
+\end_inset
+
+ serupa dengan membiarkan kedua ujung splin juru gambar menunjuk bebas ke
+ arah mana pun yang dibawa oleh hukum fisika.
+ Model splin juru gambar ini tidak terlalu akurat, tetapi memberikan motivasi.
+ 
+\end_layout
+
+\begin_layout Standard
+Splin kubik yang turunan pertamanya ditentukan pada kedua titik ujung disebut
+ splin terapit.
+ Splin kubik yang turunan keduanya ditetapkan sama dengan nol pada kedua titik
+ ujung disebut splin alami atau bebas.
+ Bentuk hibrida yang turunan pertamanya ditentukan pada satu ujung dan turunan
+ keduanya ditetapkan nol pada ujung lainnya tidak memiliki nama khusus.
+ Secara tepat, kita memiliki definisi berikut.
+\end_layout
+
+\begin_layout Standard
+Misalkan 
+\begin_inset Formula $(x_{0},y_{0}),(x_{1},y_{1}),\ldots,(x_{n},y_{n})$
+\end_inset
+
+ adalah 
+\begin_inset Formula $n+1$
+\end_inset
+
+ titik dengan 
+\begin_inset Formula $x_{0}<x_{1}<\cdots<x_{n}$
+\end_inset
+
+, dan misalkan 
+\begin_inset Formula $S_{i}(x)=a_{i}+b_{i}(x-x_{i})+c_{i}(x-x_{i})^{2}+d_{i}(x-x_{i})^{3}$
+\end_inset
+
+ untuk 
+\begin_inset Formula $i=1,2,\ldots,n$
+\end_inset
+
+.
+ Maka 
+\begin_inset Formula $S$
+\end_inset
+
+, yang didefinisikan oleh 
+\begin_inset Formula 
+\[
+S(x)=\begin{cases}
+S_{1}(x), & x\in[x_{0},x_{1}]\\
+S_{2}(x), & x\in[x_{1},x_{2}]\\
+ & \vdots\\
+S_{n}(x), & x\in[x_{n-1},x_{n}]
+\end{cases},
+\]
+
+\end_inset
+
+merupakan splin kubik jika memenuhi tiga syarat berikut.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S_{i}(x_{i-1})=y_{i-1}$
+\end_inset
+
+ dan 
+\begin_inset Formula $S_{i}(x_{i})=y_{i}$
+\end_inset
+
+ untuk 
+\begin_inset Formula $i=1,2,\ldots,n$
+\end_inset
+
+ (interpolasi)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S_{i}'(x_{i})=S_{i+1}'(x_{i})$
+\end_inset
+
+ dan 
+\begin_inset Formula $S_{i}''(x_{i})=S_{i+1}''(x_{i})$
+\end_inset
+
+ untuk 
+\begin_inset Formula $i=1,2,\ldots,n-1$
+\end_inset
+
+ (pencocokan turunan)
+\end_layout
+
+\begin_layout Enumerate
+Salah satu dari syarat berikut dipenuhi (syarat titik ujung)
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:naturalSpline"
+
+\end_inset
+
+
+\begin_inset Formula $S_{1}''(x_{0})=S_{n}''(x_{n})=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:clampedSpline"
+
+\end_inset
+
+
+\begin_inset Formula $S_{1}'(x_{0})=m_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $S_{n}'(x_{n})=m_{n}$
+\end_inset
+
+ untuk suatu 
+\begin_inset Formula $m_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $m_{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:mixed"
+
+\end_inset
+
+
+\begin_inset Formula $S_{1}'(x_{0})=m_{0}$
+\end_inset
+
+ untuk suatu 
+\begin_inset Formula $m_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $S_{n}''(x_{n})=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S_{1}''(x_{0})=0$
+\end_inset
+
+ dan 
+\begin_inset Formula $S_{n}'(x_{n})=m_{n}$
+\end_inset
+
+ untuk suatu 
+\begin_inset Formula $m_{n}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Jika kondisi titik ujung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:naturalSpline"
+
+\end_inset
+
+ dipenuhi, 
+\begin_inset Formula $S$
+\end_inset
+
+ disebut splin bebas atau splin alami.
+ Jika kondisi titik ujung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:clampedSpline"
+
+\end_inset
+
+ dipenuhi, 
+\begin_inset Formula $S$
+\end_inset
+
+ disebut splin terapit.
+\end_layout
+
+\begin_layout Standard
+Splin (kubik) alami yang melalui delapan titik yang disajikan dalam
+ pendahuluan bagian ini tampak seperti berikut.
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/generalizedSplines08.pdf
+	width 7.5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Akhirnya, sebuah fungsi yang sama tidak istimewanya dengan himpunan datanya! Bagaimana
+ cara menghitungnya, Anda bertanya? Jawaban singkatnya: 28 persamaan simultan
+ yang dihasilkan dari definisi splin kubik alami diselesaikan.
+ Penyelesaiannya memberikan koefisien 
+\begin_inset Formula $a_{i},b_{i},c_{i},d_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $i=1,2,\ldots,7$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Menyusun persamaan
+\end_layout
+
+\begin_layout Standard
+Jawaban panjangnya memang agak lebih panjang untuk diuraikan, tetapi sebenarnya hanya berbeda
+ dari versi singkat dalam tingkat kerinciannya.
+ Sebagai langkah awal, syarat 
+\begin_inset Formula $S_{i}(x_{i})=y_{i}$
+\end_inset
+
+ langsung memberi kita nilai bagi 
+\begin_inset Formula $n$
+\end_inset
+
+ koefisien:
+\begin_inset Formula 
+\[
+S_{i}(x_{i})=a_{i}=y_{i}.
+\]
+
+\end_inset
+
+Syarat 
+\begin_inset Formula $S_{i}(x_{i-1})=y_{i-1}$
+\end_inset
+
+ memberi kita 
+\begin_inset Formula $n$
+\end_inset
+
+ persamaan
+\begin_inset Formula 
+\begin{equation}
+S_{i}(x_{i-1})=y_{i}+b_{i}(x_{i-1}-x_{i})+c_{i}(x_{i-1}-x_{i})^{2}+d_{i}(x_{i-1}-x_{i})^{3}=y_{i-1}\label{eq:interpolationRequirement}
+\end{equation}
+
+\end_inset
+
+untuk 
+\begin_inset Formula $i=1,2,\ldots,n$
+\end_inset
+
+.
+ Masing-masing syarat turunan memberi kita 
+\begin_inset Formula $n-1$
+\end_inset
+
+ persamaan:
+\begin_inset Formula 
+\begin{eqnarray}
+S_{i}'(x_{i})=S_{i+1}'(x_{i}) & \Rightarrow & b_{i}=b_{i+1}+2c_{i+1}(x_{i}-x_{i+1})+3d_{i+1}(x_{i}-x_{i+1})^{2}\label{eq:firstDerivativeRequirement}\\
+S_{i}''(x_{i})=S_{i+1}''(x_{i}) & \Rightarrow & 2c_{i}=2c_{i+1}+6d_{i+1}(x_{i}-x_{i+1})\label{eq:secondDerivative Requirement}
+\end{eqnarray}
+
+\end_inset
+
+untuk 
+\begin_inset Formula $i=1,2,\ldots,n-1$
+\end_inset
+
+.
+ Terakhir, kondisi titik ujung memberi kita dua persamaan
+\begin_inset Formula 
+\begin{eqnarray}
+S_{1}''(x_{0}) & = & 2c_{1}+6d_{1}(x_{0}-x_{1})=0\label{eq:freeLeftEndpoint}\\
+S_{n}''(x_{n}) & = & 2c_{n}=0.\label{eq:freeRightEndpoint}
+\end{eqnarray}
+
+\end_inset
+
+Tanpa banyak kesulitan, kita memperoleh nilai 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+ dan 
+\begin_inset Formula $c_{n}$
+\end_inset
+
+.
+ Sisa 
+\begin_inset Formula $3n-1$
+\end_inset
+
+ koefisien diperoleh dengan menyelesaikan sisa 
+\begin_inset Formula $3n-1$
+\end_inset
+
+ persamaan simultan.
+ Meskipun komputer tentu dapat menangani penyelesaiannya mulai dari tahap ini, menurunkan
+ sebagian dari penyelesaian umum secara manual menghasilkan algoritma yang jauh lebih efisien.
+\end_layout
+
+\begin_layout Subsubsection
+Menyelesaikan persamaan
+\end_layout
+
+\begin_layout Standard
+Pada dasarnya, sekarang kita memiliki tiga persamaan dengan tiga peubah tak diketahui.
+ Persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:interpolationRequirement"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:firstDerivativeRequirement"
+
+\end_inset
+
+, dan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:secondDerivative Requirement"
+
+\end_inset
+
+ dituliskan dalam peubah 
+\begin_inset Formula $b_{i},c_{i},d_{i}$
+\end_inset
+
+.
+ Persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:secondDerivative Requirement"
+
+\end_inset
+
+ dapat dengan mudah diselesaikan untuk 
+\begin_inset Formula $d_{i}$
+\end_inset
+
+ sebagai fungsi dari 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+ dan persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:interpolationRequirement"
+
+\end_inset
+
+ dapat dengan mudah diselesaikan untuk 
+\begin_inset Formula $b_{i}$
+\end_inset
+
+.
+ Ekspresi yang dihasilkan dapat disubstitusikan ke dalam persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:firstDerivativeRequirement"
+
+\end_inset
+
+ sehingga diperoleh persamaan yang hanya memuat 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+.
+ Perhitungannya dapat diselesaikan dengan mudah.
+ Pada tahap ini, akan lebih mudah jika kita mendefinisikan 
+\begin_inset Formula $h_{i}=x_{i-1}-x_{i}$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{eqnarray}
+(\mbox{\ref{eq:secondDerivative Requirement}}) & \Rightarrow & d_{i+1}=\frac{c_{i}-c_{i+1}}{3h_{i+1}},\quad i=1,2,\ldots,n-1\nonumber \\
+ & \Rightarrow & d_{i}=\frac{c_{i-1}-c_{i}}{3h_{i}},\quad i=2,3,\ldots,n.\label{eq:di}\\
+(\mbox{\ref{eq:interpolationRequirement}}) & \Rightarrow & b_{i}=\frac{y_{i-1}-y_{i}}{h_{i}}-c_{i}h_{i}-d_{i}h_{i}^{2},\quad i=1,2,\ldots,n\nonumber \\
+ & \Rightarrow & b_{i}=\frac{y_{i-1}-y_{i}}{h_{i}}-c_{i}h_{i}-\frac{(c_{i-1}-c_{i})h_{i}}{3},\quad i=2,3,\ldots,n\nonumber \\
+ & \Rightarrow & b_{i}=\frac{y_{i-1}-y_{i}}{h_{i}}-\frac{(c_{i-1}+2c_{i})h_{i}}{3},\quad i=2,3,\ldots,n\label{eq:bi}\\
+ & \Rightarrow & b_{i+1}=\frac{y_{i}-y_{i+1}}{h_{i+1}}-\frac{(c_{i}+2c_{i+1})h_{i+1}}{3},\quad i=1,2,\ldots,n-1.\nonumber 
+\end{eqnarray}
+
+\end_inset
+
+Menyubstitusikan ekspresi tersebut ke dalam persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:firstDerivativeRequirement"
+
+\end_inset
+
+ menghasilkan
+\begin_inset Formula 
+\[
+\frac{y_{i-1}-y_{i}}{h_{i}}-\frac{(c_{i-1}+2c_{i})h_{i}}{3}=\frac{y_{i}-y_{i+1}}{h_{i+1}}-\frac{(c_{i}+2c_{i+1})h_{i+1}}{3}+2c_{i+1}h_{i+1}+(c_{i}-c_{i+1})h_{i+1}
+\]
+
+\end_inset
+
+untuk 
+\begin_inset Formula $i=2,3,\ldots,n-1$
+\end_inset
+
+.
+ Dengan sedikit penyederhanaan, persamaan ini menjadi
+\begin_inset Formula 
+\begin{equation}
+h_{i}c_{i-1}+2(h_{i}+h_{i+1})c_{i}+h_{i+1}c_{i+1}=3\left(\frac{y_{i-1}-y_{i}}{h_{i}}-\frac{y_{i}-y_{i+1}}{h_{i+1}}\right),\quad i=2,3,\ldots,n-1.\label{eq:firstNm2}
+\end{equation}
+
+\end_inset
+
+Kini kita memiliki 
+\begin_inset Formula $n-2$
+\end_inset
+
+ persamaan dalam 
+\begin_inset Formula $n$
+\end_inset
+
+ peubah tak diketahui 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+.
+ Persamaan-persamaan ini berlaku untuk sebarang splin kubik dengan kondisi titik ujung apa pun.
+ Namun, persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:firstDerivativeRequirement"
+
+\end_inset
+
+ belum digunakan dengan indeks 
+\begin_inset Formula $i=1$
+\end_inset
+
+.
+ Karena itu, kita masih harus memasukkan
+\begin_inset Formula 
+\begin{equation}
+b_{1}=b_{2}+2c_{2}h_{2}+3d_{2}h_{2}^{2}\label{eq:lastEquation}
+\end{equation}
+
+\end_inset
+
+ke dalam penyelesaian.
+ Tinggal mengganti 
+\begin_inset Formula $b_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $b_{2}$
+\end_inset
+
+, dan 
+\begin_inset Formula $d_{2}$
+\end_inset
+
+ dengan ekspresi dalam 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Sebagai langkah awal, persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:bi"
+
+\end_inset
+
+ dan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:di"
+
+\end_inset
+
+ dengan 
+\begin_inset Formula $i=2$
+\end_inset
+
+ memberi
+\begin_inset Formula 
+\begin{eqnarray*}
+b_{2} & = & \frac{y_{1}-y_{2}}{h_{2}}-\frac{(c_{1}+2c_{2})h_{2}}{3}\\
+d_{2} & = & \frac{c_{1}-c_{2}}{3h_{2}}.
+\end{eqnarray*}
+
+\end_inset
+
+Dengan menyubstitusikan 
+\begin_inset Formula $b_{2}$
+\end_inset
+
+ dan 
+\begin_inset Formula $d_{2}$
+\end_inset
+
+, persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lastEquation"
+
+\end_inset
+
+ menjadi 
+\begin_inset Formula 
+\begin{eqnarray}
+b_{1} & = & \frac{y_{1}-y_{2}}{h_{2}}-\frac{(c_{1}+2c_{2})h_{2}}{3}+2c_{2}h_{2}+(c_{1}-c_{2})h_{2}\nonumber \\
+ & = & \frac{y_{1}-y_{2}}{h_{2}}+\frac{2}{3}h_{2}c_{1}+\frac{1}{3}h_{2}c_{2}.\label{eq:b1}
+\end{eqnarray}
+
+\end_inset
+
+Kita belum menggunakan kondisi titik ujung, sehingga persamaan ini berlaku untuk
+ sebarang splin kubik.
+ Kondisi titik ujung apa pun yang diberikan harus menghasilkan suatu ekspresi untuk
+ 
+\begin_inset Formula $b_{1}$
+\end_inset
+
+ sebagai fungsi dari 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+ serta satu persamaan lain dalam 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Untuk splin bebas, kondisi titik ujung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:freeRightEndpoint"
+
+\end_inset
+
+ memberi 
+\begin_inset Formula $c_{n}=0$
+\end_inset
+
+.
+ Ini adalah persamaan pertama dari dua persamaan terakhir.
+ Kondisi titik ujung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:freeLeftEndpoint"
+
+\end_inset
+
+ memberi 
+\begin_inset Formula $d_{1}=-\frac{c_{1}}{3h_{1}}$
+\end_inset
+
+.
+ Hubungan ini tidak langsung berguna karena kita sedang mencari ekspresi
+ untuk 
+\begin_inset Formula $b_{1}$
+\end_inset
+
+.
+ Namun, persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:interpolationRequirement"
+
+\end_inset
+
+ dengan 
+\begin_inset Formula $i=1$
+\end_inset
+
+ memberi 
+\begin_inset Formula $b_{1}=\frac{y_{0}-y_{1}}{h_{1}}-c_{1}h_{1}-d_{1}h_{1}^{2}$
+\end_inset
+
+ sehingga kita dapat menggunakannya untuk memperoleh 
+\begin_inset Formula 
+\begin{eqnarray*}
+b_{1} & = & \frac{y_{0}-y_{1}}{h_{1}}-\frac{2}{3}c_{1}h_{1}.
+\end{eqnarray*}
+
+\end_inset
+
+Terakhir, substitusi ke dalam persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:b1"
+
+\end_inset
+
+ menghasilkan persamaan terakhir dalam 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+ adalah 
+\begin_inset Formula $\frac{y_{0}-y_{1}}{h_{1}}-\frac{2}{3}c_{1}h_{1}=\frac{y_{1}-y_{2}}{h_{2}}+\frac{2}{3}h_{2}c_{1}+\frac{1}{3}h_{2}c_{2}$
+\end_inset
+
+, yang dapat disederhanakan menjadi
+\begin_inset Formula 
+\begin{equation}
+2(h_{1}+h_{2})c_{1}+h_{2}c_{2}=3\left(\frac{y_{0}-y_{1}}{h_{1}}-\frac{y_{1}-y_{2}}{h_{2}}\right).\label{eq:finalEquation}
+\end{equation}
+
+\end_inset
+
+Persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:firstNm2"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:finalEquation"
+
+\end_inset
+
+, dan 
+\begin_inset Formula $c_{n}=0$
+\end_inset
+
+ merupakan 
+\begin_inset Formula $n$
+\end_inset
+
+ persamaan yang dapat diselesaikan untuk memperoleh 
+\begin_inset Formula $n$
+\end_inset
+
+ koefisien 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+.
+ Substitusi balik akan memberikan nilai 
+\begin_inset Formula $b_{i}$
+\end_inset
+
+ dan 
+\begin_inset Formula $d_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Kondisi titik ujung lainnya menghasilkan pasangan persamaan akhir yang berbeda, tetapi
+ prosesnya sama.
+ Kita perlu menyubstitusikan suatu ekspresi untuk 
+\begin_inset Formula $b_{1}$
+\end_inset
+
+ ke dalam 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:b1"
+
+\end_inset
+
+ dan menurunkan satu persamaan lain.
+\end_layout
+
+\begin_layout Subsection
+Kode Octave untuk Splin Alami
+\end_layout
+
+\begin_layout Standard
+Menghitung splin untuk tiga atau empat titik dapat dilakukan secara manual dengan sedikit
+ kesabaran dan ketelitian, tetapi bila jumlah titik jauh lebih banyak, aljabarnya
+ menjadi terlalu melelahkan.
+ Namun, setiap persamaan yang memuat 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+ hanya melibatkan paling banyak tiga peubah 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+ sekaligus dan mengikuti pola teratur, setidaknya untuk 
+\begin_inset Formula $n-2$
+\end_inset
+
+ persamaan tersebut.
+ Ciri-ciri ini membuat otomatisasi penyelesaiannya cukup mudah.
+ Kode berikut mungkin bukan yang paling efisien untuk menentukan splin
+ alami, tetapi disajikan demikian karena dua alasan.
+ Pertama, kode ini dimaksudkan untuk meniru secara saksama penyelesaian aljabar yang diuraikan pada
+ bagian sebelumnya sehingga lebih mudah diikuti.
+ Kedua, kode ini dimaksudkan cukup umum sehingga modifikasinya untuk kondisi titik ujung
+ lain hanya memerlukan sedikit usaha.
+ Latihan nanti akan meminta modifikasi semacam itu.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+% Written by Dr.
+ Len Brin           3 June 2014 %
+\end_layout
+
+\begin_layout Plain Layout
+
+% Purpose: Calculation of a natural cubic       %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        spline.
+                                %
+\end_layout
+
+\begin_layout Plain Layout
+
+% INPUT: points (x(1),y(1)), (x(2),y(2)), ...
+   %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        spline must interpolate.
+               %
+\end_layout
+
+\begin_layout Plain Layout
+
+% OUTPUT: coefficients of each piece of the     %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        piecewise cubic spline:                %
+\end_layout
+
+\begin_layout Plain Layout
+
+%        S(i,x) = a(i)                          %
+\end_layout
+
+\begin_layout Plain Layout
+
+%          + b(i)*(x-x(i+1))                    %
+\end_layout
+
+\begin_layout Plain Layout
+
+%          + c(i)*(x-x(i+1))^2                  %
+\end_layout
+
+\begin_layout Plain Layout
+
+%          + d(i)*(x-x(i+1))^3                  %
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+function [a,b,c,d] = naturalCubicSpline(x,y)
+\end_layout
+
+\begin_layout Plain Layout
+
+  n=length(x)-1;
+\end_layout
+
+\begin_layout Plain Layout
+
+  for i=1:n
+\end_layout
+
+\begin_layout Plain Layout
+
+    h(i)=x(i)-x(i+1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%for
+\end_layout
+
+\begin_layout Plain Layout
+
+  % Left endpoint condition:
+\end_layout
+
+\begin_layout Plain Layout
+
+  % m(1,1)*c(1) + m(1,2)*c(2) = m(1,n+1)
+\end_layout
+
+\begin_layout Plain Layout
+
+  m(1,1)=2*(h(1)+h(2)); m(1,2)=h(2);
+\end_layout
+
+\begin_layout Plain Layout
+
+  m(1,n+1)=3*((y(1)-y(2))/h(1)-(y(2)-y(3))/h(2));
+\end_layout
+
+\begin_layout Plain Layout
+
+  % Right endpoint condition:
+\end_layout
+
+\begin_layout Plain Layout
+
+  % m(n,n-1)*c(n-1) + m(n,n)*c(n) = m(n,n+1)
+\end_layout
+
+\begin_layout Plain Layout
+
+  m(n,n-1)=0; m(n,n)=1; m(n,n+1)=0;
+\end_layout
+
+\begin_layout Plain Layout
+
+  % Conditions for all splines:
+\end_layout
+
+\begin_layout Plain Layout
+
+  for i=2:n-1
+\end_layout
+
+\begin_layout Plain Layout
+
+    m(i,i-1)=h(i);
+\end_layout
+
+\begin_layout Plain Layout
+
+    m(i,i)=2*(h(i)+h(i+1));
+\end_layout
+
+\begin_layout Plain Layout
+
+    m(i,i+1)=h(i+1);
+\end_layout
+
+\begin_layout Plain Layout
+
+    m(i,n+1)=3*((y(i)-y(i+1))/h(i)-(y(i+1)-y(i+2))/h(i+1));
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%for
+\end_layout
+
+\begin_layout Plain Layout
+
+  % Solve for c(i)
+\end_layout
+
+\begin_layout Plain Layout
+
+  l(1)=m(1,1); u(1)=m(1,2)/l(1); z(1)=m(1,n+1)/l(1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  for i=2:n-1
+\end_layout
+
+\begin_layout Plain Layout
+
+    l(i)=m(i,i)-m(i,i-1)*u(i-1);
+\end_layout
+
+\begin_layout Plain Layout
+
+    u(i)=m(i,i+1)/l(i);
+\end_layout
+
+\begin_layout Plain Layout
+
+    z(i)=(m(i,n+1)-m(i,i-1)*z(i-1))/l(i);
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%for
+\end_layout
+
+\begin_layout Plain Layout
+
+  l(n)=m(n,n)-m(n,n-1)*u(n-1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  c(n)=(m(n,n+1)-m(n,n-1)*z(n-1))/l(n);
+\end_layout
+
+\begin_layout Plain Layout
+
+  for i=n-1:-1:1
+\end_layout
+
+\begin_layout Plain Layout
+
+    c(i)=z(i)-u(i)*c(i+1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%for
+\end_layout
+
+\begin_layout Plain Layout
+
+  % Compute a(i), b(i), d(i)
+\end_layout
+
+\begin_layout Plain Layout
+
+  % Endpoint conditions:
+\end_layout
+
+\begin_layout Plain Layout
+
+  b(1)=(y(1)-y(2))/h(1)-2*c(1)*h(1)/3;
+\end_layout
+
+\begin_layout Plain Layout
+
+  d(1)=-c(1)/(3*h(1));
+\end_layout
+
+\begin_layout Plain Layout
+
+  % Conditions for all splines:
+\end_layout
+
+\begin_layout Plain Layout
+
+  a(1)=y(2);
+\end_layout
+
+\begin_layout Plain Layout
+
+  for i=2:n
+\end_layout
+
+\begin_layout Plain Layout
+
+    d(i)=(c(i-1)-c(i))/(3*h(i));
+\end_layout
+
+\begin_layout Plain Layout
+
+    b(i)=(y(i)-y(i+1))/h(i)-(c(i-1)+2*c(i))*h(i)/3;
+\end_layout
+
+\begin_layout Plain Layout
+
+    a(i)=y(i+1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%for
+\end_layout
+
+\begin_layout Plain Layout
+
+end%function
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\family typewriter
+naturalCubicSpline.m
+\family default
+ dapat diunduh dari 
+\begin_inset CommandInset href
+LatexCommand href
+name "situs pendamping"
+target "http://lqbrin.github.io/tea-time-numerical/ancillaries.html"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Penerapan Splin Kubik Alami?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes eld
+\end_inset
+
+Untuk banyak penerapan penting, model matematis [splin kubik] bagi bilah lentur juru gambar ini
+ sangat realistis.
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Ahlberg and Nilson, The Theory of Splines and their Applications, Elsevier,
+ 1967.
+\end_layout
+
+\end_inset
+
+ Klaim semacam ini bertumpu pada asumsi bahwa bilah lentur juru gambar dapat
+ dimodelkan dengan tepat sebagai balok tipis dan bahwa lendutan balok kecil.
+ Namun, bentuk yang dimodelkan oleh splin sering mencakup lendutan besar, dan
+ kecuali bilah lentur juru gambar rusak dalam suatu cara, bentuknya akan
+ berupa kurva yang terdiferensialkan tak hingga kali.
+ Turunan ketiga splin kubik pada umumnya tidak kontinu sehingga
+ splin tersebut tidak memiliki turunan berorde lebih tinggi.
+ Selain itu, kondisi titik ujung 
+\begin_inset Formula $S_{0}''(x_{0})=S_{n}''(x_{n})=0$
+\end_inset
+
+ tidak sesuai dengan situasi fisik tersebut.
+ Kondisi-kondisi ini menyiratkan bahwa bentuk splin memiliki kelengkungan (kecekungan) nol
+ pada titik-titik ujung, padahal tidak ada sesuatu pun dalam situasi fisik tersebut yang mengarah pada
+ kesimpulan itu.
+\end_layout
+
+\begin_layout Standard
+Meskipun tidak efektif sebagai model bagi bilah lentur juru gambar, splin kubik
+ dapat digunakan dengan sangat efektif dalam aplikasi desain.
+ Di Boeing, produsen pesawat terbang, misalnya, splin digunakan dalam desain grafis
+ berbantuan komputer, manufaktur berbantuan komputer, analisis teknik dan
+ simulasi, serta sebagai komponen utama dalam sistem Automated Flight Manual
+ Boeing.
+ Pada tahun 2005, diperkirakan bahwa penggunaan splin di Boeing melibatkan sekitar 500
+ juta evaluasi splin setiap hari!
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+SIAM News, volume 38, number 4, May 2005.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+startexercises 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Latihan
+\end_layout
+
+\begin_layout Enumerate
+Masalah apa dalam interpolasi polinom yang diatasi oleh interpolasi splin
+ kubik?
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:cubicSplines"
+
+\end_inset
+
+Tuliskan sistem persamaan yang perlu diselesaikan untuk
+ menentukan splin kubik yang melalui 
+\begin_inset Formula $(0,-9)$
+\end_inset
+
+, 
+\begin_inset Formula $(1,-13)$
+\end_inset
+
+, dan 
+\begin_inset Formula $(2,-29)$
+\end_inset
+
+ dengan kondisi batas bebas.
+ Jangan mencoba menyelesaikan sistem tersebut.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:cubicSplines-1"
+
+\end_inset
+
+Susun, tetapi jangan selesaikan, persamaan-persamaan yang dapat digunakan untuk menentukan
+ splin kubik bebas yang melalui titik-titik 
+\begin_inset Formula $(1,1)$
+\end_inset
+
+, 
+\begin_inset Formula $(2,3)$
+\end_inset
+
+, dan 
+\begin_inset Formula $(4,2)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Sebutkan tiga alasan yang mungkin membuat Anda memilih splin kubik alih-alih
+ polinom Lagrange untuk memodelkan grafik tertentu.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:cubicSplines-2"
+
+\end_inset
+
+Tuliskan sistem persamaan yang dapat diselesaikan untuk menentukan
+ splin kubik bebas yang melalui titik-titik data berikut.
+ Jangan selesaikan sistem tersebut.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.62$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.28$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0066$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.24$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:cubicSplines-3"
+
+\end_inset
+
+Tuliskan sistem persamaan yang perlu diselesaikan untuk
+ menentukan splin kubik yang melalui 
+\begin_inset Formula $(0,-9)$
+\end_inset
+
+, 
+\begin_inset Formula $(1,-13)$
+\end_inset
+
+, dan 
+\begin_inset Formula $(2,-29)$
+\end_inset
+
+ dengan kondisi batas terapit 
+\begin_inset Formula $S'(0)=1$
+\end_inset
+
+ dan 
+\begin_inset Formula $S'(2)=-1$
+\end_inset
+
+.
+ Jangan mencoba menyelesaikan sistem tersebut.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:cubicSplines-4"
+
+\end_inset
+
+Susun, tetapi jangan selesaikan, persamaan-persamaan yang dapat digunakan untuk menentukan
+ splin kubik terapit yang melalui titik-titik 
+\begin_inset Formula $(1,1)$
+\end_inset
+
+, 
+\begin_inset Formula $(2,3)$
+\end_inset
+
+, dan 
+\begin_inset Formula $(4,2)$
+\end_inset
+
+ dengan 
+\begin_inset Formula $S'(1)=S'(4)=0$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:cubicSplines-5"
+
+\end_inset
+
+Tuliskan sistem persamaan yang dapat diselesaikan untuk menentukan
+ splin kubik terapit yang melalui titik-titik data berikut dengan 
+\begin_inset Formula $S'(0.1)=0.5$
+\end_inset
+
+ dan 
+\begin_inset Formula $S'(0.4)=0.1$
+\end_inset
+
+.
+ Jangan selesaikan sistem tersebut.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.62$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.28$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0066$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.24$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Tentukan splin yang dijelaskan dalam soal
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:cubicSplines-6"
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:cubicSplines"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:cubicSplines-7"
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:cubicSplines-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:cubicSplines-8"
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:cubicSplines-2"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:cubicSplines-10"
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:cubicSplines-3"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:cubicSplines-11"
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:cubicSplines-4"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:cubicSplines-12"
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:cubicSplines-5"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Gunakan kode Octave yang disajikan dalam bagian ini untuk memeriksa jawaban Anda atas soal
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:cubicSplines-14"
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:cubicSplines-6"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:cubicSplines-7"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:cubicSplines-15"
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:cubicSplines-8"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:cubicSplines-9"
+
+\end_inset
+
+Ubah kode Octave yang disajikan dalam bagian ini agar kode tersebut menghitung
+ koefisien splin kubik terapit.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Gunakan kode Anda dari soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:cubicSplines-9"
+
+\end_inset
+
+ untuk memeriksa jawaban Anda atas soal
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:cubicSplines-10"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:cubicSplines-16"
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:cubicSplines-11"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:cubicSplines-17"
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:cubicSplines-12"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:cubicSplines-13"
+
+\end_inset
+
+Ubah kode Octave yang disajikan dalam bagian ini agar kode tersebut menghitung
+ koefisien splin kubik dengan kondisi titik ujung campuran 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:mixed"
+
+\end_inset
+
+ (halaman 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "enu:mixed"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Gunakan kode Anda dari soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:cubicSplines-13"
+
+\end_inset
+
+ untuk menentukan splin kubik yang melalui 
+\begin_inset Formula $(0,-9)$
+\end_inset
+
+, 
+\begin_inset Formula $(1,-13)$
+\end_inset
+
+, dan 
+\begin_inset Formula $(2,-29)$
+\end_inset
+
+ dengan kondisi batas campuran 
+\begin_inset Formula $S'(0)=1$
+\end_inset
+
+ dan 
+\begin_inset Formula $S''(2)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Gunakan kode Anda dari soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:cubicSplines-13"
+
+\end_inset
+
+ untuk menentukan splin kubik yang melalui titik-titik 
+\begin_inset Formula $(1,1)$
+\end_inset
+
+, 
+\begin_inset Formula $(2,3)$
+\end_inset
+
+, dan 
+\begin_inset Formula $(4,2)$
+\end_inset
+
+ dengan 
+\begin_inset Formula $S'(1)=S''(4)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Misalkan diberikan 
+\begin_inset Formula $n+1$
+\end_inset
+
+ titik 
+\begin_inset Formula $(n>1)$
+\end_inset
+
+.
+ Berapa banyak kondisi titik ujung yang diperlukan untuk menginterpolasi titik-titik tersebut dengan
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+splin kuadratik dengan pencocokan turunan pertama pada setiap sambungan?
+\end_layout
+
+\begin_layout Enumerate
+splin kubik dengan pencocokan turunan pertama dan kedua pada setiap sambungan?
+\end_layout
+
+\begin_layout Enumerate
+splin kuartik dengan pencocokan turunan pertama, kedua, dan ketiga pada setiap
+ sambungan?
+\end_layout
+
+\begin_layout Enumerate
+splin berderajat 
+\begin_inset Formula $k$
+\end_inset
+
+ 
+\begin_inset Formula $(k>1)$
+\end_inset
+
+ dengan pencocokan turunan hingga orde 
+\begin_inset Formula $k-1$
+\end_inset
+
+ pada setiap sambungan?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Misalkan suatu splin 
+\begin_inset Formula $S$
+\end_inset
+
+ akan dicocokkan dengan empat titik 
+\begin_inset Formula $(x_{i},y_{i})$
+\end_inset
+
+, 
+\begin_inset Formula $i=0,1,2,3$
+\end_inset
+
+, dengan 
+\begin_inset Formula $x_{0}<x_{1}<x_{2}<x_{3}$
+\end_inset
+
+.
+ Selanjutnya, anggaplah 
+\begin_inset Formula $S$
+\end_inset
+
+ linear pada 
+\begin_inset Formula $[x_{0},x_{1}]$
+\end_inset
+
+, kuadratik pada 
+\begin_inset Formula $[x_{1},x_{2}]$
+\end_inset
+
+, dan kubik pada 
+\begin_inset Formula $[x_{2},x_{3}]$
+\end_inset
+
+.
+ Terakhir, anggaplah 
+\begin_inset Formula $S$
+\end_inset
+
+ memiliki turunan pertama yang kontinu.
+ Berapa banyak kondisi titik ujung yang diperlukan agar splin tersebut ditentukan secara unik?
+ Jelaskan mengapa setiap kondisi titik ujung semacam itu harus diberikan pada 
+\begin_inset Formula $x_{3}$
+\end_inset
+
+ dan bukan pada 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Misalkan 
+\begin_inset Formula $f(x)=\sin x$
+\end_inset
+
+ dan 
+\begin_inset Formula $x_{0}=0$
+\end_inset
+
+, 
+\begin_inset Formula $x_{1}=\pi/4$
+\end_inset
+
+, 
+\begin_inset Formula $x_{2}=\pi/2$
+\end_inset
+
+, 
+\begin_inset Formula $x_{3}=3\pi/4$
+\end_inset
+
+, dan 
+\begin_inset Formula $x_{4}=\pi$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Tentukan splin kubik (terapit) yang melalui 
+\begin_inset Formula $(x_{0},f(x_{0})),(x_{1},f(x_{1})),\ldots,(x_{4},f(x_{4}))$
+\end_inset
+
+ dengan 
+\begin_inset Formula $S'(0)=f'(0)$
+\end_inset
+
+ dan 
+\begin_inset Formula $S'(\pi)=f'(\pi)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Hampiri 
+\begin_inset Formula $f(\pi/3)$
+\end_inset
+
+ dengan menghitung 
+\begin_inset Formula $S(\pi/3)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Hampiri 
+\begin_inset Formula $f(7\pi/8)$
+\end_inset
+
+ dengan menghitung 
+\begin_inset Formula $S(7\pi/8)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Hitung galat mutlak pada hampiran-hampiran tersebut.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+finishexercises 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

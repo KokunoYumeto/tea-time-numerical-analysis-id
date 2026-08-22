@@ -1,0 +1,5039 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\input $HOME/Documents/Book-Numerical/preamble
+\end_preamble
+\use_default_options true
+\master TeaTimeNumericalAnalysis.lyx
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Pendahuluan
+\end_layout
+
+\begin_layout Section
+
+\series bold
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Accuracy"
+
+\end_inset
+
+Akurasi
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{arabic}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[LE,RO]{
+\backslash
+thepage}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[RE]{
+\backslash
+leftmark}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[LO]{
+\backslash
+rightmark}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Mengukur Galat
+\end_layout
+
+\begin_layout Standard
+Metode numerik dirancang untuk menghampiri berbagai macam objek.
+ Kadang-kadang yang dihampiri adalah akar, kadang-kadang turunan atau integral
+ tentu, kurva, ataupun solusi persamaan diferensial.
+ Karena metode numerik hanya menghasilkan hampiran terhadap objek-objek tersebut,
+ penting bagi kita untuk mengetahui seberapa akurat hasilnya.
+ Terkadang akurasi ditentukan oleh analisis aljabar yang cermat, terkadang
+ oleh analisis kalkulus yang cermat, dan sering kali oleh analisis polinomial
+ Taylor yang cermat.
+ Namun, sebelum membahas perincian tersebut, kita perlu membicarakan bagaimana
+ galat dan, dengan demikian, akurasi diukur.
+\end_layout
+
+\begin_layout Standard
+Ada dua ukuran dasar akurasi
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+akurasi
+\end_layout
+
+\end_inset
+
+: galat absolut
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+galat ! absolut
+\end_layout
+
+\end_inset
+
+ dan galat relatif
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+galat ! relatif
+\end_layout
+
+\end_inset
+
+.
+ Misalkan 
+\begin_inset Formula $p$
+\end_inset
+
+ adalah nilai yang hendak kita hampiri, dan 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ merupakan hampiran terhadap 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ Maka 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ meleset tepat sebesar 
+\begin_inset Formula $\tilde{p}-p$
+\end_inset
+
+, yang disebut galat
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+galat
+\end_layout
+
+\end_inset
+
+.
+ Tentu saja, 
+\begin_inset Formula $\tilde{p}-p$
+\end_inset
+
+ akan bernilai negatif ketika 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ terlalu rendah.
+ Artinya, ketika hampiran 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ lebih kecil daripada nilai eksak 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ Sebaliknya, 
+\begin_inset Formula $\tilde{p}-p$
+\end_inset
+
+ akan bernilai positif ketika 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ terlalu tinggi.
+ Namun, pada umumnya kita tidak mempersoalkan apakah hampiran terlalu tinggi
+ atau terlalu rendah.
+ Kita hanya ingin mengetahui seberapa besar penyimpangannya.
+ Karena itu, kita paling sering membicarakan galat absolut
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+galat ! absolut
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Formula $|\tilde{p}-p|$
+\end_inset
+
+.
+ Anda mungkin mengenali ekspresi 
+\begin_inset Formula $|\tilde{p}-p|$
+\end_inset
+
+ sebagai jarak antara 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ dan 
+\begin_inset Formula $p$
+\end_inset
+
+, dan itu merupakan cara yang baik untuk memandang galat absolut.
+\end_layout
+
+\begin_layout Standard
+Galat absolut ketika menghampiri 
+\begin_inset Formula $p=\pi$
+\end_inset
+
+ dengan bilangan rasional 
+\begin_inset Formula $\tilde{p}=\frac{22}{7}$
+\end_inset
+
+ adalah 
+\begin_inset Formula $|\frac{22}{7}-\pi|\approx0.00126$
+\end_inset
+
+.
+ Galat absolut ketika menghampiri 
+\begin_inset Formula $\pi^{5}$
+\end_inset
+
+ dengan bilangan rasional 
+\begin_inset Formula $\frac{16525}{54}$
+\end_inset
+
+ adalah 
+\begin_inset Formula $|\frac{16525}{54}-\pi^{5}|\approx0.00116$
+\end_inset
+
+.
+ Galat absolut kedua hampiran ini hampir sama.
+ Agar hal tersebut tampak lebih jelas, 
+\begin_inset Formula $\pi\approx3.14159$
+\end_inset
+
+ dan 
+\begin_inset Formula $\frac{22}{7}\approx3.14285$
+\end_inset
+
+, sedangkan 
+\begin_inset Formula $\pi^{5}\approx306.01968$
+\end_inset
+
+ dan 
+\begin_inset Formula $\frac{16525}{54}\approx306.01851$
+\end_inset
+
+.
+ Setiap hampiran mulai berbeda dari nilai eksaknya masing-masing pada tempat
+ perseribuan.
+ Masing-masing hanya meleset sebesar 1 pada tempat perseribuan tersebut.
+\end_layout
+
+\begin_layout Standard
+Namun, ada hal lain yang terjadi di sini.
+ 
+\begin_inset Formula $\pi$
+\end_inset
+
+ mendekati 3, sedangkan 
+\begin_inset Formula $\pi^{5}$
+\end_inset
+
+ mendekati 300.
+ Untuk menghampiri 
+\begin_inset Formula $\pi$
+\end_inset
+
+ secara akurat hingga perseratus terdekat, hampiran hanya perlu sama dengan
+ nilai eksak pada 3 nilai tempat—satuan, persepuluhan, dan perseratusan.
+ Untuk menghampiri 
+\begin_inset Formula $\pi^{5}$
+\end_inset
+
+ secara akurat hingga perseratus terdekat, hampiran harus sama dengan nilai
+ eksak pada 5 nilai tempat—ratusan, puluhan, satuan, persepuluhan, dan perseratusan.
+ Dengan istilah yang lebih ilmiah, kita mengatakan bahwa 
+\begin_inset Formula $\frac{22}{7}$
+\end_inset
+
+ menghampiri 
+\begin_inset Formula $\pi$
+\end_inset
+
+ secara akurat hingga 3 angka signifikan, sedangkan 
+\begin_inset Formula $\frac{16525}{54}$
+\end_inset
+
+ menghampiri 
+\begin_inset Formula $\pi^{5}$
+\end_inset
+
+ secara akurat hingga 5 angka signifikan.
+ Di sinilah letak inti galat relatif: membandingkan galat absolut dengan besar
+ nilai yang sedang dihampiri.
+ Perbandingan ini dilakukan dengan menghitung rasio galat terhadap nilai eksak.
+ Dengan demikian, galat relatif ketika menghampiri 
+\begin_inset Formula $\pi$
+\end_inset
+
+ dengan 
+\begin_inset Formula $\frac{22}{7}$
+\end_inset
+
+ adalah 
+\begin_inset Formula ${\displaystyle \frac{|\frac{22}{7}-\pi|}{|\pi|}\approx4.02(10)^{-4}}$
+\end_inset
+
+, sedangkan galat relatif ketika menghampiri 
+\begin_inset Formula $\pi^{5}$
+\end_inset
+
+ dengan 
+\begin_inset Formula $\frac{16525}{54}$
+\end_inset
+
+ adalah 
+\begin_inset Formula ${\displaystyle \frac{|\frac{16525}{54}-\pi^{5}|}{|\pi^{5}|}\approx3.81(10)^{-6}}$
+\end_inset
+
+.
+ Kedua galat relatif berbeda dengan faktor sekitar 100 (setara dengan kira-kira
+ dua angka signifikan dalam akurasi), meskipun galat absolutnya hampir sama.
+ Secara umum, galat relatif
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+galat ! relatif
+\end_layout
+
+\end_inset
+
+ ketika menghampiri 
+\begin_inset Formula $p$
+\end_inset
+
+ dengan 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ diberikan oleh 
+\begin_inset Formula ${\displaystyle \frac{|\tilde{p}-p|}{|p|}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Sumber Galat
+\end_layout
+
+\begin_layout Standard
+Ada dua kategori umum galat.
+ Galat algoritmik
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+galat ! algoritmik
+\end_layout
+
+\end_inset
+
+ dan galat titik-mengambang
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+galat ! titik-mengambang
+\end_layout
+
+\end_inset
+
+.
+ Galat algoritmik adalah setiap galat yang timbul dari metode hampiran itu
+ sendiri.
+ Artinya, galat ini tidak dapat dihindari sekalipun kita melakukan perhitungan
+ eksak pada setiap langkah.
+ Galat titik-mengambang timbul karena komputer dan kalkulator pada umumnya
+ tidak melakukan aritmetika eksak, melainkan aritmetika titik-mengambang.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{digression}{Standar IEEE 754}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Nilai titik-mengambang
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+aritmetika titik-mengambang
+\end_layout
+
+\end_inset
+
+ disimpan dalam bentuk biner.
+ Menurut Standar IEEE 754 yang digunakan oleh kebanyakan komputer, mantisa
+ (atau koefisien signifikan) disimpan menggunakan 52 bit, yaitu 52 tempat biner.
+ Karena bit terdepan selalu dianggap bernilai 1 (dan karena itu tidak benar-benar
+ disimpan), setiap bilangan titik-mengambang direpresentasikan menggunakan
+ 53 nilai tempat biner yang berurutan.
+ Sekarang mari kita perhatikan bagaimana 
+\begin_inset Formula $1/7$
+\end_inset
+
+ direpresentasikan secara eksak.
+ Dalam biner, sepertujuh sama dengan 
+\begin_inset Formula $0.001001001\ldots$
+\end_inset
+
+ karena 
+\begin_inset Formula $\frac{1}{7}=\sum_{i=1}^{\infty}2^{-3i}=\frac{1}{8}+\frac{1}{64}+\frac{1}{512}+\cdots$
+\end_inset
+
+.
+ Untuk melihat bahwa hal ini benar, ingatlah dari kalkulus bahwa
+\begin_inset Formula 
+\begin{eqnarray*}
+\sum_{i=1}^{\infty}2^{-3i} & = & \sum_{i=1}^{\infty}\left(2^{-3}\right)^{i}\\
+ & = & \frac{2^{-3}}{1-2^{-3}}\\
+ & = & \frac{1/8}{7/8}\\
+ & = & \frac{1}{7}.
+\end{eqnarray*}
+
+\end_inset
+
+Namun, dalam Standar IEEE 754, 
+\begin_inset Formula $\frac{1}{7}$
+\end_inset
+
+ dipangkas menjadi
+\begin_inset Formula 
+\[
+1.0010010010010010010010010010010010010010010010010010\times(2)^{-3}
+\]
+
+\end_inset
+
+atau 
+\begin_inset Formula $\sum_{i=1}^{18}2^{-3i}$
+\end_inset
+
+ yang tepat sama dengan 
+\begin_inset Formula $\frac{2573485501354569}{18014398509481984}$
+\end_inset
+
+.
+ Dengan demikian, galat titik-mengambang dalam menghitung 
+\begin_inset Formula $1/7$
+\end_inset
+
+ adalah
+\begin_inset Formula 
+\begin{eqnarray*}
+\left|\frac{2573485501354569}{18014398509481984}-\frac{1}{7}\right| & = & \frac{1}{126100789566373888}\approx7.93(10)^{-18}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Referensi
+\shape italic
+ 
+\shape default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cunyieee754,goldberg"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{digression} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dalam aritmetika titik-mengambang, kalkulator atau komputer biasanya menyimpan
+ nilai dengan sekitar 16 angka signifikan.
+ Sebagai contoh, pada komputer atau kalkulator biasa (yang menggunakan aritmetika
+ presisi ganda), bilangan 
+\begin_inset Formula $\frac{1}{7}$
+\end_inset
+
+ disimpan kira-kira sebagai 
+\begin_inset Formula $0.1428571428571428$
+\end_inset
+
+, sedangkan nilai eksaknya adalah 
+\begin_inset Formula $0.1428571428571428\ldots$
+\end_inset
+
+.
+ Pada nilai eksak, pola 
+\begin_inset Formula $142857$
+\end_inset
+
+ berulang tanpa henti, sedangkan pada nilai titik-mengambang pengulangan berhenti
+ setelah angka 8 yang ketiga.
+ Nilai tersebut dipangkas hingga 16 tempat desimal dalam representasi titik-mengambang.
+ Jadi, galat titik-mengambang dalam menghitung 
+\begin_inset Formula $1/7$
+\end_inset
+
+ adalah sekitar 
+\begin_inset Formula $5(10)^{-17}$
+\end_inset
+
+.
+ Saya menggunakan kata 
+\begin_inset Quotes eld
+\end_inset
+
+sekitar
+\begin_inset Quotes erd
+\end_inset
+
+ atau 
+\begin_inset Quotes eld
+\end_inset
+
+kira-kira
+\begin_inset Quotes erd
+\end_inset
+
+ dalam pembahasan ini karena pernyataan tersebut tidak sepenuhnya tepat,
+ tetapi maksudnya sudah jelas.
+ Terdapat galat kecil ketika merepresentasikan 
+\begin_inset Formula $1/7$
+\end_inset
+
+ sebagai bilangan riil titik-mengambang.
+ Hal yang sama berlaku bagi semua bilangan riil, kecuali suatu himpunan berhingga.
+\end_layout
+
+\begin_layout Standard
+Memang terdapat galat dalam representasi titik-mengambang bilangan riil,
+ tetapi galat itu selalu kecil dibandingkan dengan besar bilangan riil yang
+ direpresentasikan.
+ Galat relatifnya sekitar 
+\begin_inset Formula $10^{-17}$
+\end_inset
+
+, sehingga pembahasan galat titik-mengambang mungkin tampak semata-mata sebagai
+ latihan akademis.
+ Lagi pula, seberapa berartinya galat sebesar 
+\begin_inset Formula $7.93(10)^{-18}$
+\end_inset
+
+? Adakah yang akan kesal jika ia dijual sebuah cincin selebar 
+\begin_inset Formula $.14285714285714284921$
+\end_inset
+
+ inci padahal seharusnya lebarnya 
+\begin_inset Formula $.14285714285714285714$
+\end_inset
+
+ inci? Jelas tidak.
+ Namun, yang perlu dikhawatirkan bukan hanya galat dalam satu perhitungan
+ (penjumlahan, pengurangan, perkalian, atau pembagian).
+ Metode numerik memerlukan puluhan, ribuan, bahkan jutaan perhitungan.
+ Galat-galat kecil dapat terakumulasi.
+ Cobalah percobaan berikut.
+\end_layout
+
+\begin_layout Subsubsection
+Percobaan 1
+\end_layout
+
+\begin_layout Standard
+\noindent
+Gunakan kalkulator atau komputer Anda untuk menghitung bilangan-bilangan 
+\begin_inset Formula $p_{0},p_{1},p_{2},\ldots,p_{7}$
+\end_inset
+
+ sesuai aturan berikut.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p_{0}=\pi$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p_{1}=10p_{0}-31$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p_{2}=100p_{1}-41$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p_{3}=100p_{2}-59$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p_{4}=100p_{3}-26$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p_{5}=100p_{4}-53$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p_{6}=100p_{5}-58$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p_{7}=100p_{6}-97$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Menurut kalkulator atau komputer Anda, 
+\begin_inset Formula $p_{7}$
+\end_inset
+
+ kemungkinan menghasilkan salah satu nilai berikut:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.93116$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(Octave)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.9311599796346854$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(Maxima)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(CASIO 
+\shape italic
+fx
+\shape default
+-115ES)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Namun, sedikit aljabar akan menunjukkan bahwa 
+\begin_inset Formula $p_{7}=10000000000000\pi-31415926535897$
+\end_inset
+
+ secara eksak; hingga 6 tempat desimal, nilainya adalah 
+\begin_inset Formula $0.932384$
+\end_inset
+
+.
+ Bandingkan nilai ini dengan bilangan yang Anda peroleh untuk 
+\begin_inset Formula $p_{7}$
+\end_inset
+
+.
+ Meskipun 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+ merupakan hampiran yang sangat akurat terhadap 
+\begin_inset Formula $\pi$
+\end_inset
+
+ (akurat hingga sekitar 16 tempat desimal), setelah hanya beberapa perhitungan,
+ galat pembulatan menyebabkan 
+\begin_inset Formula $p_{7}$
+\end_inset
+
+ hanya memiliki satu atau dua angka signifikan yang akurat!
+\end_layout
+
+\begin_layout Standard
+Percobaan ini menyoroti penyebab terpenting galat titik-mengambang: pengurangan
+ dua bilangan yang hampir sama.
+ Kita berulang kali mengurangkan bilangan-bilangan yang angka puluhan dan
+ satuannya sama.
+ Dua angka signifikan terdepan keduanya cocok.
+ Sebagai contoh, 
+\begin_inset Formula $10\pi-31=31.415926\ldots-31$
+\end_inset
+
+.
+ 
+\begin_inset Formula $10\pi$
+\end_inset
+
+ dipertahankan akurat hingga sekitar 16 angka (
+\begin_inset Formula $31.41592653589793$
+\end_inset
+
+), tetapi 
+\begin_inset Formula $10\pi-31$
+\end_inset
+
+ dipertahankan akurat hanya hingga 14 angka signifikan (
+\begin_inset Formula $0.41592653589793$
+\end_inset
+
+).
+ Setiap pengurangan berikutnya menurunkan akurasi sebanyak dua angka signifikan
+ lagi.
+ Bahkan, 
+\begin_inset Formula $p_{7}$
+\end_inset
+
+ direpresentasikan hanya dengan 2 angka signifikan.
+ Kita telah berulang kali mengurangkan bilangan-bilangan yang hampir sama.
+ Setiap kali melakukannya, sebagian akurasi hilang.
+ Galat titik-mengambang pun membesar.
+\end_layout
+
+\begin_layout Standard
+Dalam perhitungan yang tidak melibatkan pengurangan dua besaran yang hampir
+ sama, galat algoritmik tetap perlu diperhatikan.
+ Sebagai contoh, misalkan 
+\begin_inset Formula $f(x)=\sin x$
+\end_inset
+
+.
+ Dari definisi turunan dapat dibuktikan bahwa
+\begin_inset Formula 
+\[
+f'(1)=\lim_{h\to0}\frac{\sin(1+h)-\sin(1-h)}{2h}.
+\]
+
+\end_inset
+
+Karena itu, secara umum kita mengharapkan bahwa 
+\begin_inset Formula $\tilde{p}(h)=\frac{\sin(1+h)-\sin(1-h)}{2h}$
+\end_inset
+
+ merupakan hampiran yang baik terhadap 
+\begin_inset Formula $f'(1)$
+\end_inset
+
+ untuk nilai 
+\begin_inset Formula $h$
+\end_inset
+
+ yang kecil; dan semakin kecil 
+\begin_inset Formula $h$
+\end_inset
+
+, semakin baik pula hampirannya.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Percobaan 2
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:derivativeExperiment"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dengan kalkulator atau komputer, hitung 
+\begin_inset Formula $\tilde{p}(h)$
+\end_inset
+
+ untuk 
+\begin_inset Formula $h=10^{-2}$
+\end_inset
+
+, 
+\begin_inset Formula $h=10^{-3}$
+\end_inset
+
+, dan seterusnya hingga 
+\begin_inset Formula $h=10^{-7}$
+\end_inset
+
+.
+ Hasil Anda semestinya menyerupai tabel berikut:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $h$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tilde{p}(h)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $10^{-2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5402933008747335$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $10^{-3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5403022158176896$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $10^{-4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5403023049677103$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $10^{-5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5403023058569989$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $10^{-6}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5403023058958567$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $10^{-7}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5403023056738121$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Kolom kedua dihitung menggunakan aritmetika hampiran (titik-mengambang), sehingga
+ secara teknis merupakan hampiran atas suatu hampiran.
+ Karena 
+\begin_inset Formula $f'(1)=\cos(1)\approx.5403023058681398$
+\end_inset
+
+, setiap hampiran memang cukup dekat dengan nilai eksak.
+ Namun, jika kita mengamatinya lebih saksama, masih ada hal lain yang perlu
+ dikatakan.
+ Pertama, galat algoritmik
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+galat ! algoritmik
+\end_layout
+
+\end_inset
+
+ dari 
+\begin_inset Formula $\tilde{p}(10^{-2})$
+\end_inset
+
+ adalah 
+\begin_inset Formula 
+\begin{eqnarray*}
+|\tilde{p}^{*}(10^{-2})-f'(1)| & = & \left|50\left(\sin\left(\frac{101}{100}\right)-\sin\left(\frac{99}{100}\right)\right)-\cos(1)\right|\\
+ & \approx & 9.00(10)^{-6}
+\end{eqnarray*}
+
+\end_inset
+
+yang akurat hingga tiga angka signifikan.
+ Artinya, jika kita menghitung 
+\begin_inset Formula $\tilde{p}(10^{-2})$
+\end_inset
+
+ dengan aritmetika eksak, yang di sini dinotasikan dengan 
+\begin_inset Formula $\tilde{p}^{*}(10^{-2})$
+\end_inset
+
+, nilainya tetap meleset dari 
+\begin_inset Formula $f'(1)$
+\end_inset
+
+ sebesar kira-kira 
+\begin_inset Formula $9(10)^{-6}$
+\end_inset
+
+.
+ Galat titik-mengambang
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+galat ! titik-mengambang
+\end_layout
+
+\end_inset
+
+ hanya mengukur sejauh apa nilai terhitung dari 
+\begin_inset Formula $\tilde{p}(10^{-2})$
+\end_inset
+
+ menyimpang dari nilai eksak 
+\begin_inset Formula $\tilde{p}^{*}(10^{-2})$
+\end_inset
+
+ untuk 
+\begin_inset Formula $\tilde{p}(10^{-2})$
+\end_inset
+
+.
+ Dengan kata lain, galat titik-mengambang diberikan oleh 
+\begin_inset Formula $\left|\tilde{p}^{*}-\tilde{p}\right|$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\left|50\left(\sin\left(\frac{101}{100}\right)-\sin\left(\frac{99}{100}\right)\right)-0.5402933008747335\right|\approx1.58(10)^{-17},
+\]
+
+\end_inset
+
+yang sekecil mungkin seperti yang dapat diharapkan.
+ Galat absolut 
+\begin_inset Formula $|\tilde{p}(10^{-2})-f'(1)|=|0.5402933008747335-\cos(1)|$
+\end_inset
+
+ pada dasarnya sepenuhnya bersifat algoritmik.
+ Galat pembulatan jauh lebih kecil daripada galat algoritmik.
+ Fakta bahwa kita menggunakan aritmetika titik-mengambang dapat diabaikan.
+ 
+\end_layout
+
+\begin_layout Standard
+Sebaliknya, galat algoritmik dari 
+\begin_inset Formula $\tilde{p}(10^{-7})$
+\end_inset
+
+ adalah 
+\begin_inset Formula 
+\begin{eqnarray*}
+|\tilde{p}^{*}(10^{-7})-f'(1)| & = & \left|5000000\left(\sin\left(\frac{10000001}{10000000}\right)-\sin\left(\frac{9999999}{10000000}\right)\right)-\cos(1)\right|\\
+ & \approx & 9.00(10)^{-16}
+\end{eqnarray*}
+
+\end_inset
+
+yang akurat hingga tiga angka signifikan.
+ Namun, kita perlu sedikit mengkhawatirkan galat titik-mengambang karena
+ 
+\begin_inset Formula ${\displaystyle \sin\left(\frac{10000001}{10000000}\right)\approx0.8414710388}$
+\end_inset
+
+ dan 
+\begin_inset Formula ${\displaystyle \sin\left(\frac{9999999}{10000000}\right)\approx.8414709307}$
+\end_inset
+
+ hampir sama.
+ Kita mengurangkan bilangan yang lima angka signifikan terdepannya cocok!
+ Galat titik-mengambangnya sekali lagi adalah 
+\begin_inset Formula $|\tilde{p}^{*}-\tilde{p}|$
+\end_inset
+
+, yaitu
+\begin_inset Formula 
+\[
+\left|5000000\left(\sin\left(\frac{10000001}{10000000}\right)-\sin\left(\frac{9999999}{10000000}\right)\right)-0.5403023056738121\right|\approx1.94(10)^{-10}.
+\]
+
+\end_inset
+
+Galat ini mungkin tampak kecil, tetapi nilainya sangat besar dibandingkan
+ dengan galat algoritmik sekitar 
+\begin_inset Formula $9(10)^{-16}$
+\end_inset
+
+.
+ Jadi, dalam kasus ini, pada dasarnya seluruh galat timbul karena kita menggunakan
+ aritmetika titik-mengambang! Kali ini, galat algoritmik jauh lebih kecil
+ daripada galat pembulatan.
+ Untungnya, hal ini tidak sering terjadi sehingga kita biasanya dapat memusatkan
+ perhatian hanya pada galat algoritmik.
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{digression}{Kekacauan} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Edward Lorenz
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Lorenz, Edward
+\end_layout
+
+\end_inset
+
+, seorang meteorolog di Massachusetts Institute of Technology, termasuk
+ orang pertama yang mengenali dan mempelajari fenomena matematis yang kini
+ disebut kekacauan.
+ Pada awal tahun 1960-an, ia sedang berusaha memodelkan sistem cuaca untuk
+ memperbaiki peramalan cuaca.
+ Menurut salah satu versi kisahnya, ia ingin mengulangi perhitungan yang baru
+ saja dilakukannya.
+ Untuk menghemat waktu, ia menggunakan kondisi awal yang sama seperti sebelumnya,
+ tetapi membulatkannya menjadi tiga angka signifikan alih-alih enam.
+ Dengan keyakinan penuh bahwa perhitungan baru akan menyerupai perhitungan
+ lama, ia pergi minum kopi lalu kembali untuk memeriksa hasilnya.
+ Betapa terkejutnya ia ketika melihat hasil yang sama sekali berbeda! Ia mengulangi
+ prosedur itu beberapa kali dan setiap kali mendapati bahwa variasi awal yang
+ kecil menghasilkan variasi jangka panjang yang besar.
+ Apakah ini sekadar kasus galat titik-mengambang? Bukan.
+ Berikut versi yang cukup disederhanakan dari apa yang terjadi.
+ Misalkan 
+\begin_inset Formula $f(x)=4x(1-x)$
+\end_inset
+
+ dan tetapkan 
+\begin_inset Formula $p_{0}=1/7$
+\end_inset
+
+.
+ Sekarang hitung 
+\begin_inset Formula $p_{1}=f(p_{0})$
+\end_inset
+
+, 
+\begin_inset Formula $p_{2}=f(p_{1})$
+\end_inset
+
+, 
+\begin_inset Formula $p_{3}=f(p_{2})$
+\end_inset
+
+, dan seterusnya hingga diperoleh 
+\begin_inset Formula $p_{40}=f(p_{39})$
+\end_inset
+
+.
+ Anda seharusnya memperoleh 
+\begin_inset Formula $p_{40}\approx0.080685$
+\end_inset
+
+.
+ Sekarang tetapkan 
+\begin_inset Formula $p_{0}=1/7+10^{-12}$
+\end_inset
+
+ (agar kita dapat menjalankan perhitungan yang sama, tetapi dengan nilai awal
+ yang berbeda dari nilai semula hanya sebesar 
+\begin_inset Formula $10^{-12}$
+\end_inset
+
+).
+ Hitung seperti sebelumnya: 
+\begin_inset Formula $p_{1}=f(p_{0})$
+\end_inset
+
+, 
+\begin_inset Formula $p_{2}=f(p_{1})$
+\end_inset
+
+, 
+\begin_inset Formula $p_{3}=f(p_{2})$
+\end_inset
+
+, dan seterusnya hingga diperoleh 
+\begin_inset Formula $p_{40}=f(p_{39})$
+\end_inset
+
+.
+ Kali ini Anda seharusnya memperoleh 
+\begin_inset Formula $p_{40}\approx0.91909$
+\end_inset
+
+—hasil yang sama sekali berbeda! Jika Anda mengulangi kedua perhitungan dengan
+ aritmetika 100 angka signifikan, Anda akan mendapati bahwa memulai dengan
+ 
+\begin_inset Formula $p_{0}=1/7$
+\end_inset
+
+ menghasilkan 
+\begin_inset Formula $p_{40}\approx.080736$
+\end_inset
+
+, sedangkan memulai dengan 
+\begin_inset Formula $p_{0}=1/7+10^{-12}$
+\end_inset
+
+ menghasilkan 
+\begin_inset Formula $p_{40}\approx0.91912$
+\end_inset
+
+.
+ Dengan kata lain, bukan penggunaan hampiran titik-mengambang yang membuat
+ kedua perhitungan tersebut memberikan hasil yang sangat berbeda.
+ Penggunaan aritmetika 1000 angka signifikan tidak akan mengubah kesimpulan,
+ demikian pula perhitungan yang lebih presisi apa pun.
+ Ini merupakan demonstrasi dari apa yang disebut kepekaan terhadap kondisi
+ awal, suatu ciri semua sistem kacau, termasuk cuaca.
+ Variasi yang sangat kecil pada suatu saat menghasilkan variasi yang sangat
+ besar kemudian.
+ Dan 
+\begin_inset Quotes eld
+\end_inset
+
+galat
+\begin_inset Quotes erd
+\end_inset
+
+ tersebut bersifat algoritmik.
+ Inilah prinsip dasar yang membuat peramalan cuaca jangka panjang mustahil.
+ Dalam kata-kata Edward Lorenz, 
+\begin_inset Quotes eld
+\end_inset
+
+Mengingat ketidakakuratan dan ketidaklengkapan pengamatan cuaca yang tidak
+ dapat dihindari, peramalan jangka sangat panjang yang presisi tampaknya tidak
+ mungkin ada.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Referensi 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lorenz,gulick,mirror"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{digression} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Percobaan 3
+\end_layout
+
+\begin_layout Standard
+Misalkan 
+\begin_inset Formula $a=77617$
+\end_inset
+
+ dan 
+\begin_inset Formula $b=33096$
+\end_inset
+
+, lalu hitung
+\begin_inset Formula 
+\[
+333.75b^{6}+a^{2}(11a^{2}b^{2}-b^{6}-121b^{4}-2)+5.5b^{8}+\frac{a}{2b}.
+\]
+
+\end_inset
+
+Anda mungkin memperoleh bilangan seperti 
+\begin_inset Formula $-1.180591620717411(10)^{21}$
+\end_inset
+
+ meskipun nilai eksaknya adalah
+\begin_inset Formula 
+\[
+-\frac{54767}{66192}\approx-.8273960599468214.
+\]
+
+\end_inset
+
+Galatnya luar biasa besar! Namun, hal ini bukan karena kalkulator atau komputer
+ Anda bermasalah ketika menghitung setiap suku dengan tingkat akurasi yang
+ wajar.
+ Cobalah sendiri.
+\begin_inset Formula 
+\begin{eqnarray*}
+333.75b^{6} & = & 438605750846393161930703831040\\
+a^{2}(11a^{2}b^{2}-b^{6}-121b^{4}-2) & = & -7917111779274712207494296632228773890\\
+5.5b^{8} & = & 7917111340668961361101134701524942848\\
+\frac{a}{2b} & = & \frac{77617}{66192}\approx1.172603940053179
+\end{eqnarray*}
+
+\end_inset
+
+Penyebab buruknya hasil perhitungan adalah pengurangan nilai-nilai yang hampir
+ sama setelah setiap suku dihitung.
+ 
+\begin_inset Formula $a^{2}(11a^{2}b^{2}-b^{6}-121b^{4}-2)$
+\end_inset
+
+ dan 
+\begin_inset Formula $5.5b^{8}$
+\end_inset
+
+ memiliki tanda berlawanan dan cocok pada 7 angka signifikan terbesar, sehingga
+ menghitung jumlahnya menurunkan akurasi sekitar 7 angka signifikan.
+ Lebih buruk lagi, 
+\begin_inset Formula $a^{2}(11a^{2}b^{2}-b^{6}-121b^{4}-2)+5.5b^{8}=-438605750846393161930703831042$
+\end_inset
+
+, yang bertanda berlawanan dengan 
+\begin_inset Formula $333.75b^{6}$
+\end_inset
+
+ dan cocok dengannya pada setiap nilai tempat kecuali satuan.
+ Itu berarti 29 angka! Jadi, kita kehilangan lagi 29 angka signifikan akurasi
+ ketika menambahkan jumlah ini pada 
+\begin_inset Formula $333.75b^{6}$
+\end_inset
+
+.
+ Jika dihitung secara eksak, jumlah 
+\begin_inset Formula $333.75b^{6}+a^{2}(11a^{2}b^{2}-b^{6}-121b^{4}-2)+5.5b^{8}$
+\end_inset
+
+ adalah 
+\begin_inset Formula $-2$
+\end_inset
+
+.
+ Namun, perhitungan harus dilakukan hingga 37 angka signifikan agar hasil
+ ini terlihat.
+ Perhitungan yang hanya menggunakan sekitar 16 angka signifikan, seperti yang
+ dilakukan kebanyakan kalkulator dan komputer, menghasilkan 0 angka signifikan
+ yang akurat karena 36 angka akurasi hilang selama perhitungan.
+ Itulah sebabnya Anda dapat memperoleh bilangan seperti 
+\begin_inset Formula $-1.180591620717411(10)^{21}$
+\end_inset
+
+ sebagai jawaban akhir alih-alih jawaban eksak 
+\begin_inset Formula $\frac{a}{2b}-2\approx-.8273960599468214$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Yang mungkin lebih mengejutkan adalah bahwa penyusunan ulang sederhana atas
+ ekspresi tersebut menghasilkan nilai yang sama sekali berbeda.
+ Cobalah menghitung 
+\begin_inset Formula 
+\[
+(333.75-a^{2})b^{6}+a^{2}(11a^{2}b^{2}-121b^{4}-2)+5.5b^{8}+\frac{a}{2b}
+\]
+
+\end_inset
+
+sebagai gantinya.
+ Kali ini Anda mungkin memperoleh bilangan seperti 
+\begin_inset Formula $1.172603940053179$
+\end_inset
+
+.
+ Sekali lagi hasilnya sama sekali tidak akurat, dan penyebabnya sama.
+ Kali ini setiap sukunya adalah
+\begin_inset Formula 
+\begin{eqnarray*}
+(333.75-a^{2})b^{6} & = & -7917110903377385049079188237280149504\\
+a^{2}(11a^{2}b^{2}-121b^{4}-2) & = & -437291576312021946464244793346\\
+5.5b^{8} & = & 7917111340668961361101134701524942848\\
+\frac{a}{2b} & = & \frac{77617}{66192}\approx1.172603940053179
+\end{eqnarray*}
+
+\end_inset
+
+sehingga masalahnya tetap ada.
+ Kita masih harus mengurangkan bilangan-bilangan yang nilainya hampir sama.
+ Perbedaan antara perhitungan ini dan perhitungan sebelumnya terletak pada
+ pembulatan.
+ Dalam kasus pertama, pembulatan membuat dua bilangan besar berbeda pada angka
+ signifikan terakhirnya, sehingga jumlahnya menjadi sangat besar.
+ Dalam kasus kedua, jumlah tiga suku pertama ternyata 
+\begin_inset Formula $0$
+\end_inset
+
+ karena bilangan-bilangan besar tersebut cocok pada semua angka signifikan.
+ Perhatikan bahwa dalam kasus kedua, hasil akhirnya hanyalah nilai 
+\begin_inset Formula $\frac{a}{2b}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Seperti diperlihatkan oleh contoh-contoh ini, kadang galat titik-mengambang
+ dan kadang galat algoritmik dapat merusak suatu perhitungan.
+ Namun, secara umum galat titik-mengambang sangat sulit dideteksi.
+ Galat algoritmik jauh lebih mudah dianalisis.
+ Selain itu, sebagian besar algoritma yang akan kita pelajari tidak rentan
+ terhadap galat titik-mengambang.
+ Dalam hampir semua kasus, bagian terbesar galat akan bersifat algoritmik.
+\end_layout
+
+\begin_layout Description
+Referensi 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rump,loh"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Konsep Utama
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $p$
+\end_inset
+
+ Nilai eksak yang sedang dihampiri.
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ Suatu hampiran terhadap nilai 
+\begin_inset Formula $p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $\tilde{p}^{*}$
+\end_inset
+
+ Suatu hampiran terhadap nilai 
+\begin_inset Formula $p$
+\end_inset
+
+ yang dihitung menggunakan aritmetika eksak.
+\end_layout
+
+\begin_layout Description
+Galat
+\begin_inset space ~
+\end_inset
+
+absolut
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+galat ! absolut
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Formula $|\tilde{p}-p|$
+\end_inset
+
+ disebut galat absolut ketika menggunakan 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ untuk menghampiri nilai 
+\begin_inset Formula $p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Galat
+\begin_inset space ~
+\end_inset
+
+relatif
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+galat ! relatif
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Formula ${\displaystyle \frac{|\tilde{p}-p|}{|p|}}$
+\end_inset
+
+ disebut galat relatif ketika menggunakan 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ untuk menghampiri nilai 
+\begin_inset Formula $p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Akurasi
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+akurasi
+\end_layout
+
+\end_inset
+
+: Kita mengatakan bahwa 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ akurat hingga 
+\begin_inset Formula $n$
+\end_inset
+
+ angka signifikan jika 
+\begin_inset Formula $n$
+\end_inset
+
+ angka signifikan terdepan dari 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ cocok dengan angka-angka dari 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ Secara lebih tepat, kita mengatakan bahwa 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ akurat hingga 
+\begin_inset Formula $d(\tilde{p})=\log\left|\frac{p}{\tilde{p}-p}\right|$
+\end_inset
+
+ angka signifikan.
+\end_layout
+
+\begin_layout Description
+Aritmetika
+\begin_inset space ~
+\end_inset
+
+titik-mengambang
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+aritmetika titik-mengambang
+\end_layout
+
+\end_inset
+
+: Aritmetika yang menggunakan bilangan-bilangan yang direpresentasikan dengan
+ banyak angka signifikan yang tetap.
+\end_layout
+
+\begin_layout Description
+Galat
+\begin_inset space ~
+\end_inset
+
+algoritmik
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+galat ! algoritmik
+\end_layout
+
+\end_inset
+
+: Galat yang semata-mata disebabkan oleh algoritma atau persamaan yang digunakan
+ dalam hampiran, 
+\begin_inset Formula $|\tilde{p}^{*}-p|$
+\end_inset
+
+, dengan 
+\begin_inset Formula $\tilde{p}^{*}$
+\end_inset
+
+ merupakan hampiran terhadap 
+\begin_inset Formula $p$
+\end_inset
+
+ yang dihitung menggunakan aritmetika eksak.
+\end_layout
+
+\begin_layout Description
+Galat
+\begin_inset space ~
+\end_inset
+
+pemenggalan
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+galat ! pemenggalan
+\end_layout
+
+\end_inset
+
+: Galat algoritmik akibat penggunaan jumlah parsial sebagai pengganti suatu
+ deret.
+ Pada jenis galat ini, ekor deret dipenggal—dari sinilah namanya berasal.
+\end_layout
+
+\begin_layout Description
+Galat
+\begin_inset space ~
+\end_inset
+
+titik-mengambang
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+galat ! titik-mengambang
+\end_layout
+
+\end_inset
+
+: Galat yang semata-mata disebabkan oleh perhitungan menggunakan aritmetika
+ titik-mengambang, 
+\begin_inset Formula $|\tilde{p}^{*}-\tilde{p}|$
+\end_inset
+
+ dengan 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ dihitung menggunakan aritmetika titik-mengambang, 
+\begin_inset Formula $\tilde{p}^{*}$
+\end_inset
+
+ dihitung menggunakan aritmetika eksak, dan keduanya dihitung menurut rumus
+ atau algoritma yang sama.
+\end_layout
+
+\begin_layout Description
+Galat
+\begin_inset space ~
+\end_inset
+
+pembulatan
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+galat ! pembulatan
+\end_layout
+
+\end_inset
+
+: Nama lain untuk galat titik-mengambang.
+\end_layout
+
+\begin_layout Subsection
+Octave
+\end_layout
+
+\begin_layout Standard
+Perhitungan dalam bagian ini dapat dilakukan dengan mudah menggunakan Octave.
+ Yang Anda perlukan hanyalah operasi aritmetika
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Octave ! operasi aritmetika
+\end_layout
+
+\end_inset
+
+ dan beberapa fungsi standar
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Octave ! fungsi standar
+\end_layout
+
+\end_inset
+
+ seperti nilai absolut, sinus, dan kosinus.
+ Untungnya, semua ini cukup mudah dilakukan dengan Octave.
+ Operasi aritmetika dilakukan hampir sama seperti pada kalkulator.
+ Hanya ada satu perbedaan penting.
+ Kebanyakan kalkulator akan menerima ekspresi seperti 
+\family typewriter
+3x
+\family default
+ dan memahami bahwa yang Anda maksud adalah 
+\begin_inset Formula $3\times x$
+\end_inset
+
+, tetapi Octave tidak demikian.
+ Ekspresi 
+\family typewriter
+3x
+\family default
+ menyebabkan galat sintaks di Octave.
+ Octave mengharuskan Anda menyatakan operasinya secara eksplisit, seperti dalam 
+\family typewriter
+3*x
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Fungsi standar seperti nilai absolut, sinus, dan kosinus (serta banyak fungsi
+ lain) memiliki singkatan sederhana di Octave.
+ Semua fungsi tersebut menerima satu argumen, atau masukan.
+ Ingatlah notasi fungsi; dengan demikian akan jelas cara mencari sinus atau
+ nilai absolut suatu bilangan.
+ Anda perlu mengetikkan nama fungsi, tanda kurung buka, argumen, dan tanda
+ kurung tutup, seperti dalam 
+\family typewriter
+sin(7.2)
+\family default
+.
+ Beberapa fungsi umum beserta singkatannya tercantum dalam Tabel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:commonOctave"
+
+\end_inset
+
+.
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hrule 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:commonOctave"
+
+\end_inset
+
+Beberapa fungsi umum dan singkatannya dalam Octave.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="6">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fungsi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Octave
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fungsi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Octave
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fungsi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Octave
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $n!$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+factorial(n)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sin(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+sin(x)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cos(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+cos(x)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $|x|$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+abs(x)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tan(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+tan(x)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cot(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+cot(x)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $e^{x}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+exp(x)
+\family default
+ atau 
+\family typewriter
+e^x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sec(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+sec(x)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\csc(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+csc(x)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\ln(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+log(x)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sin^{-1}(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+asin(x)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cos^{-1}(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+asin(x)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\log(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+log10(x)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tan^{-1}(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+atan(x)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cot^{-1}(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+acot(x)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sqrt{x}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+sqrt(x)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sqrt[3]{x}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+cbrt(x)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sqrt[n]{x}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+nthroot(x)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b^{x}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+b^x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sinh(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+sinh(x)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cosh(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+cosh(x)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lfloor x\rfloor$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+floor(x)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lceil x\rceil$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+ceil(x)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hrule 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Fungsi dan operasi aritmetika dapat digabungkan dengan cara yang wajar.
+ Beberapa contoh dari bagian ini ditampilkan dalam Tabel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:errorExamples"
+
+\end_inset
+
+.
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hrule 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:errorExamples"
+
+\end_inset
+
+Perhitungan beberapa ekspresi dengan Octave.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ekspresi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Octave
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hasil
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $|\frac{22}{7}-\pi|$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+abs(22/7-pi)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+0.0012645
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{|\frac{16525}{54}-\pi^{5}|}{|\pi^{5}|}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+abs(16525/54-pi^5)/abs(pi^5)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+3.8111e-06
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{\sin(1.01)-\sin(0.99)}{0.02}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+(sin(1.01)-sin(0.99))/0.02
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+0.54029
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hrule 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Ada dua hal yang perlu diperhatikan.
+ Pertama, notasi Octave sangat mirip dengan notasi kalkulator.
+ Kedua, secara bawaan Octave menampilkan hasil menggunakan 5 angka signifikan.
+ Namun, jangan mengira Octave hanya menghitung lima angka hasil tersebut.
+ Sebenarnya, Octave telah menghitung sedikitnya 15 angka dengan benar.
+ Jika Anda ingin melihat angka-angka itu, gunakan perintah 
+\family typewriter
+format('long')
+\family default
+ 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Octave ! 
+\family typewriter
+format
+\end_layout
+
+\end_inset
+
+.
+ Perintah ini hanya perlu digunakan sekali dalam setiap sesi.
+ Semua bilangan yang dicetak setelah perintah ini dijalankan akan ditampilkan
+ dengan 15 angka signifikan.
+ Sebagai contoh, 
+\family typewriter
+1/7
+\family default
+ akan menghasilkan 
+\family typewriter
+0.142857142857143
+\family default
+ alih-alih hanya 
+\family typewriter
+0.14286
+\family default
+.
+ Jika ingin kembali ke format bawaan, gunakan perintah 
+\family typewriter
+format()
+\family default
+ tanpa argumen.
+ Kita akan membahas pengendalian keluaran yang lebih terperinci nanti.
+ Untuk sekarang, berikut beberapa cara melakukan Percobaan 1 menggunakan
+ Octave.
+ Perbedaannya hanya pada banyaknya keluaran dan format keluarannya.
+ Bilangan-bilangannya dihitung dengan cara dan presisi yang tepat sama.
+\end_layout
+
+\begin_layout Subsubsection
+Percobaan 1 di Octave, contoh 1
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:1> p0=pi;
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:2> p1=10*p0-31; p2=100*p1-41; p3=100*p2-59;
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:3> p4=100*p3-26; p5=100*p4-53; p6=100*p5-58;
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:4> p7=100*p6-97
+\end_layout
+
+\begin_layout Plain Layout
+
+p7 =  0.93116 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Percobaan 1 di Octave, contoh 2
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:1> format('long')
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:2> p0=pi
+\end_layout
+
+\begin_layout Plain Layout
+
+p0 =  3.14159265358979
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:3> p1=10*p0-31
+\end_layout
+
+\begin_layout Plain Layout
+
+p1 =  0.415926535897931
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:4> p2=100*p1-41
+\end_layout
+
+\begin_layout Plain Layout
+
+p2 =  0.592653589793116
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:5> p3=100*p2-59
+\end_layout
+
+\begin_layout Plain Layout
+
+p3 =  0.265358979311600
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:6> p4=100*p3-26
+\end_layout
+
+\begin_layout Plain Layout
+
+p4 =  0.535897931159980
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:7> p5=100*p4-53
+\end_layout
+
+\begin_layout Plain Layout
+
+p5 =  0.589793115997963
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:8> p6=100*p5-58
+\end_layout
+
+\begin_layout Plain Layout
+
+p6 =  0.979311599796347
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:9> p7=100*p6-97
+\end_layout
+
+\begin_layout Plain Layout
+
+p7 =  0.931159979634685 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Percobaan 1 di Octave, contoh 3
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:1> 10*pi-31
+\end_layout
+
+\begin_layout Plain Layout
+
+ans =  0.41593
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:2> 100*ans-41
+\end_layout
+
+\begin_layout Plain Layout
+
+ans =  0.59265
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:3> 100*ans-59
+\end_layout
+
+\begin_layout Plain Layout
+
+ans =  0.26536
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:4> 100*ans-26
+\end_layout
+
+\begin_layout Plain Layout
+
+ans =  0.53590
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:5> 100*ans-53
+\end_layout
+
+\begin_layout Plain Layout
+
+ans =  0.58979
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:6> 100*ans-58
+\end_layout
+
+\begin_layout Plain Layout
+
+ans =  0.97931
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:7> 100*ans-97
+\end_layout
+
+\begin_layout Plain Layout
+
+ans =  0.93116 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Percobaan 3 di Octave
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:1> a=77617;
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:2> b=33096;
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:3> t1=333.75*b^6;
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:4> t2=a^2*(11*a^2*b^2-b^6-121*b^4-2);
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:5> t3=5.5*b^8;
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:6> t4=a/(2*b);
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:7> t1+t2+t3+t4
+\end_layout
+
+\begin_layout Plain Layout
+
+ans = -1.18059162071741e+21
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:8> t1=(333.75-a^2)*b^6;
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:9> t2=a^2*(11*a^2*b^2-121*b^4-2);
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:10> t1+t2+t3+t4
+\end_layout
+
+\begin_layout Plain Layout
+
+ans =  1.17260394005318 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Pada akhirnya, cara yang Anda pilih untuk mengerjakan suatu latihan di Octave
+ bergantung pada preferensi dan tujuan Anda.
+ Ajukanlah pertanyaan seperti berikut kepada diri sendiri.
+ Berapa angka signifikan yang saya perlukan? Berapa banyak hasil antara yang
+ perlu saya lihat? Hasil yang mana? Jawaban atas pertanyaan semacam itu seharusnya
+ memandu penyelesaian Anda.
+\end_layout
+
+\begin_layout Standard
+Jika diperlukan, Octave memiliki singkatan untuk sebagian besar konstanta
+ umum.
+ Tabel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:constants"
+
+\end_inset
+
+ menampilkan tiga konstanta yang paling umum.
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hrule 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:constants"
+
+\end_inset
+
+Beberapa konstanta 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Octave ! konstanta
+\end_layout
+
+\end_inset
+
+ dalam Octave.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Konstanta
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Octave
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hasil
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $e$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+2.7183
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+pi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+3.1416
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $i$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+i atau j
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+0 + 1i
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hrule 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+startexercises
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Latihan
+\end_layout
+
+\begin_layout Enumerate
+Selain galat pembulatan, apa yang dapat berdampak buruk terhadap akurasi suatu
+ perhitungan numerik?
+\end_layout
+
+\begin_layout Enumerate
+Hitung galat absolut dan galat relatif ketika menghampiri 
+\begin_inset Formula $\pi$
+\end_inset
+
+ dengan 3.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "ex:absoluteError"
+
+\end_inset
+
+Hitung galat absolut ketika menghampiri 
+\begin_inset Formula $p$
+\end_inset
+
+ dengan 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:abserr1"
+
+\end_inset
+
+
+\begin_inset Formula $p=123$
+\end_inset
+
+;
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+ 
+\begin_inset Formula $\tilde{p}=\frac{1106}{9}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $p=\frac{1}{e}$
+\end_inset
+
+;
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+ 
+\begin_inset Formula $\tilde{p}=.3666$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:abserr2"
+
+\end_inset
+
+
+\begin_inset Formula $p=2^{10}$
+\end_inset
+
+;
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+ 
+\begin_inset Formula $\tilde{p}=1000$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $p=24$
+\end_inset
+
+;
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+ 
+\begin_inset Formula $\tilde{p}=48$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:abserr3"
+
+\end_inset
+
+
+\begin_inset Formula $p=\pi^{-7}$
+\end_inset
+
+;
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+ 
+\begin_inset Formula $\tilde{p}=10^{-4}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $p=(0.062847)(0.069234)$
+\end_inset
+
+;
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+ 
+\begin_inset Formula $\tilde{p}=0.0042$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:abserr15"
+
+\end_inset
+
+Hitung galat relatif untuk hampiran-hampiran pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ex:absoluteError"
+
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:abserr16"
+
+\end_inset
+
+Berapa banyak angka signifikan yang akurat pada hampiran-hampiran dalam soal
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ex:absoluteError"
+
+\end_inset
+
+ tersebut?
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Hitung galat absolut dan galat relatif ketika menghampiri 
+\begin_inset Formula $p$
+\end_inset
+
+ dengan 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $p=\sqrt{2}$
+\end_inset
+
+, 
+\begin_inset Formula $\tilde{p}=1.414$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $p=10^{\pi}$
+\end_inset
+
+, 
+\begin_inset Formula $\tilde{p}=1400$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $p=9!$
+\end_inset
+
+, 
+\begin_inset Formula $\tilde{p}=\sqrt{18\pi}(9/e)^{9}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:one-over-pi"
+
+\end_inset
+
+Hitung 
+\begin_inset Formula ${\displaystyle \frac{1103\sqrt{8}}{9801}}$
+\end_inset
+
+ menggunakan Octave.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Bilangan pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:one-over-pi"
+
+\end_inset
+
+ merupakan hampiran terhadap 
+\begin_inset Formula $1/\pi$
+\end_inset
+
+.
+ Dengan Octave, tentukan galat absolut dan galat relatif hampiran tersebut.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Dengan Octave, hitung
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\lfloor\ln(234567)\rfloor$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $e^{\lceil\ln(234567)\rceil}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sqrt[3]{\lfloor\sin(e^{5.2})\rfloor}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $-e^{i\pi}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $4\tan^{-1}(1)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula ${\displaystyle \frac{\lfloor\cos(3)-\sqrt[5]{\ln(3)}\rfloor}{\lceil\arctan(3)-e^{3}\rceil}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tentukan 
+\begin_inset Formula $f(2)$
+\end_inset
+
+ menggunakan Octave.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:abserr12"
+
+\end_inset
+
+
+\begin_inset Formula $f(x)=e^{\sin(x)}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f(x)=\sin\left(e^{x}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:abserr13"
+
+\end_inset
+
+
+\begin_inset Formula ${\displaystyle f(x)=\tan^{-1}(x-0.429)}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f(x)=x-\tan^{-1}(0.429)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:abserr14"
+
+\end_inset
+
+
+\begin_inset Formula $f(x)=10^{x}/5!$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f(x)=5!/x^{10}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Semua persamaan berikut benar secara matematis.
+ Meskipun demikian, galat titik-mengambang membuat beberapa di antaranya dianggap
+ salah oleh Octave.
+ Yang mana saja? PETUNJUK: Gunakan operator Boolean 
+\family typewriter
+==
+\family default
+ untuk memeriksanya.
+ Sebagai contoh, untuk memeriksa apakah 
+\begin_inset Formula $\sin(0)=0$
+\end_inset
+
+, ketik 
+\family typewriter
+sin(0)==0
+\family default
+ di Octave.
+ 
+\family typewriter
+ans=1
+\family default
+ berarti benar (kedua ruas sama menurut Octave—tidak ada galat pembulatan),
+ sedangkan 
+\family typewriter
+ans=0
+\family default
+ berarti salah (kedua ruas tidak sama menurut Octave—terdapat galat pembulatan).
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $(2)(12)=9^{2}-4(9)-21$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $e^{3\ln(2)}=8$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\ln(10)=\ln(5)+\ln(2)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $g(\frac{1+\sqrt{5}}{2})=\frac{1+\sqrt{5}}{2}$
+\end_inset
+
+ dengan 
+\begin_inset Formula $g(x)=\sqrt[3]{x^{2}+x}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\lfloor153465/3\rfloor=153465/3$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $3\pi^{3}+7\pi^{2}-2\pi+8=((3\pi+7)\pi-2)\pi+8$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "ex:absoluteError2"
+
+\end_inset
+
+Tentukan suatu hampiran 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ terhadap 
+\begin_inset Formula $p$
+\end_inset
+
+ dengan galat absolut 
+\begin_inset Formula $.001$
+\end_inset
+
+.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:abserr4"
+
+\end_inset
+
+
+\begin_inset Formula $p=\pi$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $p=\sqrt{5}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:abserr5"
+
+\end_inset
+
+
+\begin_inset Formula $p=\ln(3)$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $p=\sqrt{23}^{\sqrt{23}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:abserr6"
+
+\end_inset
+
+
+\begin_inset Formula $p=\frac{10}{\ln(1.1)}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $p=\tan(1.57079)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:abserr17"
+
+\end_inset
+
+Tentukan suatu hampiran 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ terhadap 
+\begin_inset Formula $p$
+\end_inset
+
+ dengan galat relatif 
+\begin_inset Formula $.001$
+\end_inset
+
+ untuk setiap nilai 
+\begin_inset Formula $p$
+\end_inset
+
+ pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ex:absoluteError2"
+
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "ex:absoluteError3"
+
+\end_inset
+
+
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ menghampiri nilai apa dengan galat absolut 
+\begin_inset Formula $.0005$
+\end_inset
+
+?
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:abserr7"
+
+\end_inset
+
+
+\begin_inset Formula $\tilde{p}=.2348263818643$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\tilde{p}=23.89627345677$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\tilde{p}=-8.76257664363$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:abserr18"
+
+\end_inset
+
+Ulangi soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ex:absoluteError3"
+
+\end_inset
+
+, tetapi gunakan galat relatif 
+\begin_inset Formula $.0005$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:abserr8"
+
+\end_inset
+
+
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ menghampiri 
+\begin_inset Formula $p$
+\end_inset
+
+ dengan galat absolut 
+\begin_inset Formula $\frac{1}{100}$
+\end_inset
+
+ dan galat relatif 
+\begin_inset Formula $\frac{3}{100}$
+\end_inset
+
+.
+ Tentukan 
+\begin_inset Formula $p$
+\end_inset
+
+ dan 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ menghampiri 
+\begin_inset Formula $p$
+\end_inset
+
+ dengan galat absolut 
+\begin_inset Formula $\frac{3}{100}$
+\end_inset
+
+ dan galat relatif 
+\begin_inset Formula $\frac{1}{100}$
+\end_inset
+
+.
+ Tentukan 
+\begin_inset Formula $p$
+\end_inset
+
+ dan 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Misalkan 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ harus menghampiri 
+\begin_inset Formula $p$
+\end_inset
+
+ dengan galat relatif paling besar 
+\begin_inset Formula $10^{-3}$
+\end_inset
+
+.
+ Tentukan interval terbesar tempat 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ harus berada jika 
+\begin_inset Formula $p=900$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Bilangan 
+\begin_inset Formula $e$
+\end_inset
+
+ dapat didefinisikan oleh 
+\begin_inset Formula $e=\sum_{n=0}^{\infty}(1/n!)$
+\end_inset
+
+.
+ Hitung galat absolut dan galat relatif pada hampiran-hampiran berikut terhadap 
+\begin_inset Formula $e$
+\end_inset
+
+:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula ${\displaystyle \sum_{n=0}^{5}\frac{1}{n!}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula ${\displaystyle \sum_{n=0}^{10}\frac{1}{n!}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Rasio emas, 
+\begin_inset Formula ${\displaystyle \frac{1+\sqrt{5}}{2}}$
+\end_inset
+
+, ditemukan di berbagai tempat dalam alam maupun matematika.
+ Sebagai contoh, jika 
+\begin_inset Formula $F_{n}$
+\end_inset
+
+ adalah bilangan Fibonacci ke-
+\begin_inset Formula $n$
+\end_inset
+
+, maka
+\begin_inset Formula 
+\[
+\lim_{n\to\infty}\frac{F_{n+1}}{F_{n}}=\frac{1+\sqrt{5}}{2}
+\]
+
+\end_inset
+
+Karena itu, 
+\begin_inset Formula $F_{11}/F_{10}$
+\end_inset
+
+ dapat digunakan sebagai hampiran terhadap rasio emas.
+ Tentukan galat relatif hampiran ini.
+ PETUNJUK: Barisan Fibonacci didefinisikan oleh 
+\begin_inset Formula $F_{0}=1$
+\end_inset
+
+, 
+\begin_inset Formula $F_{1}=1$
+\end_inset
+
+, 
+\begin_inset Formula $F_{n}=F_{n-1}+F_{n-2}$
+\end_inset
+
+ untuk 
+\begin_inset Formula $n\geq2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:abserr9"
+
+\end_inset
+
+Tentukan nilai 
+\begin_inset Formula $p$
+\end_inset
+
+ dan 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ sedemikian sehingga galat relatif sama dengan galat absolut.
+ Nyatakan secara umum kondisi yang menyebabkan hal ini terjadi.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Tentukan nilai 
+\begin_inset Formula $p$
+\end_inset
+
+ dan 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ sedemikian sehingga galat relatif lebih besar daripada galat absolut.
+ Nyatakan secara umum kondisi yang menyebabkan hal ini terjadi.
+\end_layout
+
+\begin_layout Enumerate
+Tentukan nilai 
+\begin_inset Formula $p$
+\end_inset
+
+ dan 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ sedemikian sehingga galat relatif lebih kecil daripada galat absolut.
+ Nyatakan secara umum kondisi yang menyebabkan hal ini terjadi.
+\end_layout
+
+\begin_layout Enumerate
+Hitung (i) 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ dengan kalkulator atau komputer (perhitungan titik-mengambang), (ii) galat
+ absolut, 
+\begin_inset Formula $|\tilde{p}-p|$
+\end_inset
+
+, dan (iii) galat relatif, 
+\begin_inset Formula $\frac{|\tilde{p}-p|}{|p|}$
+\end_inset
+
+.
+ Kemudian gunakan nilai 
+\begin_inset Formula $\tilde{p}^{*}$
+\end_inset
+
+ yang diberikan untuk menghitung (iv) galat algoritmik, 
+\begin_inset Formula $|\tilde{p}^{*}-p|$
+\end_inset
+
+ dan (v) galat pembulatan, 
+\begin_inset Formula $|\tilde{p}^{*}-\tilde{p}|$
+\end_inset
+
+.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:abserr10"
+
+\end_inset
+
+Misalkan 
+\begin_inset Formula $f(x)=x^{4}+7x^{3}-63x^{2}-295x+350$
+\end_inset
+
+ dan misalkan 
+\begin_inset Formula $p=f'(-2)$
+\end_inset
+
+.
+ Nilai 
+\begin_inset Formula $\tilde{p}=\frac{f(-2+10^{-7})-f(-2-10^{-7})}{2(10)^{-7}}$
+\end_inset
+
+ merupakan hampiran yang baik terhadap 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ tepat sama dengan 
+\begin_inset Formula $8.99999999999999$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Misalkan 
+\begin_inset Formula $f'(x)=e^{x}\sin(10x)$
+\end_inset
+
+ dan 
+\begin_inset Formula $f(0)=0$
+\end_inset
+
+, serta misalkan 
+\begin_inset Formula $p=f(1)$
+\end_inset
+
+.
+ Dapat ditunjukkan bahwa 
+\begin_inset Formula $p=\frac{1}{101}e(\sin10-10\cos10)+\frac{10}{101}$
+\end_inset
+
+.
+ Metode Euler menghasilkan hampiran 
+\begin_inset Formula $\tilde{p}=\frac{1}{10}\sum_{i=1}^{9}e^{i/10}\sin i$
+\end_inset
+
+.
+ Hingga 28 angka signifikan yang akurat, 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+ adalah 
+\begin_inset Formula $0.3550449718187918680449850763$
+\end_inset
+
+.
+ Artinya, gunakan 
+\begin_inset Formula $\tilde{p}^{*}=0.3550449718187918680449850763$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Misalkan 
+\begin_inset Formula $a_{0}=\frac{5+\sqrt{5}}{8}$
+\end_inset
+
+ dan 
+\begin_inset Formula $a_{n+1}=4a_{n}(1-a_{n})$
+\end_inset
+
+, lalu perhatikan 
+\begin_inset Formula $p=a_{51}$
+\end_inset
+
+.
+ Dapat ditunjukkan bahwa 
+\begin_inset Formula $p=a_{51}=\frac{5-\sqrt{5}}{8}$
+\end_inset
+
+.
+ Algoritma paling langsung untuk menghitung 
+\begin_inset Formula $a_{51}$
+\end_inset
+
+ adalah menghitung 
+\begin_inset Formula $a_{1},a_{2},a_{3},\ldots a_{51}$
+\end_inset
+
+ secara berurutan menurut relasi rekurensi yang diberikan.
+ Gunakan algoritma ini untuk menghitung 
+\begin_inset Formula $\tilde{p}^{*}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\tilde{p}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+finishexercises 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

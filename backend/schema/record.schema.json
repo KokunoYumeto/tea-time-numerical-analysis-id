@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://interlanguage.local/schema/ttna-backend-record-v1.json",
+  "title": "Tea Time Numerical Analysis modular backend record",
+  "type": "object",
+  "required": ["schema_id", "schema_version", "id", "record_type"],
+  "properties": {
+    "schema_id": {"type": "string", "minLength": 1},
+    "schema_version": {"const": "1.0.0"},
+    "id": {"type": "string", "pattern": "^urn:uuid:[0-9a-f-]{36}$"},
+    "record_type": {
+      "enum": [
+        "program", "course", "resource", "edition", "source_file", "unit", "relation",
+        "segment", "localization", "term", "concept", "asset", "asset_version", "experiment",
+        "rights", "qa_event", "build_recipe", "artifact", "correction", "module_pack"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

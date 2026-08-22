@@ -1,0 +1,744 @@
+
+\chapter{Pendahuluan}
+
+\section{\label{sec:Accuracy}Akurasi}
+
+\pagenumbering{arabic}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\leftmark}
+\fancyhead[LO]{\rightmark}
+
+\subsection{Mengukur Galat}
+
+Metode numerik dirancang untuk menghampiri berbagai macam objek. Kadang-kadang
+yang dihampiri adalah akar, kadang-kadang turunan atau integral tentu,
+kurva, ataupun solusi persamaan diferensial. Karena metode numerik
+hanya menghasilkan hampiran terhadap objek-objek tersebut, penting
+bagi kita untuk mengetahui seberapa akurat hasilnya. Terkadang akurasi
+ditentukan oleh analisis aljabar yang cermat, terkadang oleh analisis
+kalkulus yang cermat, dan sering kali oleh analisis polinomial Taylor
+yang cermat. Namun, sebelum membahas perincian tersebut, kita perlu
+membicarakan bagaimana galat dan, dengan demikian, akurasi diukur.
+
+Ada dua ukuran dasar akurasi\index{akurasi}: galat absolut\index{galat!absolut}
+dan galat relatif\index{galat!relatif}. Misalkan $p$ adalah nilai
+yang hendak kita hampiri, dan $\tilde{p}$ merupakan hampiran terhadap
+$p$. Maka $\tilde{p}$ meleset tepat sebesar $\tilde{p}-p$, yang
+disebut galat\index{galat}. Tentu saja, $\tilde{p}-p$ akan bernilai
+negatif ketika $\tilde{p}$ terlalu rendah. Artinya, ketika hampiran
+$\tilde{p}$ lebih kecil daripada nilai eksak $p$. Sebaliknya, $\tilde{p}-p$
+akan bernilai positif ketika $\tilde{p}$ terlalu tinggi. Namun, pada
+umumnya kita tidak mempersoalkan apakah hampiran terlalu tinggi atau
+terlalu rendah. Kita hanya ingin mengetahui seberapa besar penyimpangannya.
+Karena itu, kita paling sering membicarakan galat absolut\index{galat!absolut},
+$|\tilde{p}-p|$. Anda mungkin mengenali ekspresi $|\tilde{p}-p|$
+sebagai jarak antara $\tilde{p}$ dan $p$, dan itu merupakan cara
+yang baik untuk memandang galat absolut.
+
+Galat absolut ketika menghampiri $p=\pi$ dengan bilangan rasional
+$\tilde{p}=\frac{22}{7}$ adalah $|\frac{22}{7}-\pi|\approx0.00126$.
+Galat absolut ketika menghampiri $\pi^{5}$ dengan bilangan rasional
+$\frac{16525}{54}$ adalah $|\frac{16525}{54}-\pi^{5}|\approx0.00116$.
+Galat absolut kedua hampiran ini hampir sama. Agar hal tersebut tampak
+lebih jelas, $\pi\approx3.14159$ dan $\frac{22}{7}\approx3.14285$,
+sedangkan $\pi^{5}\approx306.01968$ dan $\frac{16525}{54}\approx306.01851$.
+Setiap hampiran mulai berbeda dari nilai eksaknya masing-masing pada
+tempat perseribuan. Masing-masing hanya meleset sebesar 1 pada tempat
+perseribuan tersebut.
+
+Namun, ada hal lain yang terjadi di sini. $\pi$ mendekati 3, sedangkan
+$\pi^{5}$ mendekati 300. Untuk menghampiri $\pi$ secara akurat hingga
+perseratus terdekat, hampiran hanya perlu sama dengan nilai eksak
+pada 3 nilai tempat---satuan, persepuluhan, dan perseratusan. Untuk
+menghampiri $\pi^{5}$ secara akurat hingga perseratus terdekat, hampiran
+harus sama dengan nilai eksak pada 5 nilai tempat---ratusan, puluhan,
+satuan, persepuluhan, dan perseratusan. Dengan istilah yang lebih
+ilmiah, kita mengatakan bahwa $\frac{22}{7}$ menghampiri $\pi$ secara
+akurat hingga 3 angka signifikan, sedangkan $\frac{16525}{54}$ menghampiri
+$\pi^{5}$ secara akurat hingga 5 angka signifikan. Di sinilah letak
+inti galat relatif: membandingkan galat absolut dengan besar nilai
+yang sedang dihampiri. Perbandingan ini dilakukan dengan menghitung
+rasio galat terhadap nilai eksak. Dengan demikian, galat relatif ketika
+menghampiri $\pi$ dengan $\frac{22}{7}$ adalah ${\displaystyle \frac{|\frac{22}{7}-\pi|}{|\pi|}\approx4.02(10)^{-4}}$,
+sedangkan galat relatif ketika menghampiri $\pi^{5}$ dengan $\frac{16525}{54}$
+adalah ${\displaystyle \frac{|\frac{16525}{54}-\pi^{5}|}{|\pi^{5}|}\approx3.81(10)^{-6}}$.
+Kedua galat relatif berbeda dengan faktor sekitar 100 (setara dengan
+kira-kira dua angka signifikan dalam akurasi), meskipun galat absolutnya
+hampir sama. Secara umum, galat relatif\index{galat!relatif} ketika
+menghampiri $p$ dengan $\tilde{p}$ diberikan oleh ${\displaystyle \frac{|\tilde{p}-p|}{|p|}}$.
+
+\subsection{Sumber Galat}
+
+Ada dua kategori umum galat. Galat algoritmik\index{galat!algoritmik}
+dan galat titik-mengambang\index{galat!titik-mengambang}. Galat algoritmik
+adalah setiap galat yang timbul dari metode hampiran itu sendiri.
+Artinya, galat ini tidak dapat dihindari sekalipun kita melakukan
+perhitungan eksak pada setiap langkah. Galat titik-mengambang timbul
+karena komputer dan kalkulator pada umumnya tidak melakukan aritmetika
+eksak, melainkan aritmetika titik-mengambang.
+
+\noindent\begin{digression}{Standar IEEE 754}
+
+\noindent Nilai titik-mengambang\index{aritmetika titik-mengambang}
+disimpan dalam bentuk biner. Menurut Standar IEEE 754 yang digunakan
+oleh kebanyakan komputer, mantisa (atau koefisien signifikan) disimpan
+menggunakan 52 bit, yaitu 52 tempat biner. Karena bit terdepan selalu
+dianggap bernilai 1 (dan karena itu tidak benar-benar disimpan), setiap
+bilangan titik-mengambang direpresentasikan menggunakan 53 nilai tempat
+biner yang berurutan. Sekarang mari kita perhatikan bagaimana $1/7$
+direpresentasikan secara eksak. Dalam biner, sepertujuh sama dengan
+$0.001001001\ldots$ karena $\frac{1}{7}=\sum_{i=1}^{\infty}2^{-3i}=\frac{1}{8}+\frac{1}{64}+\frac{1}{512}+\cdots$.
+Untuk melihat bahwa hal ini benar, ingatlah dari kalkulus bahwa
+\begin{eqnarray*}
+\sum_{i=1}^{\infty}2^{-3i} & = & \sum_{i=1}^{\infty}\left(2^{-3}\right)^{i}\\
+ & = & \frac{2^{-3}}{1-2^{-3}}\\
+ & = & \frac{1/8}{7/8}\\
+ & = & \frac{1}{7}.
+\end{eqnarray*}
+Namun, dalam Standar IEEE 754, $\frac{1}{7}$ dipangkas menjadi
+\[
+1.0010010010010010010010010010010010010010010010010010\times(2)^{-3}
+\]
+atau $\sum_{i=1}^{18}2^{-3i}$ yang tepat sama dengan $\frac{2573485501354569}{18014398509481984}$.
+Dengan demikian, galat titik-mengambang dalam menghitung $1/7$ adalah
+\begin{eqnarray*}
+\left|\frac{2573485501354569}{18014398509481984}-\frac{1}{7}\right| & = & \frac{1}{126100789566373888}\approx7.93(10)^{-18}.
+\end{eqnarray*}
+
+\begin{description}
+\item [{Referensi}] \cite{cunyieee754,goldberg}
+\end{description}
+\noindent\end{digression} 
+
+Dalam aritmetika titik-mengambang, kalkulator atau komputer biasanya
+menyimpan nilai dengan sekitar 16 angka signifikan. Sebagai contoh,
+pada komputer atau kalkulator biasa (yang menggunakan aritmetika presisi
+ganda), bilangan $\frac{1}{7}$ disimpan kira-kira sebagai $0.1428571428571428$,
+sedangkan nilai eksaknya adalah $0.1428571428571428\ldots$. Pada
+nilai eksak, pola $142857$ berulang tanpa henti, sedangkan pada nilai
+titik-mengambang pengulangan berhenti setelah angka 8 yang ketiga.
+Nilai tersebut dipangkas hingga 16 tempat desimal dalam representasi
+titik-mengambang. Jadi, galat titik-mengambang dalam menghitung $1/7$
+adalah sekitar $5(10)^{-17}$. Saya menggunakan kata ``sekitar''
+atau ``kira-kira'' dalam pembahasan ini karena pernyataan tersebut
+tidak sepenuhnya tepat, tetapi maksudnya sudah jelas. Terdapat galat
+kecil ketika merepresentasikan $1/7$ sebagai bilangan riil titik-mengambang.
+Hal yang sama berlaku bagi semua bilangan riil, kecuali suatu himpunan
+berhingga.
+
+Memang terdapat galat dalam representasi titik-mengambang bilangan
+riil, tetapi galat itu selalu kecil dibandingkan dengan besar bilangan
+riil yang direpresentasikan. Galat relatifnya sekitar $10^{-17}$,
+sehingga pembahasan galat titik-mengambang mungkin tampak semata-mata
+sebagai latihan akademis. Lagi pula, seberapa berartinya galat sebesar
+$7.93(10)^{-18}$? Adakah yang akan kesal jika ia dijual sebuah cincin
+selebar $.14285714285714284921$ inci padahal seharusnya lebarnya
+$.14285714285714285714$ inci? Jelas tidak. Namun, yang perlu dikhawatirkan
+bukan hanya galat dalam satu perhitungan (penjumlahan, pengurangan,
+perkalian, atau pembagian). Metode numerik memerlukan puluhan, ribuan,
+bahkan jutaan perhitungan. Galat-galat kecil dapat terakumulasi. Cobalah
+percobaan berikut.
+
+\subsubsection{Percobaan 1}
+
+\noindent Gunakan kalkulator atau komputer Anda untuk menghitung bilangan-bilangan
+$p_{0},p_{1},p_{2},\ldots,p_{7}$ sesuai aturan berikut.
+\begin{itemize}
+\item $p_{0}=\pi$
+\item $p_{1}=10p_{0}-31$
+\item $p_{2}=100p_{1}-41$
+\item $p_{3}=100p_{2}-59$
+\item $p_{4}=100p_{3}-26$
+\item $p_{5}=100p_{4}-53$
+\item $p_{6}=100p_{5}-58$
+\item $p_{7}=100p_{6}-97$
+\end{itemize}
+Menurut kalkulator atau komputer Anda, $p_{7}$ kemungkinan menghasilkan
+salah satu nilai berikut:
+
+\begin{center}
+\begin{tabular}{cc}
+$0.93116$  & (Octave)\tabularnewline
+$.9311599796346854$  & (Maxima)\tabularnewline
+$1$ & (CASIO \textit{fx}-115ES)\tabularnewline
+\end{tabular}
+\par\end{center}
+
+\noindent Namun, sedikit aljabar akan menunjukkan bahwa $p_{7}=10000000000000\pi-31415926535897$
+secara eksak; hingga 6 tempat desimal, nilainya adalah $0.932384$.
+Bandingkan nilai ini dengan bilangan yang Anda peroleh untuk $p_{7}$.
+Meskipun $p_{0}$ merupakan hampiran yang sangat akurat terhadap $\pi$
+(akurat hingga sekitar 16 tempat desimal), setelah hanya beberapa
+perhitungan, galat pembulatan menyebabkan $p_{7}$ hanya memiliki
+satu atau dua angka signifikan yang akurat!
+
+Percobaan ini menyoroti penyebab terpenting galat titik-mengambang:
+pengurangan dua bilangan yang hampir sama. Kita berulang kali mengurangkan
+bilangan-bilangan yang angka puluhan dan satuannya sama. Dua angka
+signifikan terdepan keduanya cocok. Sebagai contoh, $10\pi-31=31.415926\ldots-31$.
+$10\pi$ dipertahankan akurat hingga sekitar 16 angka ($31.41592653589793$),
+tetapi $10\pi-31$ dipertahankan akurat hanya hingga 14 angka signifikan
+($0.41592653589793$). Setiap pengurangan berikutnya menurunkan akurasi
+sebanyak dua angka signifikan lagi. Bahkan, $p_{7}$ direpresentasikan
+hanya dengan 2 angka signifikan. Kita telah berulang kali mengurangkan
+bilangan-bilangan yang hampir sama. Setiap kali melakukannya, sebagian
+akurasi hilang. Galat titik-mengambang pun membesar.
+
+Dalam perhitungan yang tidak melibatkan pengurangan dua besaran yang
+hampir sama, galat algoritmik tetap perlu diperhatikan. Sebagai contoh,
+misalkan $f(x)=\sin x$. Dari definisi turunan dapat dibuktikan bahwa
+\[
+f'(1)=\lim_{h\to0}\frac{\sin(1+h)-\sin(1-h)}{2h}.
+\]
+Karena itu, secara umum kita mengharapkan bahwa $\tilde{p}(h)=\frac{\sin(1+h)-\sin(1-h)}{2h}$
+merupakan hampiran yang baik terhadap $f'(1)$ untuk nilai $h$ yang
+kecil; dan semakin kecil $h$, semakin baik pula hampirannya. 
+
+\subsubsection{Percobaan 2\label{subsec:derivativeExperiment}}
+
+Dengan kalkulator atau komputer, hitung $\tilde{p}(h)$ untuk $h=10^{-2}$,
+$h=10^{-3}$, dan seterusnya hingga $h=10^{-7}$. Hasil Anda semestinya
+menyerupai tabel berikut:
+
+\begin{center}
+\begin{tabular}{c|c}
+$h$ & $\tilde{p}(h)$\tabularnewline
+\hline 
+$10^{-2}$ & $0.5402933008747335$\tabularnewline
+$10^{-3}$ & $0.5403022158176896$\tabularnewline
+$10^{-4}$ & $0.5403023049677103$\tabularnewline
+$10^{-5}$ & $0.5403023058569989$\tabularnewline
+$10^{-6}$ & $0.5403023058958567$\tabularnewline
+$10^{-7}$ & $0.5403023056738121$\tabularnewline
+\end{tabular}
+\par\end{center}
+
+\noindent Kolom kedua dihitung menggunakan aritmetika hampiran (titik-mengambang),
+sehingga secara teknis merupakan hampiran atas suatu hampiran. Karena
+$f'(1)=\cos(1)\approx.5403023058681398$, setiap hampiran memang cukup
+dekat dengan nilai eksak. Namun, jika kita mengamatinya lebih saksama,
+masih ada hal lain yang perlu dikatakan. Pertama, galat algoritmik\index{galat!algoritmik}
+dari $\tilde{p}(10^{-2})$ adalah 
+\begin{eqnarray*}
+|\tilde{p}^{*}(10^{-2})-f'(1)| & = & \left|50\left(\sin\left(\frac{101}{100}\right)-\sin\left(\frac{99}{100}\right)\right)-\cos(1)\right|\\
+ & \approx & 9.00(10)^{-6}
+\end{eqnarray*}
+yang akurat hingga tiga angka signifikan. Artinya, jika kita menghitung
+$\tilde{p}(10^{-2})$ dengan aritmetika eksak, yang di sini dinotasikan
+dengan $\tilde{p}^{*}(10^{-2})$, nilainya tetap meleset dari $f'(1)$
+sebesar kira-kira $9(10)^{-6}$. Galat titik-mengambang\index{galat!titik-mengambang}
+hanya mengukur sejauh apa nilai terhitung dari $\tilde{p}(10^{-2})$
+menyimpang dari nilai eksak $\tilde{p}^{*}(10^{-2})$ untuk $\tilde{p}(10^{-2})$.
+Dengan kata lain, galat titik-mengambang diberikan oleh $\left|\tilde{p}^{*}-\tilde{p}\right|$:
+\[
+\left|50\left(\sin\left(\frac{101}{100}\right)-\sin\left(\frac{99}{100}\right)\right)-0.5402933008747335\right|\approx1.58(10)^{-17},
+\]
+yang sekecil mungkin seperti yang dapat diharapkan. Galat absolut
+$|\tilde{p}(10^{-2})-f'(1)|=|0.5402933008747335-\cos(1)|$ pada dasarnya
+sepenuhnya bersifat algoritmik. Galat pembulatan jauh lebih kecil
+daripada galat algoritmik. Fakta bahwa kita menggunakan aritmetika
+titik-mengambang dapat diabaikan. 
+
+Sebaliknya, galat algoritmik dari $\tilde{p}(10^{-7})$ adalah 
+\begin{eqnarray*}
+|\tilde{p}^{*}(10^{-7})-f'(1)| & = & \left|5000000\left(\sin\left(\frac{10000001}{10000000}\right)-\sin\left(\frac{9999999}{10000000}\right)\right)-\cos(1)\right|\\
+ & \approx & 9.00(10)^{-16}
+\end{eqnarray*}
+yang akurat hingga tiga angka signifikan. Namun, kita perlu sedikit
+mengkhawatirkan galat titik-mengambang karena ${\displaystyle \sin\left(\frac{10000001}{10000000}\right)\approx0.8414710388}$
+dan ${\displaystyle \sin\left(\frac{9999999}{10000000}\right)\approx.8414709307}$
+hampir sama. Kita mengurangkan bilangan yang lima angka signifikan
+terdepannya cocok! Galat titik-mengambangnya sekali lagi adalah $|\tilde{p}^{*}-\tilde{p}|$,
+yaitu
+\[
+\left|5000000\left(\sin\left(\frac{10000001}{10000000}\right)-\sin\left(\frac{9999999}{10000000}\right)\right)-0.5403023056738121\right|\approx1.94(10)^{-10}.
+\]
+Galat ini mungkin tampak kecil, tetapi nilainya sangat besar dibandingkan
+dengan galat algoritmik sekitar $9(10)^{-16}$. Jadi, dalam kasus
+ini, pada dasarnya seluruh galat timbul karena kita menggunakan aritmetika
+titik-mengambang! Kali ini, galat algoritmik jauh lebih kecil daripada
+galat pembulatan. Untungnya, hal ini tidak sering terjadi sehingga
+kita biasanya dapat memusatkan perhatian hanya pada galat algoritmik. 
+
+\noindent\begin{digression}{Kekacauan} 
+
+\noindent Edward Lorenz\index{Lorenz, Edward}, seorang meteorolog
+di Massachusetts Institute of Technology, termasuk orang pertama yang
+mengenali dan mempelajari fenomena matematis yang kini disebut kekacauan.
+Pada awal tahun 1960-an, ia sedang berusaha memodelkan sistem cuaca
+untuk memperbaiki peramalan cuaca. Menurut salah satu versi kisahnya,
+ia ingin mengulangi perhitungan yang baru saja dilakukannya. Untuk
+menghemat waktu, ia menggunakan kondisi awal yang sama seperti sebelumnya,
+tetapi membulatkannya menjadi tiga angka signifikan alih-alih enam.
+Dengan keyakinan penuh bahwa perhitungan baru akan menyerupai perhitungan
+lama, ia pergi minum kopi lalu kembali untuk memeriksa hasilnya. Betapa
+terkejutnya ia ketika melihat hasil yang sama sekali berbeda! Ia mengulangi
+prosedur itu beberapa kali dan setiap kali mendapati bahwa variasi
+awal yang kecil menghasilkan variasi jangka panjang yang besar. Apakah
+ini sekadar kasus galat titik-mengambang? Bukan. Berikut versi yang
+cukup disederhanakan dari apa yang terjadi. Misalkan $f(x)=4x(1-x)$
+dan tetapkan $p_{0}=1/7$. Sekarang hitung $p_{1}=f(p_{0})$, $p_{2}=f(p_{1})$,
+$p_{3}=f(p_{2})$, dan seterusnya hingga diperoleh $p_{40}=f(p_{39})$.
+Anda seharusnya memperoleh $p_{40}\approx0.080685$. Sekarang tetapkan
+$p_{0}=1/7+10^{-12}$ (agar kita dapat menjalankan perhitungan yang
+sama, tetapi dengan nilai awal yang berbeda dari nilai semula hanya
+sebesar $10^{-12}$). Hitung seperti sebelumnya: $p_{1}=f(p_{0})$,
+$p_{2}=f(p_{1})$, $p_{3}=f(p_{2})$, dan seterusnya hingga diperoleh
+$p_{40}=f(p_{39})$. Kali ini Anda seharusnya memperoleh $p_{40}\approx0.91909$---hasil
+yang sama sekali berbeda! Jika Anda mengulangi kedua perhitungan dengan
+aritmetika 100 angka signifikan, Anda akan mendapati bahwa memulai
+dengan $p_{0}=1/7$ menghasilkan $p_{40}\approx.080736$, sedangkan
+memulai dengan $p_{0}=1/7+10^{-12}$ menghasilkan $p_{40}\approx0.91912$.
+Dengan kata lain, bukan penggunaan hampiran titik-mengambang yang
+membuat kedua perhitungan tersebut memberikan hasil yang sangat berbeda.
+Penggunaan aritmetika 1000 angka signifikan tidak akan mengubah kesimpulan,
+demikian pula perhitungan yang lebih presisi apa pun. Ini merupakan
+demonstrasi dari apa yang disebut kepekaan terhadap kondisi awal,
+suatu ciri semua sistem kacau, termasuk cuaca. Variasi yang sangat
+kecil pada suatu saat menghasilkan variasi yang sangat besar kemudian.
+Dan ``galat'' tersebut bersifat algoritmik. Inilah prinsip dasar
+yang membuat peramalan cuaca jangka panjang mustahil. Dalam kata-kata
+Edward Lorenz, ``Mengingat ketidakakuratan dan ketidaklengkapan pengamatan
+cuaca yang tidak dapat dihindari, peramalan jangka sangat panjang
+yang presisi tampaknya tidak mungkin ada.''
+\begin{description}
+\item [{Referensi}] \cite{lorenz,gulick,mirror}
+\end{description}
+\noindent\end{digression} 
+
+\subsubsection{Percobaan 3}
+
+Misalkan $a=77617$ dan $b=33096$, lalu hitung
+\[
+333.75b^{6}+a^{2}(11a^{2}b^{2}-b^{6}-121b^{4}-2)+5.5b^{8}+\frac{a}{2b}.
+\]
+Anda mungkin memperoleh bilangan seperti $-1.180591620717411(10)^{21}$
+meskipun nilai eksaknya adalah
+\[
+-\frac{54767}{66192}\approx-.8273960599468214.
+\]
+Galatnya luar biasa besar! Namun, hal ini bukan karena kalkulator
+atau komputer Anda bermasalah ketika menghitung setiap suku dengan
+tingkat akurasi yang wajar. Cobalah sendiri.
+\begin{eqnarray*}
+333.75b^{6} & = & 438605750846393161930703831040\\
+a^{2}(11a^{2}b^{2}-b^{6}-121b^{4}-2) & = & -7917111779274712207494296632228773890\\
+5.5b^{8} & = & 7917111340668961361101134701524942848\\
+\frac{a}{2b} & = & \frac{77617}{66192}\approx1.172603940053179
+\end{eqnarray*}
+Penyebab buruknya hasil perhitungan adalah pengurangan nilai-nilai
+yang hampir sama setelah setiap suku dihitung. $a^{2}(11a^{2}b^{2}-b^{6}-121b^{4}-2)$
+dan $5.5b^{8}$ memiliki tanda berlawanan dan cocok pada 7 angka signifikan
+terbesar, sehingga menghitung jumlahnya menurunkan akurasi sekitar
+7 angka signifikan. Lebih buruk lagi, $a^{2}(11a^{2}b^{2}-b^{6}-121b^{4}-2)+5.5b^{8}=-438605750846393161930703831042$,
+yang bertanda berlawanan dengan $333.75b^{6}$ dan cocok dengannya
+pada setiap nilai tempat kecuali satuan. Itu berarti 29 angka! Jadi,
+kita kehilangan lagi 29 angka signifikan akurasi ketika menambahkan
+jumlah ini pada $333.75b^{6}$. Jika dihitung secara eksak, jumlah
+$333.75b^{6}+a^{2}(11a^{2}b^{2}-b^{6}-121b^{4}-2)+5.5b^{8}$ adalah
+$-2$. Namun, perhitungan harus dilakukan hingga 37 angka signifikan
+agar hasil ini terlihat. Perhitungan yang hanya menggunakan sekitar
+16 angka signifikan, seperti yang dilakukan kebanyakan kalkulator
+dan komputer, menghasilkan 0 angka signifikan yang akurat karena 36
+angka akurasi hilang selama perhitungan. Itulah sebabnya Anda dapat
+memperoleh bilangan seperti $-1.180591620717411(10)^{21}$ sebagai
+jawaban akhir alih-alih jawaban eksak $\frac{a}{2b}-2\approx-.8273960599468214$.
+
+Yang mungkin lebih mengejutkan adalah bahwa penyusunan ulang sederhana
+atas ekspresi tersebut menghasilkan nilai yang sama sekali berbeda.
+Cobalah menghitung 
+\[
+(333.75-a^{2})b^{6}+a^{2}(11a^{2}b^{2}-121b^{4}-2)+5.5b^{8}+\frac{a}{2b}
+\]
+sebagai gantinya. Kali ini Anda mungkin memperoleh bilangan seperti
+$1.172603940053179$. Sekali lagi hasilnya sama sekali tidak akurat,
+dan penyebabnya sama. Kali ini setiap sukunya adalah
+\begin{eqnarray*}
+(333.75-a^{2})b^{6} & = & -7917110903377385049079188237280149504\\
+a^{2}(11a^{2}b^{2}-121b^{4}-2) & = & -437291576312021946464244793346\\
+5.5b^{8} & = & 7917111340668961361101134701524942848\\
+\frac{a}{2b} & = & \frac{77617}{66192}\approx1.172603940053179
+\end{eqnarray*}
+sehingga masalahnya tetap ada. Kita masih harus mengurangkan bilangan-bilangan
+yang nilainya hampir sama. Perbedaan antara perhitungan ini dan perhitungan
+sebelumnya terletak pada pembulatan. Dalam kasus pertama, pembulatan
+membuat dua bilangan besar berbeda pada angka signifikan terakhirnya,
+sehingga jumlahnya menjadi sangat besar. Dalam kasus kedua, jumlah
+tiga suku pertama ternyata $0$ karena bilangan-bilangan besar tersebut
+cocok pada semua angka signifikan. Perhatikan bahwa dalam kasus kedua,
+hasil akhirnya hanyalah nilai $\frac{a}{2b}$.
+
+Seperti diperlihatkan oleh contoh-contoh ini, kadang galat titik-mengambang
+dan kadang galat algoritmik dapat merusak suatu perhitungan. Namun,
+secara umum galat titik-mengambang sangat sulit dideteksi. Galat algoritmik
+jauh lebih mudah dianalisis. Selain itu, sebagian besar algoritma
+yang akan kita pelajari tidak rentan terhadap galat titik-mengambang.
+Dalam hampir semua kasus, bagian terbesar galat akan bersifat algoritmik.
+\begin{description}
+\item [{Referensi}] \cite{rump,loh}
+\end{description}
+
+\subsection{Konsep Utama}
+\begin{description}
+\item [{$p$}] Nilai eksak yang sedang dihampiri.
+\item [{$\tilde{p}$}] Suatu hampiran terhadap nilai $p$.
+\item [{$\tilde{p}^{*}$}] Suatu hampiran terhadap nilai $p$ yang dihitung
+menggunakan aritmetika eksak.
+\item [{Galat~absolut\index{galat!absolut}:}] $|\tilde{p}-p|$ disebut
+galat absolut ketika menggunakan $\tilde{p}$ untuk menghampiri nilai
+$p$.
+\item [{Galat~relatif\index{galat!relatif}:}] ${\displaystyle \frac{|\tilde{p}-p|}{|p|}}$
+disebut galat relatif ketika menggunakan $\tilde{p}$ untuk menghampiri
+nilai $p$.
+\item [{Akurasi\index{akurasi}:}] Kita mengatakan bahwa $\tilde{p}$ akurat
+hingga $n$ angka signifikan jika $n$ angka signifikan terdepan dari
+$\tilde{p}$ cocok dengan angka-angka dari $p$. Secara lebih tepat,
+kita mengatakan bahwa $\tilde{p}$ akurat hingga $d(\tilde{p})=\log\left|\frac{p}{\tilde{p}-p}\right|$
+angka signifikan.
+\item [{Aritmetika~titik-mengambang\index{aritmetika titik-mengambang}:}] Aritmetika
+yang menggunakan bilangan-bilangan yang direpresentasikan dengan banyak
+angka signifikan yang tetap.
+\item [{Galat~algoritmik\index{galat!algoritmik}:}] Galat yang semata-mata
+disebabkan oleh algoritma atau persamaan yang digunakan dalam hampiran,
+$|\tilde{p}^{*}-p|$, dengan $\tilde{p}^{*}$ merupakan hampiran terhadap
+$p$ yang dihitung menggunakan aritmetika eksak.
+\item [{Galat~pemenggalan\index{galat!pemenggalan}:}] Galat algoritmik
+akibat penggunaan jumlah parsial sebagai pengganti suatu deret. Pada
+jenis galat ini, ekor deret dipenggal---dari sinilah namanya berasal.
+\item [{Galat~titik-mengambang\index{galat!titik-mengambang}:}] Galat
+yang semata-mata disebabkan oleh perhitungan menggunakan aritmetika
+titik-mengambang, $|\tilde{p}^{*}-\tilde{p}|$ dengan $\tilde{p}$
+dihitung menggunakan aritmetika titik-mengambang, $\tilde{p}^{*}$
+dihitung menggunakan aritmetika eksak, dan keduanya dihitung menurut
+rumus atau algoritma yang sama.
+\item [{Galat~pembulatan\index{galat!pembulatan}:}] Nama lain untuk galat
+titik-mengambang.
+\end{description}
+
+\subsection{Octave}
+
+Perhitungan dalam bagian ini dapat dilakukan dengan mudah menggunakan
+Octave. Yang Anda perlukan hanyalah operasi aritmetika\index{Octave!operasi aritmetika}
+dan beberapa fungsi standar\index{Octave!fungsi standar} seperti
+nilai absolut, sinus, dan kosinus. Untungnya, semua ini cukup mudah
+dilakukan dengan Octave. Operasi aritmetika dilakukan hampir sama
+seperti pada kalkulator. Hanya ada satu perbedaan penting. Kebanyakan
+kalkulator akan menerima ekspresi seperti \texttt{3x} dan memahami
+bahwa yang Anda maksud adalah $3\times x$, tetapi Octave tidak demikian.
+Ekspresi \texttt{3x} menyebabkan galat sintaks di Octave. Octave mengharuskan
+Anda menyatakan operasinya secara eksplisit, seperti dalam \texttt{3{*}x}. 
+
+Fungsi standar seperti nilai absolut, sinus, dan kosinus (serta banyak
+fungsi lain) memiliki singkatan sederhana di Octave. Semua fungsi
+tersebut menerima satu argumen, atau masukan. Ingatlah notasi fungsi;
+dengan demikian akan jelas cara mencari sinus atau nilai absolut suatu
+bilangan. Anda perlu mengetikkan nama fungsi, tanda kurung buka, argumen,
+dan tanda kurung tutup, seperti dalam \texttt{sin(7.2)}. Beberapa
+fungsi umum beserta singkatannya tercantum dalam Tabel \ref{tab:commonOctave}.
+\begin{table}[h]
+\hrule \caption{\label{tab:commonOctave}Beberapa fungsi umum dan singkatannya dalam
+Octave.}
+
+\medskip{}
+
+\centering{}%
+\begin{tabular}{ll||ll||ll}
+Fungsi & Octave & Fungsi & Octave & Fungsi & Octave\tabularnewline
+\hline 
+$n!$ & \texttt{factorial(n)} & $\sin(x)$ & \texttt{sin(x)} & $\cos(x)$ & \texttt{cos(x)}\tabularnewline
+$|x|$ & \texttt{abs(x)} & $\tan(x)$ & \texttt{tan(x)} & $\cot(x)$ & \texttt{cot(x)}\tabularnewline
+$e^{x}$ & \texttt{exp(x)} atau \texttt{e\textasciicircum x} & $\sec(x)$ & \texttt{sec(x)} & $\csc(x)$ & \texttt{csc(x)}\tabularnewline
+$\ln(x)$ & \texttt{log(x)} & $\sin^{-1}(x)$ & \texttt{asin(x)} & $\cos^{-1}(x)$ & \texttt{asin(x)}\tabularnewline
+$\log(x)$ & \texttt{log10(x)} & $\tan^{-1}(x)$ & \texttt{atan(x)} & $\cot^{-1}(x)$ & \texttt{acot(x)}\tabularnewline
+$\sqrt{x}$ & \texttt{sqrt(x)} & $\sqrt[3]{x}$ & \texttt{cbrt(x)} & $\sqrt[n]{x}$ & \texttt{nthroot(x)}\tabularnewline
+$b^{x}$ & \texttt{b\textasciicircum x} & $\sinh(x)$ & \texttt{sinh(x)} & $\cosh(x)$ & \texttt{cosh(x)}\tabularnewline
+$\lfloor x\rfloor$ & \texttt{floor(x)} & $\lceil x\rceil$ & \texttt{ceil(x)} &  & \tabularnewline
+\end{tabular}\medskip{}
+\hrule 
+\end{table}
+ Fungsi dan operasi aritmetika dapat digabungkan dengan cara yang
+wajar. Beberapa contoh dari bagian ini ditampilkan dalam Tabel \ref{tab:errorExamples}.
+\begin{table}[h]
+\hrule \caption{\label{tab:errorExamples}Perhitungan beberapa ekspresi dengan Octave.}
+
+\medskip{}
+
+\centering{}%
+\begin{tabular}{lll}
+Ekspresi & Octave & Hasil\tabularnewline
+\hline 
+$|\frac{22}{7}-\pi|$ & \texttt{abs(22/7-pi)} & \texttt{0.0012645}\tabularnewline
+$\frac{|\frac{16525}{54}-\pi^{5}|}{|\pi^{5}|}$ & \texttt{abs(16525/54-pi\textasciicircum 5)/abs(pi\textasciicircum 5)} & \texttt{3.8111e-06}\tabularnewline
+$\frac{\sin(1.01)-\sin(0.99)}{0.02}$ & \texttt{(sin(1.01)-sin(0.99))/0.02} & \texttt{0.54029}\tabularnewline
+\end{tabular}\medskip{}
+\hrule 
+\end{table}
+Ada dua hal yang perlu diperhatikan. Pertama, notasi Octave sangat
+mirip dengan notasi kalkulator. Kedua, secara bawaan Octave menampilkan
+hasil menggunakan 5 angka signifikan. Namun, jangan mengira Octave
+hanya menghitung lima angka hasil tersebut. Sebenarnya, Octave telah
+menghitung sedikitnya 15 angka dengan benar. Jika Anda ingin melihat
+angka-angka itu, gunakan perintah \texttt{format('long')} \index{Octave!format@\texttt{format}}.
+Perintah ini hanya perlu digunakan sekali dalam setiap sesi. Semua
+bilangan yang dicetak setelah perintah ini dijalankan akan ditampilkan
+dengan 15 angka signifikan. Sebagai contoh, \texttt{1/7} akan menghasilkan
+\texttt{0.142857142857143} alih-alih hanya \texttt{0.14286}. Jika
+ingin kembali ke format bawaan, gunakan perintah \texttt{format()}
+tanpa argumen. Kita akan membahas pengendalian keluaran yang lebih
+terperinci nanti. Untuk sekarang, berikut beberapa cara melakukan
+Percobaan 1 menggunakan Octave. Perbedaannya hanya pada banyaknya
+keluaran dan format keluarannya. Bilangan-bilangannya dihitung dengan
+cara dan presisi yang tepat sama.
+
+\subsubsection{Percobaan 1 di Octave, contoh 1}
+
+\begin{verbatim}
+octave:1> p0=pi;
+octave:2> p1=10*p0-31; p2=100*p1-41; p3=100*p2-59;
+octave:3> p4=100*p3-26; p5=100*p4-53; p6=100*p5-58;
+octave:4> p7=100*p6-97
+p7 =  0.93116 
+\end{verbatim}
+
+\subsubsection{Percobaan 1 di Octave, contoh 2}
+
+\begin{verbatim}
+octave:1> format('long')
+octave:2> p0=pi
+p0 =  3.14159265358979
+octave:3> p1=10*p0-31
+p1 =  0.415926535897931
+octave:4> p2=100*p1-41
+p2 =  0.592653589793116
+octave:5> p3=100*p2-59
+p3 =  0.265358979311600
+octave:6> p4=100*p3-26
+p4 =  0.535897931159980
+octave:7> p5=100*p4-53
+p5 =  0.589793115997963
+octave:8> p6=100*p5-58
+p6 =  0.979311599796347
+octave:9> p7=100*p6-97
+p7 =  0.931159979634685 
+\end{verbatim}
+
+\subsubsection{Percobaan 1 di Octave, contoh 3}
+
+\begin{verbatim}
+octave:1> 10*pi-31
+ans =  0.41593
+octave:2> 100*ans-41
+ans =  0.59265
+octave:3> 100*ans-59
+ans =  0.26536
+octave:4> 100*ans-26
+ans =  0.53590
+octave:5> 100*ans-53
+ans =  0.58979
+octave:6> 100*ans-58
+ans =  0.97931
+octave:7> 100*ans-97
+ans =  0.93116 
+\end{verbatim}
+
+\subsubsection{Percobaan 3 di Octave}
+
+\begin{verbatim}
+octave:1> a=77617;
+octave:2> b=33096;
+octave:3> t1=333.75*b^6;
+octave:4> t2=a^2*(11*a^2*b^2-b^6-121*b^4-2);
+octave:5> t3=5.5*b^8;
+octave:6> t4=a/(2*b);
+octave:7> t1+t2+t3+t4
+ans = -1.18059162071741e+21
+octave:8> t1=(333.75-a^2)*b^6;
+octave:9> t2=a^2*(11*a^2*b^2-121*b^4-2);
+octave:10> t1+t2+t3+t4
+ans =  1.17260394005318 
+\end{verbatim}
+
+\noindent Pada akhirnya, cara yang Anda pilih untuk mengerjakan suatu
+latihan di Octave bergantung pada preferensi dan tujuan Anda. Ajukanlah
+pertanyaan seperti berikut kepada diri sendiri. Berapa angka signifikan
+yang saya perlukan? Berapa banyak hasil antara yang perlu saya lihat?
+Hasil yang mana? Jawaban atas pertanyaan semacam itu seharusnya memandu
+penyelesaian Anda.
+
+Jika diperlukan, Octave memiliki singkatan untuk sebagian besar konstanta
+umum. Tabel \ref{tab:constants} menampilkan tiga konstanta yang paling
+umum.
+\begin{table}[h]
+\hrule \caption{\label{tab:constants}Beberapa konstanta \index{Octave!konstanta}
+dalam Octave.}
+
+\medskip{}
+
+\centering{}%
+\begin{tabular}{lll}
+Konstanta & Octave & Hasil\tabularnewline
+\hline 
+$e$ & \texttt{e} & \texttt{2.7183}\tabularnewline
+$\pi$ & \texttt{pi} & \texttt{3.1416}\tabularnewline
+$i$ & \texttt{i atau j} & \texttt{0 + 1i}\tabularnewline
+\end{tabular}\medskip{}
+\hrule 
+\end{table}
+
+\noindent\startexercises
+
+\subsection{Latihan}
+\begin{enumerate}
+\item Selain galat pembulatan, apa yang dapat berdampak buruk terhadap akurasi
+suatu perhitungan numerik?
+\item Hitung galat absolut dan galat relatif ketika menghampiri $\pi$ dengan
+3.
+\item \label{ex:absoluteError}Hitung galat absolut ketika menghampiri $p$
+dengan $\tilde{p}$.
+
+\begin{enumerate}
+\item \label{exc:abserr1}$p=123$;~~ $\tilde{p}=\frac{1106}{9}$ \hasasolution 
+\item $p=\frac{1}{e}$;~~ $\tilde{p}=.3666$
+\item \label{exc:abserr2}$p=2^{10}$;~~ $\tilde{p}=1000$ \hasasolution 
+\item $p=24$;~~ $\tilde{p}=48$
+\item \octave\ \label{exc:abserr3}$p=\pi^{-7}$;~~ $\tilde{p}=10^{-4}$ \hasasolution 
+\item \octave\ $p=(0.062847)(0.069234)$;~~ $\tilde{p}=0.0042$
+\end{enumerate}
+\item \label{exc:abserr15}Hitung galat relatif untuk hampiran-hampiran
+pada soal \ref{ex:absoluteError}. \haspartwithsolution 
+\item \label{exc:abserr16}Berapa banyak angka signifikan yang akurat pada
+hampiran-hampiran dalam soal \ref{ex:absoluteError} tersebut? \haspartwithsolution 
+\item Hitung galat absolut dan galat relatif ketika menghampiri $p$ dengan
+$\tilde{p}$.
+
+\begin{enumerate}
+\item $p=\sqrt{2}$, $\tilde{p}=1.414$
+\item $p=10^{\pi}$, $\tilde{p}=1400$
+\item $p=9!$, $\tilde{p}=\sqrt{18\pi}(9/e)^{9}$
+\end{enumerate}
+\item \octave\ \label{enu:one-over-pi}Hitung ${\displaystyle \frac{1103\sqrt{8}}{9801}}$
+menggunakan Octave.
+\item \octave\ Bilangan pada soal \ref{enu:one-over-pi} merupakan hampiran
+terhadap $1/\pi$. Dengan Octave, tentukan galat absolut dan galat
+relatif hampiran tersebut.
+\item \octave\ Dengan Octave, hitung
+
+\begin{enumerate}
+\item $\lfloor\ln(234567)\rfloor$
+\item $e^{\lceil\ln(234567)\rceil}$
+\item $\sqrt[3]{\lfloor\sin(e^{5.2})\rfloor}$
+\item $-e^{i\pi}$
+\item $4\tan^{-1}(1)$
+\item ${\displaystyle \frac{\lfloor\cos(3)-\sqrt[5]{\ln(3)}\rfloor}{\lceil\arctan(3)-e^{3}\rceil}}$
+\end{enumerate}
+\item \octave\ Tentukan $f(2)$ menggunakan Octave.
+
+\begin{enumerate}
+\item \label{exc:abserr12}$f(x)=e^{\sin(x)}$ \hasasolution 
+\item $f(x)=\sin\left(e^{x}\right)$
+\item \label{exc:abserr13}${\displaystyle f(x)=\tan^{-1}(x-0.429)}$ \hasasolution 
+\item $f(x)=x-\tan^{-1}(0.429)$
+\item \label{exc:abserr14}$f(x)=10^{x}/5!$ \hasananswer 
+\item $f(x)=5!/x^{10}$
+\end{enumerate}
+\item \octave\ Semua persamaan berikut benar secara matematis. Meskipun
+demikian, galat titik-mengambang membuat beberapa di antaranya dianggap
+salah oleh Octave. Yang mana saja? PETUNJUK: Gunakan operator Boolean
+\texttt{==} untuk memeriksanya. Sebagai contoh, untuk memeriksa apakah
+$\sin(0)=0$, ketik \texttt{sin(0)==0} di Octave. \texttt{ans=1} berarti
+benar (kedua ruas sama menurut Octave---tidak ada galat pembulatan),
+sedangkan \texttt{ans=0} berarti salah (kedua ruas tidak sama menurut
+Octave---terdapat galat pembulatan).
+
+\begin{enumerate}
+\item $(2)(12)=9^{2}-4(9)-21$
+\item $e^{3\ln(2)}=8$
+\item $\ln(10)=\ln(5)+\ln(2)$
+\item $g(\frac{1+\sqrt{5}}{2})=\frac{1+\sqrt{5}}{2}$ dengan $g(x)=\sqrt[3]{x^{2}+x}$
+\item $\lfloor153465/3\rfloor=153465/3$
+\item $3\pi^{3}+7\pi^{2}-2\pi+8=((3\pi+7)\pi-2)\pi+8$
+\end{enumerate}
+\item \label{ex:absoluteError2}Tentukan suatu hampiran $\tilde{p}$ terhadap
+$p$ dengan galat absolut $.001$.
+
+\begin{enumerate}
+\item \label{exc:abserr4}$p=\pi$ \hasasolution 
+\item $p=\sqrt{5}$
+\item \label{exc:abserr5}$p=\ln(3)$ \hasasolution 
+\item $p=\sqrt{23}^{\sqrt{23}}$
+\item \label{exc:abserr6}$p=\frac{10}{\ln(1.1)}$ \hasasolution 
+\item $p=\tan(1.57079)$
+\end{enumerate}
+\item \label{exc:abserr17}Tentukan suatu hampiran $\tilde{p}$ terhadap
+$p$ dengan galat relatif $.001$ untuk setiap nilai $p$ pada soal
+\ref{ex:absoluteError2}. \haspartwithsolution 
+\item \label{ex:absoluteError3}$\tilde{p}$ menghampiri nilai apa dengan
+galat absolut $.0005$?
+
+\begin{enumerate}
+\item \label{exc:abserr7}$\tilde{p}=.2348263818643$ \hasananswer 
+\item $\tilde{p}=23.89627345677$
+\item $\tilde{p}=-8.76257664363$
+\end{enumerate}
+\item \label{exc:abserr18}Ulangi soal \ref{ex:absoluteError3}, tetapi
+gunakan galat relatif $.0005$. \haspartwithanswer 
+\item \label{exc:abserr8}$\tilde{p}$ menghampiri $p$ dengan galat absolut
+$\frac{1}{100}$ dan galat relatif $\frac{3}{100}$. Tentukan $p$
+dan $\tilde{p}$. \hasananswer 
+\item $\tilde{p}$ menghampiri $p$ dengan galat absolut $\frac{3}{100}$
+dan galat relatif $\frac{1}{100}$. Tentukan $p$ dan $\tilde{p}$.
+\item Misalkan $\tilde{p}$ harus menghampiri $p$ dengan galat relatif
+paling besar $10^{-3}$. Tentukan interval terbesar tempat $\tilde{p}$
+harus berada jika $p=900$.
+\item Bilangan $e$ dapat didefinisikan oleh $e=\sum_{n=0}^{\infty}(1/n!)$.
+Hitung galat absolut dan galat relatif pada hampiran-hampiran berikut
+terhadap $e$:
+
+\begin{enumerate}
+\item ${\displaystyle \sum_{n=0}^{5}\frac{1}{n!}}$
+\item ${\displaystyle \sum_{n=0}^{10}\frac{1}{n!}}$
+\end{enumerate}
+\item Rasio emas, ${\displaystyle \frac{1+\sqrt{5}}{2}}$, ditemukan di
+berbagai tempat dalam alam maupun matematika. Sebagai contoh, jika
+$F_{n}$ adalah bilangan Fibonacci ke-$n$, maka
+\[
+\lim_{n\to\infty}\frac{F_{n+1}}{F_{n}}=\frac{1+\sqrt{5}}{2}
+\]
+Karena itu, $F_{11}/F_{10}$ dapat digunakan sebagai hampiran terhadap
+rasio emas. Tentukan galat relatif hampiran ini. PETUNJUK: Barisan
+Fibonacci didefinisikan oleh $F_{0}=1$, $F_{1}=1$, $F_{n}=F_{n-1}+F_{n-2}$
+untuk $n\geq2$.
+\item \label{exc:abserr9}Tentukan nilai $p$ dan $\tilde{p}$ sedemikian
+sehingga galat relatif sama dengan galat absolut. Nyatakan secara
+umum kondisi yang menyebabkan hal ini terjadi. \hasananswer 
+\item Tentukan nilai $p$ dan $\tilde{p}$ sedemikian sehingga galat relatif
+lebih besar daripada galat absolut. Nyatakan secara umum kondisi yang
+menyebabkan hal ini terjadi.
+\item Tentukan nilai $p$ dan $\tilde{p}$ sedemikian sehingga galat relatif
+lebih kecil daripada galat absolut. Nyatakan secara umum kondisi yang
+menyebabkan hal ini terjadi.
+\item Hitung (i) $\tilde{p}$ dengan kalkulator atau komputer (perhitungan
+titik-mengambang), (ii) galat absolut, $|\tilde{p}-p|$, dan (iii)
+galat relatif, $\frac{|\tilde{p}-p|}{|p|}$. Kemudian gunakan nilai
+$\tilde{p}^{*}$ yang diberikan untuk menghitung (iv) galat algoritmik,
+$|\tilde{p}^{*}-p|$ dan (v) galat pembulatan, $|\tilde{p}^{*}-\tilde{p}|$.
+
+\begin{enumerate}
+\item \label{exc:abserr10}Misalkan $f(x)=x^{4}+7x^{3}-63x^{2}-295x+350$
+dan misalkan $p=f'(-2)$. Nilai $\tilde{p}=\frac{f(-2+10^{-7})-f(-2-10^{-7})}{2(10)^{-7}}$
+merupakan hampiran yang baik terhadap $p$. $\tilde{p}$ tepat sama
+dengan $8.99999999999999$. \hasananswer 
+\item Misalkan $f'(x)=e^{x}\sin(10x)$ dan $f(0)=0$, serta misalkan $p=f(1)$.
+Dapat ditunjukkan bahwa $p=\frac{1}{101}e(\sin10-10\cos10)+\frac{10}{101}$.
+Metode Euler menghasilkan hampiran $\tilde{p}=\frac{1}{10}\sum_{i=1}^{9}e^{i/10}\sin i$.
+Hingga 28 angka signifikan yang akurat, $\tilde{p}$ adalah $0.3550449718187918680449850763$.
+Artinya, gunakan $\tilde{p}^{*}=0.3550449718187918680449850763$.
+\item Misalkan $a_{0}=\frac{5+\sqrt{5}}{8}$ dan $a_{n+1}=4a_{n}(1-a_{n})$,
+lalu perhatikan $p=a_{51}$. Dapat ditunjukkan bahwa $p=a_{51}=\frac{5-\sqrt{5}}{8}$.
+Algoritma paling langsung untuk menghitung $a_{51}$ adalah menghitung
+$a_{1},a_{2},a_{3},\ldots a_{51}$ secara berurutan menurut relasi
+rekurensi yang diberikan. Gunakan algoritma ini untuk menghitung $\tilde{p}^{*}$
+dan $\tilde{p}$.
+\end{enumerate}
+\end{enumerate}
+\finishexercises 

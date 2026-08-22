@@ -1,0 +1,6449 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\input $HOME/Documents/textbook/preamble
+\end_preamble
+\use_default_options true
+\master ../scsu/Book-Numerical/TeaTimeNumericalAnalysis.lyx
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 4cm
+\topmargin 2.5cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 1
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Pencarian Akar
+\end_layout
+
+\begin_layout Section
+Metode Bagi Dua
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Bisection"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode bagi dua
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+metode ! bagi dua|see {metode bagi dua}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pada Bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Taylor"
+
+\end_inset
+
+ (halaman 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "equationToSolve"
+
+\end_inset
+
+), kita menyatakan bahwa 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $T_{2}(x)$
+\end_inset
+
+ sebenarnya menghampiri 
+\begin_inset Formula $\ln(x)$
+\end_inset
+
+ dengan selisih tidak lebih dari 
+\begin_inset Formula $0.1$
+\end_inset
+
+ pada interval 
+\begin_inset Formula $[3.296,13.13]$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, seraya berjanji akan membahas perhitungannya nanti.
+ Sekaranglah saatnya.
+ Pertama-tama, kita nyatakan kembali klaim tersebut sebagai 
+\begin_inset Quotes eld
+\end_inset
+
+jarak antara 
+\begin_inset Formula $T_{2}(x)$
+\end_inset
+
+ dan 
+\begin_inset Formula $\ln(x)$
+\end_inset
+
+ kurang dari atau sama dengan 
+\begin_inset Formula $0.1$
+\end_inset
+
+ untuk setiap 
+\begin_inset Formula $x\in[3.296,13.13]$
+\end_inset
+
+.
+\begin_inset Quotes erd
+\end_inset
+
+ Dengan kata lain, 
+\begin_inset Formula 
+\[
+|T_{2}(x)-\ln(x)|<\frac{1}{10}\quad\mbox{untuk setiap }x\in[3.296,13.13].
+\]
+
+\end_inset
+
+Salah satu cara untuk mulai menyelesaikan pertidaksamaan ini adalah mempertimbangkan
+ pasangan persamaan
+ 
+\begin_inset Formula $T_{2}(x)-\ln(x)=\pm\frac{1}{10}$
+\end_inset
+
+.
+ Dengan berfokus pada penyelesaian 
+\begin_inset Formula 
+\begin{equation}
+T_{2}(x)-\ln(x)=\frac{1}{10},\label{eq:bisectionExample}
+\end{equation}
+
+\end_inset
+
+ingat bahwa 
+\begin_inset Formula $T_{2}(x)=2+\frac{x-e^{2}}{e^{2}}-\frac{(x-e^{2})^{2}}{2e^{4}}$
+\end_inset
+
+.
+ Jadi, kita hendak menyelesaikan persamaan
+\begin_inset Formula 
+\[
+2+\frac{x-e^{2}}{e^{2}}-\frac{(x-e^{2})^{2}}{2e^{4}}-\ln(x)=\frac{1}{10}.
+\]
+
+\end_inset
+
+Akhirnya, setelah menuliskan persamaan secara lengkap, tidak mengherankan bahwa
+ kita tidak akan menyelesaikannya untuk 
+\begin_inset Formula $x$
+\end_inset
+
+ secara eksak.
+ Tidak ada metode analitik untuk menyelesaikan persamaan semacam itu.
+ Secara umum, persamaan yang memuat suku polinomial sekaligus suku transendental
+ tidak dapat diselesaikan secara analitik.
+ Namun, dari grafik pada Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:taylor3"
+
+\end_inset
+
+, kita dapat memperoleh hampiran awal bagi solusinya.
+ Kita mencari titik tempat 
+\begin_inset Formula $T_{2}(x)$
+\end_inset
+
+ melebihi 
+\begin_inset Formula $\ln(x)$
+\end_inset
+
+ sebesar 
+\begin_inset Formula $0.1$
+\end_inset
+
+.
+ Karena kedua grafik hampir berimpit pada 
+\begin_inset Formula $x=6$
+\end_inset
+
+, kita dapat menduga bahwa 
+\begin_inset Formula $T_{2}(6)$
+\end_inset
+
+ melebihi 
+\begin_inset Formula $\ln(x)$
+\end_inset
+
+ sebesar 
+\shape italic
+kurang dari
+\shape default
+ 
+\begin_inset Formula $0.1$
+\end_inset
+
+ di sana.
+ Karena terdapat celah yang cukup besar antara kedua grafik pada 
+\begin_inset Formula $x=2$
+\end_inset
+
+, kita juga dapat menduga bahwa 
+\begin_inset Formula $T_{2}(2)$
+\end_inset
+
+ melebihi 
+\begin_inset Formula $\ln(x)$
+\end_inset
+
+ sebesar 
+\shape italic
+lebih dari
+\shape default
+ 
+\begin_inset Formula $0.1$
+\end_inset
+
+ di sana.
+ Dengan kata lain, 
+\begin_inset Formula $T_{2}(2)-\ln(2)>\frac{1}{10}$
+\end_inset
+
+ sedangkan 
+\begin_inset Formula $T_{2}(6)-\ln(6)<\frac{1}{10}$
+\end_inset
+
+.
+ Karena 
+\begin_inset Formula $T_{2}(x)-\ln(x)$
+\end_inset
+
+ kontinu pada interval 
+\begin_inset Formula $[2,6]$
+\end_inset
+
+, teorema nilai antara menjamin adanya nilai 
+\begin_inset Formula $c\in(2,6)$
+\end_inset
+
+ sedemikian rupa sehingga 
+\begin_inset Formula $T_{2}(c)-\ln(c)=\frac{1}{10}$
+\end_inset
+
+.
+ Nilai 
+\begin_inset Formula $c$
+\end_inset
+
+ inilah yang kita cari.
+ Kita sudah tahu bahwa nilainya berada di antara 2 dan 6.
+ Ini baru permulaan, tetapi kita dapat memperoleh hasil yang lebih baik!
+\end_layout
+
+\begin_layout Standard
+Bagaimana dengan 4? Nah, 
+\begin_inset Formula $T_{2}(4)-\ln(4)\approx.04986<0.1$
+\end_inset
+
+, sehingga sekarang kita tahu bahwa 
+\begin_inset Formula $T_{2}(4)$
+\end_inset
+
+ melebihi 
+\begin_inset Formula $\ln(4)$
+\end_inset
+
+ sebesar 
+\shape italic
+kurang dari
+\shape default
+ 
+\begin_inset Formula $0.1$
+\end_inset
+
+.
+ Sekarang teorema nilai antara memberi tahu kita bahwa 
+\begin_inset Formula $c$
+\end_inset
+
+ berada di antara 2 dan 4 (
+\begin_inset Formula $T_{2}(2)$
+\end_inset
+
+ melebihi 
+\begin_inset Formula $\ln(x)$
+\end_inset
+
+ sebesar 
+\shape italic
+lebih dari
+\shape default
+ 
+\begin_inset Formula $0.1$
+\end_inset
+
+).
+ Bagaimana jika kita periksa 
+\begin_inset Formula $x=3$
+\end_inset
+
+? Mari.
+ 
+\begin_inset Formula $T_{2}(3)-\ln(3)\approx.131>0.1$
+\end_inset
+
+, sehingga sekarang kita tahu bahwa 
+\begin_inset Formula $T_{2}(3)$
+\end_inset
+
+ melebihi 
+\begin_inset Formula $\ln(3)$
+\end_inset
+
+ sebesar 
+\shape italic
+lebih dari
+\shape default
+ 
+\begin_inset Formula $0.1$
+\end_inset
+
+.
+ Ringkasnya, 
+\begin_inset Formula $T_{2}(4)-\ln(4)<0.1$
+\end_inset
+
+ sedangkan 
+\begin_inset Formula $T_{2}(3)\ln(3)>0.1$
+\end_inset
+
+.
+ Sekali lagi, berdasarkan teorema nilai antara, kita tahu bahwa 
+\begin_inset Formula $c$
+\end_inset
+
+ berada di antara 3 dan 4.
+ Kita dapat terus mengulangi proses ini; batasnya hanyalah kesabaran kita.
+ Proses inilah yang kita sebut 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode bagi dua
+\end_layout
+
+\end_inset
+
+metode bagi dua:
+\end_layout
+
+\begin_layout Enumerate
+Tentukan interval 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+ sedemikian rupa sehingga salah satu dari 
+\begin_inset Formula $a$
+\end_inset
+
+ atau 
+\begin_inset Formula $b$
+\end_inset
+
+ menghasilkan nilai di atas sasaran, sedangkan yang lain menghasilkan nilai di bawah sasaran.
+\end_layout
+
+\begin_layout Enumerate
+Hitung titik tengah, 
+\begin_inset Formula $m$
+\end_inset
+
+, dari interval tersebut.
+\end_layout
+
+\begin_layout Enumerate
+Jika 
+\begin_inset Formula $a$
+\end_inset
+
+ dan 
+\begin_inset Formula $m$
+\end_inset
+
+ sama-sama menghasilkan nilai di atas sasaran atau sama-sama di bawah sasaran,
+ nilai yang dicari terletak dalam 
+\begin_inset Formula $[m,b]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Jika 
+\begin_inset Formula $b$
+\end_inset
+
+ dan 
+\begin_inset Formula $m$
+\end_inset
+
+ sama-sama menghasilkan nilai di atas sasaran atau sama-sama di bawah sasaran,
+ nilai yang dicari terletak dalam 
+\begin_inset Formula $[a,m]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Kembali ke langkah 2 dengan menggunakan interval baru tersebut.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:bisection-1"
+
+\end_inset
+
+
+\begin_inset Formula $+$
+\end_inset
+
+ menunjukkan 
+\begin_inset Formula $T_{2}(x)-\ln(x)>\frac{1}{10}$
+\end_inset
+
+ dan 
+\begin_inset Formula $-$
+\end_inset
+
+ menunjukkan 
+\begin_inset Formula $T_{2}(x)-\ln(x)<\frac{1}{10}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/roots-bisection1.pdf
+	width 5.5in
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Dengan menggunakan tanda 
+\begin_inset Formula $+$
+\end_inset
+
+ untuk nilai 
+\begin_inset Formula $x$
+\end_inset
+
+ yang membuat 
+\begin_inset Formula $T_{2}(x)-\ln(x)$
+\end_inset
+
+ melebihi nilai sasaran 
+\begin_inset Formula $\frac{1}{10}$
+\end_inset
+
+ dan tanda 
+\begin_inset Formula $-$
+\end_inset
+
+ untuk nilai 
+\begin_inset Formula $x$
+\end_inset
+
+ yang membuat 
+\begin_inset Formula $T_{2}(x)-\ln(x)$
+\end_inset
+
+ berada di bawah nilai sasaran 
+\begin_inset Formula $\frac{1}{10}$
+\end_inset
+
+, kita dapat menggambarkan prosedur ini, termasuk dua iterasi berikutnya, seperti
+ pada Gambar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:bisection-1"
+
+\end_inset
+
+.
+ Kita juga dapat menyajikan kembali perhitungannya dalam sebuah tabel:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $m$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T_{2}(a)-\ln(a)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T_{2}(m)-\ln(m)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T_{2}(b)-\ln(b)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.3116$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.04986$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.002582$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.3116$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.131$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.04986$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.131$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0824$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.04986$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Bagaimanapun cara kita memahami prosedur tersebut, prosedur itu menghasilkan
+ barisan hampiran
+ 
+\begin_inset Formula 
+\[
+4,\ 3,\ 3.5,\ 3.25,\ \ldots
+\]
+
+\end_inset
+
+.
+ Berapakah nilai berikutnya? Jawaban 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "subsec:bisectionAnswer1"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Kita tidak hanya memperoleh barisan bilangan yang mendekati solusi, tetapi juga
+ mengetahui dengan pasti bahwa 
+\begin_inset Formula $4$
+\end_inset
+
+ berjarak tidak lebih dari 2 satuan dari nilai eksak.
+ 
+\begin_inset Formula $3$
+\end_inset
+
+ berjarak tidak lebih dari 1 satuan.
+ 
+\begin_inset Formula $3.5$
+\end_inset
+
+ berjarak tidak lebih dari 
+\begin_inset Formula $0.5$
+\end_inset
+
+ satuan.
+ Dan 
+\begin_inset Formula $3.25$
+\end_inset
+
+ berjarak tidak lebih dari 
+\begin_inset Formula $0.25$
+\end_inset
+
+ satuan.
+ Secara umum, setiap hampiran berjarak paling jauh setengah panjang interval
+ tempat hampiran itu dihitung sebagai titik tengah.
+ Bagaimanapun, nilai eksak dijamin terletak di dalam interval tersebut.
+ Jarak terjauh yang mungkin antara titik tengah dan nilai eksak adalah setengah
+ panjang interval.
+\end_layout
+
+\begin_layout Standard
+Walaupun metode ini bekerja dengan baik sebagaimana dijelaskan, biasanya persamaan
+ yang hendak diselesaikan disederhanakan sehingga salah satu ruasnya bernilai nol.
+ Dengan demikian, ruas yang lain dapat dipandang sebagai fungsi yang akarnya dicari.
+ Selain itu, cara ini sedikit menyederhanakan implementasi metode.
+ Sebagai contoh, kita akan menyelesaikan persamaan 
+\begin_inset Formula 
+\[
+T_{2}(x)-\ln(x)-\frac{1}{10}=0
+\]
+
+\end_inset
+
+bukan persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:bisectionExample"
+
+\end_inset
+
+.
+ Prosedurnya kemudian cukup berupa pencarian akar fungsi 
+\begin_inset Formula $f(x)=T_{2}(x)-\ln(x)-\frac{1}{10}$
+\end_inset
+
+.
+ Karena itulah metode ini disebut metode pencarian akar.
+ Metode ini digunakan untuk mencari nol, atau akar, suatu fungsi.
+ Dari sudut pandang ini, delapan iterasi pertama prosedur tersebut dapat diringkas
+ sebagai berikut:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $m$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f(a)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f(m)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f(b)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $>0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $<0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $<0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $>0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $>0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $<0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $>0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $<0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $<0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $>0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $>0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $<0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.375$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $>0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $<0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $<0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.3125$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.375$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $>0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $<0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $<0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.28125$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.3125$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $>0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $>0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $<0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.28125$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.296875$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.3125$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Perhatikan dua hal.
+ Nilai sebenarnya dari 
+\begin_inset Formula $f(a)$
+\end_inset
+
+, 
+\begin_inset Formula $f(m)$
+\end_inset
+
+, dan 
+\begin_inset Formula $f(b)$
+\end_inset
+
+ tidak diperlukan.
+ Hanya tandanya yang penting, sebab kita hanya perlu mempertahankan satu titik
+ ujung tempat fungsi bernilai lebih besar daripada 0 (di atas sasaran) dan satu
+ titik ujung tempat fungsi bernilai kurang daripada 0 (di bawah sasaran).
+ Selain itu, kolom 
+\begin_inset Formula $f(a)$
+\end_inset
+
+ dan 
+\begin_inset Formula $f(b)$
+\end_inset
+
+ sebenarnya juga tidak mutlak diperlukan.
+ Jika prosedur dijalankan dengan benar, tandanya tidak akan pernah berubah.
+ Bahkan, itulah arti menjalankan prosedur dengan benar! Pada langkah 3 dan 4,
+ kita memilih subselang yang dipertahankan dengan menjaga agar nilai fungsi
+ pada kedua titik ujung berlainan tanda.
+ 
+\end_layout
+
+\begin_layout Standard
+Seperti ditunjukkan oleh baris terakhir, nilai yang dicari kira-kira 
+\begin_inset Formula $3.296$
+\end_inset
+
+ sesuai yang dijanjikan.
+ Nilai lainnya, 
+\begin_inset Formula $13.13$
+\end_inset
+
+, ditentukan dengan mencari akar fungsi 
+\begin_inset Formula $g(x)=T_{2}(x)-\ln(x)+\frac{1}{10}$
+\end_inset
+
+.
+ Cobalah! Misalnya, mulailah dengan 
+\begin_inset Formula $a=10$
+\end_inset
+
+ dan 
+\begin_inset Formula $b=14$
+\end_inset
+
+.
+ Penyelesaian 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "subsec:bisectionAnswer2"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Walaupun berhasil, satu-satunya tujuan nyata menjalankan prosedur ini menggunakan
+ tabel adalah memastikan bahwa Anda memahami persis cara kerjanya.
+ Jika benar-benar menggunakan metode ini dalam praktik, kita akan menulis program
+ komputer singkat sebagai gantinya.
+ Komputer sangat baik dalam melakukan perhitungan berulang-ulang, sesuatu yang
+ tidak terlalu dikuasai manusia.
+ Dalam prosedur ini, kita perlu menghitung titik tengah, memutuskan apakah titik
+ tengah tersebut harus menjadi titik ujung kiri atau kanan, menetapkannya demikian,
+ lalu mengulanginya.
+ 
+\end_layout
+
+\begin_layout Standard
+Tersisa satu pertanyaan—berapa kali pengulangan, atau iterasi, perlu kita lakukan?
+ Jawabannya bergantung pada pengguna.
+ Mungkin jawaban yang berjarak tidak lebih dari 
+\begin_inset Formula $10^{-2}$
+\end_inset
+
+ dari nilai eksak sudah memadai, atau mungkin hanya akurasi 
+\begin_inset Formula $10^{-6}$
+\end_inset
+
+ yang dapat diterima.
+ Program yang kita tulis harus cukup fleksibel untuk menghitung jawaban dengan
+ akurasi apa pun yang diinginkan, selama masih dalam batas yang wajar.
+ Dengan pertimbangan tersebut, berikut kode semu untuk metode bagi dua.
+ 
+\end_layout
+
+\begin_layout Subsection
+Analisis Metode Bagi Dua
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+metode bagi dua ! analisis
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ada dua alasan kuat untuk mempelajari metode bagi dua.
+ Pertama, asumsi-asumsi yang menjamin keberhasilannya jauh lebih mudah diperiksa
+ daripada asumsi metode-metode lain.
+ Meskipun demikian, tetaplah berhati-hati.
+ Pelaksanaan metode numerik apa pun yang benar mensyaratkan pemrograman yang benar,
+ komputasi yang akurat, dan masukan yang tepat.
+ Pemrogram dan pengguna dapat berbuat salah.
+ Komputer pun dapat keliru.
+ Ingat pelajaran dari Bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Accuracy"
+
+\end_inset
+
+.
+ Sembari bersikap waspada terhadap hasilnya, imbangi keraguan Anda dengan kepercayaan
+ yang cukup besar pada metode ini.
+ Hanya dalam keadaan langka komputerlah yang menjadi sumber masalah.
+\end_layout
+
+\begin_layout Standard
+Kedua, analisis galatnya sederhana.
+ Misalkan 
+\begin_inset Formula $m_{1}=\frac{a+b}{2}$
+\end_inset
+
+, yaitu titik tengah 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+.
+ Misalkan titik-titik tengah berikutnya adalah 
+\begin_inset Formula $m_{2},\ m_{3},\ m_{4},$
+\end_inset
+
+ dan seterusnya.
+ Teorema nilai antara kemudian menjamin 
+\begin_inset Formula $|m_{j}-p|\leq\frac{b-a}{2^{j}}$
+\end_inset
+
+ untuk suatu akar 
+\begin_inset Formula $p$
+\end_inset
+
+ dari 
+\begin_inset Formula $f(x)$
+\end_inset
+
+.
+ Seperti yang kita pelajari pada Bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Speed"
+
+\end_inset
+
+, ini berarti barisan 
+\begin_inset Formula $\langle m_{n}\rangle$
+\end_inset
+
+ berkonvergensi ke 
+\begin_inset Formula $p$
+\end_inset
+
+ dengan orde linear dan laju kekonvergenan 
+\begin_inset Formula $O\left(\frac{1}{2^{n}}\right)$
+\end_inset
+
+.
+ Metode ini patut dianggap lambat berkonvergensi karena ordanya linear.
+ Namun, di antara metode-metode berorde linear, metode ini patut dianggap cepat.
+ Galatnya meluruh secara eksponensial—lebih cepat daripada peluruhan polinomial apa pun.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Add digression on binary search?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Metode Bagi Dua (Kode Semu)
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode bagi dua ! kode semu
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Walaupun secara teknis tidak diperlukan untuk menulis kode, bila memungkinkan
+ kita akan mengawali kode semu setiap metode dengan asumsi-asumsi matematis yang
+ menjamin keberhasilannya.
+ Implikasinya adalah bahwa jika metode dijalankan dalam keadaan ketika asumsi-asumsi
+ tersebut tidak terpenuhi, metode itu tidak boleh diharapkan memberikan hasil
+ yang dapat diandalkan.
+ Metode tersebut bisa saja memberikan informasi yang berguna, bisa juga tidak.
+ Pepatah lama 
+\begin_inset Quotes eld
+\end_inset
+
+sampah masuk...sampah keluar
+\begin_inset Quotes erd
+\end_inset
+
+ berlaku!
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pseudocode} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Asumsi: 
+\begin_inset Formula $f$
+\end_inset
+
+ kontinu pada 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+.
+ 
+\begin_inset Formula $f(a)$
+\end_inset
+
+ dan 
+\begin_inset Formula $f(b)$
+\end_inset
+
+ berlainan tanda.
+\end_layout
+
+\begin_layout Description
+Masukan: Interval 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+; fungsi 
+\begin_inset Formula $f$
+\end_inset
+
+; akurasi yang diinginkan 
+\begin_inset Formula $tol$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+1: Tetapkan 
+\begin_inset Formula $N=\left\lceil \frac{\ln(b-a)-\ln(tol)}{\ln2}\right\rceil $
+\end_inset
+
+; 
+\begin_inset Formula $L=f(a)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+2: Untuk 
+\begin_inset Formula $j=1\ldots N$
+\end_inset
+
+ lakukan Langkah 3-5:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+3: Tetapkan 
+\begin_inset Formula $m=\frac{a+b}{2}$
+\end_inset
+
+; 
+\begin_inset Formula $M=f(m)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+4: Jika 
+\begin_inset Formula $M=0$
+\end_inset
+
+ kembalikan 
+\begin_inset Formula $m$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+5: Jika 
+\begin_inset Formula $LM<0$
+\end_inset
+
+ tetapkan 
+\begin_inset Formula $b=m$
+\end_inset
+
+; jika tidak, tetapkan 
+\begin_inset Formula $a=m$
+\end_inset
+
+ dan 
+\begin_inset Formula $L=M$
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Keluaran: Hampiran 
+\begin_inset Formula $m$
+\end_inset
+
+ yang berjarak tidak lebih dari 
+\begin_inset Formula $tol$
+\end_inset
+
+ dari akar eksak.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pseudocode} 
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Seperti telah disebutkan, metode ini harus menghitung titik tengah (Langkah
+ 3), memutuskan apakah titik tengah tersebut selanjutnya harus menjadi titik
+ ujung kiri atau kanan (Langkah 5), menetapkannya sesuai keputusan itu (Langkah
+ 5), lalu mengulangi proses tersebut beberapa kali (Langkah 1, 2, dan 4).
+ Sebagian besar kode digunakan untuk menentukan kapan harus berhenti.
+ Hal ini lazim dalam metode numerik.
+ Perhitungan adalah separuh tantangan.
+ Mengendalikan perhitungan adalah separuh lainnya.
+ Jika kita tidak perlu memikirkan penghentian, kode semunya mungkin tampak
+ seperti ini: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pseudocode} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+1: Tetapkan 
+\begin_inset Formula $L=f(a)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+2: Tetapkan 
+\begin_inset Formula $m=\frac{a+b}{2}$
+\end_inset
+
+; 
+\begin_inset Formula $M=f(m)$
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+3: Jika 
+\begin_inset Formula $LM<0$
+\end_inset
+
+ tetapkan 
+\begin_inset Formula $b=m$
+\end_inset
+
+; jika tidak, tetapkan 
+\begin_inset Formula $a=m$
+\end_inset
+
+ dan 
+\begin_inset Formula $L=M$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+4: Kembali ke Langkah 2.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pseudocode} 
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+Tidak diperlukan 
+\begin_inset Formula $j$
+\end_inset
+
+, 
+\begin_inset Formula $tol$
+\end_inset
+
+, atau 
+\begin_inset Formula $N$
+\end_inset
+
+, sehingga algoritmanya menjadi jauh lebih sederhana.
+ Tentu saja, jika diprogram dengan cara ini, program tidak akan pernah berhenti;
+ karena itu 
+\begin_inset Formula $j$
+\end_inset
+
+, 
+\begin_inset Formula $tol$
+\end_inset
+
+, dan 
+\begin_inset Formula $N$
+\end_inset
+
+, memang diperlukan.
+ Meskipun demikian, kode semu tanpa kemampuan untuk berhenti ini penting.
+ Kode tersebut dapat dianggap sebagai inti program.
+ Inilah kode yang menjalankan metode.
+ Kadang-kadang paling mudah memulai dari bagian inti, lalu menambahkan kendalinya.
+ 
+\end_layout
+
+\begin_layout Standard
+Mengenai penentuan apakah titik tengah harus menjadi titik ujung kiri atau
+ kanan, Langkah 5 (Langkah 3 pada inti program) menggunakan cara yang cukup
+ cerdik.
+ Yang saya maksud dengan cerdik ialah singkat, efisien, dan tidak langsung
+ tampak jelas.
+ Tanda 
+\begin_inset Formula $LM=f(a)\cdot f(m)$
+\end_inset
+
+ diperiksa.
+ Jika nilainya negatif (
+\begin_inset Formula $LM<0$
+\end_inset
+
+) maka 
+\begin_inset Formula $m$
+\end_inset
+
+ harus menjadi titik ujung kanan (menggantikan 
+\begin_inset Formula $b$
+\end_inset
+
+) karena ini berarti 
+\begin_inset Formula $f(a)$
+\end_inset
+
+ dan 
+\begin_inset Formula $f(m)$
+\end_inset
+
+ berlainan tanda.
+ Hanya dengan cara itulah 
+\begin_inset Formula $LM$
+\end_inset
+
+ dapat bernilai negatif.
+ Sebaliknya, jika 
+\begin_inset Formula $LM>0$
+\end_inset
+
+ maka kita tahu bahwa 
+\begin_inset Formula $f(a)$
+\end_inset
+
+ dan 
+\begin_inset Formula $f(m)$
+\end_inset
+
+ bertanda sama, sehingga 
+\begin_inset Formula $m$
+\end_inset
+
+ harus menjadi titik ujung kiri (menggantikan 
+\begin_inset Formula $a$
+\end_inset
+
+).
+ Pada Langkah 3, titik tengah dihitung tanpa penjelasan khusus.
+\end_layout
+
+\begin_layout Standard
+Bagian kode lainnya memastikan bahwa program tidak melakukan pekerjaan melebihi
+ yang diperlukan dan tidak terus mengulang tanpa kemajuan.
+ Penting untuk dapat memisahkan, setidaknya dalam pikiran Anda, inti program
+ dari logika penghentian.
+ Mengenai logika penghentian, pada Langkah 4 kita berhenti jika 
+\begin_inset Formula $err\leq tol$
+\end_inset
+
+ sebagaimana seharusnya.
+ Namun, kita juga memeriksa kemungkinan kecil bahwa 
+\begin_inset Formula $M=0$
+\end_inset
+
+; dalam hal itu kita kebetulan tepat mengenai akar sehingga harus berhenti.
+\end_layout
+
+\begin_layout Subsection*
+Konsep Utama
+\end_layout
+
+\begin_layout Description
+Teorema
+\begin_inset space ~
+\end_inset
+
+Nilai
+\begin_inset space ~
+\end_inset
+
+Antara
+\begin_inset space ~
+\end_inset
+
+menyatakan: 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+teorema ! nilai antara
+\end_layout
+
+\end_inset
+
+Misalkan 
+\begin_inset Formula $f$
+\end_inset
+
+ adalah fungsi kontinu pada 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+ dan 
+\begin_inset Formula $y$
+\end_inset
+
+ terletak di antara 
+\begin_inset Formula $f(a)$
+\end_inset
+
+ dan 
+\begin_inset Formula $f(b)$
+\end_inset
+
+.
+ Maka terdapat bilangan 
+\begin_inset Formula $c$
+\end_inset
+
+ di antara 
+\begin_inset Formula $a$
+\end_inset
+
+ dan 
+\begin_inset Formula $b$
+\end_inset
+
+ sedemikian rupa sehingga 
+\begin_inset Formula $f(c)=y$
+\end_inset
+
+.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Kata 
+\begin_inset Quotes eld
+\end_inset
+
+di antara
+\begin_inset Quotes erd
+\end_inset
+
+ dalam teorema ini dapat ditafsirkan mencakup atau tidak mencakup nilai-nilai
+ titik ujung, asalkan penafsiran yang sama digunakan pada setiap kemunculan
+ kata tersebut.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Iterasi: (1) Pengulangan suatu perhitungan atau proses lain dengan menggunakan
+ keluaran satu perhitungan sebagai masukan bagi perhitungan berikutnya.
+\end_layout
+
+\begin_layout Description
+Iterasi: (2) Setiap hasil antara dari sebuah iterasi.
+ Disebut juga hasil iterasi.
+\end_layout
+
+\begin_layout Description
+Metode
+\begin_inset space ~
+\end_inset
+
+bagi
+\begin_inset space ~
+\end_inset
+
+dua: Menghasilkan barisan hampiran 
+\begin_inset Formula $\langle m_{j}\rangle$
+\end_inset
+
+ yang berkonvergensi ke suatu akar dalam 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Batas
+\begin_inset space ~
+\end_inset
+
+galat
+\begin_inset space ~
+\end_inset
+
+untuk
+\begin_inset space ~
+\end_inset
+
+metode
+\begin_inset space ~
+\end_inset
+
+bagi
+\begin_inset space ~
+\end_inset
+
+dua: Galat hampiran 
+\begin_inset Formula $m_{j}$
+\end_inset
+
+ tidak lebih dari 
+\begin_inset Formula $\frac{b-a}{2^{j}}$
+\end_inset
+
+.
+ Artinya, 
+\begin_inset Formula $|m_{j}-p|\leq\frac{b-a}{2^{j}}$
+\end_inset
+
+ untuk suatu akar 
+\begin_inset Formula $p$
+\end_inset
+
+ dari 
+\begin_inset Formula $f(x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Kekonvergenan
+\begin_inset space ~
+\end_inset
+
+untuk
+\begin_inset space ~
+\end_inset
+
+metode
+\begin_inset space ~
+\end_inset
+
+bagi
+\begin_inset space ~
+\end_inset
+
+dua: Metode bagi dua berkonvergensi dengan orde linear dan memiliki laju
+ kekonvergenan 
+\begin_inset Formula $O\left(\frac{1}{2^{n}}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Octave
+\end_layout
+
+\begin_layout Standard
+Sekitar separuh upaya untuk menulis kode semu metode bagi dua dikhususkan
+ pada logika metode—penentuan kapan harus berhenti.
+ Dalam pemrograman, jenis logika ini ditangani oleh pernyataan 
+\family typewriter
+if then [else]
+\family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Octave ! 
+\family typewriter
+if then [else]
+\end_layout
+
+\end_inset
+
+ beserta variasinya.
+ Dalam pemrograman, tanda kurung siku lazim digunakan untuk menunjukkan sesuatu
+ yang bersifat opsional.
+ Jadi, pola 
+\family typewriter
+if then [else]
+\family default
+ harus dibaca sebagai pernyataan bahwa logika ditangani oleh pernyataan 
+\family typewriter
+if then
+\family default
+ atau pernyataan 
+\family typewriter
+if then else
+\family default
+.
+ Sintaks tepatnya sebagai berikut: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+if (condition)
+\end_layout
+
+\begin_layout Plain Layout
+
+  execute code here
+\end_layout
+
+\begin_layout Plain Layout
+
+[else
+\end_layout
+
+\begin_layout Plain Layout
+
+  execute code here]
+\end_layout
+
+\begin_layout Plain Layout
+
+end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+Sekali lagi, tanda kurung siku menunjukkan kode yang bersifat opsional.
+ 
+\end_layout
+
+\begin_layout Standard
+Pernyataan 
+\family typewriter
+if then
+\family default
+ bekerja seperti yang mungkin Anda bayangkan.
+ Dalam bentuk pernyataan 
+\family typewriter
+if then
+\family default
+, semua kode di antara 
+\family typewriter
+then
+\family default
+ dan 
+\family typewriter
+end
+\family default
+ dijalankan setiap kali 
+\family typewriter
+condition
+\family default
+ bernilai benar.
+ Kode tersebut dilewati setiap kali 
+\family typewriter
+condition
+\family default
+ bernilai salah.
+ Bentuk pernyataan 
+\family typewriter
+if then else
+\family default
+ serupa.
+ Semua kode di antara 
+\family typewriter
+then
+\family default
+ dan 
+\family typewriter
+else
+\family default
+ dijalankan setiap kali 
+\family typewriter
+condition
+\family default
+ bernilai benar.
+ Dalam keadaan ini, kode di antara 
+\family typewriter
+else
+\family default
+ dan 
+\family typewriter
+end
+\family default
+ dilewati.
+ Hal yang persis sebaliknya terjadi ketika 
+\family typewriter
+condition
+\family default
+ bernilai salah.
+ Kode di antara 
+\family typewriter
+then
+\family default
+ dan 
+\family typewriter
+else
+\family default
+ dilewati, sedangkan kode di antara 
+\family typewriter
+else
+\family default
+ dan 
+\family typewriter
+end
+\family default
+ dijalankan.
+ Penggunaan paling sederhana dari pernyataan 
+\family typewriter
+if then else
+\family default
+ mungkin tampak seperti ini.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+if (n>10)
+\end_layout
+
+\begin_layout Plain Layout
+
+  disp('n is big')
+\end_layout
+
+\begin_layout Plain Layout
+
+else
+\end_layout
+
+\begin_layout Plain Layout
+
+  disp('n is small')
+\end_layout
+
+\begin_layout Plain Layout
+
+end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Di Octave, pernyataan 
+\family typewriter
+if then [else]
+\family default
+ ditulis hampir persis seperti dalam kode semu.
+ Bahkan, sebagian besar kode semu dalam buku ini dapat diterjemahkan ke Octave
+ hampir kata demi kata.
+ Satu pengecualian penting adalah simbol yang digunakan dalam 
+\family typewriter
+condition
+\family default
+.
+ Octave memerlukan operator Boolean dalam kondisi.
+ Artinya, operator tersebut harus menghasilkan nilai benar atau salah.
+ Operator 
+\family typewriter
+=
+\family default
+ menetapkan suatu nilai kepada variabel.
+ Operator tersebut bukan operator Boolean sehingga tidak boleh digunakan dalam
+ kondisi 
+\family typewriter
+if
+\family default
+.
+ Sebagai gantinya, gunakan 
+\family typewriter
+==
+\family default
+ (dua tanda sama dengan).
+ Tabel ini merangkum enam operator Boolean yang paling umum di Octave.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Octave ! operator Boolean
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Octave ! perbandingan
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Perbandingan
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Operator
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lebih besar dari, lebih kecil dari
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+>
+\family default
+, 
+\family typewriter
+<
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lebih besar dari atau sama dengan, lebih kecil dari atau sama dengan
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+>=
+\family default
+, 
+\family typewriter
+<=
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sama dengan
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+==
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+tidak sama dengan
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+!=
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Jika perlu memeriksa apakah 
+\begin_inset Formula $x\geq0$
+\end_inset
+
+, gunakan 
+\family typewriter
+if (x>=0)
+\family default
+ di Octave.
+ Jika perlu memeriksa apakah 
+\begin_inset Formula $t$
+\end_inset
+
+ sama dengan 1, gunakan 
+\family typewriter
+if (t==1)
+\family default
+ di Octave.
+ Demikian seterusnya.
+ Operator logika juga sering diperlukan.
+ 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Operator Logika
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kode Octave
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+dan
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+&&
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+atau
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+||
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Sebagai contoh, jika perlu memeriksa apakah 
+\begin_inset Formula $x$
+\end_inset
+
+ berada di antara 
+\begin_inset Formula $a$
+\end_inset
+
+ dan 
+\begin_inset Formula $b$
+\end_inset
+
+, seperti pada 
+\begin_inset Formula $a\leq x<b$
+\end_inset
+
+, diperlukan operator logika.
+ Dalam hal ini, kita memerlukan 
+\begin_inset Quotes eld
+\end_inset
+
+dan
+\begin_inset Quotes erd
+\end_inset
+
+ logis karena 
+\begin_inset Formula $a\leq x<b$
+\end_inset
+
+ berarti 
+\begin_inset Formula $a\leq x$
+\end_inset
+
+ dan 
+\begin_inset Formula $x<b$
+\end_inset
+
+.
+ Kode Octave-nya adalah 
+\family typewriter
+if (a<=x && x<b)
+\family default
+ atau kode lain yang ekuivalen secara logis.
+\end_layout
+
+\begin_layout Standard
+Secara teknis, pernyataan 
+\family typewriter
+if then
+\family default
+ diakhiri dengan pernyataan 
+\family typewriter
+end
+\family default
+.
+ Namun, untuk menegaskan jenis pernyataan yang diakhiri, kita akan membiasakan
+ diri mengakhiri pernyataan 
+\family typewriter
+if then
+\family default
+ dengan 
+\family typewriter
+end%if
+\family default
+ dan mengakhiri perulangan 
+\family typewriter
+for
+\family default
+ dengan 
+\family typewriter
+end%for
+\family default
+.
+ Kode 
+\family typewriter
+%if
+\family default
+ dan 
+\family typewriter
+%for
+\family default
+ hanyalah komentar karena diawali dengan 
+\family typewriter
+%
+\family default
+.
+ Oleh karena itu, keduanya sebenarnya tidak wajib, tetapi dapat membantu
+ keterbacaan kode Anda, terutama ketika terdapat konstruksi bersarang.
+ Jika terdapat pernyataan 
+\family typewriter
+if
+\family default
+ di dalam perulangan 
+\family typewriter
+for
+\family default
+ atau sebaliknya, menggunakan 
+\family typewriter
+end
+\family default
+ untuk mengakhiri keduanya tidak seinformatif menggunakan 
+\family typewriter
+end%if
+\family default
+ dan 
+\family typewriter
+end%for
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Program Octave untuk mencari akar 
+\begin_inset Formula $f(x)=2+\frac{x-e^{2}}{e^{2}}-\frac{(x-e^{2})^{2}}{2e^{4}}-\ln(x)-\frac{1}{10}$
+\end_inset
+
+ di antara 2 dan 6 dengan galat tidak lebih dari 
+\begin_inset Formula $10^{-4}$
+\end_inset
+
+ menggunakan metode bagi dua dapat tampak seperti berikut.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+f = @(x) 2+(x-exp(2))/exp(2)-(x-exp(2))^2/(2*exp(4))-log(x)-1/10;
+\end_layout
+
+\begin_layout Plain Layout
+
+a=2;
+\end_layout
+
+\begin_layout Plain Layout
+
+b=6;
+\end_layout
+
+\begin_layout Plain Layout
+
+N=ceil((log(b-a)-log(10^-4))/log(2));
+\end_layout
+
+\begin_layout Plain Layout
+
+L=f(a);
+\end_layout
+
+\begin_layout Plain Layout
+
+for i=1:N
+\end_layout
+
+\begin_layout Plain Layout
+
+  m=(a+b)/2;
+\end_layout
+
+\begin_layout Plain Layout
+
+  M=f(m);
+\end_layout
+
+\begin_layout Plain Layout
+
+  if (M==0)
+\end_layout
+
+\begin_layout Plain Layout
+
+    break;
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+  if (L*M<0)
+\end_layout
+
+\begin_layout Plain Layout
+
+    b=m;
+\end_layout
+
+\begin_layout Plain Layout
+
+  else
+\end_layout
+
+\begin_layout Plain Layout
+
+    a=m;
+\end_layout
+
+\begin_layout Plain Layout
+
+    L=M;
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+end%for
+\end_layout
+
+\begin_layout Plain Layout
+
+disp(m);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+ Kode ini menghasilkan jawaban yang benar, 
+\family typewriter
+3.2952
+\family default
+.
+ Bandingkan kode ini dengan kode semunya.
+ Anda akan melihat bahwa perbedaan utamanya adalah sintaksis.
+ Namun, menulis kode dengan cara ini memiliki satu kelemahan besar.
+ Untuk mengubah fungsi, titik-titik ujung, toleransi, atau jumlah maksimum
+ iterasi, kode harus diubah tepat pada tempatnya.
+ Hal itu bukan kelemahan nyata jika Anda tidak perlu menjalankan metode bagi
+ dua lagi.
+ Namun, secara umum, kita seharusnya menganggap bahwa metode yang kita tulis
+ akan dijalankan berkali-kali dengan masukan yang berbeda.
+ Atau bahwa kode kita akan diserahkan kepada orang lain untuk dijalankan
+ berkali-kali dengan masukan yang berbeda.
+ Bayangkan saya menyerahkan kode ini kepada Anda dan meminta Anda mencari akar 
+\begin_inset Formula $f(x)=\cos x-x$
+\end_inset
+
+ di antara 0 dan 3 dengan galat tidak lebih dari 
+\begin_inset Formula $10^{-6}$
+\end_inset
+
+.
+ Menanamkan nilai masukan langsung di dalam suatu metode bukanlah praktik yang
+ baik.
+ Sebaliknya, masukan tersebut harus diberikan sebagai masukan bagi fungsi yang
+ diprogram.
+ Dalam Octave, hal ini dilakukan dalam berkas 
+\family typewriter
+.m
+\family default
+.
+ Itu tidak berarti bahwa kita cukup mengambil kode sebagaimana tertulis dan
+ menyimpannya dalam berkas 
+\family typewriter
+.m
+\family default
+.
+ Berkas 
+\family typewriter
+.m
+\family default
+ akan mengasumsikan bahwa masukan—interval 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+; fungsi 
+\begin_inset Formula $f$
+\end_inset
+
+; dan akurasi yang diinginkan 
+\begin_inset Formula $tol$
+\end_inset
+
+—akan diberikan oleh sumber lain, yaitu pengguna.
+ Kode di dalam berkas 
+\family typewriter
+.m
+\family default
+ harus berjalan dengan benar apa pun masukannya yang belum diketahui.
+ Sintaksis fungsi Octave adalah: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+function result=name(input1,input2,...)
+\end_layout
+
+\begin_layout Plain Layout
+
+  execute these lines
+\end_layout
+
+\begin_layout Plain Layout
+
+end%function
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+ 
+\family typewriter
+function
+\family default
+ adalah kata kunci yang memberi tahu Octave bahwa sebuah fungsi akan didefinisikan.
+ 
+\family typewriter
+result
+\family default
+ adalah nama variabel yang menyimpan jawaban, atau hasil, fungsi tersebut.
+ 
+\family typewriter
+name
+\family default
+ adalah nama fungsi tersebut.
+ Nama ini juga harus menjadi nama berkas 
+\family typewriter
+.m
+\family default
+.
+ Berkas 
+\family typewriter
+bisection.m
+\family default
+ yang lengkap dapat tampak seperti berikut:
+\begin_inset CommandInset label
+LatexCommand label
+name "bisectionCode"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+%  Bisection method written by Leon Q.
+ Brin 09 December 2020 %
+\end_layout
+
+\begin_layout Plain Layout
+
+%  Purpose: Implementation of the bisection method           %
+\end_layout
+
+\begin_layout Plain Layout
+
+%  INPUT: Interval [a,b]; function f; tolerance tol.
+         %
+\end_layout
+
+\begin_layout Plain Layout
+
+%  OUTPUT: root m to within tol of exact.
+                    %
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+function m=bisection(a,b,f,tol)
+\end_layout
+
+\begin_layout Plain Layout
+
+  N=ceil((log(b-a)-log(tol))/log(2));
+\end_layout
+
+\begin_layout Plain Layout
+
+  L=f(a);
+\end_layout
+
+\begin_layout Plain Layout
+
+  for i=1:N
+\end_layout
+
+\begin_layout Plain Layout
+
+    m=(a+b)/2;
+\end_layout
+
+\begin_layout Plain Layout
+
+    M=f(m);
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (M==0)
+\end_layout
+
+\begin_layout Plain Layout
+
+      return;
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (L*M<0)
+\end_layout
+
+\begin_layout Plain Layout
+
+      b=m;
+\end_layout
+
+\begin_layout Plain Layout
+
+    else
+\end_layout
+
+\begin_layout Plain Layout
+
+      a=m;
+\end_layout
+
+\begin_layout Plain Layout
+
+      L=M;
+\end_layout
+
+\begin_layout Plain Layout
+
+    end%if
+\end_layout
+
+\begin_layout Plain Layout
+
+  end%for
+\end_layout
+
+\begin_layout Plain Layout
+
+end%function
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+ Penulisan seperti ini tidak hanya mudah digunakan kembali; cara ini juga lebih
+ sederhana! Kita tidak perlu memikirkan fungsi mana yang akarnya hendak dicari,
+ interval yang digunakan, dan seterusnya.
+ Selain itu, bentuknya lebih mirip dengan kode semu.
+ Setelah ditulis dan berfungsi dengan benar, kode tersebut dapat disimpan sebagai
+ berkas 
+\family typewriter
+.m
+\family default
+ dan tidak perlu dilihat lagi, kecuali untuk dipelajari.
+ Kode itu langsung bekerja! Jika Anda menyerahkannya kepada orang lain untuk
+ digunakan, orang tersebut semestinya dapat menggunakannya tanpa modifikasi.
+ 
+\family typewriter
+bisection.m
+\family default
+ dapat diunduh dari 
+\begin_inset CommandInset href
+LatexCommand href
+name "situs pendamping"
+target "http://lqbrin.github.io/tea-time-numerical/ancillaries.html"
+literal "false"
+
+\end_inset
+
+.
+ Sekarang, pencarian akar 
+\begin_inset Formula $f(x)=2+\frac{x-e^{2}}{e^{2}}-\frac{(x-e^{2})^{2}}{2e^{4}}-\ln(x)-\frac{1}{10}$
+\end_inset
+
+ di antara 2 dan 6 dengan galat tidak lebih dari 
+\begin_inset Formula $10^{-4}$
+\end_inset
+
+ menggunakan metode bagi dua dapat dilakukan seperti berikut.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:9> 
+\end_layout
+
+\begin_layout Plain Layout
+
+  f = @(x) 2+(x-exp(2))/exp(2)-(x-exp(2))^2/(2*exp(4))-log(x)-1/10;
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:10> bisection(2,6,f,10^-4)
+\end_layout
+
+\begin_layout Plain Layout
+
+ans =  3.2952
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+Setelah 
+\family typewriter
+bisection.m
+\family default
+ ditulis, fungsi 
+\family typewriter
+bisection()
+\family default
+ menjadi bagian dari bahasa Octave.
+ Fungsi tersebut dapat dipanggil sama seperti fungsi bawaan lainnya.
+ Sebagai contoh kedua, kita dapat mencari akar 
+\begin_inset Formula $f(x)=\cos x-x$
+\end_inset
+
+ di antara 0 dan 3 seperti berikut: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+octave:12> bisection(0,3,@(x) cos(x)-x,10^-5)
+\end_layout
+
+\begin_layout Plain Layout
+
+ans =  0.7391
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+startexercises 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Latihan
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bisectionCode"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+ Tulislah fungsi Octave yang mengimplementasikan metode bagi dua seperti ditunjukkan
+ pada 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "bisectionCode"
+
+\end_inset
+
+.
+ Simpan fungsi tersebut sebagai berkas 
+\family typewriter
+.m
+\family default
+ untuk digunakan di kemudian hari.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:bisectionExamples"
+
+\end_inset
+
+Gunakan teorema nilai antara untuk menunjukkan bahwa fungsi tersebut memiliki
+ akar pada interval yang diberikan.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $f(x)=3-x-\sin x$
+\end_inset
+
+; 
+\begin_inset Formula $[2,3]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $g(x)=3x^{4}-2x^{3}-3x+2$
+\end_inset
+
+; 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bisection1"
+
+\end_inset
+
+
+\begin_inset Formula $g(x)=3x^{4}-2x^{3}-3x+2$
+\end_inset
+
+; 
+\begin_inset Formula $[0,0.9]$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $h(x)=10-\cosh(x)$
+\end_inset
+
+; 
+\begin_inset Formula $[-3,-2]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:failure1"
+
+\end_inset
+
+
+\begin_inset Formula $f(t)=\sqrt{4+5\sin t}-2.5$
+\end_inset
+
+; 
+\begin_inset Formula $[-6,-5]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:failure2"
+
+\end_inset
+
+
+\begin_inset Formula $g(t)=\frac{3t^{2}\tan t}{1-t^{2}}$
+\end_inset
+
+; 
+\begin_inset Formula $[21.5,22.5]$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:failure3"
+
+\end_inset
+
+
+\begin_inset Formula $h(t)=\ln(3\sin t)-\frac{3t}{5}$
+\end_inset
+
+; 
+\begin_inset Formula $[1,2]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f(r)=e^{\sin r}-r$
+\end_inset
+
+; 
+\begin_inset Formula $[-20,20]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $g(r)=\sin(e^{r})+r$
+\end_inset
+
+; 
+\begin_inset Formula $[-3,3]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $h(r)=2^{\sin r}-3^{\cos r}$
+\end_inset
+
+; 
+\begin_inset Formula $[1,3]$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bisection2"
+
+\end_inset
+
+Buatlah tabel yang menunjukkan tiga iterasi metode bagi dua dengan fungsi dan
+ interval awal yang diberikan pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:bisectionExamples"
+
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bisection3"
+
+\end_inset
+
+Gunakan kode 
+\family typewriter
+bisection.m
+\family default
+ Anda untuk mencari akar fungsi pada interval dalam soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:bisectionExamples"
+
+\end_inset
+
+ dengan galat tidak lebih dari 
+\begin_inset Formula $10^{-8}$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bisection"
+
+\end_inset
+
+Gunakan metode bagi dua untuk mencari 
+\begin_inset Formula $m_{3}$
+\end_inset
+
+ bagi fungsi yang diberikan pada interval yang diberikan.
+ Kerjakan tanpa program komputer.
+ Cukup gunakan pensil, kertas, dan kalkulator.
+ Jika mau, Anda dapat memeriksa jawaban dengan program komputer.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $f(x)=\sqrt{x}-\cos x$
+\end_inset
+
+ pada 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $f(x)=3(x+1)(x-\frac{1}{2})(x-1)$
+\end_inset
+
+ pada 
+\begin_inset Formula $[-1.25,2.5]$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:useBisection"
+
+\end_inset
+
+Gunakan metode bagi dua untuk mencari 
+\begin_inset Formula $m_{4}$
+\end_inset
+
+ bagi 
+\begin_inset Formula $g(x)=x\sin x+1$
+\end_inset
+
+ pada 
+\begin_inset Formula $[9,10]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Gunakan metode bagi dua untuk mencari 
+\begin_inset Formula $m_{3}$
+\end_inset
+
+ bagi persamaan 
+\begin_inset Formula $x\cos x-\ln x=0$
+\end_inset
+
+ pada interval 
+\begin_inset Formula $[7,8]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Gunakan metode bagi dua untuk mencari akar 
+\begin_inset Formula $g(x)=\sin x-x^{2}$
+\end_inset
+
+ di antara 0 dan 1 dengan galat absolut tidak lebih dari 
+\begin_inset Formula $1/4$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Gunakan metode bagi dua untuk menghampiri akar 
+\begin_inset Formula $g(x)=2+x-e^{x}$
+\end_inset
+
+ di antara 1 dan 2 hingga galatnya terhadap nilai eksak tidak lebih dari 
+\begin_inset Formula $0.05$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bisection-2"
+
+\end_inset
+
+Terdapat 21 akar fungsi 
+\begin_inset Formula $f(x)=\cos(x)$
+\end_inset
+
+ pada interval 
+\begin_inset Formula $[0,65]$
+\end_inset
+
+.
+ Ke akar manakah metode bagi dua akan berkonvergensi jika dimulai dengan 
+\begin_inset Formula $a=0$
+\end_inset
+
+ dan 
+\begin_inset Formula $b=65$
+\end_inset
+
+?
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bisection-1"
+
+\end_inset
+
+Tentukan batas jumlah iterasi yang diperlukan untuk memperoleh hampiran
+ berakurasi 
+\begin_inset Formula $10^{-3}$
+\end_inset
+
+ bagi solusi 
+\begin_inset Formula $x^{3}+x-4=0$
+\end_inset
+
+ pada interval 
+\begin_inset Formula $[1,4]$
+\end_inset
+
+ dengan metode bagi dua.
+ Jangan benar-benar menghitung hampirannya.
+ Tentukan batasnya saja.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Tentukan batas jumlah iterasi yang diperlukan untuk memperoleh hampiran
+ berakurasi 
+\begin_inset Formula $10^{-4}$
+\end_inset
+
+ bagi solusi 
+\begin_inset Formula $x^{3}-x-1=0$
+\end_inset
+
+ pada interval 
+\begin_inset Formula $[1,2]$
+\end_inset
+
+ dengan metode bagi dua.
+ Jangan benar-benar menghitung hampirannya.
+ Tentukan batasnya saja.
+\end_layout
+
+\begin_layout Enumerate
+Grafik 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ pada interval 
+\begin_inset Formula $[0.75,2]$
+\end_inset
+
+ ditunjukkan di bawah.
+ Perhatikan bahwa 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ memiliki tiga akar pada interval ini, kira-kira 
+\begin_inset Formula $.795$
+\end_inset
+
+, 
+\begin_inset Formula $1.06$
+\end_inset
+
+, dan 
+\begin_inset Formula $1.59$
+\end_inset
+
+.
+ Jika kita menetapkan 
+\begin_inset Formula $a=.75$
+\end_inset
+
+ dan 
+\begin_inset Formula $b=2$
+\end_inset
+
+, ke akar manakah dari ketiga akar tersebut metode bagi dua berkonvergensi?
+ Bagaimana Anda mengetahuinya?
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/roots-bisection3.pdf
+	width 5.5cm
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Misalkan Anda hendak mencari akar dari 
+\begin_inset Formula $f(x)=x-e^{-x}$
+\end_inset
+
+ dengan metode bagi dua.
+ Tentukan sebuah bilangan bulat 
+\begin_inset Formula $a$
+\end_inset
+
+ sedemikian sehingga interval 
+\begin_inset Formula $[a,a+2]$
+\end_inset
+
+ merupakan interval yang sesuai untuk memulai pencarian.
+\end_layout
+
+\begin_layout Enumerate
+Tentukan batas bawah bagi jumlah iterasi yang diperlukan untuk menjamin
+ akurasi 
+\begin_inset Formula $10^{-20}$
+\end_inset
+
+ pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:useBisection"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bisection-3"
+
+\end_inset
+
+Berapa langkah (iterasi) metode bagi dua yang diperlukan untuk menjamin solusi
+ dengan akurasi 
+\begin_inset Formula $10^{-10}$
+\end_inset
+
+ jika suatu akar diketahui berada di dalam 
+\begin_inset Formula $[4.5,5.3]$
+\end_inset
+
+?
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Misalkan Anda menggunakan metode bagi dua pada interval yang panjangnya 3.
+ Berapa iterasi yang diperlukan untuk menjamin bahwa hampiran akurat hingga 
+\begin_inset Formula $10^{-6}$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Enumerate
+Misalkan suatu fungsi 
+\begin_inset Formula $g$
+\end_inset
+
+ memenuhi asumsi-asumsi metode bagi dua pada interval yang diberikan.
+ Berawal dari interval tersebut, berapa iterasi yang diperlukan untuk menghampiri
+ akar dengan toleransi yang diberikan?
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $[-7,10]$
+\end_inset
+
+; 
+\begin_inset Formula $10^{-6}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $[5,9]$
+\end_inset
+
+; 
+\begin_inset Formula $10^{-3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $[9,15]$
+\end_inset
+
+; 
+\begin_inset Formula $10^{-10}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $[-6,-1]$
+\end_inset
+
+; 
+\begin_inset Formula $10^{-105}$
+\end_inset
+
+ (anggaplah komputer menghitung dengan 300 angka signifikan sehingga galat
+ pembulatan tidak menjadi masalah)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $1$
+\end_inset
+
+ merupakan akar dari 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $f(x)=\ln(x^{4}\text{−}x^{3}\text{−}7x^{2}+13x\text{−}5)$
+\end_inset
+
+ yang tidak dapat dijamin akan ditemukan oleh metode bagi dua.
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Gunakan grafik fungsi di sekitar 
+\begin_inset Formula $1$
+\end_inset
+
+ untuk menjelaskan mengapa demikian.
+ Anda dapat menggunakan kode Octave di bawah ini untuk membuat grafik yang sesuai
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Meskipun demikian, jalankan metode bagi dua pada 
+\begin_inset Formula $f$
+\end_inset
+
+ untuk interval 
+\begin_inset Formula $[0.8,1.2]$
+\end_inset
+
+.
+ Apa yang terjadi alih-alih metode tersebut menemukan akar?
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+x=0.8:.01:1.2;
+\end_layout
+
+\begin_layout Plain Layout
+
+f=@(x) log(x.^4-x.^3-7*x.^2+13*x-5);
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,f(x)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $4$
+\end_inset
+
+ merupakan akar dari 
+\begin_inset Formula $g(x)=|\sin(\pi x)|$
+\end_inset
+
+  yang 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+tidak dapat ditemukan dengan metode bagi dua.
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Gunakan grafik fungsi di sekitar 
+\begin_inset Formula $4$
+\end_inset
+
+ untuk menjelaskan mengapa demikian.
+ Anda dapat menggunakan kode Octave di bawah ini untuk membuat grafik yang sesuai
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Meskipun demikian, jalankan metode bagi dua pada 
+\begin_inset Formula $g$
+\end_inset
+
+ untuk interval 
+\begin_inset Formula $[3.5,4.5]$
+\end_inset
+
+.
+ Apa yang terjadi alih-alih metode tersebut menemukan akar?
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+x=3.5:.05:4.5;
+\end_layout
+
+\begin_layout Plain Layout
+
+f=@(x) abs(sin(pi*x));
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,f(x)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bisection-4"
+
+\end_inset
+
+Misalkan 
+\begin_inset Formula $f(x)=\sin(x^{2})$
+\end_inset
+
+.
+ 
+\begin_inset Formula $f$
+\end_inset
+
+ kontinu pada 
+\begin_inset Formula $[4,5]$
+\end_inset
+
+, tetapi 
+\begin_inset Formula $f(4)<0$
+\end_inset
+
+ dan 
+\begin_inset Formula $f(5)<0$
+\end_inset
+
+, sehingga asumsi-asumsi metode bagi dua tidak terpenuhi.
+ Meskipun demikian, metode bagi dua sebagaimana dijelaskan dalam kode semu,
+ jika diterapkan pada 
+\begin_inset Formula $f$
+\end_inset
+
+ di interval 
+\begin_inset Formula $[4,5]$
+\end_inset
+
+ 
+\shape italic
+tetap
+\shape default
+ menghasilkan sebuah akar.
+ Jelaskan.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Fungsi-fungsi pada soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:failure1"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:failure2"
+
+\end_inset
+
+, dan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:failure3"
+
+\end_inset
+
+ semuanya tidak memenuhi asumsi-asumsi metode bagi dua pada interval
+ 
+\begin_inset Formula $[-4,-0.5]$
+\end_inset
+
+.
+ Untuk setiap fungsi, jelaskan bagaimana asumsi tersebut gagal terpenuhi.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bisection-5"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah sebuah fungsi Octave bernama 
+\family typewriter
+collatz
+\family default
+ yang menerima satu masukan bilangan bulat, 
+\begin_inset Formula $n$
+\end_inset
+
+, dan mengembalikan 
+\begin_inset Formula $3n+1$
+\end_inset
+
+ jika 
+\begin_inset Formula $n$
+\end_inset
+
+ ganjil, serta 
+\begin_inset Formula $n/2$
+\end_inset
+
+ jika 
+\begin_inset Formula $n$
+\end_inset
+
+ genap.
+ Simpan fungsi tersebut sebagai berkas 
+\family typewriter
+collatz.m
+\family default
+.
+ Gunakan pernyataan 
+\family typewriter
+if then else
+\family default
+ dalam fungsi Anda.
+ PETUNJUK: Gunakan fungsi pembulatan ke atas dari Octave.
+ Jika 
+\family typewriter
+ceil(n/2)
+\family default
+ sama dengan 
+\family typewriter
+n/2
+\family default
+, maka 
+\family typewriter
+n
+\family default
+ pasti genap (tidak bersisa jika dibagi 2).
+ Gunakan fungsi 
+\family typewriter
+collatz
+\family default
+ Anda untuk menghitung
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\family typewriter
+collatz(17)
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+collatz(10)
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+collatz(109)
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+collatz(344)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+Tulislah fungsi nilai mutlak Anda sendiri yang bernama 
+\family typewriter
+absval
+\family default
+ (
+\family typewriter
+abs
+\family default
+ sudah didefinisikan oleh Octave, sehingga sebaiknya Anda menggunakan nama lain),
+ yang menerima masukan bilangan riil dan mengembalikan nilai mutlak masukan tersebut.
+ Gunakan pernyataan 
+\family typewriter
+if then else
+\family default
+ dalam fungsi Anda.
+ Simpan fungsi tersebut sebagai 
+\family typewriter
+absval.m
+\family default
+ dan ujilah dengan perhitungan berikut.
+ 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $|-3|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $|123.2|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left|\pi-\frac{22}{7}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $|10-\pi^{2}|$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:bisection-6"
+
+\end_inset
+
+
+\begin_inset Formula $f(x)=\sin(x^{2})$
+\end_inset
+
+ memiliki lima akar pada interval 
+\begin_inset Formula $[7,8]$
+\end_inset
+
+.
+ 
+\begin_inset Formula $f(7)<0$
+\end_inset
+
+, 
+\begin_inset Formula $f(8)>0$
+\end_inset
+
+, dan 
+\begin_inset Formula $f$
+\end_inset
+
+ kontinu pada 
+\begin_inset Formula $[7,8]$
+\end_inset
+
+, sehingga asumsi-asumsi metode bagi dua terpenuhi.
+ Metode tersebut akan konvergen ke suatu akar.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Gunakan berkas 
+\family typewriter
+bisection.m
+\family default
+ Anda (Latihan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:bisectionCode"
+
+\end_inset
+
+) untuk menentukan akar mana yang diperoleh.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Temukan 4 interval berbeda yang membuat metode bagi dua konvergen ke empat
+ akar lainnya di 
+\begin_inset Formula $[7,8]$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Fungsi yang ditampilkan memiliki akar kira-kira di 
+\begin_inset Formula $2.41$
+\end_inset
+
+, 
+\begin_inset Formula $4.11$
+\end_inset
+
+, 
+\begin_inset Formula $5.62$
+\end_inset
+
+, 
+\begin_inset Formula $7.01$
+\end_inset
+
+, 
+\begin_inset Formula $8.32$
+\end_inset
+
+, 
+\begin_inset Formula $9.57$
+\end_inset
+
+, 
+\begin_inset Formula $10.78$
+\end_inset
+
+, dan 
+\begin_inset Formula $11.94$
+\end_inset
+
+.
+ Dengan interval awal yang diberikan, ke akar mana metode bagi dua akan konvergen?
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/roots-bisection2.eps
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $[2,3]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $[6,8]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $[2,6]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $[5,9]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $[10,12]$
+\end_inset
+
+ Catatan: asumsi metode bagi dua tidak terpenuhi pada interval ini.
+ Meskipun demikian, metode sebagaimana diuraikan dalam kode semu 
+\shape italic
+akan
+\shape default
+ konvergen ke suatu akar!
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Carilah interval dengan panjang 1 yang memungkinkan metode bagi dua diterapkan
+ untuk mencari akar dari 
+\begin_inset Formula $f(x)=x^{4}-7.6746x^{3}-40.7477022x^{2}+200.9894434x+319.0914281$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Algoritma berikut merupakan salah satu bentuk metode bagi dua.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{pseudocode} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Asumsi: 
+\begin_inset Formula $f$
+\end_inset
+
+ kontinu pada 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+.
+ 
+\begin_inset Formula $f(a)$
+\end_inset
+
+ dan 
+\begin_inset Formula $f(b)$
+\end_inset
+
+ memiliki tanda yang berlawanan.
+\end_layout
+
+\begin_layout Description
+Masukan: Interval 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+; fungsi 
+\begin_inset Formula $f$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+1: Untuk 
+\begin_inset Formula $j=1\ldots15$
+\end_inset
+
+ lakukan Langkah 2 dan 3:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+2: Tetapkan 
+\begin_inset Formula $m=\frac{a+b}{2}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+3: Jika 
+\begin_inset Formula $f(a)f(m)<0$
+\end_inset
+
+ maka tetapkan 
+\begin_inset Formula $b=m$
+\end_inset
+
+; jika tidak, tetapkan 
+\begin_inset Formula $a=m$
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+4: Cetak 
+\begin_inset Formula $m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Keluaran: Hampiran 
+\begin_inset Formula $m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{pseudocode} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Terapkan algoritma ini pada fungsi 
+\begin_inset Formula $f(x)=(x)(x-2)(x+2)$
+\end_inset
+
+ pada interval 
+\begin_inset Formula $[-3,3]$
+\end_inset
+
+.
+ Akar manakah yang akan dihampiri algoritma ini?
+\end_layout
+
+\begin_layout Enumerate
+Berapakah batas galat yang dijamin bagi hampiran tersebut menurut rumus
+\begin_inset Formula 
+\[
+|p_{n}-p|\leq\frac{b-a}{2^{n}}?
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Seberapa akurat hampiran tersebut sebenarnya? Bandingkan dengan batas pada
+ (b).
+\end_layout
+
+\begin_layout Enumerate
+Ubahlah algoritma agar dapat menghampiri akar yang berbeda dengan menggunakan
+ interval awal yang sama.
+\end_layout
+
+\begin_layout Enumerate
+Ubahlah algoritma agar tidak menggunakan perkalian.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "bisectionCode-1"
+
+\end_inset
+
+Gunakan kode semu berikut untuk menulis implementasi metode bagi dua yang sedikit
+ berbeda.
+ Lihat Tabel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:commonOctave"
+
+\end_inset
+
+ jika Anda belum yakin cara memprogram besaran 
+\begin_inset Formula $\lceil(\ln(b-a)-\ln(TOL))/\ln2\rceil$
+\end_inset
+
+.
+ Perulangan while dibahas pada 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "subsec:WhileLoop"
+
+\end_inset
+
+.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Masukan: fungsi 
+\begin_inset Formula $f$
+\end_inset
+
+, titik ujung 
+\begin_inset Formula $a$
+\end_inset
+
+ dan 
+\begin_inset Formula $b$
+\end_inset
+
+; toleransi 
+\begin_inset Formula $TOL$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Kembalikan solusi hampiran 
+\begin_inset Formula $p$
+\end_inset
+
+ beserta nilai 
+\begin_inset Formula $f(p)$
+\end_inset
+
+ dan jumlah iterasi yang telah dilakukan 
+\begin_inset Formula $N_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+1 Tetapkan 
+\begin_inset Formula $i=1$
+\end_inset
+
+; 
+\begin_inset Formula $FA=f(a)$
+\end_inset
+
+; 
+\begin_inset Formula $N_{0}=\lceil(\ln|b-a|-\ln(TOL))/\ln2\rceil$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+2 Selama 
+\begin_inset Formula $i\leq N_{0}$
+\end_inset
+
+ lakukan Langkah 3 sampai 6.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+3 Tetapkan 
+\begin_inset Formula $p=(a+b)/2$
+\end_inset
+
+; 
+\begin_inset Formula $FP=f(p)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+4 Jika 
+\begin_inset Formula $FP=0$
+\end_inset
+
+ maka
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\qquad$
+\end_inset
+
+Kembalikan(
+\begin_inset Formula $p$
+\end_inset
+
+, 
+\begin_inset Formula $f(p)$
+\end_inset
+
+, 
+\begin_inset Formula $i$
+\end_inset
+
+); BERHENTI.
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+5 Tetapkan 
+\begin_inset Formula $i=i+1$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+6 Jika 
+\begin_inset Formula $FA\cdot FP>0$
+\end_inset
+
+ maka
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\qquad$
+\end_inset
+
+Tetapkan 
+\begin_inset Formula $a=p$
+\end_inset
+
+; 
+\begin_inset Formula $FA=FP$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+jika tidak
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\qquad$
+\end_inset
+
+Tetapkan 
+\begin_inset Formula $b=p$
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Langkah
+\begin_inset space ~
+\end_inset
+
+7 Kembalikan(
+\begin_inset Formula $p$
+\end_inset
+
+, 
+\begin_inset Formula $f(p)$
+\end_inset
+
+, 
+\begin_inset Formula $N_{0}$
+\end_inset
+
+);
+\begin_inset Newline newline
+\end_inset
+
+BERHENTI.
+\end_layout
+
+\begin_layout Enumerate
+Bahas kelebihan dan kekurangan algoritma ini dibandingkan dengan algoritma
+ pada 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "bisectionCode"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Dari manakah perhitungan 
+\begin_inset Formula $N_{0}=\lceil(\ln(b-a)-\ln(TOL))/\ln2\rceil$
+\end_inset
+
+ diperoleh?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Gunakan kode yang Anda tulis untuk soal 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "bisectionCode-1"
+
+\end_inset
+
+ untuk mencari solusi dengan galat tidak lebih dari 
+\begin_inset Formula $10^{-5}$
+\end_inset
+
+ bagi persoalan-persoalan berikut.
+ 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $x-2^{x}+.95=0$
+\end_inset
+
+ pada 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $e^{x}-x^{2}+3x-2=0$
+\end_inset
+
+ pada 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $2x\cos(2x)-(x+1)^{2}=0$
+\end_inset
+
+ pada 
+\begin_inset Formula $[-3,-2]$
+\end_inset
+
+ dan pada 
+\begin_inset Formula $[-1,0]$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Carilah hampiran 
+\begin_inset Formula $\sqrt{3}$
+\end_inset
+
+ dengan galat tidak lebih dari 
+\begin_inset Formula $10^{-4}$
+\end_inset
+
+ menggunakan metode bagi dua.
+ Tulislah esai tentang cara Anda menyelesaikan masalah ini.
+ Sertakan kode metode bagi dua Anda, fungsi dan interval yang Anda gunakan,
+ serta alasan pemilihannya.
+\end_layout
+
+\begin_layout Enumerate
+Sebuah palung sepanjang 
+\begin_inset Formula $L$
+\end_inset
+
+ memiliki penampang berbentuk setengah lingkaran berjari-jari 
+\begin_inset Formula $r$
+\end_inset
+
+.
+ Jika diisi air hingga permukaan air berada pada jarak 
+\begin_inset Formula $h$
+\end_inset
+
+ dari bagian atas, volume air 
+\begin_inset Formula $V$
+\end_inset
+
+ adalah 
+\begin_inset Formula 
+\[
+V=L\left[0.5\pi r^{2}-r^{2}\arcsin\left(\frac{h}{r}\right)-h\sqrt{r^{2}-h^{2}}\right]
+\]
+
+\end_inset
+
+Misalkan 
+\begin_inset Formula $L=10$
+\end_inset
+
+ kaki, 
+\begin_inset Formula $r=1$
+\end_inset
+
+ kaki, dan 
+\begin_inset Formula $V=12.4$
+\end_inset
+
+ kaki
+\begin_inset Formula $^{3}$
+\end_inset
+
+.
+ Tentukan kedalaman air di dalam palung dengan galat tidak lebih dari 0,01 kaki.
+ Catatan: Di Octave, gunakan 
+\family typewriter
+asin(x)
+\family default
+ untuk 
+\begin_inset Formula $\arcsin(x)$
+\end_inset
+
+ dan 
+\family typewriter
+pi
+\family default
+ untuk 
+\begin_inset Formula $\pi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+finishexercises
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Jawaban
+\end_layout
+
+\begin_layout Description
+Berapakah
+\begin_inset space ~
+\end_inset
+
+nilai
+\begin_inset space ~
+\end_inset
+
+yang
+\begin_inset space ~
+\end_inset
+
+diperoleh
+\begin_inset space ~
+\end_inset
+
+berikutnya? 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:bisectionAnswer1"
+
+\end_inset
+
+ 
+\begin_inset Formula $T_{2}(3.25)-\ln(3.25)\approx.10429$
+\end_inset
+
+, yang melebihi nilai sasaran.
+ Jadi 
+\begin_inset Formula $3.25$
+\end_inset
+
+ menjadi titik ujung kiri yang baru, dan nilai berikutnya adalah 
+\begin_inset Formula $\frac{3.25+3.5}{2}=3.375$
+\end_inset
+
+, yaitu titik tengah dari 
+\begin_inset Formula $3.25$
+\end_inset
+
+ dan 
+\begin_inset Formula $3.5$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Titik
+\begin_inset space ~
+\end_inset
+
+ujung
+\begin_inset space ~
+\end_inset
+
+kanan
+\begin_inset space ~
+\end_inset
+
+adalah
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $13.13$
+\end_inset
+
+: 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:bisectionAnswer2"
+
+\end_inset
+
+ Dengan memulai dari 
+\begin_inset Formula $a=10$
+\end_inset
+
+ dan 
+\begin_inset Formula $b=14$
+\end_inset
+
+, perhatikan bahwa 
+\begin_inset Formula $g(a)\approx.088>0$
+\end_inset
+
+ dan 
+\begin_inset Formula $g(b)\approx-.044<0$
+\end_inset
+
+, sehingga nilai 
+\begin_inset Formula $g$
+\end_inset
+
+ pada titik ujung kiri harus selalu positif dan nilai 
+\begin_inset Formula $g$
+\end_inset
+
+ pada titik ujung kanan harus selalu negatif:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $m$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $g(m)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.044$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Rightarrow m$
+\end_inset
+
+ menjadi titik ujung kiri
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.006$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Rightarrow m$
+\end_inset
+
+ menjadi titik ujung kiri
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $13.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-.017$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Rightarrow m$
+\end_inset
+
+ menjadi titik ujung kanan
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $13.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $13.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-.005$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Rightarrow m$
+\end_inset
+
+ menjadi titik ujung kanan
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $13.125$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $13.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.0004$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Rightarrow m$
+\end_inset
+
+ menjadi titik ujung kiri
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $13.125$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $13.1875$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $13.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-.002$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Rightarrow m$
+\end_inset
+
+ menjadi titik ujung kanan
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $13.125$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $13.15625$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $13.1875$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-.0009$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Rightarrow m$
+\end_inset
+
+ menjadi titik ujung kanan
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $13.125$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $13.140625$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $13.15625$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-.0002$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Rightarrow m$
+\end_inset
+
+ menjadi titik ujung kanan
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $13.125$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $13.1328125$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $13.140625$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,4492 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\input $HOME/Documents/textbook/preamble
+\end_preamble
+\use_default_options true
+\master ../scsu/Book-Numerical/TeaTimeNumericalAnalysis.lyx
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 4cm
+\topmargin 2.5cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 1
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Landasan Metode Runge-Kutta
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Runge-Kutta-Methods"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Runge-Kutta
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+metode ! Runge-Kutta|see {metode Runge-Kutta}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dalam bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:TaylorMethods"
+
+\end_inset
+
+, turunan digunakan untuk menghasilkan solusi aproksimasi persamaan diferensial
+ biasa.
+ Namun, solusi aproksimasi juga dapat dihasilkan melalui integrasi, suatu
+ proses numerik yang jauh lebih stabil.
+ Sebuah PDB
+ berbentuk
+\begin_inset Formula 
+\begin{eqnarray*}
+\dot{y} & = & f(t,y)\\
+y(t_{0}) & = & y_{0}
+\end{eqnarray*}
+
+\end_inset
+
+memiliki solusi eksak yang dapat ditulis dalam bentuk integral.
+ Untuk sembarang nilai 
+\begin_inset Formula $\tilde{t}$
+\end_inset
+
+, dan dengan mengasumsikan adanya solusi pada selang dari 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ hingga 
+\begin_inset Formula $\tilde{t}$
+\end_inset
+
+, kita dapat menentukan nilai 
+\begin_inset Formula $y(\tilde{t})$
+\end_inset
+
+ dengan mengintegralkan kedua ruas 
+\begin_inset Formula $\dot{y}=f(t,y)$
+\end_inset
+
+ terhadap 
+\begin_inset Formula $t$
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{eqnarray}
+\int_{t_{0}}^{\tilde{t}}\dot{y}\,dt & = & \int_{t_{0}}^{\tilde{t}}f(t,y)\,dt\nonumber \\
+y(\tilde{t})-y(t_{0}) & = & \int_{t_{0}}^{\tilde{t}}f(t,y)\,dt\nonumber \\
+y(\tilde{t}) & = & y(t_{0})+\int_{t_{0}}^{\tilde{t}}f(t,y)\,dt.\label{eq:basicRKidea}
+\end{eqnarray}
+
+\end_inset
+
+Ketika 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\tilde{t}$
+\end_inset
+
+ tidak berdekatan, sebagaimana biasanya kita asumsikan, kita perlu
+ melanjutkan dengan langkah-langkah kecil seperti yang dilakukan dalam bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:TaylorMethods"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Dengan menyubstitusikan 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+ untuk menggantikan 
+\begin_inset Formula $\tilde{t}$
+\end_inset
+
+ dalam persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:basicRKidea"
+
+\end_inset
+
+, diperoleh 
+\begin_inset Formula $y(t_{1})=y(t_{0})+\int_{t_{0}}^{t_{1}}f(t,y)\,dt$
+\end_inset
+
+, sehingga kita dapat menambahkan 
+\begin_inset Formula $\int_{t_{0}}^{t_{1}}f(t,y)\,dt$
+\end_inset
+
+ pada nilai yang telah diketahui 
+\begin_inset Formula $y(t_{0})$
+\end_inset
+
+ untuk memperoleh 
+\begin_inset Formula $y(t_{1})$
+\end_inset
+
+, langkah kecil pertama dalam proses mengaproksimasi 
+\begin_inset Formula $y(\tilde{t})$
+\end_inset
+
+.
+ Selanjutnya, dengan menyubstitusikan 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+ untuk menggantikan 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $t_{2}$
+\end_inset
+
+ untuk menggantikan 
+\begin_inset Formula $\tilde{t}$
+\end_inset
+
+ dalam persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:basicRKidea"
+
+\end_inset
+
+, diperoleh 
+\begin_inset Formula $y(t_{2})=y(t_{1})+\int_{t_{1}}^{t_{2}}f(t,y)\,dt$
+\end_inset
+
+.
+ Dengan demikian, kita dapat menghitung 
+\begin_inset Formula $y(t_{2})$
+\end_inset
+
+ berdasarkan nilai 
+\begin_inset Formula $y(t_{1})$
+\end_inset
+
+.
+ Dengan cara serupa, kita dapat menghitung 
+\begin_inset Formula $y(t_{3})$
+\end_inset
+
+ berdasarkan nilai 
+\begin_inset Formula $y(t_{2})$
+\end_inset
+
+, 
+\begin_inset Formula $y(t_{4})$
+\end_inset
+
+ berdasarkan nilai 
+\begin_inset Formula $y(t_{3})$
+\end_inset
+
+, dan seterusnya, hingga akhirnya menghitung 
+\begin_inset Formula $y(t_{n})=y(\tilde{t})$
+\end_inset
+
+.
+ Dengan mengingat hal ini, kita menulis ulang representasi integral dalam bentuk 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ dan 
+\begin_inset Formula $t_{i+1}$
+\end_inset
+
+ alih-alih 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ dan 
+\begin_inset Formula $\tilde{t}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{equation}
+y(t_{i+1})=y(t_{i})+\int_{t_{i}}^{t_{i+1}}f(t,y)\,dt.\label{eq:integralEquation}
+\end{equation}
+
+\end_inset
+
+Rumus ini menunjukkan bahwa memperoleh satu nilai aproksimasi, 
+\begin_inset Formula $y(t_{i+1})$
+\end_inset
+
+, dari nilai sebelumnya, 
+\begin_inset Formula $y(t_{i})$
+\end_inset
+
+, pada dasarnya cukup dengan mengaproksimasi 
+\begin_inset Formula $\int_{t_{i}}^{t_{i+1}}f(t,y)\,dt$
+\end_inset
+
+.
+ Hal tersebut seharusnya tidak terlalu sulit pada tahap ini.
+ Sekitar separuh bab 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Numerical-Calculus"
+
+\end_inset
+
+ dikhususkan tepat untuk tugas ini! Setiap rumus integrasi numerik
+ dapat digunakan di sini, tetapi mari kita mulai dari yang sederhana.
+ Kita mengetahui 
+\begin_inset Formula $y(t_{i})$
+\end_inset
+
+, yaitu nilai fungsi di titik ujung kiri integrasi, setidaknya
+ secara aproksimasi, sehingga masuk akal untuk menggunakan stensil yang memuat titik ujung kiri
+ integrasi sebagai salah satu simpulnya.
+ Agar percobaan pertama kita sesederhana mungkin, mari jadikan simpul itu
+ satu-satunya simpul! Dengan kata lain, mari kita tentukan rumus integrasi untuk stensil
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/ode-rungekutta01.pdf
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Dengan metode koefisien tak tentu, kita menghitung ruas kiri
+ sistem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:systemGenericIntegral"
+
+\end_inset
+
+ (yang bagi kita hanya terdiri atas satu persamaan karena hanya ada satu simpul):
+\begin_inset Formula 
+\begin{eqnarray*}
+\int_{a}^{b}p_{0}(x)dx=\int_{x_{0}}^{x_{0}+h}p_{0}(x)dx & = & \int_{x_{0}}^{x_{0}+h}1dx=\left.(x-x_{0})\right|_{x_{0}}^{x_{0}+h}=h
+\end{eqnarray*}
+
+\end_inset
+
+dan ruas kanan:
+\begin_inset Formula 
+\[
+\sum_{i=0}^{0}(\theta_{i}h)^{0}a_{i}=a_{0}.
+\]
+
+\end_inset
+
+Jadi 
+\begin_inset Formula $a_{0}=h$
+\end_inset
+
+ dan kita memperoleh rumus 
+\begin_inset Formula 
+\[
+\int_{x_{0}}^{x_{0}+h}f(x)dx\approx hf(x_{0}).
+\]
+
+\end_inset
+
+Akibatnya, 
+\begin_inset Formula $\int_{t_{i}}^{t_{i+1}}f(t,y)\,dt\approx(t_{i+1}-t_{i})f(t_{i},y(t_{i}))$
+\end_inset
+
+, dan persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:integralEquation"
+
+\end_inset
+
+ menjadi
+\begin_inset Formula 
+\[
+y(t_{i+1})=y(t_{i})+f(t_{i},y(t_{i}))\cdot(t_{i+1}-t_{i}).
+\]
+
+\end_inset
+
+Dengan menggunakan notasi 
+\begin_inset Formula $y_{i}=y(t_{i})$
+\end_inset
+
+ dan 
+\begin_inset Formula $f=\dot{y}$
+\end_inset
+
+ dari bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:TaylorMethods"
+
+\end_inset
+
+, rumus ini menjadi
+\begin_inset Formula 
+\[
+y_{i+1}=y_{i}+\dot{y}(t_{i},y_{i})\cdot(t_{i+1}-t_{i}).
+\]
+
+\end_inset
+
+Tunggu sebentar! Kita pernah melihatnya.
+ Ini tepat sama dengan persamaan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:EulersMethodGeneral"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Pencarian metode baru untuk mengaproksimasi solusi PDB melalui integrasi
+ sejauh ini belum menghasilkan sesuatu yang baru.
+ Namun, mestinya ada perbedaan.
+ Rumus integrasi mencakup penghitungan nilai integran di berbagai titik,
+ sedangkan metode Taylor mencakup penghitungan nilai turunan di satu titik.
+ Mari kita lanjutkan.
+ Barangkali rumus integrasi paling sederhana berikutnya yang memuat titik ujung kiri
+ integrasi adalah Aturan Trapesium (lihat bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:calculusErrorAnalysis"
+
+\end_inset
+
+),
+\begin_inset Formula 
+\[
+{\displaystyle \int_{x_{0}}^{x_{0}+h}f(x)dx=\frac{h}{2}\left[f(x_{0})+f(x_{0}+h)\right]+O(h^{3}f''(\xi_{h}))}
+\]
+
+\end_inset
+
+pada stensil
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/ode-rungekutta13.pdf
+	scale 167
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Dengan menerjemahkan Aturan Trapesium ke dalam notasi saat ini,
+\begin_inset Formula 
+\[
+{\displaystyle \int_{t_{i}}^{t_{i+1}}f(t,y)\,dt=\frac{t_{i+1}-t_{i}}{2}\left[f(t_{i},y_{i})+f(t_{i+1},y_{i+1})\right]+O((t_{i+1}-t_{i})^{3}).}
+\]
+
+\end_inset
+
+Dengan demikian, rumus aproksimasi baru kita adalah
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+y_{i+1}=y_{i}+\frac{t_{i+1}-t_{i}}{2}\left[f(t_{i},y_{i})+f(t_{i+1},y_{i+1})\right].
+\]
+
+\end_inset
+
+Persamaan ini sangat baik, kecuali bahwa ruas kanannya memuat 
+\begin_inset Formula $y_{i+1}$
+\end_inset
+
+, yaitu besaran yang sedang kita aproksimasi! Salah satu pilihan adalah membiarkannya
+ demikian.
+ Persamaan untuk 
+\begin_inset Formula $y_{i+1}$
+\end_inset
+
+ bersifat implisit, dan itu tidak menjadi masalah.
+ Suatu metode pencarian akar dapat digunakan untuk menentukan 
+\begin_inset Formula $y_{i+1}$
+\end_inset
+
+ pada setiap langkah metode tersebut.
+ Meskipun cara ini bukan tidak mungkin, cara ini juga bukan solusi yang paling sederhana.
+ Karena ukuran langkah 
+\begin_inset Formula $(t_{i+1}-t_{i})$
+\end_inset
+
+ kemungkinan kecil, barangkali penggunaan metode Euler untuk mengaproksimasi 
+\begin_inset Formula $y_{i+1}$
+\end_inset
+
+ di ruas kanan tidak akan menimbulkan kerusakan yang tak dapat diperbaiki pada aproksimasi keseluruhan.
+ Untuk mencobanya, kita gunakan 
+\begin_inset Formula $y_{i+1}=y_{i}+(t_{i+1}-t_{i})\cdot f(t_{i},y_{i})$
+\end_inset
+
+ di ruas kanan untuk memperoleh rumus baru 
+\begin_inset Formula 
+\[
+y_{i+1}=y_{i}+\frac{t_{i+1}-t_{i}}{2}\left[f(t_{i},y_{i})+f(t_{i+1},y_{i}+(t_{i+1}-t_{i})\cdot f(t_{i},y_{i}))\right].
+\]
+
+\end_inset
+
+Sejenak mempertimbangkan hasil kita, mungkin kita menyimpulkan bahwa rumus tersebut
+ mulai agak rumit.
+ Mari kita lihat apakah rumus tersebut dapat sedikit dirapikan.
+ Pertama, menyubstitusikan 
+\begin_inset Formula $h$
+\end_inset
+
+ untuk menggantikan 
+\begin_inset Formula $t_{i+1}-t_{i}$
+\end_inset
+
+ membuatnya sedikit lebih sederhana:
+\begin_inset Formula 
+\[
+y_{i+1}=y_{i}+\frac{h}{2}\left[f(t_{i},y_{i})+f(t_{i+1},y_{i}+h\cdot f(t_{i},y_{i}))\right].
+\]
+
+\end_inset
+
+Kedua, dengan menetapkan 
+\begin_inset Formula $k_{1}=f(t_{i},y_{i})$
+\end_inset
+
+ dan 
+\begin_inset Formula $k_{2}=f(t_{i+1},y_{i}+h\cdot f(t_{i},y_{i}))=f(t_{i+1},y_{i}+h\cdot k_{1})$
+\end_inset
+
+, kita memperoleh perhitungan tiga langkah yang rapi dan ringkas:
+\begin_inset Formula 
+\begin{eqnarray}
+k_{1} & = & f(t_{i},y_{i})\nonumber \\
+k_{2} & = & f(t_{i+1},y_{i}+hk_{1})\nonumber \\
+y_{i+1} & = & y_{i}+\frac{h}{2}(k_{1}+k_{2}).\label{eq:trapezoidal-ode}
+\end{eqnarray}
+
+\end_inset
+
+Namun, sebelum terlalu terbawa oleh rumusan yang rapi ini, sebaiknya
+ kita mencari beberapa bukti bahwa metode 
+\begin_inset Quotes eld
+\end_inset
+
+canggih
+\begin_inset Quotes erd
+\end_inset
+
+ ini memberikan aproksimasi yang masuk akal bagi solusi suatu PDB
+ sebagaimana diharapkan.
+ Mari kita minta Octave menghitung solusi aproksimasi PDB
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sampleODE"
+
+\end_inset
+
+ dengan metode Euler maupun metode berbasis Aturan Trapesium ini,
+ lalu membandingkannya dengan solusi eksak, 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $y(t)=\frac{t^{3}}{4}+\frac{16}{t}$
+\end_inset
+
+.
+ Cuplikan kode berikut, meskipun khusus untuk tugas ini, dapat digeneralisasi
+ untuk menentukan solusi aproksimasi PDB lainnya.
+\end_layout
+
+\begin_layout Subsubsection
+Kode uji
+ pemecah PDB
+\end_layout
+
+\begin_layout LyX-Code
+t=4;
+\end_layout
+
+\begin_layout LyX-Code
+h=-1/4;
+\end_layout
+
+\begin_layout LyX-Code
+f=@(t,y) -y/t+t^2;
+\end_layout
+
+\begin_layout LyX-Code
+exact=@(t) t^3/4+16/t;
+\end_layout
+
+\begin_layout LyX-Code
+euler=20;
+\end_layout
+
+\begin_layout LyX-Code
+trap=20;
+\end_layout
+
+\begin_layout LyX-Code
+disp('             Euler   Trapezoid       Exact   Euler err    Trap err')
+\end_layout
+
+\begin_layout LyX-Code
+disp('        -------------------------------------------------------------')
+\end_layout
+
+\begin_layout LyX-Code
+for i=1:8
+\end_layout
+
+\begin_layout LyX-Code
+  euler=euler+h*f(t,euler);
+\end_layout
+
+\begin_layout LyX-Code
+  k1=f(t,trap);
+\end_layout
+
+\begin_layout LyX-Code
+  k2=f(t+h,trap+h*k1);
+\end_layout
+
+\begin_layout LyX-Code
+  trap=trap+h/2*(k1+k2);
+\end_layout
+
+\begin_layout LyX-Code
+  t=t+h;
+\end_layout
+
+\begin_layout LyX-Code
+  x=exact(t);
+\end_layout
+
+\begin_layout LyX-Code
+  sprintf('%12.5g%12.5g%12.5g%12.5g%12.5g',euler,trap,x,abs(euler-x),abs(trap-x))
+\end_layout
+
+\begin_layout LyX-Code
+end%for
+\end_layout
+
+\begin_layout Standard
+Kode uji ini dapat diunduh dari 
+\begin_inset CommandInset href
+LatexCommand href
+name "situs pendamping"
+target "http://lqbrin.github.io/tea-time-numerical/ancillaries.html"
+literal "false"
+
+\end_inset
+
+ (
+\family typewriter
+rungeKuttaDemo.m
+\family default
+).
+ Satu-satunya bagian kode ini yang mungkin terasa asing bagi Anda pada tahap ini
+ adalah perintah 
+\family typewriter
+sprintf()
+\family default
+ tersebut.
+ 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Octave ! 
+\family typewriter
+sprintf
+\end_layout
+
+\end_inset
+
+ Argumen pertama, 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family typewriter
+'%12.5g%12.5g%12.5g%12.5g%12.5g'
+\family default
+, 
+\end_layout
+
+\begin_layout Standard
+\noindent
+adalah untai format.
+ Untai ini berarti merangkai 5 bilangan titik-mengambang
+ dengan masing-masing 12 spasi dan menampilkan 5 angka signifikan.
+ Dalam perintah 
+\family typewriter
+sprintf
+\family default
+, 
+\family typewriter
+%12.5g
+\family default
+ berarti pemformatan 
+\begin_inset Quotes eld
+\end_inset
+
+umum
+\begin_inset Quotes erd
+\end_inset
+
+ bagi bilangan titik-mengambang dengan 12 spasi dan 5 angka
+ signifikan.
+ Komputer akan menentukan apakah notasi ilmiah digunakan dalam keluaran.
+ Karena diulang 5 kali, perintah ini akan memformat lima
+ nilai titik-mengambang semacam itu.
+ Argumen lainnya adalah lima bilangan yang akan dicetak.
+ Perintah 
+\family typewriter
+sprintf
+\family default
+ sebaiknya tidak dibaca sebagai 
+\begin_inset Quotes eld
+\end_inset
+
+sprint-eff
+\begin_inset Quotes erd
+\end_inset
+
+ melainkan 
+\begin_inset Quotes eld
+\end_inset
+
+ess-print-eff
+\begin_inset Quotes erd
+\end_inset
+
+ atau 
+\begin_inset Quotes eld
+\end_inset
+
+string print formatted
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Huruf 
+\family typewriter
+s
+\family default
+ menyatakan untai, sedangkan huruf 
+\family typewriter
+f
+\family default
+ menyatakan pemformatan.
+ Jika Anda berpikir bahwa perintah ini terasa agak rumit, Anda benar.
+ Jenis perintah pemformatan cetak ini berasal dari bahasa pemrograman C
+ pada tahun 1970-an!
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Lihat 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://en.wikipedia.org/wiki/Printf_format_string
+\end_layout
+
+\end_inset
+
+ untuk beberapa rinciannya.
+\end_layout
+
+\end_inset
+
+ Keluaran dari menjalankan kode Octave ini adalah
+\end_layout
+
+\begin_layout LyX-Code
+             Euler   Trapezoid       Exact   Euler err    Trap err
+\end_layout
+
+\begin_layout LyX-Code
+        -------------------------------------------------------------
+\end_layout
+
+\begin_layout LyX-Code
+ans =        17.25      17.442       17.45     0.20026   0.0080729
+\end_layout
+
+\begin_layout LyX-Code
+ans =       14.884      15.273       15.29      0.4058    0.016741
+\end_layout
+
+\begin_layout LyX-Code
+ans =       12.885      13.479      13.505     0.62006    0.026142
+\end_layout
+
+\begin_layout LyX-Code
+ans =       11.236      12.047      12.083     0.84776    0.036458
+\end_layout
+
+\begin_layout LyX-Code
+ans =       9.9219      10.969      11.017      1.0955     0.04794
+\end_layout
+
+\begin_layout LyX-Code
+ans =       8.9332      10.245      10.306       1.373    0.060938
+\end_layout
+
+\begin_layout LyX-Code
+ans =       8.2641      9.8828      9.9588      1.6947    0.075955
+\end_layout
+
+\begin_layout LyX-Code
+ans =       7.9167      9.9062          10      2.0833     0.09375
+\end_layout
+
+\begin_layout Standard
+Metode kita yang didasarkan pada Aturan Trapesium, yang akan kita sebut PDB-trapesium
+ untuk sementara, tampaknya lebih baik dalam menghampiri solusi
+ PDB ini
+ daripada metode Euler.
+ Dua kolom terakhir memuat galat absolut untuk setiap hampiran.
+ Galat pada PDB-trapesium kira-kira 0.01 hingga 0.1, sedangkan galat pada
+ metode Euler kira-kira 0.2 hingga 2.
+ Semua galat pada PDB-trapesium lebih kecil daripada semua galat pada
+ metode Euler.
+ Tentu saja, PDB-trapesium memerlukan dua evaluasi 
+\begin_inset Formula $f$
+\end_inset
+
+ per langkah, sehingga metode itu seharusnya memberikan hasil lebih baik yang sepadan dengan upaya tambahan tersebut jika
+ hendak berguna.
+\end_layout
+
+\begin_layout Standard
+Terdorong oleh keberhasilan ini, mungkin ada baiknya meluangkan waktu untuk rumus
+ integrasi lain, misalnya Aturan Simpson.
+ Ingat kembali dari bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:calculusErrorAnalysis"
+
+\end_inset
+
+, Aturan Simpson menyatakan
+\begin_inset Formula 
+\[
+{\displaystyle \int_{x_{0}}^{x_{0}+2h}f(x)dx=\frac{h}{3}\left[f(x_{0})+4f(x_{0}+h)+f(x_{0}+2h)\right]+O(h^{5}f^{(4)}(\xi_{h}))},
+\]
+
+\end_inset
+
+yang dalam notasi bagian ini dapat kita tulis sebagai
+\begin_inset Formula 
+\[
+\int_{t_{i}}^{t_{i+1}}f(t,y)\,dt=\frac{h}{6}\left[f(t_{i},y_{i})+4f(t_{i+1/2},y_{i+1/2})+f(t_{i+1},y_{i+1})\right],
+\]
+
+\end_inset
+
+dengan mengabaikan suku galat dan menggunakan notasi 
+\begin_inset Formula $t_{i+1/2}$
+\end_inset
+
+ untuk menyatakan 
+\begin_inset Formula $t_{i}+\frac{1}{2}h$
+\end_inset
+
+ dan 
+\begin_inset Formula $y_{i+1/2}$
+\end_inset
+
+ untuk menyatakan 
+\begin_inset Formula $y(t_{i}+\frac{1}{2}h)$
+\end_inset
+
+.
+ Jadi, penyelesai PDB
+ yang didasarkan pada Aturan Simpson dapat berbentuk
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+y_{i+1}=y_{i}+\frac{h}{6}\left[f(t_{i},y_{i})+4f(t_{i+1/2},y_{i+1/2})+f(t_{i+1},y_{i+1})\right].
+\]
+
+\end_inset
+
+Sekali lagi, ini adalah rumus implisit.
+ Sekali lagi, kita dapat menggunakan metode Euler untuk menaksir 
+\begin_inset Formula $y_{i+1}$
+\end_inset
+
+, dan bahkan kita dapat menggunakan metode Euler untuk menaksir 
+\begin_inset Formula $y_{i+1/2}$
+\end_inset
+
+ juga! Karena 
+\begin_inset Formula $t_{i+1/2}$
+\end_inset
+
+ lebih dekat ke 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ daripada 
+\begin_inset Formula $t_{i+1}$
+\end_inset
+
+, kita menaksir 
+\begin_inset Formula $y_{i+1/2}$
+\end_inset
+
+ terlebih dahulu.
+ Artinya, kita mengganti 
+\begin_inset Formula $y_{i+1/2}$
+\end_inset
+
+ dengan 
+\begin_inset Formula $y_{i}+\frac{h}{2}f(t_{i},y_{i})$
+\end_inset
+
+.
+ Dengan perhitungan dalam beberapa langkah seperti sebelumnya, kita memperoleh
+\begin_inset Formula 
+\begin{eqnarray*}
+k_{1} & = & f(t_{i},y_{i})\\
+k_{2} & = & f\left(t_{i}+\frac{h}{2},y_{i}+\frac{h}{2}k_{1}\right)
+\end{eqnarray*}
+
+\end_inset
+
+sampai tahap ini.
+ Ini menangani dua suku pertama di dalam tanda kurung siku.
+ Sekarang kita menaksir 
+\begin_inset Formula $y_{i+1}$
+\end_inset
+
+ dengan menghampiri 
+\begin_inset Formula $f(t_{i+1},y_{i+1})$
+\end_inset
+
+.
+ Namun, sekarang kita memiliki taksiran untuk 
+\begin_inset Formula $f$
+\end_inset
+
+ pada 
+\begin_inset Formula $t_{i}+\frac{h}{2}$
+\end_inset
+
+, dan 
+\begin_inset Formula $t_{i}+\frac{h}{2}$
+\end_inset
+
+ lebih dekat ke 
+\begin_inset Formula $t_{i+1}$
+\end_inset
+
+ daripada 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+.
+ Jadi, meskipun kita dapat menggunakan 
+\begin_inset Formula $y_{i}+hf(t_{i},y_{i})=y_{i}+hk_{1}$
+\end_inset
+
+ untuk menghampiri 
+\begin_inset Formula $y_{i+1}$
+\end_inset
+
+ (seperti yang dilakukan sebelumnya), kita dapat menduga bahwa 
+\begin_inset Formula $y_{i}+hk_{2}$
+\end_inset
+
+ merupakan taksiran yang lebih baik.
+ Dengan harapan ini, kita menyelesaikan metode tersebut melalui perhitungan berikut:
+\begin_inset Formula 
+\begin{eqnarray*}
+k_{1} & = & f(t_{i},y_{i})\\
+k_{2} & = & f\left(t_{i}+\frac{h}{2},y_{i}+\frac{h}{2}k_{1}\right)\\
+k_{3} & = & f(t_{i+1},y_{i}+hk_{2})\\
+y_{i+1} & = & y_{i}+\frac{h}{6}\left[k_{1}+4k_{2}+k_{3}\right].
+\end{eqnarray*}
+
+\end_inset
+
+Untuk sementara, kita akan menyebut metode ini PDB-Simpson.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Sebelum mencoba menilai apakah metode baru ini lebih baik daripada metode-metode
+ sebelumnya, mari kita turunkan beberapa metode lagi dan membandingkan semuanya sekaligus.
+ Rumus
+\begin_inset Formula 
+\[
+{\displaystyle \int_{x_{0}}^{x_{0}+3h}f(x)dx=\frac{3h}{2}\left[f(x_{0}+h)+f(x_{0}+2h)\right]+O(h^{3}f''(\xi_{h}))}
+\]
+
+\end_inset
+
+ (sebuah rumus Newton-Cotes terbuka dari bagian 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:calculusErrorAnalysis"
+
+\end_inset
+
+) menghasilkan metode
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\begin{eqnarray*}
+k_{1} & = & f(t_{i},y_{i})\\
+k_{2} & = & f\left(t_{i}+\frac{h}{3},y_{i}+\frac{h}{3}k_{1}\right)\\
+k_{3} & = & f\left(t_{i}+\frac{2h}{3},y_{i}+\frac{2h}{3}k_{2}\right)\\
+y_{i+1} & = & y_{i}+\frac{h}{2}\left[k_{2}+k_{3}\right].
+\end{eqnarray*}
+
+\end_inset
+
+Dapatkah Anda melengkapi langkah-langkah untuk menurunkan metode ini? Jawaban 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "ans:fill-in"
+
+\end_inset
+
+.
+ Kita akan menyebut metode ini PDB-terbuka.
+ Terakhir, kita menggunakan stensil
+\family default
+\series default
+\shape default
+\size default
+\bar default
+\color inherit
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/ode-rungekutta02.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+untuk menurunkan rumus integrasi lainnya.
+ Rumus ini bukan rumus Newton-Cotes terbuka dan juga bukan rumus Newton-Cotes
+ tertutup.
+ Rumus ini tidak dibahas dalam bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:calculusErrorAnalysis"
+
+\end_inset
+
+.
+ Mungkin rumus ini dapat disebut rumus Newton-Cotes 
+\begin_inset Quotes eld
+\end_inset
+
+tertutup-terbuka
+\begin_inset Quotes erd
+\end_inset
+
+ (setengah tertutup dan setengah terbuka).
+ Dapatkah Anda menurunkan metode integrasi yang bersesuaian? Rincian 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "ans:clopenNewtonCotes"
+
+\end_inset
+
+.
+ Hasilnya adalah
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+\int_{x_{0}}^{x_{0}+3h}f(x)dx\approx\frac{3h}{4}\left[f(x_{0})+3f(x_{0}+2h)\right],
+\]
+
+\end_inset
+
+dengan mengabaikan suku galat.
+ Hal ini menghasilkan
+ penyelesai PDB
+\begin_inset Formula 
+\begin{eqnarray*}
+k_{1} & = & f(t_{i},y_{i})\\
+k_{2} & = & f\left(t_{i}+\frac{h}{3},y_{i}+\frac{h}{3}k_{1}\right)\\
+k_{3} & = & f\left(t_{i}+\frac{2h}{3},y_{i}+\frac{2h}{3}k_{2}\right)\\
+y_{i+1} & = & y_{i}+\frac{h}{4}\left[k_{1}+3k_{3}\right].
+\end{eqnarray*}
+
+\end_inset
+
+Kita akan menyebut metode ini PDB-tertutup-terbuka.
+ Perhatikan dua hal.
+ Pertama, meskipun 
+\begin_inset Formula $k_{2}$
+\end_inset
+
+ tidak digunakan pada baris terakhir, nilai tersebut tetap dihitung karena digunakan untuk
+ menghitung 
+\begin_inset Formula $k_{3}$
+\end_inset
+
+.
+ Kedua, perhitungan 
+\begin_inset Formula $k_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $k_{2}$
+\end_inset
+
+, dan 
+\begin_inset Formula $k_{3}$
+\end_inset
+
+ identik dengan perhitungan dalam metode PDB-terbuka.
+ Satu-satunya perbedaan terletak pada cara 
+\begin_inset Formula $k_{j}$
+\end_inset
+
+ digabungkan.
+ Metode integrasi tersebut menggabungkan nilai fungsi pada simpul
+ dengan cara berbeda.
+ Gagasan menggunakan 
+\begin_inset Formula $k_{j}$
+\end_inset
+
+ yang sama untuk tujuan berbeda akan muncul lagi!
+\end_layout
+
+\begin_layout Standard
+Jadi, kini kita memiliki tiga metode baru untuk diuji—satu didasarkan pada Aturan Simpson
+ (PDB-Simpson), satu didasarkan pada rumus Newton-Cotes terbuka (PDB-terbuka),
+ dan yang ketiga didasarkan pada rumus Newton-Cotes yang disebut 
+\begin_inset Quotes eld
+\end_inset
+
+tertutup-terbuka
+\begin_inset Quotes erd
+\end_inset
+
+ (PDB-tertutup-terbuka).
+ Dapatkah Anda menulis kode uji untuk membandingkan ketiga rumus baru tersebut (serupa dengan
+ kode yang digunakan untuk membandingkan metode Euler dengan PDB-trapesium)? Jawaban 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "ans:testCode"
+
+\end_inset
+
+.
+ Hasilnya dirangkum dalam keluaran Octave berikut:
+\end_layout
+
+\begin_layout LyX-Code
+        Simpsons  Open      Clopen    Simp err  Open err  Clop err
+\end_layout
+
+\begin_layout LyX-Code
+        ------------------------------------------------------------
+\end_layout
+
+\begin_layout LyX-Code
+ans =   17.44806  17.44999  17.45022   0.00220   0.00028   0.00004
+\end_layout
+
+\begin_layout LyX-Code
+ans =   15.28557  15.28953  15.29008   0.00461   0.00065   0.00010
+\end_layout
+
+\begin_layout LyX-Code
+ans =   13.49781  13.50395  13.50494   0.00730   0.00116   0.00017
+\end_layout
+
+\begin_layout LyX-Code
+ans =   12.07297  12.08146  12.08307   0.01036   0.00187   0.00027
+\end_layout
+
+\begin_layout LyX-Code
+ans =   11.00347  11.01450  11.01700   0.01393   0.00290   0.00040
+\end_layout
+
+\begin_layout LyX-Code
+ans =   10.28804  10.30185  10.30566   0.01821   0.00440   0.00059
+\end_layout
+
+\begin_layout LyX-Code
+ans =    9.93523   9.95208   9.95789   0.02354   0.00669   0.00088
+\end_layout
+
+\begin_layout LyX-Code
+ans =    9.96952   9.98969   9.99866   0.03048   0.01031   0.00134
+\end_layout
+
+\begin_layout Standard
+PDB-Simpson paling buruk dalam memperoleh solusi aproksimasi, sedangkan
+ PDB-tertutup-terbuka paling baik.
+ Namun, mengapa?
+\end_layout
+
+\begin_layout Standard
+Hingga saat ini, kita telah cukup menyeluruh dalam mengesampingkan
+ analisis galat.
+ Bagian terbesar penyelidikan tersebut akan dilakukan pada bagian berikutnya, tetapi kita
+ dapat melakukan analisis singkat di sini.
+ Dari bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:calculusErrorAnalysis"
+
+\end_inset
+
+, kita mengetahui bahwa Aturan Trapesium dan rumus Newton-Cotes terbuka yang
+ kita gunakan di sini sama-sama memiliki suku galat 
+\begin_inset Formula $O(h^{3})$
+\end_inset
+
+, sedangkan Aturan Simpson memiliki suku galat 
+\begin_inset Formula $O(h^{5})$
+\end_inset
+
+.
+ Metode integrasi yang didasarkan pada stensil
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/ode-rungekutta01.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename figures/ode-rungekutta02.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+(yang menghasilkan metode Euler dan PDB-tertutup-terbuka) memiliki suku galat yang belum
+ ditentukan.
+ Dapatkah Anda menunjukkan bahwa suku galat tersebut masing-masing adalah 
+\begin_inset Formula $O(h^{2})$
+\end_inset
+
+ dan 
+\begin_inset Formula $O(h^{4})$
+\end_inset
+
+? Jawaban 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "ans:errorTerms"
+
+\end_inset
+
+.
+ Berdasarkan suku galat metode integrasi yang mendasarinya, kita memperkirakan
+ bahwa urutan penyelesai PDB
+ dari yang paling tidak akurat hingga paling akurat adalah metode Euler
+ (berdasarkan rumus integrasi yang memiliki 
+\begin_inset Formula $O(h^{2})$
+\end_inset
+
+ sebagai suku galatnya), PDB-terbuka (berdasarkan rumus integrasi yang memiliki 
+\begin_inset Formula $O(h^{3})$
+\end_inset
+
+ sebagai suku galatnya), PDB-tertutup-terbuka (berdasarkan rumus integrasi yang memiliki 
+\begin_inset Formula $O(h^{4})$
+\end_inset
+
+ sebagai suku galatnya), dan PDB-Simpson (berdasarkan rumus integrasi yang memiliki 
+\begin_inset Formula $O(h^{5})$
+\end_inset
+
+ sebagai suku galatnya); sedangkan PDB-trapesium diperkirakan setara dengan PDB-terbuka.
+ Tabel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:odeCompare"
+
+\end_inset
+
+ menunjukkan galat perhitungan 
+\begin_inset Formula $y(2)$
+\end_inset
+
+ untuk 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sampleODE"
+
+\end_inset
+
+ bagi kelima metode dalam bagian ini dengan berbagai nilai 
+\begin_inset Formula $h$
+\end_inset
+
+.
+ 
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:odeCompare"
+
+\end_inset
+
+Perbandingan galat absolut untuk lima
+ penyelesai PDB
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $h$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Euler
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PDB-trapesium
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PDB-terbuka
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PDB-tertutup-terbuka
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PDB-Simpson
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-\frac{1}{4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.0833$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.09375$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.010311$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0013444$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.030482$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-\frac{1}{8}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.0809$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.023437$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0025929$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.00017446$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0077168$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-\frac{1}{16}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.55114$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0058594$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.00064977$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.2207(10)^{-5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0019412$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-\frac{1}{32}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.27837$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0014648$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.00016261$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.8008(10)^{-6}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.00048679$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-\frac{1}{64}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.1399$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.00036621$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.0672(10)^{-5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.5166(10)^{-7}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.00012188$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-\frac{1}{128}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.07013$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9.1553(10)^{-5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.017(10)^{-5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.4055(10)^{-8}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.0494(10)^{-5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Karena nilai 
+\begin_inset Formula $h$
+\end_inset
+
+ pada setiap baris adalah setengah dari nilai pada baris sebelumnya, kita memperkirakan rasio
+ galat pada baris berurutan kira-kira 
+\begin_inset Formula $\left(\frac{1}{2}\right)^{\ell}$
+\end_inset
+
+ jika laju kekonvergenan metode tersebut adalah 
+\begin_inset Formula $O(h^{\ell})$
+\end_inset
+
+.
+ Untuk metode Euler, dengan membagi galat pada baris 3 dengan galat pada baris 2, kita memperoleh
+ 
+\begin_inset Formula $\left(\frac{1}{2}\right)^{\ell}\approx\frac{.55114}{1.0809}\approx\frac{1}{2}$
+\end_inset
+
+ dan dengan membagi galat pada baris 6 dengan galat pada baris 5, kita memperoleh 
+\begin_inset Formula $\left(\frac{1}{2}\right)^{\ell}\approx\frac{.07013}{.1399}\approx\frac{1}{2}$
+\end_inset
+
+, misalnya.
+ Bukti ini menunjukkan bahwa 
+\begin_inset Formula $\ell=1$
+\end_inset
+
+ untuk metode Euler dan, oleh karena itu, metode Euler memiliki sifat 
+\begin_inset Formula $O(h)$
+\end_inset
+
+ dalam kekonvergenannya.
+ Mengulangi perhitungan yang sama untuk metode lain menghasilkan Tabel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:odeMethodOrders"
+
+\end_inset
+
+.
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:odeMethodOrders"
+
+\end_inset
+
+Suku galat lima penyelesai PDB dan metode integrasi yang mendasarinya
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Euler
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PDB-trapesium
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PDB-terbuka
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PDB-tertutup-terbuka
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PDB-Simpson
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Metode integrasi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O(h^{2})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O(h^{3})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O(h^{3})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O(h^{4})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O(h^{5})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Penyelesai
+ PDB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O(h)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O(h^{2})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O(h^{2})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O(h^{3})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $O(h^{2})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dengan pengecualian PDB-Simpson, Tabel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:odeMethodOrders"
+
+\end_inset
+
+ menunjukkan bahwa suku galat metode penyelesaian PDB
+ berderajat satu tingkat lebih rendah daripada rumus integrasi (satu
+ langkah) yang mendasarinya.
+ Dalam Bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Composite"
+
+\end_inset
+
+ kita mencatat bahwa rumus integrasi komposit juga memiliki suku galat dengan
+ derajat satu tingkat lebih rendah daripada rumus integrasi satu langkah yang bersesuaian (dan
+ kita membuat pengamatan serupa tentang metode Taylor dalam Bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:TaylorMethods"
+
+\end_inset
+
+).
+ Ada alasan untuk meyakini kesejajaran ini karena metode-metode yang diajukan dalam
+ bagian ini pada dasarnya merupakan teknik integrasi komposit.
+ Karena itu, kenyataan bahwa PDB-Simpson tidak mengikuti
+ pola tersebut seharusnya agak mengkhawatirkan.
+ Kajian yang lebih mendalam terhadap suku galat diperlukan untuk menjelaskan anomali ini.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{small} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Latihan
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-rungeKutta"
+
+\end_inset
+
+Turunkan metode penyelesaian PDB berdasarkan stensil dan rumus integrasi
+ yang bersesuaian.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-rungeKutta-1"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/ode-rungeKutta03.pdf
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{h}{4}\left(f(x_{0})+3f\left(x_{0}+\frac{2}{3}h\right)\right)+O(h^{4})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-rungeKutta-2"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/ode-rungeKutta04.pdf
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+hf\left(x_{0}+\frac{1}{2}h\right)+O(h^{3})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-rungeKutta-3"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/ode-rungeKutta05.pdf
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{h}{2}\left(3f\left(x_{0}+\frac{1}{3}h\right)-f(x_{0})\right)+O(h^{3})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-rungeKutta-4"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/ode-rungeKutta06.pdf
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+hf\left(x_{0}+\frac{1}{3}h\right)+O(h^{2})
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{eqnarray*}
+k_{1} & = & f(t_{i},y_{i})\\
+k_{2} & = & f\left(t_{i}+\frac{h}{3},y_{i}+\frac{h}{3}k_{1}\right)\\
+y_{i+1} & = & y_{i}+hk_{2}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-rungeKutta-5"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hasasolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/ode-rungeKutta07.pdf
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{h}{4}\left(3f\left(x_{0}+\frac{1}{3}h\right)+f(x_{0}+h)\right)+O(h^{4})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-rungeKutta-6"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/ode-rungeKutta08.pdf
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+hf\left(x_{0}+\frac{2}{3}h\right)+O(h^{2})
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{eqnarray*}
+k_{1} & = & f(t_{i},y_{i})\\
+k_{2} & = & f\left(t_{i}+\frac{2h}{3},y_{i}+\frac{2h}{3}k_{1}\right)\\
+y_{i+1} & = & y_{i}+hk_{2}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-rungeKutta-7"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/ode-rungeKutta09.pdf
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{h}{2}\left(3f\left(x_{0}+\frac{1}{3}h\right)-4f\left(x_{0}+\frac{1}{2}h\right)+3hf\left(x_{0}+\frac{2}{3}h\right)\right)+O(h^{5})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-rungeKutta-8"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/ode-rungeKutta10.pdf
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{h}{4}\left(3f\left(x_{0}+\frac{1}{3}h\right)+f(x_{0}+h)\right)+O(h^{4})
+\]
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\begin{eqnarray*}
+k_{1} & = & f(t_{i},y_{i})\\
+k_{2} & = & f\left(t_{i}+\frac{h}{3},y_{i}+\frac{h}{3}k_{1}\right)\\
+k_{3} & = & f\left(t_{i}+\frac{2h}{3},y_{i}+\frac{2h}{3}k_{2}\right)\\
+k_{4} & = & f\left(t_{i}+h,y_{i}+hk_{1}\right)\\
+y_{i+1} & = & y_{i}+\frac{h}{4}\left[3k_{2}+k_{4}\right]
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-rungeKutta-9"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/ode-rungeKutta11.pdf
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{h}{2}\left(f\left(x_{0}+\frac{\sqrt{3}-1}{2\sqrt{3}}h\right)+f\left(x_{0}+\frac{\sqrt{3}+1}{2\sqrt{3}}h\right)\right)+O(h^{5})
+\]
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\begin{eqnarray*}
+k_{1} & = & f(t_{i},y_{i})\\
+k_{2} & = & f\left(t_{i}+\frac{\sqrt{3}-1}{2\sqrt{3}}h,y_{i}+\frac{\sqrt{3}-1}{2\sqrt{3}}hk_{1}\right)\\
+k_{3} & = & f\left(t_{i}+\frac{\sqrt{3}+1}{2\sqrt{3}}h,y_{i}+\frac{\sqrt{3}+1}{2\sqrt{3}}hk_{2}\right)\\
+y_{i+1} & = & y_{i}+\frac{h}{2}\left[k_{2}+k_{3}\right]
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-rungeKutta-10"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/ode-rungeKutta12.pdf
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{h}{18}\left(5f\left(x_{0}+\frac{\sqrt{5}-\sqrt{3}}{2\sqrt{5}}h\right)+8f\left(x_{0}+\frac{1}{2}h\right)5f\left(x_{0}+\frac{\sqrt{5}+\sqrt{3}}{2\sqrt{5}}h\right)\right)+O(h^{7})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-rungeKutta-16"
+
+\end_inset
+
+Lakukan eksperimen numerik pada PDB uji
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sampleODE"
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ untuk menentukan laju kekonvergenan metode yang diturunkan dalam soal
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-rungeKutta"
+
+\end_inset
+
+.
+ Berdasarkan suku galat rumus integrasi, apakah laju kekonvergenan
+ metode penyelesaian PDB tersebut
+ sesuai dengan yang diharapkan?
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-rungeKutta-11"
+
+\end_inset
+
+Tulislah fungsi Octave yang mengimplementasikan metode Euler.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-rungeKutta-12"
+
+\end_inset
+
+Tulislah fungsi Octave yang mengimplementasikan PDB-trapesium.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-rungeKutta-13"
+
+\end_inset
+
+Tulislah fungsi Octave yang mengimplementasikan PDB-tertutup-terbuka.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-rungeKutta-14"
+
+\end_inset
+
+Tulislah fungsi Octave yang mengimplementasikan metode penyelesaian yang Anda turunkan dalam latihan
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-rungeKutta-2"
+
+\end_inset
+
+.
+ Metode ini disebut metode titik tengah
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode titik tengah
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+metode ! titik tengah|see {metode titik tengah}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ atau metode Euler termodifikasi.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Euler termodifikasi
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+metode ! Euler termodifikasi|see {metode Euler termodifikasi}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Metode ini didasarkan pada Aturan Titik Tengah untuk integrasi.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-rungeKutta-15"
+
+\end_inset
+
+Tulislah fungsi Octave yang mengimplementasikan metode penyelesaian yang Anda turunkan dalam latihan
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-rungeKutta-1"
+
+\end_inset
+
+.
+ Metode ini disebut metode Ralston.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+hasananswer 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+metode Ralston
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+metode ! Ralston|see {metode Ralston}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-rungeKutta-17"
+
+\end_inset
+
+Gunakan kode Anda dari latihan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-rungeKutta-11"
+
+\end_inset
+
+ untuk menghitung 
+\begin_inset Formula $y(2)$
+\end_inset
+
+ untuk PDB
+ dalam latihan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "exc:ode-taylor"
+
+\end_inset
+
+ dengan ukuran langkah 
+\begin_inset Formula $h=0.05$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-rungeKutta-18"
+
+\end_inset
+
+Gunakan kode Anda dari latihan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-rungeKutta-12"
+
+\end_inset
+
+ untuk menghitung 
+\begin_inset Formula $y(2)$
+\end_inset
+
+ untuk PDB
+ dalam latihan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "exc:ode-taylor"
+
+\end_inset
+
+ dengan ukuran langkah 
+\begin_inset Formula $h=0.05$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-rungeKutta-19"
+
+\end_inset
+
+Gunakan kode Anda dari latihan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-rungeKutta-13"
+
+\end_inset
+
+ untuk menghitung 
+\begin_inset Formula $y(2)$
+\end_inset
+
+ untuk PDB
+ dalam latihan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "exc:ode-taylor"
+
+\end_inset
+
+ dengan ukuran langkah 
+\begin_inset Formula $h=0.05$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-rungeKutta-20"
+
+\end_inset
+
+Gunakan kode Anda dari latihan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-rungeKutta-14"
+
+\end_inset
+
+ untuk menghitung 
+\begin_inset Formula $y(2)$
+\end_inset
+
+ untuk PDB
+ dalam latihan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "exc:ode-taylor"
+
+\end_inset
+
+ dengan ukuran langkah 
+\begin_inset Formula $h=0.05$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+octave
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "exc:ode-rungeKutta-21"
+
+\end_inset
+
+Gunakan kode Anda dari latihan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-rungeKutta-15"
+
+\end_inset
+
+ untuk menghitung 
+\begin_inset Formula $y(2)$
+\end_inset
+
+ untuk PDB
+ dalam latihan 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exc:ode-taylor"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "exc:ode-taylor"
+
+\end_inset
+
+ dengan ukuran langkah 
+\begin_inset Formula $h=0.05$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithsolution 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+haspartwithanswer 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{small} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Jawaban
+\end_layout
+
+\begin_layout Description
+Mengisi
+\begin_inset space \space{}
+\end_inset
+
+bagian
+\begin_inset space \space{}
+\end_inset
+
+yang
+\begin_inset space \space{}
+\end_inset
+
+kosong: 
+\begin_inset CommandInset label
+LatexCommand label
+name "ans:fill-in"
+
+\end_inset
+
+Dimulai dengan rumus integrasi
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+{\displaystyle \int_{x_{0}}^{x_{0}+3h}f(x)dx=\frac{3h}{2}\left[f(x_{0}+h)+f(x_{0}+2h)\right]+O(h^{3}f''(\xi_{h}))},
+\]
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+kita 
+\begin_inset Quotes eld
+\end_inset
+
+perpendek
+\begin_inset Quotes erd
+\end_inset
+
+ interval integrasi menjadi 
+\begin_inset Formula $[x_{0},x_{0}+s]$
+\end_inset
+
+ dengan melakukan substitusi 
+\begin_inset Formula $s=3h$
+\end_inset
+
+:
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+{\displaystyle \int_{x_{0}}^{x_{0}+s}f(x)dx=\frac{s}{2}\left[f(x_{0}+\frac{1}{3}s)+f(x_{0}+\frac{2}{3}s)\right]+O(s^{3}f''(\xi_{k}))}.
+\]
+
+\end_inset
+
+Dengan menyatakan kembali rumus integrasi dalam ukuran langkah 
+\begin_inset Formula $s$
+\end_inset
+
+, metode penyelesaian PDB
+ adalah
+\begin_inset Formula 
+\[
+y_{i+1}=y_{i}+\frac{h}{2}\left[f(t_{i+1/3},y_{i+1/3})+f(t_{i+2/3},y_{i+2/3})\right],
+\]
+
+\end_inset
+
+dengan kembali menggunakan 
+\begin_inset Formula $h$
+\end_inset
+
+ sebagai ukuran langkah.
+ Selanjutnya, kita menggunakan metode Euler untuk mengestimasi 
+\begin_inset Formula $y_{i+1/3}$
+\end_inset
+
+ dan 
+\begin_inset Formula $y_{i+2/3}$
+\end_inset
+
+, dimulai dengan 
+\begin_inset Formula $y_{i+1/3}$
+\end_inset
+
+.
+ Artinya, kita mengganti 
+\begin_inset Formula $y_{i+1/3}$
+\end_inset
+
+ dengan 
+\begin_inset Formula $y_{i}+\frac{h}{3}f(t_{i},y_{i})$
+\end_inset
+
+.
+ Kemudian kita mengestimasi 
+\begin_inset Formula $y_{i+2/3}$
+\end_inset
+
+.
+ Dengan perhitungan bertahap seperti sebelumnya, kita memperoleh
+\begin_inset Formula 
+\begin{eqnarray*}
+k_{1} & = & f(t_{i},y_{i})\\
+k_{2} & = & f\left(t_{i}+\frac{h}{3},y_{i}+\frac{h}{3}k_{1}\right),
+\end{eqnarray*}
+
+\end_inset
+
+yang menangani suku pertama di dalam tanda kurung.
+ Selanjutnya, kita perlu mengestimasi 
+\begin_inset Formula $f(t_{i+2/3},y_{i+2/3})$
+\end_inset
+
+.
+ Namun, kini kita telah memiliki estimasi untuk 
+\begin_inset Formula $f$
+\end_inset
+
+ (turunan dari 
+\begin_inset Formula $y$
+\end_inset
+
+) pada 
+\begin_inset Formula $t_{i}+\frac{h}{3}$
+\end_inset
+
+, dan 
+\begin_inset Formula $t_{i}+\frac{h}{3}$
+\end_inset
+
+ lebih dekat ke 
+\begin_inset Formula $t_{i+2/3}$
+\end_inset
+
+ daripada 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+.
+ Jadi, kita mengaproksimasi 
+\begin_inset Formula $y_{i+2/3}$
+\end_inset
+
+ dengan 
+\begin_inset Formula $y_{i}+\frac{2}{3}hk_{2}$
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{eqnarray*}
+k_{1} & = & f(t_{i},y_{i})\\
+k_{2} & = & f\left(t_{i}+\frac{h}{3},y_{i}+\frac{h}{3}k_{1}\right)\\
+k_{3} & = & f(t_{i}+\frac{2h}{3},y_{i}+\frac{2h}{3}k_{2})\\
+y_{i+1} & = & y_{i}+\frac{h}{2}\left[k_{2}+k_{3}\right].
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Newton-Cotes
+\begin_inset space \space{}
+\end_inset
+
+tertutup-terbuka: 
+\begin_inset CommandInset label
+LatexCommand label
+name "ans:clopenNewtonCotes"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/ode-rungekutta02.pdf
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+Untuk stensil ini, 
+\begin_inset Formula $a=x_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $b=x_{0}+3h$
+\end_inset
+
+, dan 
+\begin_inset Formula $\theta_{i}=ih$
+\end_inset
+
+, 
+\begin_inset Formula $i=0,1,2$
+\end_inset
+
+.
+ Oleh karena itu, kita akan memperoleh sistem tiga persamaan dengan tiga variabel tak diketahui.
+ Pertama, ruas-ruas kirinya:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\int_{a}^{b}p_{0}(x)dx=\int_{x_{0}}^{x_{0}+3h}p_{0}(x)dx & = & \int_{x_{0}}^{x_{0}+3h}1dx=\left.(x-x_{0})\right|_{x_{0}}^{x_{0}+3h}=3h\\
+\int_{a}^{b}p_{1}(x)dx=\int_{x_{0}}^{x_{0}+3h}p_{1}(x)dx & = & \int_{x_{0}}^{x_{0}+3h}(x-x_{0})dx=\left.\frac{1}{2}(x-x_{0})^{2}\right|_{x_{0}}^{x_{0}+3h}=\frac{9}{2}h^{2}\\
+\int_{a}^{b}p_{2}(x)dx=\int_{x_{0}}^{x_{0}+3h}p_{2}(x)dx & = & \int_{x_{0}}^{x_{0}+3h}(x-x_{0})^{2}dx=\left.\frac{1}{3}(x-x_{0})^{3}\right|_{x_{0}}^{x_{0}+3h}=9h^{3}
+\end{eqnarray*}
+
+\end_inset
+
+Sekarang, kita gabungkan ruas-ruas tersebut dengan ruas-ruas kanan (serta menukar kedua ruas):
+\begin_inset Formula 
+\begin{eqnarray*}
+\sum_{i=0}^{2}(\theta_{i}h)^{0}a_{i} & = & a_{0}+a_{1}+a_{2}=3h\\
+\sum_{i=0}^{2}(\theta_{i}h)^{1}a_{i} & = & ha_{1}+2ha_{2}=\frac{9}{2}h^{2}\\
+\sum_{i=0}^{2}(\theta_{i}h)^{2}a_{i} & = & h^{2}a_{1}+4h^{2}a_{2}=9h^{3}
+\end{eqnarray*}
+
+\end_inset
+
+Sistem ini cukup kecil untuk diselesaikan secara manual (tanpa menggunakan sistem
+ aljabar komputer):
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $h^{2}a_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $+4h^{2}a_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $=$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9h^{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(h^{2}a_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $+2h^{2}a_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $=$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{9}{2}h^{3})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2h^{2}a_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $=$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{9}{2}h^{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Formula $\Rightarrow a_{2}=\frac{9}{4}h$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Dengan menyubstitusikan 
+\begin_inset Formula $a_{2}=\frac{9}{4}h$
+\end_inset
+
+ ke dalam 
+\begin_inset Formula $ha_{1}+2ha_{2}=\frac{9}{2}h^{2}$
+\end_inset
+
+, kita dapat menentukan 
+\begin_inset Formula $a_{1}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{eqnarray*}
+ha_{1}+2h\cdot\frac{9}{4}h & = & \frac{9}{2}h^{2}\\
+ha_{1}+\frac{9}{2}h^{2} & = & \frac{9}{2}h^{2}\quad\Rightarrow a_{1}=0.\\
+ha_{1} & = & 0
+\end{eqnarray*}
+
+\end_inset
+
+Dengan menyubstitusikan 
+\begin_inset Formula $a_{1}=0$
+\end_inset
+
+ dan 
+\begin_inset Formula $a_{2}=\frac{9}{4}h$
+\end_inset
+
+ ke dalam 
+\begin_inset Formula $a_{0}+a_{1}+a_{2}=3h$
+\end_inset
+
+, kita dapat menentukan 
+\begin_inset Formula $a_{0}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{eqnarray*}
+a_{0}+0+\frac{9}{4}h & = & 3h\\
+a_{0} & = & 3h-\frac{9}{4}h\quad\Rightarrow a_{0}=\frac{3}{4}h.
+\end{eqnarray*}
+
+\end_inset
+
+Dengan demikian, 
+\begin_inset Formula $\sum_{i=0}^{2}a_{i}f(x_{0}+\theta_{i}h)=\frac{3}{4}h\cdot f(x_{0})+0\cdot f(x_{0}+h)+\frac{9}{4}h\cdot f(x_{0}+2h)$
+\end_inset
+
+ dan rumus integrasinya adalah
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+\int_{x_{0}}^{x_{0}+3h}f(x)dx\approx\frac{3h}{4}\left[f(x_{0})+3f(x_{0}+2h)\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Kode
+\begin_inset space \space{}
+\end_inset
+
+uji: 
+\begin_inset CommandInset label
+LatexCommand label
+name "ans:testCode"
+
+\end_inset
+
+Perbandingan PDB-Simpson, PDB-terbuka, dan PDB-tertutup-terbuka:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+t=4;
+\end_layout
+
+\begin_layout LyX-Code
+h=-1/4;
+\end_layout
+
+\begin_layout LyX-Code
+f=@(t,y) -y/t+t^2;
+\end_layout
+
+\begin_layout LyX-Code
+exact=@(t) t^3/4+16/t;
+\end_layout
+
+\begin_layout LyX-Code
+simp=20;
+\end_layout
+
+\begin_layout LyX-Code
+open=20;
+\end_layout
+
+\begin_layout LyX-Code
+clop=20;
+\end_layout
+
+\begin_layout LyX-Code
+disp('        Simpsons  Open      Clopen    Simp err  Open err  Clop err')
+\end_layout
+
+\begin_layout LyX-Code
+disp('        ------------------------------------------------------------')
+\end_layout
+
+\begin_layout LyX-Code
+for i=1:8
+\end_layout
+
+\begin_layout LyX-Code
+  k1simp=f(t,simp);
+\end_layout
+
+\begin_layout LyX-Code
+  k1open=f(t,open);
+\end_layout
+
+\begin_layout LyX-Code
+  k1clop=f(t,clop);
+\end_layout
+
+\begin_layout LyX-Code
+  k2simp=f(t+h/2,simp+h/2*k1simp);
+\end_layout
+
+\begin_layout LyX-Code
+  k2open=f(t+h/3,open+h/3*k1open);
+\end_layout
+
+\begin_layout LyX-Code
+  k2clop=f(t+h/3,clop+h/3*k1clop);
+\end_layout
+
+\begin_layout LyX-Code
+  k3simp=f(t+h,simp+h*k2simp);
+\end_layout
+
+\begin_layout LyX-Code
+  k3open=f(t+2*h/3,open+2*h/3*k2open);
+\end_layout
+
+\begin_layout LyX-Code
+  k3clop=f(t+2*h/3,clop+2*h/3*k2clop);
+\end_layout
+
+\begin_layout LyX-Code
+  simp=simp+h/6*(k1simp+4*k2simp+k3simp);
+\end_layout
+
+\begin_layout LyX-Code
+  open=open+h/2*(k2open+k3open);
+\end_layout
+
+\begin_layout LyX-Code
+  clop=clop+h/4*(k1clop+3*k3clop);
+\end_layout
+
+\begin_layout LyX-Code
+  t=t+h;
+\end_layout
+
+\begin_layout LyX-Code
+  x=exact(t);
+\end_layout
+
+\begin_layout LyX-Code
+  sierr=abs(simp-x);
+\end_layout
+
+\begin_layout LyX-Code
+  operr=abs(open-x);
+\end_layout
+
+\begin_layout LyX-Code
+  clerr=abs(clop-x);
+\end_layout
+
+\begin_layout LyX-Code
+  sprintf('%12.5g%12.5g%12.5g%12.5g%12.5g%12.5g',simp,open,clop,sierr,operr,clerr)
+\end_layout
+
+\begin_layout LyX-Code
+end%for
+\end_layout
+
+\begin_layout Standard
+Kode uji ini dapat diunduh di 
+\begin_inset CommandInset href
+LatexCommand href
+name "situs pendamping"
+target "http://lqbrin.github.io/tea-time-numerical/ancillaries.html"
+literal "false"
+
+\end_inset
+
+ (
+\family typewriter
+rungeKuttaDemo2.m
+\family default
+).
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Suku
+\begin_inset space \space{}
+\end_inset
+
+galat: 
+\begin_inset CommandInset label
+LatexCommand label
+name "ans:errorTerms"
+
+\end_inset
+
+Suku galat untuk
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+\int_{x_{0}}^{x_{0}+3h}f(x)dx\approx\frac{3h}{4}\left[f(x_{0})+3f(x_{0}+2h)\right]
+\]
+
+\end_inset
+
+diturunkan dalam jawaban untuk Bagian 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:calculusErrorAnalysis"
+
+\end_inset
+
+.
+ Lihat halaman 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "sol:exc:calculusErrors-11"
+
+\end_inset
+
+.
+ Suku galat untuk
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula 
+\[
+\int_{x_{0}}^{x_{0}+h}f(x)dx\approx hf(x_{0})
+\]
+
+\end_inset
+
+diturunkan dengan cara serupa.
+ Diketahui bahwa galatnya adalah 
+\begin_inset Formula $O(h^{2})$
+\end_inset
+
+, sehingga kita dapat melewati proses penurunannya.
+ Dengan mengembangkan 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ dalam polinomial Taylor dengan suku galat,
+\begin_inset Formula 
+\[
+f(x)=f(x_{0})+(x-x_{0})f'(\xi_{x}).
+\]
+
+\end_inset
+
+Dengan demikian,
+\begin_inset Formula 
+\begin{eqnarray*}
+\int_{x_{0}}^{x_{0}+h}f(x)dx-hf(x_{0}) & = & \int_{x_{0}}^{x_{0}+h}\left(f(x_{0})+(x-x_{0})f'(\xi_{x})\right)dx-hf(x_{0})\\
+ & = & \left.xf(x_{0})\right|_{x_{0}}^{x_{0}+h}+\int_{x_{0}}^{x_{0}+h}(x-x_{0})f'(\xi_{x})dx-hf(x_{0})\\
+ & = & hf(x_{0})+\int_{x_{0}}^{x_{0}+h}(x-x_{0})f'(\xi_{x})dx-hf(x_{0})\\
+ & = & \int_{x_{0}}^{x_{0}+h}(x-x_{0})f'(\xi_{x})dx.
+\end{eqnarray*}
+
+\end_inset
+
+Menurut Teorema Nilai Rata-Rata Berbobot, terdapat 
+\begin_inset Formula $c\in(x_{0},x_{0}+h)$
+\end_inset
+
+ sedemikian sehingga 
+\begin_inset Formula $\int_{x_{0}}^{x_{0}+h}(x-x_{0})f'(\xi_{x})dx=f'(c)\int_{x_{0}}^{x_{0}+h}(x-x_{0})dx=\frac{1}{2}f'(c)h^{2}$
+\end_inset
+
+.
+ Oleh karena itu, 
+\begin_inset Formula 
+\[
+\int_{x_{0}}^{x_{0}+h}f(x)dx-hf(x_{0})=\frac{1}{2}f'(c)h^{2}\leq Mh^{2}f'(\xi_{h})
+\]
+
+\end_inset
+
+dengan mengganti 
+\begin_inset Formula $c$
+\end_inset
+
+ dengan 
+\begin_inset Formula $\xi_{h}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_body
+\end_document
