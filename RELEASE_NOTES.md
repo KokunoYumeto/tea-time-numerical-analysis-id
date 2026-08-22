@@ -64,6 +64,9 @@ Kredit ini tidak menyatakan identitas penerjemah yang tidak tercatat.
 Bukti PDF/build/QA dan paket sumber/backend telah diterima. Zenodo record
 `22054086` dipublikasikan pada DOI versi `10.5281/zenodo.22054086` dan DOI
 konsep `10.5281/zenodo.22054085`; seluruh tiga aset publik lulus pembacaan balik
-anonim. Commit/tag GitHub lengkap secara lokal, tetapi push ditolak dengan HTTP
-403 karena akun tujuan ditangguhkan. Bukti lengkap tercatat dalam
-`FINALIZATION_GATE.json` dan `PUBLICATION_RECEIPT.json`.
+anonim. Setelah akun tujuan dipulihkan, branch `main` dan tag anotasi
+`v3.0-id.1` berhasil didorong ke repositori GitHub yang sudah ditetapkan. Rilis
+GitHub memakai PDF, paket sumber/backend, dan manifest checksum yang sama persis
+dengan artefak terverifikasi. Edisi kerja Figshare reader-first juga tersedia
+pada <https://doi.org/10.6084/m9.figshare.33314724.v2>. Bukti lengkap tercatat
+dalam `FINALIZATION_GATE.json` dan `PUBLICATION_RECEIPT.json`.

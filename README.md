@@ -80,8 +80,12 @@ Record Zenodo `22054086` dipublikasikan pada DOI versi
 <https://doi.org/10.5281/zenodo.22054086> dalam lineage DOI konsep
 <https://doi.org/10.5281/zenodo.22054085>; ketiga aset publik telah diunduh
 kembali tanpa autentikasi dan cocok byte demi byte. Commit rilis lokal
-`ae9f99262032fca3c62e6cbcfea1cc1e966b1a74` dan tag `v3.0-id.1` siap, tetapi
-GitHub menolak push dengan HTTP 403 karena akun tujuan ditangguhkan.
+`ae9f99262032fca3c62e6cbcfea1cc1e966b1a74`, tag `v3.0-id.1`, dan rilis
+GitHub telah dipublikasikan di
+<https://github.com/KokunoYumeto/tea-time-numerical-analysis-id/releases/tag/v3.0-id.1>.
+Ketiga aset GitHub telah diunduh kembali tanpa autentikasi dan cocok ukuran
+serta SHA-256. Edisi kerja Figshare reader-first tersedia di
+<https://doi.org/10.6084/m9.figshare.33314724.v2>.
 `FINALIZATION_GATE.json` dan `PUBLICATION_RECEIPT.json` adalah bukti mesin yang
 otoritatif; jangan membuat repositori duplikat.
 

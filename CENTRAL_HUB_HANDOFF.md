@@ -39,13 +39,14 @@ dan telah dibaca kembali secara anonim.
 
 ## Status GitHub
 
-Repositori individual bernama telah dibuat di
-<https://github.com/KokunoYumeto/tea-time-numerical-analysis-id>. Commit rilis
-lokal `ae9f99262032fca3c62e6cbcfea1cc1e966b1a74` dan tag `v3.0-id.1` tersedia
-di repositori ini. Push branch dan tag masing-masing ditolak oleh GitHub dengan
-HTTP 403 karena akun tujuan sedang ditangguhkan. Jangan membuat repositori
-duplikat; bila akun yang sama dipulihkan, dorong commit/tag yang sudah ada lalu
-buat rilis GitHub dari tiga aset terverifikasi di atas.
+Repositori individual publik tersedia di
+<https://github.com/KokunoYumeto/tea-time-numerical-analysis-id>. Tag anotasi
+`v3.0-id.1` (objek
+`f33c5ec6f45ee967cdb8c8b15b598d1fe8b71631`) menunjuk ke commit rilis
+`ae9f99262032fca3c62e6cbcfea1cc1e966b1a74`. Rilis publik tersedia di
+<https://github.com/KokunoYumeto/tea-time-numerical-analysis-id/releases/tag/v3.0-id.1>;
+PDF, paket sumber/backend, dan `CHECKSUMS.sha256` telah diunduh kembali secara
+anonim dan seluruh ukuran serta SHA-256 cocok.
 
 ## Data untuk hub
 
