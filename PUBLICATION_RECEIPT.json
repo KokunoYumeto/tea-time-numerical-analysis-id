@@ -1,0 +1,97 @@
+{
+  "schema_id": "ttna-id-publication-receipt-v1",
+  "recorded_at": "2026-08-22T09:21:19+02:00",
+  "release": {
+    "resource_local_id": "R015",
+    "course_local_id": "C110",
+    "locale": "id-ID",
+    "version": "3.0-id.1",
+    "tag": "v3.0-id.1"
+  },
+  "zenodo": {
+    "status": "published_and_anonymously_verified",
+    "record_id": 22054086,
+    "concept_record_id": 22054085,
+    "version_doi": "10.5281/zenodo.22054086",
+    "concept_doi": "10.5281/zenodo.22054085",
+    "record_url": "https://zenodo.org/records/22054086",
+    "doi_url": "https://doi.org/10.5281/zenodo.22054086",
+    "published_at": "2026-08-22T09:19:13.458715+02:00",
+    "metadata": {
+      "title": "Tea Time Numerical Analysis — Edisi Bahasa Indonesia (Edisi Ketiga)",
+      "version": "3.0-id.1",
+      "language": "ind",
+      "license": "cc-by-sa-4.0",
+      "resource_type": "publication",
+      "publication_type": "book",
+      "access_right": "open"
+    },
+    "files": [
+      {
+        "filename": "Tea-Time-Numerical-Analysis-id-ID.pdf",
+        "bytes": 8202476,
+        "sha256": "cbc31e9e27fdee96845d78fa6a625bf956196001b7941ddf0f1232f5def46b45",
+        "provider_checksum": "md5:f6d4650f6b0733c93ad537c2e628b6ab"
+      },
+      {
+        "filename": "Tea-Time-Numerical-Analysis-id-ID-v3.0-id.1-source-backend.zip",
+        "bytes": 33363089,
+        "sha256": "852b56f6af66378b67543c0ad96256a1fb8f54b1d27a3d9641763f1b826c5a71",
+        "provider_checksum": "md5:312afb58ffc9ec870b67f4772c06ed97",
+        "zip_entries": 897,
+        "zip_member_hash_verification": "pass"
+      },
+      {
+        "filename": "CHECKSUMS.sha256",
+        "bytes": 322,
+        "sha256": "f0cb7956ba06e5b9a18eb30537ed3946c1e449a78adca9cd9ee7d00555554a08",
+        "provider_checksum": "md5:76e2b3abe39e8934561cb9236db1d1f8"
+      }
+    ],
+    "authenticated_draft_readback": "pass",
+    "anonymous_public_metadata_readback": "pass",
+    "anonymous_public_byte_readback": "pass"
+  },
+  "github": {
+    "status": "external_blocker_account_suspended",
+    "repository_id": 1342510527,
+    "repository_url": "https://github.com/KokunoYumeto/tea-time-numerical-analysis-id",
+    "local_repository": "release/repository",
+    "release_commit": "ae9f99262032fca3c62e6cbcfea1cc1e966b1a74",
+    "tag": "v3.0-id.1",
+    "annotated_tag_object": "f33c5ec6f45ee967cdb8c8b15b598d1fe8b71631",
+    "main_push": {
+      "exit_code": 128,
+      "http_status": 403,
+      "result": "remote_account_suspended"
+    },
+    "tag_push": {
+      "exit_code": 128,
+      "http_status": 403,
+      "result": "remote_account_suspended"
+    },
+    "github_release": null,
+    "write_surfaces_checked": [
+      "GitHub CLI",
+      "GitHub app connector",
+      "in-app browser session",
+      "non-interactive Git HTTPS push"
+    ],
+    "recovery_action": "If and only if the existing KokunoYumeto account is restored, push local main and v3.0-id.1 and create the GitHub release from the already-verified PDF, ZIP, and CHECKSUMS assets. Do not create a duplicate repository."
+  },
+  "quality": {
+    "pdf_pages": 387,
+    "pdf_build_reproducibility": "byte_identical",
+    "whole_corpus_qa": "pass_no_unresolved_p1_or_p2",
+    "backend_records": 28172,
+    "backend_relations": 17614,
+    "backend_tests": "20_of_20_pass",
+    "portable_source_build": "pass_byte_identical",
+    "credential_and_secret_scan": "zero_hits"
+  },
+  "central_hub": {
+    "destination": null,
+    "handoff": "CENTRAL_HUB_HANDOFF.md",
+    "status": "complete_with_public_zenodo_identifiers_no_hub_destination_configured"
+  }
+}

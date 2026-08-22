@@ -61,6 +61,9 @@ Kredit ini tidak menyatakan identitas penerjemah yang tidak tercatat.
 
 ## Gerbang rilis
 
-Bukti lokal PDF/build/QA telah diterima. Penyelesaian rilis masih memerlukan
-paket sumber/backend final, transaksi GitHub/Zenodo, dan pembacaan balik publik
-yang ditetapkan dalam `FINALIZATION_GATE.json`.
+Bukti PDF/build/QA dan paket sumber/backend telah diterima. Zenodo record
+`22054086` dipublikasikan pada DOI versi `10.5281/zenodo.22054086` dan DOI
+konsep `10.5281/zenodo.22054085`; seluruh tiga aset publik lulus pembacaan balik
+anonim. Commit/tag GitHub lengkap secara lokal, tetapi push ditolak dengan HTTP
+403 karena akun tujuan ditangguhkan. Bukti lengkap tercatat dalam
+`FINALIZATION_GATE.json` dan `PUBLICATION_RECEIPT.json`.

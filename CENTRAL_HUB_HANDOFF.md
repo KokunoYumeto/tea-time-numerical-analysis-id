@@ -1,17 +1,17 @@
 ---
 schema_id: ttna-id-central-hub-handoff-v1
 schema_version: 1.0.0
-status: awaiting_individual_release
+status: complete_individual_release_public_hub_destination_unset
 hub_destination: null
 hub_destination_note: "TBD — tujuan hub Bahasa matematika belum tercatat; jangan membuat URL atau DOI."
 ---
 
 # Handoff Hub Pusat — R015 / C110
 
-Dokumen ini menyiapkan integrasi edisi individual ke hub Bahasa matematika
-setelah transaksi GitHub dan Zenodo selesai. Ketiadaan tujuan hub dicatat
-secara eksplisit sebagai `null`; hal itu bukan blocker untuk menjaga satu
-rilis individual yang tidak duplikatif.
+Dokumen ini menyiapkan integrasi edisi individual yang telah dipublikasikan ke
+hub Bahasa matematika. Ketiadaan tujuan hub dicatat secara eksplisit sebagai
+`null`; hal itu bukan blocker bagi rilis individual Zenodo yang sudah publik
+dan telah dibaca kembali secara anonim.
 
 ## Identitas stabil
 
@@ -24,12 +24,35 @@ rilis individual yang tidak duplikatif.
 - Resource UUID: `urn:uuid:8fbaf4c5-6316-5159-89b9-787aa115c0dc`
 - Edition UUID: `urn:uuid:35b4350d-7202-5d47-8b85-5262d7ca441c`
 
-## Data yang diteruskan setelah publikasi
+## Identitas publik terverifikasi
 
-Handoff final harus menambahkan, dari bukti publik yang telah dibaca kembali:
+- Record Zenodo: <https://zenodo.org/records/22054086>
+- DOI versi: <https://doi.org/10.5281/zenodo.22054086>
+- DOI konsep: <https://doi.org/10.5281/zenodo.22054085>
+- PDF: 8.202.476 byte; SHA-256
+  `cbc31e9e27fdee96845d78fa6a625bf956196001b7941ddf0f1232f5def46b45`
+- Paket sumber/backend: 33.363.089 byte; 897 entri; SHA-256
+  `852b56f6af66378b67543c0ad96256a1fb8f54b1d27a3d9641763f1b826c5a71`
+- Manifest checksum: 322 byte; SHA-256
+  `f0cb7956ba06e5b9a18eb30537ed3946c1e449a78adca9cd9ee7d00555554a08`
+- Receipt tersanitasi: `PUBLICATION_RECEIPT.json`
 
-1. URL repositori, commit, tag, dan rilis individual;
-2. DOI konsep dan DOI versi Zenodo;
+## Status GitHub
+
+Repositori individual bernama telah dibuat di
+<https://github.com/KokunoYumeto/tea-time-numerical-analysis-id>. Commit rilis
+lokal `ae9f99262032fca3c62e6cbcfea1cc1e966b1a74` dan tag `v3.0-id.1` tersedia
+di repositori ini. Push branch dan tag masing-masing ditolak oleh GitHub dengan
+HTTP 403 karena akun tujuan sedang ditangguhkan. Jangan membuat repositori
+duplikat; bila akun yang sama dipulihkan, dorong commit/tag yang sudah ada lalu
+buat rilis GitHub dari tiga aset terverifikasi di atas.
+
+## Data untuk hub
+
+Handoff program berikutnya dapat mengambil langsung:
+
+1. URL repositori yang sudah dicadangkan, commit/tag lokal, dan status blocker;
+2. DOI konsep dan DOI versi Zenodo yang publik;
 3. inventaris artefak publik beserta ukuran byte dan SHA-256;
 4. ringkasan QA final dan bukti build reproducible;
 5. batas lisensi komponen dan provenance aset Heun;

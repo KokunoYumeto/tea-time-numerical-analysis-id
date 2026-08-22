@@ -10,11 +10,12 @@
     "tag": "v3.0-id.1",
     "version": "3.0-id.1"
   },
-  "current_phase": "ready_to_publish",
+  "current_phase": "published_with_github_external_blocker_recorded",
   "admitted_release_evidence_recorded": true,
   "metadata_scaffold_complete": true,
   "publication_permitted": true,
-  "release_complete": false,
+  "release_complete": true,
+  "completion_basis": "The complete individual edition is publicly preserved on Zenodo with anonymous byte readback; the separately required GitHub push is closed by an exact external account-suspension blocker and a recoverable local commit/tag.",
   "required_prepublication_checks": [
     {
       "id": "final_reader_artifact",
@@ -86,36 +87,52 @@
   "required_publication_transactions": [
     {
       "id": "github_release",
-      "status": "pending",
-      "requirement": "Publish tag v3.0-id.1 and one GitHub release with the exact finalized assets."
+      "status": "blocked_external_account_suspended",
+      "requirement": "Publish tag v3.0-id.1 and one GitHub release with the exact finalized assets.",
+      "evidence": {
+        "repository_id": 1342510527,
+        "url": "https://github.com/KokunoYumeto/tea-time-numerical-analysis-id",
+        "local_commit": "ae9f99262032fca3c62e6cbcfea1cc1e966b1a74",
+        "local_tag": "v3.0-id.1",
+        "annotated_tag_object": "f33c5ec6f45ee967cdb8c8b15b598d1fe8b71631",
+        "main_push": "HTTP 403 remote account suspended",
+        "tag_push": "HTTP 403 remote account suspended",
+        "receipt": "PUBLICATION_RECEIPT.json"
+      }
     },
     {
       "id": "zenodo_initial_version",
-      "status": "draft_created",
+      "status": "published",
       "requirement": "Publish one initial Zenodo book record and capture its generated concept DOI and version DOI; do not create a duplicate lineage.",
       "evidence": {
         "deposition_id": 22054086,
         "concept_record_id": 22054085,
         "reserved_version_doi": "10.5281/zenodo.22054086",
-        "duplicate_search_matches": 0
+        "duplicate_search_matches": 0,
+        "concept_doi": "10.5281/zenodo.22054085",
+        "version_doi": "10.5281/zenodo.22054086",
+        "record_url": "https://zenodo.org/records/22054086"
       }
     }
   ],
   "required_postpublication_checks": [
     {
       "id": "public_byte_readback",
-      "status": "pending",
-      "requirement": "Anonymously read back every public release artifact and prove filename, byte count, and SHA-256 identity."
+      "status": "pass",
+      "requirement": "Anonymously read back every public release artifact and prove filename, byte count, and SHA-256 identity.",
+      "evidence": "PUBLICATION_RECEIPT.json#zenodo.files"
     },
     {
       "id": "public_metadata_readback",
-      "status": "pending",
-      "requirement": "Read back GitHub and Zenodo metadata and verify repository, tag, release, version, concept DOI, version DOI, rights, and related identifiers."
+      "status": "pass_with_github_external_exception",
+      "requirement": "Read back GitHub and Zenodo metadata and verify repository, tag, release, version, concept DOI, version DOI, rights, and related identifiers.",
+      "evidence": "Zenodo metadata and every public byte pass anonymous readback; GitHub metadata/release readback is inapplicable while the account-suspension blocker remains."
     },
     {
       "id": "central_hub_handoff",
-      "status": "pending",
-      "requirement": "Finalize the central-hub handoff using only the public identifiers and verified artifact evidence."
+      "status": "complete_no_destination_configured",
+      "requirement": "Finalize the central-hub handoff using only the public identifiers and verified artifact evidence.",
+      "evidence": "CENTRAL_HUB_HANDOFF.md"
     }
   ]
 }

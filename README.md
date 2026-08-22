@@ -1,7 +1,7 @@
 # Tea Time Numerical Analysis — Edisi Bahasa Indonesia (Edisi Ketiga)
 
-Ini adalah scaffold metadata publikasi untuk edisi Bahasa Indonesia yang
-mandiri dari *Tea Time Numerical Analysis* karya Leon Q. Brin. Edisi ini
+Ini adalah rilis publik edisi Bahasa Indonesia yang mandiri dari *Tea Time
+Numerical Analysis* karya Leon Q. Brin. Edisi ini
 diturunkan dari rilis upstream `v3.0` dan mempertahankan batas yang dapat
 diaudit antara buku, kode, aset pihak ketiga, dan dependensi build.
 
@@ -17,6 +17,7 @@ diaudit antara buku, kode, aset pihak ketiga, dan dependensi build.
 | Slug repositori | `tea-time-numerical-analysis-id` |
 | Repositori | <https://github.com/KokunoYumeto/tea-time-numerical-analysis-id> |
 | DOI versi | <https://doi.org/10.5281/zenodo.22054086> |
+| DOI konsep | <https://doi.org/10.5281/zenodo.22054085> |
 | Penulis karya asal | Leon Q. Brin |
 | Rilis upstream | [`lqbrin/tea-time-numerical` `v3.0`](https://github.com/lqbrin/tea-time-numerical/releases/tag/v3.0) |
 | Commit upstream | `186882108a6da95c8dca5b81ce000fc3f8f3ca21` |
@@ -74,11 +75,15 @@ untuk atribusi, lingkup, dan bukti provenance yang lengkap.
 
 ## Status finalisasi
 
-PDF, manifest build, receipt QA, backend, repositori pemilik, dan DOI versi
-yang dicadangkan telah dibekukan sebagai bukti rilis. `FINALIZATION_GATE.json`
-adalah sumber mesin untuk status transaksi. Commit/tag downstream, DOI konsep,
-serta inventaris publik ditambahkan hanya setelah nilainya benar-benar ada dan
-telah dibaca kembali dari tujuan publik.
+PDF, manifest build, receipt QA, backend, dan paket sumber telah dibekukan.
+Record Zenodo `22054086` dipublikasikan pada DOI versi
+<https://doi.org/10.5281/zenodo.22054086> dalam lineage DOI konsep
+<https://doi.org/10.5281/zenodo.22054085>; ketiga aset publik telah diunduh
+kembali tanpa autentikasi dan cocok byte demi byte. Commit rilis lokal
+`ae9f99262032fca3c62e6cbcfea1cc1e966b1a74` dan tag `v3.0-id.1` siap, tetapi
+GitHub menolak push dengan HTTP 403 karena akun tujuan ditangguhkan.
+`FINALIZATION_GATE.json` dan `PUBLICATION_RECEIPT.json` adalah bukti mesin yang
+otoritatif; jangan membuat repositori duplikat.
 
 Metadata sitasi tersedia di [CITATION.cff](CITATION.cff), metadata deposit di
 [zenodo-metadata.json](zenodo-metadata.json), dan catatan rilis di
