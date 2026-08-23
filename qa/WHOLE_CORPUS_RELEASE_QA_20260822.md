@@ -1,21 +1,21 @@
 # Whole-Corpus Release QA — Bahasa Indonesia (`id-ID`)
 
-Date: 2026-08-22  
+Date: 2026-08-23  
 Result: **PASS**  
 Scope: all 30 translated LyX files, the locale-specific preamble, the complete 387-page PDF, and the deterministic build closure.
 
 ## Artifact identity
 
 - PDF: `output/pdf/Tea-Time-Numerical-Analysis-id-ID.pdf`
-- Bytes: `8,202,476`
-- SHA-256: `cbc31e9e27fdee96845d78fa6a625bf956196001b7941ddf0f1232f5def46b45`
+- Bytes: `8,202,487`
+- SHA-256: `d573b7233d0baa07381e2052a749757885db3a31fbfe695c5a4851ea42d91b6d`
 - Pages: `387`
 - Build manifest: `build/manifests/id-ID-build.json`
-- Build-manifest bytes: `53,012`
-- Build-manifest SHA-256: `9437f143c777ca447c5b199f0ea2a7df1e70b2afd7731839c43041ca018fd988`
+- Build-manifest bytes: `52,937`
+- Build-manifest SHA-256: `dbef9a5bb9680f6c072e1f26fe3f5ae8ba7e1ca955d9c3dd47f402d1bb9174ea`
 - Upstream commit: `186882108a6da95c8dca5b81ce000fc3f8f3ca21`
 - Upstream tree: `1e50d3756b695176008c602f0ee89712f5f32d10`
-- Final 30-file translated-LyX path/hash set: `3aadfb2ba675a07f83df49dfdf1389a4da9278362c7a265ec08bcf9e45a3a469`
+- Final 30-file translated-LyX path/hash set: `8ef8425373bd8162db1919b6cba7e0d1100966ac803b17223ca8cb85f3cc13dc`
 - Locale preamble: `translation/lyx-id/preamble.tex`, 7,901 bytes, SHA-256 `6f7940443f59d93a4beb37b20dc2c5c9e7de62ba1dff3f2f9a2b8f0e8d76863b`
 
 ## Deterministic build
@@ -41,8 +41,8 @@ The pinned toolchain evidence in the build manifest records LyX 2.4.4, LyX SHA-2
 ## Rendered-text audit
 
 - Extraction: `tmp/pdfs/id-ID-final/Tea-Time-Numerical-Analysis-id-ID.txt`
-- Bytes: `1,660,668`
-- SHA-256: `195f26a601356a80eb39bbc0175133b425fcff563fc56a6f052b0d4f05cdeb6e`
+- Bytes: `1,017,000`
+- SHA-256: `4a8379c82efde9b3db44a1b58a83cc1300c5cd3c91b2cbe09fe75131e4b30cf9`
 - Form feeds: 387.
 - Unicode replacement characters: 0.
 - English generated `varioref` phrases: 0.
@@ -61,9 +61,9 @@ The pinned toolchain evidence in the build manifest records LyX 2.4.4, LyX SHA-2
 
 ## Visual QA
 
-Every page was rasterized at 36 dpi into `tmp/qa/cbc31e9e/pages-low/` and inspected across 25 contact sheets in `tmp/qa/cbc31e9e/contact/`. No page is clipped, missing, corrupt, or unexpectedly blank; section pagination, display equations, tables, code blocks, plots, bibliography, and index remain complete.
+Every page was rasterized at 36 dpi into `tmp/qa/d573b7/pages-low/` and inspected across 25 contact sheets in `tmp/qa/d573b7/contact/`. No page is clipped, missing, corrupt, or unexpectedly blank; section pagination, display equations, tables, code blocks, plots, bibliography, and index remain complete.
 
-The following physical PDF pages were also rendered and inspected at 150 dpi in `tmp/qa/cbc31e9e/high/`: 1 (title), 5 (contents), 9 (preface), 24 (`Kudapan` heading), 176 (intentional rotated table), 256 (Heun 1900 scan), 353 (font-warning figure page), 383 (bibliography), and 387 (final index page). All pass.
+The following physical PDF pages were also rendered and inspected at 150 dpi in `tmp/qa/d573b7/high/`: 1 (title), 5 (contents), 9 (preface), 24 (`Kudapan` heading), 176 (intentional rotated table), 256 (Heun 1900 scan), 353 (font-warning figure page), 383 (bibliography), and 387 (final index page). All pass.
 
 The Heun scan on physical page 256 is legible, complete, and fully framed. Its final authority receipt is `authority/third_party/heun1900/ASSET_AUTHORITY.json`, 3,695 bytes, SHA-256 `39bbf79cebe96967dabde26b62faf51c55d6ed1b0376000b3b46bf615f79a2dd`; the admitted PNG SHA-256 is `d34c3f99ae1740e9ac7f97bec473b44a3d28353ae503bda1c2bf55e4ee8999d7`.
 

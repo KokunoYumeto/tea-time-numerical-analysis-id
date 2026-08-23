@@ -20,7 +20,7 @@ kalkulus yang cermat, dan sering kali oleh analisis polinomial Taylor
 yang cermat. Namun, sebelum membahas perincian tersebut, kita perlu
 membicarakan bagaimana galat dan, dengan demikian, akurasi diukur.
 
-Ada dua ukuran dasar akurasi\index{akurasi}: galat absolut\index{galat!absolut}
+Ada dua ukuran dasar akurasi\index{akurasi}: galat mutlak\index{galat!mutlak}
 dan galat relatif\index{galat!relatif}. Misalkan $p$ adalah nilai
 yang hendak kita hampiri, dan $\tilde{p}$ merupakan hampiran terhadap
 $p$. Maka $\tilde{p}$ meleset tepat sebesar $\tilde{p}-p$, yang
@@ -30,16 +30,16 @@ $\tilde{p}$ lebih kecil daripada nilai eksak $p$. Sebaliknya, $\tilde{p}-p$
 akan bernilai positif ketika $\tilde{p}$ terlalu tinggi. Namun, pada
 umumnya kita tidak mempersoalkan apakah hampiran terlalu tinggi atau
 terlalu rendah. Kita hanya ingin mengetahui seberapa besar penyimpangannya.
-Karena itu, kita paling sering membicarakan galat absolut\index{galat!absolut},
+Karena itu, kita paling sering membicarakan galat mutlak\index{galat!mutlak},
 $|\tilde{p}-p|$. Anda mungkin mengenali ekspresi $|\tilde{p}-p|$
 sebagai jarak antara $\tilde{p}$ dan $p$, dan itu merupakan cara
-yang baik untuk memandang galat absolut.
+yang baik untuk memandang galat mutlak.
 
-Galat absolut ketika menghampiri $p=\pi$ dengan bilangan rasional
+Galat mutlak ketika menghampiri $p=\pi$ dengan bilangan rasional
 $\tilde{p}=\frac{22}{7}$ adalah $|\frac{22}{7}-\pi|\approx0.00126$.
-Galat absolut ketika menghampiri $\pi^{5}$ dengan bilangan rasional
+Galat mutlak ketika menghampiri $\pi^{5}$ dengan bilangan rasional
 $\frac{16525}{54}$ adalah $|\frac{16525}{54}-\pi^{5}|\approx0.00116$.
-Galat absolut kedua hampiran ini hampir sama. Agar hal tersebut tampak
+Galat mutlak kedua hampiran ini hampir sama. Agar hal tersebut tampak
 lebih jelas, $\pi\approx3.14159$ dan $\frac{22}{7}\approx3.14285$,
 sedangkan $\pi^{5}\approx306.01968$ dan $\frac{16525}{54}\approx306.01851$.
 Setiap hampiran mulai berbeda dari nilai eksaknya masing-masing pada
@@ -56,14 +56,14 @@ satuan, persepuluhan, dan perseratusan. Dengan istilah yang lebih
 ilmiah, kita mengatakan bahwa $\frac{22}{7}$ menghampiri $\pi$ secara
 akurat hingga 3 angka signifikan, sedangkan $\frac{16525}{54}$ menghampiri
 $\pi^{5}$ secara akurat hingga 5 angka signifikan. Di sinilah letak
-inti galat relatif: membandingkan galat absolut dengan besar nilai
+inti galat relatif: membandingkan galat mutlak dengan besar nilai
 yang sedang dihampiri. Perbandingan ini dilakukan dengan menghitung
 rasio galat terhadap nilai eksak. Dengan demikian, galat relatif ketika
 menghampiri $\pi$ dengan $\frac{22}{7}$ adalah ${\displaystyle \frac{|\frac{22}{7}-\pi|}{|\pi|}\approx4.02(10)^{-4}}$,
 sedangkan galat relatif ketika menghampiri $\pi^{5}$ dengan $\frac{16525}{54}$
 adalah ${\displaystyle \frac{|\frac{16525}{54}-\pi^{5}|}{|\pi^{5}|}\approx3.81(10)^{-6}}$.
 Kedua galat relatif berbeda dengan faktor sekitar 100 (setara dengan
-kira-kira dua angka signifikan dalam akurasi), meskipun galat absolutnya
+kira-kira dua angka signifikan dalam akurasi), meskipun galat mutlaknya
 hampir sama. Secara umum, galat relatif\index{galat!relatif} ketika
 menghampiri $p$ dengan $\tilde{p}$ diberikan oleh ${\displaystyle \frac{|\tilde{p}-p|}{|p|}}$.
 
@@ -233,11 +233,10 @@ Dengan kata lain, galat titik-mengambang diberikan oleh $\left|\tilde{p}^{*}-\ti
 \[
 \left|50\left(\sin\left(\frac{101}{100}\right)-\sin\left(\frac{99}{100}\right)\right)-0.5402933008747335\right|\approx1.58(10)^{-17},
 \]
-yang sekecil mungkin seperti yang dapat diharapkan. Galat absolut
-$|\tilde{p}(10^{-2})-f'(1)|=|0.5402933008747335-\cos(1)|$ pada dasarnya
-sepenuhnya bersifat algoritmik. Galat pembulatan jauh lebih kecil
-daripada galat algoritmik. Fakta bahwa kita menggunakan aritmetika
-titik-mengambang dapat diabaikan. 
+yang sekecil mungkin seperti yang dapat diharapkan. Galat mutlak $|\tilde{p}(10^{-2})-f'(1)|=|0.5402933008747335-\cos(1)|$
+pada dasarnya sepenuhnya bersifat algoritmik. Galat pembulatan jauh
+lebih kecil daripada galat algoritmik. Fakta bahwa kita menggunakan
+aritmetika titik-mengambang dapat diabaikan. 
 
 Sebaliknya, galat algoritmik dari $\tilde{p}(10^{-7})$ adalah 
 \begin{eqnarray*}
@@ -384,8 +383,8 @@ Dalam hampir semua kasus, bagian terbesar galat akan bersifat algoritmik.
 \item [{$\tilde{p}$}] Suatu hampiran terhadap nilai $p$.
 \item [{$\tilde{p}^{*}$}] Suatu hampiran terhadap nilai $p$ yang dihitung
 menggunakan aritmetika eksak.
-\item [{Galat~absolut\index{galat!absolut}:}] $|\tilde{p}-p|$ disebut
-galat absolut ketika menggunakan $\tilde{p}$ untuk menghampiri nilai
+\item [{Galat~mutlak\index{galat!mutlak}:}] $|\tilde{p}-p|$ disebut
+galat mutlak ketika menggunakan $\tilde{p}$ untuk menghampiri nilai
 $p$.
 \item [{Galat~relatif\index{galat!relatif}:}] ${\displaystyle \frac{|\tilde{p}-p|}{|p|}}$
 disebut galat relatif ketika menggunakan $\tilde{p}$ untuk menghampiri
@@ -402,7 +401,7 @@ angka signifikan yang tetap.
 disebabkan oleh algoritma atau persamaan yang digunakan dalam hampiran,
 $|\tilde{p}^{*}-p|$, dengan $\tilde{p}^{*}$ merupakan hampiran terhadap
 $p$ yang dihitung menggunakan aritmetika eksak.
-\item [{Galat~pemenggalan\index{galat!pemenggalan}:}] Galat algoritmik
+\item [{Galat~pemotongan\index{galat!pemotongan}:}] Galat algoritmik
 akibat penggunaan jumlah parsial sebagai pengganti suatu deret. Pada
 jenis galat ini, ekor deret dipenggal---dari sinilah namanya berasal.
 \item [{Galat~titik-mengambang\index{galat!titik-mengambang}:}] Galat
@@ -420,7 +419,7 @@ titik-mengambang.
 Perhitungan dalam bagian ini dapat dilakukan dengan mudah menggunakan
 Octave. Yang Anda perlukan hanyalah operasi aritmetika\index{Octave!operasi aritmetika}
 dan beberapa fungsi standar\index{Octave!fungsi standar} seperti
-nilai absolut, sinus, dan kosinus. Untungnya, semua ini cukup mudah
+nilai mutlak, sinus, dan kosinus. Untungnya, semua ini cukup mudah
 dilakukan dengan Octave. Operasi aritmetika dilakukan hampir sama
 seperti pada kalkulator. Hanya ada satu perbedaan penting. Kebanyakan
 kalkulator akan menerima ekspresi seperti \texttt{3x} dan memahami
@@ -428,10 +427,10 @@ bahwa yang Anda maksud adalah $3\times x$, tetapi Octave tidak demikian.
 Ekspresi \texttt{3x} menyebabkan galat sintaks di Octave. Octave mengharuskan
 Anda menyatakan operasinya secara eksplisit, seperti dalam \texttt{3{*}x}. 
 
-Fungsi standar seperti nilai absolut, sinus, dan kosinus (serta banyak
+Fungsi standar seperti nilai mutlak, sinus, dan kosinus (serta banyak
 fungsi lain) memiliki singkatan sederhana di Octave. Semua fungsi
 tersebut menerima satu argumen, atau masukan. Ingatlah notasi fungsi;
-dengan demikian akan jelas cara mencari sinus atau nilai absolut suatu
+dengan demikian akan jelas cara mencari sinus atau nilai mutlak suatu
 bilangan. Anda perlu mengetikkan nama fungsi, tanda kurung buka, argumen,
 dan tanda kurung tutup, seperti dalam \texttt{sin(7.2)}. Beberapa
 fungsi umum beserta singkatannya tercantum dalam Tabel \ref{tab:commonOctave}.
@@ -591,9 +590,9 @@ $i$ & \texttt{i atau j} & \texttt{0 + 1i}\tabularnewline
 \begin{enumerate}
 \item Selain galat pembulatan, apa yang dapat berdampak buruk terhadap akurasi
 suatu perhitungan numerik?
-\item Hitung galat absolut dan galat relatif ketika menghampiri $\pi$ dengan
+\item Hitung galat mutlak dan galat relatif ketika menghampiri $\pi$ dengan
 3.
-\item \label{ex:absoluteError}Hitung galat absolut ketika menghampiri $p$
+\item \label{ex:absoluteError}Hitung galat mutlak ketika menghampiri $p$
 dengan $\tilde{p}$.
 
 \begin{enumerate}
@@ -608,7 +607,7 @@ dengan $\tilde{p}$.
 pada soal \ref{ex:absoluteError}. \haspartwithsolution 
 \item \label{exc:abserr16}Berapa banyak angka signifikan yang akurat pada
 hampiran-hampiran dalam soal \ref{ex:absoluteError} tersebut? \haspartwithsolution 
-\item Hitung galat absolut dan galat relatif ketika menghampiri $p$ dengan
+\item Hitung galat mutlak dan galat relatif ketika menghampiri $p$ dengan
 $\tilde{p}$.
 
 \begin{enumerate}
@@ -619,7 +618,7 @@ $\tilde{p}$.
 \item \octave\ \label{enu:one-over-pi}Hitung ${\displaystyle \frac{1103\sqrt{8}}{9801}}$
 menggunakan Octave.
 \item \octave\ Bilangan pada soal \ref{enu:one-over-pi} merupakan hampiran
-terhadap $1/\pi$. Dengan Octave, tentukan galat absolut dan galat
+terhadap $1/\pi$. Dengan Octave, tentukan galat mutlak dan galat
 relatif hampiran tersebut.
 \item \octave\ Dengan Octave, hitung
 
@@ -659,7 +658,7 @@ Octave---terdapat galat pembulatan).
 \item $3\pi^{3}+7\pi^{2}-2\pi+8=((3\pi+7)\pi-2)\pi+8$
 \end{enumerate}
 \item \label{ex:absoluteError2}Tentukan suatu hampiran $\tilde{p}$ terhadap
-$p$ dengan galat absolut $.001$.
+$p$ dengan galat mutlak $.001$.
 
 \begin{enumerate}
 \item \label{exc:abserr4}$p=\pi$ \hasasolution 
@@ -673,7 +672,7 @@ $p$ dengan galat absolut $.001$.
 $p$ dengan galat relatif $.001$ untuk setiap nilai $p$ pada soal
 \ref{ex:absoluteError2}. \haspartwithsolution 
 \item \label{ex:absoluteError3}$\tilde{p}$ menghampiri nilai apa dengan
-galat absolut $.0005$?
+galat mutlak $.0005$?
 
 \begin{enumerate}
 \item \label{exc:abserr7}$\tilde{p}=.2348263818643$ \hasananswer 
@@ -682,16 +681,16 @@ galat absolut $.0005$?
 \end{enumerate}
 \item \label{exc:abserr18}Ulangi soal \ref{ex:absoluteError3}, tetapi
 gunakan galat relatif $.0005$. \haspartwithanswer 
-\item \label{exc:abserr8}$\tilde{p}$ menghampiri $p$ dengan galat absolut
+\item \label{exc:abserr8}$\tilde{p}$ menghampiri $p$ dengan galat mutlak
 $\frac{1}{100}$ dan galat relatif $\frac{3}{100}$. Tentukan $p$
 dan $\tilde{p}$. \hasananswer 
-\item $\tilde{p}$ menghampiri $p$ dengan galat absolut $\frac{3}{100}$
+\item $\tilde{p}$ menghampiri $p$ dengan galat mutlak $\frac{3}{100}$
 dan galat relatif $\frac{1}{100}$. Tentukan $p$ dan $\tilde{p}$.
 \item Misalkan $\tilde{p}$ harus menghampiri $p$ dengan galat relatif
 paling besar $10^{-3}$. Tentukan interval terbesar tempat $\tilde{p}$
 harus berada jika $p=900$.
 \item Bilangan $e$ dapat didefinisikan oleh $e=\sum_{n=0}^{\infty}(1/n!)$.
-Hitung galat absolut dan galat relatif pada hampiran-hampiran berikut
+Hitung galat mutlak dan galat relatif pada hampiran-hampiran berikut
 terhadap $e$:
 
 \begin{enumerate}
@@ -709,16 +708,16 @@ rasio emas. Tentukan galat relatif hampiran ini. PETUNJUK: Barisan
 Fibonacci didefinisikan oleh $F_{0}=1$, $F_{1}=1$, $F_{n}=F_{n-1}+F_{n-2}$
 untuk $n\geq2$.
 \item \label{exc:abserr9}Tentukan nilai $p$ dan $\tilde{p}$ sedemikian
-sehingga galat relatif sama dengan galat absolut. Nyatakan secara
-umum kondisi yang menyebabkan hal ini terjadi. \hasananswer 
+sehingga galat relatif sama dengan galat mutlak. Nyatakan secara umum
+kondisi yang menyebabkan hal ini terjadi. \hasananswer 
 \item Tentukan nilai $p$ dan $\tilde{p}$ sedemikian sehingga galat relatif
-lebih besar daripada galat absolut. Nyatakan secara umum kondisi yang
+lebih besar daripada galat mutlak. Nyatakan secara umum kondisi yang
 menyebabkan hal ini terjadi.
 \item Tentukan nilai $p$ dan $\tilde{p}$ sedemikian sehingga galat relatif
-lebih kecil daripada galat absolut. Nyatakan secara umum kondisi yang
+lebih kecil daripada galat mutlak. Nyatakan secara umum kondisi yang
 menyebabkan hal ini terjadi.
 \item Hitung (i) $\tilde{p}$ dengan kalkulator atau komputer (perhitungan
-titik-mengambang), (ii) galat absolut, $|\tilde{p}-p|$, dan (iii)
+titik-mengambang), (ii) galat mutlak, $|\tilde{p}-p|$, dan (iii)
 galat relatif, $\frac{|\tilde{p}-p|}{|p|}$. Kemudian gunakan nilai
 $\tilde{p}^{*}$ yang diberikan untuk menghitung (iv) galat algoritmik,
 $|\tilde{p}^{*}-p|$ dan (v) galat pembulatan, $|\tilde{p}^{*}-\tilde{p}|$.

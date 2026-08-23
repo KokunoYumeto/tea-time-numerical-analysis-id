@@ -518,7 +518,7 @@ Kriteria ini tidak aman ketika metode superlinear digunakan begitu
 jauh dari akar sehingga kekonvergenan superlinear tidak tampak. Inilah
 tepatnya yang terjadi pada Gambar \vpageref{fig:troubleForSecant}.
 Selisih antara hampiran-hampiran berturut-turut sebenarnya lebih besar
-daripada galat absolut pada setiap langkah. Situasi ini tidak lazim,
+daripada galat mutlak pada setiap langkah. Situasi ini tidak lazim,
 tetapi dapat terjadi. 
 
 Kriteria ini juga tidak aman ketika suatu metode konvergen secara
@@ -528,7 +528,7 @@ digunakan sendiri karena selalu ada alternatif yang lebih cepat.
 
 Ada satu pertimbangan penting lagi mengenai penghentian. Berhenti
 ketika selisih antara dua hampiran berturut-turut lebih kecil daripada
-toleransi tertentu bergantung pada galat absolut. Ketika akar mungkin
+toleransi tertentu bergantung pada galat mutlak. Ketika akar mungkin
 sangat kecil atau sangat besar, barangkali lebih baik menggunakan
 kriteria berdasarkan galat relatif. Sebagai contoh, alih-alih berhenti
 ketika $|x_{n+1}-x_{n}|<tol$, kita berhenti ketika $|x_{n+1}-x_{n}|<tol\cdot|x_{n+1}|$.

@@ -2,9 +2,9 @@
   "admission": {
     "build_evidence": {
       "pdf": "output/pdf/Tea-Time-Numerical-Analysis-id-ID.pdf",
-      "pdf_sha256": "cbc31e9e27fdee96845d78fa6a625bf956196001b7941ddf0f1232f5def46b45",
+      "pdf_sha256": "d573b7233d0baa07381e2052a749757885db3a31fbfe695c5a4851ea42d91b6d",
       "physical_pdf_page": 256,
-      "render": "tmp/qa/cbc31e9e/high/page-256.png",
+      "render": "tmp/qa/d573b7/high/page-256.png",
       "render_dpi": 150,
       "visual_result": "pass_legible_complete_framed"
     },
@@ -12,9 +12,9 @@
     "identity_gate": "pass_as_independent_replacement",
     "rights_gate": "pass"
   },
-  "authority_sha256": "39bbf79cebe96967dabde26b62faf51c55d6ed1b0376000b3b46bf615f79a2dd",
+  "authority_sha256": "f12fbb5fab4b8dcd67f1b087df3b1803535ebd43c28a54c890da8baa20489192",
   "config_path": "backend/config/heun1900_asset_authority.v1.json",
-  "config_sha256": "d39b2bf48304a1365235099f1c96c1219daeba45996fbbfd2c7ed9c44110a2d7",
+  "config_sha256": "a513266cfd720928885f67388b4818cb99b02e5172551b8e780637ebf323db11",
   "counts": {
     "asset_versions": 1,
     "assets": 1,
@@ -66,7 +66,7 @@
   ],
   "generator": "ttna-asset-authority-indexer-0.1.0",
   "locale": "id-ID",
-  "recorded_date": "2026-08-22",
+  "recorded_date": "2026-08-23",
   "resource_id": "urn:uuid:8fbaf4c5-6316-5159-89b9-787aa115c0dc",
   "schema_id": "ttna-lane-manifest-v1",
   "schema_version": "1.0.0",

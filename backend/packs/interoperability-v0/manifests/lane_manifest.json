@@ -8,7 +8,7 @@
   },
   "config_bytes": 3115,
   "config_path": "backend/config/interoperability_v0.release.json",
-  "config_sha256": "a1a70f0ddda50cd365e2a92f1363d9dca07e06d1a3b6234364cb871e330112cc",
+  "config_sha256": "4aafff99f18acd992041774e5c07cc6c1289fed2c2b8526b89f3f1d911b190d2",
   "counts": {
     "artifact": 2,
     "concept": 12,
@@ -68,7 +68,7 @@
       "bytes": 3835,
       "path": "artifacts/artifacts.jsonl",
       "records": 2,
-      "sha256": "92db88b4c483487c04afa70bc185ddfc5fce8873cc6151c175c9fb5dd807f616"
+      "sha256": "efcefc3c22d26ba18869f4da6a073252d7fc49121d4fbd819557a7a2fd8c05b2"
     },
     {
       "bytes": 391,
@@ -119,10 +119,10 @@
       "sha256": "791d9c85527c33875c7ec0fef2e21a9177cb8f008a6cac991809b6615766a058"
     },
     {
-      "bytes": 23568,
+      "bytes": 23560,
       "path": "topology/source_files.jsonl",
       "records": 31,
-      "sha256": "0d6e4a09c70065e131d3ab085fba041c9d6a57687547ab5a3b0ab9a220fae524"
+      "sha256": "7e85e26602a0820c57ce9ab0feab93ec83cacd7dfc3f9f74903e72ff1991d4d7"
     },
     {
       "bytes": 55135,
@@ -137,10 +137,10 @@
       "sha256": "032ec01286cdb3642fc83b916ab23bc234295a67786c5fa19bdc725da38d47e7"
     },
     {
-      "bytes": 4417,
+      "bytes": 4456,
       "path": "translation/terms.id-ID.jsonl",
       "records": 12,
-      "sha256": "b3f1e19b3d2979eae4215801e3aed9e7717412cc8bf2ce2ffac68f51c8d25c29"
+      "sha256": "0da90f82f43f67ec4bc0c305a48062e7a61f918dc07b983b9b93b8d47c8f2a04"
     }
   ],
   "generator": "ttna-interoperability-v0-indexer-0.1.0",
@@ -161,13 +161,13 @@
         "sha256": "17cd4abc74cff4934cc78a2f42378489829207f534ad9a051c45ad67b2b18180"
       },
       {
-        "build_manifest_bytes": 53012,
+        "build_manifest_bytes": 52937,
         "build_manifest_path": "build/manifests/id-ID-build.json",
-        "build_manifest_sha256": "9437f143c777ca447c5b199f0ea2a7df1e70b2afd7731839c43041ca018fd988",
-        "bytes": 8202476,
+        "build_manifest_sha256": "dbef9a5bb9680f6c072e1f26fe3f5ae8ba7e1ca955d9c3dd47f402d1bb9174ea",
+        "bytes": 8202487,
         "path": "output/pdf/Tea-Time-Numerical-Analysis-id-ID.pdf",
         "role": "id-ID-release-pdf",
-        "sha256": "cbc31e9e27fdee96845d78fa6a625bf956196001b7941ddf0f1232f5def46b45"
+        "sha256": "d573b7233d0baa07381e2052a749757885db3a31fbfe695c5a4851ea42d91b6d"
       }
     ],
     "task_evidence": {

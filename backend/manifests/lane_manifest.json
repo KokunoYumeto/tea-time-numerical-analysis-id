@@ -5,7 +5,7 @@
       "bytes": 3835,
       "path": "artifacts/artifacts.jsonl",
       "records": 2,
-      "sha256": "92db88b4c483487c04afa70bc185ddfc5fce8873cc6151c175c9fb5dd807f616"
+      "sha256": "efcefc3c22d26ba18869f4da6a073252d7fc49121d4fbd819557a7a2fd8c05b2"
     },
     {
       "bytes": 5970,
@@ -86,10 +86,10 @@
       "sha256": "4ec194ff2218639f0eeb58ba0c0ec5d61b7330f31b923fa0a0af715948c98a08"
     },
     {
-      "bytes": 23568,
+      "bytes": 23560,
       "path": "topology/source_files.jsonl",
       "records": 31,
-      "sha256": "0d6e4a09c70065e131d3ab085fba041c9d6a57687547ab5a3b0ab9a220fae524"
+      "sha256": "7e85e26602a0820c57ce9ab0feab93ec83cacd7dfc3f9f74903e72ff1991d4d7"
     },
     {
       "bytes": 151228,
@@ -98,10 +98,10 @@
       "sha256": "4f78c73761d09b65e1dd6dcb064cea48cd761710740c09f72b838fa773adace5"
     },
     {
-      "bytes": 8671647,
+      "bytes": 8722340,
       "path": "translation/localizations.id-ID.jsonl",
       "records": 4621,
-      "sha256": "ad5295c2c34545fa1381d1b79bf74b128c9e19d2d80d5442718caf3bc72270e3"
+      "sha256": "324d3107a86ce85d11e178e4e7bc283e9bab5b954746fb74ab97b54ea1d944b0"
     },
     {
       "bytes": 7561107,
@@ -110,10 +110,10 @@
       "sha256": "0ff2c05f4e03ec3d8f371ff7bd1948c52bb23d0c62cd865d5d832a8f8eed4035"
     },
     {
-      "bytes": 221738,
+      "bytes": 221879,
       "path": "translation/terms.id-ID.jsonl",
       "records": 593,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     }
   ],
   "generator": "ttna-pack-merger-0.3.0",
@@ -122,224 +122,224 @@
     {
       "file_order": -1,
       "manifest_bytes": 3363,
-      "manifest_sha256": "85e495fefcc48e7e89a1e345609c622d120760ac69cb05afdb4efdfecebcd395",
+      "manifest_sha256": "fbafc7e44f2a7fe1bb207069169fdfe186c7b894057ba5663cb7052dcca2b48a",
       "path": "backend/packs/preamble",
       "scope": "source/lqbrin-tea-time-numerical-1868821/preamble.tex"
     },
     {
       "file_order": 0,
       "manifest_bytes": 3115,
-      "manifest_sha256": "86461e0043ddf9608fe01a24e3a134c472cc6ecf5f524c14b6fe50816e848845",
+      "manifest_sha256": "b09281055ca83aef6c03ade39d5b6285940e1cf4f461bfb1def755bf099d416a",
       "path": "backend/packs/TeaTimeNumericalAnalysis",
       "scope": "source/lqbrin-tea-time-numerical-1868821/TeaTimeNumericalAnalysis.lyx"
     },
     {
       "file_order": 1,
       "manifest_bytes": 3103,
-      "manifest_sha256": "2c226676ca2b48e25d429b86fafdad6250227203967d69250ab6c9291054c8e9",
+      "manifest_sha256": "0584957763f6a34050f5d020c542c13d7f1229d626e4cb82b83f8ea28cb70c1f",
       "path": "backend/packs/preface",
       "scope": "source/lqbrin-tea-time-numerical-1868821/preface.lyx"
     },
     {
       "file_order": 2,
       "manifest_bytes": 3126,
-      "manifest_sha256": "6d723f9d4474025ca78ee6de0133947ed737a11334f52ea4f6e87811f15a26fa",
+      "manifest_sha256": "5c122389582c876e9398e4f96343de8583dcb07880edeceb46240524c4e9de5b",
       "path": "backend/packs/preliminaries-errors",
       "scope": "source/lqbrin-tea-time-numerical-1868821/preliminaries-errors.lyx"
     },
     {
       "file_order": 3,
       "manifest_bytes": 3130,
-      "manifest_sha256": "0c8ffd0ce77fd53c6273682b021027a97ecabd8a5c9fc3c4512bcec0e80e054b",
+      "manifest_sha256": "deddb8c84803aa7354ea98c94aba350f23f611edc7ce934ec955255de88a0b00",
       "path": "backend/packs/preliminaries-taylor",
       "scope": "source/lqbrin-tea-time-numerical-1868821/preliminaries-taylor.lyx"
     },
     {
       "file_order": 4,
       "manifest_bytes": 3133,
-      "manifest_sha256": "9d451b7d6bc58f420a3d53ebc30175c75932725f02e13a11ff97ef093b79266c",
+      "manifest_sha256": "9d826e9e937df96b41f190b223836c7615a0719aaa62ab5017bbe7f0f74c0564",
       "path": "backend/packs/preliminaries-convergence",
       "scope": "source/lqbrin-tea-time-numerical-1868821/preliminaries-convergence.lyx"
     },
     {
       "file_order": 5,
       "manifest_bytes": 3132,
-      "manifest_sha256": "e98cd9a2ae907c0996e9e219f5b443571cda99c57d769612d8b7ad2cceaaf875",
+      "manifest_sha256": "4e9bcf8ded8ac194b7499c924cd4a79d0afb3cc683df117efc39a8054e2be7c5",
       "path": "backend/packs/preliminaries-recursion",
       "scope": "source/lqbrin-tea-time-numerical-1868821/preliminaries-recursion.lyx"
     },
     {
       "file_order": 6,
       "manifest_bytes": 3125,
-      "manifest_sha256": "8301bbc94fdca096e52acfd9981462bc5f003c88cfdb9d8a4b84887568156bbd",
+      "manifest_sha256": "9adcdb5679eede22c264b5bc99a7576b24ac3ad2ea482235b350161119bb7152",
       "path": "backend/packs/roots-bisection",
       "scope": "source/lqbrin-tea-time-numerical-1868821/roots-bisection.lyx"
     },
     {
       "file_order": 7,
       "manifest_bytes": 3120,
-      "manifest_sha256": "bc3595cd8a0b1fa8ecabfaaa466a9ed1aca58a923789e0436a47bf264495d9f8",
+      "manifest_sha256": "129e076ab9c9df9835742ab9831cf51043246847edf496c049127258dcf63434",
       "path": "backend/packs/roots-fixedpoint",
       "scope": "source/lqbrin-tea-time-numerical-1868821/roots-fixedpoint.lyx"
     },
     {
       "file_order": 8,
       "manifest_bytes": 3132,
-      "manifest_sha256": "821d7bd3fdde0d4d7fa07f349d309298fafa1470a1f01c539493f8a67bb27616",
+      "manifest_sha256": "23bcf633f50b6ad375caca5c4100ad1719e8dec470c8bfb96b47b86ecda85f69",
       "path": "backend/packs/roots-orderOfConvergence",
       "scope": "source/lqbrin-tea-time-numerical-1868821/roots-orderOfConvergence.lyx"
     },
     {
       "file_order": 9,
       "manifest_bytes": 3125,
-      "manifest_sha256": "27e5778db6c657d0af3dd32f35e2ab1f4dac2da02ea42696910ea32d64287895",
+      "manifest_sha256": "4baee5acfc67ad40f6d6cffb5764fabd489adc7b90991a06dbaea14b253a5f53",
       "path": "backend/packs/roots-newtonsMethod",
       "scope": "source/lqbrin-tea-time-numerical-1868821/roots-newtonsMethod.lyx"
     },
     {
       "file_order": 10,
       "manifest_bytes": 3128,
-      "manifest_sha256": "d9ed41e5ad8e9eca558fde4e251ba09cc59d5a07afcf0d9956ab5c743ccf2ab9",
+      "manifest_sha256": "435e01438ac6cb339a4c00e3aedd635b931bd95202df6af6cfecb62ed4035d36",
       "path": "backend/packs/roots-moreConvergenceDiagrams",
       "scope": "source/lqbrin-tea-time-numerical-1868821/roots-moreConvergenceDiagrams.lyx"
     },
     {
       "file_order": 11,
       "manifest_bytes": 3122,
-      "manifest_sha256": "a6cab48452609bbba70e3902ff464ecdf96f571183350bee2900fce4ef308480",
+      "manifest_sha256": "18ceadd613bf101530a1e9449ae717b43992bcfccce3527db7352afb90e0b0b3",
       "path": "backend/packs/roots-polynomials",
       "scope": "source/lqbrin-tea-time-numerical-1868821/roots-polynomials.lyx"
     },
     {
       "file_order": 12,
       "manifest_bytes": 3129,
-      "manifest_sha256": "c7d7d12165ce93fc00ec448227ab3528bf7339114054fe544fd14a4c30c74d35",
+      "manifest_sha256": "2e3c05c6983b3109b75d3aa39d24a6feb4b4d39f68719befd1232b91cd20252d",
       "path": "backend/packs/roots-bracketing",
       "scope": "source/lqbrin-tea-time-numerical-1868821/roots-bracketing.lyx"
     },
     {
       "file_order": 13,
       "manifest_bytes": 3127,
-      "manifest_sha256": "5c5bf56c47f36066bb874e5611812b2e314de306bc8685a7d2ed30a5230819fb",
+      "manifest_sha256": "00dce4aded70ba34d0e75b7cd9192a9cdf4c0ae3556fb1eb34e85481b9f6e7d2",
       "path": "backend/packs/interpolation-challenge",
       "scope": "source/lqbrin-tea-time-numerical-1868821/interpolation-challenge.lyx"
     },
     {
       "file_order": 14,
       "manifest_bytes": 3127,
-      "manifest_sha256": "cafaf8b2ebb4c8241986ebb15a505176e9eb13cbd72a70a44c5eb694b86469aa",
+      "manifest_sha256": "edb124f04b0d7859908337b1a11f4570f0f920bf83ac4a05108e2378e524e7b0",
       "path": "backend/packs/interpolation-lagrange",
       "scope": "source/lqbrin-tea-time-numerical-1868821/interpolation-lagrange.lyx"
     },
     {
       "file_order": 15,
       "manifest_bytes": 3125,
-      "manifest_sha256": "e8d0168d489257cd3fe77d75ee95ee85067fb4e6d5b8c77524572665cd2576d7",
+      "manifest_sha256": "59498b77b4d489417daf4b0723461dad814f2d8f50f6be31aff3cb8dce4ddc9d",
       "path": "backend/packs/interpolation-newton",
       "scope": "source/lqbrin-tea-time-numerical-1868821/interpolation-newton.lyx"
     },
     {
       "file_order": 16,
       "manifest_bytes": 3125,
-      "manifest_sha256": "dcaac011a59406a860dfbbaddc406d9bad2f2c54935999565170e1f71f02ac79",
+      "manifest_sha256": "2c7fd2199c656ffe66230dd4841f742eae6bde6907fd1ab68931acb0bb77639e",
       "path": "backend/packs/calculus-rudiments",
       "scope": "source/lqbrin-tea-time-numerical-1868821/calculus-rudiments.lyx"
     },
     {
       "file_order": 17,
       "manifest_bytes": 3135,
-      "manifest_sha256": "18b8c974ea1e0314f389848c88e2e664ca3fb7f1f0626d46f06b3c304421dbab",
+      "manifest_sha256": "3d317e3b78c9f39c6f99bdd74ed8f04e03b56fecefb16aa23fb4dc2d7b07f681",
       "path": "backend/packs/calculus-undeterminedCoefficients",
       "scope": "source/lqbrin-tea-time-numerical-1868821/calculus-undeterminedCoefficients.lyx"
     },
     {
       "file_order": 18,
       "manifest_bytes": 3120,
-      "manifest_sha256": "75b9b8ca707090463bb42af468233947b26b495afcae904aabadc7c739bc7638",
+      "manifest_sha256": "2db7c0093497913111c31f6f0ae9138d2738de6946e7224068687168d8d88336",
       "path": "backend/packs/calculus-errors",
       "scope": "source/lqbrin-tea-time-numerical-1868821/calculus-errors.lyx"
     },
     {
       "file_order": 19,
       "manifest_bytes": 3123,
-      "manifest_sha256": "730e2eb1ce14c7a8d218778a1a55502f341eb2ffe3fe8545cc23eb9c99207564",
+      "manifest_sha256": "5b3f455900acc2647121f60f51a33ac98c420bc7f63f85bbc00cb0a76296ca2f",
       "path": "backend/packs/calculus-composite",
       "scope": "source/lqbrin-tea-time-numerical-1868821/calculus-composite.lyx"
     },
     {
       "file_order": 20,
       "manifest_bytes": 3119,
-      "manifest_sha256": "04db8ac176fad3c865c502d6149c8e9057535f8085256d9b67a97b07cc601f56",
+      "manifest_sha256": "622a1e4b6a9ac591febe01c86ab8881a183e45f99202aa76d97ae220a5500ed9",
       "path": "backend/packs/calculus-richardsons",
       "scope": "source/lqbrin-tea-time-numerical-1868821/calculus-richardsons.lyx"
     },
     {
       "file_order": 21,
       "manifest_bytes": 3123,
-      "manifest_sha256": "a2a442f991c58e921d6ed1f6dd31f10ea9948f6e5d1d5bae98931f17faf1163b",
+      "manifest_sha256": "37297a5bfaabee4fb4265787bccb9aa1303e2ca000c3464227192d39bad3ee91",
       "path": "backend/packs/splines-parametric",
       "scope": "source/lqbrin-tea-time-numerical-1868821/splines-parametric.lyx"
     },
     {
       "file_order": 22,
       "manifest_bytes": 3115,
-      "manifest_sha256": "eedd5bdeb0171ba25fb9441362e2d3810eee88569719688be6449c2dce6819d9",
+      "manifest_sha256": "5d99c4a0d914162193c68fbf8cbcfce333984f04e89c3ef0cbb57a732e671f6d",
       "path": "backend/packs/splines-cubic",
       "scope": "source/lqbrin-tea-time-numerical-1868821/splines-cubic.lyx"
     },
     {
       "file_order": 23,
       "manifest_bytes": 3119,
-      "manifest_sha256": "ca4a1214576692e82075993d2c5523b7a4194298a33caf601f17b8ca6df18531",
+      "manifest_sha256": "ae27e5ccbcabab1fb760a05478901c2c65825295fbe7df0c846ef47d771637de",
       "path": "backend/packs/ode-pendulum",
       "scope": "source/lqbrin-tea-time-numerical-1868821/ode-pendulum.lyx"
     },
     {
       "file_order": 24,
       "manifest_bytes": 3117,
-      "manifest_sha256": "1a43104971920b49762851c6452d3a8deeb7e32cca2b9ed3ec2d014861d3627e",
+      "manifest_sha256": "ceda557cacb20eae6f0f3749e7b1ea0e346554dfcf9903abe433b01de88e5be0",
       "path": "backend/packs/ode-taylor",
       "scope": "source/lqbrin-tea-time-numerical-1868821/ode-taylor.lyx"
     },
     {
       "file_order": 25,
       "manifest_bytes": 3119,
-      "manifest_sha256": "cbad6711c57bcfce246dba73ae1b340290fa932f7a0a1ed5e3a98050313c8a4a",
+      "manifest_sha256": "6a4c10e12f4368d8cf06e23677c7df6c293be6608a6d4e24de9dc16afd7a3f80",
       "path": "backend/packs/ode-rungeKutta",
       "scope": "source/lqbrin-tea-time-numerical-1868821/ode-rungeKutta.lyx"
     },
     {
       "file_order": 26,
       "manifest_bytes": 3116,
-      "manifest_sha256": "3604357b055c40d3f80db985a804f38d06b51e2248b507f344084f0466e12f64",
+      "manifest_sha256": "6a632b1e4cc483dc23171f56e809f275b0bf4174fbb701cd6b4e2e101ae14fe4",
       "path": "backend/packs/ode-errorAnalysis",
       "scope": "source/lqbrin-tea-time-numerical-1868821/ode-errorAnalysis.lyx"
     },
     {
       "file_order": 27,
       "manifest_bytes": 3117,
-      "manifest_sha256": "ba48ab2a1933266d4a67f69b6e2638830f40691756770958d48f99ed5d802e7b",
+      "manifest_sha256": "4d0b53d49be5fe7826c2e053250931628ec3180e1586ac848544aa7c4bfe5308",
       "path": "backend/packs/ode-adaptive",
       "scope": "source/lqbrin-tea-time-numerical-1868821/ode-adaptive.lyx"
     },
     {
       "file_order": 28,
       "manifest_bytes": 3122,
-      "manifest_sha256": "e7694b599958ce7bd3b4dcfc66c5bb8edc2480f18a7a7c4d5679c192d5782a5e",
+      "manifest_sha256": "3048711f7e6a546368ec125d210211c2175bfa5706aba58c15b2ade630eff762",
       "path": "backend/packs/solutions",
       "scope": "source/lqbrin-tea-time-numerical-1868821/solutions.lyx"
     },
     {
       "file_order": 29,
       "manifest_bytes": 3117,
-      "manifest_sha256": "461af333aa52274aeaaca4d91972d83585cb277f1bbc2dd6aa0df80e5779ef88",
+      "manifest_sha256": "054682ff7183135c3ae1e5d860e96552c25c2f1ec4a4ca30b459763f4f38f3e4",
       "path": "backend/packs/answers",
       "scope": "source/lqbrin-tea-time-numerical-1868821/answers.lyx"
     },
     {
       "file_order": 27001,
-      "manifest_bytes": 2543,
-      "manifest_sha256": "b0282bf89b63640c1b50e23a5d4de76fd0e9a3d8c6bcd175f0f091dd4b3d982e",
+      "manifest_bytes": 2541,
+      "manifest_sha256": "6dfbcf69a1fdf16bc7f7784b337bb202498f7a1744239484259e2404015e0139",
       "path": "backend/packs/heun1900-page30",
       "scope": "authority/third_party/heun1900/ASSET_AUTHORITY.json"
     },
@@ -353,7 +353,7 @@
     {
       "file_order": 29001,
       "manifest_bytes": 6528,
-      "manifest_sha256": "4286e17522baafe1e1b7299ff9f4573b0ad38abf4300dab9d4153e3efd57d8ce",
+      "manifest_sha256": "0fc900555159797b9fda4cf78b2fa7d63b12d685cdf1100c3fb6abae1eadda86",
       "path": "backend/packs/interoperability-v0",
       "scope": "00_control/TASK.md + 00_control/ADVERSE_LEDGER.csv"
     }

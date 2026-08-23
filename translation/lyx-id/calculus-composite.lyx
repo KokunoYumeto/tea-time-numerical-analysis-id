@@ -569,7 +569,7 @@ Aturan Simpson komposit
 \begin_inset Text
 
 \begin_layout Plain Layout
-galat absolut, 
+galat mutlak, 
 \begin_inset Formula $e_{i}$
 \end_inset
 
@@ -3163,7 +3163,7 @@ Misalkan Aturan Simpson komposit dengan 100 subselang digunakan untuk menghampir
 \begin_inset Formula $\int_{5}^{12}f(x)\,dx$
 \end_inset
 
-, dan galat absolutnya ternyata kurang dari 
+, dan galat mutlaknya ternyata kurang dari 
 \begin_inset Formula $10^{-5}$
 \end_inset
 
@@ -3597,7 +3597,7 @@ reference "est1"
 \end_inset
 
 .
- Apakah galat absolutnya kurang dari 
+ Apakah galat mutlaknya kurang dari 
 \begin_inset Formula $10^{-4}$
 \end_inset
 
@@ -3640,7 +3640,7 @@ reference "est2"
 \end_inset
 
 .
- Apakah galat absolutnya kurang dari 
+ Apakah galat mutlaknya kurang dari 
 \begin_inset Formula $10^{-4}$
 \end_inset
 

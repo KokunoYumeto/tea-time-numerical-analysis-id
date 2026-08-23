@@ -180,7 +180,7 @@ $manifest = [pscustomobject][ordered]@{
         lyx_product_version = (Get-Item -LiteralPath $lyx).VersionInfo.ProductVersion
         lyx_bytes = (Get-Item -LiteralPath $lyx).Length
         lyx_sha256 = (Get-FileHash -LiteralPath $lyx -Algorithm SHA256).Hash.ToLowerInvariant()
-        latexmk_path = $latexmkCommand
+        latexmk_path = 'latexmk'
         latexmk_sha256 = (Get-FileHash -LiteralPath $latexmkCommand -Algorithm SHA256).Hash.ToLowerInvariant()
         cprotect_sty_sha256 = (Get-FileHash -LiteralPath $cprotectSty -Algorithm SHA256).Hash.ToLowerInvariant()
     }

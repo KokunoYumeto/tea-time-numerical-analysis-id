@@ -1086,7 +1086,7 @@ yang nilai eksaknya adalah
 \end_inset
 
 .
- Galat absolut dari 
+ Galat mutlak dari 
 \begin_inset Formula $T_{5}(0,1)$
 \end_inset
 
@@ -1280,7 +1280,7 @@ Kini kita memiliki hampiran
 \begin_inset Formula $T_{5,3}$
 \end_inset
 
- beserta galat absolutnya.
+ beserta galat mutlaknya.
  Jawaban 
 \begin_inset CommandInset ref
 LatexCommand vpageref
@@ -2845,7 +2845,7 @@ galat
 \begin_inset space ~
 \end_inset
 
-absolutnya: 
+mutlaknya: 
 \begin_inset CommandInset label
 LatexCommand label
 name "t35"

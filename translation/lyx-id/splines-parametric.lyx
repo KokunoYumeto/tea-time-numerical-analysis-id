@@ -3577,7 +3577,7 @@ Polinom manakah yang menghampiri
 \begin_inset Formula $g(1.5)$
 \end_inset
 
- dengan galat absolut yang lebih kecil, polinom Hermite atau polinom interpolasi
+ dengan galat mutlak yang lebih kecil, polinom Hermite atau polinom interpolasi
  Lagrange?
 \end_layout
 
@@ -3981,7 +3981,7 @@ name "error"
 
 \end_inset
 
-Hitung galat absolut dari hampiran ini.
+Hitung galat mutlak dari hampiran ini.
 \end_layout
 
 \end_deeper

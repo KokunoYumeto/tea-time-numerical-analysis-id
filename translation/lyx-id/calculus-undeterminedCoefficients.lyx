@@ -1524,7 +1524,7 @@ Misalkan
 \begin_inset Formula $10^{-15}$
 \end_inset
 
- atau galat titik mengambang absolut 
+ atau galat titik mengambang mutlak 
 \begin_inset Formula $\varepsilon_{f}\approx10^{-15}|f(x)|$
 \end_inset
 
@@ -1545,7 +1545,7 @@ Misalkan
 \begin_inset Formula $\varepsilon_{f}$
 \end_inset
 
- sehingga diperoleh galat absolut sekitar 
+ sehingga diperoleh galat mutlak sekitar 
 \begin_inset Formula $2\varepsilon_{f}$
 \end_inset
 
@@ -1558,7 +1558,7 @@ Misalkan
 \begin_inset Formula $h$
 \end_inset
 
- dihitung secara eksak, kita memperoleh galat absolut 
+ dihitung secara eksak, kita memperoleh galat mutlak 
 \begin_inset Formula 
 \begin{equation}
 \varepsilon_{r}=|\tilde{f}'(x)-f'(x)|\approx\frac{2\varepsilon_{f}}{2h}=\frac{\varepsilon_{f}}{h}=\frac{|f(x)|}{10^{15}}\cdot\frac{1}{h}.\label{eq:floatingPointError}
@@ -1645,7 +1645,7 @@ reference "sub:derivativeExperiment"
 
 .
  Kita tampilkan kembali tabel dari Eksperimen 2 di sini dengan menambahkan kolom ketiga,
- yaitu galat absolut sebenarnya:
+ yaitu galat mutlak sebenarnya:
 \end_layout
 
 \begin_layout Standard

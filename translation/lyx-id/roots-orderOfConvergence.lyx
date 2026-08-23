@@ -257,7 +257,7 @@ Misalkan
 \begin_inset Formula $\hat{x}$
 \end_inset
 
- dengan galat absolut tidak lebih dari 
+ dengan galat mutlak tidak lebih dari 
 \begin_inset Formula $M^{k}|x_{0}-\hat{x}|$
 \end_inset
 
@@ -276,7 +276,7 @@ Bukti induksi elementer (yang diminta dalam latihan) akan menunjukkan
 
 .
  Selanjutnya kita buktikan batas galat tersebut.
- Galat absolut ketika menghampiri 
+ Galat mutlak ketika menghampiri 
 \begin_inset Formula $\hat{x}$
 \end_inset
 
@@ -4587,7 +4587,7 @@ Teorema ! Batas Galat Titik Tetap
 \begin_inset Formula $\hat{x}$
 \end_inset
 
- dengan galat absolut tidak lebih dari 
+ dengan galat mutlak tidak lebih dari 
 \begin_inset Formula $M^{k}|x_{0}-\hat{x}|$
 \end_inset
 

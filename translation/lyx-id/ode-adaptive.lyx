@@ -350,13 +350,13 @@ untuk suatu konstanta
 \begin_inset Formula $M$
 \end_inset
 
-, dan menyatakan galat pemenggalan lokal metode berorde lebih rendah, PDB-terbuka.
+, dan menyatakan galat pemotongan lokal metode berorde lebih rendah, PDB-terbuka.
  Taksiran galat ini dapat digunakan untuk menyesuaikan nilai 
 \begin_inset Formula $h$
 \end_inset
 
- dari satu langkah ke langkah berikutnya, dengan memperkecil ukuran langkah ketika galat pemenggalan
- lokal lebih besar daripada suatu toleransi dan memperbesar ukuran langkah ketika galat pemenggalan
+ dari satu langkah ke langkah berikutnya, dengan memperkecil ukuran langkah ketika galat pemotongan
+ lokal lebih besar daripada suatu toleransi dan memperbesar ukuran langkah ketika galat pemotongan
  lokal lebih kecil daripada toleransi tersebut.
 \end_layout
 

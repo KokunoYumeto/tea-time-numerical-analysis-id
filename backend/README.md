@@ -70,7 +70,7 @@ versions, one build recipe, two evidenced experiments, one program, one course,
 records, one exact nonfinal baseline artifact, one final Indonesian PDF artifact,
 and 17,614 typed relations (28,172 unique records in total). Its exact
 manifest is `manifests/lane_manifest.json`, SHA-256
-`17ef5072077b5b438a883b6bd751ea31b2ec5651567db5d100dba39bf9497cb3`;
+`9a6ccf6ebf1e579216d7a5d7dee70b0da6acd7e5ea6237325b45cada5318a9e0`;
 every generation is replayed twice before the cursor advances. Formula, label,
 reference, graphic, and executable-code bytes remain protected. Reader-visible
 Index content and narrowly scoped digression title arguments may be localized
@@ -155,16 +155,16 @@ Its record binds the PDF to the exact 53,055-byte build receipt (SHA-256
 `241285cb4f76d560c67c49b905b4be401fecf4dc7d9b86cc8ffaf74335cdefd5`)
 and the recorded LyX, latexmk, and cprotect identities. It is not the release
 artifact. The final `id-ID-release-pdf` artifact is
-`urn:uuid:0c82fceb-d875-53e8-94c9-a20dae5547cb`: 8,202,476 bytes, 387 pages,
-SHA-256 `cbc31e9e27fdee96845d78fa6a625bf956196001b7941ddf0f1232f5def46b45`,
+`urn:uuid:0c82fceb-d875-53e8-94c9-a20dae5547cb`: 8,202,487 bytes, 387 pages,
+SHA-256 `d573b7233d0baa07381e2052a749757885db3a31fbfe695c5a4851ea42d91b6d`,
 status `release_final`. It binds build manifest SHA-256
-`9437f143c777ca447c5b199f0ea2a7df1e70b2afd7731839c43041ca018fd988`.
+`dbef9a5bb9680f6c072e1f26fe3f5ae8ba7e1ca955d9c3dd47f402d1bb9174ea`.
 
 The final artifact role was bound without manually transcribing byte counts or
 hashes. `--refresh-inputs` also rebound the final bounded adverse-ledger
 snapshot. The resulting release configuration is
 `config/interoperability_v0.release.json`, SHA-256
-`a1a70f0ddda50cd365e2a92f1363d9dca07e06d1a3b6234364cb871e330112cc`.
+`4aafff99f18acd992041774e5c07cc6c1289fed2c2b8526b89f3f1d911b190d2`.
 The audited commands are:
 
 ```text

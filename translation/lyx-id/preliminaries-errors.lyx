@@ -186,12 +186,12 @@ akurasi
 
 \end_inset
 
-: galat absolut
+: galat mutlak
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-galat ! absolut
+galat ! mutlak
 \end_layout
 
 \end_inset
@@ -269,12 +269,12 @@ galat
  Namun, pada umumnya kita tidak mempersoalkan apakah hampiran terlalu tinggi
  atau terlalu rendah.
  Kita hanya ingin mengetahui seberapa besar penyimpangannya.
- Karena itu, kita paling sering membicarakan galat absolut
+ Karena itu, kita paling sering membicarakan galat mutlak
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-galat ! absolut
+galat ! mutlak
 \end_layout
 
 \end_inset
@@ -296,11 +296,11 @@ galat ! absolut
 \begin_inset Formula $p$
 \end_inset
 
-, dan itu merupakan cara yang baik untuk memandang galat absolut.
+, dan itu merupakan cara yang baik untuk memandang galat mutlak.
 \end_layout
 
 \begin_layout Standard
-Galat absolut ketika menghampiri 
+Galat mutlak ketika menghampiri 
 \begin_inset Formula $p=\pi$
 \end_inset
 
@@ -313,7 +313,7 @@ Galat absolut ketika menghampiri
 \end_inset
 
 .
- Galat absolut ketika menghampiri 
+ Galat mutlak ketika menghampiri 
 \begin_inset Formula $\pi^{5}$
 \end_inset
 
@@ -326,7 +326,7 @@ Galat absolut ketika menghampiri
 \end_inset
 
 .
- Galat absolut kedua hampiran ini hampir sama.
+ Galat mutlak kedua hampiran ini hampir sama.
  Agar hal tersebut tampak lebih jelas, 
 \begin_inset Formula $\pi\approx3.14159$
 \end_inset
@@ -389,7 +389,7 @@ Namun, ada hal lain yang terjadi di sini.
 \end_inset
 
  secara akurat hingga 5 angka signifikan.
- Di sinilah letak inti galat relatif: membandingkan galat absolut dengan besar
+ Di sinilah letak inti galat relatif: membandingkan galat mutlak dengan besar
  nilai yang sedang dihampiri.
  Perbandingan ini dilakukan dengan menghitung rasio galat terhadap nilai eksak.
  Dengan demikian, galat relatif ketika menghampiri 
@@ -418,7 +418,7 @@ Namun, ada hal lain yang terjadi di sini.
 
 .
  Kedua galat relatif berbeda dengan faktor sekitar 100 (setara dengan kira-kira
- dua angka signifikan dalam akurasi), meskipun galat absolutnya hampir sama.
+ dua angka signifikan dalam akurasi), meskipun galat mutlaknya hampir sama.
  Secara umum, galat relatif
 \begin_inset Index idx
 status collapsed
@@ -1293,7 +1293,7 @@ galat ! titik-mengambang
 \end_inset
 
 yang sekecil mungkin seperti yang dapat diharapkan.
- Galat absolut 
+ Galat mutlak 
 \begin_inset Formula $|\tilde{p}(10^{-2})-f'(1)|=|0.5402933008747335-\cos(1)|$
 \end_inset
 
@@ -1747,12 +1747,12 @@ Galat
 \begin_inset space ~
 \end_inset
 
-absolut
+mutlak
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-galat ! absolut
+galat ! mutlak
 \end_layout
 
 \end_inset
@@ -1761,7 +1761,7 @@ galat ! absolut
 \begin_inset Formula $|\tilde{p}-p|$
 \end_inset
 
- disebut galat absolut ketika menggunakan 
+ disebut galat mutlak ketika menggunakan 
 \begin_inset Formula $\tilde{p}$
 \end_inset
 
@@ -1900,12 +1900,12 @@ Galat
 \begin_inset space ~
 \end_inset
 
-pemenggalan
+pemotongan
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-galat ! pemenggalan
+galat ! pemotongan
 \end_layout
 
 \end_inset
@@ -1991,7 +1991,7 @@ Octave ! fungsi standar
 
 \end_inset
 
- seperti nilai absolut, sinus, dan kosinus.
+ seperti nilai mutlak, sinus, dan kosinus.
  Untungnya, semua ini cukup mudah dilakukan dengan Octave.
  Operasi aritmetika dilakukan hampir sama seperti pada kalkulator.
  Hanya ada satu perbedaan penting.
@@ -2018,11 +2018,11 @@ Octave ! fungsi standar
 \end_layout
 
 \begin_layout Standard
-Fungsi standar seperti nilai absolut, sinus, dan kosinus (serta banyak fungsi
+Fungsi standar seperti nilai mutlak, sinus, dan kosinus (serta banyak fungsi
  lain) memiliki singkatan sederhana di Octave.
  Semua fungsi tersebut menerima satu argumen, atau masukan.
  Ingatlah notasi fungsi; dengan demikian akan jelas cara mencari sinus atau
- nilai absolut suatu bilangan.
+ nilai mutlak suatu bilangan.
  Anda perlu mengetikkan nama fungsi, tanda kurung buka, argumen, dan tanda
  kurung tutup, seperti dalam 
 \family typewriter
@@ -3639,7 +3639,7 @@ Selain galat pembulatan, apa yang dapat berdampak buruk terhadap akurasi suatu
 \end_layout
 
 \begin_layout Enumerate
-Hitung galat absolut dan galat relatif ketika menghampiri 
+Hitung galat mutlak dan galat relatif ketika menghampiri 
 \begin_inset Formula $\pi$
 \end_inset
 
@@ -3653,7 +3653,7 @@ name "ex:absoluteError"
 
 \end_inset
 
-Hitung galat absolut ketika menghampiri 
+Hitung galat mutlak ketika menghampiri 
 \begin_inset Formula $p$
 \end_inset
 
@@ -3936,7 +3936,7 @@ haspartwithsolution
 \end_layout
 
 \begin_layout Enumerate
-Hitung galat absolut dan galat relatif ketika menghampiri 
+Hitung galat mutlak dan galat relatif ketika menghampiri 
 \begin_inset Formula $p$
 \end_inset
 
@@ -4042,7 +4042,7 @@ reference "enu:one-over-pi"
 \end_inset
 
 .
- Dengan Octave, tentukan galat absolut dan galat relatif hampiran tersebut.
+ Dengan Octave, tentukan galat mutlak dan galat relatif hampiran tersebut.
 \end_layout
 
 \begin_layout Enumerate
@@ -4352,7 +4352,7 @@ Tentukan suatu hampiran
 \begin_inset Formula $p$
 \end_inset
 
- dengan galat absolut 
+ dengan galat mutlak 
 \begin_inset Formula $.001$
 \end_inset
 
@@ -4524,7 +4524,7 @@ name "ex:absoluteError3"
 \begin_inset Formula $\tilde{p}$
 \end_inset
 
- menghampiri nilai apa dengan galat absolut 
+ menghampiri nilai apa dengan galat mutlak 
 \begin_inset Formula $.0005$
 \end_inset
 
@@ -4627,7 +4627,7 @@ name "exc:abserr8"
 \begin_inset Formula $p$
 \end_inset
 
- dengan galat absolut 
+ dengan galat mutlak 
 \begin_inset Formula $\frac{1}{100}$
 \end_inset
 
@@ -4668,7 +4668,7 @@ hasananswer
 \begin_inset Formula $p$
 \end_inset
 
- dengan galat absolut 
+ dengan galat mutlak 
 \begin_inset Formula $\frac{3}{100}$
 \end_inset
 
@@ -4723,7 +4723,7 @@ Bilangan
 \end_inset
 
 .
- Hitung galat absolut dan galat relatif pada hampiran-hampiran berikut terhadap 
+ Hitung galat mutlak dan galat relatif pada hampiran-hampiran berikut terhadap 
 \begin_inset Formula $e$
 \end_inset
 
@@ -4812,7 +4812,7 @@ Tentukan nilai
 \begin_inset Formula $\tilde{p}$
 \end_inset
 
- sedemikian sehingga galat relatif sama dengan galat absolut.
+ sedemikian sehingga galat relatif sama dengan galat mutlak.
  Nyatakan secara umum kondisi yang menyebabkan hal ini terjadi.
 \begin_inset ERT
 status open
@@ -4838,7 +4838,7 @@ Tentukan nilai
 \begin_inset Formula $\tilde{p}$
 \end_inset
 
- sedemikian sehingga galat relatif lebih besar daripada galat absolut.
+ sedemikian sehingga galat relatif lebih besar daripada galat mutlak.
  Nyatakan secara umum kondisi yang menyebabkan hal ini terjadi.
 \end_layout
 
@@ -4851,7 +4851,7 @@ Tentukan nilai
 \begin_inset Formula $\tilde{p}$
 \end_inset
 
- sedemikian sehingga galat relatif lebih kecil daripada galat absolut.
+ sedemikian sehingga galat relatif lebih kecil daripada galat mutlak.
  Nyatakan secara umum kondisi yang menyebabkan hal ini terjadi.
 \end_layout
 
@@ -4861,7 +4861,7 @@ Hitung (i)
 \end_inset
 
  dengan kalkulator atau komputer (perhitungan titik-mengambang), (ii) galat
- absolut, 
+ mutlak, 
 \begin_inset Formula $|\tilde{p}-p|$
 \end_inset
 

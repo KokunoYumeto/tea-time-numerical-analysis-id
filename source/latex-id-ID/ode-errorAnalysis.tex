@@ -5,7 +5,7 @@ Bagian \ref{sec:Runge-Kutta-Methods} berakhir dengan pengamatan yang
 misterius (dan meresahkan?) bahwa PDB-Simpson tidak memenuhi harapan.
 Berdasarkan pemecah PDB lainnya, kita memperkirakan laju kekonvergenan
 PDB-Simpson sebesar $O(h^{4})$ karena Aturan Simpson, yang mendasari
-PDB-Simpson, memiliki galat pemenggalan lokal sebesar $O(h^{5})$.
+PDB-Simpson, memiliki galat pemotongan lokal sebesar $O(h^{5})$.
 
 Penjelasannya berakar pada fakta bahwa kita menyelesaikan PDB berbentuk
 $\dot{y}=f(t,y)$, yang turunannya merupakan fungsi dari dua variabel,
@@ -60,9 +60,9 @@ akan memerlukannya jika terdapat lebih dari tiga simpul dalam rumus
 integrasi yang mendasarinya. 
 
 Selisih antara $y(t_{0}+h)$ dari (\ref{eq:twoVariableTaylorSeries})
-dan $y_{i+1}$ dari (\ref{eq:rungeKuttaGeneral}) adalah galat pemenggalan
+dan $y_{i+1}$ dari (\ref{eq:rungeKuttaGeneral}) adalah galat pemotongan
 lokal pemecah PDB (galat ketika mengambil satu langkah). Untuk menuliskan
-galat pemenggalan ini dalam bentuk $O(h^{\ell})$, kita perlu mengembangkan
+galat pemotongan ini dalam bentuk $O(h^{\ell})$, kita perlu mengembangkan
 setiap $k_{j}$ ke dalam polinomial Taylor-nya. Diperlukan teorema
 Taylor dalam dua variabel.
 \begin{thm}
@@ -164,7 +164,7 @@ dalam rumus
 y_{i+1}=y_{i}+h\left[\alpha_{1}k_{1}+\alpha_{2}k_{2}+\alpha_{3}k_{3}\right]\label{eq:rungeKutta3ks}
 \end{equation}
 dan mengurangkan hasilnya dari (\ref{eq:twoVariableTaylorSeries}).
-Untuk pembahasan ini, kita mencari metode dengan galat pemenggalan
+Untuk pembahasan ini, kita mencari metode dengan galat pemotongan
 lokal sebesar $O(h^{4})$. Karena itu, kita hanya perlu mempertahankan
 suku konstanta dan suku yang memuat faktor berupa $h^{3}$, $h^{2}$,
 atau $h$ dalam persamaan (\ref{eq:rungeKutta3ks}). Suku-suku dengan
@@ -200,7 +200,7 @@ untuk bersandar sejenak dan melihat apa yang telah kita peroleh. Kita
 telah mengembangkan semua suku dalam (\ref{eq:rungeKuttaGeneral})
 untuk $s=3$ dan siap membandingkan hasilnya dengan ekspansi Taylor
 PDB pada (\ref{eq:twoVariableTaylorSeries}). Selisih keduanya adalah
-galat pemenggalan lokal, sehingga kita akan mencari pangkat terkecil
+galat pemotongan lokal, sehingga kita akan mencari pangkat terkecil
 dari $h$ yang tersisa setelah pengurangan. Dengan menyalin kedua
 persamaan di sini agar mudah dirujuk, kita mengurangkan
 \[
@@ -253,10 +253,10 @@ hanya memperoleh empat syarat yang berlainan:
 \end{eqnarray}
 Karena terdapat lima variabel dan hanya empat syarat, kita dapat menduga
 bahwa terdapat beberapa pemecah PDB berbentuk (\ref{eq:rungeKuttaGeneral})
-dengan $s=3$ dan galat pemenggalan lokal $O(h^{4})$. 
+dengan $s=3$ dan galat pemotongan lokal $O(h^{4})$. 
 
 Bukti dari Bagian \ref{sec:Runge-Kutta-Methods} menunjukkan bahwa
-PDB-tertutup-terbuka seharusnya memiliki galat pemenggalan lokal $O(h^{4}$).
+PDB-tertutup-terbuka seharusnya memiliki galat pemotongan lokal $O(h^{4}$).
 Mari kita periksa. Untuk metode tersebut, kita memiliki
 \[
 \begin{gathered}\alpha_{1}=\frac{1}{4},\quad\alpha_{2}=0,\quad\alpha_{3}=\frac{3}{4}\\
@@ -271,15 +271,15 @@ sehingga
 \alpha_{3}\beta_{2}\beta_{3} & = & \frac{3}{4}\cdot\frac{1}{3}\cdot\frac{2}{3}=\frac{1}{6}.
 \end{eqnarray*}
 Memang, PDB-tertutup-terbuka memenuhi semua syarat pemecah PDB dengan
-galat pemenggalan lokal (setidaknya) $O(h^{4})$. Sebenarnya, kita
+galat pemotongan lokal (setidaknya) $O(h^{4})$. Sebenarnya, kita
 harus menunjukkan bahwa setidaknya ada satu suku yang memuat $h^{4}$
-tetap tersisa dalam selisih untuk membuktikan bahwa galat pemenggalan
+tetap tersisa dalam selisih untuk membuktikan bahwa galat pemotongan
 lokal tidak berderajat lebih tinggi.
 
 Sebelum akhirnya menjawab apa yang terjadi pada PDB-Simpson, kerja
 keras kita sejauh ini sudah cukup untuk memeriksa bahwa PDB-trapesium
-dan PDB-terbuka memiliki galat pemenggalan lokal $O(h^{3})$ dan bahwa
-metode Euler memiliki galat pemenggalan lokal $O(h^{2})$. Untuk PDB-trapesium,
+dan PDB-terbuka memiliki galat pemotongan lokal $O(h^{3})$ dan bahwa
+metode Euler memiliki galat pemotongan lokal $O(h^{2})$. Untuk PDB-trapesium,
 kita memiliki $\alpha_{1}=\frac{1}{2}$, $\alpha_{2}=\frac{1}{2}$,
 $\alpha_{3}=0$, $\beta_{2}=1$, dan $\beta_{3}$ tidak terdefinisi
 (kita dapat menetapkan sembarang bilangan yang kita pilih karena $\alpha_{3}=0$
@@ -294,7 +294,7 @@ kita memperoleh
 Dua syarat pertama terpenuhi, tetapi dua syarat terakhir tidak. Namun,
 ingat bahwa dua syarat pertama diturunkan dari suku $h$ dan $h^{2}$
 sedangkan dua syarat terakhir diturunkan dari suku $h^{3}$. Jadi,
-untuk PDB-trapesium, galat pemenggalan lokalnya adalah $O(h^{3})$.
+untuk PDB-trapesium, galat pemotongan lokalnya adalah $O(h^{3})$.
 
 Untuk metode Euler, kita memiliki $\alpha_{1}=1$, $\alpha_{2}=\alpha_{3}=0$,
 serta $\beta_{2}$ dan $\beta_{3}$ tidak terdefinisi (atau dapat
@@ -307,8 +307,8 @@ kita pilih sesuka hati), sehingga kita memperoleh
 \end{eqnarray*}
 Persamaan kedua, yang diturunkan dari suku yang melibatkan $h^{2}$,
 tidak terpenuhi, tetapi persamaan pertama, yang diturunkan dari suku
-yang melibatkan $h$, terpenuhi, sehingga galat pemenggalan lokal
-metode Euler adalah $O(h^{2})$.
+yang melibatkan $h$, terpenuhi, sehingga galat pemotongan lokal metode
+Euler adalah $O(h^{2})$.
 
 Terakhir, untuk PDB-Simpson, kita memiliki $\alpha_{1}=\frac{1}{6}$,
 $\alpha_{2}=\frac{2}{3}$, $\alpha_{3}=\frac{1}{6}$, $\beta_{2}=\frac{1}{2}$,
@@ -319,12 +319,12 @@ dan $\beta_{3}=1$, sehingga kita memperoleh
 \alpha_{2}\beta_{2}^{2}+\alpha_{3}\beta_{3}^{2} & = & \frac{2}{3}\left(\frac{1}{2}\right)^{2}+\frac{1}{6}(1)^{2}=\frac{1}{3}\\
 \alpha_{3}\beta_{2}\beta_{3} & = & \frac{1}{6}\cdot\frac{1}{2}\cdot1\neq\frac{1}{6}.
 \end{eqnarray*}
-Dua persamaan pertama terpenuhi, sehingga galat pemenggalan lokalnya
+Dua persamaan pertama terpenuhi, sehingga galat pemotongan lokalnya
 (setidaknya) $O(h^{3})$, tetapi persamaan terakhir tidak terpenuhi,
-sehingga galat pemenggalan lokalnya tidak berorde lebih tinggi daripada
+sehingga galat pemotongan lokalnya tidak berorde lebih tinggi daripada
 $O(h^{3})$. Tidak ada suku yang memuat faktor $h$ atau $h^{2}$
 (yang tidak sekaligus memuat pangkat $h$ yang lebih tinggi) dalam
-galat pemenggalan lokal, tetapi suku $h^{3}\alpha_{3}\beta_{2}\beta_{3}(f_{t}f_{y}+ff_{y}^{2})=\frac{1}{6}h^{3}(f_{t}f_{y}+ff_{y}^{2})$
+galat pemotongan lokal, tetapi suku $h^{3}\alpha_{3}\beta_{2}\beta_{3}(f_{t}f_{y}+ff_{y}^{2})=\frac{1}{6}h^{3}(f_{t}f_{y}+ff_{y}^{2})$
 muncul, sehingga galatnya adalah $O(h^{3})$.
 
 \subsection{Catatan tentang Konvensi dan Praktik}
@@ -339,20 +339,20 @@ sebagai metode orde ketiga Heun.\index{metode orde ketiga Heun}\index{metode!ord
 Metode-metode ini mudah ditemukan dalam literatur. Keduanya merupakan
 contoh prototipikal metode yang efisien. Metode Euler yang diperbaiki
 memerlukan dua penghitungan nilai fungsi per langkah dan menghasilkan
-galat pemenggalan lokal $O(h^{3})$. Metode orde ketiga Heun memerlukan
+galat pemotongan lokal $O(h^{3})$. Metode orde ketiga Heun memerlukan
 tiga penghitungan nilai fungsi per langkah dan menghasilkan galat
-pemenggalan lokal $O(h^{4})$.
+pemotongan lokal $O(h^{4})$.
 
 Metode yang selama ini kita sebut PDB-terbuka tidak diberi nama karena
 tidak akan pernah digunakan dalam praktik. Metode ini tidak efisien
 karena memerlukan tiga penghitungan nilai fungsi, tetapi hanya memiliki
-galat pemenggalan lokal $O(h^{3})$. Karena itu, kecil kemungkinan
+galat pemotongan lokal $O(h^{3})$. Karena itu, kecil kemungkinan
 Anda akan menemukannya dalam literatur karena metode ini tidak berguna
 dalam praktik. Metode orde ketiga Heun maupun metode Euler yang diperbaiki
 akan lebih baik daripada PDB-terbuka. Metode orde ketiga Heun menghasilkan
-galat pemenggalan yang lebih kecil dengan jumlah komputasi yang sama
+galat pemotongan yang lebih kecil dengan jumlah komputasi yang sama
 (tiga penghitungan nilai fungsi), sedangkan metode Euler yang diperbaiki
-menghasilkan galat pemenggalan yang sama dengan komputasi lebih sedikit
+menghasilkan galat pemotongan yang sama dengan komputasi lebih sedikit
 (dua penghitungan nilai fungsi). PDB-Simpson memiliki kekurangan yang
 sama dengan PDB-terbuka, sehingga kecil kemungkinan Anda menemukannya
 dalam literatur. Metode ini juga tidak efisien.
@@ -392,8 +392,8 @@ nilai fungsi. Jadi, metode yang paling efisien dijumpai pada orde
 
 PDB-Simpson gagal mewujudkan potensinya karena tidak memiliki cukup
 banyak tahap, bukan karena tidak ada rumus yang diturunkan dari Aturan
-Simpson dengan galat pemenggalan lokal $O(h^{5})$. Metode Runge-Kutta
-klasik orde 4 (dengan galat pemenggalan lokal $O(h^{5})$) memiliki
+Simpson dengan galat pemotongan lokal $O(h^{5})$. Metode Runge-Kutta
+klasik orde 4 (dengan galat pemotongan lokal $O(h^{5})$) memiliki
 empat tahap dan diberikan oleh\index{metode RK4}\index{metode!RK4|see {metode RK4}}
 \begin{eqnarray*}
 k_{1} & = & f(t_{i},y_{i})\\
@@ -594,9 +594,9 @@ j
 
 \subsection{Latihan}
 \begin{enumerate}
-\item \label{exc:ode-errorAnalysis}Tentukan secara analitis galat pemenggalan
+\item \label{exc:ode-errorAnalysis}Tentukan secara analitis galat pemotongan
 lokal untuk pemecah PDB yang diturunkan dalam latihan \vref{exc:ode-rungeKutta}.
-Bandingkan hasilnya dengan galat pemenggalan lokal rumus integrasi
+Bandingkan hasilnya dengan galat pemotongan lokal rumus integrasi
 yang mendasarinya. Apakah keduanya sama? Bandingkan pula dengan laju
 kekonvergenan yang ditentukan secara eksperimental (lihat latihan
 \vref{exc:ode-rungeKutta-16}). Apakah nilainya satu derajat lebih

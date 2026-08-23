@@ -155,7 +155,7 @@ R_{2}(x) & = & \frac{-6/\xi^{4}}{6}(x-5)^{3}\\
 (c) $f(1)\approx T_{2}(1)=\frac{1}{5}-\frac{1-5}{25}+\frac{(1-5)^{2}}{125}=\frac{1}{5}+\frac{4}{25}+\frac{16}{125}=\frac{61}{125}$
 dan $f(9)\approx T_{2}(9)=\frac{1}{5}-\frac{9-5}{25}+\frac{(9-5)^{2}}{125}=\frac{1}{5}-\frac{4}{25}+\frac{16}{125}=\frac{21}{125}$\\
 (d) Batas-batasnya adalah 64 dan $\frac{64}{625}$ secara berurutan.
-Menurut teorema Taylor, galat absolut $|f(x)-T_{2}(x)|=|R_{2}(\xi)|$
+Menurut teorema Taylor, galat mutlak $|f(x)-T_{2}(x)|=|R_{2}(\xi)|$
 untuk suatu $\xi$ yang terletak secara ketat di antara $x$ dan $x_{0}$.
 Jadi, kita dapat memperoleh batas teoretis dengan menentukan batas
 $|R_{2}(x)|$ untuk semua nilai $\xi$ di antara $x$ dan $x_{0}$.
@@ -169,7 +169,7 @@ Namun, kita memperoleh batas yang jauh lebih kecil karena kita menentukan
 batas pada interval dari 5 hingga 9. $|f(9)-T_{2}(9)|\leq\frac{64}{5^{4}}=\frac{64}{625}$.\\
 (e) Batas-batasnya adalah $\frac{64}{625}$ dan $\frac{64}{6561}$
 secara berurutan. Seperti halnya kita dapat menentukan batas atas
-galat absolut, kita juga dapat menentukan batas bawah. Analisis yang
+galat mutlak, kita juga dapat menentukan batas bawah. Analisis yang
 sama berlaku hingga tahap ketika kita memaksimumkan suku sisa pada
 suatu interval $\xi$ nilai. Satu-satunya perubahan adalah bahwa sekarang
 kita harus meminimumkan fungsi ini pada interval tersebut. Jadi, $|f(1)-T_{2}(1)|\geq{\displaystyle \min_{\xi\in[1,5]}\frac{64}{\xi^{4}}}$
@@ -204,7 +204,7 @@ f^{(5)}(x) & = & -4[(-16x^{3}+24x)e^{-x^{2}}+(-4x^{4}+12x^{2}-3)(-2xe^{-x^{2}})]
  & = & -8(4x^{5}-20x^{3}+15x)e^{-x^{2}}
 \end{eqnarray*}
 Sekarang, $R_{4}(x)=\frac{f^{(5)}(\xi)}{5!}x^{5}=\frac{-8(4\xi^{5}-20\xi^{3}+15\xi)e^{-\xi^{2}}}{120}x^{5}=\frac{x^{5}}{15}\left(4\xi^{5}-20\xi^{3}+15\xi\right)e^{-\xi^{2}}$.
-Untuk setiap nilai $x$, kita harus memaksimumkan nilai absolut dari
+Untuk setiap nilai $x$, kita harus memaksimumkan nilai mutlak dari
 ekspresi ini untuk semua $\xi$ di antara 0 dan $x$. Kita dapat mengabaikan
 faktor $\frac{x^{5}}{15}$ yang tidak bergantung pada $\xi$, dan
 berfokus mencari ekstrem dari $\left(4\xi^{5}-20\xi^{3}+15\xi\right)e^{-\xi^{2}}$.
@@ -802,7 +802,7 @@ memberi kita hasil tersebut.
 \item [{(i)}] $f$ kontinu pada $[-4,-.9]$ karena satu-satunya diskontinuitasnya
 berada di $x=-\frac{2}{3}$, tempat penyebut, $6x+4$, bernilai nol,
 dan $-\frac{2}{3}\approx-.6666$ tidak berada dalam $[-4,-.9]$.
-\item [{(ii)}] Kita mencari ekstrem absolut dari $f$ pada $[-4,-.9]$.
+\item [{(ii)}] Kita mencari ekstrem mutlak dari $f$ pada $[-4,-.9]$.
 $f'(x)=\frac{18x^{2}+24x+6}{36x^{2}+48x+16}=\frac{3(x+1)(3x+1)}{2(3x+2)^{2}}$
 memiliki nol di $x=-1$ dan $x=-\frac{1}{3}$ dan tidak terdefinisi
 di $x=-\frac{2}{3}$. Satu-satunya nilai kritis yang relevan adalah
@@ -820,7 +820,7 @@ dari $-4$ hingga $-.9$ tampak seperti
 Grafik fungsi tidak keluar dari bidang tampilan melalui bagian atas
 (tidak ada nilai yang lebih besar dari $-.9$) maupun bagian bawah
 (tidak ada nilai yang kurang dari $-4$), sehingga $f([-4,-.9])\subseteq[-4,-.9]$.
-\item [{(iii)}] Kita mencari ekstrem absolut dari $f'$ pada $[-4,-.9]$.
+\item [{(iii)}] Kita mencari ekstrem mutlak dari $f'$ pada $[-4,-.9]$.
 $f''(x)=\frac{3}{27x^{3}+54x^{2}+36x+8}=\frac{3}{(3x+2)^{3}}$ tidak
 memiliki nol dan hanya tidak terdefinisi di $x=-\frac{2}{3}$. Tidak
 ada nilai kritis yang relevan, sehingga kita memeriksa $f'(-4)=\frac{99}{200}=0.495$
@@ -1973,7 +1973,7 @@ sehingga batas kita adalah
  & = & .015\pi^{2}\left|\sin(1.5\pi)\right|\\
  & < & .149
 \end{eqnarray*}
-Galat absolut sebenarnya adalah $|f(1.4)-P_{1}(1.4)|=|\sin(1.4\pi)+.8166|\approx.134$,
+Galat mutlak sebenarnya adalah $|f(1.4)-P_{1}(1.4)|=|\sin(1.4\pi)+.8166|\approx.134$,
 yang cukup dekat dengan batas tersebut.\\
 (derajat paling tinggi 2) $f(1.4)-P_{2}(1.4)=\frac{f^{(3)}(\xi_{1.4})}{3!}(1.4-1.25)(1.4-1.6)(1.4-1)$
 sehingga batas kita adalah
@@ -1982,7 +1982,7 @@ sehingga batas kita adalah
  & = & .002\pi^{3}\\
  & < & .0620
 \end{eqnarray*}
-Galat absolut sebenarnya adalah $|f(1.4)-P_{2}(1.4)|=|\sin(1.4\pi)+.918232|\approx.0328$,
+Galat mutlak sebenarnya adalah $|f(1.4)-P_{2}(1.4)|=|\sin(1.4\pi)+.918232|\approx.0328$,
 yang memiliki orde magnitudo yang sama dengan batas tersebut.
 \end{description}
 
@@ -2389,7 +2389,7 @@ Dengan memasukkan nilai-nilai ini ke rumus \ref{eq:integral7dumb}:
  & \approx & 0.8753962951271979.
 \end{eqnarray*}
 \item [{\ref{exc:rudiments-11}c:}] (i) $\int_{10}^{17}\frac{1}{x-5}dx=\left.\ln|x-5|\right|_{10}^{17}=\ln(12)-\ln(5)=\ln\frac{12}{5}\approx0.8754687373539001$
-(ii) Galat absolut adalah nilai mutlak selisih antara hampiran dan
+(ii) Galat mutlak adalah nilai mutlak selisih antara hampiran dan
 nilai eksak: $|\ln\frac{12}{5}-0.8753962951271979|\approx7.24(10)^{-5}$.
 \item [{\ref{exc:rudiments-15}:}] Untuk menghampiri suatu besaran yang
 berkaitan dengan fungsi nonpolinomial, kita cukup mengevaluasi besaran
@@ -3015,7 +3015,7 @@ besar. Alasan lain untuk memperkirakan hampiran $f'(2)$ lebih baik
 adalah karena $2$ terletak di tengah-tengah simpul, sedangkan $4$
 sejauh mungkin dari letak tengah!\\
 (c) $f'(x)=-\frac{1}{(x-4.2)^{2}}$ sehingga $f'(2)=-\frac{25}{121}$
-dan $f'(4)=-25$. Galat absolutnya adalah
+dan $f'(4)=-25$. Galat mutlaknya adalah
 \begin{eqnarray*}
 |f'(2)-0.049625| & \approx & 0.2562365702479338\\
 |f'(4)-(-8.089825)| & \approx & 16.910175
@@ -3025,8 +3025,8 @@ dan galat relatifnya adalah
 \left|\frac{0.2562365702479338}{f'(2)}\right| & \approx & 1.240185\\
 \left|\frac{16.910175}{f'(4)}\right| & \approx & 0.6764070000000001.
 \end{eqnarray*}
-Jadi, sesuai perkiraan, galat absolut pada hampiran $f'(2)$ lebih
-kecil daripada galat absolut pada $f'(4)$, tetapi perbandingan galat
+Jadi, sesuai perkiraan, galat mutlak pada hampiran $f'(2)$ lebih
+kecil daripada galat mutlak pada $f'(4)$, tetapi perbandingan galat
 relatifnya, yang mungkin lebih penting, justru berlawanan!
 \item [{\ref{exc:calculusErrors-15}:}] Fungsi yang ditampilkan di bawah
 ini, $(\lambda=2.584739179873929)$, merupakan salah satu contoh.
@@ -3191,7 +3191,7 @@ pada $\int_{0}^{\pi}\sin^{4}x\,dx$ menghasilkan
 \[
 \frac{\pi}{2}\left(\sin^{4}(0)+\sin^{4}(\pi)\right)=0,
 \]
-yang memiliki galat absolut $\frac{3}{8}\pi$. Karena Aturan Trapesium
+yang memiliki galat mutlak $\frac{3}{8}\pi$. Karena Aturan Trapesium
 memiliki suku galat $O\left(\frac{1}{n^{2}}\right)$, membagi interval
 integrasi menjadi $n$ subselang seharusnya mengurangi galat dengan
 faktor sekitar $\frac{1}{n^{2}}$. Oleh karena itu, kita perlu menyelesaikan
@@ -3846,10 +3846,10 @@ tersebut adalah $\frac{|f(5)-34|}{|f(5)|}=\frac{9}{689}\approx0.013$.
 Setiap komentar umum tentang akurasi suatu hampiran harus mempertimbangkan
 kebutuhan dalam situasi tersebut. Dalam kasus ini, tidak ada konteks
 yang menentukan apakah kita mengharapkan galat relatif $10$\%, $1$\%,
-$.1\%$, atau yang lebih kecil, maupun apakah galat absolut lebih
-penting. Tanpa konteks tersebut, kita cukup menggunakan representasi
-visual, yang menunjukkan bahwa titik-titik hampiran sangat dekat dengan
-grafik solusi eksak, lalu menyimpulkan bahwa hampiran tersebut merupakan
+$.1\%$, atau yang lebih kecil, maupun apakah galat mutlak lebih penting.
+Tanpa konteks tersebut, kita cukup menggunakan representasi visual,
+yang menunjukkan bahwa titik-titik hampiran sangat dekat dengan grafik
+solusi eksak, lalu menyimpulkan bahwa hampiran tersebut merupakan
 representasi yang baik dari solusi eksak.
 \item [{\ref{exc:odePendulum-22}:}] Gaya yang bekerja pada balok diam
 di bidang miring adalah gaya gravitasi, gesekan, dan gaya normal dari
@@ -5427,13 +5427,13 @@ $\beta_{3}=\alpha_{3}=0$) ke dalam persamaan \ref{eq:rk3conditions},
 0\cdot\frac{2}{3}\cdot0 & \neq & \frac{1}{6}.
 \end{eqnarray*}
 Karena satu-satunya persamaan yang tidak terpenuhi diturunkan dari
-suku $h^{3}$, kita menyimpulkan bahwa metode ini memiliki galat pemenggalan
+suku $h^{3}$, kita menyimpulkan bahwa metode ini memiliki galat pemotongan
 lokal $O(h^{3})$. Rumus integrasi yang menjadi asal penurunannya
-memiliki galat pemenggalan lokal $O(h^{4})$, sehingga akurasinya
-sebagai pemecah PDB sedikit lebih rendah. Namun, galat pemenggalan
-lokal $O(h^{3})$ selaras dengan laju kekonvergenan $O(h^{2})$ yang
-ditentukan secara eksperimental. Bahkan, galat pemenggalan lokal inilah
-yang menghasilkan laju$O(h^{2})$ kekonvergenan tersebut.
+memiliki galat pemotongan lokal $O(h^{4})$, sehingga akurasinya sebagai
+pemecah PDB sedikit lebih rendah. Namun, galat pemotongan lokal $O(h^{3})$
+selaras dengan laju kekonvergenan $O(h^{2})$ yang ditentukan secara
+eksperimental. Bahkan, galat pemotongan lokal inilah yang menghasilkan
+laju$O(h^{2})$ kekonvergenan tersebut.
 \item [{\ref{exc:ode-errorAnalysis}e:}] Pemecah PDB yang sebelumnya diturunkan
 adalah 
 
@@ -5454,13 +5454,13 @@ nilai-nilai ini ke dalam persamaan \ref{eq:rk3conditions},
 \end{eqnarray*}
 
 Karena satu-satunya persamaan yang tidak terpenuhi diturunkan dari
-suku $h^{3}$, kita menyimpulkan bahwa metode ini memiliki galat pemenggalan
+suku $h^{3}$, kita menyimpulkan bahwa metode ini memiliki galat pemotongan
 lokal $O(h^{3})$. Rumus integrasi yang menjadi asal penurunannya
-memiliki galat pemenggalan lokal $O(h^{4})$, sehingga akurasinya
-sebagai pemecah PDB sedikit lebih rendah. Namun, galat pemenggalan
-lokal $O(h^{3})$ selaras dengan laju kekonvergenan $O(h^{2})$ yang
-ditentukan secara eksperimental. Bahkan, galat pemenggalan lokal inilah
-yang menghasilkan laju$O(h^{2})$ kekonvergenan tersebut.
+memiliki galat pemotongan lokal $O(h^{4})$, sehingga akurasinya sebagai
+pemecah PDB sedikit lebih rendah. Namun, galat pemotongan lokal $O(h^{3})$
+selaras dengan laju kekonvergenan $O(h^{2})$ yang ditentukan secara
+eksperimental. Bahkan, galat pemotongan lokal inilah yang menghasilkan
+laju$O(h^{2})$ kekonvergenan tersebut.
 \item [{\ref{exc:ode-errorAnalysis-1}:}] Dari masalah nilai awal, $f(t,y)=ty$
 dan $y(1)=\frac{1}{2}$. Untuk pemecah PDB, ini berarti $t_{0}=1$
 dan $y_{0}=\frac{1}{2}$. Untuk menghitung $y(2)$ dalam satu langkah,
@@ -5636,7 +5636,7 @@ Selisih kedua metode akan digunakan sebagai taksiran galat:
  & = & \frac{h}{18}\left[-11k_{1}+30k_{2}+2k_{3}-24k_{4}+3k_{5}\right].
 \end{eqnarray*}
 Karena disebutkan bahwa ini merupakan metode RK3(4), laju kekonvergenan
-(ordennya) adalah 3 dan karena itu galat pemenggalan lokalnya $O(h^{4})$.
+(ordennya) adalah 3 dan karena itu galat pemotongan lokalnya $O(h^{4})$.
 Ini berarti galat akan berskala dengan pangkat empat dari $h$. Hal
 ini penting ketika menyesuaikan ukuran langkah. Kita perlu menggunakan
 akar pangkat empat, bukan akar pangkat tiga seperti pada RK2(3). Selain
@@ -5751,7 +5751,7 @@ $1$ & $\frac{2}{9}$ & $\frac{1}{3}$ & $\frac{4}{9}$ & \tabularnewline
 Kesulitan yang lebih sederhana ialah mengetahui besarnya galat hampiran
 yang sebenarnya. PDB ini tidak dapat diselesaikan secara eksak, sehingga
 kita tidak dapat menghitung solusi eksaknya. Kita tentu dapat menjalankan
-metode dengan toleransi $10^{-4}$, tetapi ini hanyalah galat pemenggalan
+metode dengan toleransi $10^{-4}$, tetapi ini hanyalah galat pemotongan
 \textit{lokal}. Galat ini tidak serta-merta menghasilkan taksiran
 apa pun untuk galat \textit{global} (total galat yang terakumulasi
 pada langkah terakhir). Sering kali, keduanya akan memiliki magnitudo
@@ -5800,7 +5800,7 @@ toleransi dapat menyebabkan perubahan besar pada galat global. Galat
 global sebagai fungsi toleransi sangat kasar dan tak kontinu (lihat
 Gambar \ref{fig:rk23-global-error}). Sifat osilatori solusi memperburuk
 masalah ini pada metode Runge-Kutta adaptif. Jika galat global berskala
-sempurna dengan galat pemenggalan, Gambar 
+sempurna dengan galat pemotongan, Gambar 
 \begin{figure}
 \caption{\label{fig:rk23-global-error}grafik log-log toleransi terhadap galat
 global}
@@ -5825,13 +5825,13 @@ memperlihatkan osilasinya. Secara umum, membandingkan beberapa hampiran
 yang menggunakan toleransi berbeda bukanlah cara mengendalikan galat
 global. Galat global dapat dikendalikan dengan cukup baik dengan menskalakan
 toleransi relatif terhadap ukuran langkah seiring berlangsungnya solusi
-atau menggunakan galat relatif alih-alih galat absolut. Apa pun caranya,
+atau menggunakan galat relatif alih-alih galat mutlak. Apa pun caranya,
 persoalan ini menambahkan lapisan kompleksitas lain pada metode.
 \item [{\ref{exc:ode-adaptive-28}:}] Ada dua kesulitan dalam masalah ini.
 Kesulitan yang lebih sederhana ialah mengetahui besarnya galat hampiran
 yang sebenarnya. PDB ini tidak dapat diselesaikan secara eksak, sehingga
 kita tidak dapat menghitung solusi eksaknya. Kita tentu dapat menjalankan
-metode dengan toleransi $10^{-4}$, tetapi ini hanyalah galat pemenggalan
+metode dengan toleransi $10^{-4}$, tetapi ini hanyalah galat pemotongan
 \textit{lokal}. Galat ini tidak serta-merta menghasilkan taksiran
 apa pun untuk galat \textit{global} (total galat yang terakumulasi
 pada langkah terakhir). Sering kali, keduanya akan memiliki magnitudo
@@ -5878,7 +5878,7 @@ $10^{-4}$. Namun, bukti ini pun sama sekali belum meyakinkan. Kesulitan
 kedua adalah bahwa penyesuaian kecil pada toleransi dapat menyebabkan
 perubahan besar pada galat global. Galat global sebagai fungsi toleransi
 bersifat kasar dan tak kontinu (lihat Gambar \ref{fig:rk23-global-error-2}).
-Jika galat global berskala sempurna dengan galat pemenggalan, Gambar
+Jika galat global berskala sempurna dengan galat pemotongan, Gambar
 \begin{figure}
 \caption{\label{fig:rk23-global-error-2}grafik log-log toleransi terhadap
 galat global}
@@ -5901,7 +5901,7 @@ Secara umum, membandingkan beberapa hampiran yang menggunakan toleransi
 berbeda bukanlah cara mengendalikan galat global. Galat global dapat
 dikendalikan dengan cukup baik dengan menskalakan toleransi relatif
 terhadap ukuran langkah seiring berlangsungnya solusi atau menggunakan
-galat relatif alih-alih galat absolut. Apa pun caranya, persoalan
-ini menambahkan lapisan kompleksitas lain pada metode.
+galat relatif alih-alih galat mutlak. Apa pun caranya, persoalan ini
+menambahkan lapisan kompleksitas lain pada metode.
 \end{description}
 

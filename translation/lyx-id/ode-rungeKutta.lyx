@@ -920,7 +920,7 @@ Metode kita yang didasarkan pada Aturan Trapesium, yang akan kita sebut PDB-trap
  untuk sementara, tampaknya lebih baik dalam menghampiri solusi
  PDB ini
  daripada metode Euler.
- Dua kolom terakhir memuat galat absolut untuk setiap hampiran.
+ Dua kolom terakhir memuat galat mutlak untuk setiap hampiran.
  Galat pada PDB-trapesium kira-kira 0.01 hingga 0.1, sedangkan galat pada
  metode Euler kira-kira 0.2 hingga 2.
  Semua galat pada PDB-trapesium lebih kecil daripada semua galat pada
@@ -1535,7 +1535,7 @@ name "tab:odeCompare"
 
 \end_inset
 
-Perbandingan galat absolut untuk lima
+Perbandingan galat mutlak untuk lima
  penyelesai PDB
 \end_layout
 

@@ -1,14 +1,15 @@
-# Catatan Rilis — 3.0-id.1
+# Catatan Rilis — 3.0-id.2
 
-Tag yang dituju: `v3.0-id.1`
+Tag yang dituju: `v3.0-id.2`
 
-Tanggal rilis: `2026-08-22`
+Tanggal rilis: `2026-08-23`
 
 ## Ringkasan
 
-`3.0-id.1` adalah versi pertama edisi Bahasa Indonesia mandiri dari *Tea Time
-Numerical Analysis*, Edisi Ketiga, karya Leon Q. Brin.
-Basis sumbernya adalah upstream `v3.0` pada commit
+`3.0-id.2` adalah rilis patch terminologi untuk edisi Bahasa Indonesia mandiri
+yang lengkap dari *Tea Time Numerical Analysis*, Edisi Ketiga, karya Leon Q.
+Brin. Seluruh cakupan pembaca `3.0-id.1` dipertahankan. Basis sumbernya tetap
+upstream `v3.0` pada commit
 `186882108a6da95c8dca5b81ce000fc3f8f3ca21` dan tree
 `1e50d3756b695176008c602f0ee89712f5f32d10`.
 
@@ -26,6 +27,11 @@ Basis sumbernya adalah upstream `v3.0` pada commit
   dengan provenance GDZ/SUB Göttingen dan Public Domain Mark 1.0.
 - Pemisahan eksplisit antara lisensi buku/adaptasi, kode, aset domain publik,
   dan dependensi build.
+- QA istilah lapangan Bahasa Indonesia dengan inspeksi sumber TeX arXiv dan
+  fallback representatif *Metode Numerik* karya Rinaldi Munir dari STEI-ITB.
+- Pembakuan `galat mutlak`, `galat pemotongan`, dan `galat pemotongan lokal`,
+  termasuk pemisahan semantik *truncation* dari *chopping*.
+- Provenance model eksplisit: `OpenAI Codex gpt-5.6-sol, Ultra`.
 
 ## Kompatibilitas dan provenance
 
@@ -37,36 +43,34 @@ secara independen dari sumber institusional.
 
 ## Bukti rilis yang diterima
 
-- PDF pembaca: `output/pdf/Tea-Time-Numerical-Analysis-id-ID.pdf`, 8.202.476
+- PDF pembaca: `output/pdf/Tea-Time-Numerical-Analysis-id-ID.pdf`, 8.202.487
   byte, 387 halaman, SHA-256
-  `cbc31e9e27fdee96845d78fa6a625bf956196001b7941ddf0f1232f5def46b45`.
-- Manifest build: `build/manifests/id-ID-build.json`, 53.012 byte, SHA-256
-  `9437f143c777ca447c5b199f0ea2a7df1e70b2afd7731839c43041ca018fd988`.
-- Receipt QA seluruh korpus: `qa/WHOLE_CORPUS_RELEASE_QA_20260822.md`, SHA-256
-  `d1b1da7eea68de58154903dde3c53a9e992dfd7eff1c779feefb75927d774665`.
+  `d573b7233d0baa07381e2052a749757885db3a31fbfe695c5a4851ea42d91b6d`.
+- Manifest build: `build/manifests/id-ID-build.json`, 52.937 byte, SHA-256
+  `dbef9a5bb9680f6c072e1f26fe3f5ae8ba7e1ca955d9c3dd47f402d1bb9174ea`.
+- Receipt QA terminologi eksternal:
+  `qa/EXTERNAL_INDONESIAN_TERMINOLOGY_QA_20260822.md`, 6.577 byte, SHA-256
+  `af709475f228a4ff60ff5972fd30a18452ba46d627c7754c934f928ca01e6918`.
 - Backend modular final: 28.172 record dan 17.614 relasi; manifest SHA-256
-  `17ef5072077b5b438a883b6bd751ea31b2ec5651567db5d100dba39bf9497cb3`;
+  `78db2d770201f33e6c8a56b28ba3a01295bb2de24424ce474bd003817ca5ae04`;
   20/20 pengujian dan replay deterministik lulus.
 - Closure LaTeX portabel yang dikemas membangun kembali PDF rilis secara
   byte-identik; lihat `qa/PORTABLE_RELEASE_SOURCE_QA_20260822.md`.
 - Repositori: <https://github.com/KokunoYumeto/tea-time-numerical-analysis-id>.
-- DOI versi: <https://doi.org/10.5281/zenodo.22054086>.
+- DOI versi: <https://doi.org/10.5281/zenodo.22062071>.
 
 ## Kredit produksi
 
 Penulis karya asal: Leon Q. Brin.
 
-Dukungan produksi dan penyiapan teknis: OpenAI Codex atas permintaan Floris.
+Dukungan QA terminologi, produksi, dan penyiapan teknis:
+OpenAI Codex gpt-5.6-sol, Ultra, atas permintaan pengguna.
 Kredit ini tidak menyatakan identitas penerjemah yang tidak tercatat.
 
 ## Gerbang rilis
 
-Bukti PDF/build/QA dan paket sumber/backend telah diterima. Zenodo record
-`22054086` dipublikasikan pada DOI versi `10.5281/zenodo.22054086` dan DOI
-konsep `10.5281/zenodo.22054085`; seluruh tiga aset publik lulus pembacaan balik
-anonim. Setelah akun tujuan dipulihkan, branch `main` dan tag anotasi
-`v3.0-id.1` berhasil didorong ke repositori GitHub yang sudah ditetapkan. Rilis
-GitHub memakai PDF, paket sumber/backend, dan manifest checksum yang sama persis
-dengan artefak terverifikasi. Edisi kerja Figshare reader-first juga tersedia
-pada <https://doi.org/10.6084/m9.figshare.33314724.v2>. Bukti lengkap tercatat
-dalam `FINALIZATION_GATE.json` dan `PUBLICATION_RECEIPT.json`.
+Build 387 halaman, ekstraksi teks seluruh PDF, inspeksi visual halaman
+representatif, replay backend deterministik, round-trip ekspor, dan 20/20
+pengujian backend lulus. Patch ini diterbitkan dalam lineage Zenodo konsep
+`10.5281/zenodo.22054085`, repositori GitHub yang sama, dan item Figshare yang
+sama; receipt publikasi terpisah mencatat pembacaan balik anonim setiap byte.

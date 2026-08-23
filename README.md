@@ -11,12 +11,12 @@ diaudit antara buku, kode, aset pihak ketiga, dan dependensi build.
 | --- | --- |
 | Sumber daya / mata kuliah | `R015` / `C110` |
 | Bahasa | `id-ID` (Zenodo: `ind`) |
-| Versi | `3.0-id.1` |
-| Tag | `v3.0-id.1` |
-| Tanggal rilis | `2026-08-22` |
+| Versi | `3.0-id.2` |
+| Tag | `v3.0-id.2` |
+| Tanggal rilis | `2026-08-23` |
 | Slug repositori | `tea-time-numerical-analysis-id` |
 | Repositori | <https://github.com/KokunoYumeto/tea-time-numerical-analysis-id> |
-| DOI versi | <https://doi.org/10.5281/zenodo.22054086> |
+| DOI versi | <https://doi.org/10.5281/zenodo.22062071> |
 | DOI konsep | <https://doi.org/10.5281/zenodo.22054085> |
 | Penulis karya asal | Leon Q. Brin |
 | Rilis upstream | [`lqbrin/tea-time-numerical` `v3.0`](https://github.com/lqbrin/tea-time-numerical/releases/tag/v3.0) |
@@ -27,10 +27,10 @@ diaudit antara buku, kode, aset pihak ketiga, dan dependensi build.
 
 | Bukti | Identitas tepat |
 | --- | --- |
-| PDF pembaca | `output/pdf/Tea-Time-Numerical-Analysis-id-ID.pdf`; 8.202.476 byte; 387 halaman; SHA-256 `cbc31e9e27fdee96845d78fa6a625bf956196001b7941ddf0f1232f5def46b45` |
-| Manifest build | `build/manifests/id-ID-build.json`; 53.012 byte; SHA-256 `9437f143c777ca447c5b199f0ea2a7df1e70b2afd7731839c43041ca018fd988` |
-| QA seluruh korpus | `qa/WHOLE_CORPUS_RELEASE_QA_20260822.md`; SHA-256 `d1b1da7eea68de58154903dde3c53a9e992dfd7eff1c779feefb75927d774665` |
-| Backend final | 28.172 record / 17.614 relasi; `backend/manifests/lane_manifest.json`; SHA-256 `17ef5072077b5b438a883b6bd751ea31b2ec5651567db5d100dba39bf9497cb3` |
+| PDF pembaca | `output/pdf/Tea-Time-Numerical-Analysis-id-ID.pdf`; 8.202.487 byte; 387 halaman; SHA-256 `d573b7233d0baa07381e2052a749757885db3a31fbfe695c5a4851ea42d91b6d` |
+| Manifest build | `build/manifests/id-ID-build.json`; 52.937 byte; SHA-256 `dbef9a5bb9680f6c072e1f26fe3f5ae8ba7e1ca955d9c3dd47f402d1bb9174ea` |
+| QA terminologi eksternal | `qa/EXTERNAL_INDONESIAN_TERMINOLOGY_QA_20260822.md`; 6.577 byte; SHA-256 `af709475f228a4ff60ff5972fd30a18452ba46d627c7754c934f928ca01e6918` |
+| Backend final | 28.172 record / 17.614 relasi; `backend/manifests/lane_manifest.json`; SHA-256 `78db2d770201f33e6c8a56b28ba3a01295bb2de24424ce474bd003817ca5ae04` |
 | Build sumber portabel | `qa/PORTABLE_RELEASE_SOURCE_QA_20260822.md`; menghasilkan kembali PDF byte-identik |
 
 ## Build portabel
@@ -54,9 +54,10 @@ metadata bahasa, backend modular yang netral-lokal, dan tooling build yang
 portabel. Rumus, identitas matematis, struktur latihan–solusi, sitasi, serta
 permukaan kode yang dapat dieksekusi dipertahankan sesuai sumber yang dipin.
 
-Dukungan produksi dan penyiapan teknis diberikan oleh **OpenAI Codex atas
-permintaan Floris**. Pernyataan ini bukan atribusi identitas penerjemah dan
-tidak menggantikan atribusi Leon Q. Brin sebagai penulis karya asal.
+Dukungan QA terminologi, produksi, dan penyiapan teknis diberikan oleh
+**OpenAI Codex gpt-5.6-sol, Ultra**, atas permintaan pengguna. Pernyataan ini
+bukan atribusi identitas penerjemah dan tidak menggantikan atribusi Leon Q.
+Brin sebagai penulis karya asal.
 
 ## Batas hak
 
@@ -73,22 +74,15 @@ Bahasa Indonesianya. Hal itu tidak melisensikan ulang komponen lain:
 Lihat [COMPONENT_RIGHTS_AND_PROVENANCE.md](COMPONENT_RIGHTS_AND_PROVENANCE.md)
 untuk atribusi, lingkup, dan bukti provenance yang lengkap.
 
-## Status finalisasi
+## Status rilis patch
 
-PDF, manifest build, receipt QA, backend, dan paket sumber telah dibekukan.
-Record Zenodo `22054086` dipublikasikan pada DOI versi
-<https://doi.org/10.5281/zenodo.22054086> dalam lineage DOI konsep
-<https://doi.org/10.5281/zenodo.22054085>; ketiga aset publik telah diunduh
-kembali tanpa autentikasi dan cocok byte demi byte. Commit rilis lokal
-`ae9f99262032fca3c62e6cbcfea1cc1e966b1a74`, tag `v3.0-id.1`, dan rilis
-GitHub telah dipublikasikan di
-<https://github.com/KokunoYumeto/tea-time-numerical-analysis-id/releases/tag/v3.0-id.1>.
-Ketiga aset GitHub telah diunduh kembali tanpa autentikasi dan cocok ukuran
-serta SHA-256. Edisi kerja Figshare reader-first tersedia di
-<https://doi.org/10.6084/m9.figshare.33314724.v2>.
-`FINALIZATION_GATE.json` dan `PUBLICATION_RECEIPT.json` adalah bukti mesin yang
-otoritatif; jangan membuat repositori duplikat.
+`3.0-id.2` mempertahankan seluruh cakupan edisi lengkap `3.0-id.1` dan
+menambahkan QA terminologi lapangan Bahasa Indonesia. Preferred term sekarang
+memakai `galat mutlak`, `galat pemotongan`, dan `galat pemotongan lokal`,
+dengan pembedaan eksplisit dari *chopping*. Rilis ini memakai lineage Zenodo,
+repositori GitHub, dan item Figshare yang sama; jangan membuat record atau
+repositori duplikat.
 
 Metadata sitasi tersedia di [CITATION.cff](CITATION.cff), metadata deposit di
-[zenodo-metadata.json](zenodo-metadata.json), dan catatan rilis di
+[zenodo-metadata.json](metadata/zenodo-metadata.json), dan catatan rilis di
 [RELEASE_NOTES.md](RELEASE_NOTES.md).

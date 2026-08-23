@@ -90,7 +90,7 @@ yang sama pada selang berbeda atau dengan fungsi berbeda pada selang
 yang sama.
 \begin{center}
 \begin{tabular}{c|ccc}
-subselang, $i$ & Aturan Simpson komposit & galat absolut, $e_{i}$ & rasio galat, $\frac{e_{i}}{e_{i+1}}$\tabularnewline
+subselang, $i$ & Aturan Simpson komposit & galat mutlak, $e_{i}$ & rasio galat, $\frac{e_{i}}{e_{i+1}}$\tabularnewline
 \hline 
 $4$ & $0.785398125614677$ & $3.77827(10)^{-8}$ & $63.90$\tabularnewline
 $8$ & $0.785398162806206$ & $5.91242(10)^{-10}$ & $63.99$\tabularnewline
@@ -409,7 +409,7 @@ Aturan Trapesium \textit{komposit}. CATATAN: $\int_{0}^{\pi}\sin^{4}x\,dx=\frac{
 menggunakan Aturan Titik Tengah. \hasananswer 
 \item Ulangi soal \ref{exc:calculus-composite-11} menggunakan Aturan Simpson.
 \item Misalkan Aturan Simpson komposit dengan 100 subselang digunakan untuk
-menghampiri $\int_{5}^{12}f(x)\,dx$, dan galat absolutnya ternyata
+menghampiri $\int_{5}^{12}f(x)\,dx$, dan galat mutlaknya ternyata
 kurang dari $10^{-5}$. Fungsi apakah yang mungkin menjadi $f(x)$?
 \item Turunkan rumus penjumlahan untuk versi komposit dari
 
@@ -477,10 +477,10 @@ lebih dari $10^{-4}$ menggunakan Aturan Simpson komposit. CATATAN:
 $I=\frac{24\ln(5)-6\tan^{-1}(2)-4}{9}$.
 \end{enumerate}
 \item \label{exc:calculus-composite-19}\octave\ Gunakan Octave untuk menghitung
-hampiran yang disarankan dalam soal \ref{est1}. Apakah galat absolutnya
+hampiran yang disarankan dalam soal \ref{est1}. Apakah galat mutlaknya
 kurang dari $10^{-4}$? \hasananswer 
 \item \octave\ Gunakan Octave untuk menghitung taksiran yang disarankan
-dalam soal \ref{est2}. Apakah galat absolutnya kurang dari $10^{-4}$?
+dalam soal \ref{est2}. Apakah galat mutlaknya kurang dari $10^{-4}$?
 \item \label{exc:calculus-composite-12}\octave\ Gunakan Aturan Trapesium
 komposit untuk menghampiri ${\displaystyle \int_{0}^{1}\ln(x+1)dx}$
 dengan galat tidak lebih dari $10^{-6}$. Berapa banyak subselang

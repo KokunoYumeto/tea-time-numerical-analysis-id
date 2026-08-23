@@ -405,12 +405,12 @@ dihitung.
 Misalkan $f$ dapat dihitung dengan ketelitian yang mendekati presisi
 mesin. Dalam perhitungan titik mengambang biasa, termasuk Octave,
 hal itu berarti galat titik mengambang relatif sekitar $10^{-15}$
-atau galat titik mengambang absolut $\varepsilon_{f}\approx10^{-15}|f(x)|$.
+atau galat titik mengambang mutlak $\varepsilon_{f}\approx10^{-15}|f(x)|$.
 Karena kita mengasumsikan $h$ bernilai kecil, kita dapat mengaproksimasi
 baik $|\tilde{f}(x+h)-f(x+h)|$ maupun $|\tilde{f}(x-h)-f(x-h)|$
-dengan $\varepsilon_{f}$ sehingga diperoleh galat absolut sekitar
+dengan $\varepsilon_{f}$ sehingga diperoleh galat mutlak sekitar
 $2\varepsilon_{f}$ dalam menghitung pembilang $f(x+h)-f(x-h)$. Dengan
-mengasumsikan $h$ dihitung secara eksak, kita memperoleh galat absolut
+mengasumsikan $h$ dihitung secara eksak, kita memperoleh galat mutlak
 \begin{equation}
 \varepsilon_{r}=|\tilde{f}'(x)-f'(x)|\approx\frac{2\varepsilon_{f}}{2h}=\frac{\varepsilon_{f}}{h}=\frac{|f(x)|}{10^{15}}\cdot\frac{1}{h}.\label{eq:floatingPointError}
 \end{equation}
@@ -436,7 +436,7 @@ h & \approx & \sqrt[3]{\frac{3|f(x)|}{|f'''(x)|}}\cdot10^{-5}.
 Untuk Eksperimen 2 \vpageref{subsec:derivativeExperiment}, ini berarti
 kita memperkirakan bahwa nilai optimal $h$ berada di sekitar$\sqrt[3]{\frac{3\sin(1)}{\sin(1)}}\cdot10^{-5}\approx1.44(10)^{-5}$.
 Kita tampilkan kembali tabel dari Eksperimen 2 di sini dengan menambahkan
-kolom ketiga, yaitu galat absolut sebenarnya:
+kolom ketiga, yaitu galat mutlak sebenarnya:
 
 \begin{center}
 \begin{tabular}{c|c|c}

@@ -533,9 +533,9 @@ def main() -> None:
         "build_gate": "pass",
         "build_evidence": {
             "pdf": "output/pdf/Tea-Time-Numerical-Analysis-id-ID.pdf",
-            "pdf_sha256": "cbc31e9e27fdee96845d78fa6a625bf956196001b7941ddf0f1232f5def46b45",
+            "pdf_sha256": "d573b7233d0baa07381e2052a749757885db3a31fbfe695c5a4851ea42d91b6d",
             "physical_pdf_page": 256,
-            "render": "tmp/qa/cbc31e9e/high/page-256.png",
+            "render": "tmp/qa/d573b7/high/page-256.png",
             "render_dpi": 150,
             "visual_result": "pass_legible_complete_framed",
         },

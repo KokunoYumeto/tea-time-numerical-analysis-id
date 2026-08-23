@@ -27,16 +27,16 @@ dan misalkan $[a,b]$ merupakan interval yang memuat $\hat{x}$. Jika
 $|f'(x)|\leq M<1$ untuk semua $x\in[a,b]$ dan $f([a,b])\subseteq[a,b]$,
 maka untuk sembarang nilai awal $x_{0}\in[a,b]$, iterasi titik tetap,
 dengan $x_{k+1}=f(x_{k})$ untuk semua $k\geq0$, memberikan hampiran
-bagi $\hat{x}$ dengan galat absolut tidak lebih dari $M^{k}|x_{0}-\hat{x}|$.
+bagi $\hat{x}$ dengan galat mutlak tidak lebih dari $M^{k}|x_{0}-\hat{x}|$.
 \end{prop}
 
 \begin{proof}
 Bukti induksi elementer (yang diminta dalam latihan) akan menunjukkan
 bahwa $x_{k}\in[a,b]$ untuk semua $k\geq0$. Selanjutnya kita buktikan
-batas galat tersebut. Galat absolut ketika menghampiri $\hat{x}$
-dengan $x_{0}$ adalah $|x_{0}-\hat{x}|=M^{0}|x_{0}-\hat{x}|$ sehingga
-pernyataan tersebut benar untuk $k=0$. Sekarang misalkan pernyataan
-itu benar untuk suatu nilai tertentu tetapi sembarang $k\geq0$. Berdasarkan
+batas galat tersebut. Galat mutlak ketika menghampiri $\hat{x}$ dengan
+$x_{0}$ adalah $|x_{0}-\hat{x}|=M^{0}|x_{0}-\hat{x}|$ sehingga pernyataan
+tersebut benar untuk $k=0$. Sekarang misalkan pernyataan itu benar
+untuk suatu nilai tertentu tetapi sembarang $k\geq0$. Berdasarkan
 teorema nilai rata-rata, terdapat $c$ dalam interval antara $\hat{x}$
 dan $x_{k}$ sedemikian sehingga $f'(c)=\frac{f(x_{k})-f(\hat{x})}{x_{k}-\hat{x}}$.
 Karena $\hat{x}$ dan $x_{k}$ keduanya berada di $[a,b]$, demikian
@@ -437,7 +437,7 @@ $\hat{x}$ dan misalkan $[a,b]$ adalah interval yang memuat $\hat{x}$.
  Jika $|f'(x)|\leq M<1$ untuk setiap $x\in[a,b]$ dan $f([a,b])\subseteq[a,b]$,
 maka untuk sembarang nilai awal $x_{0}\in[a,b]$, iterasi titik tetap
 dengan $x_{k+1}=f(x_{k})$ untuk setiap $k\geq0$ menghasilkan hampiran
-terhadap $\hat{x}$ dengan galat absolut tidak lebih dari $M^{k}|x_{0}-\hat{x}|$.
+terhadap $\hat{x}$ dengan galat mutlak tidak lebih dari $M^{k}|x_{0}-\hat{x}|$.
 \item [{Orde~Kekonvergenan~untuk~Iterasi~Titik~Tetap:}] Misalkan $f$
 adalah fungsi dengan titik tetap $\hat{x}$ dan $f'(\hat{x})$ ada.
 Misalkan $x_{0},x_{1},x_{2},\ldots$ merupakan barisan yang diperoleh

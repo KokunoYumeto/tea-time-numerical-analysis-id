@@ -1441,7 +1441,7 @@ Jika Anda mencoba menghitung sendiri orde kekonvergenan tersebut, mungkin
 \end_inset
 
  gagal menghasilkan bilangan real! Tabel yang lebih berguna untuk menghitung
- orde kekonvergenan adalah tabel yang memuat galat absolut: 
+ orde kekonvergenan adalah tabel yang memuat galat mutlak: 
 \begin_inset Float table
 placement h
 wide false
@@ -1471,7 +1471,7 @@ name "tab:absoluteErrors"
 
 \end_inset
 
-Galat absolut.
+Galat mutlak.
 \end_layout
 
 \end_inset
@@ -2236,7 +2236,7 @@ hrule
 
 , tabel ini menunjukkan dengan sangat jelas bahwa simpulan berdasarkan intuisi
  kita tentang barisan mana yang berkonvergensi lebih cepat memang benar.
- Bandingkan saja akurasi (galat absolut) suku kesebelasnya.
+ Bandingkan saja akurasi (galat mutlak) suku kesebelasnya.
  
 \end_layout
 
@@ -3399,7 +3399,7 @@ Galat
 \begin_inset space ~
 \end_inset
 
-absolut: Untuk barisan 
+mutlak: Untuk barisan 
 \begin_inset Formula $\langle p_{n}\rangle$
 \end_inset
 
@@ -3411,7 +3411,7 @@ absolut: Untuk barisan
 \begin_inset Formula $\alpha$
 \end_inset
 
-, galat absolut suku-suku berurutan dihubungkan oleh hampiran
+, galat mutlak suku-suku berurutan dihubungkan oleh hampiran
 \begin_inset Formula 
 \[
 |p_{n+1}-p|\approx\lambda|p_{n}-p|^{\alpha}

@@ -505,7 +505,7 @@ Hal terpenting yang perlu dipahami mengenai suku sisa adalah bahwa suku tersebut
 \begin_inset Formula $f(x)=T_{n}(x)+R_{n}(x)$
 \end_inset
 
-, sehingga galat absolut ketika menggunakan 
+, sehingga galat mutlak ketika menggunakan 
 \begin_inset Formula $T_{n}(x)$
 \end_inset
 
@@ -577,7 +577,7 @@ name "enu:taylorObservation2"
 
 \end_inset
 
-Galat absolut ketika menggunakan 
+Galat mutlak ketika menggunakan 
 \begin_inset Formula $T_{n}(x)$
 \end_inset
 
@@ -685,7 +685,7 @@ Untuk
 \begin_inset Formula $|R_{n}(x)|$
 \end_inset
 
- mengukur secara tepat galat absolut 
+ mengukur secara tepat galat mutlak 
 \begin_inset Formula $|T_{n}(x)-f(x)|$
 \end_inset
 
@@ -797,7 +797,7 @@ Setelah meyakinkan diri bahwa rumus-rumus ini benar, misalkan kita ingin
 \begin_inset Formula $\ln(x)$
 \end_inset
 
- dengan galat absolut tidak lebih dari 
+ dengan galat mutlak tidak lebih dari 
 \begin_inset Formula $0.1$
 \end_inset
 
@@ -2697,7 +2697,7 @@ Gunakan polinomial Taylor tersebut untuk menghampiri
 \end_layout
 
 \begin_layout Enumerate
-Tentukan suatu batas atas bagi galat absolut hampiran tersebut dengan memanfaatkan fakta bahwa
+Tentukan suatu batas atas bagi galat mutlak hampiran tersebut dengan memanfaatkan fakta bahwa
 \begin_inset Formula 
 \[
 -3\leq f^{(4)}(\xi)\leq5
@@ -3599,17 +3599,17 @@ Gunakan
 \end_layout
 
 \begin_layout Enumerate
-Tentukan batas atas teoretis bagi galat absolut setiap hampiran pada bagian
+Tentukan batas atas teoretis bagi galat mutlak setiap hampiran pada bagian
  (c).
 \end_layout
 
 \begin_layout Enumerate
-Tentukan batas bawah teoretis bagi galat absolut setiap hampiran pada bagian
+Tentukan batas bawah teoretis bagi galat mutlak setiap hampiran pada bagian
  (c).
 \end_layout
 
 \begin_layout Enumerate
-Tentukan galat absolut sebenarnya untuk setiap hampiran pada bagian (c).
+Tentukan galat mutlak sebenarnya untuk setiap hampiran pada bagian (c).
  Verifikasi bahwa galat-galat tersebut memang berada di antara batas-batas teoretis.
 \end_layout
 
@@ -3680,17 +3680,17 @@ Gunakan
 \end_layout
 
 \begin_layout Enumerate
-Tentukan batas atas teoretis bagi galat absolut setiap hampiran pada bagian
+Tentukan batas atas teoretis bagi galat mutlak setiap hampiran pada bagian
  (c).
 \end_layout
 
 \begin_layout Enumerate
-Tentukan batas bawah teoretis bagi galat absolut setiap hampiran pada bagian
+Tentukan batas bawah teoretis bagi galat mutlak setiap hampiran pada bagian
  (c).
 \end_layout
 
 \begin_layout Enumerate
-Tentukan galat absolut sebenarnya untuk setiap hampiran pada bagian (c).
+Tentukan galat mutlak sebenarnya untuk setiap hampiran pada bagian (c).
  Verifikasi bahwa galat-galat tersebut memang berada di antara batas-batas teoretis.
 \end_layout
 
@@ -3725,7 +3725,7 @@ Misalkan
 \end_inset
 
 .
- Tentukan batas bawah dan batas atas bagi galat absolut ketika 
+ Tentukan batas bawah dan batas atas bagi galat mutlak ketika 
 \begin_inset Formula $T_{9}(x)$
 \end_inset
 
@@ -3784,7 +3784,7 @@ Tentukan batas atas teoretis, sebagai fungsi dari
 \begin_inset Formula $x$
 \end_inset
 
-, bagi galat absolut ketika 
+, bagi galat mutlak ketika 
 \begin_inset Formula $T_{4}(x)$
 \end_inset
 

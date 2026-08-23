@@ -1,12 +1,12 @@
 {
   "authority": {
-    "bytes": 3695,
+    "bytes": 3693,
     "path": "authority/third_party/heun1900/ASSET_AUTHORITY.json",
-    "sha256": "39bbf79cebe96967dabde26b62faf51c55d6ed1b0376000b3b46bf615f79a2dd"
+    "sha256": "f12fbb5fab4b8dcd67f1b087df3b1803535ebd43c28a54c890da8baa20489192"
   },
   "file_kind": "asset_authority",
   "file_order": 27001,
-  "recorded_date": "2026-08-22",
+  "recorded_date": "2026-08-23",
   "records": {
     "asset": {
       "id": "urn:uuid:c34746a0-acc2-55d9-a22d-70c557bc544f",

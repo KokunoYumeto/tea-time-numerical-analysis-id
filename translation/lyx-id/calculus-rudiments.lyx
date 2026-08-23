@@ -5077,7 +5077,7 @@ reference "exc:rudiments-1"
 
 \end_inset
 
-, (i) hitung integral tersebut secara eksak, dan (ii) hitung galat absolut
+, (i) hitung integral tersebut secara eksak, dan (ii) hitung galat mutlak
  pada hampirannya.
 \begin_inset ERT
 status open
@@ -5194,7 +5194,7 @@ name "exc:rudiments-13"
 
 \end_inset
 
-Hitung galat absolut pada setiap hampiran dalam soal 
+Hitung galat mutlak pada setiap hampiran dalam soal 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "exc:rudiments-2"

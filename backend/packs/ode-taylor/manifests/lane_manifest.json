@@ -66,7 +66,7 @@
       "bytes": 649,
       "path": "topology/source_files.jsonl",
       "records": 1,
-      "sha256": "54baabdf174a4e9a1ee1cf714edc6f344365d07d821b0d8c7d4a242694b03406"
+      "sha256": "a3572dc6b96292a2714c14ff3497ddb635dec7b256ae1e13564a056886329c62"
     },
     {
       "bytes": 4674,
@@ -75,10 +75,10 @@
       "sha256": "b551629f73c26c3457561bd12e1e2aff03fc92589efa328e883159db81694a8d"
     },
     {
-      "bytes": 217586,
+      "bytes": 218740,
       "path": "translation/localizations.id-ID.jsonl",
       "records": 105,
-      "sha256": "b271128334224c3391dcd69f72a38bbcaeb62c7d5d94d766c0e431af98e3b671"
+      "sha256": "fb689c43b54872c5a61437432e94d3726075de1585f757b1589637fc14602338"
     },
     {
       "bytes": 192720,
@@ -87,10 +87,10 @@
       "sha256": "bc729badb807cc680fe81668c71b34af220bfae7fcec4da1d587bb8b81843334"
     },
     {
-      "bytes": 221738,
+      "bytes": 221879,
       "path": "translation/terms.id-ID.jsonl",
       "records": 593,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     }
   ],
   "generator": "ttna-lyx-indexer-0.3.1",

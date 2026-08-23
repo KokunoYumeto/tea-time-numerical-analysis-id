@@ -5,16 +5,16 @@
   "ordering": "record.id ascending; canonical JSON object keys ascending",
   "outputs": [
     {
-      "bytes": 22050690,
+      "bytes": 22101516,
       "path": "records.jsonl",
       "records": 28172,
-      "sha256": "203ec965823817e79939f894f871ed6c0445534fbf3a6d06d1e0fa3566e16c79"
+      "sha256": "0b4227c5fde67ba15388384c79d980ec361b65f7375b4d47928aad1be09edafe"
     },
     {
-      "bytes": 25655273,
+      "bytes": 25706115,
       "path": "records.csv",
       "records": 28172,
-      "sha256": "a178ec16910340d8482034cd088e81c86805c1bc118f01c0162a934a498845c7"
+      "sha256": "383c21ed77a500faa72f0687d66f0a6c6abce2eb255dd675036df7de8384fa81"
     }
   ],
   "proprietary_services_required": false,
@@ -45,11 +45,11 @@
     "sha256": "1367da6e46a9fd5b24912bd8cde6e274af77965dd90cc36c24d2fd23b4a92fed"
   },
   "round_trip": {
-    "csv_sha256": "a178ec16910340d8482034cd088e81c86805c1bc118f01c0162a934a498845c7",
-    "jsonl_sha256": "203ec965823817e79939f894f871ed6c0445534fbf3a6d06d1e0fa3566e16c79",
+    "csv_sha256": "383c21ed77a500faa72f0687d66f0a6c6abce2eb255dd675036df7de8384fa81",
+    "jsonl_sha256": "0b4227c5fde67ba15388384c79d980ec361b65f7375b4d47928aad1be09edafe",
     "records": 28172,
     "round_trip_equal": true,
-    "semantic_sha256": "203ec965823817e79939f894f871ed6c0445534fbf3a6d06d1e0fa3566e16c79",
+    "semantic_sha256": "0b4227c5fde67ba15388384c79d980ec361b65f7375b4d47928aad1be09edafe",
     "utf8_lf": true
   },
   "schema_id": "ttna-interoperability-export-v0",
@@ -57,7 +57,7 @@
   "source_manifest": {
     "bytes": 14060,
     "path": "backend/manifests/lane_manifest.json",
-    "sha256": "17ef5072077b5b438a883b6bd751ea31b2ec5651567db5d100dba39bf9497cb3"
+    "sha256": "9a6ccf6ebf1e579216d7a5d7dee70b0da6acd7e5ea6237325b45cada5318a9e0"
   },
   "total_unique_records": 28172
 }

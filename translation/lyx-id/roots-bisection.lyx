@@ -4066,7 +4066,7 @@ Gunakan metode bagi dua untuk mencari akar
 \begin_inset Formula $g(x)=\sin x-x^{2}$
 \end_inset
 
- di antara 0 dan 1 dengan galat absolut tidak lebih dari 
+ di antara 0 dan 1 dengan galat mutlak tidak lebih dari 
 \begin_inset Formula $1/4$
 \end_inset
 

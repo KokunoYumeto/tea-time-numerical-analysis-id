@@ -1,6 +1,6 @@
 # Portable release-source build QA
 
-Date: 2026-08-22  
+Date: 2026-08-23  
 Result: **PASS**
 
 The public release staging tree was built using only its packaged 289-file LaTeX closure and its portable entry point:
@@ -15,8 +15,8 @@ Output identity:
 
 - path: `output/pdf/Tea-Time-Numerical-Analysis-id-ID.pdf`;
 - pages: 387;
-- bytes: 8,202,476;
-- SHA-256: `cbc31e9e27fdee96845d78fa6a625bf956196001b7941ddf0f1232f5def46b45`.
+- bytes: 8,202,487;
+- SHA-256: `d573b7233d0baa07381e2052a749757885db3a31fbfe695c5a4851ea42d91b6d`.
 
 This is byte-identical to the release artifact admitted by `build/manifests/id-ID-build.json` and `qa/WHOLE_CORPUS_RELEASE_QA_20260822.md`. The staged tree therefore proves that the distributed LaTeX closure can reproduce the released PDF without requiring LyX or any machine-local source path.
 

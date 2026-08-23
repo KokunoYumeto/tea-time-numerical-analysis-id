@@ -2163,7 +2163,7 @@ reference "sec:Composite"
  satu tingkat lebih rendah daripada orde penerapan tunggal rumus integrasi
  yang mendasarinya.
  Hal yang sama terjadi di sini.
- Jika galat pemenggalan polinomial Taylor yang mendasarinya berorde
+ Jika galat pemotongan polinomial Taylor yang mendasarinya berorde
  
 \begin_inset Formula $n$
 \end_inset

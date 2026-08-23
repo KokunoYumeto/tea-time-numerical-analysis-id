@@ -278,7 +278,7 @@ melihat dampak ini secara nyata, tinjau integral tentu
 \int_{0}^{1}\sin x\,dx
 \]
 yang nilai eksaknya adalah $1-\cos(1)\approx.4596976941318602$. Galat
-absolut dari $T_{5}(0,1)$, $T_{10}(0,1),$ dan $T_{15}(0,1)$ adalah
+mutlak dari $T_{5}(0,1)$, $T_{10}(0,1),$ dan $T_{15}(0,1)$ adalah
 \begin{eqnarray*}
 \left|\int_{0}^{1}\sin x\,dx-T_{5}(0,1)\right| & \approx & 1.533(10)^{-3}\\
 \left|\int_{0}^{1}\sin x\,dx-T_{10}(0,1)\right| & \approx & 3.831(10)^{-4}\\
@@ -337,7 +337,7 @@ T_{10,2}(0,1) & = & \frac{16T_{20,1}(0,1)-T_{10,1}(0,1)}{15}\approx.459697694131
 \end{eqnarray*}
 Kini kita memiliki hampiran $T_{5,2}$ dan $T_{10,2}$ yang galatnya
 masing-masing hanya sekitar $1.522(10)^{-11}$ dan $2.374(10)^{-13}$.
-Gunakan informasi ini untuk menghitung $T_{5,3}$ beserta galat absolutnya.
+Gunakan informasi ini untuk menghitung $T_{5,3}$ beserta galat mutlaknya.
 Jawaban \vpageref{t35}.
 
 Metode yang menggabungkan ekstrapolasi Richardson dengan aturan trapesium
@@ -570,7 +570,7 @@ nilai yang akurat hingga 13 angka signifikan!
 bernilai kira-kira $1.5^{2}=2.25$ karena 15 (jumlah subselang yang
 digunakan dalam hampiran penyebut) adalah $1.5$ kali 10 (jumlah subselang
 yang digunakan dalam hampiran pembilang).
-\item [{$T_{5,3}$~dan~galat~absolutnya:}] \label{t35}$\frac{\left|\int_{0}^{1}\sin x\,dx-T_{5,2}\right|}{\left|\int_{0}^{1}\sin x\,dx-T_{10,2}\right|}\approx\frac{1.522(10)^{-11}}{2.374(10)^{-13}}\approx64$
+\item [{$T_{5,3}$~dan~galat~mutlaknya:}] \label{t35}$\frac{\left|\int_{0}^{1}\sin x\,dx-T_{5,2}\right|}{\left|\int_{0}^{1}\sin x\,dx-T_{10,2}\right|}\approx\frac{1.522(10)^{-11}}{2.374(10)^{-13}}\approx64$
 sehingga 
 \begin{eqnarray*}
 T_{5,3} & = & \frac{64T_{10,2}-T_{5,2}}{63}\approx.4596976941318606\\

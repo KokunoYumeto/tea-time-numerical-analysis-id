@@ -8,13 +8,13 @@
   "overlay_manifest": {
     "path": "build/manifests/id-ID-overlay.json",
     "bytes": 151564,
-    "sha256": "1a70b6f41a4b799c978be105825af1ca3d45c59cc3ffecfa9c883f462f10cce6"
+    "sha256": "a167cc3b766f75384d196e95e68615c2e1d4a4614f817949de0ce0612155bfb5"
   },
   "toolchain": {
     "lyx_product_version": "2.4.4",
     "lyx_bytes": 11463680,
     "lyx_sha256": "aa359efbfc16c509a7a91d1c347a6bb702a8fa6b686c0bba8210d058f80c460e",
-    "latexmk_path": "C:\\Users\\Floris\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\latexmk.exe",
+    "latexmk_path": "latexmk",
     "latexmk_sha256": "23816f82608189d5aed0bcb4746a8ebc9931c5ce359140a63b6f7e058c516112",
     "cprotect_sty_sha256": "eafa24d80cff3bb804ed46af5f045d41d596f23c6d23e9cb7b01c15aa4efaef2"
   },
@@ -25,33 +25,33 @@
     "input_inventory": [
       {
         "path": "answers.tex",
-        "bytes": 58892,
-        "sha256": "92c44f96116afdce24ba92f26e3284199c8368c9902930de47ff6919110ff323"
+        "bytes": 58882,
+        "sha256": "6fa6948fcccb30bfe3247f0a50dba767f47061c67161c0968dc92fcf39a843a8"
       },
       {
         "path": "calculus-composite.tex",
-        "bytes": 30340,
-        "sha256": "6721cc862ea91f68ee1bee910c651d7f202648906065ce02388f9f541175225b"
+        "bytes": 30336,
+        "sha256": "09ced56cc308189d7ad468cd6e9a87bf00b1d049fdc70e3dfd9a7f13d1791edb"
       },
       {
         "path": "calculus-errors.tex",
-        "bytes": 48478,
-        "sha256": "b2c0084eb690485db65505b74dae865af18a823424dca3ad7e3c005276db636c"
+        "bytes": 48477,
+        "sha256": "63a876bd3faf99eb9c723e4dd88e8045784180adf9e3c66c902106138cf0ce69"
       },
       {
         "path": "calculus-richardsons.tex",
-        "bytes": 28701,
-        "sha256": "9322b12c6c2eb1f23c45879b319b649663dfc489ea37b47faaafc3eda238af07"
+        "bytes": 28698,
+        "sha256": "a5013162f59da18570edac8d79ff71576f35893b3a1ea9b81d6e5e56a25cd62e"
       },
       {
         "path": "calculus-rudiments.tex",
-        "bytes": 42909,
-        "sha256": "6ac2df63b3fc271dffc5fab3d2c5fbe4f780de0231317aa65c6b422037060093"
+        "bytes": 42907,
+        "sha256": "5e521ed65cdc15ad27f67a311a50163293b8175c82d43c407a00d256222b110b"
       },
       {
         "path": "calculus-undeterminedCoefficients.tex",
-        "bytes": 29034,
-        "sha256": "98e2540127c738e0783e73afeb5567268566b729cf09e70bfba45dc78c570b14"
+        "bytes": 29030,
+        "sha256": "ab3e94db4db3545578b0fb13fa171d6562ffaf1985130254a6d7aa8c71e5e04a"
       },
       {
         "path": "cprotect.sty",
@@ -1340,8 +1340,8 @@
       },
       {
         "path": "interpolation-lagrange.tex",
-        "bytes": 39949,
-        "sha256": "f6f11720b77ae2914787ed5ec76704eacde7848cf15365695bde130f8e724503"
+        "bytes": 39948,
+        "sha256": "8555e8d77c398f533528f20c01c1d9c582152a028d8043c4ec8326d90164e8b0"
       },
       {
         "path": "interpolation-newton.tex",
@@ -1350,13 +1350,13 @@
       },
       {
         "path": "ode-adaptive.tex",
-        "bytes": 40828,
-        "sha256": "24b1335a5f57d457e0f09e367c016683168b9031eab21b3c4d5ba62749a7b85e"
+        "bytes": 40825,
+        "sha256": "613fb25b554bbe3feddb0997d9ed43636657dec7b22cd1a579de6b516cec701c"
       },
       {
         "path": "ode-errorAnalysis.tex",
-        "bytes": 35355,
-        "sha256": "7074dd6084fe0e9c72bf2700c64c3fb22db65c0384560938ad45fbe329c4e534"
+        "bytes": 35330,
+        "sha256": "3cd6d4562350bb82fd8da03dd5bfeb4625c376bb80873e159c70d90d07c59bcf"
       },
       {
         "path": "ode-pendulum.tex",
@@ -1365,13 +1365,13 @@
       },
       {
         "path": "ode-rungeKutta.tex",
-        "bytes": 34506,
-        "sha256": "b4b40731645eb32f32e664455c567d10cb9a15b5069c04c316303412e886dc77"
+        "bytes": 34504,
+        "sha256": "a67b82513d5735a3f88e496186fa21fdfd29de258d59741d866d9b57015a3e76"
       },
       {
         "path": "ode-taylor.tex",
-        "bytes": 25486,
-        "sha256": "330e0b494475e923894848736561022e5a6014a16546d6572ef104627571486d"
+        "bytes": 25485,
+        "sha256": "ea89ad4105b0e1c4269806c2930410fa1ddd70175a85eeb9b2d49e2d44713fc6"
       },
       {
         "path": "preamble.tex",
@@ -1385,13 +1385,13 @@
       },
       {
         "path": "preliminaries-convergence.tex",
-        "bytes": 47627,
-        "sha256": "2637f076267adea8e290b29cf9324d4f508dc80543b10723adb8f1e6ef8112aa"
+        "bytes": 47622,
+        "sha256": "f27e62d82ee782dab641a24997007ef54afde0163d18eccdbfa72a3b72811f01"
       },
       {
         "path": "preliminaries-errors.tex",
-        "bytes": 37170,
-        "sha256": "16d2ba6e574f66ab85201e882c41f3a67695868dc6318c08f48e0ccb8bf5192a"
+        "bytes": 37137,
+        "sha256": "3be388ac45f85ce9e0898071fd8558163aefffbc8df215c0ff06a5e3e7200e46"
       },
       {
         "path": "preliminaries-recursion.tex",
@@ -1400,8 +1400,8 @@
       },
       {
         "path": "preliminaries-taylor.tex",
-        "bytes": 37043,
-        "sha256": "0c10d015c26879ab49efdc670e5490a126332ca5f788ea76eaa217f371504d53"
+        "bytes": 37030,
+        "sha256": "3b04cbfb0e253fbb35deb51e2d2a65bc40261a21879833075393cec86d9cd73e"
       },
       {
         "path": "references/heun1900/00000036.png",
@@ -1410,13 +1410,13 @@
       },
       {
         "path": "roots-bisection.tex",
-        "bytes": 39351,
-        "sha256": "00bc6979f92a5a2d4d27ce4a602521cda8d04b092e815f0571b8d4f0b6b350a1"
+        "bytes": 39350,
+        "sha256": "d005560bfb743f3820bb2204ee613736601b6a6b5dd414701ad6df11634fcafc"
       },
       {
         "path": "roots-bracketing.tex",
-        "bytes": 32233,
-        "sha256": "0905ba8ca1cce6adfb41610b24847e15b16371481964fa54d7a9364d4be2bd24"
+        "bytes": 32231,
+        "sha256": "55b54981797f27d3996c61d4ff60450a5396a97a91e1a769fbe3049d29477d8d"
       },
       {
         "path": "roots-fixedpoint.tex",
@@ -1435,8 +1435,8 @@
       },
       {
         "path": "roots-orderOfConvergence.tex",
-        "bytes": 39766,
-        "sha256": "aaa9de2e8943902b682ef9e71adb9c0659a4c980e3c2d3e58622497d4f817819"
+        "bytes": 39763,
+        "sha256": "74f1c5a970f0f3a0fd97972b8f9ec7c87fdb2fc2a0e87a669dcabf14aaa5762e"
       },
       {
         "path": "roots-polynomials.tex",
@@ -1445,8 +1445,8 @@
       },
       {
         "path": "solutions.tex",
-        "bytes": 272739,
-        "sha256": "9fa7371cddac3e7e6a4216ad43bd9f08f801b4da040fbf6118914e7f2487e315"
+        "bytes": 272711,
+        "sha256": "cdb7dded865b39667f30fe157d13908d7f66ea3ebc343a1492eec27c36a1e3d8"
       },
       {
         "path": "splines-cubic.tex",
@@ -1455,8 +1455,8 @@
       },
       {
         "path": "splines-parametric.tex",
-        "bytes": 38494,
-        "sha256": "84f90a7d593e0c1dd5bbc19bfb0cf6502699ddc3f1783c69545ae36f829bfbfc"
+        "bytes": 38492,
+        "sha256": "e352b47e45ed2e5a214b1af3f3f973a61a6413ae9aa3729c11ca60ee3268ca09"
       },
       {
         "path": "TeaTimeNumericalAnalysis-id-ID.tex",
@@ -1477,8 +1477,8 @@
   },
   "pdf": {
     "path": "output/pdf/Tea-Time-Numerical-Analysis-id-ID.pdf",
-    "bytes": 8202476,
-    "sha256": "cbc31e9e27fdee96845d78fa6a625bf956196001b7941ddf0f1232f5def46b45",
+    "bytes": 8202487,
+    "sha256": "d573b7233d0baa07381e2052a749757885db3a31fbfe695c5a4851ea42d91b6d",
     "pages": 387
   }
 }

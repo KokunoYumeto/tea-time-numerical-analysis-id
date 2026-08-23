@@ -501,7 +501,7 @@ def main() -> None:
                 "build_state": "not_built",
                 "publication_state": "unpublished",
                 "interchange_state": "structurally_verified",
-                "provenance": "local Codex translation requested by Floris",
+                "provenance": "OpenAI Codex gpt-5.6-sol, Ultra, at the user's request",
             }
         )
         relations.extend(

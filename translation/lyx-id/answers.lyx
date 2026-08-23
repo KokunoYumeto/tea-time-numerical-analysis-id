@@ -2544,15 +2544,15 @@ reference "exc:bracketing-14"
 \begin_inset Formula $1$
 \end_inset
 
-, tidak ada perbedaan antara pengujian galat absolut dan galat relatif.
- (e) Karena akar bernilai sekitar lima ratus, metode berhenti ketika galat absolut
+, tidak ada perbedaan antara pengujian galat mutlak dan galat relatif.
+ (e) Karena akar bernilai sekitar lima ratus, metode berhenti ketika galat mutlak
  baru sekitar 
 \begin_inset Formula $10^{-6}\cdot500=5(10)^{-4}$
 \end_inset
 
 .
  Akibatnya, metode berhenti satu iterasi lebih awal ketika memeriksa galat relatif
- dibandingkan ketika memeriksa galat absolut.
+ dibandingkan ketika memeriksa galat mutlak.
 \end_layout
 
 \begin_layout Section*
@@ -3498,7 +3498,7 @@ reference "exc:calculusErrors-30"
 \begin_inset Formula $\frac{\pi^{3}}{36}\approx0.8612854633416616$
 \end_inset
 
- (e) galat absolut sebenarnya: 
+ (e) galat mutlak sebenarnya: 
 \begin_inset Formula $0.7206990463513265$
 \end_inset
 
@@ -5317,7 +5317,7 @@ reference "exc:odePendulum-19"
 \end_inset
 
 .
- Untuk mengetahui seberapa baik hampiran tersebut, galat absolut
+ Untuk mengetahui seberapa baik hampiran tersebut, galat mutlak
  pada 
 \begin_inset Formula $t=11$
 \end_inset
@@ -6208,7 +6208,7 @@ y(2)\approx2.3125,\,2.28814697265625,\,2.28469446951954,\,2.28402793464698
 
 \end_inset
 
- galat absolutnya kira-kira 
+ galat mutlaknya kira-kira 
 \begin_inset Formula 
 \[
 0.02866617919084,\,0.004313151847096,\,8.606487103870(10)^{-4},\,1.941138378267(10)^{-4}
@@ -7039,7 +7039,7 @@ b:
 \begin_inset Formula $O(h^{3})$
 \end_inset
 
-; sama dengan galat pemenggalan lokal rumus integrasi yang mendasarinya; ya, satu derajat
+; sama dengan galat pemotongan lokal rumus integrasi yang mendasarinya; ya, satu derajat
  lebih tinggi daripada laju kekonvergenan.
 \end_layout
 
@@ -7054,7 +7054,7 @@ c:
 \begin_inset Formula $O(h^{3})$
 \end_inset
 
-; sama dengan galat pemenggalan lokal rumus integrasi yang mendasarinya; ya, satu derajat
+; sama dengan galat pemotongan lokal rumus integrasi yang mendasarinya; ya, satu derajat
  lebih tinggi daripada laju kekonvergenan.
 \end_layout
 
@@ -7084,7 +7084,7 @@ reference "eq:rk4cond10"
 \begin_inset Formula $O(h^{4})$
 \end_inset
 
-; lebih rendah daripada galat pemenggalan lokal rumus integrasi yang mendasarinya; ya, satu derajat
+; lebih rendah daripada galat pemotongan lokal rumus integrasi yang mendasarinya; ya, satu derajat
  lebih tinggi daripada laju kekonvergenan.
 \end_layout
 
@@ -7114,7 +7114,7 @@ reference "eq:rk4cond10"
 \begin_inset Formula $O(h^{3})$
 \end_inset
 
-; lebih rendah daripada galat pemenggalan lokal rumus integrasi yang mendasarinya; ya, satu derajat
+; lebih rendah daripada galat pemotongan lokal rumus integrasi yang mendasarinya; ya, satu derajat
  lebih tinggi daripada laju kekonvergenan.
 \end_layout
 

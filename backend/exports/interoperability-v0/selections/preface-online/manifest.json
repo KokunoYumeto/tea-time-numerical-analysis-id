@@ -1,10 +1,10 @@
 {
   "exporter": "ttna-interoperability-v0-exporter-0.1.0",
   "output": {
-    "bytes": 28896,
+    "bytes": 28962,
     "path": "records.jsonl",
     "records": 51,
-    "sha256": "e06757514aaaa53960b7992381224dc2e7bf2a1e9f6923479d35177062a5666d"
+    "sha256": "5807d72c4857a679ef2f9beaa2e1bcbc5f3b1d3e869fe3242737fba25c70ef82"
   },
   "proprietary_services_required": false,
   "record_counts": {
@@ -79,11 +79,11 @@
     ],
     "unresolved_dependencies": []
   },
-  "semantic_sha256": "e06757514aaaa53960b7992381224dc2e7bf2a1e9f6923479d35177062a5666d",
+  "semantic_sha256": "5807d72c4857a679ef2f9beaa2e1bcbc5f3b1d3e869fe3242737fba25c70ef82",
   "source_records": {
-    "bytes": 22050690,
+    "bytes": 22101516,
     "path": "backend/exports/interoperability-v0/records.jsonl",
-    "sha256": "203ec965823817e79939f894f871ed6c0445534fbf3a6d06d1e0fa3566e16c79"
+    "sha256": "0b4227c5fde67ba15388384c79d980ec361b65f7375b4d47928aad1be09edafe"
   },
   "total_unique_records": 51
 }

@@ -77,10 +77,10 @@
       "sha256": "180b49d78a64410c3242c511a11eb8541fa26e4bfc99d2b1cfd3068693d4bc7b"
     },
     {
-      "bytes": 37290,
+      "bytes": 37642,
       "path": "translation/localizations.id-ID.jsonl",
       "records": 32,
-      "sha256": "e96513ad8523560efd411ea17af2ca326421964cb225530b499ac36bb5e02b9a"
+      "sha256": "923ad919560aaabfda6a1f33f7b5ed69ac725ca2364460e707af0797d74ea834"
     },
     {
       "bytes": 29183,
@@ -89,10 +89,10 @@
       "sha256": "66cfdc2b77b51c85fa6899f92e025e13e05aad39b9534f1ad182cf06c44dd864"
     },
     {
-      "bytes": 221738,
+      "bytes": 221879,
       "path": "translation/terms.id-ID.jsonl",
       "records": 593,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     }
   ],
   "generator": "ttna-tex-indexer-0.1.0",

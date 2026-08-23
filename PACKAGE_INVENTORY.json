@@ -1,18 +1,17 @@
 {
   "schema_id": "ttna-id-source-backend-package-v1",
-  "version": "3.0-id.1",
-  "release_date": "2026-08-22",
-  "archive_root": "Tea-Time-Numerical-Analysis-id-ID-v3.0-id.1",
+  "version": "3.0-id.2",
+  "release_date": "2026-08-23",
+  "archive_root": "Tea-Time-Numerical-Analysis-id-ID-v3.0-id.2",
   "source_commit": "186882108a6da95c8dca5b81ce000fc3f8f3ca21",
   "source_tree": "1e50d3756b695176008c602f0ee89712f5f32d10",
   "excluded_separate_or_mutable_files": [
     "output/pdf/Tea-Time-Numerical-Analysis-id-ID.pdf",
-    "FINALIZATION_GATE.json",
-    "CENTRAL_HUB_HANDOFF.md"
+    "PACKAGE_INVENTORY.json"
   ],
-  "payload_file_count": 896,
-  "payload_bytes": 114397268,
-  "path_size_sha256_inventory_aggregate": "e7b29aa67ad18927bd0300fb1f0a3d59b7a9a00bda9bf0e419da797b000ece03",
+  "payload_file_count": 895,
+  "payload_bytes": 114253173,
+  "path_size_sha256_inventory_aggregate": "6940d4125e1036a7b290aee2e4e3972231db8a97217661024b5bc3bbb404fe81",
   "files": [
     {
       "path": ".gitignore",
@@ -20,9 +19,14 @@
       "sha256": "74085fa68a3b14769784ba443e3a7420155afc4b380d9cc47137689c4a6b4e65"
     },
     {
+      "path": "authority/external_terminology/EXTERNAL_TERMINOLOGY_SOURCE_RECEIPT.json",
+      "bytes": 5566,
+      "sha256": "4833faf297cc144977aaba6c6171c1ab344dba19b6e1d029e4239053232a2ab5"
+    },
+    {
       "path": "authority/third_party/heun1900/ASSET_AUTHORITY.json",
-      "bytes": 3695,
-      "sha256": "39bbf79cebe96967dabde26b62faf51c55d6ed1b0376000b3b46bf615f79a2dd"
+      "bytes": 3693,
+      "sha256": "f12fbb5fab4b8dcd67f1b087df3b1803535ebd43c28a54c890da8baa20489192"
     },
     {
       "path": "authority/third_party/heun1900/PPN599415665_0045_00000036.tif",
@@ -53,11 +57,6 @@
       "path": "authority/toolchain/cprotect-1.0f/package/cprotect/cprotect.ins",
       "bytes": 2313,
       "sha256": "b802810c7ef64bafce4184e98f12d86f19651d5953912a5f5bb44c5eb67d5784"
-    },
-    {
-      "path": "authority/toolchain/cprotect-1.0f/package/cprotect/cprotect.log",
-      "bytes": 15470,
-      "sha256": "7a99a93b0aacbc03aaf5cc3d803ce60089884e747f498744143a9089e581f5c3"
     },
     {
       "path": "authority/toolchain/cprotect-1.0f/package/cprotect/cprotect.pdf",
@@ -92,7 +91,7 @@
     {
       "path": "backend/artifacts/artifacts.jsonl",
       "bytes": 3835,
-      "sha256": "92db88b4c483487c04afa70bc185ddfc5fce8873cc6151c175c9fb5dd807f616"
+      "sha256": "efcefc3c22d26ba18869f4da6a073252d7fc49121d4fbd819557a7a2fd8c05b2"
     },
     {
       "path": "backend/assets/assets.jsonl",
@@ -132,12 +131,12 @@
     {
       "path": "backend/config/heun1900_asset_authority.v1.json",
       "bytes": 4052,
-      "sha256": "d39b2bf48304a1365235099f1c96c1219daeba45996fbbfd2c7ed9c44110a2d7"
+      "sha256": "a513266cfd720928885f67388b4818cb99b02e5172551b8e780637ebf323db11"
     },
     {
       "path": "backend/config/interoperability_v0.release.json",
       "bytes": 3115,
-      "sha256": "a1a70f0ddda50cd365e2a92f1363d9dca07e06d1a3b6234364cb871e330112cc"
+      "sha256": "4aafff99f18acd992041774e5c07cc6c1289fed2c2b8526b89f3f1d911b190d2"
     },
     {
       "path": "backend/config/interoperability_v0.v1.json",
@@ -172,32 +171,32 @@
     {
       "path": "backend/exports/interoperability-v0/manifest.json",
       "bytes": 1828,
-      "sha256": "81371e4279186bf61ee829b827cd17fad7e1de6d8f79c411d671d7b7629acd53"
+      "sha256": "efe11b75bf8ca805aa2f6d8db945310d294cc72039a69d5b2a46b2a6d3c7e2bd"
     },
     {
       "path": "backend/exports/interoperability-v0/records.csv",
-      "bytes": 25655273,
-      "sha256": "a178ec16910340d8482034cd088e81c86805c1bc118f01c0162a934a498845c7"
+      "bytes": 25706115,
+      "sha256": "383c21ed77a500faa72f0687d66f0a6c6abce2eb255dd675036df7de8384fa81"
     },
     {
       "path": "backend/exports/interoperability-v0/records.jsonl",
-      "bytes": 22050690,
-      "sha256": "203ec965823817e79939f894f871ed6c0445534fbf3a6d06d1e0fa3566e16c79"
+      "bytes": 22101516,
+      "sha256": "0b4227c5fde67ba15388384c79d980ec361b65f7375b4d47928aad1be09edafe"
     },
     {
       "path": "backend/exports/interoperability-v0/selections/preface-online/manifest.json",
       "bytes": 2549,
-      "sha256": "019b8b340e17eb96a55f4cd65d9c41acdd77bbd1c3171a1e5935ab4f732eb90e"
+      "sha256": "a9640d4824b5fa06399cdaecdd0ec8672430e3e64e44ecfb60440dd345144cef"
     },
     {
       "path": "backend/exports/interoperability-v0/selections/preface-online/records.jsonl",
-      "bytes": 28896,
-      "sha256": "e06757514aaaa53960b7992381224dc2e7bf2a1e9f6923479d35177062a5666d"
+      "bytes": 28962,
+      "sha256": "5807d72c4857a679ef2f9beaa2e1bcbc5f3b1d3e869fe3242737fba25c70ef82"
     },
     {
       "path": "backend/manifests/lane_manifest.json",
       "bytes": 14060,
-      "sha256": "17ef5072077b5b438a883b6bd751ea31b2ec5651567db5d100dba39bf9497cb3"
+      "sha256": "9a6ccf6ebf1e579216d7a5d7dee70b0da6acd7e5ea6237325b45cada5318a9e0"
     },
     {
       "path": "backend/packs/answers/assets/assets.jsonl",
@@ -227,7 +226,7 @@
     {
       "path": "backend/packs/answers/manifests/lane_manifest.json",
       "bytes": 3117,
-      "sha256": "461af333aa52274aeaaca4d91972d83585cb277f1bbc2dd6aa0df80e5779ef88"
+      "sha256": "054682ff7183135c3ae1e5d860e96552c25c2f1ec4a4ca30b459763f4f38f3e4"
     },
     {
       "path": "backend/packs/answers/qa/events.jsonl",
@@ -247,7 +246,7 @@
     {
       "path": "backend/packs/answers/topology/source_files.jsonl",
       "bytes": 810,
-      "sha256": "d2671ec38315a22461423cd94c8d787af42c12dfd49d940a209c7d5bf4554411"
+      "sha256": "8b141550e75d7a5446e4cb1176b03d5bbed668575b06f2c43104c1fc40c25d1d"
     },
     {
       "path": "backend/packs/answers/topology/units.jsonl",
@@ -256,8 +255,8 @@
     },
     {
       "path": "backend/packs/answers/translation/localizations.id-ID.jsonl",
-      "bytes": 733284,
-      "sha256": "10d33872bb47d6f19490d0e224d01077382f6ef4e629a2fb44f44b67340dee13"
+      "bytes": 739093,
+      "sha256": "66ffe23843e65633d9cb7ae8c7714bc0f202194116ee33f453b48ae010bfa6e4"
     },
     {
       "path": "backend/packs/answers/translation/segments.en.jsonl",
@@ -266,8 +265,8 @@
     },
     {
       "path": "backend/packs/answers/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/calculus-composite/assets/assets.jsonl",
@@ -297,7 +296,7 @@
     {
       "path": "backend/packs/calculus-composite/manifests/lane_manifest.json",
       "bytes": 3123,
-      "sha256": "730e2eb1ce14c7a8d218778a1a55502f341eb2ffe3fe8545cc23eb9c99207564"
+      "sha256": "5b3f455900acc2647121f60f51a33ac98c420bc7f63f85bbc00cb0a76296ca2f"
     },
     {
       "path": "backend/packs/calculus-composite/qa/events.jsonl",
@@ -317,7 +316,7 @@
     {
       "path": "backend/packs/calculus-composite/topology/source_files.jsonl",
       "bytes": 665,
-      "sha256": "2af54e26badc85818161a4e08a9ec0678bce7e1faacd3ddcb3c7ed69bf2aa499"
+      "sha256": "38c70514e994d201590669bd82a49b4de4a8035cb370ab3dbb15dac7b236c14e"
     },
     {
       "path": "backend/packs/calculus-composite/topology/units.jsonl",
@@ -326,8 +325,8 @@
     },
     {
       "path": "backend/packs/calculus-composite/translation/localizations.id-ID.jsonl",
-      "bytes": 213103,
-      "sha256": "4010d0eaf8b1fabfa186b54ebd77982592b153bbbd336b76a4392357c695e54a"
+      "bytes": 214298,
+      "sha256": "f8e810e985903bd207eacb20e186681b4cea52604bddebca63a258a81bbdd954"
     },
     {
       "path": "backend/packs/calculus-composite/translation/segments.en.jsonl",
@@ -336,8 +335,8 @@
     },
     {
       "path": "backend/packs/calculus-composite/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/calculus-errors/assets/assets.jsonl",
@@ -367,7 +366,7 @@
     {
       "path": "backend/packs/calculus-errors/manifests/lane_manifest.json",
       "bytes": 3120,
-      "sha256": "75b9b8ca707090463bb42af468233947b26b495afcae904aabadc7c739bc7638"
+      "sha256": "2db7c0093497913111c31f6f0ae9138d2738de6946e7224068687168d8d88336"
     },
     {
       "path": "backend/packs/calculus-errors/qa/events.jsonl",
@@ -387,7 +386,7 @@
     {
       "path": "backend/packs/calculus-errors/topology/source_files.jsonl",
       "bytes": 661,
-      "sha256": "18842b5c3910e81b20f85b29fd778afeff10607c9b2d61ed54ed060f2783f014"
+      "sha256": "e9290cecf2d78289066088125cc1d45be12fb404e029945561a11e92bee94eda"
     },
     {
       "path": "backend/packs/calculus-errors/topology/units.jsonl",
@@ -396,8 +395,8 @@
     },
     {
       "path": "backend/packs/calculus-errors/translation/localizations.id-ID.jsonl",
-      "bytes": 297456,
-      "sha256": "3116d3ead7e037cd6e50d4f94cc6d58ba9d85d06369cd6a5ef92c075d2510d47"
+      "bytes": 299028,
+      "sha256": "e1434d7268e4287596bcd54da01f0e2aab33fffe7481a820883c369ae5a08393"
     },
     {
       "path": "backend/packs/calculus-errors/translation/segments.en.jsonl",
@@ -406,8 +405,8 @@
     },
     {
       "path": "backend/packs/calculus-errors/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/calculus-richardsons/assets/assets.jsonl",
@@ -437,7 +436,7 @@
     {
       "path": "backend/packs/calculus-richardsons/manifests/lane_manifest.json",
       "bytes": 3119,
-      "sha256": "04db8ac176fad3c865c502d6149c8e9057535f8085256d9b67a97b07cc601f56"
+      "sha256": "622a1e4b6a9ac591febe01c86ab8881a183e45f99202aa76d97ae220a5500ed9"
     },
     {
       "path": "backend/packs/calculus-richardsons/qa/events.jsonl",
@@ -457,7 +456,7 @@
     {
       "path": "backend/packs/calculus-richardsons/topology/source_files.jsonl",
       "bytes": 669,
-      "sha256": "6d3c2591545cba17b48cd8f5acccc79e9fcb2c2ad39f801a6284c4a79e6f67ad"
+      "sha256": "b8e44b9fa5c3ef1a6ae39819d37dec85202da33304b271d1327feaa985419a58"
     },
     {
       "path": "backend/packs/calculus-richardsons/topology/units.jsonl",
@@ -466,8 +465,8 @@
     },
     {
       "path": "backend/packs/calculus-richardsons/translation/localizations.id-ID.jsonl",
-      "bytes": 143948,
-      "sha256": "c172fba04251792ed0e50d475ad840e52835c282b803956147a1de11033ab652"
+      "bytes": 144715,
+      "sha256": "60762254272a3daf1b07c9bf711d32bb90fcefb72a73e8943778db075c210ee0"
     },
     {
       "path": "backend/packs/calculus-richardsons/translation/segments.en.jsonl",
@@ -476,8 +475,8 @@
     },
     {
       "path": "backend/packs/calculus-richardsons/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/calculus-rudiments/assets/assets.jsonl",
@@ -507,7 +506,7 @@
     {
       "path": "backend/packs/calculus-rudiments/manifests/lane_manifest.json",
       "bytes": 3125,
-      "sha256": "dcaac011a59406a860dfbbaddc406d9bad2f2c54935999565170e1f71f02ac79"
+      "sha256": "2c7fd2199c656ffe66230dd4841f742eae6bde6907fd1ab68931acb0bb77639e"
     },
     {
       "path": "backend/packs/calculus-rudiments/qa/events.jsonl",
@@ -527,7 +526,7 @@
     {
       "path": "backend/packs/calculus-rudiments/topology/source_files.jsonl",
       "bytes": 667,
-      "sha256": "c47490a8dd92ca7c63b1f3a7c1a771c00fcd74c387d807b1f9aa23c4753c32b9"
+      "sha256": "c7484a84f93cb9929dfe604b7a402f8fa98817a153bdc287e54f6942c38fd1b0"
     },
     {
       "path": "backend/packs/calculus-rudiments/topology/units.jsonl",
@@ -536,8 +535,8 @@
     },
     {
       "path": "backend/packs/calculus-rudiments/translation/localizations.id-ID.jsonl",
-      "bytes": 315955,
-      "sha256": "2bb923a04946a98d7bb404e79cdc5338181831e0a3d99ca9ba1b32a15b56852e"
+      "bytes": 317746,
+      "sha256": "1ac68ac7933b8b15c15dc412d649d0f266299d972bf9be7051446f6166c02f17"
     },
     {
       "path": "backend/packs/calculus-rudiments/translation/segments.en.jsonl",
@@ -546,8 +545,8 @@
     },
     {
       "path": "backend/packs/calculus-rudiments/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/calculus-undeterminedCoefficients/assets/assets.jsonl",
@@ -577,7 +576,7 @@
     {
       "path": "backend/packs/calculus-undeterminedCoefficients/manifests/lane_manifest.json",
       "bytes": 3135,
-      "sha256": "18b8c974ea1e0314f389848c88e2e664ca3fb7f1f0626d46f06b3c304421dbab"
+      "sha256": "3d317e3b78c9f39c6f99bdd74ed8f04e03b56fecefb16aa23fb4dc2d7b07f681"
     },
     {
       "path": "backend/packs/calculus-undeterminedCoefficients/qa/events.jsonl",
@@ -597,7 +596,7 @@
     {
       "path": "backend/packs/calculus-undeterminedCoefficients/topology/source_files.jsonl",
       "bytes": 695,
-      "sha256": "64da211c26de762c56622a750ddd4f2b10c6a9f36b6a14b333bfd2937811a39f"
+      "sha256": "c73085252c2e537cbb8d900b7656a49df883d42d796ecbe747b540a71487a960"
     },
     {
       "path": "backend/packs/calculus-undeterminedCoefficients/topology/units.jsonl",
@@ -606,8 +605,8 @@
     },
     {
       "path": "backend/packs/calculus-undeterminedCoefficients/translation/localizations.id-ID.jsonl",
-      "bytes": 172734,
-      "sha256": "c0f40e28876a83ee9f6ff127a38bb4f99e32f03f8d4875dd0f10e7b25250177c"
+      "bytes": 173786,
+      "sha256": "05e7faa30305b35b8a9b19a60cd9b9ea3221cc876c0e815dc20fecb4c980d48c"
     },
     {
       "path": "backend/packs/calculus-undeterminedCoefficients/translation/segments.en.jsonl",
@@ -616,8 +615,8 @@
     },
     {
       "path": "backend/packs/calculus-undeterminedCoefficients/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/cprotect-1.0f/assets/assets.jsonl",
@@ -681,8 +680,8 @@
     },
     {
       "path": "backend/packs/heun1900-page30/manifests/lane_manifest.json",
-      "bytes": 2543,
-      "sha256": "b0282bf89b63640c1b50e23a5d4de76fd0e9a3d8c6bcd175f0f091dd4b3d982e"
+      "bytes": 2541,
+      "sha256": "6dfbcf69a1fdf16bc7f7784b337bb202498f7a1744239484259e2404015e0139"
     },
     {
       "path": "backend/packs/heun1900-page30/rights/components.jsonl",
@@ -697,7 +696,7 @@
     {
       "path": "backend/packs/interoperability-v0/artifacts/artifacts.jsonl",
       "bytes": 3835,
-      "sha256": "92db88b4c483487c04afa70bc185ddfc5fce8873cc6151c175c9fb5dd807f616"
+      "sha256": "efcefc3c22d26ba18869f4da6a073252d7fc49121d4fbd819557a7a2fd8c05b2"
     },
     {
       "path": "backend/packs/interoperability-v0/authority/editions.jsonl",
@@ -727,7 +726,7 @@
     {
       "path": "backend/packs/interoperability-v0/manifests/lane_manifest.json",
       "bytes": 6528,
-      "sha256": "4286e17522baafe1e1b7299ff9f4573b0ad38abf4300dab9d4153e3efd57d8ce"
+      "sha256": "0fc900555159797b9fda4cf78b2fa7d63b12d685cdf1100c3fb6abae1eadda86"
     },
     {
       "path": "backend/packs/interoperability-v0/rights/components.jsonl",
@@ -746,8 +745,8 @@
     },
     {
       "path": "backend/packs/interoperability-v0/topology/source_files.jsonl",
-      "bytes": 23568,
-      "sha256": "0d6e4a09c70065e131d3ab085fba041c9d6a57687547ab5a3b0ab9a220fae524"
+      "bytes": 23560,
+      "sha256": "7e85e26602a0820c57ce9ab0feab93ec83cacd7dfc3f9f74903e72ff1991d4d7"
     },
     {
       "path": "backend/packs/interoperability-v0/topology/units.jsonl",
@@ -761,8 +760,8 @@
     },
     {
       "path": "backend/packs/interoperability-v0/translation/terms.id-ID.jsonl",
-      "bytes": 4417,
-      "sha256": "b3f1e19b3d2979eae4215801e3aed9e7717412cc8bf2ce2ffac68f51c8d25c29"
+      "bytes": 4456,
+      "sha256": "0da90f82f43f67ec4bc0c305a48062e7a61f918dc07b983b9b93b8d47c8f2a04"
     },
     {
       "path": "backend/packs/interpolation-challenge/assets/assets.jsonl",
@@ -792,7 +791,7 @@
     {
       "path": "backend/packs/interpolation-challenge/manifests/lane_manifest.json",
       "bytes": 3127,
-      "sha256": "5c5bf56c47f36066bb874e5611812b2e314de306bc8685a7d2ed30a5230819fb"
+      "sha256": "00dce4aded70ba34d0e75b7cd9192a9cdf4c0ae3556fb1eb34e85481b9f6e7d2"
     },
     {
       "path": "backend/packs/interpolation-challenge/qa/events.jsonl",
@@ -821,8 +820,8 @@
     },
     {
       "path": "backend/packs/interpolation-challenge/translation/localizations.id-ID.jsonl",
-      "bytes": 61343,
-      "sha256": "e5e1bb6b9924bd85055396ede8801c75282aacee66f78fd6690396c5979f82a0"
+      "bytes": 61618,
+      "sha256": "01aeab434dfae6a1d2661c2d45fabfd835492307a077f58e0650314cec62d7e4"
     },
     {
       "path": "backend/packs/interpolation-challenge/translation/segments.en.jsonl",
@@ -831,8 +830,8 @@
     },
     {
       "path": "backend/packs/interpolation-challenge/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/interpolation-lagrange/assets/assets.jsonl",
@@ -862,7 +861,7 @@
     {
       "path": "backend/packs/interpolation-lagrange/manifests/lane_manifest.json",
       "bytes": 3127,
-      "sha256": "cafaf8b2ebb4c8241986ebb15a505176e9eb13cbd72a70a44c5eb694b86469aa"
+      "sha256": "edb124f04b0d7859908337b1a11f4570f0f920bf83ac4a05108e2378e524e7b0"
     },
     {
       "path": "backend/packs/interpolation-lagrange/qa/events.jsonl",
@@ -882,7 +881,7 @@
     {
       "path": "backend/packs/interpolation-lagrange/topology/source_files.jsonl",
       "bytes": 838,
-      "sha256": "77b18a432c56a2fa69eb7f1b2c13820e4ae2248374298a6ffd4db2d0c9f2eece"
+      "sha256": "be662cf81e1d7695549d6a8f2935f44e9c737f5a6dcf6f0155f8858a97239690"
     },
     {
       "path": "backend/packs/interpolation-lagrange/topology/units.jsonl",
@@ -891,8 +890,8 @@
     },
     {
       "path": "backend/packs/interpolation-lagrange/translation/localizations.id-ID.jsonl",
-      "bytes": 277231,
-      "sha256": "eef8030b25b9cb535a3d5a9a9cf685bd40227adda050e8ef577dcf3969090ba6"
+      "bytes": 278605,
+      "sha256": "5e1e145c576d58d3b919d93eeed391f6cc3110cd3f7f6be10102a607d0b3a638"
     },
     {
       "path": "backend/packs/interpolation-lagrange/translation/segments.en.jsonl",
@@ -901,8 +900,8 @@
     },
     {
       "path": "backend/packs/interpolation-lagrange/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/interpolation-newton/assets/assets.jsonl",
@@ -932,7 +931,7 @@
     {
       "path": "backend/packs/interpolation-newton/manifests/lane_manifest.json",
       "bytes": 3125,
-      "sha256": "e8d0168d489257cd3fe77d75ee95ee85067fb4e6d5b8c77524572665cd2576d7"
+      "sha256": "59498b77b4d489417daf4b0723461dad814f2d8f50f6be31aff3cb8dce4ddc9d"
     },
     {
       "path": "backend/packs/interpolation-newton/qa/events.jsonl",
@@ -961,8 +960,8 @@
     },
     {
       "path": "backend/packs/interpolation-newton/translation/localizations.id-ID.jsonl",
-      "bytes": 242934,
-      "sha256": "232e02cf3efc6007d9da06f9c2f1894e206cf5eada6b8954274933a040824738"
+      "bytes": 244254,
+      "sha256": "8cd495317f52a7586dd98f2978b52f6cae21b3d904adb29f9103a19f1544466d"
     },
     {
       "path": "backend/packs/interpolation-newton/translation/segments.en.jsonl",
@@ -971,8 +970,8 @@
     },
     {
       "path": "backend/packs/interpolation-newton/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/ode-adaptive/assets/assets.jsonl",
@@ -1002,7 +1001,7 @@
     {
       "path": "backend/packs/ode-adaptive/manifests/lane_manifest.json",
       "bytes": 3117,
-      "sha256": "ba48ab2a1933266d4a67f69b6e2638830f40691756770958d48f99ed5d802e7b"
+      "sha256": "4d0b53d49be5fe7826c2e053250931628ec3180e1586ac848544aa7c4bfe5308"
     },
     {
       "path": "backend/packs/ode-adaptive/qa/events.jsonl",
@@ -1022,7 +1021,7 @@
     {
       "path": "backend/packs/ode-adaptive/topology/source_files.jsonl",
       "bytes": 820,
-      "sha256": "2ea5e6bb5584c943a58612e54bb5c9e1b70ef50dd559e2c09ea08bee563d5daa"
+      "sha256": "2969088df15307eb7c3cb8161728763345901d19e61e01bf74b6d87b14c58a63"
     },
     {
       "path": "backend/packs/ode-adaptive/topology/units.jsonl",
@@ -1031,8 +1030,8 @@
     },
     {
       "path": "backend/packs/ode-adaptive/translation/localizations.id-ID.jsonl",
-      "bytes": 370525,
-      "sha256": "72c219db12250ec51c6ee0652019d77e619053c9109f3ff5610234bcd3a819a5"
+      "bytes": 372117,
+      "sha256": "4a53ad12c05882cd4bbd54869a4fa4362a7c91781466baefe527baf31ee6420d"
     },
     {
       "path": "backend/packs/ode-adaptive/translation/segments.en.jsonl",
@@ -1041,8 +1040,8 @@
     },
     {
       "path": "backend/packs/ode-adaptive/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/ode-errorAnalysis/assets/assets.jsonl",
@@ -1072,7 +1071,7 @@
     {
       "path": "backend/packs/ode-errorAnalysis/manifests/lane_manifest.json",
       "bytes": 3116,
-      "sha256": "3604357b055c40d3f80db985a804f38d06b51e2248b507f344084f0466e12f64"
+      "sha256": "6a632b1e4cc483dc23171f56e809f275b0bf4174fbb701cd6b4e2e101ae14fe4"
     },
     {
       "path": "backend/packs/ode-errorAnalysis/qa/events.jsonl",
@@ -1092,7 +1091,7 @@
     {
       "path": "backend/packs/ode-errorAnalysis/topology/source_files.jsonl",
       "bytes": 663,
-      "sha256": "042bbd32b5c11fdef20d8dac9e2d67e4c744f5532c8e9004c9c73f9ce3c802a5"
+      "sha256": "980cc8bdb8b7594da3da8ee43e63347ea73e76708c47feafec48c58269722adf"
     },
     {
       "path": "backend/packs/ode-errorAnalysis/topology/units.jsonl",
@@ -1101,8 +1100,8 @@
     },
     {
       "path": "backend/packs/ode-errorAnalysis/translation/localizations.id-ID.jsonl",
-      "bytes": 112036,
-      "sha256": "48bf8d4f5185c3793534ec7df58b4e4636bdff2bd5a9febf84ab06b31280bda6"
+      "bytes": 112484,
+      "sha256": "3b79b2de6a8e9dafd2bcfe67f6e245b5d4ad7f385f5f380a953027952b69bbdc"
     },
     {
       "path": "backend/packs/ode-errorAnalysis/translation/segments.en.jsonl",
@@ -1111,8 +1110,8 @@
     },
     {
       "path": "backend/packs/ode-errorAnalysis/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/ode-pendulum/assets/assets.jsonl",
@@ -1142,7 +1141,7 @@
     {
       "path": "backend/packs/ode-pendulum/manifests/lane_manifest.json",
       "bytes": 3119,
-      "sha256": "ca4a1214576692e82075993d2c5523b7a4194298a33caf601f17b8ca6df18531"
+      "sha256": "ae27e5ccbcabab1fb760a05478901c2c65825295fbe7df0c846ef47d771637de"
     },
     {
       "path": "backend/packs/ode-pendulum/qa/events.jsonl",
@@ -1171,8 +1170,8 @@
     },
     {
       "path": "backend/packs/ode-pendulum/translation/localizations.id-ID.jsonl",
-      "bytes": 197435,
-      "sha256": "d915c0e2a7dd684a64d51b912fbcf7fee21c280c04160c2e912d7b26a8f83521"
+      "bytes": 198656,
+      "sha256": "9bab70e01c7f597f99582175576b095f0dcbf27d35a3045acb0050cb1a579f98"
     },
     {
       "path": "backend/packs/ode-pendulum/translation/segments.en.jsonl",
@@ -1181,8 +1180,8 @@
     },
     {
       "path": "backend/packs/ode-pendulum/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/ode-rungeKutta/assets/assets.jsonl",
@@ -1212,7 +1211,7 @@
     {
       "path": "backend/packs/ode-rungeKutta/manifests/lane_manifest.json",
       "bytes": 3119,
-      "sha256": "cbad6711c57bcfce246dba73ae1b340290fa932f7a0a1ed5e3a98050313c8a4a"
+      "sha256": "6a4c10e12f4368d8cf06e23677c7df6c293be6608a6d4e24de9dc16afd7a3f80"
     },
     {
       "path": "backend/packs/ode-rungeKutta/qa/events.jsonl",
@@ -1232,7 +1231,7 @@
     {
       "path": "backend/packs/ode-rungeKutta/topology/source_files.jsonl",
       "bytes": 822,
-      "sha256": "c6f380dc854ed3083251109471e817b4b67980aa3655757b71befe98585af31c"
+      "sha256": "2100c91f138b4e298529784631b8263d2cc81ea86f4c42057a01320c4af0b6e0"
     },
     {
       "path": "backend/packs/ode-rungeKutta/topology/units.jsonl",
@@ -1241,8 +1240,8 @@
     },
     {
       "path": "backend/packs/ode-rungeKutta/translation/localizations.id-ID.jsonl",
-      "bytes": 222064,
-      "sha256": "2ae6589f622732078906c049041910137277177af9fb90f4257e274fd56d472d"
+      "bytes": 223437,
+      "sha256": "ad16c266c9c6d51735ae4e0788b4d1d6619f05bb83fc92946fec714d82d0d503"
     },
     {
       "path": "backend/packs/ode-rungeKutta/translation/segments.en.jsonl",
@@ -1251,8 +1250,8 @@
     },
     {
       "path": "backend/packs/ode-rungeKutta/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/ode-taylor/assets/assets.jsonl",
@@ -1282,7 +1281,7 @@
     {
       "path": "backend/packs/ode-taylor/manifests/lane_manifest.json",
       "bytes": 3117,
-      "sha256": "1a43104971920b49762851c6452d3a8deeb7e32cca2b9ed3ec2d014861d3627e"
+      "sha256": "ceda557cacb20eae6f0f3749e7b1ea0e346554dfcf9903abe433b01de88e5be0"
     },
     {
       "path": "backend/packs/ode-taylor/qa/events.jsonl",
@@ -1302,7 +1301,7 @@
     {
       "path": "backend/packs/ode-taylor/topology/source_files.jsonl",
       "bytes": 649,
-      "sha256": "54baabdf174a4e9a1ee1cf714edc6f344365d07d821b0d8c7d4a242694b03406"
+      "sha256": "a3572dc6b96292a2714c14ff3497ddb635dec7b256ae1e13564a056886329c62"
     },
     {
       "path": "backend/packs/ode-taylor/topology/units.jsonl",
@@ -1311,8 +1310,8 @@
     },
     {
       "path": "backend/packs/ode-taylor/translation/localizations.id-ID.jsonl",
-      "bytes": 217586,
-      "sha256": "b271128334224c3391dcd69f72a38bbcaeb62c7d5d94d766c0e431af98e3b671"
+      "bytes": 218740,
+      "sha256": "fb689c43b54872c5a61437432e94d3726075de1585f757b1589637fc14602338"
     },
     {
       "path": "backend/packs/ode-taylor/translation/segments.en.jsonl",
@@ -1321,8 +1320,8 @@
     },
     {
       "path": "backend/packs/ode-taylor/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/preamble/assets/assets.jsonl",
@@ -1352,7 +1351,7 @@
     {
       "path": "backend/packs/preamble/manifests/lane_manifest.json",
       "bytes": 3363,
-      "sha256": "85e495fefcc48e7e89a1e345609c622d120760ac69cb05afdb4efdfecebcd395"
+      "sha256": "fbafc7e44f2a7fe1bb207069169fdfe186c7b894057ba5663cb7052dcca2b48a"
     },
     {
       "path": "backend/packs/preamble/qa/events.jsonl",
@@ -1381,8 +1380,8 @@
     },
     {
       "path": "backend/packs/preamble/translation/localizations.id-ID.jsonl",
-      "bytes": 37290,
-      "sha256": "e96513ad8523560efd411ea17af2ca326421964cb225530b499ac36bb5e02b9a"
+      "bytes": 37642,
+      "sha256": "923ad919560aaabfda6a1f33f7b5ed69ac725ca2364460e707af0797d74ea834"
     },
     {
       "path": "backend/packs/preamble/translation/segments.en.jsonl",
@@ -1391,8 +1390,8 @@
     },
     {
       "path": "backend/packs/preamble/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/preface/assets/assets.jsonl",
@@ -1422,7 +1421,7 @@
     {
       "path": "backend/packs/preface/manifests/lane_manifest.json",
       "bytes": 3103,
-      "sha256": "2c226676ca2b48e25d429b86fafdad6250227203967d69250ab6c9291054c8e9"
+      "sha256": "0584957763f6a34050f5d020c542c13d7f1229d626e4cb82b83f8ea28cb70c1f"
     },
     {
       "path": "backend/packs/preface/qa/events.jsonl",
@@ -1451,8 +1450,8 @@
     },
     {
       "path": "backend/packs/preface/translation/localizations.id-ID.jsonl",
-      "bytes": 49886,
-      "sha256": "e8ad4b5c36c3ea59bbbb5cff877f47fda9fabe7f3b5fdff0d391523fe5ec2764"
+      "bytes": 50249,
+      "sha256": "3f8f02f3344edf8e30e15ca5975c0f885a9b78c80c487d4bdbc0d2f7f315a8ca"
     },
     {
       "path": "backend/packs/preface/translation/segments.en.jsonl",
@@ -1461,8 +1460,8 @@
     },
     {
       "path": "backend/packs/preface/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/preliminaries-convergence/assets/assets.jsonl",
@@ -1492,7 +1491,7 @@
     {
       "path": "backend/packs/preliminaries-convergence/manifests/lane_manifest.json",
       "bytes": 3133,
-      "sha256": "9d451b7d6bc58f420a3d53ebc30175c75932725f02e13a11ff97ef093b79266c"
+      "sha256": "9d826e9e937df96b41f190b223836c7615a0719aaa62ab5017bbe7f0f74c0564"
     },
     {
       "path": "backend/packs/preliminaries-convergence/qa/events.jsonl",
@@ -1512,7 +1511,7 @@
     {
       "path": "backend/packs/preliminaries-convergence/topology/source_files.jsonl",
       "bytes": 846,
-      "sha256": "6b6a1b4443ddaaa40859278d919c85d39865c484d04d04b8d96afcdf35afcbc5"
+      "sha256": "ed5ffb586f78418c9821f11ba06503bed4e15dadd0b25c189892caa1b0dd1161"
     },
     {
       "path": "backend/packs/preliminaries-convergence/topology/units.jsonl",
@@ -1521,8 +1520,8 @@
     },
     {
       "path": "backend/packs/preliminaries-convergence/translation/localizations.id-ID.jsonl",
-      "bytes": 296289,
-      "sha256": "02ef41789050c0a3caf6901783a1f04a06fc3f283f6cfd3169ef32bd16e639df"
+      "bytes": 297813,
+      "sha256": "0b99e0a53754c87b8cd5f4e796d610242d151536ccd12fffe9b84b616cacac34"
     },
     {
       "path": "backend/packs/preliminaries-convergence/translation/segments.en.jsonl",
@@ -1531,8 +1530,8 @@
     },
     {
       "path": "backend/packs/preliminaries-convergence/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/preliminaries-errors/assets/assets.jsonl",
@@ -1562,7 +1561,7 @@
     {
       "path": "backend/packs/preliminaries-errors/manifests/lane_manifest.json",
       "bytes": 3126,
-      "sha256": "6d723f9d4474025ca78ee6de0133947ed737a11334f52ea4f6e87811f15a26fa"
+      "sha256": "5c122389582c876e9398e4f96343de8583dcb07880edeceb46240524c4e9de5b"
     },
     {
       "path": "backend/packs/preliminaries-errors/qa/events.jsonl",
@@ -1582,7 +1581,7 @@
     {
       "path": "backend/packs/preliminaries-errors/topology/source_files.jsonl",
       "bytes": 834,
-      "sha256": "bb731f50de735fd731c4ab194a0243686fb0bb31e9813185391edd5cfbef102f"
+      "sha256": "c0b58a2f1463c213ba048a6961fe20a1264bfb8b085a3d0c469985dc9d14c109"
     },
     {
       "path": "backend/packs/preliminaries-errors/topology/units.jsonl",
@@ -1591,8 +1590,8 @@
     },
     {
       "path": "backend/packs/preliminaries-errors/translation/localizations.id-ID.jsonl",
-      "bytes": 262088,
-      "sha256": "bbc06abb854ec7586584ea2f122bd88b4dfef9a237341d4c5810e50d98226485"
+      "bytes": 263622,
+      "sha256": "32b19d16848e0ac417fd06498faaecbfca91757b9111f6c8b6614d41c3a46016"
     },
     {
       "path": "backend/packs/preliminaries-errors/translation/segments.en.jsonl",
@@ -1601,8 +1600,8 @@
     },
     {
       "path": "backend/packs/preliminaries-errors/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/preliminaries-recursion/assets/assets.jsonl",
@@ -1632,7 +1631,7 @@
     {
       "path": "backend/packs/preliminaries-recursion/manifests/lane_manifest.json",
       "bytes": 3132,
-      "sha256": "e98cd9a2ae907c0996e9e219f5b443571cda99c57d769612d8b7ad2cceaaf875"
+      "sha256": "4e9bcf8ded8ac194b7499c924cd4a79d0afb3cc683df117efc39a8054e2be7c5"
     },
     {
       "path": "backend/packs/preliminaries-recursion/qa/events.jsonl",
@@ -1661,8 +1660,8 @@
     },
     {
       "path": "backend/packs/preliminaries-recursion/translation/localizations.id-ID.jsonl",
-      "bytes": 198317,
-      "sha256": "5dc35852892cfc9dc4fdbe90194d32cacebac529dee0411980cb029a4c55afaa"
+      "bytes": 199703,
+      "sha256": "3d948d002cd937d1db9ef48dfa142173937aeb196283e4c3152cf6055c975bd6"
     },
     {
       "path": "backend/packs/preliminaries-recursion/translation/segments.en.jsonl",
@@ -1671,8 +1670,8 @@
     },
     {
       "path": "backend/packs/preliminaries-recursion/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/preliminaries-taylor/assets/assets.jsonl",
@@ -1702,7 +1701,7 @@
     {
       "path": "backend/packs/preliminaries-taylor/manifests/lane_manifest.json",
       "bytes": 3130,
-      "sha256": "0c8ffd0ce77fd53c6273682b021027a97ecabd8a5c9fc3c4512bcec0e80e054b"
+      "sha256": "deddb8c84803aa7354ea98c94aba350f23f611edc7ce934ec955255de88a0b00"
     },
     {
       "path": "backend/packs/preliminaries-taylor/qa/events.jsonl",
@@ -1722,7 +1721,7 @@
     {
       "path": "backend/packs/preliminaries-taylor/topology/source_files.jsonl",
       "bytes": 834,
-      "sha256": "d6b1f6eedf6b8b1e392b13ec373b4f804d4fb389d638f67d65deb506c3b104f0"
+      "sha256": "ae445e6c94a3db3f0e740d3f3ce1ac2ab4e4c02393861494924e76ecdcd48a52"
     },
     {
       "path": "backend/packs/preliminaries-taylor/topology/units.jsonl",
@@ -1731,8 +1730,8 @@
     },
     {
       "path": "backend/packs/preliminaries-taylor/translation/localizations.id-ID.jsonl",
-      "bytes": 256509,
-      "sha256": "60920ac2c147b459442038893d846f16d3a6e1086ef5dd7444c975ee00d0af0d"
+      "bytes": 258069,
+      "sha256": "2cabb8361a64e2c6686191ad893f345854163aefab5bd379e610ae2526bb86ac"
     },
     {
       "path": "backend/packs/preliminaries-taylor/translation/segments.en.jsonl",
@@ -1741,8 +1740,8 @@
     },
     {
       "path": "backend/packs/preliminaries-taylor/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/roots-bisection/assets/assets.jsonl",
@@ -1772,7 +1771,7 @@
     {
       "path": "backend/packs/roots-bisection/manifests/lane_manifest.json",
       "bytes": 3125,
-      "sha256": "8301bbc94fdca096e52acfd9981462bc5f003c88cfdb9d8a4b84887568156bbd"
+      "sha256": "9adcdb5679eede22c264b5bc99a7576b24ac3ad2ea482235b350161119bb7152"
     },
     {
       "path": "backend/packs/roots-bisection/qa/events.jsonl",
@@ -1792,7 +1791,7 @@
     {
       "path": "backend/packs/roots-bisection/topology/source_files.jsonl",
       "bytes": 825,
-      "sha256": "b4a2120de649e73bdf4164550eb60f6a3d74e178dcb8c50ad642299bda45ad32"
+      "sha256": "daa4eb56e1c92a87c00402f16efa6c63814c3a630347aac2383ab35ead9dae80"
     },
     {
       "path": "backend/packs/roots-bisection/topology/units.jsonl",
@@ -1801,8 +1800,8 @@
     },
     {
       "path": "backend/packs/roots-bisection/translation/localizations.id-ID.jsonl",
-      "bytes": 327033,
-      "sha256": "27f7809b9a44b3947605262395aae8730b3f5bcccba11e145450d517307d768e"
+      "bytes": 328979,
+      "sha256": "acef0f956307ed181f6c95da7cc2cbee0e9c17fa3b1d2279cb318c4d3779e766"
     },
     {
       "path": "backend/packs/roots-bisection/translation/segments.en.jsonl",
@@ -1811,8 +1810,8 @@
     },
     {
       "path": "backend/packs/roots-bisection/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/roots-bracketing/assets/assets.jsonl",
@@ -1842,7 +1841,7 @@
     {
       "path": "backend/packs/roots-bracketing/manifests/lane_manifest.json",
       "bytes": 3129,
-      "sha256": "c7d7d12165ce93fc00ec448227ab3528bf7339114054fe544fd14a4c30c74d35"
+      "sha256": "2e3c05c6983b3109b75d3aa39d24a6feb4b4d39f68719befd1232b91cd20252d"
     },
     {
       "path": "backend/packs/roots-bracketing/qa/events.jsonl",
@@ -1862,7 +1861,7 @@
     {
       "path": "backend/packs/roots-bracketing/topology/source_files.jsonl",
       "bytes": 826,
-      "sha256": "a4ecc4ebff57092d3bf6e9d4f2c4c549ed71b5476e3cc0bbcb96c36b2e350934"
+      "sha256": "104334549a1f65914747f9779f54c1d4dd45ba23d4a8c576720088a5be29b945"
     },
     {
       "path": "backend/packs/roots-bracketing/topology/units.jsonl",
@@ -1871,8 +1870,8 @@
     },
     {
       "path": "backend/packs/roots-bracketing/translation/localizations.id-ID.jsonl",
-      "bytes": 208913,
-      "sha256": "d1ce16832a7ef1eb252a1cb4b5e8c5fba91941ec9f57fe52b8c46197d022be6c"
+      "bytes": 210077,
+      "sha256": "f328f4b83a64d52c600a6786e15421a26c06a4634ac697ffe1a3294e5c455c31"
     },
     {
       "path": "backend/packs/roots-bracketing/translation/segments.en.jsonl",
@@ -1881,8 +1880,8 @@
     },
     {
       "path": "backend/packs/roots-bracketing/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/roots-fixedpoint/assets/assets.jsonl",
@@ -1912,7 +1911,7 @@
     {
       "path": "backend/packs/roots-fixedpoint/manifests/lane_manifest.json",
       "bytes": 3120,
-      "sha256": "bc3595cd8a0b1fa8ecabfaaa466a9ed1aca58a923789e0436a47bf264495d9f8"
+      "sha256": "129e076ab9c9df9835742ab9831cf51043246847edf496c049127258dcf63434"
     },
     {
       "path": "backend/packs/roots-fixedpoint/qa/events.jsonl",
@@ -1941,8 +1940,8 @@
     },
     {
       "path": "backend/packs/roots-fixedpoint/translation/localizations.id-ID.jsonl",
-      "bytes": 292187,
-      "sha256": "e9f9d6ccfcebda1a0ca76723cf09eea19289e0812f216125dc14e7e0144fd89c"
+      "bytes": 293881,
+      "sha256": "89f2821595c79f9ed7575e9840a05ed9195c8b7a3d8dfbbf03eba59ca739543e"
     },
     {
       "path": "backend/packs/roots-fixedpoint/translation/segments.en.jsonl",
@@ -1951,8 +1950,8 @@
     },
     {
       "path": "backend/packs/roots-fixedpoint/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/roots-moreConvergenceDiagrams/assets/assets.jsonl",
@@ -1982,7 +1981,7 @@
     {
       "path": "backend/packs/roots-moreConvergenceDiagrams/manifests/lane_manifest.json",
       "bytes": 3128,
-      "sha256": "d9ed41e5ad8e9eca558fde4e251ba09cc59d5a07afcf0d9956ab5c743ccf2ab9"
+      "sha256": "435e01438ac6cb339a4c00e3aedd635b931bd95202df6af6cfecb62ed4035d36"
     },
     {
       "path": "backend/packs/roots-moreConvergenceDiagrams/qa/events.jsonl",
@@ -2011,8 +2010,8 @@
     },
     {
       "path": "backend/packs/roots-moreConvergenceDiagrams/translation/localizations.id-ID.jsonl",
-      "bytes": 134519,
-      "sha256": "4f4b0bc75a13b7e3f9a77fc96d180aca9f55d24d5b9584f56c14d1ebff93aa2d"
+      "bytes": 135146,
+      "sha256": "801165e407f95b22a881296aa81dd7085905ac7cbb0e5d8ecb8eae38d3f0610f"
     },
     {
       "path": "backend/packs/roots-moreConvergenceDiagrams/translation/segments.en.jsonl",
@@ -2021,8 +2020,8 @@
     },
     {
       "path": "backend/packs/roots-moreConvergenceDiagrams/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/roots-newtonsMethod/assets/assets.jsonl",
@@ -2052,7 +2051,7 @@
     {
       "path": "backend/packs/roots-newtonsMethod/manifests/lane_manifest.json",
       "bytes": 3125,
-      "sha256": "27e5778db6c657d0af3dd32f35e2ab1f4dac2da02ea42696910ea32d64287895"
+      "sha256": "4baee5acfc67ad40f6d6cffb5764fabd489adc7b90991a06dbaea14b253a5f53"
     },
     {
       "path": "backend/packs/roots-newtonsMethod/qa/events.jsonl",
@@ -2081,8 +2080,8 @@
     },
     {
       "path": "backend/packs/roots-newtonsMethod/translation/localizations.id-ID.jsonl",
-      "bytes": 262115,
-      "sha256": "606c78c63613d625b227acc33d0177a94bfa4e7b4fdf7284106a9bd87fdbb83f"
+      "bytes": 263556,
+      "sha256": "f1400d12e089c9942f18f4d8be2052c0751d2ade6ad4e1b4c9cdc2e243a86aa3"
     },
     {
       "path": "backend/packs/roots-newtonsMethod/translation/segments.en.jsonl",
@@ -2091,8 +2090,8 @@
     },
     {
       "path": "backend/packs/roots-newtonsMethod/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/roots-orderOfConvergence/assets/assets.jsonl",
@@ -2122,7 +2121,7 @@
     {
       "path": "backend/packs/roots-orderOfConvergence/manifests/lane_manifest.json",
       "bytes": 3132,
-      "sha256": "821d7bd3fdde0d4d7fa07f349d309298fafa1470a1f01c539493f8a67bb27616"
+      "sha256": "23bcf633f50b6ad375caca5c4100ad1719e8dec470c8bfb96b47b86ecda85f69"
     },
     {
       "path": "backend/packs/roots-orderOfConvergence/qa/events.jsonl",
@@ -2142,7 +2141,7 @@
     {
       "path": "backend/packs/roots-orderOfConvergence/topology/source_files.jsonl",
       "bytes": 844,
-      "sha256": "afa3b7b609121c1dd8267672975e15bac8aa9fee6de8df63c4b1fda09d12abad"
+      "sha256": "68d78cd4c9efe2cd07f0d66d5af9458e543bdd83f2fcc92769dc7ad4098dfb07"
     },
     {
       "path": "backend/packs/roots-orderOfConvergence/topology/units.jsonl",
@@ -2151,8 +2150,8 @@
     },
     {
       "path": "backend/packs/roots-orderOfConvergence/translation/localizations.id-ID.jsonl",
-      "bytes": 277190,
-      "sha256": "797206a9d02fdc5aad4f878126fbaee1a721f9627f9f42956a60d5c8f8444ddd"
+      "bytes": 278441,
+      "sha256": "18461c4d1980ff15f3a8d6b1759a311ffde00e0d25542c22672d91bfb2697c84"
     },
     {
       "path": "backend/packs/roots-orderOfConvergence/translation/segments.en.jsonl",
@@ -2161,8 +2160,8 @@
     },
     {
       "path": "backend/packs/roots-orderOfConvergence/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/roots-polynomials/assets/assets.jsonl",
@@ -2192,7 +2191,7 @@
     {
       "path": "backend/packs/roots-polynomials/manifests/lane_manifest.json",
       "bytes": 3122,
-      "sha256": "a6cab48452609bbba70e3902ff464ecdf96f571183350bee2900fce4ef308480"
+      "sha256": "18ceadd613bf101530a1e9449ae717b43992bcfccce3527db7352afb90e0b0b3"
     },
     {
       "path": "backend/packs/roots-polynomials/qa/events.jsonl",
@@ -2221,8 +2220,8 @@
     },
     {
       "path": "backend/packs/roots-polynomials/translation/localizations.id-ID.jsonl",
-      "bytes": 291661,
-      "sha256": "72a23ab486c7e0d8c7488ce1fd330307ab70303e514a562bd6cf3da18a9353a3"
+      "bytes": 293410,
+      "sha256": "56d30f372df1d0fe50c3e47f478056af6f87cf3ad3518464c8b4d08886547897"
     },
     {
       "path": "backend/packs/roots-polynomials/translation/segments.en.jsonl",
@@ -2231,8 +2230,8 @@
     },
     {
       "path": "backend/packs/roots-polynomials/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/solutions/assets/assets.jsonl",
@@ -2262,7 +2261,7 @@
     {
       "path": "backend/packs/solutions/manifests/lane_manifest.json",
       "bytes": 3122,
-      "sha256": "e7694b599958ce7bd3b4dcfc66c5bb8edc2480f18a7a7c4d5679c192d5782a5e"
+      "sha256": "3048711f7e6a546368ec125d210211c2175bfa5706aba58c15b2ade630eff762"
     },
     {
       "path": "backend/packs/solutions/qa/events.jsonl",
@@ -2282,7 +2281,7 @@
     {
       "path": "backend/packs/solutions/topology/source_files.jsonl",
       "bytes": 814,
-      "sha256": "8ffbf7a2a2c23753be378051c21d62aa47fd1b0d5b7fc199e149a9ce75931a19"
+      "sha256": "44ff6d98ed1605e6d608d4c333ceb01c8112045e21970aa26ca486a440278b43"
     },
     {
       "path": "backend/packs/solutions/topology/units.jsonl",
@@ -2291,8 +2290,8 @@
     },
     {
       "path": "backend/packs/solutions/translation/localizations.id-ID.jsonl",
-      "bytes": 1746474,
-      "sha256": "49fa53e5f07ad3592288d606466b369641c93fef61a20ecf3cc9930fb197b8ad"
+      "bytes": 1756929,
+      "sha256": "7363969c42cb54911565a80ffbf4672defd4dc516f050f20a5517547d391fa8e"
     },
     {
       "path": "backend/packs/solutions/translation/segments.en.jsonl",
@@ -2301,8 +2300,8 @@
     },
     {
       "path": "backend/packs/solutions/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/splines-cubic/assets/assets.jsonl",
@@ -2332,7 +2331,7 @@
     {
       "path": "backend/packs/splines-cubic/manifests/lane_manifest.json",
       "bytes": 3115,
-      "sha256": "eedd5bdeb0171ba25fb9441362e2d3810eee88569719688be6449c2dce6819d9"
+      "sha256": "5d99c4a0d914162193c68fbf8cbcfce333984f04e89c3ef0cbb57a732e671f6d"
     },
     {
       "path": "backend/packs/splines-cubic/qa/events.jsonl",
@@ -2361,8 +2360,8 @@
     },
     {
       "path": "backend/packs/splines-cubic/translation/localizations.id-ID.jsonl",
-      "bytes": 167622,
-      "sha256": "44be64edf7699968ba84b90801c1a89e584f35718bf6602a8c3796027a10ff92"
+      "bytes": 168667,
+      "sha256": "8f47ec1938d86b67871b07c8f957a44d1f498630065906f644a27aba032050da"
     },
     {
       "path": "backend/packs/splines-cubic/translation/segments.en.jsonl",
@@ -2371,8 +2370,8 @@
     },
     {
       "path": "backend/packs/splines-cubic/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/splines-parametric/assets/assets.jsonl",
@@ -2402,7 +2401,7 @@
     {
       "path": "backend/packs/splines-parametric/manifests/lane_manifest.json",
       "bytes": 3123,
-      "sha256": "a2a442f991c58e921d6ed1f6dd31f10ea9948f6e5d1d5bae98931f17faf1163b"
+      "sha256": "37297a5bfaabee4fb4265787bccb9aa1303e2ca000c3464227192d39bad3ee91"
     },
     {
       "path": "backend/packs/splines-parametric/qa/events.jsonl",
@@ -2422,7 +2421,7 @@
     {
       "path": "backend/packs/splines-parametric/topology/source_files.jsonl",
       "bytes": 830,
-      "sha256": "2f3f15f321307b24a2424ae8b1ef603346ad26a75bdd1ca59da830dfec40cf50"
+      "sha256": "e0466aad74fff95c9dbb4167388d79896c8e05960db55e86be11a3e8f9c702d7"
     },
     {
       "path": "backend/packs/splines-parametric/topology/units.jsonl",
@@ -2431,8 +2430,8 @@
     },
     {
       "path": "backend/packs/splines-parametric/translation/localizations.id-ID.jsonl",
-      "bytes": 248390,
-      "sha256": "7e6000d4f71bd217fc9590536db9e87ef5cd19ef550a516fd4861b820b622b2e"
+      "bytes": 249719,
+      "sha256": "8a78feeec0c49e068e67e4d980b475ca85f5840a0a96c60acd7bbd85afdad939"
     },
     {
       "path": "backend/packs/splines-parametric/translation/segments.en.jsonl",
@@ -2441,8 +2440,8 @@
     },
     {
       "path": "backend/packs/splines-parametric/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/packs/TeaTimeNumericalAnalysis/assets/assets.jsonl",
@@ -2472,7 +2471,7 @@
     {
       "path": "backend/packs/TeaTimeNumericalAnalysis/manifests/lane_manifest.json",
       "bytes": 3115,
-      "sha256": "86461e0043ddf9608fe01a24e3a134c472cc6ecf5f524c14b6fe50816e848845"
+      "sha256": "b09281055ca83aef6c03ade39d5b6285940e1cf4f461bfb1def755bf099d416a"
     },
     {
       "path": "backend/packs/TeaTimeNumericalAnalysis/qa/events.jsonl",
@@ -2491,8 +2490,8 @@
     },
     {
       "path": "backend/packs/TeaTimeNumericalAnalysis/topology/source_files.jsonl",
-      "bytes": 677,
-      "sha256": "688db74a66df26cdb36551563d404e96f375c5f611d59ccb3007bbb5e9d61d67"
+      "bytes": 669,
+      "sha256": "c4d78c5a0e19a768187e891a91cd3bb7a8ef6cc2044d6260e63c842268a3af40"
     },
     {
       "path": "backend/packs/TeaTimeNumericalAnalysis/topology/units.jsonl",
@@ -2501,8 +2500,8 @@
     },
     {
       "path": "backend/packs/TeaTimeNumericalAnalysis/translation/localizations.id-ID.jsonl",
-      "bytes": 37530,
-      "sha256": "a3f1032ae793cad24c963a1c49d9dc0e2b95d3a92b671507c431ddedb0aa9a28"
+      "bytes": 37860,
+      "sha256": "9cfd53a48c8402da5afc223afec7d7caedb7c05274c90ccdf4530992d3fe77b2"
     },
     {
       "path": "backend/packs/TeaTimeNumericalAnalysis/translation/segments.en.jsonl",
@@ -2511,8 +2510,8 @@
     },
     {
       "path": "backend/packs/TeaTimeNumericalAnalysis/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "backend/qa/events.jsonl",
@@ -2521,8 +2520,8 @@
     },
     {
       "path": "backend/qa/FINAL_RELEASE_BACKEND_QA_20260822.md",
-      "bytes": 4907,
-      "sha256": "b53cb61bd3d0233087a64798645da32be6ce59cdad4e3bb2cf79c8e6c2885148"
+      "bytes": 4908,
+      "sha256": "b58d9e3a5304cc64780ebb0a02f34cff631dd5b593d73a5585a1fa6ccf3304e9"
     },
     {
       "path": "backend/qa/INTEROPERABILITY_V0_QA_20260822.md",
@@ -2532,7 +2531,7 @@
     {
       "path": "backend/README.md",
       "bytes": 13821,
-      "sha256": "f495b34674012650202a3be338832f0c9d9a7370d6a110f4e07e35a335fb8e7a"
+      "sha256": "e6387c4c718bc0fa0882894869a29f5df4a2e9b96ff12ae6967189ca02b2f94d"
     },
     {
       "path": "backend/rights/components.jsonl",
@@ -2586,8 +2585,8 @@
     },
     {
       "path": "backend/tools/index_asset_authority.py",
-      "bytes": 24418,
-      "sha256": "3c0c08e297ffd421be595c01d23068bedc2b55220d66320683953ad77faf243a"
+      "bytes": 24416,
+      "sha256": "f4967b074db74f3f1450bca56a4c833d098d083a2503b936731bf67b71e407bc"
     },
     {
       "path": "backend/tools/index_interop_v0.py",
@@ -2596,13 +2595,13 @@
     },
     {
       "path": "backend/tools/index_lyx_pair.py",
-      "bytes": 58420,
-      "sha256": "76bb317bb06139e2cbb60b4507dfd065cb28686444ecee8ffb617d7662748c0c"
+      "bytes": 58442,
+      "sha256": "ab4186bab5f5f89f659e37581ce92a59d862960193504fb12043547423a21d58"
     },
     {
       "path": "backend/tools/index_tex_pair.py",
-      "bytes": 25719,
-      "sha256": "09afefb770d89938861addbe7f317219d276c87f619c6cc49393edee8b35576c"
+      "bytes": 25730,
+      "sha256": "a1ef62485efdac08253a629b70f02d2209935b615c878ce7a2ac769b65afb670"
     },
     {
       "path": "backend/tools/index_toolchain_authority.py",
@@ -2621,8 +2620,8 @@
     },
     {
       "path": "backend/topology/source_files.jsonl",
-      "bytes": 23568,
-      "sha256": "0d6e4a09c70065e131d3ab085fba041c9d6a57687547ab5a3b0ab9a220fae524"
+      "bytes": 23560,
+      "sha256": "7e85e26602a0820c57ce9ab0feab93ec83cacd7dfc3f9f74903e72ff1991d4d7"
     },
     {
       "path": "backend/topology/units.jsonl",
@@ -2631,8 +2630,8 @@
     },
     {
       "path": "backend/translation/localizations.id-ID.jsonl",
-      "bytes": 8671647,
-      "sha256": "ad5295c2c34545fa1381d1b79bf74b128c9e19d2d80d5442718caf3bc72270e3"
+      "bytes": 8722340,
+      "sha256": "324d3107a86ce85d11e178e4e7bc283e9bab5b954746fb74ab97b54ea1d944b0"
     },
     {
       "path": "backend/translation/segments.en.jsonl",
@@ -2641,8 +2640,8 @@
     },
     {
       "path": "backend/translation/terms.id-ID.jsonl",
-      "bytes": 221738,
-      "sha256": "928e8ed9f12eaf8d33ed9e1d46e584391264ba7cf19616c00613dadfaa3535d4"
+      "bytes": 221879,
+      "sha256": "c4492453315e78d188d6fd6d663bc8886f82daca51db9aa99987dc3ca243fc65"
     },
     {
       "path": "build/Build-PDF.ps1",
@@ -2650,29 +2649,14 @@
       "sha256": "7f624495275c5197b63373b28782155e4d3097c48dbc45f9dfc7ec860b72b9fd"
     },
     {
-      "path": "build/manifests/en-baseline-build.json",
-      "bytes": 53055,
-      "sha256": "241285cb4f76d560c67c49b905b4be401fecf4dc7d9b86cc8ffaf74335cdefd5"
-    },
-    {
-      "path": "build/manifests/en-baseline-overlay.json",
-      "bytes": 146486,
-      "sha256": "6a1ab6b527f79b6ee2bbda969a82bd8133997c99f91a255f6a88d62700d27b20"
-    },
-    {
       "path": "build/manifests/id-ID-build.json",
-      "bytes": 53012,
-      "sha256": "9437f143c777ca447c5b199f0ea2a7df1e70b2afd7731839c43041ca018fd988"
-    },
-    {
-      "path": "build/manifests/id-ID-overlay.json",
-      "bytes": 151564,
-      "sha256": "1a70b6f41a4b799c978be105825af1ca3d45c59cc3ffecfa9c883f462f10cce6"
+      "bytes": 52937,
+      "sha256": "dbef9a5bb9680f6c072e1f26fe3f5ae8ba7e1ca955d9c3dd47f402d1bb9174ea"
     },
     {
       "path": "build/tools/Build-Edition.ps1",
-      "bytes": 9260,
-      "sha256": "beda07a83edcf95baac084a4d867e3bd6e7cf265691ff94b350d4c35f571e997"
+      "bytes": 9254,
+      "sha256": "beb33e009f6328667c81b92882a46ead44fd6b5e75e8abc3ffe2515449ca8b61"
     },
     {
       "path": "build/tools/New-PortableOverlay.ps1",
@@ -2682,12 +2666,17 @@
     {
       "path": "CITATION.cff",
       "bytes": 1765,
-      "sha256": "32e8ffd2ab95d0a47ddd54b408c34f4029c733133616a3fc3462d45597bd336b"
+      "sha256": "6a70466d699c09c7e72913534f294093d54807d1bdd3be9a7914a5612655ba2b"
     },
     {
       "path": "COMPONENT_RIGHTS_AND_PROVENANCE.md",
-      "bytes": 2818,
-      "sha256": "734fb1851cbda0b850604a21a24d3e75f97c2401c8db6d5a26a051b2158ba035"
+      "bytes": 2914,
+      "sha256": "afdeb81c737c62d650a7a70349a72aba966d87374db7e0b5eaf9f61470394834"
+    },
+    {
+      "path": "LICENSE.md",
+      "bytes": 1689,
+      "sha256": "0c49dfaa417faf14f1be297d9c6c2c4c4d575f071983e50ce0e16dd7a67934af"
     },
     {
       "path": "LICENSES/CC-BY-SA-4.0.txt",
@@ -2711,8 +2700,8 @@
     },
     {
       "path": "metadata/zenodo-metadata.json",
-      "bytes": 2751,
-      "sha256": "90f659070254b1698040fab964f45974d5eefde681b43ea4607cf3c7abf1e3db"
+      "bytes": 3163,
+      "sha256": "09581b8f29182b626f84b59c736a99bdff41bdf0ef8a18abeab13b7fe9d2f80b"
     },
     {
       "path": "qa/ANSWERS_TRANSLATION_20260822.md",
@@ -2743,6 +2732,11 @@
       "path": "qa/CALCULUS_UNDETERMINED_COEFFICIENTS_TRANSLATION_20260821.md",
       "bytes": 3028,
       "sha256": "c15cb5429af8bc5e7b33b878a66e73d9d31e957d4c01d1014165564e611e7ffd"
+    },
+    {
+      "path": "qa/EXTERNAL_INDONESIAN_TERMINOLOGY_QA_20260822.md",
+      "bytes": 6577,
+      "sha256": "af709475f228a4ff60ff5972fd30a18452ba46d627c7754c934f928ca01e6918"
     },
     {
       "path": "qa/INTERPOLATION_CHALLENGE_TRANSLATION_20260821.md",
@@ -2787,7 +2781,7 @@
     {
       "path": "qa/PORTABLE_RELEASE_SOURCE_QA_20260822.md",
       "bytes": 1249,
-      "sha256": "c1de1d268ed20a0bbb72646292d027fcb7ad52b80589de50c826798d24e42ff6"
+      "sha256": "920b3cf7ffe1b2c29dcbdc94b8aa7f80d28c09c06f6fa22ceb82c6de5e5b0d6e"
     },
     {
       "path": "qa/PREFACE_TRANSLATION_20260820.md",
@@ -2876,48 +2870,48 @@
     },
     {
       "path": "qa/WHOLE_CORPUS_RELEASE_QA_20260822.md",
-      "bytes": 5707,
-      "sha256": "d1b1da7eea68de58154903dde3c53a9e992dfd7eff1c779feefb75927d774665"
+      "bytes": 5701,
+      "sha256": "e23bd3638148bd004f3fbe0938ee82fd65f298b1c4cf0a4b6b213f347687fd43"
     },
     {
       "path": "README.md",
-      "bytes": 4089,
-      "sha256": "e3a603b6088c71217c0b55f17727b6c5766dc7bf76e2b156b8baf66a8af6b691"
+      "bytes": 4249,
+      "sha256": "f3a7d53a280f72ae0b4db286dfa4279441a248e0b7f4b62fdeff1667259bbbad"
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 2944,
-      "sha256": "0e1be6aad1aaafafe98de2037860c269bac9eaf175b41404408351f9c2f2d478"
+      "bytes": 3621,
+      "sha256": "0d417b057c742315f20ac4db0b4690564e6e6e8bdced03e5ce29a3c2eb1a4d5d"
     },
     {
       "path": "source/latex-id-ID/answers.tex",
-      "bytes": 58892,
-      "sha256": "92c44f96116afdce24ba92f26e3284199c8368c9902930de47ff6919110ff323"
+      "bytes": 58882,
+      "sha256": "6fa6948fcccb30bfe3247f0a50dba767f47061c67161c0968dc92fcf39a843a8"
     },
     {
       "path": "source/latex-id-ID/calculus-composite.tex",
-      "bytes": 30340,
-      "sha256": "6721cc862ea91f68ee1bee910c651d7f202648906065ce02388f9f541175225b"
+      "bytes": 30336,
+      "sha256": "09ced56cc308189d7ad468cd6e9a87bf00b1d049fdc70e3dfd9a7f13d1791edb"
     },
     {
       "path": "source/latex-id-ID/calculus-errors.tex",
-      "bytes": 48478,
-      "sha256": "b2c0084eb690485db65505b74dae865af18a823424dca3ad7e3c005276db636c"
+      "bytes": 48477,
+      "sha256": "63a876bd3faf99eb9c723e4dd88e8045784180adf9e3c66c902106138cf0ce69"
     },
     {
       "path": "source/latex-id-ID/calculus-richardsons.tex",
-      "bytes": 28701,
-      "sha256": "9322b12c6c2eb1f23c45879b319b649663dfc489ea37b47faaafc3eda238af07"
+      "bytes": 28698,
+      "sha256": "a5013162f59da18570edac8d79ff71576f35893b3a1ea9b81d6e5e56a25cd62e"
     },
     {
       "path": "source/latex-id-ID/calculus-rudiments.tex",
-      "bytes": 42909,
-      "sha256": "6ac2df63b3fc271dffc5fab3d2c5fbe4f780de0231317aa65c6b422037060093"
+      "bytes": 42907,
+      "sha256": "5e521ed65cdc15ad27f67a311a50163293b8175c82d43c407a00d256222b110b"
     },
     {
       "path": "source/latex-id-ID/calculus-undeterminedCoefficients.tex",
-      "bytes": 29034,
-      "sha256": "98e2540127c738e0783e73afeb5567268566b729cf09e70bfba45dc78c570b14"
+      "bytes": 29030,
+      "sha256": "ab3e94db4db3545578b0fb13fa171d6562ffaf1985130254a6d7aa8c71e5e04a"
     },
     {
       "path": "source/latex-id-ID/cprotect.sty",
@@ -4206,8 +4200,8 @@
     },
     {
       "path": "source/latex-id-ID/interpolation-lagrange.tex",
-      "bytes": 39949,
-      "sha256": "f6f11720b77ae2914787ed5ec76704eacde7848cf15365695bde130f8e724503"
+      "bytes": 39948,
+      "sha256": "8555e8d77c398f533528f20c01c1d9c582152a028d8043c4ec8326d90164e8b0"
     },
     {
       "path": "source/latex-id-ID/interpolation-newton.tex",
@@ -4216,13 +4210,13 @@
     },
     {
       "path": "source/latex-id-ID/ode-adaptive.tex",
-      "bytes": 40828,
-      "sha256": "24b1335a5f57d457e0f09e367c016683168b9031eab21b3c4d5ba62749a7b85e"
+      "bytes": 40825,
+      "sha256": "613fb25b554bbe3feddb0997d9ed43636657dec7b22cd1a579de6b516cec701c"
     },
     {
       "path": "source/latex-id-ID/ode-errorAnalysis.tex",
-      "bytes": 35355,
-      "sha256": "7074dd6084fe0e9c72bf2700c64c3fb22db65c0384560938ad45fbe329c4e534"
+      "bytes": 35330,
+      "sha256": "3cd6d4562350bb82fd8da03dd5bfeb4625c376bb80873e159c70d90d07c59bcf"
     },
     {
       "path": "source/latex-id-ID/ode-pendulum.tex",
@@ -4231,13 +4225,13 @@
     },
     {
       "path": "source/latex-id-ID/ode-rungeKutta.tex",
-      "bytes": 34506,
-      "sha256": "b4b40731645eb32f32e664455c567d10cb9a15b5069c04c316303412e886dc77"
+      "bytes": 34504,
+      "sha256": "a67b82513d5735a3f88e496186fa21fdfd29de258d59741d866d9b57015a3e76"
     },
     {
       "path": "source/latex-id-ID/ode-taylor.tex",
-      "bytes": 25486,
-      "sha256": "330e0b494475e923894848736561022e5a6014a16546d6572ef104627571486d"
+      "bytes": 25485,
+      "sha256": "ea89ad4105b0e1c4269806c2930410fa1ddd70175a85eeb9b2d49e2d44713fc6"
     },
     {
       "path": "source/latex-id-ID/preamble.tex",
@@ -4251,13 +4245,13 @@
     },
     {
       "path": "source/latex-id-ID/preliminaries-convergence.tex",
-      "bytes": 47627,
-      "sha256": "2637f076267adea8e290b29cf9324d4f508dc80543b10723adb8f1e6ef8112aa"
+      "bytes": 47622,
+      "sha256": "f27e62d82ee782dab641a24997007ef54afde0163d18eccdbfa72a3b72811f01"
     },
     {
       "path": "source/latex-id-ID/preliminaries-errors.tex",
-      "bytes": 37170,
-      "sha256": "16d2ba6e574f66ab85201e882c41f3a67695868dc6318c08f48e0ccb8bf5192a"
+      "bytes": 37137,
+      "sha256": "3be388ac45f85ce9e0898071fd8558163aefffbc8df215c0ff06a5e3e7200e46"
     },
     {
       "path": "source/latex-id-ID/preliminaries-recursion.tex",
@@ -4266,8 +4260,8 @@
     },
     {
       "path": "source/latex-id-ID/preliminaries-taylor.tex",
-      "bytes": 37043,
-      "sha256": "0c10d015c26879ab49efdc670e5490a126332ca5f788ea76eaa217f371504d53"
+      "bytes": 37030,
+      "sha256": "3b04cbfb0e253fbb35deb51e2d2a65bc40261a21879833075393cec86d9cd73e"
     },
     {
       "path": "source/latex-id-ID/references/heun1900/00000036.png",
@@ -4276,13 +4270,13 @@
     },
     {
       "path": "source/latex-id-ID/roots-bisection.tex",
-      "bytes": 39351,
-      "sha256": "00bc6979f92a5a2d4d27ce4a602521cda8d04b092e815f0571b8d4f0b6b350a1"
+      "bytes": 39350,
+      "sha256": "d005560bfb743f3820bb2204ee613736601b6a6b5dd414701ad6df11634fcafc"
     },
     {
       "path": "source/latex-id-ID/roots-bracketing.tex",
-      "bytes": 32233,
-      "sha256": "0905ba8ca1cce6adfb41610b24847e15b16371481964fa54d7a9364d4be2bd24"
+      "bytes": 32231,
+      "sha256": "55b54981797f27d3996c61d4ff60450a5396a97a91e1a769fbe3049d29477d8d"
     },
     {
       "path": "source/latex-id-ID/roots-fixedpoint.tex",
@@ -4301,8 +4295,8 @@
     },
     {
       "path": "source/latex-id-ID/roots-orderOfConvergence.tex",
-      "bytes": 39766,
-      "sha256": "aaa9de2e8943902b682ef9e71adb9c0659a4c980e3c2d3e58622497d4f817819"
+      "bytes": 39763,
+      "sha256": "74f1c5a970f0f3a0fd97972b8f9ec7c87fdb2fc2a0e87a669dcabf14aaa5762e"
     },
     {
       "path": "source/latex-id-ID/roots-polynomials.tex",
@@ -4311,8 +4305,8 @@
     },
     {
       "path": "source/latex-id-ID/solutions.tex",
-      "bytes": 272739,
-      "sha256": "9fa7371cddac3e7e6a4216ad43bd9f08f801b4da040fbf6118914e7f2487e315"
+      "bytes": 272711,
+      "sha256": "cdb7dded865b39667f30fe157d13908d7f66ea3ebc343a1492eec27c36a1e3d8"
     },
     {
       "path": "source/latex-id-ID/splines-cubic.tex",
@@ -4321,8 +4315,8 @@
     },
     {
       "path": "source/latex-id-ID/splines-parametric.tex",
-      "bytes": 38494,
-      "sha256": "84f90a7d593e0c1dd5bbc19bfb0cf6502699ddc3f1783c69545ae36f829bfbfc"
+      "bytes": 38492,
+      "sha256": "e352b47e45ed2e5a214b1af3f3f973a61a6413ae9aa3729c11ca60ee3268ca09"
     },
     {
       "path": "source/latex-id-ID/TeaTimeNumericalAnalysis-id-ID.tex",
@@ -4336,33 +4330,33 @@
     },
     {
       "path": "translation/lyx-id/answers.lyx",
-      "bytes": 131491,
-      "sha256": "821fa239da712de2ea3bca99df9cecb0a53a5db8dd0649972c46e57ec6579972"
+      "bytes": 131481,
+      "sha256": "5b8aa0785da463282ca46e5e10fac9ade39ba2a43a2841ba4890910a99e1bd10"
     },
     {
       "path": "translation/lyx-id/calculus-composite.lyx",
-      "bytes": 70478,
-      "sha256": "3ab3f19205163befc1dd5b83d16891bff2741cad3af56b2dd2cdc66bdc802305"
+      "bytes": 70474,
+      "sha256": "da7f63743c8f29deec605574fb440da6f136aff82452c5c04cc99eb0bf44ab3c"
     },
     {
       "path": "translation/lyx-id/calculus-errors.lyx",
-      "bytes": 122349,
-      "sha256": "0df8ea5429582ae272dd83d6059c40e0e27b2323bddbd31669e6a5806d535ad6"
+      "bytes": 122348,
+      "sha256": "4aac6162f0e04ad67b0d084a28138d6b6c6fb4c75abdb0af5f560d7125194c4f"
     },
     {
       "path": "translation/lyx-id/calculus-richardsons.lyx",
-      "bytes": 53099,
-      "sha256": "c5f005c8fc45f6a27b81e59b8e9e93cb424a020e1e4b5937aea2fc8651e55b00"
+      "bytes": 53096,
+      "sha256": "7c6b745793ce57a3e17ccf4e97335d075343e514507bbe5235fb1d295d44dec9"
     },
     {
       "path": "translation/lyx-id/calculus-rudiments.lyx",
-      "bytes": 105699,
-      "sha256": "2e7344022e2afe660d411b8a4ccae916339058d11d6021c095e5c7cdff52ee03"
+      "bytes": 105697,
+      "sha256": "991d40a9efb485b87d9f6b572fc7244a94970037e0ca244b103c0f9f0fc36136"
     },
     {
       "path": "translation/lyx-id/calculus-undeterminedCoefficients.lyx",
-      "bytes": 55910,
-      "sha256": "95901ce87e92bc44d84179cc95ff5dcd190f4a664f7000f181cc57c733866516"
+      "bytes": 55906,
+      "sha256": "f606aa922c7991419811ae65b5168ce279b85d0913b8d67222ad6d2e50a0a9da"
     },
     {
       "path": "translation/lyx-id/interpolation-challenge.lyx",
@@ -4371,8 +4365,8 @@
     },
     {
       "path": "translation/lyx-id/interpolation-lagrange.lyx",
-      "bytes": 96101,
-      "sha256": "45c3c8b939e3bae5a7cbb8c5ccfe669e0c8aceaea0f7f61f8c5fff827ed37ace"
+      "bytes": 96100,
+      "sha256": "4547584de56d52bcbde61ed498af591f22ea745abf14a5c458f4c464b84d413a"
     },
     {
       "path": "translation/lyx-id/interpolation-newton.lyx",
@@ -4381,13 +4375,13 @@
     },
     {
       "path": "translation/lyx-id/ode-adaptive.lyx",
-      "bytes": 183029,
-      "sha256": "40619c3e9d9e8c17a10fca35bbae7253bc1e14382b5833b010f0282fca44a371"
+      "bytes": 183026,
+      "sha256": "328123c325b6206253a6981a69fd13c90c9741659688d0aadc6dfac0ccf6dfeb"
     },
     {
       "path": "translation/lyx-id/ode-errorAnalysis.lyx",
-      "bytes": 56076,
-      "sha256": "a5b769a0d847db8f10c03b6af83288d8f4efebb52d4c3a59f01c8c74dc946de6"
+      "bytes": 56051,
+      "sha256": "d71dfe03fe7a1389a4ac8b5c5aadff45fb6c0f434df4488141eed544014c4bb0"
     },
     {
       "path": "translation/lyx-id/ode-pendulum.lyx",
@@ -4396,13 +4390,13 @@
     },
     {
       "path": "translation/lyx-id/ode-rungeKutta.lyx",
-      "bytes": 76424,
-      "sha256": "019c00ab763c3a15e0db9ce24f778f67278c650a5cc35efb8de7cb86949344ec"
+      "bytes": 76422,
+      "sha256": "37773c6e988e92aaf2db8c8c5606449740f29ff3e1642ed35c24efd1bb7907c1"
     },
     {
       "path": "translation/lyx-id/ode-taylor.lyx",
-      "bytes": 71716,
-      "sha256": "50df8edc6fd6dcaaafc984f3145a893c917cd998dbbae49c8a2f603d2527d36d"
+      "bytes": 71715,
+      "sha256": "7330d5cb17385d0917ea7da2749055b60fa0794a84db03636766b74ba4c85bf0"
     },
     {
       "path": "translation/lyx-id/preamble.tex",
@@ -4416,13 +4410,13 @@
     },
     {
       "path": "translation/lyx-id/preliminaries-convergence.lyx",
-      "bytes": 108115,
-      "sha256": "51f69f9499a01df124e6df8bf1152a0da2e59937dc6a302f1833ff89620c7109"
+      "bytes": 108110,
+      "sha256": "2cd9117c21024e802a7533f456a6297d6394985ecd788c8cdeee1fe74c2f3651"
     },
     {
       "path": "translation/lyx-id/preliminaries-errors.lyx",
-      "bytes": 84281,
-      "sha256": "b8a2403b8769a1e2f6b1762f62be65d71df8cd10995663479eea3f7ab2964e39"
+      "bytes": 84249,
+      "sha256": "6d1b917d5744bcc9eac6a1768088f80de0502a5bb3bdf092f51979cc4babbecf"
     },
     {
       "path": "translation/lyx-id/preliminaries-recursion.lyx",
@@ -4431,8 +4425,8 @@
     },
     {
       "path": "translation/lyx-id/preliminaries-taylor.lyx",
-      "bytes": 68383,
-      "sha256": "930dc83cd651475ac96e47165acf88e6221375cf6f8fe2bbd39ec105658e2300"
+      "bytes": 68370,
+      "sha256": "5b33ed0805ec76cc888d6f79ae233f511a16082bf2643a872081fcb03c966acd"
     },
     {
       "path": "translation/lyx-id/references/heun1900/00000036.png",
@@ -4441,13 +4435,13 @@
     },
     {
       "path": "translation/lyx-id/roots-bisection.lyx",
-      "bytes": 101468,
-      "sha256": "518c7455a1f0059f5a07520c5840a8ca410a23a0f4513c9be0e25014dab84fe3"
+      "bytes": 101467,
+      "sha256": "51f38498cbce45689e0ba3eba52e741b3a1f9add653a24f881f2bed27ccfb98f"
     },
     {
       "path": "translation/lyx-id/roots-bracketing.lyx",
-      "bytes": 75044,
-      "sha256": "1662e04708a333c520b43e0c19c87e5f857ebb93173d455d4658ed07cf8ebd87"
+      "bytes": 75042,
+      "sha256": "eb0f6d6136bf1b85477753e93e0361ae6c088af6670be745f8a3c62c4851894b"
     },
     {
       "path": "translation/lyx-id/roots-fixedpoint.lyx",
@@ -4466,8 +4460,8 @@
     },
     {
       "path": "translation/lyx-id/roots-orderOfConvergence.lyx",
-      "bytes": 108819,
-      "sha256": "63f854eb6fabbe2f719567461da18deaf103791346a355f2fc52037d4b685782"
+      "bytes": 108816,
+      "sha256": "4b288a54d610e6257e87d8e657707a94ed26d4ad0149798769cc923441933656"
     },
     {
       "path": "translation/lyx-id/roots-polynomials.lyx",
@@ -4476,8 +4470,8 @@
     },
     {
       "path": "translation/lyx-id/solutions.lyx",
-      "bytes": 548220,
-      "sha256": "c2a971ed16a558b7c8db82d084acfc3948667f9a91176243b4d7fc8b69a6aead"
+      "bytes": 548192,
+      "sha256": "635ff3b07663f6d921b724eb8f1f8cc61a79733b56cc843c584f2fc3e15c5560"
     },
     {
       "path": "translation/lyx-id/splines-cubic.lyx",
@@ -4486,8 +4480,8 @@
     },
     {
       "path": "translation/lyx-id/splines-parametric.lyx",
-      "bytes": 95446,
-      "sha256": "f70fd86aedd88106e964ce9d0e95e0e81eb4898ea003e3fdf637f35b5cc692ec"
+      "bytes": 95444,
+      "sha256": "c99259347385f591dd33e50043f0dd17c0f951d2fec17f3d66f2256a39d8cac4"
     },
     {
       "path": "translation/lyx-id/TeaTimeNumericalAnalysis.lyx",

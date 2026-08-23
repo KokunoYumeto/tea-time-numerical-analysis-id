@@ -25,10 +25,10 @@
       "supersedes_role": null
     },
     {
-      "build_manifest_bytes": 53012,
+      "build_manifest_bytes": 52937,
       "build_manifest_path": "build/manifests/id-ID-build.json",
-      "build_manifest_sha256": "9437f143c777ca447c5b199f0ea2a7df1e70b2afd7731839c43041ca018fd988",
-      "bytes": 8202476,
+      "build_manifest_sha256": "dbef9a5bb9680f6c072e1f26fe3f5ae8ba7e1ca955d9c3dd47f402d1bb9174ea",
+      "bytes": 8202487,
       "locale": "id-ID",
       "media_type": "application/pdf",
       "path": "output/pdf/Tea-Time-Numerical-Analysis-id-ID.pdf",
@@ -38,7 +38,7 @@
         "urn:uuid:5602adce-6069-5b8f-b5b8-c8a3fe5762f4"
       ],
       "role": "id-ID-release-pdf",
-      "sha256": "cbc31e9e27fdee96845d78fa6a625bf956196001b7941ddf0f1232f5def46b45",
+      "sha256": "d573b7233d0baa07381e2052a749757885db3a31fbfe695c5a4851ea42d91b6d",
       "stable_key": "artifact/id-ID-release-pdf",
       "status": "release_final",
       "supersedes_role": null

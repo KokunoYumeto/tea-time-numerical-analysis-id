@@ -3256,7 +3256,7 @@ reference "fig:troubleForSecant"
 
 .
  Selisih antara hampiran-hampiran berturut-turut sebenarnya lebih besar daripada
- galat absolut pada setiap langkah.
+ galat mutlak pada setiap langkah.
  Situasi ini tidak lazim, tetapi dapat terjadi.
  
 \end_layout
@@ -3275,7 +3275,7 @@ Kriteria ini juga tidak aman ketika suatu metode konvergen secara linear dengan
 \begin_layout Standard
 Ada satu pertimbangan penting lagi mengenai penghentian.
  Berhenti ketika selisih antara dua hampiran berturut-turut lebih kecil daripada
- toleransi tertentu bergantung pada galat absolut.
+ toleransi tertentu bergantung pada galat mutlak.
  Ketika akar mungkin sangat kecil atau sangat besar, barangkali lebih baik
  menggunakan kriteria berdasarkan galat relatif.
  Sebagai contoh, alih-alih berhenti ketika 

@@ -229,8 +229,8 @@ ans~=~~~~~~~7.9167~~~~~~9.9062~~~~~~~~~~10~~~~~~2.0833~~~~~0.09375
 Metode kita yang didasarkan pada Aturan Trapesium, yang akan kita
 sebut PDB-trapesium untuk sementara, tampaknya lebih baik dalam menghampiri
 solusi PDB ini daripada metode Euler. Dua kolom terakhir memuat galat
-absolut untuk setiap hampiran. Galat pada PDB-trapesium kira-kira
-0.01 hingga 0.1, sedangkan galat pada metode Euler kira-kira 0.2 hingga
+mutlak untuk setiap hampiran. Galat pada PDB-trapesium kira-kira 0.01
+hingga 0.1, sedangkan galat pada metode Euler kira-kira 0.2 hingga
 2. Semua galat pada PDB-trapesium lebih kecil daripada semua galat
 pada metode Euler. Tentu saja, PDB-trapesium memerlukan dua evaluasi
 $f$ per langkah, sehingga metode itu seharusnya memberikan hasil
@@ -395,7 +395,7 @@ dengan PDB-terbuka. Tabel \ref{tab:odeCompare} menunjukkan galat
 perhitungan $y(2)$ untuk \ref{eq:sampleODE} bagi kelima metode dalam
 bagian ini dengan berbagai nilai $h$. 
 \begin{table}
-\caption{\label{tab:odeCompare}Perbandingan galat absolut untuk lima penyelesai
+\caption{\label{tab:odeCompare}Perbandingan galat mutlak untuk lima penyelesai
 PDB}
 
 \begin{centering}

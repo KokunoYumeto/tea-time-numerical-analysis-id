@@ -1,0 +1,104 @@
+{
+  "schema_id": "ttna-id-external-terminology-source-receipt-v1",
+  "recorded_at": "2026-08-22T22:01:04+02:00",
+  "task": "Indonesian numerical-analysis terminology QA",
+  "arxiv_search": {
+    "result": "no_suitable_representative_core_numerical_analysis_tex_source_found",
+    "confidence": "moderate_high_not_logically_exhaustive",
+    "search_basis": [
+      "arXiv searches for Indonesian numerical-analysis markers and field terms",
+      "arXiv/DataCite checks limited to arXiv DOI metadata and math.NA markers",
+      "direct inspection of the only credible Indonesian TeX-bearing near-match"
+    ],
+    "inspected_near_match": {
+      "arxiv_id": "0807.4609",
+      "title": "Analisis Kinerja Sistem Cluster Terhadapa Aplikasi Simulasi Dinamika Molekular NAMD Memanfaatkan Pustaka CHARM++",
+      "author": "A. B. Mutiara",
+      "submitted": "2008-07-29",
+      "category": "cs.DC",
+      "record_url": "https://arxiv.org/abs/0807.4609",
+      "source_url": "https://arxiv.org/e-print/0807.4609",
+      "language_evidence": "arXiv labels the paper as in Indonesian; the TeX loads the bahasa Babel option",
+      "suitability": "rejected_as_primary_field_authority",
+      "reason": "The paper concerns cluster performance and parallel molecular-dynamics simulation rather than core numerical analysis, mixes English heavily, and contains several outdated or nonstandard Indonesian forms.",
+      "archive": {
+        "path": "authority/external_terminology/arxiv-0807.4609/arxiv-0807.4609-source.tar.gz",
+        "bytes": 155496,
+        "sha256": "80c2f414b9269d15aaf92db71e7b355ff96301a18e7fc5dbe67d7dbbdc86241c"
+      },
+      "tex": {
+        "path": "authority/external_terminology/arxiv-0807.4609/paper_abm_knsi_2008.tex",
+        "bytes": 31672,
+        "sha256": "79d96864286223614ec257e42b32811b3b53fcf7075626c726ed1d08495e5a15"
+      },
+      "archive_members": [
+        "img0.eps",
+        "img1.eps",
+        "img2.eps",
+        "paper_abm_knsi_2008.tex"
+      ]
+    }
+  },
+  "fallback_source": {
+    "selection_reason": "Representative Indonesian core numerical-analysis coverage with directly downloadable PDFs on the author's official STEI-ITB site.",
+    "work_title": "Metode Numerik",
+    "author": "Rinaldi Munir",
+    "publisher_and_year": "Penerbit Informatika Bandung, 2003",
+    "host": "Sekolah Teknik Elektro dan Informatika, Institut Teknologi Bandung",
+    "index_url": "https://informatika.stei.itb.ac.id/~rinaldi.munir/Buku/Metode%20Numerik/pdf/",
+    "course_context_url": "https://informatika.stei.itb.ac.id/~rinaldi.munir/MetNum/2004-2005/informasi%20umum.htm",
+    "files": [
+      {
+        "chapter": 2,
+        "title": "Deret Taylor dan Analisis Galat",
+        "path": "authority/external_terminology/rinaldi-munir-metode-numerik-itb/bab-02-deret-taylor-dan-analisis-galat.pdf",
+        "url": "https://informatika.stei.itb.ac.id/~rinaldi.munir/Buku/Metode%20Numerik/pdf/BAb-%2002%20Deret%20Taylor%20dan%20Analisis%20Galat.pdf",
+        "pages": 43,
+        "bytes": 162509,
+        "sha256": "0670591afa44e60a835a252afeabf686032569b420b7161027a257c52f6acb51"
+      },
+      {
+        "chapter": 3,
+        "title": "Solusi Persamaan Nirlanjar",
+        "path": "authority/external_terminology/rinaldi-munir-metode-numerik-itb/bab-03-solusi-persamaan-nirlanjar.pdf",
+        "url": "https://informatika.stei.itb.ac.id/~rinaldi.munir/Buku/Metode%20Numerik/pdf/BAb-%2003%20Solusi%20Persamaan%20Nirlanjar.pdf",
+        "pages": 67,
+        "bytes": 242791,
+        "sha256": "42af47326d7f9e56c12d6b93a9af1668c25551f65aa3e9c078daf4498332e395"
+      },
+      {
+        "chapter": 5,
+        "title": "Interpolasi Polinom",
+        "path": "authority/external_terminology/rinaldi-munir-metode-numerik-itb/bab-05-interpolasi-polinom.pdf",
+        "url": "https://informatika.stei.itb.ac.id/~rinaldi.munir/Buku/Metode%20Numerik/pdf/BAb-%2005%20Interpolasi%20Polinom.pdf",
+        "pages": 75,
+        "bytes": 282195,
+        "sha256": "660dcd7e2b634324811f74539c1c5f6e99f00e944efc4adeaea353c84e600a63"
+      },
+      {
+        "chapter": 6,
+        "title": "Integrasi Numerik",
+        "path": "authority/external_terminology/rinaldi-munir-metode-numerik-itb/bab-06-integrasi-numerik.pdf",
+        "url": "https://informatika.stei.itb.ac.id/~rinaldi.munir/Buku/Metode%20Numerik/pdf/BAb-%2006%20Integrasi%20Numerik.pdf",
+        "pages": 72,
+        "bytes": 268655,
+        "sha256": "67148f321728432f19333d6cdd87c5113bd8a9dc5324c1d70fd17bcc163f0d33"
+      },
+      {
+        "chapter": 8,
+        "title": "Solusi Persamaan Diferensial Biasa",
+        "path": "authority/external_terminology/rinaldi-munir-metode-numerik-itb/bab-08-solusi-persamaan-diferensial-biasa.pdf",
+        "url": "https://informatika.stei.itb.ac.id/~rinaldi.munir/Buku/Metode%20Numerik/pdf/BAb-%2008%20Solusi%20Persamaan%20Diferensial%20Biasa.pdf",
+        "pages": 60,
+        "bytes": 225479,
+        "sha256": "6cc892c50b6a7b0c862a4b4f06f879b3041cdec8cb0ea6f7c7a5846f68b9f2c3"
+      }
+    ],
+    "inspection": {
+      "full_text_extraction": "pass_all_317_pages",
+      "visual_page_inspection": "pass_representative_pages_22_24_41_77_197_274_334_383_printed_page_numbers",
+      "font_warnings": "Poppler reported missing local display-font substitutions, but inspected text and terminology remained visibly legible."
+    }
+  },
+  "evidence_policy": "The downloaded arXiv source and fallback PDFs are retained locally as QA evidence. The public edition may cite their identities and hashes without redistributing third-party source bytes."
+}

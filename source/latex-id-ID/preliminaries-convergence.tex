@@ -147,9 +147,9 @@ mungkin Anda menyadari bahwa diperlukan informasi tambahan untuk menggunakan
 $s_{n}$ ketika $n>6$ atau $t_{n}$ ketika $n>4$. Semua suku tersebut
 bernilai sama di dalam tabel, sehingga rumus untuk $\alpha$ gagal
 menghasilkan bilangan real! Tabel yang lebih berguna untuk menghitung
-orde kekonvergenan adalah tabel yang memuat galat absolut: 
+orde kekonvergenan adalah tabel yang memuat galat mutlak: 
 \begin{table}[h]
-\hrule \caption{\label{tab:absoluteErrors}Galat absolut.}
+\hrule \caption{\label{tab:absoluteErrors}Galat mutlak.}
 \medskip{}
 
 \centering{}%
@@ -173,7 +173,7 @@ $n$ & $|q_{n}-e|$ & $|r_{n}-e|$ & $|s_{n}-e|$ & $|t_{n}-e|$\tabularnewline
  Selain mempermudah penghitungan $\alpha$, tabel ini menunjukkan
 dengan sangat jelas bahwa simpulan berdasarkan intuisi kita tentang
 barisan mana yang berkonvergensi lebih cepat memang benar. Bandingkan
-saja akurasi (galat absolut) suku kesebelasnya. 
+saja akurasi (galat mutlak) suku kesebelasnya. 
 
 Sekarang kita dapat menghitung orde kekonvergenan\index{kekonvergenan!orde},
 tetapi apa sebenarnya maknanya? Apa yang diberitahukan orde kekonvergenan
@@ -449,8 +449,8 @@ $\alpha\geq1$ jika
 \lim_{n\to\infty}\frac{\left|p_{n+1}-p\right|}{\left|p_{n}-p\right|^{\alpha}}=\lambda
 \]
 untuk suatu bilangan real $\lambda>0$. 
-\item [{Galat~absolut:}] Untuk barisan $\langle p_{n}\rangle$ yang konvergen
-ke $p$ dengan orde $\alpha$, galat absolut suku-suku berurutan dihubungkan
+\item [{Galat~mutlak:}] Untuk barisan $\langle p_{n}\rangle$ yang konvergen
+ke $p$ dengan orde $\alpha$, galat mutlak suku-suku berurutan dihubungkan
 oleh hampiran
 \[
 |p_{n+1}-p|\approx\lambda|p_{n}-p|^{\alpha}

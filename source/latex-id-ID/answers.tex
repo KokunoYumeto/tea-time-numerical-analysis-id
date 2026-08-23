@@ -363,11 +363,11 @@ dari dua kali lipat dibandingkan interpolasi kuadratik invers terkurung.
 \item [{\ref{exc:bracketing-11}:}] (a) $x_{6}=2.17975706647996$ (e) $x_{8}=-502.188059227438$
 (j) $x_{4}=1.00794427848094$
 \item [{\ref{exc:bracketing-14}:}] (a) dan (j): Karena akar bernilai sekitar
-$1$, tidak ada perbedaan antara pengujian galat absolut dan galat
+$1$, tidak ada perbedaan antara pengujian galat mutlak dan galat
 relatif. (e) Karena akar bernilai sekitar lima ratus, metode berhenti
-ketika galat absolut baru sekitar $10^{-6}\cdot500=5(10)^{-4}$. Akibatnya,
+ketika galat mutlak baru sekitar $10^{-6}\cdot500=5(10)^{-4}$. Akibatnya,
 metode berhenti satu iterasi lebih awal ketika memeriksa galat relatif
-dibandingkan ketika memeriksa galat absolut.
+dibandingkan ketika memeriksa galat mutlak.
 \end{description}
 
 \section*{Bagian \ref{sec:polynomialLagrange}}
@@ -462,7 +462,7 @@ derajat ketelitian: $3$
 \item [{\ref{exc:calculusErrors-29}:}] $0.0134k$ untuk suatu konstanta
 $k$ yang bergantung pada rumus hampiran, bukan pada fungsi $\sin x$.
 \item [{\ref{exc:calculusErrors-30}:}] (a) $O(h^{3})$ (b) $1$ (c) $\frac{\sqrt{3}}{2}\pi\approx2.720699046351327$
-(d) $\frac{\pi^{3}}{36}\approx0.8612854633416616$ (e) galat absolut
+(d) $\frac{\pi^{3}}{36}\approx0.8612854633416616$ (e) galat mutlak
 sebenarnya: $0.7206990463513265$
 \item [{\ref{exc:calculusErrors-31}:}] $-\frac{1}{2}$
 \item [{\ref{exc:calculusErrors-32}:}] $O(h^{2})$
@@ -749,7 +749,7 @@ sebesar $9.5$\% atau lebih.
 \item [{\ref{exc:odePendulum-19}:}] Dari grafik solusi eksak dan solusi
 aproksimasi, hampiran tersebut tampak sangat baik untuk semua nilai
 $t$. Galat terbesar tampaknya terjadi pada $t=11$ dan $t=13$. Untuk
-mengetahui seberapa baik hampiran tersebut, galat absolut pada $t=11$
+mengetahui seberapa baik hampiran tersebut, galat mutlak pada $t=11$
 dan $t=13$ masing-masing sekitar $.0066$ dan $.0044$, berturut-turut.
 Galat relatifnya masing-masing sekitar $.021$ dan $.0073$, berturut-turut.
 Semuanya merupakan galat yang kecil.
@@ -904,7 +904,7 @@ end\%function~
 \[
 y(2)\approx2.3125,\,2.28814697265625,\,2.28469446951954,\,2.28402793464698
 \]
- galat absolutnya kira-kira 
+ galat mutlaknya kira-kira 
 \[
 0.02866617919084,\,0.004313151847096,\,8.606487103870(10)^{-4},\,1.941138378267(10)^{-4}
 \]
@@ -1096,20 +1096,20 @@ end\%function~
 \section*{Bagian \ref{sec:Runge-Kutta-Error-Analysis}}
 \begin{description}
 \item [{\ref{exc:ode-errorAnalysis}b:}] $O(h^{3})$; sama dengan galat
-pemenggalan lokal rumus integrasi yang mendasarinya; ya, satu derajat
+pemotongan lokal rumus integrasi yang mendasarinya; ya, satu derajat
 lebih tinggi daripada laju kekonvergenan.
 \item [{\ref{exc:ode-errorAnalysis}c:}] $O(h^{3})$; sama dengan galat
-pemenggalan lokal rumus integrasi yang mendasarinya; ya, satu derajat
+pemotongan lokal rumus integrasi yang mendasarinya; ya, satu derajat
 lebih tinggi daripada laju kekonvergenan.
 \item [{\ref{exc:ode-errorAnalysis}g:}] CATATAN: Karena ini merupakan
 metode empat tahap, persamaan \ref{eq:rk4cond1}-\ref{eq:rk4cond10}
 harus digunakan untuk menentukan laju kekonvergenan. $O(h^{4})$;
-lebih rendah daripada galat pemenggalan lokal rumus integrasi yang
+lebih rendah daripada galat pemotongan lokal rumus integrasi yang
 mendasarinya; ya, satu derajat lebih tinggi daripada laju kekonvergenan.
 \item [{\ref{exc:ode-errorAnalysis}j:}] CATATAN: Karena ini merupakan
 metode empat tahap, persamaan \ref{eq:rk4cond1}-\ref{eq:rk4cond10}
 harus digunakan untuk menentukan laju kekonvergenan. $O(h^{3})$;
-lebih rendah daripada galat pemenggalan lokal rumus integrasi yang
+lebih rendah daripada galat pemotongan lokal rumus integrasi yang
 mendasarinya; ya, satu derajat lebih tinggi daripada laju kekonvergenan.
 \item [{\ref{exc:ode-errorAnalysis-2}:}] $\ $\index{metode Euler yang diperbaiki!kode}
 \texttt{eulerimp.m} dapat diunduh dari \href{http://lqbrin.github.io/tea-time-numerical/ancillaries.html}{situs pendamping}.

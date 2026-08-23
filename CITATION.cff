@@ -5,10 +5,10 @@ type: dataset
 authors:
   - family-names: "Brin"
     given-names: "Leon Q."
-version: "3.0-id.1"
-date-released: "2026-08-22"
-doi: "10.5281/zenodo.22054086"
-url: "https://doi.org/10.5281/zenodo.22054086"
+version: "3.0-id.2"
+date-released: "2026-08-23"
+doi: "10.5281/zenodo.22062071"
+url: "https://doi.org/10.5281/zenodo.22062071"
 repository-code: "https://github.com/KokunoYumeto/tea-time-numerical-analysis-id"
 abstract: >-
   Edisi Bahasa Indonesia mandiri dari Tea Time Numerical Analysis, Edisi
@@ -39,9 +39,9 @@ preferred-citation:
   authors:
     - family-names: "Brin"
       given-names: "Leon Q."
-  version: "3.0-id.1"
-  date-released: "2026-08-22"
-  doi: "10.5281/zenodo.22054086"
+  version: "3.0-id.2"
+  date-released: "2026-08-23"
+  doi: "10.5281/zenodo.22062071"
 references:
   - type: book
     title: "Tea Time Numerical Analysis"
