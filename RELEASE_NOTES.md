@@ -72,5 +72,7 @@ Kredit ini tidak menyatakan identitas penerjemah yang tidak tercatat.
 Build 387 halaman, ekstraksi teks seluruh PDF, inspeksi visual halaman
 representatif, replay backend deterministik, round-trip ekspor, dan 20/20
 pengujian backend lulus. Patch ini diterbitkan dalam lineage Zenodo konsep
-`10.5281/zenodo.22054085`, repositori GitHub yang sama, dan item Figshare yang
-sama; receipt publikasi terpisah mencatat pembacaan balik anonim setiap byte.
+`10.5281/zenodo.22054085` dan repositori GitHub yang sama. Payload Figshare
+reader-first disiapkan untuk artikel lineage yang sama, tetapi publikasi
+menunggu reaktivasi akun Figshare; receipt publikasi terpisah mencatat
+pembacaan balik anonim setiap byte yang sudah publik.

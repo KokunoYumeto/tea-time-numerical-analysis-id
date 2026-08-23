@@ -1,0 +1,37 @@
+{
+  "schema_id": "ttna-id-publication-status-v3",
+  "version": "3.0-id.2",
+  "title": "Analisis Numerik Saat Minum Teh",
+  "author_credit": "Leon Q. Brin",
+  "github": {
+    "release": "https://github.com/KokunoYumeto/tea-time-numerical-analysis-id/releases/tag/v3.0-id.2",
+    "commit": "ef45dba7332caca82384ff2fe781ff058d334a76",
+    "status": "published_and_anonymously_verified"
+  },
+  "zenodo": {
+    "record": "https://zenodo.org/records/22062071",
+    "doi": "10.5281/zenodo.22062071",
+    "concept_doi": "10.5281/zenodo.22054085",
+    "status": "published_and_anonymously_verified"
+  },
+  "figshare": {
+    "target_article_lineage": 33314724,
+    "project_id": 280296,
+    "collection_id": 8668413,
+    "status": "prepared_but_blocked_by_inactive_account",
+    "payload_bytes": 41613096,
+    "payload_manifest": "publication/FIGSHARE_PAYLOAD_MANIFEST.json",
+    "evidence": "The authorized API returned HTTP 403 InactiveAccount; the public article endpoint returned HTTP 404 EntityNotFound. No duplicate item was created."
+  },
+  "reader_artifact": {
+    "name": "Tea-Time-Numerical-Analysis-id-ID.pdf",
+    "bytes": 8202487,
+    "sha256": "d573b7233d0baa07381e2052a749757885db3a31fbfe695c5a4851ea42d91b6d"
+  },
+  "source_backend_artifact": {
+    "name": "Tea-Time-Numerical-Analysis-id-ID-v3.0-id.2-source-backend.zip",
+    "bytes": 33238399,
+    "sha256": "13d48e5c5dc18524e170e1b94bba1d27b3bed47a4c1a66ec94cb7d2aeb5238e8"
+  },
+  "next_action": "Reactivate the existing Figshare account or restore article lineage 33314724, then publish the prepared payload without creating a duplicate."
+}

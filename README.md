@@ -79,9 +79,10 @@ untuk atribusi, lingkup, dan bukti provenance yang lengkap.
 `3.0-id.2` mempertahankan seluruh cakupan edisi lengkap `3.0-id.1` dan
 menambahkan QA terminologi lapangan Bahasa Indonesia. Preferred term sekarang
 memakai `galat mutlak`, `galat pemotongan`, dan `galat pemotongan lokal`,
-dengan pembedaan eksplisit dari *chopping*. Rilis ini memakai lineage Zenodo,
-repositori GitHub, dan item Figshare yang sama; jangan membuat record atau
-repositori duplikat.
+dengan pembedaan eksplisit dari *chopping*. Rilis ini memakai lineage Zenodo
+dan repositori GitHub yang sama. Payload Figshare reader-first sudah disiapkan
+untuk artikel lineage yang sama, tetapi publikasi menunggu reaktivasi akun
+Figshare; jangan membuat record atau repositori duplikat.
 
 Metadata sitasi tersedia di [CITATION.cff](CITATION.cff), metadata deposit di
 [zenodo-metadata.json](metadata/zenodo-metadata.json), dan catatan rilis di
