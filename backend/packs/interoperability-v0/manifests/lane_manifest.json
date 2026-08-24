@@ -8,7 +8,7 @@
   },
   "config_bytes": 3115,
   "config_path": "backend/config/interoperability_v0.release.json",
-  "config_sha256": "4aafff99f18acd992041774e5c07cc6c1289fed2c2b8526b89f3f1d911b190d2",
+  "config_sha256": "9c66a55082b2b272b5ccda9e0f3c53924c8adb75af02286a604912bf1d220121",
   "counts": {
     "artifact": 2,
     "concept": 12,
@@ -68,7 +68,7 @@
       "bytes": 3835,
       "path": "artifacts/artifacts.jsonl",
       "records": 2,
-      "sha256": "efcefc3c22d26ba18869f4da6a073252d7fc49121d4fbd819557a7a2fd8c05b2"
+      "sha256": "5b294bccc5d4ad53b9b22a8beeedbfbfe5d4fc507efc561ec3298fa474f3feac"
     },
     {
       "bytes": 391,
@@ -152,9 +152,9 @@
     },
     "artifacts": [
       {
-        "build_manifest_bytes": 53055,
+        "build_manifest_bytes": 52979,
         "build_manifest_path": "build/manifests/en-baseline-build.json",
-        "build_manifest_sha256": "241285cb4f76d560c67c49b905b4be401fecf4dc7d9b86cc8ffaf74335cdefd5",
+        "build_manifest_sha256": "efefe947aebdf0f74d9b5d2e616d2c48d3186f4b871f4ea1e2f1119222458a55",
         "bytes": 8186285,
         "path": "tmp/pdfs/en-baseline/TeaTimeNumericalAnalysis-en-baseline.pdf",
         "role": "english-baseline-pdf",

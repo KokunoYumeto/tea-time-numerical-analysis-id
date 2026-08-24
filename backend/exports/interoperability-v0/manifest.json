@@ -8,13 +8,13 @@
       "bytes": 22101516,
       "path": "records.jsonl",
       "records": 28172,
-      "sha256": "0b4227c5fde67ba15388384c79d980ec361b65f7375b4d47928aad1be09edafe"
+      "sha256": "2e02218c5b47d730ed510be1fa910ae826592d850a2db244aacc8e618e0a9d32"
     },
     {
       "bytes": 25706115,
       "path": "records.csv",
       "records": 28172,
-      "sha256": "383c21ed77a500faa72f0687d66f0a6c6abce2eb255dd675036df7de8384fa81"
+      "sha256": "7e490edae2e6246363339116a0290e374eef6ab6bb01132f16a2f6cf4e5da42d"
     }
   ],
   "proprietary_services_required": false,
@@ -45,11 +45,11 @@
     "sha256": "1367da6e46a9fd5b24912bd8cde6e274af77965dd90cc36c24d2fd23b4a92fed"
   },
   "round_trip": {
-    "csv_sha256": "383c21ed77a500faa72f0687d66f0a6c6abce2eb255dd675036df7de8384fa81",
-    "jsonl_sha256": "0b4227c5fde67ba15388384c79d980ec361b65f7375b4d47928aad1be09edafe",
+    "csv_sha256": "7e490edae2e6246363339116a0290e374eef6ab6bb01132f16a2f6cf4e5da42d",
+    "jsonl_sha256": "2e02218c5b47d730ed510be1fa910ae826592d850a2db244aacc8e618e0a9d32",
     "records": 28172,
     "round_trip_equal": true,
-    "semantic_sha256": "0b4227c5fde67ba15388384c79d980ec361b65f7375b4d47928aad1be09edafe",
+    "semantic_sha256": "2e02218c5b47d730ed510be1fa910ae826592d850a2db244aacc8e618e0a9d32",
     "utf8_lf": true
   },
   "schema_id": "ttna-interoperability-export-v0",
@@ -57,7 +57,7 @@
   "source_manifest": {
     "bytes": 14060,
     "path": "backend/manifests/lane_manifest.json",
-    "sha256": "9a6ccf6ebf1e579216d7a5d7dee70b0da6acd7e5ea6237325b45cada5318a9e0"
+    "sha256": "e11119d2e7ab1118ab75ea986c05d441cc22391d4ce44e6fce7bcf0b3c357301"
   },
   "total_unique_records": 28172
 }

@@ -1,6 +1,7 @@
 # R015 final Indonesian release backend — QA receipt
 
-Date: 2026-08-23  
+Date: 2026-08-23
+Current-byte integrity refresh: 2026-08-24
 Result: **PASS**
 
 ## Synchronized release inputs
@@ -19,7 +20,7 @@ All 31 translation/build-file packs were regenerated from these exact inputs. Ea
 
 `backend/tools/index_interop_v0.py bind-artifact` derived the artifact facts from the final PDF and build manifest, verified their internal agreement, refreshed the final ledger pin, and emitted:
 
-- release configuration: `backend/config/interoperability_v0.release.json`, 3,115 bytes, SHA-256 `4aafff99f18acd992041774e5c07cc6c1289fed2c2b8526b89f3f1d911b190d2`;
+- release configuration: `backend/config/interoperability_v0.release.json`, 3,115 bytes, SHA-256 `9c66a55082b2b272b5ccda9e0f3c53924c8adb75af02286a604912bf1d220121`;
 - artifact ID: `urn:uuid:0c82fceb-d875-53e8-94c9-a20dae5547cb`;
 - artifact role: `id-ID-release-pdf`;
 - locale/status: `id-ID` / `release_final`;
@@ -27,7 +28,7 @@ All 31 translation/build-file packs were regenerated from these exact inputs. Ea
 
 The English reproducible baseline remains a second artifact with status `baseline_nonfinal`; it was not mislabeled or replaced.
 
-The final independently mergeable interoperability pack contains 1,295 records. Its manifest is 6,528 bytes, SHA-256 `0fc900555159797b9fda4cf78b2fa7d63b12d685cdf1100c3fb6abae1eadda86`.
+The final independently mergeable interoperability pack contains 1,295 records. Its manifest is 6,528 bytes, SHA-256 `3bb6f0cb65f3c14da49b30c6922efb0985ed300791509b474087a47581c71403`.
 
 ## Final combined view
 
@@ -40,26 +41,25 @@ Record counts:
 - localization 4,621; program 1; qa_event 31; relation 17,614;
 - resource 1; rights 4; segment 4,621; source_file 31; term 593; unit 281.
 
-Combined manifest: `backend/manifests/lane_manifest.json`, 14,060 bytes, SHA-256 `9a6ccf6ebf1e579216d7a5d7dee70b0da6acd7e5ea6237325b45cada5318a9e0`.
+Combined manifest: `backend/manifests/lane_manifest.json`, 14,060 bytes, SHA-256 `e11119d2e7ab1118ab75ea986c05d441cc22391d4ce44e6fce7bcf0b3c357301`.
 
 ## Open exports and closed selection
 
-- JSONL: 28,172 records, 22,101,516 bytes, SHA-256 `0b4227c5fde67ba15388384c79d980ec361b65f7375b4d47928aad1be09edafe`.
-- Lossless CSV: 28,172 records, 25,706,115 bytes, SHA-256 `383c21ed77a500faa72f0687d66f0a6c6abce2eb255dd675036df7de8384fa81`.
-- Export manifest: 1,828 bytes, SHA-256 `efe11b75bf8ca805aa2f6d8db945310d294cc72039a69d5b2a46b2a6d3c7e2bd`.
+- JSONL: 28,172 records, 22,101,516 bytes, SHA-256 `2e02218c5b47d730ed510be1fa910ae826592d850a2db244aacc8e618e0a9d32`.
+- Lossless CSV: 28,172 records, 25,706,115 bytes, SHA-256 `7e490edae2e6246363339116a0290e374eef6ab6bb01132f16a2f6cf4e5da42d`.
+- Export manifest: 1,828 bytes, SHA-256 `6517e18a26e87293a1961862a837439d937a6ecd4f0bab9082ab5a4a8d4677ef`.
 - JSONL/CSV semantic round trip: pass; UTF-8, LF, BOM-free; proprietary services required: false.
 - `preface.layout.15` dependency-closed selection: 51 records, 28,962 bytes, SHA-256 `5807d72c4857a679ef2f9beaa2e1bcbc5f3b1d3e869fe3242737fba25c70ef82`.
-- Selection manifest: 2,549 bytes, SHA-256 `a9640d4824b5fa06399cdaecdd0ec8672430e3e64e44ecfb60440dd345144cef`; dangling relations/foreign keys: 0.
+- Selection manifest: 2,549 bytes, SHA-256 `2319878a544183fe8c5ab2d783d87bcd5c62c1d23884c02cc3ea33b0ac0c4c84`; dangling relations/foreign keys: 0.
 
 ## Validation and replay
 
-After making public export locators repository-relative, the complete backend unittest suite passed 20/20 in 169.114 seconds. It covers deterministic generators, typed standalone and combined merges, rights partitioning, exact code evidence, one-byte drift rejection for source/assets/archive/style, open-export round trip, and dependency closure. The final export and selection contain zero machine-local absolute path hits.
+For the `3.0-id.2-r1` integrity replay on 2026-08-24, the complete backend unittest suite passed 20/20 in 23.231 seconds. It covers deterministic generators, typed standalone and combined merges, rights partitioning, exact code evidence, one-byte drift rejection for source/assets/archive/style, open-export round trip, and dependency closure. The final export and selection contain zero machine-local absolute path hits.
 
 A second complete in-place regeneration from the same pinned final inputs was compared against the first before the cursor advanced:
 
-- 34-pack inventory: 463 files, aggregate SHA-256 `e5b607e748cca264b0cf1a803733d1777334301e7afd56c5bbfe34ef4ea20377`, equal before/after;
-- combined output: 20 files, aggregate SHA-256 `90d6328bacddd08dbf1b9c334ca3022ba3189cd70928a1b0e7bd80f3ab022e1e`, equal before/after;
-- open export plus checked selection before the repository-relative locator improvement: 5 files, aggregate SHA-256 `b631c91c9dc5b6c3945fccb9fc2e608a85b4d448c493abf35680cfa4740dc09e`, equal before/after;
-- final repository-relative open export plus checked selection: 5 files, aggregate SHA-256 `5930df559f0a6bd1b4814eef3a5d74c5c573a64ebdb595eadc3d31543a922cc2`; record payload hashes remain unchanged.
+- interoperability pack: 14 files / 1,435,117 bytes, aggregate SHA-256 `e9bf9bf936f29e686c23e0eaaf6287cf3ed565113a3d66f56a4c81e82a6a5412`, equal before/after;
+- combined output: 20 files / 22,115,576 bytes, aggregate SHA-256 `347a5f566bedc7216febe35acb6321575388b9cf0dd622e4d2ad0fdb0c41f12e`, equal before/after;
+- open export plus checked selection: 5 files / 47,840,970 bytes, aggregate SHA-256 `7c3315870a4a54d87f204b75e8f494f7865acd470cf68add6dbdfd823b305a12`, equal before/after.
 
 The backend therefore passes the final release synchronization, deterministic replay, round-trip, typed-closure, rights-boundary, and final-artifact gates.

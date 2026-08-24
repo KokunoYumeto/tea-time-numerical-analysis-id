@@ -19,7 +19,7 @@
         "type": "Other"
       }
     ],
-    "description": "<p>Edisi Bahasa Indonesia mandiri dari <em>Tea Time Numerical Analysis</em>, Edisi Ketiga, karya Leon Q. Brin. Edisi ini diturunkan dari upstream <code>v3.0</code> pada commit <code>186882108a6da95c8dca5b81ce000fc3f8f3ca21</code> dan tree <code>1e50d3756b695176008c602f0ee89712f5f32d10</code>.</p><p>Versi 3.0-id.2 menambahkan QA terminologi lapangan Bahasa Indonesia berbasis sumber TeX arXiv yang diperiksa dan fallback representatif <em>Metode Numerik</em> karya Rinaldi Munir dari STEI-ITB. Preferred term dibakukan menjadi <em>galat mutlak</em>, <em>galat pemotongan</em>, dan <em>galat pemotongan lokal</em>, dengan pembedaan dari <em>chopping</em>. Dukungan QA terminologi, produksi, dan penyiapan teknis menggunakan OpenAI Codex gpt-5.6-sol, Ultra, atas permintaan pengguna; pernyataan ini bukan atribusi identitas penerjemah dan tidak menggantikan kredit Leon Q. Brin.</p><p>PDF pembaca final terdiri atas 387 halaman (8.202.487 byte; SHA-256 <code>d573b7233d0baa07381e2052a749757885db3a31fbfe695c5a4851ea42d91b6d</code>).</p>",
+    "description": "<p>Edisi Bahasa Indonesia mandiri dari <em>Tea Time Numerical Analysis</em>, Edisi Ketiga, karya Leon Q. Brin. Edisi ini diturunkan dari upstream <code>v3.0</code> pada commit <code>186882108a6da95c8dca5b81ce000fc3f8f3ca21</code> dan tree <code>1e50d3756b695176008c602f0ee89712f5f32d10</code>.</p><p>Versi 3.0-id.2 menambahkan QA terminologi lapangan Bahasa Indonesia berbasis sumber TeX arXiv yang diperiksa dan fallback representatif <em>Metode Numerik</em> karya Rinaldi Munir dari STEI-ITB. Preferred term dibakukan menjadi <em>galat mutlak</em>, <em>galat pemotongan</em>, dan <em>galat pemotongan lokal</em>, dengan pembedaan dari <em>chopping</em>. Versi 3.0-id.2-r1 menerbitkan ulang paket sumber/backend dengan sitasi hash QA dan manifest yang diperbaiki; isi matematika dan PDF pembaca tetap byte-identik. Dukungan QA terminologi, produksi, dan penyiapan teknis menggunakan OpenAI Codex gpt-5.6-sol, Ultra, atas permintaan pengguna; pernyataan ini bukan atribusi identitas penerjemah dan tidak menggantikan kredit Leon Q. Brin.</p><p>PDF pembaca final terdiri atas 387 halaman (8.202.487 byte; SHA-256 <code>d573b7233d0baa07381e2052a749757885db3a31fbfe695c5a4851ea42d91b6d</code>).</p>",
     "keywords": [
       "analisis numerik",
       "Bahasa Indonesia",
@@ -31,8 +31,8 @@
     ],
     "language": "ind",
     "license": "cc-by-sa-4.0",
-    "notes": "Lisensi tingkat-record CC-BY-SA-4.0 hanya mencakup buku dan adaptasi Bahasa Indonesia. Kode tetap GPL-3.0-or-later; aset Heun 1900 menggunakan Public Domain Mark 1.0 (CC-PDM-1.0, bukan CC0); cprotect, jika disertakan, tetap LPPL-1.3c+. Manifest build build/manifests/id-ID-build.json memiliki 52.937 byte dan SHA-256 dbef9a5bb9680f6c072e1f26fe3f5ae8ba7e1ca955d9c3dd47f402d1bb9174ea. QA terminologi eksternal qa/EXTERNAL_INDONESIAN_TERMINOLOGY_QA_20260822.md memiliki SHA-256 af709475f228a4ff60ff5972fd30a18452ba46d627c7754c934f928ca01e6918. Lihat COMPONENT_RIGHTS_AND_PROVENANCE.md dalam paket rilis.",
-    "publication_date": "2026-08-23",
+    "notes": "Lisensi tingkat-record CC-BY-SA-4.0 hanya mencakup buku dan adaptasi Bahasa Indonesia. Kode tetap GPL-3.0-or-later; aset Heun 1900 menggunakan Public Domain Mark 1.0 (CC-PDM-1.0, bukan CC0); cprotect, jika disertakan, tetap LPPL-1.3c+. Manifest build build/manifests/id-ID-build.json memiliki 52.937 byte dan SHA-256 dbef9a5bb9680f6c072e1f26fe3f5ae8ba7e1ca955d9c3dd47f402d1bb9174ea. QA terminologi eksternal qa/EXTERNAL_INDONESIAN_TERMINOLOGY_QA_20260822.md memiliki 6.577 byte dan SHA-256 0f5e1e08b9c399827733df6fefc42623460d6aeabb92d2d9d96089e313366cc0. Manifest backend backend/manifests/lane_manifest.json memiliki 14.060 byte dan SHA-256 e11119d2e7ab1118ab75ea986c05d441cc22391d4ce44e6fce7bcf0b3c357301. Lihat COMPONENT_RIGHTS_AND_PROVENANCE.md dalam paket rilis.",
+    "publication_date": "2026-08-24",
     "publication_type": "book",
     "related_identifiers": [
       {
@@ -46,13 +46,13 @@
         "resource_type": "software"
       },
       {
-        "identifier": "https://github.com/KokunoYumeto/tea-time-numerical-analysis-id/releases/tag/v3.0-id.2",
+        "identifier": "https://github.com/KokunoYumeto/tea-time-numerical-analysis-id/releases/tag/v3.0-id.2-r1",
         "relation": "isSupplementTo",
         "resource_type": "software"
       }
     ],
     "title": "Analisis Numerik Saat Minum Teh — Edisi Bahasa Indonesia (Edisi Ketiga)",
     "upload_type": "publication",
-    "version": "3.0-id.2"
+    "version": "3.0-id.2-r1"
   }
 }

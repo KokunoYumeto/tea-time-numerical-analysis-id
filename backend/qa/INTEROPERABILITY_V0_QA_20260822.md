@@ -1,8 +1,10 @@
 # R015 Modular Backend Interoperability Envelope v0 — QA receipt
 
 Date: 2026-08-22
-Result: historical pre-release-envelope pass. The required final PDF binding was
-subsequently completed and is recorded in
+Result: **historical pre-release-envelope pass; superseded for current-byte
+release QA**. Every byte identity and count below records that historical
+baseline and is intentionally not a current-release assertion. The required
+final PDF binding was subsequently completed and is recorded in
 `backend/qa/FINAL_RELEASE_BACKEND_QA_20260822.md`.
 
 ## Exact input snapshot

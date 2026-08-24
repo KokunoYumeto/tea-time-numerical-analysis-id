@@ -1,8 +1,8 @@
 {
   "schema_id": "ttna-id-source-backend-package-v1",
-  "version": "3.0-id.2",
-  "release_date": "2026-08-23",
-  "archive_root": "Tea-Time-Numerical-Analysis-id-ID-v3.0-id.2",
+  "version": "3.0-id.2-r1",
+  "release_date": "2026-08-24",
+  "archive_root": "Tea-Time-Numerical-Analysis-id-ID-v3.0-id.2-r1",
   "source_commit": "186882108a6da95c8dca5b81ce000fc3f8f3ca21",
   "source_tree": "1e50d3756b695176008c602f0ee89712f5f32d10",
   "excluded_separate_or_mutable_files": [
@@ -10,8 +10,8 @@
     "PACKAGE_INVENTORY.json"
   ],
   "payload_file_count": 895,
-  "payload_bytes": 114253173,
-  "path_size_sha256_inventory_aggregate": "6940d4125e1036a7b290aee2e4e3972231db8a97217661024b5bc3bbb404fe81",
+  "payload_bytes": 114254013,
+  "path_size_sha256_inventory_aggregate": "2808134c15c88298df4d8b2eac24dfeece9af22965ae1332a16a4797fc033681",
   "files": [
     {
       "path": ".gitignore",
@@ -91,7 +91,7 @@
     {
       "path": "backend/artifacts/artifacts.jsonl",
       "bytes": 3835,
-      "sha256": "efcefc3c22d26ba18869f4da6a073252d7fc49121d4fbd819557a7a2fd8c05b2"
+      "sha256": "5b294bccc5d4ad53b9b22a8beeedbfbfe5d4fc507efc561ec3298fa474f3feac"
     },
     {
       "path": "backend/assets/assets.jsonl",
@@ -136,12 +136,12 @@
     {
       "path": "backend/config/interoperability_v0.release.json",
       "bytes": 3115,
-      "sha256": "4aafff99f18acd992041774e5c07cc6c1289fed2c2b8526b89f3f1d911b190d2"
+      "sha256": "9c66a55082b2b272b5ccda9e0f3c53924c8adb75af02286a604912bf1d220121"
     },
     {
       "path": "backend/config/interoperability_v0.v1.json",
       "bytes": 2314,
-      "sha256": "ed8092c72a7ea779ee8267dd708cfcec8df581ab8ecee61d90ecb66b39470f57"
+      "sha256": "53c13ad76aeda465f03d7a88dd655d85b9d184f2d4466338ac26ebbc5d706985"
     },
     {
       "path": "backend/config/preamble_reader_map.v1.json",
@@ -171,22 +171,22 @@
     {
       "path": "backend/exports/interoperability-v0/manifest.json",
       "bytes": 1828,
-      "sha256": "efe11b75bf8ca805aa2f6d8db945310d294cc72039a69d5b2a46b2a6d3c7e2bd"
+      "sha256": "6517e18a26e87293a1961862a837439d937a6ecd4f0bab9082ab5a4a8d4677ef"
     },
     {
       "path": "backend/exports/interoperability-v0/records.csv",
       "bytes": 25706115,
-      "sha256": "383c21ed77a500faa72f0687d66f0a6c6abce2eb255dd675036df7de8384fa81"
+      "sha256": "7e490edae2e6246363339116a0290e374eef6ab6bb01132f16a2f6cf4e5da42d"
     },
     {
       "path": "backend/exports/interoperability-v0/records.jsonl",
       "bytes": 22101516,
-      "sha256": "0b4227c5fde67ba15388384c79d980ec361b65f7375b4d47928aad1be09edafe"
+      "sha256": "2e02218c5b47d730ed510be1fa910ae826592d850a2db244aacc8e618e0a9d32"
     },
     {
       "path": "backend/exports/interoperability-v0/selections/preface-online/manifest.json",
       "bytes": 2549,
-      "sha256": "a9640d4824b5fa06399cdaecdd0ec8672430e3e64e44ecfb60440dd345144cef"
+      "sha256": "2319878a544183fe8c5ab2d783d87bcd5c62c1d23884c02cc3ea33b0ac0c4c84"
     },
     {
       "path": "backend/exports/interoperability-v0/selections/preface-online/records.jsonl",
@@ -196,7 +196,7 @@
     {
       "path": "backend/manifests/lane_manifest.json",
       "bytes": 14060,
-      "sha256": "9a6ccf6ebf1e579216d7a5d7dee70b0da6acd7e5ea6237325b45cada5318a9e0"
+      "sha256": "e11119d2e7ab1118ab75ea986c05d441cc22391d4ce44e6fce7bcf0b3c357301"
     },
     {
       "path": "backend/packs/answers/assets/assets.jsonl",
@@ -696,7 +696,7 @@
     {
       "path": "backend/packs/interoperability-v0/artifacts/artifacts.jsonl",
       "bytes": 3835,
-      "sha256": "efcefc3c22d26ba18869f4da6a073252d7fc49121d4fbd819557a7a2fd8c05b2"
+      "sha256": "5b294bccc5d4ad53b9b22a8beeedbfbfe5d4fc507efc561ec3298fa474f3feac"
     },
     {
       "path": "backend/packs/interoperability-v0/authority/editions.jsonl",
@@ -726,7 +726,7 @@
     {
       "path": "backend/packs/interoperability-v0/manifests/lane_manifest.json",
       "bytes": 6528,
-      "sha256": "0fc900555159797b9fda4cf78b2fa7d63b12d685cdf1100c3fb6abae1eadda86"
+      "sha256": "3bb6f0cb65f3c14da49b30c6922efb0985ed300791509b474087a47581c71403"
     },
     {
       "path": "backend/packs/interoperability-v0/rights/components.jsonl",
@@ -2520,18 +2520,18 @@
     },
     {
       "path": "backend/qa/FINAL_RELEASE_BACKEND_QA_20260822.md",
-      "bytes": 4908,
-      "sha256": "b58d9e3a5304cc64780ebb0a02f34cff631dd5b593d73a5585a1fa6ccf3304e9"
+      "bytes": 4754,
+      "sha256": "6551dee7c5f51da10d11c0914ebf4a07f28650d0b1e99fdb91c50cfc77961c34"
     },
     {
       "path": "backend/qa/INTEROPERABILITY_V0_QA_20260822.md",
-      "bytes": 9728,
-      "sha256": "85c15cebe8d9a1df4ee7ce13fd4746ce17d780ce299ba2f9474f201978507d9f"
+      "bytes": 9895,
+      "sha256": "702bad67b8609ae25cd668ea68b3b6dbe62271833d4ab3c2a4666ac4f40d54b3"
     },
     {
       "path": "backend/README.md",
       "bytes": 13821,
-      "sha256": "e6387c4c718bc0fa0882894869a29f5df4a2e9b96ff12ae6967189ca02b2f94d"
+      "sha256": "811bfd4eda1c9c0aef78fc8d98336fba26299dac479264e357d3c480b70ef2de"
     },
     {
       "path": "backend/rights/components.jsonl",
@@ -2665,8 +2665,8 @@
     },
     {
       "path": "CITATION.cff",
-      "bytes": 1765,
-      "sha256": "6a70466d699c09c7e72913534f294093d54807d1bdd3be9a7914a5612655ba2b"
+      "bytes": 1771,
+      "sha256": "36b65a8fa4a053d19b970f499bd7ea134bdd9352e064a5996e7d56d5d69c89a1"
     },
     {
       "path": "COMPONENT_RIGHTS_AND_PROVENANCE.md",
@@ -2700,8 +2700,8 @@
     },
     {
       "path": "metadata/zenodo-metadata.json",
-      "bytes": 3163,
-      "sha256": "09581b8f29182b626f84b59c736a99bdff41bdf0ef8a18abeab13b7fe9d2f80b"
+      "bytes": 3501,
+      "sha256": "cb2c38e5dac434d38926c5221dbf2e51934cff4998bde3a46994bdb108193fce"
     },
     {
       "path": "qa/ANSWERS_TRANSLATION_20260822.md",
@@ -2736,7 +2736,7 @@
     {
       "path": "qa/EXTERNAL_INDONESIAN_TERMINOLOGY_QA_20260822.md",
       "bytes": 6577,
-      "sha256": "af709475f228a4ff60ff5972fd30a18452ba46d627c7754c934f928ca01e6918"
+      "sha256": "0f5e1e08b9c399827733df6fefc42623460d6aeabb92d2d9d96089e313366cc0"
     },
     {
       "path": "qa/INTERPOLATION_CHALLENGE_TRANSLATION_20260821.md",
@@ -2875,13 +2875,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 4249,
-      "sha256": "f3a7d53a280f72ae0b4db286dfa4279441a248e0b7f4b62fdeff1667259bbbad"
+      "bytes": 4473,
+      "sha256": "7449167252bf73941f431e915c3dde98001629870f4258e9926726b65d0eb160"
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 3621,
-      "sha256": "0d417b057c742315f20ac4db0b4690564e6e6e8bdced03e5ce29a3c2eb1a4d5d"
+      "bytes": 3880,
+      "sha256": "2f57a9ad2ac41994cc734609f47ecf4869be04ef4dfa8bda561b4f642ae36cb8"
     },
     {
       "path": "source/latex-id-ID/answers.tex",

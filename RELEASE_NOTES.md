@@ -1,15 +1,17 @@
-# Catatan Rilis — 3.0-id.2
+# Catatan Rilis — 3.0-id.2-r1
 
-Tag yang dituju: `v3.0-id.2`
+Tag yang dituju: `v3.0-id.2-r1`
 
-Tanggal rilis: `2026-08-23`
+Tanggal rilis: `2026-08-24`
 
 ## Ringkasan
 
-`3.0-id.2` adalah rilis patch terminologi untuk edisi Bahasa Indonesia mandiri
-yang lengkap dari *Tea Time Numerical Analysis*, Edisi Ketiga, karya Leon Q.
-Brin. Seluruh cakupan pembaca `3.0-id.1` dipertahankan. Basis sumbernya tetap
-upstream `v3.0` pada commit
+`3.0-id.2-r1` adalah penerbitan ulang integritas dari rilis patch terminologi
+`3.0-id.2` untuk edisi Bahasa Indonesia mandiri yang lengkap dari *Tea Time
+Numerical Analysis*, Edisi Ketiga, karya Leon Q. Brin. Seluruh isi matematika,
+cakupan, dan PDF pembaca dipertahankan byte-identik. Revisi ini hanya
+memperbaiki sitasi hash QA terminologi dan manifest backend dalam dokumentasi
+paket sumber/backend. Basis sumbernya tetap upstream `v3.0` pada commit
 `186882108a6da95c8dca5b81ce000fc3f8f3ca21` dan tree
 `1e50d3756b695176008c602f0ee89712f5f32d10`.
 
@@ -50,14 +52,14 @@ secara independen dari sumber institusional.
   `dbef9a5bb9680f6c072e1f26fe3f5ae8ba7e1ca955d9c3dd47f402d1bb9174ea`.
 - Receipt QA terminologi eksternal:
   `qa/EXTERNAL_INDONESIAN_TERMINOLOGY_QA_20260822.md`, 6.577 byte, SHA-256
-  `af709475f228a4ff60ff5972fd30a18452ba46d627c7754c934f928ca01e6918`.
+  `0f5e1e08b9c399827733df6fefc42623460d6aeabb92d2d9d96089e313366cc0`.
 - Backend modular final: 28.172 record dan 17.614 relasi; manifest SHA-256
-  `78db2d770201f33e6c8a56b28ba3a01295bb2de24424ce474bd003817ca5ae04`;
+  `e11119d2e7ab1118ab75ea986c05d441cc22391d4ce44e6fce7bcf0b3c357301`;
   20/20 pengujian dan replay deterministik lulus.
 - Closure LaTeX portabel yang dikemas membangun kembali PDF rilis secara
   byte-identik; lihat `qa/PORTABLE_RELEASE_SOURCE_QA_20260822.md`.
 - Repositori: <https://github.com/KokunoYumeto/tea-time-numerical-analysis-id>.
-- DOI versi: <https://doi.org/10.5281/zenodo.22062071>.
+- DOI versi: <https://doi.org/10.5281/zenodo.22075088>.
 
 ## Kredit produksi
 
@@ -72,7 +74,6 @@ Kredit ini tidak menyatakan identitas penerjemah yang tidak tercatat.
 Build 387 halaman, ekstraksi teks seluruh PDF, inspeksi visual halaman
 representatif, replay backend deterministik, round-trip ekspor, dan 20/20
 pengujian backend lulus. Patch ini diterbitkan dalam lineage Zenodo konsep
-`10.5281/zenodo.22054085` dan repositori GitHub yang sama. Payload Figshare
-reader-first disiapkan untuk artikel lineage yang sama, tetapi publikasi
-menunggu reaktivasi akun Figshare; receipt publikasi terpisah mencatat
-pembacaan balik anonim setiap byte yang sudah publik.
+`10.5281/zenodo.22054085`, repositori GitHub, dan artikel Figshare yang sama.
+Receipt publikasi terpisah mencatat setiap hasil transaksi dan pembacaan balik
+anonim; revisi integritas ini tidak membuat lineage duplikat.

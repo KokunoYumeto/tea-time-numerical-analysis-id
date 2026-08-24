@@ -78,7 +78,7 @@ Propagasi kanonik selesai dan lulus gerbang berikut:
   593 record istilah, dan 17.614 relasi dengan endpoint lengkap. Manifest
   `backend/manifests/lane_manifest.json` berukuran 14.060 byte dan memiliki
   SHA-256
-  `78db2d770201f33e6c8a56b28ba3a01295bb2de24424ce474bd003817ca5ae04`.
+  `e11119d2e7ab1118ab75ea986c05d441cc22391d4ce44e6fce7bcf0b3c357301`.
 - Semua 4.621 lokalisasi menyimpan provenance
   `OpenAI Codex gpt-5.6-sol, Ultra, at the user's request`; tidak ada baris
   provenance yang menyimpang.

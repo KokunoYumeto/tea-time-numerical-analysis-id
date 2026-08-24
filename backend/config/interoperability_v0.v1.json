@@ -6,9 +6,9 @@
   },
   "artifacts": [
     {
-      "build_manifest_bytes": 53055,
+      "build_manifest_bytes": 52979,
       "build_manifest_path": "build/manifests/en-baseline-build.json",
-      "build_manifest_sha256": "241285cb4f76d560c67c49b905b4be401fecf4dc7d9b86cc8ffaf74335cdefd5",
+      "build_manifest_sha256": "efefe947aebdf0f74d9b5d2e616d2c48d3186f4b871f4ea1e2f1119222458a55",
       "bytes": 8186285,
       "locale": "en-US",
       "media_type": "application/pdf",

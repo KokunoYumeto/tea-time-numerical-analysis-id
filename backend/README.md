@@ -70,7 +70,7 @@ versions, one build recipe, two evidenced experiments, one program, one course,
 records, one exact nonfinal baseline artifact, one final Indonesian PDF artifact,
 and 17,614 typed relations (28,172 unique records in total). Its exact
 manifest is `manifests/lane_manifest.json`, SHA-256
-`9a6ccf6ebf1e579216d7a5d7dee70b0da6acd7e5ea6237325b45cada5318a9e0`;
+`e11119d2e7ab1118ab75ea986c05d441cc22391d4ce44e6fce7bcf0b3c357301`;
 every generation is replayed twice before the cursor advances. Formula, label,
 reference, graphic, and executable-code bytes remain protected. Reader-visible
 Index content and narrowly scoped digression title arguments may be localized
@@ -151,8 +151,8 @@ python -B backend/tools/index_interop_v0.py generate --lane-root . --config back
 One admitted artifact is the stable 371-page English reproducible baseline,
 explicitly marked `baseline_nonfinal`: 8,186,285 bytes, SHA-256
 `17cd4abc74cff4934cc78a2f42378489829207f534ad9a051c45ad67b2b18180`.
-Its record binds the PDF to the exact 53,055-byte build receipt (SHA-256
-`241285cb4f76d560c67c49b905b4be401fecf4dc7d9b86cc8ffaf74335cdefd5`)
+Its record binds the PDF to the exact 52,979-byte build receipt (SHA-256
+`efefe947aebdf0f74d9b5d2e616d2c48d3186f4b871f4ea1e2f1119222458a55`)
 and the recorded LyX, latexmk, and cprotect identities. It is not the release
 artifact. The final `id-ID-release-pdf` artifact is
 `urn:uuid:0c82fceb-d875-53e8-94c9-a20dae5547cb`: 8,202,487 bytes, 387 pages,
@@ -164,7 +164,7 @@ The final artifact role was bound without manually transcribing byte counts or
 hashes. `--refresh-inputs` also rebound the final bounded adverse-ledger
 snapshot. The resulting release configuration is
 `config/interoperability_v0.release.json`, SHA-256
-`4aafff99f18acd992041774e5c07cc6c1289fed2c2b8526b89f3f1d911b190d2`.
+`9c66a55082b2b272b5ccda9e0f3c53924c8adb75af02286a604912bf1d220121`.
 The audited commands are:
 
 ```text
